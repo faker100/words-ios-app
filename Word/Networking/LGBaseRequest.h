@@ -8,23 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@class LGError;
-typedef void(^completion)(id response, LGError *error);
+typedef void(^comletionBlock)(id response, NSString *errorMessage);
 
 @interface LGBaseRequest : NSObject
 
 @property (nonatomic, strong) NSURLSessionTask *task;
-@property (nonatomic, strong) NSMutableDictionary *parameter;
+@property (nonatomic, strong) NSDictionary *parameter;
 @property (nonatomic, strong) NSString *url;
 
-- (void)getRequestCompletion:(completion) completion;
-- (void)postRequestCompletion:(completion) completion;
+- (void)getRequestCompletion:(comletionBlock) completion;
+- (void)postRequestCompletion:(comletionBlock) completion;
 
 @end
 
-@interface LGError : NSObject
-
-@property (nonatomic, strong) NSString *errorMessage;
-@property (nonatomic, assign) NSInteger errorCode;
-
-@end

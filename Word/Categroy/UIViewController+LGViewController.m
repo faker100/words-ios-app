@@ -23,7 +23,6 @@
 }
 
 - (void)setRequest:(LGRequest *)request{
-	
 	objc_setAssociatedObject(self, @selector(request), request, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 

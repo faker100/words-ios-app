@@ -14,10 +14,13 @@
 
 #import "UIViewController+LGViewController.h"
 #import "CALayer+LGLayer.h"
+#import "UIColor+LGColor.h"
+#import <MJExtension/MJExtension.h>
 
 
 #define PLACEHOLDERIMAGE [UIImage imageNamed:@""]
-#define SCREENWIDTH [UIScreen mainScreen].bounds.size.width
+
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 
 #define StringNotEmpty(str)             (str && (str.length > 0))
 #define ArrayNotEmpty(arr)              (arr && (arr.count > 0))

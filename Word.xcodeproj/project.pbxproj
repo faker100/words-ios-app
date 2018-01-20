@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3690868A07C9B63A30A721A0 /* Pods_Word.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66ACA9D95F507310F264822E /* Pods_Word.framework */; };
+		565A30F32013163400448B1C /* LGUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F22013163400448B1C /* LGUserModel.m */; };
+		565A30F7201331E000448B1C /* UIColor+LGColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F6201331E000448B1C /* UIColor+LGColor.m */; };
+		565A30FA2013411200448B1C /* LGRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F92013411200448B1C /* LGRegisterController.m */; };
 		567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 567C00FA2010A0360083F3D5 /* LGBaseRequest.m */; };
 		56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A8883A200CA53400847BE6 /* AppDelegate.m */; };
 		56A88841200CA53400847BE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A8883F200CA53400847BE6 /* Main.storyboard */; };
@@ -22,6 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		565A30F02012D57700448B1C /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
+		565A30F12013163400448B1C /* LGUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGUserModel.h; sourceTree = "<group>"; };
+		565A30F22013163400448B1C /* LGUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGUserModel.m; sourceTree = "<group>"; };
+		565A30F5201331E000448B1C /* UIColor+LGColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+LGColor.h"; sourceTree = "<group>"; };
+		565A30F6201331E000448B1C /* UIColor+LGColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LGColor.m"; sourceTree = "<group>"; };
+		565A30F82013411200448B1C /* LGRegisterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGRegisterController.h; sourceTree = "<group>"; };
+		565A30F92013411200448B1C /* LGRegisterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGRegisterController.m; sourceTree = "<group>"; };
 		567C00F92010A0360083F3D5 /* LGBaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGBaseRequest.h; sourceTree = "<group>"; };
 		567C00FA2010A0360083F3D5 /* LGBaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGBaseRequest.m; sourceTree = "<group>"; };
 		56A88836200CA53400847BE6 /* Word.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Word.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +69,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		565A30F420132F3700448B1C /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 		567C00F8201075C90083F3D5 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +91,8 @@
 				56AF60C92011DBBE0067BD7B /* CALayer+LGLayer.m */,
 				56AF60D32011EA050067BD7B /* UIViewController+LGViewController.h */,
 				56AF60D42011EA050067BD7B /* UIViewController+LGViewController.m */,
+				565A30F5201331E000448B1C /* UIColor+LGColor.h */,
+				565A30F6201331E000448B1C /* UIColor+LGColor.m */,
 			);
 			path = Categroy;
 			sourceTree = "<group>";
@@ -95,6 +114,7 @@
 				567C00FA2010A0360083F3D5 /* LGBaseRequest.m */,
 				56AF60C32011CD2B0067BD7B /* LGRequest.h */,
 				56AF60C42011CD2B0067BD7B /* LGRequest.m */,
+				565A30F02012D57700448B1C /* API.h */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -124,6 +144,7 @@
 				56961CF6200D8A9C009EA21C /* InterfaceBuilder */,
 				56961CF7200D8ACA009EA21C /* Networking */,
 				56961CF5200D89B0009EA21C /* Categroy */,
+				565A30F420132F3700448B1C /* Tool */,
 				56AF60CC2011DF930067BD7B /* Supporting files */,
 				56A88839200CA53400847BE6 /* AppDelegate.h */,
 				56A8883A200CA53400847BE6 /* AppDelegate.m */,
@@ -156,6 +177,8 @@
 			children = (
 				56AF60D02011E5FE0067BD7B /* LGLoginController.h */,
 				56AF60D12011E5FE0067BD7B /* LGLoginController.m */,
+				565A30F82013411200448B1C /* LGRegisterController.h */,
+				565A30F92013411200448B1C /* LGRegisterController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -163,6 +186,8 @@
 		56AF60CF2011E5DD0067BD7B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				565A30F12013163400448B1C /* LGUserModel.h */,
+				565A30F22013163400448B1C /* LGUserModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -308,9 +333,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				565A30F7201331E000448B1C /* UIColor+LGColor.m in Sources */,
+				565A30FA2013411200448B1C /* LGRegisterController.m in Sources */,
 				567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */,
 				56A88849200CA53400847BE6 /* main.m in Sources */,
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
+				565A30F32013163400448B1C /* LGUserModel.m in Sources */,
 				56AF60D52011EA050067BD7B /* UIViewController+LGViewController.m in Sources */,
 				56AF60C52011CD2B0067BD7B /* LGRequest.m in Sources */,
 				56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */,
@@ -390,6 +418,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
+				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -439,6 +468,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				NEW_SETTING = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

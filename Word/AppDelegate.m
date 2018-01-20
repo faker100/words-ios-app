@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
+	[self configNavigation];
+	[self configIQkeyboard];
 	return YES;
 }
 
@@ -47,5 +50,17 @@
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)configNavigation {
+	
+	[UINavigationBar appearance].tintColor = [UIColor whiteColor];
+//	[UINavigationBar appearance].barTintColor = [UIColor whiteColor];
+}
+
+- (void)configIQkeyboard {
+	IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+	manager.enable = YES;
+	manager.enableAutoToolbar = NO;
+	manager.shouldResignOnTouchOutside = YES;
+}
 
 @end

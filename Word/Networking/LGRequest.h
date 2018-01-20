@@ -11,6 +11,16 @@
 
 @interface LGRequest : LGBaseRequest
 
-- (void)loginRequest:(NSString *)username password:(NSString *)password completion:(completion)completion;
+
+- (void)loginRequest:(NSString *)username password:(NSString *)password completion:(comletionBlock)completion;
+
+
+/**
+ 重置 session
+
+ @param userInfo id
+ 
+ */
+- (void)resetSessionRequest:(id) userInfo completion:(comletionBlock)completion;
 
 @end
