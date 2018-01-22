@@ -10,4 +10,10 @@
 
 @interface LGRegisterController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *checkCodeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIButton *checkCodeButton;
+@property (weak, nonatomic) IBOutlet UIButton *agreeButton;
+
 @end

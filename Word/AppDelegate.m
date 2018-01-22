@@ -52,7 +52,9 @@
 
 - (void)configNavigation {
 	
-	[UINavigationBar appearance].tintColor = [UIColor whiteColor];
+//	[UINavigationBar appearance].tintColor = [UIColor whiteColor];
+//	[[UINavigationBar appearance] setBackIndicatorImage:[UIImage imageNamed:@"backArrow"]];
+//	[[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"backArrow"]];
 //	[UINavigationBar appearance].barTintColor = [UIColor whiteColor];
 }
 

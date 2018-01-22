@@ -7,7 +7,7 @@
 //
 
 #import "LGRequest.h"
-#import "API.h"
+#import "NSString+LGString.h"
 
 @implementation LGRequest
 
@@ -37,5 +37,28 @@
 	}];
 	
 }
+
+- (void)requestCheckCodeSure{
+	self.url = CHECK_CODE_SURE;
+	[self postRequestCompletion:nil];
+}
+
+- (void)requestCheckCode:(NSString *)username usernameType:(LGUsernameType)usernameType useType:(LGCheckCodeUseType)useType{
+	self.parameter = (NSMutableDictionary *)self.parameter;
+	[self setValue:@(useType) forKey:@"type"];
+	if (usernameType == LGUsernamePhoneType) {
+		self.url;
+	}else{
+		
+	}
+}
+
+//NSMutableDictionary *requestDictionary = [@{@"type":[NSString stringWithFormat:@"%ld", requestMessageCodeStyle + 1]} mutableCopy];
+//if ([HTValidateManager ht_validateMobile:phoneOrEmailString]) {
+//	requestUrl = @"http://login.gmatonline.cn/cn/app-api/phone-code";
+//	[requestDictionary setValue:HTPlaceholderString(phoneOrEmailString, @"") forKey:@"phoneNum"];
+//} else if ([HTValidateManager ht_validateEmail:phoneOrEmailString]) {
+//	requestUrl = @"http://login.gmatonline.cn/cn/app-api/send-mail";
+//	[requestDictionary setValue:HTPlaceholderString(phoneOrEmailString, @"") forKey:@"email"];
 
 @end

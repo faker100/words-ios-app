@@ -40,20 +40,10 @@ static AFHTTPSessionManager *manager;
 		
 	} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 		
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-		
-		if ( (NSInteger)responseObject[@"code"] == 0) {
-			NSString *message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];
-			completion(responseObject, message);
-			
-		}else{
-			completion(responseObject, nil);
-		}
+		[self dealRequestSuccessResponse:responseObject completion:completion];
 		
 	} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-		
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-		completion (nil,[self getSystemErrorMessage:error.code]);
+		[self dealRequestFailure:error completion:completion];
 	}];
 }
 
@@ -64,19 +54,50 @@ static AFHTTPSessionManager *manager;
 		
 	} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject){
 		
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+		[self dealRequestSuccessResponse:responseObject completion:completion];
 		
+	} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+		
+		[self dealRequestFailure:error completion:completion];
+		
+	}];
+}
+
+
+/**
+ 处理请求成功返回的 object
+ 
+ */
+- (void)dealRequestSuccessResponse:(id)responseObject completion:(comletionBlock) completion{
+	
+#ifdef DEBUG
+	NSLog(@"%@",responseObject);
+#endif
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+	if (completion) {
 		if ( (NSInteger)responseObject[@"code"] == 0) {
 			NSString *message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];
 			completion(responseObject, message);
 		}else{
 			completion(responseObject, nil);
 		}
-	} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-		
-		[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+	}
+}
+
+/**
+ 处理请求失败
+ 
+ */
+- (void)dealRequestFailure:(NSError *)error completion:(comletionBlock) completion{
+	
+#ifdef DEBUG
+	NSLog(@"%@",error);
+#endif
+	
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+	if (completion) {
 		completion (nil,[self getSystemErrorMessage:error.code]);
-	}];
+	}
 }
 
 - (NSString *)getSystemErrorMessage:(NSInteger)code {

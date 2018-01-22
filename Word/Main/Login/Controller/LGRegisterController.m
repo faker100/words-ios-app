@@ -19,9 +19,30 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+	[self.request requestCheckCodeSure];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)getCheckCodeAction:(UIButton *)sender {
+	
+}
+
+- (IBAction)registerAction:(id)sender {
+	
+}
+
+//同意用户协议
+- (IBAction)agreeAction:(UIButton *)sender {
+	sender.selected = !sender.selected;
+}
+
+- (IBAction)loginAction:(id)sender {
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

@@ -30,13 +30,13 @@
 	
 	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 	[self.navigationController.navigationBar setShadowImage:[UIImage new]];
-	
+	self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain
+																		   target:nil action:nil];
 	NSDictionary *attributeDic = @{
 						  NSForegroundColorAttributeName:[UIColor colorWithHexString:@"b8d3e0"],
 						  };
 	self.userNameTextField.attributedPlaceholder = [[NSAttributedString alloc]initWithString:@"请输入手机号/邮箱" attributes:attributeDic];
 	self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc]initWithString:@"请输入密码" attributes:attributeDic];
-	
 	
 }
 

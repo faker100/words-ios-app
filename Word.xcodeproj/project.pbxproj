@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3690868A07C9B63A30A721A0 /* Pods_Word.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66ACA9D95F507310F264822E /* Pods_Word.framework */; };
+		5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5606F8602015E45C0030E43C /* NSString+LGString.m */; };
 		565A30F32013163400448B1C /* LGUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F22013163400448B1C /* LGUserModel.m */; };
 		565A30F7201331E000448B1C /* UIColor+LGColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F6201331E000448B1C /* UIColor+LGColor.m */; };
 		565A30FA2013411200448B1C /* LGRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F92013411200448B1C /* LGRegisterController.m */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5606F85F2015E45C0030E43C /* NSString+LGString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LGString.h"; sourceTree = "<group>"; };
+		5606F8602015E45C0030E43C /* NSString+LGString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LGString.m"; sourceTree = "<group>"; };
 		565A30F02012D57700448B1C /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		565A30F12013163400448B1C /* LGUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGUserModel.h; sourceTree = "<group>"; };
 		565A30F22013163400448B1C /* LGUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGUserModel.m; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 				56AF60D42011EA050067BD7B /* UIViewController+LGViewController.m */,
 				565A30F5201331E000448B1C /* UIColor+LGColor.h */,
 				565A30F6201331E000448B1C /* UIColor+LGColor.m */,
+				5606F85F2015E45C0030E43C /* NSString+LGString.h */,
+				5606F8602015E45C0030E43C /* NSString+LGString.m */,
 			);
 			path = Categroy;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				56A88849200CA53400847BE6 /* main.m in Sources */,
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
 				565A30F32013163400448B1C /* LGUserModel.m in Sources */,
+				5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */,
 				56AF60D52011EA050067BD7B /* UIViewController+LGViewController.m in Sources */,
 				56AF60C52011CD2B0067BD7B /* LGRequest.m in Sources */,
 				56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */,
