@@ -40,7 +40,7 @@ typedef NS_ENUM(NSInteger, LGUsernameType) {
 #define LOGIN_URL						 @"http://login.gmatonline.cn/cn/app-api/check-login"
 
 //获取 session
-#define SESSION_URLS      				 @[@"http://www.toeflonline.cn/cn/app-api/unify-login",@"http://www.smartapply.cn/cn/app-api/unify-login",@"http://www.gmatonline.cn/index.php?web/appapi/unifyLogin",@"http://bbs.viplgw.cn/cn/app-api/unify-login"]
+#define SESSION_URLS      				 @[@"http://www.toeflonline.cn/cn/app-api/unify-login",@"http://www.smartapply.cn/cn/app-api/unify-login",@"http://www.gmatonline.cn/index.php?web/appapi/unifyLogin",@"http://bbs.viplgw.cn/cn/app-api/unify-login",@"http://words.viplgw.cn/cn/app-api/unify-login"]
 
 //获取验证码前先跟服务器确认
 #define CHECK_CODE_SURE					@"http://login.gmatonline.cn/cn/app-api/phone-request"

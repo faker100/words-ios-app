@@ -29,7 +29,12 @@
 }
 
 - (IBAction)getCheckCodeAction:(UIButton *)sender {
-	
+	[LGProgressHUD showHUDAddedTo:self.view animated:YES];
+	[self.request requestCheckCode:self.usernameTextField.text usernameType:LGUsernamePhoneType useType:LGCheckCodeUseTypeRegister completion:^(id response, NSString *errorMessage) {
+		if (StringNotEmpty(errorMessage)) {
+//			LGProgressHUD 
+		}
+	}];
 }
 
 - (IBAction)registerAction:(id)sender {

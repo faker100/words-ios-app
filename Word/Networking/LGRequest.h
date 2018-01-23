@@ -40,9 +40,9 @@
 
  @param username 用户名
  @param usernameType 电话/邮箱
- @param userType 用途
+ @param useType 用途
  */
-- (void)requestCheckCode:(NSString *)username usernameType:(LGUsernameType)usernameType useType:(LGCheckCodeUseType)useType;
+- (void)requestCheckCode:(NSString *)username usernameType:(LGUsernameType)usernameType useType:(LGCheckCodeUseType)useType completion:(comletionBlock)completion;
 
 
 @end

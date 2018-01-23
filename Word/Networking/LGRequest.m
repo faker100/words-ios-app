@@ -43,14 +43,17 @@
 	[self postRequestCompletion:nil];
 }
 
-- (void)requestCheckCode:(NSString *)username usernameType:(LGUsernameType)usernameType useType:(LGCheckCodeUseType)useType{
+- (void)requestCheckCode:(NSString *)username usernameType:(LGUsernameType)usernameType useType:(LGCheckCodeUseType)useType completion:(comletionBlock)completion{
 	self.parameter = (NSMutableDictionary *)self.parameter;
-	[self setValue:@(useType) forKey:@"type"];
+	[self.parameter setValue:@(useType) forKey:@"type"];
 	if (usernameType == LGUsernamePhoneType) {
-		self.url;
+		self.url = GET_CHECK_CODE_PHONE;
+		[self.parameter setValue:username forKey:@"phoneNum"];
 	}else{
-		
+		self.url = GET_CHECK_CODE_EMAIL;
+		[self.parameter setValue:username forKey:@"email"];
 	}
+	[self postRequestCompletion:completion];
 }
 
 //NSMutableDictionary *requestDictionary = [@{@"type":[NSString stringWithFormat:@"%ld", requestMessageCodeStyle + 1]} mutableCopy];
