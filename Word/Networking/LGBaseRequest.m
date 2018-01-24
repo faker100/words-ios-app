@@ -75,7 +75,7 @@ static AFHTTPSessionManager *manager;
 #endif
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	if (completion) {
-		if ( (NSInteger)responseObject[@"code"] == 0) {
+		if ( [NSString stringWithFormat:@"%@",responseObject[@"code"]].integerValue == 0) {
 			NSString *message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];
 			completion(responseObject, message);
 		}else{

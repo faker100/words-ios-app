@@ -56,12 +56,19 @@
 	[self postRequestCompletion:completion];
 }
 
-//NSMutableDictionary *requestDictionary = [@{@"type":[NSString stringWithFormat:@"%ld", requestMessageCodeStyle + 1]} mutableCopy];
-//if ([HTValidateManager ht_validateMobile:phoneOrEmailString]) {
-//	requestUrl = @"http://login.gmatonline.cn/cn/app-api/phone-code";
-//	[requestDictionary setValue:HTPlaceholderString(phoneOrEmailString, @"") forKey:@"phoneNum"];
-//} else if ([HTValidateManager ht_validateEmail:phoneOrEmailString]) {
-//	requestUrl = @"http://login.gmatonline.cn/cn/app-api/send-mail";
-//	[requestDictionary setValue:HTPlaceholderString(phoneOrEmailString, @"") forKey:@"email"];
+
+- (void)registerRequest:(NSString *)username password:(NSString *)password code:(NSString *)code usernameType:(LGUsernameType)usernameType completion:(comletionBlock)completion {
+	self.url = REGISTER_URL;
+	self.parameter = @{
+					   @"type" : @(usernameType),
+					   @"registerStr" : username,
+					   @"pass" : password,
+					   @"code" : code,
+					   @"userName" : username,
+					   @"source" : @"2",
+					   @"belong" : @"1"
+					   };
+	[self postRequestCompletion:completion];
+}
 
 @end

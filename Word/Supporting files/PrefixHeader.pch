@@ -17,6 +17,7 @@
 #import "UIColor+LGColor.h"
 #import <MJExtension/MJExtension.h>
 #import "LGProgressHUD.h"
+#import "NSString+LGString.h"
 
 #define PLACEHOLDERIMAGE [UIImage imageNamed:@""]
 

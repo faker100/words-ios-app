@@ -10,14 +10,43 @@
 
 @implementation LGProgressHUD
 
-+ (instancetype)showHUDAddedTo:(UIView *)view animated:(BOOL)animated{
-	LGProgressHUD *hub = [super showHUDAddedTo:view animated:animated];
-	hub.bezelView.color = [UIColor blackColor];
-	hub.bezelView.alpha = 0.8;
-	hub.label.text = @"aaa";
-	hub.contentColor = [UIColor whiteColor];
-	return hub;
++ (void)showHUDAddedTo:(UIView *)view {
+	
+	LGProgressHUD *hud = [super showHUDAddedTo:view animated:YES];
+	 [LGProgressHUD configType:hud];
 }
+
++ (void)hideHUDForView:(UIView *)view {
+	
+	[super hideHUDForView:view animated:YES];
+}
+
++ (void)showError:(NSString *)text toView:(UIView *)view{
+	
+	LGProgressHUD *hud = [super showHUDAddedTo:view animated:YES];
+	hud.label.text = text;
+	hud.mode = MBProgressHUDModeCustomView;
+	hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"agree_selected"]];
+	[hud hideAnimated:YES afterDelay:1.5f];
+	 [LGProgressHUD configType:hud];
+}
+
++ (void)showMessage:(NSString *)message toView:(UIView *)view{
+	LGProgressHUD *hud = [super showHUDAddedTo:view animated:YES];
+	hud.label.text = message;
+	hud.mode = MBProgressHUDModeText;
+	[hud hideAnimated:YES afterDelay:1.5f];
+	[LGProgressHUD configType:hud];
+}
+
++ (LGProgressHUD *)configType:(LGProgressHUD *)hud {
+	
+	hud.bezelView.color = [UIColor blackColor];
+	hud.bezelView.alpha = 0.8;
+	hud.contentColor = [UIColor whiteColor];
+	return hud;
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -11,6 +11,6 @@
 @interface NSString (LGString)
 
 - (BOOL)isPhoneNum;
-
+- (BOOL)isEmail;
 
 @end

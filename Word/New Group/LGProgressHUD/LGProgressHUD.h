@@ -10,6 +10,12 @@
 
 @interface LGProgressHUD : MBProgressHUD
 
++ (void)showHUDAddedTo:(UIView *)view;
 
++ (void)hideHUDForView:(UIView *)view;
+
++ (void) showError:(NSString *)text toView:(UIView *)view;
+
++ (void) showMessage:(NSString *)message toView:(UIView *)view;
 
 @end

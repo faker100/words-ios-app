@@ -45,4 +45,14 @@
 - (void)requestCheckCode:(NSString *)username usernameType:(LGUsernameType)usernameType useType:(LGCheckCodeUseType)useType completion:(comletionBlock)completion;
 
 
+/**
+ 注册
+
+ @param username 用户名
+ @param password 密码
+ @param code 验证码
+ @param usernameType 用户名类型
+ */
+- (void)registerRequest:(NSString *)username password:(NSString *)password code:(NSString *)code usernameType:(LGUsernameType)usernameType completion:(comletionBlock)completion;
+
 @end

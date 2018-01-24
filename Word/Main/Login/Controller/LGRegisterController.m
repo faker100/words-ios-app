@@ -10,6 +10,9 @@
 
 @interface LGRegisterController ()
 
+@property (nonatomic, strong ) NSTimer *timer;
+@property (nonatomic, assign) NSInteger second; //倒计时60秒;
+
 @end
 
 @implementation LGRegisterController
@@ -28,16 +31,97 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+	
+	self.checkCodeButton.enabled = YES;
+	self.checkCodeButton.backgroundColor = [UIColor colorWithHexString:@"0B5F8F"];
+	
+	if (self.timer.isValid){
+		[self.timer invalidate];
+	}
+	self.timer = nil;
+}
+
+//开始倒计时
+- (void)beginCountdown {
+	self.second = 60;
+	if (self.timer) {
+		[self.timer setFireDate:[NSDate distantPast]];
+	}else{
+		self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countdown) userInfo:nil repeats:YES];
+		[[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+	}
+}
+
+- (void)countdown{
+	
+	self.second --;
+	if (self.second <= 0) {
+		[self.timer setFireDate:[NSDate distantFuture]];
+		self.checkCodeButton.enabled = YES;
+		self.checkCodeButton.backgroundColor = [UIColor colorWithHexString:@"0B5F8F"];
+	}else{
+		self.checkCodeButton.enabled = NO;
+		self.checkCodeButton.backgroundColor = [UIColor grayColor];
+	}
+
+	[self.checkCodeButton setTitle:[NSString stringWithFormat:@"已发送(%ld)",(long)self.second] forState:UIControlStateDisabled];
+}
+
+//获取验证码
 - (IBAction)getCheckCodeAction:(UIButton *)sender {
-	[LGProgressHUD showHUDAddedTo:self.view animated:YES];
-	[self.request requestCheckCode:self.usernameTextField.text usernameType:LGUsernamePhoneType useType:LGCheckCodeUseTypeRegister completion:^(id response, NSString *errorMessage) {
+	LGUsernameType type;
+	NSString *username = self.usernameTextField.text;
+	if ([username isPhoneNum]) {
+		type = LGUsernamePhoneType;
+	}else if ([username isEmail]) {
+		type = LGUsernameEmailType;
+	}else{
+		[LGProgressHUD showMessage:@"请输入正确的用户名" toView:self.view];
+		return;
+	}
+	
+	[LGProgressHUD showHUDAddedTo:self.view];
+	[self.request requestCheckCode:self.usernameTextField.text usernameType:type useType:LGCheckCodeUseTypeRegister completion:^(id response, NSString *errorMessage) {
+		[LGProgressHUD  hideHUDForView:self.view];
 		if (StringNotEmpty(errorMessage)) {
-//			LGProgressHUD 
+			[LGProgressHUD showError:errorMessage toView:self.view];
+			
+		}else{
+			[self beginCountdown];
 		}
 	}];
 }
 
 - (IBAction)registerAction:(id)sender {
+	
+	NSString *username = self.usernameTextField.text;
+	NSString *code = self.checkCodeTextField.text;
+	NSString *password = self.passwordTextField.text;
+	LGUsernameType type;
+	if ([username isPhoneNum]) {
+		type = LGUsernamePhoneType;
+	}else if ([username isEmail]) {
+		type = LGUsernameEmailType;
+	}else{
+		[LGProgressHUD showMessage:@"请输入正确的用户名" toView:self.view];
+		return;
+	}
+	if (!StringNotEmpty(code)) {
+		[LGProgressHUD showMessage:@"请输入验证码" toView:self.view];
+		return;
+	}
+	if (!StringNotEmpty(password)) {
+		[LGProgressHUD showMessage:@"请输入密码" toView:self.view];
+		return;
+	}
+	[self.request registerRequest:username password:password code:code usernameType:type completion:^(id response, NSString *errorMessage) {
+		if (StringNotEmpty(errorMessage)) {
+			[LGProgressHUD showError:errorMessage toView:self.view];
+		}else{
+			[self.navigationController popViewControllerAnimated:YES];
+		}
+	}];
 	
 }
 
@@ -49,6 +133,8 @@
 - (IBAction)loginAction:(id)sender {
 	[self.navigationController popViewControllerAnimated:YES];
 }
+
+
 
 /*
 #pragma mark - Navigation

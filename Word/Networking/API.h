@@ -21,8 +21,9 @@ typedef NS_ENUM(NSInteger, LGCheckCodeUseType) {
 	LGCheckCodeUseTypeReplacePassword
 };
 
+//用户名类型
 typedef NS_ENUM(NSInteger, LGUsernameType) {
-	LGUsernamePhoneType,
+	LGUsernamePhoneType = 1,
 	LGUsernameEmailType,
 	
 };
@@ -51,7 +52,8 @@ typedef NS_ENUM(NSInteger, LGUsernameType) {
 //通过 email 获取验证码
 #define GET_CHECK_CODE_EMAIL			@"http://login.gmatonline.cn/cn/app-api/send-mail"
 
-
+//注册
+#define REGISTER_URL					@"http://login.gmatonline.cn/cn/app-api/register"
 
 
 
