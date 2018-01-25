@@ -12,5 +12,5 @@
 
 - (BOOL)isPhoneNum;
 - (BOOL)isEmail;
-
+- (BOOL)isRightPassword;
 @end

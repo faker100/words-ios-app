@@ -71,4 +71,16 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)findPasswordRequest:(NSString *)username password:(NSString *)password code:(NSString *)code usernameType:(LGUsernameType)usernameType completion:(comletionBlock)completion{
+	self.url = FIND_PASSWORD_URL;
+	self.parameter = @{
+					   @"type":@(usernameType),
+					   @"registerStr":username,
+					   @"pass":password,
+					   @"code":code
+					   };
+	[self postRequestCompletion:completion];
+}
+
+
 @end

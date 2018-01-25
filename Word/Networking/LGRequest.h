@@ -55,4 +55,15 @@
  */
 - (void)registerRequest:(NSString *)username password:(NSString *)password code:(NSString *)code usernameType:(LGUsernameType)usernameType completion:(comletionBlock)completion;
 
+
+/**
+ 找回密码
+
+ @param username 用户名
+ @param password 密码
+ @param code 验证码
+ @param usernameType 用户名类型
+ */
+- (void)findPasswordRequest:(NSString *)username password:(NSString *)password code:(NSString *)code usernameType:(LGUsernameType)usernameType completion:(comletionBlock)completion;
+
 @end

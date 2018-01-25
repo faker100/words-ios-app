@@ -55,6 +55,8 @@ typedef NS_ENUM(NSInteger, LGUsernameType) {
 //注册
 #define REGISTER_URL					@"http://login.gmatonline.cn/cn/app-api/register"
 
+//找回密码
+#define FIND_PASSWORD_URL				@"http://login.gmatonline.cn/cn/app-api/find-pass"
 
 
 

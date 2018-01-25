@@ -52,9 +52,21 @@
 - (IBAction)loginAction:(id)sender {
 	NSString *username = self.userNameTextField.text;
 	NSString *password = self.passwordTextField.text;
+	
+	if (!([username isPhoneNum] || [username isEmail])) {
+		[LGProgressHUD showMessage:@"请输入正确的用户名" toView:self.view];
+		return;
+	}
+	
+	if (!password.isRightPassword) {
+		[LGProgressHUD showMessage:@"密码为6-20个数字或大小写字母" toView:self.view];
+		return;
+	}
+	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request loginRequest:username password:password completion:^(id response, NSString *errorMessage) {
+		[LGProgressHUD hideHUDForView:self.view];
 		if (StringNotEmpty(errorMessage)) {
-			NSLog(@"登录成功");
+			[LGProgressHUD showError:errorMessage toView:self.view];
 		}
 	}];
 }

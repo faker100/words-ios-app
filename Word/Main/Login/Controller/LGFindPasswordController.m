@@ -1,34 +1,34 @@
 //
-//  LGRegisterController.m
+//  LGFindPasswordController.m
 //  Word
 //
-//  Created by Charles Cao on 2018/1/20.
+//  Created by Charles Cao on 2018/1/25.
 //  Copyright © 2018年 Charles. All rights reserved.
 //
 
-#import "LGRegisterController.h"
+#import "LGFindPasswordController.h"
 
-@interface LGRegisterController ()
+@interface LGFindPasswordController ()
 
 @property (nonatomic, strong ) NSTimer *timer;
 @property (nonatomic, assign) NSInteger second; //倒计时60秒;
 
 @end
 
-@implementation LGRegisterController
+@implementation LGFindPasswordController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-	[self.request requestCheckCodeSure];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+	[self.request requestCheckCodeSure];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -64,7 +64,7 @@
 		self.checkCodeButton.enabled = NO;
 		self.checkCodeButton.backgroundColor = [UIColor grayColor];
 	}
-
+	
 	[self.checkCodeButton setTitle:[NSString stringWithFormat:@"已发送(%ld)",(long)self.second] forState:UIControlStateDisabled];
 }
 
@@ -82,7 +82,7 @@
 	}
 	
 	[LGProgressHUD showHUDAddedTo:self.view];
-	[self.request requestCheckCode:self.usernameTextField.text usernameType:type useType:LGCheckCodeUseTypeRegister completion:^(id response, NSString *errorMessage) {
+	[self.request requestCheckCode:self.usernameTextField.text usernameType:type useType:LGCheckCodeUseTypeForgetPassword completion:^(id response, NSString *errorMessage) {
 		[LGProgressHUD  hideHUDForView:self.view];
 		if (StringNotEmpty(errorMessage)) {
 			[LGProgressHUD showError:errorMessage toView:self.view];
@@ -93,8 +93,7 @@
 	}];
 }
 
-- (IBAction)registerAction:(id)sender {
-	
+- (IBAction)submitAction:(id)sender {
 	NSString *username = self.usernameTextField.text;
 	NSString *code = self.checkCodeTextField.text;
 	NSString *password = self.passwordTextField.text;
@@ -115,32 +114,18 @@
 		[LGProgressHUD showMessage:@"密码为6-20个数字或大小写字母" toView:self.view];
 		return;
 	}
-	if (!self.agreeButton.selected) {
-		[LGProgressHUD showMessage:@"请阅读并同意《用户协议》" toView:self.view];
-		return;
-	}
+	
 	[LGProgressHUD showHUDAddedTo:self.view];
-	[self.request registerRequest:username password:password code:code usernameType:type completion:^(id response, NSString *errorMessage) {
+	[self.request findPasswordRequest:username password:password code:code usernameType:type completion:^(id response, NSString *errorMessage) {
 		[LGProgressHUD hideHUDForView:self.view];
 		if (StringNotEmpty(errorMessage)) {
 			[LGProgressHUD showError:errorMessage toView:self.view];
 		}else{
-			[self.navigationController popViewControllerAnimated:YES];
+			[LGProgressHUD showMessage:@"修改成功" toView:self.view];
 		}
 	}];
 	
 }
-
-//同意用户协议
-- (IBAction)agreeAction:(UIButton *)sender {
-	sender.selected = !sender.selected;
-}
-
-- (IBAction)loginAction:(id)sender {
-	[self.navigationController popViewControllerAnimated:YES];
-}
-
-
 
 /*
 #pragma mark - Navigation
