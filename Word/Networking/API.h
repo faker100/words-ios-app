@@ -17,18 +17,35 @@
 //获取验证码用途
 typedef NS_ENUM(NSInteger, LGCheckCodeUseType) {
 	LGCheckCodeUseTypeRegister = 1,
-	LGCheckCodeUseTypeForgetPassword,
-	LGCheckCodeUseTypeReplacePassword
+	LGCheckCodeUseTypeForgetPassword = 2,
+	LGCheckCodeUseTypeReplacePassword = 3
 };
 
 //用户名类型
 typedef NS_ENUM(NSInteger, LGUsernameType) {
 	LGUsernamePhoneType = 1,
-	LGUsernameEmailType,
+	LGUsernameEmailType = 2,
 	
 };
 
+//学习模式
+typedef NS_ENUM(NSUInteger, LGStudyType) {
+	LGStudyEbbinghaus = 1, 		//艾宾浩斯记忆法
+	LGStudyReview = 2,			//复习记忆法
+	LGStudyOnlyNew = 3, 		//只背新单词
+};
+
+
+/*************************************** 各种 key **********************************/
+
+// code = 99 未登录通知
+#define NO_LOGIN_NOTIFICATION 	@"not_logged"
+
+//未登录时提示语
+#define NO_LOGIN_ALERT_MESSAGE  @"noLoginMessage"
+
 /*************************************** 域名 **********************************/
+
 
 
 
@@ -58,5 +75,6 @@ typedef NS_ENUM(NSInteger, LGUsernameType) {
 //找回密码
 #define FIND_PASSWORD_URL				@"http://login.gmatonline.cn/cn/app-api/find-pass"
 
-
+//更改学习模式
+#define UPDATE_STUDY_TYPE_URL			@"http://words.viplgw.cn/cn/app-api/update-model"
 

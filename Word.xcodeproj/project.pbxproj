@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3690868A07C9B63A30A721A0 /* Pods_Word.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66ACA9D95F507310F264822E /* Pods_Word.framework */; };
 		5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5606F8602015E45C0030E43C /* NSString+LGString.m */; };
+		56317B72201C1D6800AEC20B /* LGUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56317B71201C1D6800AEC20B /* LGUserManager.m */; };
+		563259EE201AC609007FF4D6 /* LGTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 563259ED201AC609007FF4D6 /* LGTool.m */; };
 		56506D052016D842000FD8FA /* LGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56506D042016D842000FD8FA /* LGProgressHUD.m */; };
 		565A30F32013163400448B1C /* LGUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F22013163400448B1C /* LGUserModel.m */; };
 		565A30F7201331E000448B1C /* UIColor+LGColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F6201331E000448B1C /* UIColor+LGColor.m */; };
@@ -24,6 +26,9 @@
 		56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AF60C92011DBBE0067BD7B /* CALayer+LGLayer.m */; };
 		56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AF60D12011E5FE0067BD7B /* LGLoginController.m */; };
 		56AF60D52011EA050067BD7B /* UIViewController+LGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AF60D42011EA050067BD7B /* UIViewController+LGViewController.m */; };
+		56CCA5E5201B083B0097DCAC /* LGReciteWordsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5E4201B083B0097DCAC /* LGReciteWordsController.m */; };
+		56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5E7201B16050097DCAC /* LGNavigationController.m */; };
+		56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5EC201B29A60097DCAC /* LGStudyTypeController.m */; };
 		56EAD86220197F2D0059604E /* LGFindPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EAD86120197F2D0059604E /* LGFindPasswordController.m */; };
 		56EAD8642019C09A0059604E /* ReciteWords.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EAD8632019C09A0059604E /* ReciteWords.storyboard */; };
 		56EAD8662019C0EB0059604E /* WordReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EAD8652019C0EB0059604E /* WordReport.storyboard */; };
@@ -35,6 +40,10 @@
 /* Begin PBXFileReference section */
 		5606F85F2015E45C0030E43C /* NSString+LGString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LGString.h"; sourceTree = "<group>"; };
 		5606F8602015E45C0030E43C /* NSString+LGString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LGString.m"; sourceTree = "<group>"; };
+		56317B70201C1D6800AEC20B /* LGUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGUserManager.h; sourceTree = "<group>"; };
+		56317B71201C1D6800AEC20B /* LGUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGUserManager.m; sourceTree = "<group>"; };
+		563259EC201AC609007FF4D6 /* LGTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTool.h; sourceTree = "<group>"; };
+		563259ED201AC609007FF4D6 /* LGTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTool.m; sourceTree = "<group>"; };
 		56506D032016D842000FD8FA /* LGProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGProgressHUD.h; sourceTree = "<group>"; };
 		56506D042016D842000FD8FA /* LGProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGProgressHUD.m; sourceTree = "<group>"; };
 		565A30F02012D57700448B1C /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
@@ -64,6 +73,12 @@
 		56AF60D12011E5FE0067BD7B /* LGLoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGLoginController.m; sourceTree = "<group>"; };
 		56AF60D32011EA050067BD7B /* UIViewController+LGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LGViewController.h"; sourceTree = "<group>"; };
 		56AF60D42011EA050067BD7B /* UIViewController+LGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LGViewController.m"; sourceTree = "<group>"; };
+		56CCA5E3201B083B0097DCAC /* LGReciteWordsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReciteWordsController.h; sourceTree = "<group>"; };
+		56CCA5E4201B083B0097DCAC /* LGReciteWordsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReciteWordsController.m; sourceTree = "<group>"; };
+		56CCA5E6201B16050097DCAC /* LGNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGNavigationController.h; sourceTree = "<group>"; };
+		56CCA5E7201B16050097DCAC /* LGNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGNavigationController.m; sourceTree = "<group>"; };
+		56CCA5EB201B29A60097DCAC /* LGStudyTypeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGStudyTypeController.h; sourceTree = "<group>"; };
+		56CCA5EC201B29A60097DCAC /* LGStudyTypeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGStudyTypeController.m; sourceTree = "<group>"; };
 		56EAD86020197F2D0059604E /* LGFindPasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGFindPasswordController.h; sourceTree = "<group>"; };
 		56EAD86120197F2D0059604E /* LGFindPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGFindPasswordController.m; sourceTree = "<group>"; };
 		56EAD8632019C09A0059604E /* ReciteWords.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReciteWords.storyboard; sourceTree = "<group>"; };
@@ -110,6 +125,10 @@
 		565A30F420132F3700448B1C /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				563259EC201AC609007FF4D6 /* LGTool.h */,
+				563259ED201AC609007FF4D6 /* LGTool.m */,
+				56317B70201C1D6800AEC20B /* LGUserManager.h */,
+				56317B71201C1D6800AEC20B /* LGUserManager.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -244,9 +263,45 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		56CCA5E1201B07F60097DCAC /* Index */ = {
+			isa = PBXGroup;
+			children = (
+				56CCA5E2201B08050097DCAC /* Controller */,
+			);
+			path = Index;
+			sourceTree = "<group>";
+		};
+		56CCA5E2201B08050097DCAC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56CCA5E3201B083B0097DCAC /* LGReciteWordsController.h */,
+				56CCA5E4201B083B0097DCAC /* LGReciteWordsController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		56CCA5E9201B29370097DCAC /* PersonalCenter */ = {
+			isa = PBXGroup;
+			children = (
+				56CCA5EA201B297C0097DCAC /* Controller */,
+			);
+			path = PersonalCenter;
+			sourceTree = "<group>";
+		};
+		56CCA5EA201B297C0097DCAC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56CCA5EB201B29A60097DCAC /* LGStudyTypeController.h */,
+				56CCA5EC201B29A60097DCAC /* LGStudyTypeController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		56EAD86B2019C1A60059604E /* ReciteWords */ = {
 			isa = PBXGroup;
 			children = (
+				56CCA5E9201B29370097DCAC /* PersonalCenter */,
+				56CCA5E1201B07F60097DCAC /* Index */,
 			);
 			path = ReciteWords;
 			sourceTree = "<group>";
@@ -277,6 +332,8 @@
 			children = (
 				56EAD8702019C98B0059604E /* LGTabBarViewController.h */,
 				56EAD8712019C98B0059604E /* LGTabBarViewController.m */,
+				56CCA5E6201B16050097DCAC /* LGNavigationController.h */,
+				56CCA5E7201B16050097DCAC /* LGNavigationController.m */,
 			);
 			path = MainController;
 			sourceTree = "<group>";
@@ -430,15 +487,20 @@
 				56EAD86220197F2D0059604E /* LGFindPasswordController.m in Sources */,
 				565A30FA2013411200448B1C /* LGRegisterController.m in Sources */,
 				567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */,
+				56317B72201C1D6800AEC20B /* LGUserManager.m in Sources */,
 				56506D052016D842000FD8FA /* LGProgressHUD.m in Sources */,
+				56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */,
 				56A88849200CA53400847BE6 /* main.m in Sources */,
+				56CCA5E5201B083B0097DCAC /* LGReciteWordsController.m in Sources */,
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
 				56EAD8722019C98B0059604E /* LGTabBarViewController.m in Sources */,
 				565A30F32013163400448B1C /* LGUserModel.m in Sources */,
 				5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */,
 				56AF60D52011EA050067BD7B /* UIViewController+LGViewController.m in Sources */,
+				563259EE201AC609007FF4D6 /* LGTool.m in Sources */,
 				56AF60C52011CD2B0067BD7B /* LGRequest.m in Sources */,
 				56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */,
+				56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */,
 				56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

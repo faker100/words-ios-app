@@ -76,8 +76,17 @@ static AFHTTPSessionManager *manager;
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	if (completion) {
 		if ( [NSString stringWithFormat:@"%@",responseObject[@"code"]].integerValue == 0) {
+			
 			NSString *message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];
 			completion(responseObject, message);
+			
+		}else if ([NSString stringWithFormat:@"%@",responseObject[@"code"]].integerValue == 99){
+			
+			//发出未登录通知
+			NSString *message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];
+			[[NSNotificationCenter defaultCenter] postNotificationName:NO_LOGIN_NOTIFICATION object:nil userInfo:@{NO_LOGIN_ALERT_MESSAGE : message}];
+			completion(responseObject,message);
+	
 		}else{
 			completion(responseObject, nil);
 		}
@@ -105,8 +114,10 @@ static AFHTTPSessionManager *manager;
 	if(code == -1001)  return  @"请求超时";
 	if(code == -1009)  return @"无法连接到网络";
 	if(code == -1004)  return @"连接服务器失败，请稍后重试";
+	if(code ==  3840)  return @"服务器出错了!";
 	return nil;
 }
+
 
 - (NSString *)url{
 	if (_url) {

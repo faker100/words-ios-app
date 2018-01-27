@@ -83,4 +83,12 @@
 }
 
 
+- (void)updateStudyType:(LGStudyType)type  completion:(comletionBlock)completion{
+	self.url = UPDATE_STUDY_TYPE_URL;
+	self.parameter = @{
+					   @"status" : @(type)
+					   };
+	[self postRequestCompletion:completion];
+}
+
 @end

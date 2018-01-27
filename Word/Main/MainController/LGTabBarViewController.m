@@ -7,6 +7,7 @@
 //
 
 #import "LGTabBarViewController.h"
+#import "LGTool.h"
 
 @interface LGTabBarViewController ()
 
@@ -22,13 +23,28 @@
 	UINavigationController *wordReport  = STORYBOARD_VIEWCONTROLLER(@"WordReport", @"NavigationController");
 	UINavigationController *pk		    = STORYBOARD_VIEWCONTROLLER(@"PK", @"NavigationController");
 	UINavigationController *periphery   = STORYBOARD_VIEWCONTROLLER(@"Periphery", @"NavigationController");
-//	tabBarController.tabBar.selectedImageTintColor = [UIColor orangeColor];
-	self.tabBar.selectionIndicatorImage = [UIImage imageNamed:@"login_bg_img"];
 	self.viewControllers = @[reciteWords,wordReport,pk,periphery];
+    CGSize size = CGSizeMake(self.tabBar.frame.size.width / self.viewControllers.count, self.tabBar.frame.size.height);
+	self.tabBar.selectionIndicatorImage = [LGTool createImageWithColor:[UIColor lg_colorWithType:LGColor_theme_Color] size:size];
 	
+	//服务器返回未登录的时候
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLogin:) name:NO_LOGIN_NOTIFICATION object:nil];
 }
 
+- (void)showLogin:(NSNotification *)notification {
+	
+	NSString *str = notification.userInfo[NO_LOGIN_ALERT_MESSAGE];
+	[LGProgressHUD showError:str toView:[UIApplication sharedApplication].keyWindow];
+	UIViewController *loginNavigationController = STORYBOARD_VIEWCONTROLLER(@"Login", @"LGLoginNavigationController");
+	[self presentViewController:loginNavigationController animated:YES completion:^{
+		
+	}];
+}
 
+//设置状态栏颜色
+-(UIStatusBarStyle) preferredStatusBarStyle {
+	return UIStatusBarStyleLightContent;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

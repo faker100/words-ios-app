@@ -10,7 +10,7 @@
 
 @implementation UIColor (LGColor)
 
-+ (UIColor *)colorWithHexString:(NSString *)color {
++ (UIColor *)lg_colorWithHexString:(NSString *)color {
 	NSString *cString = [[color stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
 	if ([cString length] < 6) {
 		return [UIColor clearColor];
@@ -37,6 +37,24 @@
 	[[NSScanner scannerWithString:gString] scanHexInt:&g];
 	[[NSScanner scannerWithString:bString] scanHexInt:&b];
 	return [UIColor colorWithRed:((float)r / 255.0f) green:((float)g / 255.0f) blue:((float)b / 255.0f) alpha:1];
+}
+
++ (UIColor *)lg_colorWithType:(LGColorType)type{
+	UIColor *color;
+	switch (type) {
+		case LGColor_theme_Color:
+			color = [UIColor lg_colorWithHexString:@"37bc85"];
+			break;
+		case LGColor_Title_1_Color:
+			color = [UIColor lg_colorWithHexString:@"454545"];
+			break;
+		case LGColor_Title_2_Color:
+			color = [UIColor lg_colorWithHexString:@"7A7A7A"];
+			break;
+		default:
+			break;
+	}
+	return color;
 }
 
 @end

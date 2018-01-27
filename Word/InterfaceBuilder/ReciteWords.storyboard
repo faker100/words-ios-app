@@ -1,51 +1,323 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--背单词-->
         <scene sceneID="fmP-tD-FDx">
             <objects>
-                <navigationController storyboardIdentifier="NavigationController" id="EmJ-nR-hPb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="背单词" id="tVa-yh-9In"/>
+                <navigationController storyboardIdentifier="NavigationController" id="EmJ-nR-hPb" customClass="LGNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="背单词" image="tabbar_recitewords" selectedImage="tabbar_recitewords_selected" id="tVa-yh-9In"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X4Q-U9-Or8">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="backArrow" backIndicatorTransitionMaskImage="backArrow" id="X4Q-U9-Or8">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" name="themeColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="92y-rh-Vaq" kind="relationship" relationship="rootViewController" id="tp9-Kw-eGI"/>
+                        <segue destination="qXg-Ed-8An" kind="relationship" relationship="rootViewController" id="Qt4-c5-GcS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXY-c5-i4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-775" y="97"/>
         </scene>
-        <!--背单词-->
-        <scene sceneID="zOi-OV-xQc">
+        <!--学习模式-->
+        <scene sceneID="bWg-7H-u11">
             <objects>
-                <viewController title="背单词" automaticallyAdjustsScrollViewInsets="NO" id="92y-rh-Vaq" sceneMemberID="viewController">
+                <viewController title="学习模式" hidesBottomBarWhenPushed="YES" id="OlH-Q6-WeJ" customClass="LGStudyTypeController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="btm-R2-c9B"/>
-                        <viewControllerLayoutGuide type="bottom" id="CFg-YD-HfC"/>
+                        <viewControllerLayoutGuide type="top" id="h1T-N0-FUs"/>
+                        <viewControllerLayoutGuide type="bottom" id="imB-jm-ED5"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CV8-XE-AAm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" contentMode="scaleToFill" id="FYR-Dk-rHW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="study_model_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ngd-6R-RCe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajn-79-YBx">
+                                <rect key="frame" x="68.666666666666686" y="346" width="277" height="44"/>
+                                <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="277" id="AWM-fO-zke"/>
+                                    <constraint firstAttribute="height" constant="44" id="hAO-E5-qRR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="tintColor" name="themeColor"/>
+                                <state key="normal" title="复习记忆法 ( 快速巩固 )">
+                                    <color key="titleColor" name="Title2Color"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" name="themeColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseStudyModel:" destination="OlH-Q6-WeJ" eventType="touchUpInside" id="q29-oh-e3O"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIM-jJ-JOI">
+                                <rect key="frame" x="68.666666666666686" y="405" width="277" height="44"/>
+                                <color key="backgroundColor" red="0.91756963729999996" green="0.91769838329999998" blue="0.91752910610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="只背新单词 ( 快速记忆 )">
+                                    <color key="titleColor" name="Title2Color"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" name="themeColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseStudyModel:" destination="OlH-Q6-WeJ" eventType="touchUpInside" id="mG2-zT-K6h"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请 选 择 合 适 你 的 背 单 词 模 式" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqu-26-sFh">
+                                <rect key="frame" x="117" y="127" width="180" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="Uft-4b-bjj"/>
+                                    <constraint firstAttribute="height" constant="48" id="akR-l0-N9n"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" name="Title1Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在个人中心-学习模式可更换设置模式哦~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCK-Sv-ao1">
+                                <rect key="frame" x="96" y="703.66666666666663" width="222" height="14.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="Title1Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pws-N4-6tu">
+                                <rect key="frame" x="68" y="286" width="277" height="44"/>
+                                <color key="backgroundColor" name="themeColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="艾宾浩斯记忆法 ( 科学记忆 )">
+                                    <color key="titleColor" name="Title2Color"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" name="themeColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseStudyModel:" destination="OlH-Q6-WeJ" eventType="touchUpInside" id="z58-7N-XpD"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zqu-26-sFh" firstAttribute="centerX" secondItem="FYR-Dk-rHW" secondAttribute="centerX" id="18b-AD-aW4"/>
+                            <constraint firstItem="ajn-79-YBx" firstAttribute="height" secondItem="pws-N4-6tu" secondAttribute="height" id="2yj-dB-qBv"/>
+                            <constraint firstAttribute="bottom" secondItem="zCK-Sv-ao1" secondAttribute="bottom" constant="18" id="6bD-CX-0W5"/>
+                            <constraint firstItem="ngd-6R-RCe" firstAttribute="top" secondItem="FYR-Dk-rHW" secondAttribute="top" id="BvG-dV-Nhj"/>
+                            <constraint firstItem="iIM-jJ-JOI" firstAttribute="centerX" secondItem="FYR-Dk-rHW" secondAttribute="centerX" id="DBn-sq-YoP"/>
+                            <constraint firstItem="ajn-79-YBx" firstAttribute="top" secondItem="pws-N4-6tu" secondAttribute="bottom" constant="15" id="GLq-kb-kaz"/>
+                            <constraint firstItem="ajn-79-YBx" firstAttribute="width" secondItem="pws-N4-6tu" secondAttribute="width" id="GRo-tx-eHj"/>
+                            <constraint firstItem="pws-N4-6tu" firstAttribute="centerX" secondItem="FYR-Dk-rHW" secondAttribute="centerX" id="H0Y-MN-gPR"/>
+                            <constraint firstItem="pws-N4-6tu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Zqu-26-sFh" secondAttribute="bottom" constant="30" id="J07-ej-RFK"/>
+                            <constraint firstItem="ajn-79-YBx" firstAttribute="centerX" secondItem="FYR-Dk-rHW" secondAttribute="centerX" id="LVf-Cv-4dN"/>
+                            <constraint firstItem="iIM-jJ-JOI" firstAttribute="height" secondItem="pws-N4-6tu" secondAttribute="height" id="PGD-Nt-Js7"/>
+                            <constraint firstAttribute="bottom" secondItem="ngd-6R-RCe" secondAttribute="bottom" id="ctD-sg-UlV"/>
+                            <constraint firstItem="ngd-6R-RCe" firstAttribute="leading" secondItem="FYR-Dk-rHW" secondAttribute="leading" id="e97-ew-sVd"/>
+                            <constraint firstItem="zCK-Sv-ao1" firstAttribute="centerX" secondItem="FYR-Dk-rHW" secondAttribute="centerX" id="eJs-aV-2cB"/>
+                            <constraint firstItem="iIM-jJ-JOI" firstAttribute="width" secondItem="pws-N4-6tu" secondAttribute="width" id="geY-LF-VbX"/>
+                            <constraint firstItem="ajn-79-YBx" firstAttribute="centerY" secondItem="FYR-Dk-rHW" secondAttribute="centerY" id="izZ-S5-q1M"/>
+                            <constraint firstAttribute="trailing" secondItem="ngd-6R-RCe" secondAttribute="trailing" id="ls5-mx-2V1"/>
+                            <constraint firstItem="Zqu-26-sFh" firstAttribute="top" secondItem="h1T-N0-FUs" secondAttribute="bottom" priority="750" constant="63" id="vpK-ub-hqs"/>
+                            <constraint firstItem="iIM-jJ-JOI" firstAttribute="top" secondItem="ajn-79-YBx" secondAttribute="bottom" constant="15" id="vt3-hX-Svw"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="txA-Dq-alH"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="学习模式" id="sDj-jy-Ymz">
+                        <barButtonItem key="rightBarButtonItem" image="sure" id="wtF-AA-X2l">
+                            <connections>
+                                <action selector="updateStudyAction:" destination="OlH-Q6-WeJ" id="du8-Tr-Ik1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="ebbinghausButton" destination="pws-N4-6tu" id="cK8-Vj-uTY"/>
+                        <outlet property="onlyNewButton" destination="iIM-jJ-JOI" id="Eb7-dz-LDH"/>
+                        <outlet property="reviewButton" destination="ajn-79-YBx" id="Bgo-gG-YhL"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YTW-Ck-9Tq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oba-Fl-w97" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-39" y="97"/>
+            <point key="canvasLocation" x="774" y="-568"/>
+        </scene>
+        <!--Recite Words Controller-->
+        <scene sceneID="V8v-zF-ZaV">
+            <objects>
+                <viewController id="qXg-Ed-8An" customClass="LGReciteWordsController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hep-9E-I2i"/>
+                        <viewControllerLayoutGuide type="bottom" id="az5-e0-XcU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jaw-Jb-zq5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8d5-wA-4KA">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你还未选择记忆模式" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zm3-vN-6IN">
+                                        <rect key="frame" x="117" y="40" width="180" height="17"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="180" id="5t6-TD-Kb9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" name="Title2Color"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ou-2L-j6t">
+                                        <rect key="frame" x="148.66666666666666" y="67" width="117.99999999999997" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Feu-3M-zOh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="tintColor" name="themeColor"/>
+                                        <state key="normal" title="  点击更改记忆模式" image="change_model">
+                                            <color key="titleColor" name="themeColor"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="OlH-Q6-WeJ" kind="show" id="r6J-bg-Bb8"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kOc-Qp-185">
+                                        <rect key="frame" x="38" y="111" width="338" height="338"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_word_plan" translatesAutoresizingMaskIntoConstraints="NO" id="4m3-s5-0uI">
+                                                <rect key="frame" x="108.66666666666666" y="81" width="120" height="120"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="120" id="EdM-gD-Z02"/>
+                                                    <constraint firstAttribute="width" constant="120" id="gZU-ws-jQk"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你还未选择单词计划!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4V-mu-X9A">
+                                                <rect key="frame" x="93.666666666666657" y="221" width="152" height="19.666666666666657"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <color key="textColor" name="Title1Color"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.94667595624923706" green="0.93817490339279175" blue="0.88914370536804199" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="4m3-s5-0uI" firstAttribute="centerY" secondItem="kOc-Qp-185" secondAttribute="centerY" constant="-28" id="IMW-Ns-u5o"/>
+                                            <constraint firstAttribute="width" secondItem="kOc-Qp-185" secondAttribute="height" multiplier="1:1" priority="750" id="ilC-Fj-9kV"/>
+                                            <constraint firstItem="D4V-mu-X9A" firstAttribute="centerX" secondItem="kOc-Qp-185" secondAttribute="centerX" id="mpN-mm-HGS"/>
+                                            <constraint firstItem="D4V-mu-X9A" firstAttribute="top" secondItem="4m3-s5-0uI" secondAttribute="bottom" constant="20" id="tv3-Yx-8Gm"/>
+                                            <constraint firstItem="4m3-s5-0uI" firstAttribute="centerX" secondItem="kOc-Qp-185" secondAttribute="centerX" id="unr-7d-1yQ"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJP-lv-Wtc">
+                                        <rect key="frame" x="38" y="464" width="338" height="45"/>
+                                        <color key="backgroundColor" name="themeColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="YVA-yd-g5d"/>
+                                        </constraints>
+                                        <state key="normal" title="进入词库">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="0Ou-2L-j6t" firstAttribute="top" secondItem="zm3-vN-6IN" secondAttribute="bottom" constant="10" id="05k-uF-Lgc"/>
+                                    <constraint firstItem="kOc-Qp-185" firstAttribute="leading" secondItem="8d5-wA-4KA" secondAttribute="leading" constant="38" id="0a4-zZ-uJc"/>
+                                    <constraint firstItem="0Ou-2L-j6t" firstAttribute="centerX" secondItem="8d5-wA-4KA" secondAttribute="centerX" id="0vI-KX-aio"/>
+                                    <constraint firstItem="zm3-vN-6IN" firstAttribute="centerX" secondItem="8d5-wA-4KA" secondAttribute="centerX" id="5O5-fX-lx9"/>
+                                    <constraint firstItem="zm3-vN-6IN" firstAttribute="top" secondItem="8d5-wA-4KA" secondAttribute="top" constant="40" id="CYe-VG-b76"/>
+                                    <constraint firstItem="kOc-Qp-185" firstAttribute="top" secondItem="0Ou-2L-j6t" secondAttribute="bottom" id="DVq-SS-5fe"/>
+                                    <constraint firstAttribute="trailing" secondItem="kOc-Qp-185" secondAttribute="trailing" constant="38" id="OE4-fU-8Kc"/>
+                                    <constraint firstItem="LJP-lv-Wtc" firstAttribute="centerX" secondItem="8d5-wA-4KA" secondAttribute="centerX" id="XzO-j2-uGo"/>
+                                    <constraint firstItem="LJP-lv-Wtc" firstAttribute="top" secondItem="kOc-Qp-185" secondAttribute="bottom" constant="15" id="m5Y-HS-ktv"/>
+                                    <constraint firstItem="LJP-lv-Wtc" firstAttribute="width" secondItem="kOc-Qp-185" secondAttribute="width" id="yXJ-bj-JR0"/>
+                                    <constraint firstAttribute="bottom" secondItem="LJP-lv-Wtc" secondAttribute="bottom" priority="250" constant="10" id="yl9-MW-3yQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8d5-wA-4KA" firstAttribute="leading" secondItem="jaw-Jb-zq5" secondAttribute="leading" id="Bhi-8R-KvY"/>
+                            <constraint firstItem="az5-e0-XcU" firstAttribute="top" secondItem="8d5-wA-4KA" secondAttribute="bottom" id="DGV-rK-rEl"/>
+                            <constraint firstItem="8d5-wA-4KA" firstAttribute="top" secondItem="Hep-9E-I2i" secondAttribute="bottom" id="cjI-t2-adM"/>
+                            <constraint firstAttribute="trailing" secondItem="8d5-wA-4KA" secondAttribute="trailing" id="pKD-NS-a61"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Zgs-Vk-263">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="1XD-dx-Jgh"/>
+                        <rightBarButtonItems>
+                            <barButtonItem image="camera" id="ZJ7-hj-2Zj">
+                                <connections>
+                                    <action selector="pictureSearch:" destination="qXg-Ed-8An" id="FsG-tN-IKN"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="microphone" id="4Nl-yA-I06">
+                                <connections>
+                                    <action selector="speakSearchAction:" destination="qXg-Ed-8An" id="9ys-I0-Gsh"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Hw-MQ-tcB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-22.5" y="96.25"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="backArrow" width="12" height="21"/>
+        <image name="camera" width="24" height="20"/>
+        <image name="change_model" width="13" height="13"/>
+        <image name="microphone" width="16" height="22"/>
+        <image name="no_word_plan" width="119" height="119"/>
+        <image name="study_model_bg" width="375" height="599"/>
+        <image name="sure" width="25" height="16"/>
+        <image name="tabbar_recitewords" width="15" height="18"/>
+        <image name="tabbar_recitewords_selected" width="15" height="18"/>
+        <namedColor name="Title1Color">
+            <color red="0.27099999785423279" green="0.27099999785423279" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Title2Color">
+            <color red="0.4779999852180481" green="0.4779999852180481" blue="0.4779999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="themeColor">
+            <color red="0.21600000560283661" green="0.7369999885559082" blue="0.5220000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="themeColor">
+            <color red="0.21600000560283661" green="0.7369999885559082" blue="0.5220000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

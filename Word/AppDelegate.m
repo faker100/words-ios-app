@@ -65,4 +65,7 @@
 	manager.shouldResignOnTouchOutside = YES;
 }
 
+
+
+
 @end

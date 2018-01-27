@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, LGColorType) {
+	LGColor_theme_Color,  	//主题绿色
+	LGColor_Title_1_Color,    //一级标题颜色
+	LGColor_Title_2_Color   //二级标题颜色
+	
+};
+
 @interface UIColor (LGColor)
 
 
@@ -15,6 +22,9 @@
  十六进制 转换为 UIColor
  *
  */
-+ (UIColor *)colorWithHexString:(NSString *)color;
++ (UIColor *)lg_colorWithHexString:(NSString *)color;
+
+
++ (UIColor *)lg_colorWithType:(LGColorType)type;
 
 @end

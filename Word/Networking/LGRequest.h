@@ -66,4 +66,12 @@
  */
 - (void)findPasswordRequest:(NSString *)username password:(NSString *)password code:(NSString *)code usernameType:(LGUsernameType)usernameType completion:(comletionBlock)completion;
 
+
+/**
+ 更改学习模式
+
+ @param type 学习模式
+ */
+- (void)updateStudyType:(LGStudyType)type completion:(comletionBlock)completion;
+
 @end

@@ -6,18 +6,20 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--周边-->
         <scene sceneID="mkm-Y3-vu8">
             <objects>
-                <navigationController storyboardIdentifier="NavigationController" id="P6O-Lh-Mh9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="周边" image="agree_selected" selectedImage="agree" id="qxy-FP-zaC"/>
+                <navigationController storyboardIdentifier="NavigationController" id="P6O-Lh-Mh9" customClass="LGNavigationController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="周边" image="tabbar_periphery" selectedImage="tabbar_periphery_selected" id="qxy-FP-zaC"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qQr-eP-zmP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="backArrow" backIndicatorTransitionMaskImage="backArrow" id="qQr-eP-zmP">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="themeColor"/>
                     </navigationBar>
                     <connections>
                         <segue destination="kla-tp-pDN" kind="relationship" relationship="rootViewController" id="VoN-Ag-Ks5"/>
@@ -49,7 +51,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="agree" width="16" height="16"/>
-        <image name="agree_selected" width="16" height="16"/>
+        <image name="backArrow" width="11" height="20"/>
+        <image name="tabbar_periphery" width="15" height="14"/>
+        <image name="tabbar_periphery_selected" width="15" height="14"/>
+        <namedColor name="themeColor">
+            <color red="0.21600000560283661" green="0.7369999885559082" blue="0.5220000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

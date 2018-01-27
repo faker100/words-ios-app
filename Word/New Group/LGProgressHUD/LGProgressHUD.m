@@ -12,8 +12,7 @@
 
 + (void)showHUDAddedTo:(UIView *)view {
 	
-	LGProgressHUD *hud = [super showHUDAddedTo:view animated:YES];
-	 [LGProgressHUD configType:hud];
+	[LGProgressHUD configTypeToView:view];
 }
 
 + (void)hideHUDForView:(UIView *)view {
@@ -23,24 +22,32 @@
 
 + (void)showError:(NSString *)text toView:(UIView *)view{
 	
-	LGProgressHUD *hud = [super showHUDAddedTo:view animated:YES];
-	hud.label.text = text;
-	hud.mode = MBProgressHUDModeCustomView;
-	hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"agree_selected"]];
-	[hud hideAnimated:YES afterDelay:1.5f];
-	 [LGProgressHUD configType:hud];
+	[LGProgressHUD showError:text toView:view completionBlock:nil];
+}
+
++ (void)showError:(NSString *)text toView:(UIView *)view completionBlock:(MBProgressHUDCompletionBlock) completionBlock{
+	
+	[LGProgressHUD showMessageWithIcon:@"alert_error" message:text toView:view completionBlock:completionBlock];
+}
+
++ (void)showSuccess:(NSString *)text toView:(UIView *)view{
+	[self showSuccess:text toView:view completionBlock:nil];
+}
+
++ (void)showSuccess:(NSString *)text toView:(UIView *)view completionBlock:(MBProgressHUDCompletionBlock) completionBlock {
+	
+	[LGProgressHUD showMessageWithIcon:@"alert_success" message:text toView:view completionBlock:completionBlock];
+	
 }
 
 + (void)showMessage:(NSString *)message toView:(UIView *)view{
-	LGProgressHUD *hud = [super showHUDAddedTo:view animated:YES];
-	hud.label.text = message;
-	hud.mode = MBProgressHUDModeText;
-	[hud hideAnimated:YES afterDelay:1.5f];
-	[LGProgressHUD configType:hud];
+	
+	[LGProgressHUD showMessageWithIcon:nil message:message toView:view completionBlock:nil];
+	
 }
 
-+ (LGProgressHUD *)configType:(LGProgressHUD *)hud {
-	
++ (LGProgressHUD *)configTypeToView:(UIView *)view {
+	LGProgressHUD *hud = [super showHUDAddedTo:view animated:YES];
 	hud.bezelView.color = [UIColor blackColor];
 	hud.label.numberOfLines = 0;
 	hud.bezelView.alpha = 0.8;
@@ -48,6 +55,15 @@
 	return hud;
 }
 
+
++ (void)showMessageWithIcon:(NSString *)iconName message:(NSString *)message toView:(UIView *)view completionBlock:(MBProgressHUDCompletionBlock) completionBlock{
+	LGProgressHUD *hud = [LGProgressHUD configTypeToView:view];
+	hud.label.text = message;
+	hud.completionBlock = completionBlock;
+	hud.mode = StringNotEmpty(iconName) ? MBProgressHUDModeCustomView : MBProgressHUDModeText;
+	hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconName]];
+	[hud hideAnimated:YES afterDelay:1.5f];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

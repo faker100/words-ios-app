@@ -19,7 +19,7 @@
 #import "LGProgressHUD.h"
 #import "NSString+LGString.h"
 
-#define PLACEHOLDERIMAGE [UIImage imageNamed:@""]
+#define PLACEHOLDERIMAGE [UIImage imageNamed:@"placeholderImage"]
 
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 

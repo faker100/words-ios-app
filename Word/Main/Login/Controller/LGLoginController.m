@@ -7,7 +7,7 @@
 //
 
 #import "LGLoginController.h"
-#import "LGUserModel.h"
+#import "LGUserManager.h"
 
 @interface LGLoginController ()
 
@@ -30,10 +30,9 @@
 	
 	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 	[self.navigationController.navigationBar setShadowImage:[UIImage new]];
-	self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain
-																		   target:nil action:nil];
+	self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 	NSDictionary *attributeDic = @{
-						  NSForegroundColorAttributeName:[UIColor colorWithHexString:@"b8d3e0"],
+						  NSForegroundColorAttributeName:[UIColor lg_colorWithHexString:@"b8d3e0"],
 						  };
 	self.userNameTextField.attributedPlaceholder = [[NSAttributedString alloc]initWithString:@"请输入手机号/邮箱" attributes:attributeDic];
 	self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc]initWithString:@"请输入密码" attributes:attributeDic];
@@ -46,7 +45,7 @@
 }
 
 - (IBAction)dismissAction:(id)sender {
-	
+	[self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)loginAction:(id)sender {
@@ -67,6 +66,10 @@
 		[LGProgressHUD hideHUDForView:self.view];
 		if (StringNotEmpty(errorMessage)) {
 			[LGProgressHUD showError:errorMessage toView:self.view];
+		}else{
+			LGUserModel *model = [LGUserModel mj_objectWithKeyValues:response];
+			[LGUserManager shareManager].user = model;
+			[self.navigationController dismissViewControllerAnimated:YES completion:nil];
 		}
 	}];
 }

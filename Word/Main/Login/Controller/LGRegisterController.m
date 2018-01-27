@@ -34,7 +34,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
 	
 	self.checkCodeButton.enabled = YES;
-	self.checkCodeButton.backgroundColor = [UIColor colorWithHexString:@"0B5F8F"];
+	self.checkCodeButton.backgroundColor = [UIColor lg_colorWithHexString:@"0B5F8F"];
 	
 	if (self.timer.isValid){
 		[self.timer invalidate];
@@ -59,7 +59,7 @@
 	if (self.second <= 0) {
 		[self.timer setFireDate:[NSDate distantFuture]];
 		self.checkCodeButton.enabled = YES;
-		self.checkCodeButton.backgroundColor = [UIColor colorWithHexString:@"0B5F8F"];
+		self.checkCodeButton.backgroundColor = [UIColor lg_colorWithHexString:@"0B5F8F"];
 	}else{
 		self.checkCodeButton.enabled = NO;
 		self.checkCodeButton.backgroundColor = [UIColor grayColor];

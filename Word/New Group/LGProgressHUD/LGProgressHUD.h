@@ -6,6 +6,7 @@
 //  Copyright © 2018年 Charles. All rights reserved.
 //
 
+
 #import <MBProgressHUD/MBProgressHUD.h>
 
 @interface LGProgressHUD : MBProgressHUD
@@ -14,8 +15,12 @@
 
 + (void)hideHUDForView:(UIView *)view;
 
-+ (void) showError:(NSString *)text toView:(UIView *)view;
++ (void)showMessage:(NSString *)message toView:(UIView *)view;
 
-+ (void) showMessage:(NSString *)message toView:(UIView *)view;
++ (void)showSuccess:(NSString *)text toView:(UIView *)view;
++ (void)showSuccess:(NSString *)text toView:(UIView *)view completionBlock:(MBProgressHUDCompletionBlock) completionBlock;
+
++ (void)showError:(NSString *)text toView:(UIView *)view;
++ (void)showError:(NSString *)text toView:(UIView *)view completionBlock:(MBProgressHUDCompletionBlock) completionBlock;
 
 @end
