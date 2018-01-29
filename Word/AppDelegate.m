@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#import "LGUserManager.h"
+#import "LGRequest.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
-	[self configNavigation];
+//	[self configNavigation];
 	[self configIQkeyboard];
 	return YES;
 }

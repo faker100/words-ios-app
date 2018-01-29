@@ -23,10 +23,10 @@
 /**
  重置 session
 
- @param userInfo id
+ @param userInfo 用户信息,userModel 的 NSDictionary
  
  */
-- (void)resetSessionRequest:(id) userInfo completion:(comletionBlock)completion;
+- (void)resetSessionRequest:(id) userInfo completion:(void(^)(void)) completion;
 
 /**
  获取验证码前,先确认,否则获取验证码失败
@@ -74,4 +74,9 @@
  */
 - (void)updateStudyType:(LGStudyType)type completion:(comletionBlock)completion;
 
+/**
+ 请求用户资料
+
+ */
+- (void)requestUserInfo:(comletionBlock)completion;
 @end

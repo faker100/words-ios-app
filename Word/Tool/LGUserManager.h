@@ -17,6 +17,12 @@
 
 + (instancetype)shareManager;
 
+//设置 cookie
++ (void)configCookie;
+
+//清除 cookie
++ (void)cleanCookie;
+
 - (BOOL)isLogin;
 
 @end

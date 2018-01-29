@@ -8,6 +8,7 @@
 
 #import "LGRequest.h"
 #import "NSString+LGString.h"
+#import "LGUserManager.h"
 
 @implementation LGRequest
 
@@ -19,23 +20,34 @@
 					   @"userPass" : password
 					   };
 	[self postRequestCompletion:^(id response, NSString *errorMessage) {
-		completion(response,errorMessage);
 		if (!StringNotEmpty(errorMessage)) {
-			[self resetSessionRequest:response completion:nil];
+			[self resetSessionRequest:response completion:^{
+				completion(response,errorMessage);
+			}];
 		}
 	}];
 }
 
-- (void)resetSessionRequest:(id) userInfo completion:(comletionBlock)completion{
+- (void)resetSessionRequest:(id) userInfo completion:(void (^)(void))completion{
+	
 	NSArray *urlArray = SESSION_URLS;
+	dispatch_group_t requestGroup = dispatch_group_create();
 	[urlArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		dispatch_group_enter(requestGroup);
 		self.url = obj;
 		self.parameter = userInfo;
 		[self getRequestCompletion:^(id response, NSString *errorMessage) {
-			NSLog(@"session:%@",response);
+			dispatch_group_leave(requestGroup);
+			NSLog(@"=====session:%@",response);
 		}];
 	}];
-	
+	dispatch_group_notify(requestGroup, dispatch_get_main_queue(), ^{
+		
+		[LGUserManager configCookie];
+		if (completion) {
+			completion();
+		}
+	});
 }
 
 - (void)requestCheckCodeSure{
@@ -88,6 +100,11 @@
 	self.parameter = @{
 					   @"status" : @(type)
 					   };
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestUserInfo:(comletionBlock)completion{
+	self.url = USER_INFO;
 	[self postRequestCompletion:completion];
 }
 

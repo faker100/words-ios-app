@@ -291,6 +291,9 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="studyTypeLabel" destination="zm3-vN-6IN" id="inC-j8-n28"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Hw-MQ-tcB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -312,9 +315,6 @@
         </namedColor>
         <namedColor name="Title2Color">
             <color red="0.4779999852180481" green="0.4779999852180481" blue="0.4779999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="themeColor">
-            <color red="0.21600000560283661" green="0.7369999885559082" blue="0.5220000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="themeColor">
             <color red="0.21600000560283661" green="0.7369999885559082" blue="0.5220000147819519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

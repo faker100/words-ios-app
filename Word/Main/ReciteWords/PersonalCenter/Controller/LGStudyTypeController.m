@@ -69,7 +69,7 @@
 		if (StringNotEmpty(errorMessage)) {
 			[LGProgressHUD showError:errorMessage toView:self.view];
 		}else{
-			[[NSNotificationCenter defaultCenter] postNotificationName:ChangeTypeNotification object:nil];
+			[[NSNotificationCenter defaultCenter] postNotificationName:ChangeTypeNotification object:nil userInfo:@{StudyTypeKey:self.selectedBtn.currentTitle}];
 			[LGProgressHUD showSuccess:@"修改成功" toView:self.view completionBlock:^{
 				[self.navigationController popViewControllerAnimated:YES];
 			}];

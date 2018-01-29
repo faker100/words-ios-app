@@ -7,6 +7,7 @@
 //
 
 #import "LGReciteWordsController.h"
+#import "LGStudyTypeController.h"
 
 @interface LGReciteWordsController ()
 
@@ -18,6 +19,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	[self configNavigationBar];
+	[self configData];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:LOGIN_NOTIFICATION object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeStudyType:) name:ChangeTypeNotification object:nil];
+}
+
+- (void)configData{
+	[self.request requestUserInfo:^(id response, NSString *errorMessage) {
+		
+	}];
 }
 
 - (void)configNavigationBar{
@@ -44,6 +54,17 @@
 //拍照搜索
 - (IBAction)pictureSearch:(id)sender {
 	NSLog(@"拍照");
+}
+
+//登录成功
+- (void)loginSuccess{
+	
+}
+
+- (void)changeStudyType:(NSNotification *) notification{
+
+	NSString *studyTypeName = notification.userInfo[StudyTypeKey];
+	self.studyTypeLabel.text = [NSString stringWithFormat:@"你正在使用%@记忆单词",studyTypeName];
 }
 
 /*

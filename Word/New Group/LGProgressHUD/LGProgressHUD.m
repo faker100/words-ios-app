@@ -51,6 +51,7 @@
 	hud.bezelView.color = [UIColor blackColor];
 	hud.label.numberOfLines = 0;
 	hud.bezelView.alpha = 0.8;
+	hud.minSize = CGSizeMake(150, 125);
 	hud.contentColor = [UIColor whiteColor];
 	return hud;
 }

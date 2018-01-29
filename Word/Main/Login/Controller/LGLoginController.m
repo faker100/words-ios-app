@@ -69,6 +69,7 @@
 		}else{
 			LGUserModel *model = [LGUserModel mj_objectWithKeyValues:response];
 			[LGUserManager shareManager].user = model;
+			[[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_NOTIFICATION object:nil];
 			[self.navigationController dismissViewControllerAnimated:YES completion:nil];
 		}
 	}];

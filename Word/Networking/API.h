@@ -41,6 +41,8 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 // code = 99 未登录通知
 #define NO_LOGIN_NOTIFICATION 	@"not_logged"
 
+#define LOGIN_NOTIFICATION      @"login_success"
+
 //未登录时提示语
 #define NO_LOGIN_ALERT_MESSAGE  @"noLoginMessage"
 
@@ -78,3 +80,5 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 //更改学习模式
 #define UPDATE_STUDY_TYPE_URL			@"http://words.viplgw.cn/cn/app-api/update-model"
 
+//用户资料
+#define USER_INFO						@"http://words.viplgw.cn/cn/app-api/user-info"
