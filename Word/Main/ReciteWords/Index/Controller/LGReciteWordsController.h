@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LGReciteWordsController : UIViewController
-//单词记忆模式
-@property (weak, nonatomic) IBOutlet UILabel *studyTypeLabel;
+
+
 
 @end

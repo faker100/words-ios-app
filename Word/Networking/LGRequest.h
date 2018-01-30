@@ -79,4 +79,20 @@
 
  */
 - (void)requestUserInfo:(comletionBlock)completion;
+
+
+/**
+ 请求用户词包计划
+
+ */
+- (void)requestUserPlan:(comletionBlock)completion;
+
+
+/**
+ 请求词包列表
+ 
+ */
+- (void)requestWordLibraryList:(comletionBlock)completion;
+
+
 @end

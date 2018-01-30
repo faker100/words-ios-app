@@ -81,4 +81,17 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 #define UPDATE_STUDY_TYPE_URL			@"http://words.viplgw.cn/cn/app-api/update-model"
 
 //用户资料
-#define USER_INFO						@"http://words.viplgw.cn/cn/app-api/user-info"
+#define USER_INFO_URL					@"http://words.viplgw.cn/cn/app-api/user-info"
+
+//我的计划
+#define MY_PLAN_URL						@"http://words.viplgw.cn/cn/app-api/user-package"
+
+//词包列表
+#define WORD_LIBRARY_LIST_URL			@"http://words.viplgw.cn/cn/app-api/package-list"
+
+
+
+
+
+
+

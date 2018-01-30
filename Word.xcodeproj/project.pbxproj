@@ -15,6 +15,7 @@
 		565A30F32013163400448B1C /* LGUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F22013163400448B1C /* LGUserModel.m */; };
 		565A30F7201331E000448B1C /* UIColor+LGColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F6201331E000448B1C /* UIColor+LGColor.m */; };
 		565A30FA2013411200448B1C /* LGRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F92013411200448B1C /* LGRegisterController.m */; };
+		566B9860202003E800D368AC /* LGNoStudyTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 566B985F202003E800D368AC /* LGNoStudyTypeController.m */; };
 		567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 567C00FA2010A0360083F3D5 /* LGBaseRequest.m */; };
 		56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A8883A200CA53400847BE6 /* AppDelegate.m */; };
 		56A88841200CA53400847BE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A8883F200CA53400847BE6 /* Main.storyboard */; };
@@ -26,6 +27,13 @@
 		56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AF60C92011DBBE0067BD7B /* CALayer+LGLayer.m */; };
 		56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AF60D12011E5FE0067BD7B /* LGLoginController.m */; };
 		56AF60D52011EA050067BD7B /* UIViewController+LGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AF60D42011EA050067BD7B /* UIViewController+LGViewController.m */; };
+		56C989842020176A0095A4BD /* LGWordPlanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C989832020176A0095A4BD /* LGWordPlanController.m */; };
+		56C9898820201CCF0095A4BD /* LGWordPlanCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9898720201CCF0095A4BD /* LGWordPlanCollectionCell.m */; };
+		56C9898B20201D050095A4BD /* LGAddWordLibraryCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9898A20201D050095A4BD /* LGAddWordLibraryCollectionCell.m */; };
+		56C9898E2020461D0095A4BD /* LGWordLibraryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9898D2020461D0095A4BD /* LGWordLibraryController.m */; };
+		56C9899120204F7C0095A4BD /* LGWordLibraryTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9899020204F7C0095A4BD /* LGWordLibraryTypeCell.m */; };
+		56C98994202050F60095A4BD /* LGWordTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C98993202050F60095A4BD /* LGWordTypeCell.m */; };
+		56C9899720207C0C0095A4BD /* LGNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9899620207C0C0095A4BD /* LGNavigationItem.m */; };
 		56CCA5E5201B083B0097DCAC /* LGReciteWordsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5E4201B083B0097DCAC /* LGReciteWordsController.m */; };
 		56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5E7201B16050097DCAC /* LGNavigationController.m */; };
 		56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5EC201B29A60097DCAC /* LGStudyTypeController.m */; };
@@ -53,6 +61,8 @@
 		565A30F6201331E000448B1C /* UIColor+LGColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LGColor.m"; sourceTree = "<group>"; };
 		565A30F82013411200448B1C /* LGRegisterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGRegisterController.h; sourceTree = "<group>"; };
 		565A30F92013411200448B1C /* LGRegisterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGRegisterController.m; sourceTree = "<group>"; };
+		566B985E202003E800D368AC /* LGNoStudyTypeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGNoStudyTypeController.h; sourceTree = "<group>"; };
+		566B985F202003E800D368AC /* LGNoStudyTypeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGNoStudyTypeController.m; sourceTree = "<group>"; };
 		567C00F92010A0360083F3D5 /* LGBaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGBaseRequest.h; sourceTree = "<group>"; };
 		567C00FA2010A0360083F3D5 /* LGBaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGBaseRequest.m; sourceTree = "<group>"; };
 		56A88836200CA53400847BE6 /* Word.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Word.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +83,20 @@
 		56AF60D12011E5FE0067BD7B /* LGLoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGLoginController.m; sourceTree = "<group>"; };
 		56AF60D32011EA050067BD7B /* UIViewController+LGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LGViewController.h"; sourceTree = "<group>"; };
 		56AF60D42011EA050067BD7B /* UIViewController+LGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LGViewController.m"; sourceTree = "<group>"; };
+		56C989822020176A0095A4BD /* LGWordPlanController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordPlanController.h; sourceTree = "<group>"; };
+		56C989832020176A0095A4BD /* LGWordPlanController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordPlanController.m; sourceTree = "<group>"; };
+		56C9898620201CCF0095A4BD /* LGWordPlanCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordPlanCollectionCell.h; sourceTree = "<group>"; };
+		56C9898720201CCF0095A4BD /* LGWordPlanCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordPlanCollectionCell.m; sourceTree = "<group>"; };
+		56C9898920201D050095A4BD /* LGAddWordLibraryCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGAddWordLibraryCollectionCell.h; sourceTree = "<group>"; };
+		56C9898A20201D050095A4BD /* LGAddWordLibraryCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGAddWordLibraryCollectionCell.m; sourceTree = "<group>"; };
+		56C9898C2020461D0095A4BD /* LGWordLibraryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordLibraryController.h; sourceTree = "<group>"; };
+		56C9898D2020461D0095A4BD /* LGWordLibraryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordLibraryController.m; sourceTree = "<group>"; };
+		56C9898F20204F7C0095A4BD /* LGWordLibraryTypeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordLibraryTypeCell.h; sourceTree = "<group>"; };
+		56C9899020204F7C0095A4BD /* LGWordLibraryTypeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordLibraryTypeCell.m; sourceTree = "<group>"; };
+		56C98992202050F60095A4BD /* LGWordTypeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordTypeCell.h; sourceTree = "<group>"; };
+		56C98993202050F60095A4BD /* LGWordTypeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordTypeCell.m; sourceTree = "<group>"; };
+		56C9899520207C0C0095A4BD /* LGNavigationItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGNavigationItem.h; sourceTree = "<group>"; };
+		56C9899620207C0C0095A4BD /* LGNavigationItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGNavigationItem.m; sourceTree = "<group>"; };
 		56CCA5E3201B083B0097DCAC /* LGReciteWordsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReciteWordsController.h; sourceTree = "<group>"; };
 		56CCA5E4201B083B0097DCAC /* LGReciteWordsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReciteWordsController.m; sourceTree = "<group>"; };
 		56CCA5E6201B16050097DCAC /* LGNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGNavigationController.h; sourceTree = "<group>"; };
@@ -133,10 +157,17 @@
 			path = Tool;
 			sourceTree = "<group>";
 		};
+		566B985D201FFF4E00D368AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		567C00F8201075C90083F3D5 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				56EAD86F2019C8820059604E /* MainController */,
+				56EAD86F2019C8820059604E /* Common */,
 				56EAD86B2019C1A60059604E /* ReciteWords */,
 				56EAD86C2019C1B70059604E /* WordReport */,
 				56EAD86D2019C1C70059604E /* PK */,
@@ -263,9 +294,45 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		56C98980202016EA0095A4BD /* WordPlan */ = {
+			isa = PBXGroup;
+			children = (
+				56C9898520201CA30095A4BD /* View */,
+				56C98981202017490095A4BD /* Controller */,
+			);
+			path = WordPlan;
+			sourceTree = "<group>";
+		};
+		56C98981202017490095A4BD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56C989822020176A0095A4BD /* LGWordPlanController.h */,
+				56C989832020176A0095A4BD /* LGWordPlanController.m */,
+				56C9898C2020461D0095A4BD /* LGWordLibraryController.h */,
+				56C9898D2020461D0095A4BD /* LGWordLibraryController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		56C9898520201CA30095A4BD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				56C9898620201CCF0095A4BD /* LGWordPlanCollectionCell.h */,
+				56C9898720201CCF0095A4BD /* LGWordPlanCollectionCell.m */,
+				56C9898920201D050095A4BD /* LGAddWordLibraryCollectionCell.h */,
+				56C9898A20201D050095A4BD /* LGAddWordLibraryCollectionCell.m */,
+				56C9898F20204F7C0095A4BD /* LGWordLibraryTypeCell.h */,
+				56C9899020204F7C0095A4BD /* LGWordLibraryTypeCell.m */,
+				56C98992202050F60095A4BD /* LGWordTypeCell.h */,
+				56C98993202050F60095A4BD /* LGWordTypeCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		56CCA5E1201B07F60097DCAC /* Index */ = {
 			isa = PBXGroup;
 			children = (
+				566B985D201FFF4E00D368AC /* Model */,
 				56CCA5E2201B08050097DCAC /* Controller */,
 			);
 			path = Index;
@@ -276,6 +343,8 @@
 			children = (
 				56CCA5E3201B083B0097DCAC /* LGReciteWordsController.h */,
 				56CCA5E4201B083B0097DCAC /* LGReciteWordsController.m */,
+				566B985E202003E800D368AC /* LGNoStudyTypeController.h */,
+				566B985F202003E800D368AC /* LGNoStudyTypeController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -300,6 +369,7 @@
 		56EAD86B2019C1A60059604E /* ReciteWords */ = {
 			isa = PBXGroup;
 			children = (
+				56C98980202016EA0095A4BD /* WordPlan */,
 				56CCA5E9201B29370097DCAC /* PersonalCenter */,
 				56CCA5E1201B07F60097DCAC /* Index */,
 			);
@@ -327,15 +397,17 @@
 			path = Periphery;
 			sourceTree = "<group>";
 		};
-		56EAD86F2019C8820059604E /* MainController */ = {
+		56EAD86F2019C8820059604E /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				56EAD8702019C98B0059604E /* LGTabBarViewController.h */,
 				56EAD8712019C98B0059604E /* LGTabBarViewController.m */,
 				56CCA5E6201B16050097DCAC /* LGNavigationController.h */,
 				56CCA5E7201B16050097DCAC /* LGNavigationController.m */,
+				56C9899520207C0C0095A4BD /* LGNavigationItem.h */,
+				56C9899620207C0C0095A4BD /* LGNavigationItem.m */,
 			);
-			path = MainController;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		654614099BD54950F42E89C2 /* Frameworks */ = {
@@ -500,14 +572,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				565A30F7201331E000448B1C /* UIColor+LGColor.m in Sources */,
+				56C9899720207C0C0095A4BD /* LGNavigationItem.m in Sources */,
 				56EAD86220197F2D0059604E /* LGFindPasswordController.m in Sources */,
 				565A30FA2013411200448B1C /* LGRegisterController.m in Sources */,
+				56C9898B20201D050095A4BD /* LGAddWordLibraryCollectionCell.m in Sources */,
+				56C989842020176A0095A4BD /* LGWordPlanController.m in Sources */,
 				567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */,
+				56C9898820201CCF0095A4BD /* LGWordPlanCollectionCell.m in Sources */,
 				56317B72201C1D6800AEC20B /* LGUserManager.m in Sources */,
 				56506D052016D842000FD8FA /* LGProgressHUD.m in Sources */,
 				56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */,
 				56A88849200CA53400847BE6 /* main.m in Sources */,
 				56CCA5E5201B083B0097DCAC /* LGReciteWordsController.m in Sources */,
+				56C9899120204F7C0095A4BD /* LGWordLibraryTypeCell.m in Sources */,
+				56C9898E2020461D0095A4BD /* LGWordLibraryController.m in Sources */,
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
 				56EAD8722019C98B0059604E /* LGTabBarViewController.m in Sources */,
 				565A30F32013163400448B1C /* LGUserModel.m in Sources */,
@@ -516,8 +594,10 @@
 				563259EE201AC609007FF4D6 /* LGTool.m in Sources */,
 				56AF60C52011CD2B0067BD7B /* LGRequest.m in Sources */,
 				56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */,
+				56C98994202050F60095A4BD /* LGWordTypeCell.m in Sources */,
 				56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */,
 				56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */,
+				566B9860202003E800D368AC /* LGNoStudyTypeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

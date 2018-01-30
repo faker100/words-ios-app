@@ -16,5 +16,8 @@
 @property (nonatomic, strong) NSString *phone;
 @property (nonatomic, strong) NSString *uid;
 @property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *createTime;
+@property (nonatomic, strong) NSString *startTime;
+@property (nonatomic, strong) NSString *studyModel;
 
 @end

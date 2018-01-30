@@ -8,7 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^comletionBlock)(id response, NSString *errorMessage);
+typedef NS_ENUM(NSUInteger, LGErrorType) {
+	LGSystemError,		//网络请求错误
+	LGServiceError,     //服务器提示错误
+};
+
+@interface LGError : NSObject
+
+@property (nonatomic, strong) NSString *errorMessage;
+@property (nonatomic, assign) LGErrorType errorType;
+
+- (instancetype)initWithMessage:(NSString *)message type:(LGErrorType)type;
+
+@end
+
+typedef void(^comletionBlock)(id response, LGError *error);
 
 @interface LGBaseRequest : NSObject
 
@@ -20,6 +34,7 @@ typedef void(^comletionBlock)(id response, NSString *errorMessage);
 - (void)postRequestCompletion:(comletionBlock) completion;
 
 @end
+
 
 
 

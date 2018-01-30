@@ -82,10 +82,10 @@
 	}
 	
 	[LGProgressHUD showHUDAddedTo:self.view];
-	[self.request requestCheckCode:self.usernameTextField.text usernameType:type useType:LGCheckCodeUseTypeRegister completion:^(id response, NSString *errorMessage) {
+	[self.request requestCheckCode:self.usernameTextField.text usernameType:type useType:LGCheckCodeUseTypeRegister completion:^(id response, LGError *error) {
 		[LGProgressHUD  hideHUDForView:self.view];
-		if (StringNotEmpty(errorMessage)) {
-			[LGProgressHUD showError:errorMessage toView:self.view];
+		if (error) {
+			[LGProgressHUD showError:error.errorMessage toView:self.view];
 			
 		}else{
 			[self beginCountdown];
@@ -120,10 +120,10 @@
 		return;
 	}
 	[LGProgressHUD showHUDAddedTo:self.view];
-	[self.request registerRequest:username password:password code:code usernameType:type completion:^(id response, NSString *errorMessage) {
+	[self.request registerRequest:username password:password code:code usernameType:type completion:^(id response, LGError *error) {
 		[LGProgressHUD hideHUDForView:self.view];
-		if (StringNotEmpty(errorMessage)) {
-			[LGProgressHUD showError:errorMessage toView:self.view];
+		if (error) {
+			[LGProgressHUD showError:error.errorMessage toView:self.view];
 		}else{
 			[self.navigationController popViewControllerAnimated:YES];
 		}

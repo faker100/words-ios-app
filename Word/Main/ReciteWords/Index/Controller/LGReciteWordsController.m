@@ -8,8 +8,13 @@
 
 #import "LGReciteWordsController.h"
 #import "LGStudyTypeController.h"
+#import "LGUserManager.h"
+#import "LGNoStudyTypeController.h"
 
 @interface LGReciteWordsController ()
+
+@property (nonatomic, strong) LGUserModel *user;
+@property (nonatomic, strong) LGNoStudyTypeController *noStudyTypeController;
 
 @end
 
@@ -25,7 +30,9 @@
 }
 
 - (void)configData{
-	[self.request requestUserInfo:^(id response, NSString *errorMessage) {
+	[self.request requestUserInfo:^(id response, LGError *error) {
+		self.user = [LGUserModel mj_objectWithKeyValues:response];
+		[LGUserManager shareManager].user = self.user;
 		
 	}];
 }
@@ -64,8 +71,11 @@
 - (void)changeStudyType:(NSNotification *) notification{
 
 	NSString *studyTypeName = notification.userInfo[StudyTypeKey];
-	self.studyTypeLabel.text = [NSString stringWithFormat:@"你正在使用%@记忆单词",studyTypeName];
+//	self.studyTypeLabel.text = [NSString stringWithFormat:@"你正在使用%@记忆单词",studyTypeName];
 }
+
+
+
 
 /*
 #pragma mark - Navigation

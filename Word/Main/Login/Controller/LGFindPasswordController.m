@@ -82,10 +82,11 @@
 	}
 	
 	[LGProgressHUD showHUDAddedTo:self.view];
-	[self.request requestCheckCode:self.usernameTextField.text usernameType:type useType:LGCheckCodeUseTypeForgetPassword completion:^(id response, NSString *errorMessage) {
+	[self.request requestCheckCode:self.usernameTextField.text usernameType:type useType:LGCheckCodeUseTypeForgetPassword completion:^(id response, LGError *error) {
+		
 		[LGProgressHUD  hideHUDForView:self.view];
-		if (StringNotEmpty(errorMessage)) {
-			[LGProgressHUD showError:errorMessage toView:self.view];
+		if (error) {
+			[LGProgressHUD showError:error.errorMessage toView:self.view];
 			
 		}else{
 			[self beginCountdown];
@@ -116,10 +117,10 @@
 	}
 	
 	[LGProgressHUD showHUDAddedTo:self.view];
-	[self.request findPasswordRequest:username password:password code:code usernameType:type completion:^(id response, NSString *errorMessage) {
+	[self.request findPasswordRequest:username password:password code:code usernameType:type completion:^(id response, LGError *error) {
 		[LGProgressHUD hideHUDForView:self.view];
-		if (StringNotEmpty(errorMessage)) {
-			[LGProgressHUD showError:errorMessage toView:self.view];
+		if (error) {
+			[LGProgressHUD showError:error.errorMessage toView:self.view];
 		}else{
 			[LGProgressHUD showMessage:@"修改成功" toView:self.view];
 		}

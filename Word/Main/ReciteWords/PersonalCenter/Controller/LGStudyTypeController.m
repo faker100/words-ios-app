@@ -64,10 +64,10 @@
 //提交学习模式
 - (IBAction)updateStudyAction:(id)sender {
 	[LGProgressHUD showHUDAddedTo:self.view];
-	[self.request updateStudyType:self.selectedType completion:^(id response, NSString *errorMessage) {
+	[self.request updateStudyType:self.selectedType completion:^(id response, LGError *error) {
 		[LGProgressHUD hideHUDForView:self.view];
-		if (StringNotEmpty(errorMessage)) {
-			[LGProgressHUD showError:errorMessage toView:self.view];
+		if (error) {
+			[LGProgressHUD showError:error.errorMessage toView:self.view];
 		}else{
 			[[NSNotificationCenter defaultCenter] postNotificationName:ChangeTypeNotification object:nil userInfo:@{StudyTypeKey:self.selectedBtn.currentTitle}];
 			[LGProgressHUD showSuccess:@"修改成功" toView:self.view completionBlock:^{

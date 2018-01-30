@@ -62,10 +62,11 @@
 		return;
 	}
 	[LGProgressHUD showHUDAddedTo:self.view];
-	[self.request loginRequest:username password:password completion:^(id response, NSString *errorMessage) {
+	[self.request loginRequest:username password:password completion:^(id response, LGError *error) {
+		
 		[LGProgressHUD hideHUDForView:self.view];
-		if (StringNotEmpty(errorMessage)) {
-			[LGProgressHUD showError:errorMessage toView:self.view];
+		if (error) {
+			[LGProgressHUD showError:error.errorMessage toView:self.view];
 		}else{
 			LGUserModel *model = [LGUserModel mj_objectWithKeyValues:response];
 			[LGUserManager shareManager].user = model;

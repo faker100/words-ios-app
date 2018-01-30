@@ -19,10 +19,10 @@
 					   @"userName" : username,
 					   @"userPass" : password
 					   };
-	[self postRequestCompletion:^(id response, NSString *errorMessage) {
-		if (!StringNotEmpty(errorMessage)) {
+	[self postRequestCompletion:^(id response, LGError *error) {
+		if (error) {
 			[self resetSessionRequest:response completion:^{
-				completion(response,errorMessage);
+				completion(response,error);
 			}];
 		}
 	}];
@@ -36,7 +36,7 @@
 		dispatch_group_enter(requestGroup);
 		self.url = obj;
 		self.parameter = userInfo;
-		[self getRequestCompletion:^(id response, NSString *errorMessage) {
+		[self getRequestCompletion:^(id response, LGError *error) {
 			dispatch_group_leave(requestGroup);
 			NSLog(@"=====session:%@",response);
 		}];
@@ -77,7 +77,7 @@
 					   @"pass" : password,
 					   @"code" : code,
 					   @"userName" : username,
-					   @"source" : @"2",
+					   @"source" : @"5",
 					   @"belong" : @"1"
 					   };
 	[self postRequestCompletion:completion];
@@ -104,8 +104,19 @@
 }
 
 - (void)requestUserInfo:(comletionBlock)completion{
-	self.url = USER_INFO;
+	self.url = USER_INFO_URL;
 	[self postRequestCompletion:completion];
 }
+
+- (void)requestUserPlan:(comletionBlock)completion{
+	self.url = MY_PLAN_URL;
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestWordLibraryList:(comletionBlock)completion{
+	self.url = WORD_LIBRARY_LIST_URL;
+	[self postRequestCompletion:completion];
+}
+
 
 @end
