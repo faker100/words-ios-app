@@ -20,7 +20,7 @@
 					   @"userPass" : password
 					   };
 	[self postRequestCompletion:^(id response, LGError *error) {
-		if (error) {
+		if (!error) {
 			[self resetSessionRequest:response completion:^{
 				completion(response,error);
 			}];

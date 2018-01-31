@@ -9,8 +9,16 @@
 #import "LGWordLibraryController.h"
 #import "LGWordLibraryTypeCell.h"
 #import "LGWordTypeCell.h"
+#import "LGWordLibraryModel.h"
+#import "UIScrollView+LGRefresh.h"
 
 @interface LGWordLibraryController () <UITableViewDelegate,UITableViewDataSource>
+
+//词库列表
+@property (nonatomic, strong) NSArray<LGWordLibraryModel *> *modelArray;
+
+//选中的词库 默认第一个
+@property (nonatomic, strong) LGWordLibraryModel *selectedModel;
 
 @end
 
@@ -19,13 +27,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	self.libraryTableView.tableFooterView = [UIView new];
+	self.wordTypeTableView.tableFooterView = [UIView new];
 	[self requestData];
 }
 
 - (void)requestData{
+	
+	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestWordLibraryList:^(id response, LGError *error) {
-		
+		[LGProgressHUD hideHUDForView:self.view];
+		if (error) {
+			[LGProgressHUD showError:error.errorMessage toView:self.view];
+		}else{
+			self.modelArray = [LGWordLibraryModel mj_objectArrayWithKeyValuesArray:response[@"package"]];
+			self.selectedModel = self.modelArray.firstObject;
+			[self.libraryTableView reloadData];
+			[self.wordTypeTableView reloadData];
+			[self.libraryTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+		}
 	}];
+}
+
+- (void)setSelectedModel:(LGWordLibraryModel *)selectedModel{
+	_selectedModel = selectedModel;
+	[self.wordTypeTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,41 +60,33 @@
 }
 #pragma mark -UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-	return 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 0;
+	return tableView == self.libraryTableView ? self.modelArray.count : self.selectedModel.child.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	
-	return nil;
+	if (tableView == self.libraryTableView) {
+		LGWordLibraryTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordLibraryTypeCell"];
+		cell.wordLibrary = self.modelArray[indexPath.row];
+		return cell;
+	}else {
+		LGWordTypeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordTypeCell"];
+		cell.wordTypeModel = self.selectedModel.child[indexPath.row];
+		return cell;
+	}
 }
 
 #pragma mark -UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	return 0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-	return 0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-	return 0;
-}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	if (tableView == self.libraryTableView) {
+		self.selectedModel = self.modelArray[indexPath.row];
+	}else{
+		[self performSegueWithIdentifier:@"WordLibraryToWordList" sender:self.selectedModel.child[indexPath.row]];
+	}
 }
 /*
 #pragma mark - Navigation

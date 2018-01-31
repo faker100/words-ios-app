@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LGWordLibraryModel.h"
 
 @interface LGWordLibraryTypeCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *libraryImageView;
-
 @property (weak, nonatomic) IBOutlet UILabel *libraryTitleLabel;
+@property (nonatomic, strong) LGWordLibraryModel *wordLibrary;
 
 @end

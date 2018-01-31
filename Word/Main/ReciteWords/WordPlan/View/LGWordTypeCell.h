@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LGWordLibraryModel.h"
+#import "LGProgressView.h"
 
 @interface LGWordTypeCell : UITableViewCell
+
+@property (nonatomic, strong) LGChildWordLibraryModel *wordTypeModel;
+
+//分类名字
+@property (weak, nonatomic) IBOutlet UILabel *typeNameLabel;
+
+//进度label
+@property (weak, nonatomic) IBOutlet UILabel *progressLabel;
+
+//进度条
+@property (weak, nonatomic) IBOutlet LGProgressView *progressView;
 
 @end

@@ -75,12 +75,15 @@ static AFHTTPSessionManager *manager;
 #endif
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	if (completion) {
-		if ( [NSString stringWithFormat:@"%@",responseObject[@"code"]].integerValue == 0) {
+		
+		NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
+		
+		if ([code isEqualToString:@"0"]) {
 			
 			NSString *message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];
 			completion(responseObject, [[LGError alloc]initWithMessage:message type:LGServiceError]);
 			
-		}else if ([NSString stringWithFormat:@"%@",responseObject[@"code"]].integerValue == 99){
+		}else if ([code isEqualToString:@"99"]){
 			
 			//发出未登录通知
 			NSString *message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3690868A07C9B63A30A721A0 /* Pods_Word.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66ACA9D95F507310F264822E /* Pods_Word.framework */; };
 		5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5606F8602015E45C0030E43C /* NSString+LGString.m */; };
+		5612BFAB202154E30038D653 /* LGWordLibraryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612BFAA202154E30038D653 /* LGWordLibraryModel.m */; };
+		5612BFAE202161E50038D653 /* UIScrollView+LGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612BFAD202161E50038D653 /* UIScrollView+LGRefresh.m */; };
+		5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612BFB12021AC3E0038D653 /* LGProgressView.m */; };
 		56317B72201C1D6800AEC20B /* LGUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56317B71201C1D6800AEC20B /* LGUserManager.m */; };
 		563259EE201AC609007FF4D6 /* LGTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 563259ED201AC609007FF4D6 /* LGTool.m */; };
 		56506D052016D842000FD8FA /* LGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56506D042016D842000FD8FA /* LGProgressHUD.m */; };
@@ -48,6 +51,12 @@
 /* Begin PBXFileReference section */
 		5606F85F2015E45C0030E43C /* NSString+LGString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LGString.h"; sourceTree = "<group>"; };
 		5606F8602015E45C0030E43C /* NSString+LGString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LGString.m"; sourceTree = "<group>"; };
+		5612BFA9202154E30038D653 /* LGWordLibraryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordLibraryModel.h; sourceTree = "<group>"; };
+		5612BFAA202154E30038D653 /* LGWordLibraryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordLibraryModel.m; sourceTree = "<group>"; };
+		5612BFAC202161E50038D653 /* UIScrollView+LGRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+LGRefresh.h"; sourceTree = "<group>"; };
+		5612BFAD202161E50038D653 /* UIScrollView+LGRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LGRefresh.m"; sourceTree = "<group>"; };
+		5612BFB02021AC3E0038D653 /* LGProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGProgressView.h; sourceTree = "<group>"; };
+		5612BFB12021AC3E0038D653 /* LGProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGProgressView.m; sourceTree = "<group>"; };
 		56317B70201C1D6800AEC20B /* LGUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGUserManager.h; sourceTree = "<group>"; };
 		56317B71201C1D6800AEC20B /* LGUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGUserManager.m; sourceTree = "<group>"; };
 		563259EC201AC609007FF4D6 /* LGTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTool.h; sourceTree = "<group>"; };
@@ -128,12 +137,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		56506D012016D773000FD8FA /* Vendors */ = {
+		5612BFA8202154970038D653 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5612BFA9202154E30038D653 /* LGWordLibraryModel.h */,
+				5612BFAA202154E30038D653 /* LGWordLibraryModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5612BFAF2021AC060038D653 /* LGProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				5612BFB02021AC3E0038D653 /* LGProgressView.h */,
+				5612BFB12021AC3E0038D653 /* LGProgressView.m */,
+			);
+			path = LGProgressView;
+			sourceTree = "<group>";
+		};
+		56506D012016D773000FD8FA /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				5612BFAF2021AC060038D653 /* LGProgressView */,
 				56506D022016D7E7000FD8FA /* LGProgressHUD */,
 			);
-			path = Vendors;
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		56506D022016D7E7000FD8FA /* LGProgressHUD */ = {
@@ -188,6 +216,8 @@
 				565A30F6201331E000448B1C /* UIColor+LGColor.m */,
 				5606F85F2015E45C0030E43C /* NSString+LGString.h */,
 				5606F8602015E45C0030E43C /* NSString+LGString.m */,
+				5612BFAC202161E50038D653 /* UIScrollView+LGRefresh.h */,
+				5612BFAD202161E50038D653 /* UIScrollView+LGRefresh.m */,
 			);
 			path = Categroy;
 			sourceTree = "<group>";
@@ -242,7 +272,7 @@
 				567C00F8201075C90083F3D5 /* Main */,
 				56961CF6200D8A9C009EA21C /* InterfaceBuilder */,
 				56961CF7200D8ACA009EA21C /* Networking */,
-				56506D012016D773000FD8FA /* Vendors */,
+				56506D012016D773000FD8FA /* Custom */,
 				56961CF5200D89B0009EA21C /* Categroy */,
 				565A30F420132F3700448B1C /* Tool */,
 				56AF60CC2011DF930067BD7B /* Supporting files */,
@@ -297,6 +327,7 @@
 		56C98980202016EA0095A4BD /* WordPlan */ = {
 			isa = PBXGroup;
 			children = (
+				5612BFA8202154970038D653 /* Model */,
 				56C9898520201CA30095A4BD /* View */,
 				56C98981202017490095A4BD /* Controller */,
 			);
@@ -583,7 +614,9 @@
 				56506D052016D842000FD8FA /* LGProgressHUD.m in Sources */,
 				56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */,
 				56A88849200CA53400847BE6 /* main.m in Sources */,
+				5612BFAB202154E30038D653 /* LGWordLibraryModel.m in Sources */,
 				56CCA5E5201B083B0097DCAC /* LGReciteWordsController.m in Sources */,
+				5612BFAE202161E50038D653 /* UIScrollView+LGRefresh.m in Sources */,
 				56C9899120204F7C0095A4BD /* LGWordLibraryTypeCell.m in Sources */,
 				56C9898E2020461D0095A4BD /* LGWordLibraryController.m in Sources */,
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
@@ -593,6 +626,7 @@
 				56AF60D52011EA050067BD7B /* UIViewController+LGViewController.m in Sources */,
 				563259EE201AC609007FF4D6 /* LGTool.m in Sources */,
 				56AF60C52011CD2B0067BD7B /* LGRequest.m in Sources */,
+				5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */,
 				56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */,
 				56C98994202050F60095A4BD /* LGWordTypeCell.m in Sources */,
 				56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */,

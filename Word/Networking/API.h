@@ -49,6 +49,7 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 /*************************************** 域名 **********************************/
 
 
+#define WORD_DOMAIN(url) 	 [NSString stringWithFormat:@"http://words.viplgw.cn/%@",url]
 
 
 /*************************************** 接口 **********************************/
