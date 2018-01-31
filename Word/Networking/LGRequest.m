@@ -118,5 +118,12 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)requestFreeLibraryWordList:(NSString *)catID completion:(comletionBlock)completion{
+    self.url = FREE_LIBRARY_WORD_LIST_URL;
+    self.parameter = @{
+                       @"catId" : catID
+                       };
+    [self postRequestCompletion:completion];
+}
 
 @end

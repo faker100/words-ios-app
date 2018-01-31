@@ -8,7 +8,7 @@
 
 #import "LGNavigationController.h"
 
-@interface LGNavigationController ()
+@interface LGNavigationController () <UINavigationBarDelegate>
 
 @end
 
@@ -17,11 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	
+    self.navigationBar.delegate = self;
 	[self.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} forState:UIControlStateSelected];
-	
-	
-	self.viewControllers.firstObject.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
@@ -31,6 +28,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - UINavigationBarDelegate
+
+- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPushItem:(UINavigationItem *)item{
+    item.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    return YES;
 }
 
 /*

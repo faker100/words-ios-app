@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib{
 	[super awakeFromNib];
-	self.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 @end

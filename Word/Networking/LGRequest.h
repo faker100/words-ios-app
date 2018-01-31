@@ -95,4 +95,11 @@
 - (void)requestWordLibraryList:(comletionBlock)completion;
 
 
+/**
+ 获取免费词包单词列表
+
+ @param catID 词包id
+ */
+- (void)requestFreeLibraryWordList:(NSString *)catID completion:(comletionBlock)completion;
+
 @end

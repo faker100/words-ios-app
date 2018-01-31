@@ -11,6 +11,7 @@
 #import "LGWordTypeCell.h"
 #import "LGWordLibraryModel.h"
 #import "UIScrollView+LGRefresh.h"
+#import "LGFreeLibraryWordListController.h"
 
 @interface LGWordLibraryController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -88,14 +89,18 @@
 		[self performSegueWithIdentifier:@"WordLibraryToWordList" sender:self.selectedModel.child[indexPath.row]];
 	}
 }
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"WordLibraryToWordList"]) {
+        LGFreeLibraryWordListController *controller = segue.destinationViewController;
+        controller.wordLibraryModel = sender;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

@@ -12,6 +12,17 @@
 
 @implementation UIViewController (LGViewController)
 
+
++ (void)load{
+    [super load];
+    method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"dealloc")),class_getInstanceMethod(self.class, @selector(lg_dealloc)));
+}
+
+- (void)lg_dealloc{
+    NSLog(@"class:%@ 释放了",[self class]);
+    [self lg_dealloc];
+}
+
 - (LGRequest *)request{
 	
 	LGRequest *tempRequest = objc_getAssociatedObject(self, _cmd);

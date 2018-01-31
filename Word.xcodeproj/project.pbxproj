@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */; };
 		3690868A07C9B63A30A721A0 /* Pods_Word.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66ACA9D95F507310F264822E /* Pods_Word.framework */; };
 		5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5606F8602015E45C0030E43C /* NSString+LGString.m */; };
 		5612BFAB202154E30038D653 /* LGWordLibraryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612BFAA202154E30038D653 /* LGWordLibraryModel.m */; };
@@ -49,6 +50,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0235DB982022147200E52A3F /* LGFreeLibraryWordListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGFreeLibraryWordListController.h; sourceTree = "<group>"; };
+		0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGFreeLibraryWordListController.m; sourceTree = "<group>"; };
 		5606F85F2015E45C0030E43C /* NSString+LGString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LGString.h"; sourceTree = "<group>"; };
 		5606F8602015E45C0030E43C /* NSString+LGString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LGString.m"; sourceTree = "<group>"; };
 		5612BFA9202154E30038D653 /* LGWordLibraryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordLibraryModel.h; sourceTree = "<group>"; };
@@ -341,6 +344,8 @@
 				56C989832020176A0095A4BD /* LGWordPlanController.m */,
 				56C9898C2020461D0095A4BD /* LGWordLibraryController.h */,
 				56C9898D2020461D0095A4BD /* LGWordLibraryController.m */,
+				0235DB982022147200E52A3F /* LGFreeLibraryWordListController.h */,
+				0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -608,6 +613,7 @@
 				565A30FA2013411200448B1C /* LGRegisterController.m in Sources */,
 				56C9898B20201D050095A4BD /* LGAddWordLibraryCollectionCell.m in Sources */,
 				56C989842020176A0095A4BD /* LGWordPlanController.m in Sources */,
+				0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */,
 				567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */,
 				56C9898820201CCF0095A4BD /* LGWordPlanCollectionCell.m in Sources */,
 				56317B72201C1D6800AEC20B /* LGUserManager.m in Sources */,
