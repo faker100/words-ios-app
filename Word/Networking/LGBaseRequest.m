@@ -63,6 +63,26 @@ static AFHTTPSessionManager *manager;
 	}];
 }
 
+- (void)downloadRequest:(NSString *)url targetPath:(NSString *) path completion:(downloadComletionBlock) completion{
+
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+
+	NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+	
+		NSLog(@"下载进度：%.0f％", downloadProgress.fractionCompleted * 100);
+	
+	} destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+	
+		return [NSURL fileURLWithPath:[path stringByAppendingPathComponent:response.suggestedFilename]];
+	
+	} completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+		
+		completion(response, filePath, [self getErrorWithCode:error.code]);
+	
+	}];
+	
+	[downloadTask resume];
+}
 
 /**
  处理请求成功返回的 object

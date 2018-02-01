@@ -10,20 +10,17 @@
 
 @implementation UIScrollView (LGRefresh)
 
-
-- (void)setRefreshType:(LGRefreshType)type refreshBlock:(MJRefreshComponentRefreshingBlock) refreshBlock{
-	
+- (void)setHeaderRefresh:(void (^)(void))refreshBlock{
 	MJRefreshNormalHeader *headerHeader = [MJRefreshNormalHeader headerWithRefreshingBlock:refreshBlock];
 	headerHeader.stateLabel.hidden = YES;
 	[headerHeader setTitle:@"" forState:MJRefreshStateIdle];
 	headerHeader.lastUpdatedTimeLabel.hidden = YES;
 	self.mj_header = headerHeader;
-	
-	if (type == LGRefreshHeaderAndFooter) {
-		MJRefreshBackNormalFooter *footerHeader = [MJRefreshBackNormalFooter footerWithRefreshingBlock:refreshBlock];
-		footerHeader.stateLabel.hidden = YES;
-		self.mj_footer = footerHeader;
-	}
+}
+
+- (void)lg_endRefreshing {
+	[self.mj_header endRefreshing];
+	[self.mj_footer endRefreshing];
 }
 
 @end

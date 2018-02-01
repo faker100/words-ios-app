@@ -23,15 +23,28 @@ typedef NS_ENUM(NSUInteger, LGErrorType) {
 @end
 
 typedef void(^comletionBlock)(id response, LGError *error);
+typedef void(^downloadComletionBlock)(id response, NSURL *filePath, LGError *error);
 
 @interface LGBaseRequest : NSObject
 
-@property (nonatomic, strong) NSURLSessionTask *task;
-@property (nonatomic, strong) NSDictionary *parameter;
-@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSURLSessionTask *task;    
+@property (nonatomic, strong) NSDictionary *parameter;   //请求参数
+@property (nonatomic, strong) NSString *url;			//请求URL
 
 - (void)getRequestCompletion:(comletionBlock) completion;
+
 - (void)postRequestCompletion:(comletionBlock) completion;
+
+
+
+/**
+ 下载文件
+
+ @param url 下载地址
+ @param path 存放文件夹, 文件名为服务器文件名
+ @param completion 下载结果,downloadComletionBlock
+ */
+- (void)downloadRequest:(NSString *)url targetPath:(NSString *) path completion:(downloadComletionBlock) completion;
 
 @end
 

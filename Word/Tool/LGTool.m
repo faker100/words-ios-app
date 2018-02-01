@@ -24,5 +24,18 @@
 	return theImage;
 }
 
++ (NSString *)getAudioFilePath {
+	
+	NSFileManager *fileManager = [[NSFileManager alloc] init];
+	NSString *pathDocument = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+	NSString *audioPath = [pathDocument stringByAppendingPathComponent:@"AudioFile"];
+	// 判断文件夹是否存在，如果不存在，则创建
+	if (![[NSFileManager defaultManager] fileExistsAtPath:audioPath]) {
+		NSError *error;
+		[fileManager createDirectoryAtPath:audioPath withIntermediateDirectories:YES attributes:nil error:&error];
+		return error ? nil : audioPath;
+	}
+	return audioPath;
+}
 
 @end

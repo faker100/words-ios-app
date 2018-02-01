@@ -99,7 +99,9 @@
  获取免费词包单词列表
 
  @param catID 词包id
+ @param page 页数
  */
-- (void)requestFreeLibraryWordList:(NSString *)catID completion:(comletionBlock)completion;
+- (void)requestFreeLibraryWordList:(NSString *)catID page:(NSInteger)page completion:(comletionBlock)completion;
+
 
 @end

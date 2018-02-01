@@ -9,13 +9,20 @@
 #import <UIKit/UIKit.h>
 #import <MJRefresh/MJRefresh.h>
 
-typedef NS_ENUM(NSUInteger, LGRefreshType) {
-	LGRefreshOnlyHeader,		//只有下拉刷新
-	LGRefreshHeaderAndFooter,   //上拉,下拉
-};
+
 
 @interface UIScrollView (LGRefresh)
 
-- (void)setRefreshType:(LGRefreshType)type refreshBlock:(MJRefreshComponentRefreshingBlock) refreshBlock;
+/**
+ 设置下拉刷新 (如果需要上拉和下拉,用(UITableView+LGRefresh.h 的setRefreshBlock))
+
+ */
+- (void)setHeaderRefresh:(void (^)(void))refreshBlock;
+
+
+/**
+ 结束刷新
+ */
+- (void)lg_endRefreshing;
 
 @end

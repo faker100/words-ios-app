@@ -17,4 +17,12 @@
  */
 + (UIImage *)createImageWithColor:(UIColor *)color size:(CGSize)size;
 
+
+/**
+ 获取音频缓存路径
+
+ @return 路径
+ */
++ (NSString *)getAudioFilePath;
+
 @end

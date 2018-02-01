@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LGRequest.h"
+#import "NSObject+LGRequest.h"
 
 @interface UIViewController (LGViewController)
 
-@property (nonatomic, strong) LGRequest *request;
+
 
 @end
