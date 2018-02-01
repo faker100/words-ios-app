@@ -77,7 +77,7 @@ static AFHTTPSessionManager *manager;
 	
 	} completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
 		
-		completion(response, filePath, [self getErrorWithCode:error.code]);
+		completion(filePath, [self getErrorWithCode:error.code]);
 	
 	}];
 	

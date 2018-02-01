@@ -32,10 +32,8 @@
 
 - (void)playWithUrl:(NSString *)url{
 	
-	[self.request downloadRequest:url targetPath:[LGTool getAudioFilePath] completion:^(id response, NSURL *filePath, LGError *error) {
-		if (response && filePath) {
-			NSLog(@"%@  , %@",response,filePath);
-			
+	[self.request downloadRequest:url targetPath:[LGTool getAudioFilePath] completion:^(NSURL *filePath, LGError *error) {
+		if (!error) {
 			NSError *error;
 			self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:filePath error:&error];
 			NSLog(@"%@",error);
