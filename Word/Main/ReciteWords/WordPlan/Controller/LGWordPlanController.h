@@ -10,6 +10,8 @@
 
 @interface LGWordPlanController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 //词包列表
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 

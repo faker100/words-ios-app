@@ -93,7 +93,8 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 //免费词包详情-单词列表
 #define FREE_LIBRARY_WORD_LIST_URL      @"http://words.viplgw.cn/cn/app-api/package-details"
 
-
+//添加词包
+#define ADD_WORD_LIBRARY_URL			@"http://words.viplgw.cn/cn/app-api/add-package"
 
 
 

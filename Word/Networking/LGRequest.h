@@ -104,4 +104,19 @@
 - (void)requestFreeLibraryWordList:(NSString *)catID page:(NSInteger)page completion:(comletionBlock)completion;
 
 
+/**
+ 音频文件下载
+ 先找本地文件,如果没有,再请求服务器
+ @param url 下载地址
+ */
+- (void)downloadAudioFile:(NSString *)url completion:(downloadComletionBlock)completion;
+
+
+/**
+ 添加词包
+
+ @param libraryId 词包 id
+ */
+- (void)addWordLibrary:(NSString *)libraryId completion:(comletionBlock)completion;
+
 @end

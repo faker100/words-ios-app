@@ -17,6 +17,8 @@
 		5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612BFB12021AC3E0038D653 /* LGProgressView.m */; };
 		56317B72201C1D6800AEC20B /* LGUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56317B71201C1D6800AEC20B /* LGUserManager.m */; };
 		563259EE201AC609007FF4D6 /* LGTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 563259ED201AC609007FF4D6 /* LGTool.m */; };
+		5639AF9F202441B300AA2CA5 /* LGPlanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5639AF9E202441B300AA2CA5 /* LGPlanModel.m */; };
+		5639AFA22024535700AA2CA5 /* LGPlanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5639AFA12024535700AA2CA5 /* LGPlanTableViewCell.m */; };
 		563F7DA22022BE8A00944730 /* UITableView+LGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 563F7DA12022BE8A00944730 /* UITableView+LGRefresh.m */; };
 		563F7DA5202306B500944730 /* LGPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 563F7DA4202306B500944730 /* LGPlayer.m */; };
 		563F7DAB2023177E00944730 /* NSObject+LGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 563F7DAA2023177E00944730 /* NSObject+LGRequest.m */; };
@@ -73,6 +75,10 @@
 		56317B71201C1D6800AEC20B /* LGUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGUserManager.m; sourceTree = "<group>"; };
 		563259EC201AC609007FF4D6 /* LGTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTool.h; sourceTree = "<group>"; };
 		563259ED201AC609007FF4D6 /* LGTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTool.m; sourceTree = "<group>"; };
+		5639AF9D202441B300AA2CA5 /* LGPlanModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPlanModel.h; sourceTree = "<group>"; };
+		5639AF9E202441B300AA2CA5 /* LGPlanModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPlanModel.m; sourceTree = "<group>"; };
+		5639AFA02024535700AA2CA5 /* LGPlanTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPlanTableViewCell.h; sourceTree = "<group>"; };
+		5639AFA12024535700AA2CA5 /* LGPlanTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPlanTableViewCell.m; sourceTree = "<group>"; };
 		563F7DA02022BE8A00944730 /* UITableView+LGRefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+LGRefresh.h"; sourceTree = "<group>"; };
 		563F7DA12022BE8A00944730 /* UITableView+LGRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+LGRefresh.m"; sourceTree = "<group>"; };
 		563F7DA3202306B500944730 /* LGPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPlayer.h; sourceTree = "<group>"; };
@@ -162,6 +168,8 @@
 				5612BFAA202154E30038D653 /* LGWordLibraryModel.m */,
 				560F0FCF2022AFBA00324510 /* LGFreeWordModel.h */,
 				560F0FD02022AFBA00324510 /* LGFreeWordModel.m */,
+				5639AF9D202441B300AA2CA5 /* LGPlanModel.h */,
+				5639AF9E202441B300AA2CA5 /* LGPlanModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -386,6 +394,8 @@
 				56C98993202050F60095A4BD /* LGWordTypeCell.m */,
 				560F0FC92022AA7000324510 /* LGFreeWordListCell.h */,
 				560F0FCA2022AA7000324510 /* LGFreeWordListCell.m */,
+				5639AFA02024535700AA2CA5 /* LGPlanTableViewCell.h */,
+				5639AFA12024535700AA2CA5 /* LGPlanTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -637,6 +647,7 @@
 				56EAD86220197F2D0059604E /* LGFindPasswordController.m in Sources */,
 				565A30FA2013411200448B1C /* LGRegisterController.m in Sources */,
 				56C9898B20201D050095A4BD /* LGAddWordLibraryCollectionCell.m in Sources */,
+				5639AFA22024535700AA2CA5 /* LGPlanTableViewCell.m in Sources */,
 				56C989842020176A0095A4BD /* LGWordPlanController.m in Sources */,
 				0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */,
 				567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */,
@@ -655,6 +666,7 @@
 				563F7DA22022BE8A00944730 /* UITableView+LGRefresh.m in Sources */,
 				565A30F32013163400448B1C /* LGUserModel.m in Sources */,
 				5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */,
+				5639AF9F202441B300AA2CA5 /* LGPlanModel.m in Sources */,
 				56AF60D52011EA050067BD7B /* UIViewController+LGViewController.m in Sources */,
 				563259EE201AC609007FF4D6 /* LGTool.m in Sources */,
 				56AF60C52011CD2B0067BD7B /* LGRequest.m in Sources */,

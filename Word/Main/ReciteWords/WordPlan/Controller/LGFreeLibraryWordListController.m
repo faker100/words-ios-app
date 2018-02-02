@@ -53,21 +53,34 @@
 	return attribute;
 }
 
+//开始背单词
+- (IBAction)reciteWordsAction:(id)sender {
+	
+	[LGProgressHUD showHUDAddedTo:self.view];
+	__weak typeof(self) weakSelf = self;
+	[self.request addWordLibrary:self.wordLibraryModel.ID completion:^(id response, LGError *error) {
+		if ([weakSelf isNormal:error]) {
+			[LGProgressHUD showSuccess:@"添加成功" toView:weakSelf.view completionBlock:^{
+				[weakSelf.navigationController popViewControllerAnimated:YES];
+			}];
+		}
+	}];
+}
+
 - (void)requestData {
 	
+	__weak typeof(self) weakSelf = self;
 	[self.request requestFreeLibraryWordList:self.wordLibraryModel.ID page:self.tableView.currentPage completion:^(id response, LGError *error) {
-		[self.tableView lg_endRefreshing];
-		if (error) {
-			[LGProgressHUD showError:error.errorMessage toView:self.view];
-			return ;
-		}
-		NSArray *newModelArray = [LGFreeWordModel mj_objectArrayWithKeyValuesArray:response[@"packageDetails"]];
-		if (self.tableView.currentPage == 1) {
-			[self.modelArray setArray:newModelArray];
-			[self.tableView reloadData];
-		}else{
-			[self.modelArray addObjectsFromArray:newModelArray];
-			[self.tableView addMoreDataWithType:LGTableReloadOnlyAddSection newModelArray:newModelArray];
+		[weakSelf.tableView lg_endRefreshing];
+		if ([weakSelf isNormal:error]) {
+			NSArray *newModelArray = [LGFreeWordModel mj_objectArrayWithKeyValuesArray:response[@"packageDetails"]];
+			if (weakSelf.tableView.currentPage == 1) {
+				[weakSelf.modelArray setArray:newModelArray];
+				[weakSelf.tableView reloadData];
+			}else{
+				[weakSelf.modelArray addObjectsFromArray:newModelArray];
+				[weakSelf.tableView addMoreDataWithType:LGTableReloadOnlyAddSection newModelArray:newModelArray];
+			}
 		}
     }];
 }
@@ -94,7 +107,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 	LGFreeWordModel *wordModel = self.modelArray[indexPath.section];
 	if (StringNotEmpty(wordModel.us_audio)) {
-		[[LGPlayer sharedPlayer] playWithUrl:wordModel.us_audio];
+		[[LGPlayer sharedPlayer] playWithUrl:wordModel.us_audio completion:^(LGError *error) {
+			[self isNormal:error];
+		}];
 	}
 	
 }

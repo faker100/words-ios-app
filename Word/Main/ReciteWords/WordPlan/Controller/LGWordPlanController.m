@@ -7,6 +7,8 @@
 //
 
 #import "LGWordPlanController.h"
+#import "UIScrollView+LGRefresh.h"
+#import "LGPlanTableViewCell.h"
 
 @interface LGWordPlanController () <UITableViewDataSource, UITableViewDelegate,UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -18,8 +20,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	[self performSegueWithIdentifier:@"myPlanTowordLibrary" sender:nil];
-	[self requestData];
+	[self requestData:YES];
 }
+
+- (void)configUserInterface{
+	__weak typeof(self) weakSelf = self;
+	[self.scrollView setHeaderRefresh:^{
+		[weakSelf requestData:NO];
+	}];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -27,12 +37,11 @@
 }
 
 
-- (void)requestData {
+- (void)requestData:(BOOL)isShowLoading {
+	if (isShowLoading) [LGProgressHUD showHUDAddedTo:self.view];
+	__weak typeof(self) weakSelf = self;
 	[self.request requestUserPlan:^(id response, LGError *error) {
-		
-		if (error) {
-			
-		}else{
+		if ([weakSelf isNormal:error]) {
 			
 		}
 	}];
@@ -60,26 +69,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	LGPlanTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGPlanTableViewCell"];
 	
-	return nil;
+	return cell;
 }
 
 #pragma mark -UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	return 0;
-}
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-	return 0;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-	return 0;
-}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];

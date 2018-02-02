@@ -12,5 +12,12 @@
 @interface UIViewController (LGViewController)
 
 
+/**
+ 根据 error,显示错误信息,,回隐藏 LGProgressHUD
+
+ @param error LGError 对象
+ @return 没有错误信息返回 YES, 如果有错误信息返回 NO
+ */
+- (BOOL)isNormal:(LGError *)error;
 
 @end

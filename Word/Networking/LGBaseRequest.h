@@ -11,6 +11,7 @@
 typedef NS_ENUM(NSUInteger, LGErrorType) {
 	LGSystemError,		//网络请求错误
 	LGServiceError,     //服务器提示错误
+	LGAPPError			//app 内部错误 (比如:播放音频失败)
 };
 
 @interface LGError : NSObject
@@ -41,10 +42,11 @@ typedef void(^downloadComletionBlock)(NSURL *filePath, LGError *error);
  下载文件
 
  @param url 下载地址
- @param path 存放文件夹, 文件名url字符串
+ @param path 存放文件夹目录, 如果为 nil, 则是 document
+ @param fileName 文件名,如果为 nil, 则是服务器文件名字
  @param completion 下载结果,downloadComletionBlock
  */
-- (void)downloadRequest:(NSString *)url targetPath:(NSString *) path completion:(downloadComletionBlock) completion;
+- (void)downloadRequest:(NSString *)url targetPath:(NSString *) path fileName:(NSString *)fileName completion:(downloadComletionBlock) completion;
 
 @end
 

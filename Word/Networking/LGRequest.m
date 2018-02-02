@@ -9,6 +9,7 @@
 #import "LGRequest.h"
 #import "NSString+LGString.h"
 #import "LGUserManager.h"
+#import "LGTool.h"
 
 @implementation LGRequest
 
@@ -125,6 +126,25 @@
 					   @"page"  : @(page)
                        };
     [self postRequestCompletion:completion];
+}
+
+- (void)downloadAudioFile:(NSString *)url completion:(downloadComletionBlock)completion {
+	
+	NSString *fileName = [url stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
+	NSString *path = [[LGTool getAudioFilePath] stringByAppendingPathComponent:fileName];
+	if ([[NSFileManager defaultManager] fileExistsAtPath:path]){
+		completion([NSURL URLWithString:path],nil);
+	}else{
+		[self downloadRequest:url targetPath:[LGTool getAudioFilePath] fileName:fileName completion:completion];
+	}
+}
+
+- (void)addWordLibrary:(NSString *)libraryId completion:(comletionBlock)completion {
+	self.url = ADD_WORD_LIBRARY_URL;
+	self.parameter = @{
+					   @"packageId" : libraryId
+					   };
+	[self postRequestCompletion:completion];
 }
 
 @end

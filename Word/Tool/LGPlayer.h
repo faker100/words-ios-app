@@ -12,6 +12,6 @@
 
 + (instancetype)sharedPlayer;
 
-- (void)playWithUrl:(NSString *)url;
+- (void)playWithUrl:(NSString *)url completion:(void(^)(LGError *error))finish;
 
 @end

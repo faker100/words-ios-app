@@ -23,6 +23,14 @@
     [self lg_dealloc];
 }
 
-
+- (BOOL)isNormal:(LGError *)error{
+	[LGProgressHUD hideHUDForView:self.view];
+	if (error) {
+		[LGProgressHUD showError:error.errorMessage toView:self.view];
+		return NO;
+	}else{
+		return YES;
+	}
+}
 
 @end

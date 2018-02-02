@@ -63,7 +63,7 @@ static AFHTTPSessionManager *manager;
 	}];
 }
 
-- (void)downloadRequest:(NSString *)url targetPath:(NSString *) path completion:(downloadComletionBlock) completion{
+- (void)downloadRequest:(NSString *)url targetPath:(NSString *)path fileName:(NSString *)fileName completion:(downloadComletionBlock) completion{
 
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
 
@@ -73,7 +73,10 @@ static AFHTTPSessionManager *manager;
 	
 	} destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
 	
-		return [NSURL fileURLWithPath:[path stringByAppendingPathComponent:response.suggestedFilename]];
+		NSString *tempName = StringNotEmpty(fileName) ? fileName : response.suggestedFilename;
+		NSString *tempPath = StringNotEmpty(path) ? path : NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
+		
+		return [NSURL fileURLWithPath:[tempPath stringByAppendingPathComponent:tempName]];
 	
 	} completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
 		
