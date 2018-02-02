@@ -59,6 +59,7 @@
 	[LGProgressHUD showHUDAddedTo:self.view];
 	__weak typeof(self) weakSelf = self;
 	[self.request addWordLibrary:self.wordLibraryModel.ID completion:^(id response, LGError *error) {
+        
 		if ([weakSelf isNormal:error]) {
 			[LGProgressHUD showSuccess:@"添加成功" toView:weakSelf.view completionBlock:^{
 				[weakSelf.navigationController popViewControllerAnimated:YES];
@@ -67,9 +68,12 @@
 	}];
 }
 
+//请求单词列表
 - (void)requestData {
 	
 	__weak typeof(self) weakSelf = self;
+    [LGProgressHUD showHUDAddedTo:self.view];
+    
 	[self.request requestFreeLibraryWordList:self.wordLibraryModel.ID page:self.tableView.currentPage completion:^(id response, LGError *error) {
 		[weakSelf.tableView lg_endRefreshing];
 		if ([weakSelf isNormal:error]) {

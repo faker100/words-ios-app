@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, LGPlanTableViewCellType) {
 @property (nonatomic, assign) IBInspectable NSInteger planType;
 
 //设置数量
-@property (nonatomic, assign) NSInteger *num;
+@property (nonatomic, assign) NSInteger num;
 
 
 @end

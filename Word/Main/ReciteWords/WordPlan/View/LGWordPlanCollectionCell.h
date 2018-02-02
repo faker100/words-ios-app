@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LGProgressView.h"
+#import "LGPlanModel.h"
 
 @interface LGWordPlanCollectionCell : UICollectionViewCell
+
+//标题
+@property (weak, nonatomic) IBOutlet UIButton *titleNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *progressLabel;
+@property (weak, nonatomic) IBOutlet LGProgressView *progressView;
+
+@property (nonatomic, strong) LGPlanModel *planModel;
 
 @end

@@ -10,4 +10,13 @@
 
 @implementation LGWordPlanCollectionCell
 
+- (void)setSelected:(BOOL)selected{
+    
+}
+
+- (void)setPlanModel:(LGPlanModel *)planModel{
+    _planModel = planModel;
+    [self.titleNameLabel setTitle:planModel.userWords forState:UIControlStateNormal];;
+}
+
 @end

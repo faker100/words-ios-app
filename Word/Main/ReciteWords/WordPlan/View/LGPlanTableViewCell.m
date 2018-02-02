@@ -27,4 +27,10 @@
     // Configure the view for the selected state
 }
 
+- (void)setNum:(NSInteger)num{
+    _num = num;
+    NSString *unit = self.planType == LGPlanDayNum ? @"天" : @"个";
+    self.planTitleLabel.text = [NSString stringWithFormat:@"%ld%@",num,unit];
+}
+
 @end

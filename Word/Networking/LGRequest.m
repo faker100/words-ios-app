@@ -21,11 +21,13 @@
 					   @"userPass" : password
 					   };
 	[self postRequestCompletion:^(id response, LGError *error) {
-		if (!error) {
-			[self resetSessionRequest:response completion:^{
-				completion(response,error);
-			}];
-		}
+		if (error) {
+            completion(response,error);
+        }else{
+            [self resetSessionRequest:response completion:^{
+                completion(response,error);
+            }];
+        }
 	}];
 }
 

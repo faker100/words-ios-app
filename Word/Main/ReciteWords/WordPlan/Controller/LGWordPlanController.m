@@ -9,8 +9,11 @@
 #import "LGWordPlanController.h"
 #import "UIScrollView+LGRefresh.h"
 #import "LGPlanTableViewCell.h"
+#import "LGWordPlanCollectionCell.h"
 
 @interface LGWordPlanController () <UITableViewDataSource, UITableViewDelegate,UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (nonatomic, strong) NSMutableArray<LGPlanModel *> *planArray;
 
 @end
 
@@ -19,11 +22,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	[self performSegueWithIdentifier:@"myPlanTowordLibrary" sender:nil];
+	//[self performSegueWithIdentifier:@"myPlanTowordLibrary" sender:nil];
+    [self configUserInterface];
 	[self requestData:YES];
 }
 
 - (void)configUserInterface{
+    
 	__weak typeof(self) weakSelf = self;
 	[self.scrollView setHeaderRefresh:^{
 		[weakSelf requestData:NO];
@@ -41,8 +46,10 @@
 	if (isShowLoading) [LGProgressHUD showHUDAddedTo:self.view];
 	__weak typeof(self) weakSelf = self;
 	[self.request requestUserPlan:^(id response, LGError *error) {
+        [weakSelf.scrollView lg_endRefreshing];
 		if ([weakSelf isNormal:error]) {
-			
+            self.planArray = [LGPlanModel mj_objectArrayWithKeyValuesArray:response];
+            [self.collectionView reloadData];
 		}
 	}];
 }
@@ -57,20 +64,15 @@
 
 #pragma mark -UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-	return 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 0;
+	return 100;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	LGPlanTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGPlanTableViewCell"];
-	
+    cell.num = indexPath.row;
 	return cell;
 }
 
@@ -88,6 +90,11 @@
 	return 0;
 }
 
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    LGWordPlanCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LGWordPlanCollectionCell" forIndexPath:indexPath];
+    cell.planModel = self.planArray[indexPath.row];
+    return cell;
+}
 
 #pragma mark - UICollectionViewDelegate
 

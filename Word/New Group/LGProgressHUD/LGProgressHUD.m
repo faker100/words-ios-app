@@ -11,8 +11,8 @@
 @implementation LGProgressHUD
 
 + (void)showHUDAddedTo:(UIView *)view {
-	
-	[LGProgressHUD configTypeToView:view];
+    
+    if (![super HUDForView:view]) [LGProgressHUD configTypeToView:view];
 }
 
 + (void)hideHUDForView:(UIView *)view {
@@ -47,11 +47,12 @@
 }
 
 + (LGProgressHUD *)configTypeToView:(UIView *)view {
+    
 	LGProgressHUD *hud = [super showHUDAddedTo:view animated:YES];
 	hud.bezelView.color = [UIColor blackColor];
 	hud.label.numberOfLines = 0;
 	hud.bezelView.alpha = 0.8;
-	hud.minSize = CGSizeMake(150, 125);
+ //   hud.userInteractionEnabled = NO;
 	hud.contentColor = [UIColor whiteColor];
 	return hud;
 }
@@ -60,6 +61,7 @@
 + (void)showMessageWithIcon:(NSString *)iconName message:(NSString *)message toView:(UIView *)view completionBlock:(MBProgressHUDCompletionBlock) completionBlock{
 	LGProgressHUD *hud = [LGProgressHUD configTypeToView:view];
 	hud.label.text = message;
+    hud.minSize = CGSizeMake(150, 125);
 	hud.completionBlock = completionBlock;
 	hud.mode = StringNotEmpty(iconName) ? MBProgressHUDModeCustomView : MBProgressHUDModeText;
 	hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconName]];

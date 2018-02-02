@@ -38,6 +38,7 @@
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestWordLibraryList:^(id response, LGError *error) {
 		[LGProgressHUD hideHUDForView:self.view];
+        
 		if (error) {
 			[LGProgressHUD showError:error.errorMessage toView:self.view];
 		}else{
