@@ -12,10 +12,16 @@
 
 @interface LGWordPlanCollectionCell : UICollectionViewCell
 
+
+@property (weak, nonatomic) IBOutlet UIView *bgColorView;
+
 //标题
-@property (weak, nonatomic) IBOutlet UIButton *titleNameLabel;
+@property (weak, nonatomic) IBOutlet UIButton *titleNameButton;
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 @property (weak, nonatomic) IBOutlet LGProgressView *progressView;
+
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+
 
 @property (nonatomic, strong) LGPlanModel *planModel;
 

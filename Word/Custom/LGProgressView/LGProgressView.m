@@ -27,8 +27,8 @@
 }
 
 - (void)setProgress:(float)progress{
-	_progress = progress;
-	self.progressLayer.frame = CGRectMake(0, 0, self.layer.frame.size.width * self.progress, self.layer.frame.size.height);
+	_progress = MIN(progress, 1.0);
+	self.progressLayer.frame = CGRectMake(0, 0, self.layer.frame.size.width * _progress, self.layer.frame.size.height);
 }
 
 - (CALayer *)progressLayer{
@@ -36,6 +36,15 @@
 		_progressLayer = [CALayer layer];
 	}
 	return _progressLayer;
+}
+
+- (void) setTrackTintColor:(UIColor *)trackTintColor{
+	_trackTintColor = trackTintColor;
+	[CATransaction begin];
+	[CATransaction setDisableActions:YES];
+	self.progressLayer.backgroundColor = trackTintColor.CGColor;
+	[CATransaction commit];
+	
 }
 
 // Only override drawRect: if you perform custom drawing.

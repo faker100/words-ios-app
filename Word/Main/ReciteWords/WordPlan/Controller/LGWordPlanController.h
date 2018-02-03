@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class LGPlanTableView;
 @interface LGWordPlanController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -28,3 +29,10 @@
 @property (weak, nonatomic) IBOutlet UITableView *numberTable;
 
 @end
+
+@interface LGPlanTableView : UITableView
+
+
+
+@end
+

@@ -40,7 +40,6 @@
 		56AF60D52011EA050067BD7B /* UIViewController+LGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AF60D42011EA050067BD7B /* UIViewController+LGViewController.m */; };
 		56C989842020176A0095A4BD /* LGWordPlanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C989832020176A0095A4BD /* LGWordPlanController.m */; };
 		56C9898820201CCF0095A4BD /* LGWordPlanCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9898720201CCF0095A4BD /* LGWordPlanCollectionCell.m */; };
-		56C9898B20201D050095A4BD /* LGAddWordLibraryCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9898A20201D050095A4BD /* LGAddWordLibraryCollectionCell.m */; };
 		56C9898E2020461D0095A4BD /* LGWordLibraryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9898D2020461D0095A4BD /* LGWordLibraryController.m */; };
 		56C9899120204F7C0095A4BD /* LGWordLibraryTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9899020204F7C0095A4BD /* LGWordLibraryTypeCell.m */; };
 		56C98994202050F60095A4BD /* LGWordTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C98993202050F60095A4BD /* LGWordTypeCell.m */; };
@@ -120,8 +119,6 @@
 		56C989832020176A0095A4BD /* LGWordPlanController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordPlanController.m; sourceTree = "<group>"; };
 		56C9898620201CCF0095A4BD /* LGWordPlanCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordPlanCollectionCell.h; sourceTree = "<group>"; };
 		56C9898720201CCF0095A4BD /* LGWordPlanCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordPlanCollectionCell.m; sourceTree = "<group>"; };
-		56C9898920201D050095A4BD /* LGAddWordLibraryCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGAddWordLibraryCollectionCell.h; sourceTree = "<group>"; };
-		56C9898A20201D050095A4BD /* LGAddWordLibraryCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGAddWordLibraryCollectionCell.m; sourceTree = "<group>"; };
 		56C9898C2020461D0095A4BD /* LGWordLibraryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordLibraryController.h; sourceTree = "<group>"; };
 		56C9898D2020461D0095A4BD /* LGWordLibraryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordLibraryController.m; sourceTree = "<group>"; };
 		56C9898F20204F7C0095A4BD /* LGWordLibraryTypeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordLibraryTypeCell.h; sourceTree = "<group>"; };
@@ -386,8 +383,6 @@
 			children = (
 				56C9898620201CCF0095A4BD /* LGWordPlanCollectionCell.h */,
 				56C9898720201CCF0095A4BD /* LGWordPlanCollectionCell.m */,
-				56C9898920201D050095A4BD /* LGAddWordLibraryCollectionCell.h */,
-				56C9898A20201D050095A4BD /* LGAddWordLibraryCollectionCell.m */,
 				56C9898F20204F7C0095A4BD /* LGWordLibraryTypeCell.h */,
 				56C9899020204F7C0095A4BD /* LGWordLibraryTypeCell.m */,
 				56C98992202050F60095A4BD /* LGWordTypeCell.h */,
@@ -646,7 +641,6 @@
 				56C9899720207C0C0095A4BD /* LGNavigationItem.m in Sources */,
 				56EAD86220197F2D0059604E /* LGFindPasswordController.m in Sources */,
 				565A30FA2013411200448B1C /* LGRegisterController.m in Sources */,
-				56C9898B20201D050095A4BD /* LGAddWordLibraryCollectionCell.m in Sources */,
 				5639AFA22024535700AA2CA5 /* LGPlanTableViewCell.m in Sources */,
 				56C989842020176A0095A4BD /* LGWordPlanController.m in Sources */,
 				0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */,

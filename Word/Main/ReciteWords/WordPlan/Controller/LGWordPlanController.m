@@ -23,18 +23,33 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	//[self performSegueWithIdentifier:@"myPlanTowordLibrary" sender:nil];
-    [self configUserInterface];
-	[self requestData:YES];
+  //  [self configUserInterface];
+	
+	
 }
 
-- (void)configUserInterface{
-    
-	__weak typeof(self) weakSelf = self;
-	[self.scrollView setHeaderRefresh:^{
-		[weakSelf requestData:NO];
-	}];
+//进入界面刷新,self.planArray 为nil, 表示第一次进入界面,需要显示 loading
+- (void)viewWillAppear:(BOOL)animated{
+	[self requestData:self.planArray == nil];
 }
 
+- (void)viewDidLayoutSubviews {
+	[self configTable:self.numberTable];
+//	[self configTable:self.dayTable];
+}
+
+- (void)configTable:(UITableView *)tableView {
+	
+	tableView.backgroundView = [[UIView alloc]init];
+	UIView *selectedCellBackgroundView = [[UIView alloc]init];
+	//设置居中
+	selectedCellBackgroundView.frame = CGRectMake(0, tableView.frame.size.height/2.0 - tableView.rowHeight / 2.0 , self.dayTable.frame.size.width, tableView.rowHeight);
+	//selectedCellBackgroundView.frame = CGRectMake(0, 0, self.dayTable.frame.size.width, tableView.rowHeight);
+	//selectedCellBackgroundView.center = tableView.center;
+	selectedCellBackgroundView.backgroundColor = [UIColor lg_colorWithHexString:@"e7e5e5"];
+
+	[tableView.backgroundView addSubview:selectedCellBackgroundView];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -48,8 +63,8 @@
 	[self.request requestUserPlan:^(id response, LGError *error) {
         [weakSelf.scrollView lg_endRefreshing];
 		if ([weakSelf isNormal:error]) {
-            self.planArray = [LGPlanModel mj_objectArrayWithKeyValuesArray:response];
-            [self.collectionView reloadData];
+			self.planArray = [LGPlanModel mj_objectArrayWithKeyValuesArray:response[@"package"]];
+            [weakSelf.collectionView reloadData];
 		}
 	}];
 }
@@ -86,14 +101,27 @@
 
 #pragma mark - UICollectionViewDataSource
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-	return 0;
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+	return self.planArray.count;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     LGWordPlanCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LGWordPlanCollectionCell" forIndexPath:indexPath];
     cell.planModel = self.planArray[indexPath.row];
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+	
+	
+	if (kind == UICollectionElementKindSectionHeader) {
+		UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"LGCollectionHeaderView" forIndexPath:indexPath];
+		return  header;
+	}else{
+		UICollectionReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"LGCollectionFooterView" forIndexPath:indexPath];
+		footerview.backgroundColor = [UIColor purpleColor];
+		return footerview;
+	}
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -109,3 +137,4 @@
 
 
 @end
+

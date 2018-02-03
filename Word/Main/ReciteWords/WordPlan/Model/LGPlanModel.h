@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSString *planWords;
 @property (nonatomic, strong) NSString *total;
 @property (nonatomic, strong) NSString *userWords;
+@property (nonatomic, strong) NSString *name;
 
 @end

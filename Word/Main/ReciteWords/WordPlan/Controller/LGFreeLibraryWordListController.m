@@ -31,6 +31,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)configUserInterface{
+	
 	self.modelArray = [NSMutableArray array];
 	self.title = self.wordLibraryModel.name;
 	self.tableView.tableHeaderView.frame = CGRectMake(0, 0, self.view.frame.size.width, 36);
