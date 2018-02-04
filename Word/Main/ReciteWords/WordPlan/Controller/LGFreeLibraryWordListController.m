@@ -23,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configUserInterface];
-    [self requestData];
+    [self requestData:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +38,7 @@
 	self.wordNumberLabel.attributedText = [self getWordNumAttribute];
 	__weak typeof(self) weakSelf = self;
 	[self.tableView setRefreshBlock:^(LGCurrentRefreshType type) {
-		[weakSelf requestData];
+        [weakSelf requestData:NO];
 	}];
 }
 
@@ -70,11 +70,12 @@
 }
 
 //请求单词列表
-- (void)requestData {
+- (void)requestData:(BOOL)showLoading {
 	
 	__weak typeof(self) weakSelf = self;
-    [LGProgressHUD showHUDAddedTo:self.view];
-    
+    if (showLoading) {
+        [LGProgressHUD showHUDAddedTo:self.view];
+    }
 	[self.request requestFreeLibraryWordList:self.wordLibraryModel.ID page:self.tableView.currentPage completion:^(id response, LGError *error) {
 		[weakSelf.tableView lg_endRefreshing];
 		if ([weakSelf isNormal:error]) {

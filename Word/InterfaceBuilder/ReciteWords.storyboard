@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -366,16 +366,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7k-As-92M">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="603"/>
                                         <subviews>
-                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2YQ-Me-8W3">
-                                                <rect key="frame" x="30" y="235" width="152" height="328"/>
-                                                <color key="backgroundColor" red="0.94893962144851685" green="0.94907253980636597" blue="0.94889777898788452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="6"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T0f-aj-Jaw">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T0f-aj-Jaw" customClass="LGPlanTableView">
                                                 <rect key="frame" x="30" y="235" width="152" height="328"/>
                                                 <color key="backgroundColor" red="0.94893962144851685" green="0.94907253980636597" blue="0.94889777898788452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -427,11 +418,11 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <outlet property="dataSource" destination="2rK-sl-QnV" id="T9q-bo-Y5f"/>
-                                                    <outlet property="delegate" destination="2rK-sl-QnV" id="a8S-nm-pgK"/>
+                                                    <outlet property="dataSource" destination="2rK-sl-QnV" id="eLn-Bj-3kD"/>
+                                                    <outlet property="delegate" destination="2rK-sl-QnV" id="3DX-xo-ouD"/>
                                                 </connections>
                                             </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dVi-sB-wvx">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dVi-sB-wvx" customClass="LGPlanTableView">
                                                 <rect key="frame" x="232" y="235" width="152" height="328"/>
                                                 <color key="backgroundColor" red="0.94893962139999999" green="0.94907253979999995" blue="0.94889777900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -455,7 +446,7 @@
                                                                 <constraint firstItem="9dI-QH-K9n" firstAttribute="centerX" secondItem="6tz-Zb-kTI" secondAttribute="centerX" id="lNj-YA-PXb"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
-                                                        <color key="backgroundColor" red="0.94893962139999999" green="0.94907253979999995" blue="0.94889777900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="planType">
                                                                 <integer key="value" value="1"/>
@@ -479,8 +470,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <outlet property="dataSource" destination="2rK-sl-QnV" id="lWw-Xz-M7R"/>
-                                                    <outlet property="delegate" destination="2rK-sl-QnV" id="4A2-dB-azu"/>
+                                                    <outlet property="dataSource" destination="2rK-sl-QnV" id="yj5-7M-IvT"/>
+                                                    <outlet property="delegate" destination="2rK-sl-QnV" id="QkJ-0L-QXk"/>
                                                 </connections>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0天" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aip-43-b8c">
@@ -726,17 +717,13 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XOg-7C-ES8" secondAttribute="trailing" constant="10" id="2mr-aA-S4l"/>
                                             <constraint firstItem="dVi-sB-wvx" firstAttribute="height" secondItem="T0f-aj-Jaw" secondAttribute="height" id="5JU-CW-llO"/>
-                                            <constraint firstItem="2YQ-Me-8W3" firstAttribute="width" secondItem="T0f-aj-Jaw" secondAttribute="width" id="6Z9-X7-YBX"/>
                                             <constraint firstItem="XOg-7C-ES8" firstAttribute="height" secondItem="Aip-43-b8c" secondAttribute="height" id="9rC-8u-8qB"/>
                                             <constraint firstItem="T0f-aj-Jaw" firstAttribute="width" secondItem="Aip-43-b8c" secondAttribute="width" id="G5f-VI-Co3"/>
-                                            <constraint firstItem="2YQ-Me-8W3" firstAttribute="centerX" secondItem="T0f-aj-Jaw" secondAttribute="centerX" id="GiY-yM-sYi"/>
                                             <constraint firstItem="dVi-sB-wvx" firstAttribute="centerX" secondItem="XOg-7C-ES8" secondAttribute="centerX" id="Itw-hD-abK"/>
                                             <constraint firstAttribute="trailing" secondItem="WMZ-1W-90S" secondAttribute="trailing" id="NEb-6U-iXU"/>
                                             <constraint firstItem="Aip-43-b8c" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="I7k-As-92M" secondAttribute="leading" constant="10" id="Pgw-Y3-h58"/>
-                                            <constraint firstItem="2YQ-Me-8W3" firstAttribute="height" secondItem="T0f-aj-Jaw" secondAttribute="height" id="RJA-At-8rx"/>
                                             <constraint firstItem="WMZ-1W-90S" firstAttribute="leading" secondItem="I7k-As-92M" secondAttribute="leading" id="RLl-7J-wd2"/>
                                             <constraint firstItem="XOg-7C-ES8" firstAttribute="centerY" secondItem="Aip-43-b8c" secondAttribute="centerY" id="TR7-VI-p1X"/>
-                                            <constraint firstItem="2YQ-Me-8W3" firstAttribute="centerY" secondItem="T0f-aj-Jaw" secondAttribute="centerY" id="VxM-8x-ChK"/>
                                             <constraint firstItem="XOg-7C-ES8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Aip-43-b8c" secondAttribute="trailing" constant="10" id="WDN-Bz-eTc"/>
                                             <constraint firstItem="XOg-7C-ES8" firstAttribute="leading" secondItem="Aip-43-b8c" secondAttribute="trailing" priority="750" constant="50" id="bAQ-T7-Fwz"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="T0f-aj-Jaw" secondAttribute="bottom" constant="10" id="bfs-RN-1sF"/>
@@ -749,7 +736,6 @@
                                             <constraint firstItem="XOg-7C-ES8" firstAttribute="width" secondItem="Aip-43-b8c" secondAttribute="width" id="jDD-gz-bWC"/>
                                             <constraint firstItem="Aip-43-b8c" firstAttribute="top" secondItem="WMZ-1W-90S" secondAttribute="bottom" priority="750" constant="40" id="mPZ-D7-73C"/>
                                             <constraint firstItem="WMZ-1W-90S" firstAttribute="top" secondItem="I7k-As-92M" secondAttribute="top" id="rgT-gc-lAH"/>
-                                            <constraint firstItem="2YQ-Me-8W3" firstAttribute="centerX" secondItem="T0f-aj-Jaw" secondAttribute="centerX" id="siB-f7-oot"/>
                                             <constraint firstAttribute="trailing" secondItem="XOg-7C-ES8" secondAttribute="trailing" priority="750" constant="30" id="vG3-Rg-tBr"/>
                                             <constraint firstItem="T0f-aj-Jaw" firstAttribute="top" secondItem="Aip-43-b8c" secondAttribute="bottom" constant="15" id="xqj-oX-Fpe"/>
                                         </constraints>
@@ -781,7 +767,7 @@
                     <connections>
                         <outlet property="collectionView" destination="4ek-v8-c8C" id="vLU-VX-01Q"/>
                         <outlet property="dayLabel" destination="Aip-43-b8c" id="MG4-a7-3ZX"/>
-                        <outlet property="dayTable" destination="T0f-aj-Jaw" id="54c-DJ-RtD"/>
+                        <outlet property="dayTable" destination="T0f-aj-Jaw" id="tK2-k1-tXh"/>
                         <outlet property="numberLabel" destination="XOg-7C-ES8" id="6pJ-1I-kdX"/>
                         <outlet property="numberTable" destination="dVi-sB-wvx" id="J1B-BB-Vvz"/>
                         <outlet property="scrollView" destination="wy3-dZ-xAK" id="aKY-Kp-1UP"/>
