@@ -225,12 +225,14 @@
  删除计划
  */
 - (void)deletePlan:(LGPlanModel *)planModel{
+  //  NSLog(@"retainCount:%@",[planModel valueForKey:@"retainCount"]);
 	LGDeletePlanAlertView *deletePlanAlertView = [[NSBundle mainBundle]loadNibNamed:@"LGDeletePlanAlertView" owner:nil options:nil].firstObject;
 	deletePlanAlertView.titleLabel.text = [NSString stringWithFormat:@"确定删除%@的%@个单词?",planModel.name,planModel.total];
 	__weak typeof(deletePlanAlertView) weakView = deletePlanAlertView;
 	__weak typeof(self) weakSelf = self;
 	deletePlanAlertView.deleteBlock = ^{
 		[LGProgressHUD showHUDAddedTo:weakView];
+        
 		[weakSelf.request deleteWordLibrary:planModel.ID completion:^(id response, LGError *error) {
 			if ([weakSelf isNormal:error]) {
 				NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[weakSelf.planArray indexOfObject:planModel] inSection:0];
