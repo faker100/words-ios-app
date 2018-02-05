@@ -54,9 +54,6 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 
 /*************************************** 接口 **********************************/
 
-
-/***********************登录***************/
-
 //登录
 #define LOGIN_URL						 @"http://login.gmatonline.cn/cn/app-api/check-login"
 
@@ -96,5 +93,8 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 //添加词包
 #define ADD_WORD_LIBRARY_URL			@"http://words.viplgw.cn/cn/app-api/add-package"
 
+//删除词包
+#define DELETE_WORD_LIBRARY_URL			@"http://words.viplgw.cn/cn/app-api/delete-package"
 
-
+//修改词包计划
+#define UPLOAD_WORD_LIBRARY_URL			@"http://words.viplgw.cn/cn/app-api/update-package"

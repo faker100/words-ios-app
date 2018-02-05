@@ -10,6 +10,7 @@
 #import "NSString+LGString.h"
 #import "LGUserManager.h"
 #import "LGTool.h"
+#import "LGPlanModel.h"
 
 @implementation LGRequest
 
@@ -145,6 +146,22 @@
 	self.url = ADD_WORD_LIBRARY_URL;
 	self.parameter = @{
 					   @"packageId" : libraryId
+					   };
+	[self postRequestCompletion:completion];
+}
+
+- (void)deleteWordLibrary:(NSString *)libraryId completion:(comletionBlock)completion{
+	self.url = DELETE_WORD_LIBRARY_URL;
+	self.parameter = @{
+					   @"id" : libraryId
+					   };
+	[self postRequestCompletion:completion];
+}
+
+- (void)uploadWordLibraryArray:(NSArray<LGPlanModel *> *)libraryArray completion:(comletionBlock)completion{
+	self.url = UPLOAD_WORD_LIBRARY_URL;
+	self.parameter = @{
+					   @"data" : [LGPlanModel mj_keyValuesArrayWithObjectArray:libraryArray]
 					   };
 	[self postRequestCompletion:completion];
 }

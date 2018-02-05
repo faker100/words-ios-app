@@ -16,6 +16,10 @@
 
 @implementation LGPlanTableViewCell
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated{
+	self.planTitleLabel.highlighted = selected;
+}
+
 - (void)setNum:(NSInteger)num{
     _num = num;
     NSString *unit = self.planType == LGPlanDayNum ? @"天" : @"个";

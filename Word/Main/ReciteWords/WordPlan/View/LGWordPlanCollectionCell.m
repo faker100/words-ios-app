@@ -18,18 +18,24 @@
 }
 
 - (void)setPlanModel:(LGPlanModel *)planModel{
-	
-    _planModel = planModel;
-	NSInteger userWords = planModel.userWords.integerValue;
-	userWords = 80;
-	NSInteger total = planModel.total.integerValue;
-    [self.titleNameButton setTitle:[NSString stringWithFormat:@" %@",planModel.name] forState:UIControlStateNormal];
-	self.progressLabel.text = [NSString stringWithFormat:@"(%ld/%ld)",userWords,total];
-	self.progressView.progress = userWords * 1.0 / total;
+	if (planModel != _planModel) {
+		_planModel = planModel;
+		NSInteger userWords = planModel.userWords.integerValue;
+		userWords = 80;
+		NSInteger total = planModel.total.integerValue;
+		[self.titleNameButton setTitle:[NSString stringWithFormat:@" %@",planModel.name] forState:UIControlStateNormal];
+		self.progressLabel.text = [NSString stringWithFormat:@"(%ld/%ld)",userWords,total];
+		self.progressView.progress = userWords * 1.0 / total;
+	}
 }
 
+- (void)setIsEdit:(BOOL)isEdit{
+	_isEdit = isEdit;
+	self.deleteButton.hidden = !isEdit;
+}
 
 - (IBAction)deleteAction:(id)sender {
+	[self.delegate deletePlan:self.planModel];
 }
 
 @end

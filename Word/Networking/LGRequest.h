@@ -10,7 +10,7 @@
 #import "LGBaseRequest.h"
 #import "API.h"
 
-
+@class LGPlanModel;
 @interface LGRequest : LGBaseRequest
 
 
@@ -118,5 +118,23 @@
  @param libraryId 词包 id
  */
 - (void)addWordLibrary:(NSString *)libraryId completion:(comletionBlock)completion;
+
+
+
+/**
+ 删除词包
+
+ @param libraryId 词包 id
+ */
+- (void)deleteWordLibrary:(NSString *)libraryId completion:(comletionBlock)completion;
+
+
+
+/**
+ 修改词包计划
+
+ @param libraryArray 需要修改的词包
+ */
+- (void)uploadWordLibraryArray:(NSArray<LGPlanModel *> *)libraryArray completion:(comletionBlock)completion;
 
 @end

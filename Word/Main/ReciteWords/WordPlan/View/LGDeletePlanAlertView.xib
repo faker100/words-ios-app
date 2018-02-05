@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LGDeletePlanAlertView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8dY-7B-TIu">
+                    <rect key="frame" x="57" y="248.5" width="260" height="170"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBn-gN-MTQ">
+                            <rect key="frame" x="0.0" y="126" width="129.5" height="44"/>
+                            <color key="backgroundColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="CFB-jj-pWD"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="sRp-Fd-IZv"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGw-Cd-wNw">
+                            <rect key="frame" x="130.5" y="126" width="129.5" height="44"/>
+                            <color key="backgroundColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="确定">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="sureAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="6Pb-f7-C9r"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确定删除?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVt-rz-nQ2">
+                            <rect key="frame" x="10" y="0.0" width="240" height="126"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="PGw-Cd-wNw" secondAttribute="trailing" id="1Wj-tq-9mm"/>
+                        <constraint firstItem="IBn-gN-MTQ" firstAttribute="leading" secondItem="8dY-7B-TIu" secondAttribute="leading" id="3zp-SU-mQF"/>
+                        <constraint firstItem="wVt-rz-nQ2" firstAttribute="top" secondItem="8dY-7B-TIu" secondAttribute="top" id="7v4-u1-xfP"/>
+                        <constraint firstItem="PGw-Cd-wNw" firstAttribute="width" secondItem="IBn-gN-MTQ" secondAttribute="width" id="AGH-S3-9YA"/>
+                        <constraint firstItem="wVt-rz-nQ2" firstAttribute="leading" secondItem="8dY-7B-TIu" secondAttribute="leading" constant="10" id="I9x-7j-Wop"/>
+                        <constraint firstItem="IBn-gN-MTQ" firstAttribute="top" secondItem="wVt-rz-nQ2" secondAttribute="bottom" id="OZl-9K-IXI"/>
+                        <constraint firstItem="PGw-Cd-wNw" firstAttribute="height" secondItem="IBn-gN-MTQ" secondAttribute="height" id="P8I-g7-frh"/>
+                        <constraint firstAttribute="height" constant="170" id="UsN-ii-mrn"/>
+                        <constraint firstItem="PGw-Cd-wNw" firstAttribute="leading" secondItem="IBn-gN-MTQ" secondAttribute="trailing" constant="1" id="XQ4-0k-Sy5"/>
+                        <constraint firstAttribute="trailing" secondItem="wVt-rz-nQ2" secondAttribute="trailing" constant="10" id="bve-hT-Ibo"/>
+                        <constraint firstAttribute="width" constant="260" id="kGd-8f-eTI"/>
+                        <constraint firstAttribute="bottom" secondItem="IBn-gN-MTQ" secondAttribute="bottom" id="x8f-9m-VWo"/>
+                        <constraint firstAttribute="bottom" secondItem="PGw-Cd-wNw" secondAttribute="bottom" id="zL0-nY-eoD"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="0.31699486301369861" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="8dY-7B-TIu" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Koa-X5-t6F"/>
+                <constraint firstItem="8dY-7B-TIu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SqI-Kh-hjc"/>
+            </constraints>
+            <connections>
+                <outlet property="titleLabel" destination="wVt-rz-nQ2" id="cNG-P8-tXH"/>
+            </connections>
+        </view>
+    </objects>
+</document>

@@ -10,19 +10,25 @@
 #import "LGProgressView.h"
 #import "LGPlanModel.h"
 
+@protocol LGWordPlanCollectionCellDelegate <NSObject>
+
+- (void)deletePlan:(LGPlanModel *)planModel;
+
+@end
 @interface LGWordPlanCollectionCell : UICollectionViewCell
 
 
+@property (nonatomic, assign) id<LGWordPlanCollectionCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIView *bgColorView;
-
 //标题
 @property (weak, nonatomic) IBOutlet UIButton *titleNameButton;
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 @property (weak, nonatomic) IBOutlet LGProgressView *progressView;
-
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
+//设置是否编辑状态
+@property (nonatomic, assign) BOOL  isEdit;
 
-@property (nonatomic, strong) LGPlanModel *planModel;
+@property (nonatomic, weak) LGPlanModel *planModel;
 
 @end

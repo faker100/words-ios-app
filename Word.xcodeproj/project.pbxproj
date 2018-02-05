@@ -53,6 +53,8 @@
 		56EAD8682019C0FC0059604E /* PK.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EAD8672019C0FC0059604E /* PK.storyboard */; };
 		56EAD86A2019C1300059604E /* Periphery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EAD8692019C1300059604E /* Periphery.storyboard */; };
 		56EAD8722019C98B0059604E /* LGTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EAD8712019C98B0059604E /* LGTabBarViewController.m */; };
+		56FD20D62028256F003A6154 /* LGDeletePlanAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FD20D52028256F003A6154 /* LGDeletePlanAlertView.m */; };
+		56FD20D82028257D003A6154 /* LGDeletePlanAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56FD20D72028257D003A6154 /* LGDeletePlanAlertView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -141,6 +143,9 @@
 		56EAD8692019C1300059604E /* Periphery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Periphery.storyboard; sourceTree = "<group>"; };
 		56EAD8702019C98B0059604E /* LGTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTabBarViewController.h; sourceTree = "<group>"; };
 		56EAD8712019C98B0059604E /* LGTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTabBarViewController.m; sourceTree = "<group>"; };
+		56FD20D42028256F003A6154 /* LGDeletePlanAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDeletePlanAlertView.h; sourceTree = "<group>"; };
+		56FD20D52028256F003A6154 /* LGDeletePlanAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDeletePlanAlertView.m; sourceTree = "<group>"; };
+		56FD20D72028257D003A6154 /* LGDeletePlanAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGDeletePlanAlertView.xib; sourceTree = "<group>"; };
 		66ACA9D95F507310F264822E /* Pods_Word.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Word.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		777149E8AF87BED5DA24DEBA /* Pods-Word.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Word.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Word/Pods-Word.debug.xcconfig"; sourceTree = "<group>"; };
 		971D3B15969CB5BD9FCFA2C3 /* Pods-Word.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Word.release.xcconfig"; path = "Pods/Target Support Files/Pods-Word/Pods-Word.release.xcconfig"; sourceTree = "<group>"; };
@@ -391,6 +396,9 @@
 				560F0FCA2022AA7000324510 /* LGFreeWordListCell.m */,
 				5639AFA02024535700AA2CA5 /* LGPlanTableViewCell.h */,
 				5639AFA12024535700AA2CA5 /* LGPlanTableViewCell.m */,
+				56FD20D42028256F003A6154 /* LGDeletePlanAlertView.h */,
+				56FD20D52028256F003A6154 /* LGDeletePlanAlertView.m */,
+				56FD20D72028257D003A6154 /* LGDeletePlanAlertView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -555,6 +563,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56FD20D82028257D003A6154 /* LGDeletePlanAlertView.xib in Resources */,
 				56AF60C72011CDB90067BD7B /* Login.storyboard in Resources */,
 				56A88846200CA53400847BE6 /* LaunchScreen.storyboard in Resources */,
 				56A88843200CA53400847BE6 /* Assets.xcassets in Resources */,
@@ -641,6 +650,7 @@
 				56C9899720207C0C0095A4BD /* LGNavigationItem.m in Sources */,
 				56EAD86220197F2D0059604E /* LGFindPasswordController.m in Sources */,
 				565A30FA2013411200448B1C /* LGRegisterController.m in Sources */,
+				56FD20D62028256F003A6154 /* LGDeletePlanAlertView.m in Sources */,
 				5639AFA22024535700AA2CA5 /* LGPlanTableViewCell.m in Sources */,
 				56C989842020176A0095A4BD /* LGWordPlanController.m in Sources */,
 				0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */,

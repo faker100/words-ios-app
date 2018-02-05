@@ -10,4 +10,14 @@
 
 @implementation LGPlanModel
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+	return @{
+			 @"ID" : @"id"
+			 };
+}
+
+- (NSInteger)surplusWord{
+	return self.total.integerValue - self.userWords.integerValue;
+}
+
 @end

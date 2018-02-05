@@ -10,7 +10,7 @@
 
 typedef NS_ENUM(NSUInteger, LGPlanTableViewCellType) {
 	LGPlanDayNum = 0,   //天数 cell
-	LGplanWordNum   //单词个数
+	LGplanWordNum   	//单词个数
 	
 };
 

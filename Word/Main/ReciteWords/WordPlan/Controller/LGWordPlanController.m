@@ -10,11 +10,12 @@
 #import "UIScrollView+LGRefresh.h"
 #import "LGPlanTableViewCell.h"
 #import "LGWordPlanCollectionCell.h"
+#import "LGDeletePlanAlertView.h"
 
-@interface LGWordPlanController () <UITableViewDataSource, UITableViewDelegate,UICollectionViewDelegate, UICollectionViewDataSource>
+@interface LGWordPlanController () <UITableViewDataSource, UITableViewDelegate,UICollectionViewDelegate, UICollectionViewDataSource, LGWordPlanCollectionCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray<LGPlanModel *> *planArray;
-@property (nonatomic, strong) LGPlanModel *selectedPlan;
+@property (nonatomic, weak) LGPlanModel *selectedPlan;
 
 @end
 
@@ -44,7 +45,6 @@
             [weakSelf.collectionView reloadData];
             [weakSelf.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
             weakSelf.selectedPlan = weakSelf.planArray.firstObject;
-            
         }
     }];
 }
@@ -54,23 +54,64 @@
  编辑词包
  */
 - (IBAction)editAction:(UIButton *)sender {
-    
+	sender.selected = !sender.isSelected;
+	[self.collectionView reloadData];
 }
 
+
+/**
+ 修改计划,判断是否所有词包都已选择计划
+
+ */
+- (IBAction)uploadPlanAction:(id)sender {
+	
+	__weak typeof(self) weakSelf = self;
+	__block LGPlanModel *invalidModel = nil;
+	[self.planArray enumerateObjectsUsingBlock:^(LGPlanModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		if ( !(StringNotEmpty(obj.planDay) && StringNotEmpty(obj.planWords))){
+			invalidModel = obj;
+			*stop = YES;
+		}
+	}];
+	if (invalidModel) {
+		NSString *error = [NSString stringWithFormat:@"请完善%@ 的学习计划",invalidModel.name];
+		[LGProgressHUD showMessage:error toView:self.view];
+		self.selectedPlan = invalidModel;
+	}else{
+		[LGProgressHUD showHUDAddedTo:self.view];
+		[self.request uploadWordLibraryArray:self.planArray completion:^(id response, LGError *error) {
+			if ([weakSelf isNormal:error]) {
+				[LGProgressHUD showSuccess:@"修改成功" toView:weakSelf.view  completionBlock:^{
+					[weakSelf.navigationController popViewControllerAnimated:YES];
+				}];
+			}
+		}];
+	}
+}
+
+
+/**
+ 设置选中的计划,并滚动到视图中间
+
+ @param selectedPlan 选中的计划
+ */
 - (void)setSelectedPlan:(LGPlanModel *)selectedPlan{
     _selectedPlan = selectedPlan;
     [self.dayTable reloadData];
     [self.numberTable reloadData];
-    if (StringNotEmpty(_selectedPlan.planDay)) {
-        
-    }
+	if (selectedPlan) {
+		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.planArray indexOfObject:selectedPlan] inSection:0];
+		[self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
+		[self setPlanWithType:LGChooseDayPlan value:_selectedPlan.planDay.integerValue isFixOther:YES];
+	}
+	
 }
 
 #pragma mark -UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.selectedPlan.total.integerValue - self.selectedPlan.userWords.integerValue;
+    return self.selectedPlan.surplusWord;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,54 +123,74 @@
 
 #pragma mark - UITableViewDelegate
 
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     LGPlanTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (tableView == self.dayTable) {
-        self.dayLabel.text = [NSString stringWithFormat:@"%ld天",cell.num];
-        self.
-    }else{
-        self.numberLabel.text = [NSString stringWithFormat:@"%ld个",cell.num];
-    }
+	[self setPlanWithType:((LGPlanTableView *)tableView).planType value:cell.num isFixOther:YES];
 }
 
 #pragma mark - UIScrollViewDelegate
 
-// 滚动视图减速完成，滚动将停止时，调用该方法。一次有效滑动，只执行一次。
-
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     
     if ([scrollView isKindOfClass:[LGPlanTableView class]] && !decelerate) {
-        [self fixSelectCellOfTable:(LGPlanTableView *)scrollView];
+        [self scrollSelectCellToMiddleOfTable:(LGPlanTableView *)scrollView];
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     if ([scrollView isKindOfClass:[LGPlanTableView class]]) {
-        [self fixSelectCellOfTable:(LGPlanTableView *)scrollView];
+        [self scrollSelectCellToMiddleOfTable:(LGPlanTableView *)scrollView];
     }
 }
 
 
+#pragma mark -
+
 /**
- 调整cell到高亮区域
+ 滑动最近或者选中cell到中间高亮区域
  判断高亮区域的中心点在哪个cell中
  */
-- (void)fixSelectCellOfTable:(LGPlanTableView *)tableView{
-    
+- (void)scrollSelectCellToMiddleOfTable:(LGPlanTableView *)tableView{
     CGPoint selectedViewCenter = CGPointMake(0, CGRectGetMidY(tableView.selectedCellBackgroundView.bounds));
     CGPoint convertPoint = [tableView.selectedCellBackgroundView convertPoint:selectedViewCenter toView:tableView];
     NSIndexPath *indexPath = [tableView indexPathForRowAtPoint:convertPoint];
     if (indexPath) {
-        [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
-        if ([tableView.delegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
-            [tableView.delegate tableView:tableView didSelectRowAtIndexPath:indexPath];
-        }
+		NSInteger value = ((LGPlanTableViewCell *)[tableView cellForRowAtIndexPath:indexPath]).num;
+		[self setPlanWithType:tableView.planType value:value isFixOther:YES];
     }
 }
 
+
+
+/**
+ 设置选择的计划
+
+ @param type 计划类型
+ @param value 选择计划的值
+ @param flag 是否根据当前选择计划(天数/个数),修改另一个计划(个数/天数)
+ */
+- (void)setPlanWithType:(LGChoosePlanType)type value:(NSInteger)value isFixOther:(BOOL)flag{
+	value = MAX(value, 1);
+	if (type == LGChooseDayPlan) {
+		self.dayLabel.text = [NSString stringWithFormat:@"%ld天",value];
+		self.selectedPlan.planDay = @(value).stringValue;
+		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:value - 1 inSection:0];
+		[self.dayTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+		if (flag) {
+			NSInteger otherValue = ceil(self.selectedPlan.surplusWord * 1.0 / value);
+			[self setPlanWithType:LGChooseNumPlan value:otherValue isFixOther:NO];
+		}
+	}else{
+		self.numberLabel.text = [NSString stringWithFormat:@"%ld个",value];
+		self.selectedPlan.planWords = @(value).stringValue;
+		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.selectedPlan.surplusWord - value inSection:0];
+		[self.numberTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+		if (flag) {
+			NSInteger otherValue = ceil(self.selectedPlan.surplusWord * 1.0 / value);
+			[self setPlanWithType:LGChooseDayPlan value:otherValue isFixOther:NO];
+		}
+	}
+}
 
 #pragma mark - UICollectionViewDataSource
 
@@ -139,7 +200,9 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     LGWordPlanCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LGWordPlanCollectionCell" forIndexPath:indexPath];
+	cell.delegate = self;
     cell.planModel = self.planArray[indexPath.row];
+	cell.isEdit = self.editButton.isSelected;
     return cell;
 }
 
@@ -155,20 +218,42 @@
     }
 }
 
+#pragma mark - LGWordPlanCollectionCellDelegate
+
+
+/**
+ 删除计划
+ */
+- (void)deletePlan:(LGPlanModel *)planModel{
+	LGDeletePlanAlertView *deletePlanAlertView = [[NSBundle mainBundle]loadNibNamed:@"LGDeletePlanAlertView" owner:nil options:nil].firstObject;
+	deletePlanAlertView.titleLabel.text = [NSString stringWithFormat:@"确定删除%@的%@个单词?",planModel.name,planModel.total];
+	__weak typeof(deletePlanAlertView) weakView = deletePlanAlertView;
+	__weak typeof(self) weakSelf = self;
+	deletePlanAlertView.deleteBlock = ^{
+		[LGProgressHUD showHUDAddedTo:weakView];
+		[weakSelf.request deleteWordLibrary:planModel.ID completion:^(id response, LGError *error) {
+			if ([weakSelf isNormal:error]) {
+				NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[weakSelf.planArray indexOfObject:planModel] inSection:0];
+				[weakSelf.planArray removeObject:planModel];
+				[weakSelf.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+				if (planModel == weakSelf.selectedPlan) {
+					weakSelf.selectedPlan = nil;
+				}
+				[LGProgressHUD showSuccess:@"删除成功" toView:weakSelf.view];
+				[weakView removeFromSuperview];
+			}
+		}];
+	};
+	UIWindow *window = self.view.window;
+	deletePlanAlertView.frame = window.bounds;
+	[window addSubview:deletePlanAlertView];
+}
+
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-    
+	
+	self.selectedPlan = self.planArray[indexPath.row];
 }
-
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-}
-
 
 @end
 

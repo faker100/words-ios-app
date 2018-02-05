@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *createTime;
 @property (nonatomic, strong) NSString *startTime;
-@property (nonatomic, strong) NSString *studyModel;
+@property (nonatomic, strong) NSString *studyModel; //用户是否有学习模式;
+@property (nonatomic, strong) NSString *planWords; //判断用户当前词包是否有计划; nil 没有计划
 
 @end

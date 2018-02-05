@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -416,6 +416,9 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
                                                         <color key="value" red="0.87835711240768433" green="0.87848061323165894" blue="0.87831813097000122" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="planType">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="dataSource" destination="2rK-sl-QnV" id="eLn-Bj-3kD"/>
@@ -468,6 +471,9 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
                                                         <color key="value" red="0.87835711240000003" green="0.87848061320000004" blue="0.878318131" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="planType">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="dataSource" destination="2rK-sl-QnV" id="yj5-7M-IvT"/>
@@ -513,7 +519,7 @@
                                                         <color key="textColor" red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0F-XR-hSW">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0F-XR-hSW">
                                                         <rect key="frame" x="368" y="10.5" width="30" height="29"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <state key="normal" title="编辑">
@@ -761,6 +767,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="我的计划" id="e7f-gM-cHL">
                         <barButtonItem key="backBarButtonItem" title=" " id="feY-YV-Fjm"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="xhx-Vm-wWE">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DmF-2a-3MA">
+                                <rect key="frame" x="363" y="7" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="确定"/>
+                                <connections>
+                                    <action selector="uploadPlanAction:" destination="2rK-sl-QnV" eventType="touchUpInside" id="4Xq-Rw-Lss"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <size key="freeformSize" width="414" height="667"/>
@@ -768,6 +784,7 @@
                         <outlet property="collectionView" destination="4ek-v8-c8C" id="vLU-VX-01Q"/>
                         <outlet property="dayLabel" destination="Aip-43-b8c" id="MG4-a7-3ZX"/>
                         <outlet property="dayTable" destination="T0f-aj-Jaw" id="tK2-k1-tXh"/>
+                        <outlet property="editButton" destination="j0F-XR-hSW" id="lyH-0j-h3A"/>
                         <outlet property="numberLabel" destination="XOg-7C-ES8" id="6pJ-1I-kdX"/>
                         <outlet property="numberTable" destination="dVi-sB-wvx" id="J1B-BB-Vvz"/>
                         <outlet property="scrollView" destination="wy3-dZ-xAK" id="aKY-Kp-1UP"/>

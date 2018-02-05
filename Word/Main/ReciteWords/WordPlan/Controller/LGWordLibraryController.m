@@ -62,8 +62,7 @@
 }
 #pragma mark -UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return tableView == self.libraryTableView ? self.modelArray.count : self.selectedModel.child.count;
 }
 
