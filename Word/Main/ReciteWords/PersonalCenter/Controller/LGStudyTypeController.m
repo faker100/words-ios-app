@@ -11,7 +11,7 @@
 
 @interface LGStudyTypeController ()
 
-@property (nonatomic, assign) LGStudyType selectedType; //选中的学习模式,默认艾宾浩斯记忆法
+@property (nonatomic, assign) LGStudyType selectedType; //选中的学习模式,如果用户之前没有选择,默认艾宾浩斯记忆法
 @property (nonatomic, strong) UIButton *selectedBtn;	//选中的 button, 默认ebbinghausButton
 
 @end
@@ -21,8 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	self.selectedType = LGStudyEbbinghaus;
-	self.selectedBtn = self.ebbinghausButton;
+	self.selectedType =  MAX(1, [LGUserManager shareManager].user.studyModel) ;
 }
 
 - (void)setSelectedType:(LGStudyType)selectedType{
@@ -35,6 +34,7 @@
 			case LGStudyEbbinghaus: self.selectedBtn = self.ebbinghausButton;  break;
 			case LGStudyReview: 	self.selectedBtn = self.reviewButton; 	   break;
 			case LGStudyOnlyNew: 	self.selectedBtn = self.onlyNewButton;     break;
+			default:break;
 		}
 	_selectedType = selectedType;
 	}
@@ -63,14 +63,15 @@
 
 //提交学习模式
 - (IBAction)updateStudyAction:(id)sender {
+	if ([LGUserManager shareManager].user.studyModel == self.selectedType) {
+		[LGProgressHUD showMessage:@"学习模式不能和以前一样" toView:self.view];
+		return;
+	}
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request updateStudyType:self.selectedType completion:^(id response, LGError *error) {
-		[LGProgressHUD hideHUDForView:self.view];
-		if (error) {
-			[LGProgressHUD showError:error.errorMessage toView:self.view];
-		}else{
-			[[NSNotificationCenter defaultCenter] postNotificationName:ChangeTypeNotification object:nil userInfo:@{StudyTypeKey:self.selectedBtn.currentTitle}];
+		if ([self isNormal:error]) {
 			[LGProgressHUD showSuccess:@"修改成功" toView:self.view completionBlock:^{
+				[LGUserManager shareManager].user.studyModel = self.selectedType;
 				[self.navigationController popViewControllerAnimated:YES];
 			}];
 		}

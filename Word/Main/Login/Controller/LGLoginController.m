@@ -37,6 +37,14 @@
 	self.userNameTextField.attributedPlaceholder = [[NSAttributedString alloc]initWithString:@"请输入手机号/邮箱" attributes:attributeDic];
 	self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc]initWithString:@"请输入密码" attributes:attributeDic];
 	
+	LGUserModel *user = [LGUserManager shareManager].user;
+	if (StringNotEmpty(user.username)) {
+		self.userNameTextField.text = user.username;
+	}
+	if (StringNotEmpty(user.password)) {
+		self.userNameTextField.text = user.password;
+	}
+	
 }
 
 - (void)didReceiveMemoryWarning {

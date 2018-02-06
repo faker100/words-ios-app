@@ -7,6 +7,7 @@
 //
 
 #import "LGNoStudyTypeController.h"
+#import "LGUserManager.h"
 
 @interface LGNoStudyTypeController ()
 
@@ -20,6 +21,33 @@
 }
 
 
+- (void)viewWillAppear:(BOOL)animated{
+	[self setStudyType];
+}
+
+
+/**
+ 设置学习模式文字
+ */
+- (void)setStudyType{
+	LGStudyType type = [LGUserManager shareManager].user.studyModel;
+	NSString *str = @"";
+	switch (type) {
+		case LGStudyNone:
+			str = @"你还未选择记忆模式";
+			break;
+		case LGStudyEbbinghaus:
+			str = @"你正在使用艾宾浩斯记忆法(科学记忆)记忆单词";
+			break;
+		case LGStudyReview:
+			str = @"你正在使用复习记忆法(快速巩固)记忆单词";
+			break;
+		case LGStudyOnlyNew:
+			str = @"你正在使用只背新单词(快速记忆)记忆单词";
+			break;
+	}
+	self.studyTypeLabel.text = str;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

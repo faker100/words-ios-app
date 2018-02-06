@@ -15,7 +15,7 @@
 @interface LGWordPlanController () <UITableViewDataSource, UITableViewDelegate,UICollectionViewDelegate, UICollectionViewDataSource, LGWordPlanCollectionCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray<LGPlanModel *> *planArray;
-@property (nonatomic, weak) LGPlanModel *selectedPlan;
+@property (nonatomic, strong) LGPlanModel *selectedPlan;
 
 @end
 
@@ -56,6 +56,9 @@
 - (IBAction)editAction:(UIButton *)sender {
 	sender.selected = !sender.isSelected;
 	[self.collectionView reloadData];
+	
+	//reloadData 会取消选中状态,重新赋值
+	self.selectedPlan = self.selectedPlan;
 }
 
 
@@ -103,8 +106,10 @@
 		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.planArray indexOfObject:selectedPlan] inSection:0];
 		[self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
 		[self setPlanWithType:LGChooseDayPlan value:_selectedPlan.planDay.integerValue isFixOther:YES];
+	}else{
+		self.dayLabel.text = @"0天";
+		self.numberLabel.text = @"0天";
 	}
-	
 }
 
 #pragma mark -UITableViewDataSource
@@ -225,20 +230,21 @@
  删除计划
  */
 - (void)deletePlan:(LGPlanModel *)planModel{
-  //  NSLog(@"retainCount:%@",[planModel valueForKey:@"retainCount"]);
+	
 	LGDeletePlanAlertView *deletePlanAlertView = [[NSBundle mainBundle]loadNibNamed:@"LGDeletePlanAlertView" owner:nil options:nil].firstObject;
 	deletePlanAlertView.titleLabel.text = [NSString stringWithFormat:@"确定删除%@的%@个单词?",planModel.name,planModel.total];
 	__weak typeof(deletePlanAlertView) weakView = deletePlanAlertView;
 	__weak typeof(self) weakSelf = self;
+	__weak typeof(planModel) weakPlanModel = planModel;
 	deletePlanAlertView.deleteBlock = ^{
 		[LGProgressHUD showHUDAddedTo:weakView];
         
-		[weakSelf.request deleteWordLibrary:planModel.ID completion:^(id response, LGError *error) {
+		[weakSelf.request deleteWordLibrary:weakPlanModel.ID completion:^(id response, LGError *error) {
 			if ([weakSelf isNormal:error]) {
-				NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[weakSelf.planArray indexOfObject:planModel] inSection:0];
-				[weakSelf.planArray removeObject:planModel];
+				NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[weakSelf.planArray indexOfObject:weakPlanModel] inSection:0];
+				[weakSelf.planArray removeObject:weakPlanModel];
 				[weakSelf.collectionView deleteItemsAtIndexPaths:@[indexPath]];
-				if (planModel == weakSelf.selectedPlan) {
+				if (weakPlanModel == weakSelf.selectedPlan) {
 					weakSelf.selectedPlan = nil;
 				}
 				[LGProgressHUD showSuccess:@"删除成功" toView:weakSelf.view];

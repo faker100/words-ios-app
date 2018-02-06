@@ -15,6 +15,7 @@
 		5612BFAB202154E30038D653 /* LGWordLibraryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612BFAA202154E30038D653 /* LGWordLibraryModel.m */; };
 		5612BFAE202161E50038D653 /* UIScrollView+LGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612BFAD202161E50038D653 /* UIScrollView+LGRefresh.m */; };
 		5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612BFB12021AC3E0038D653 /* LGProgressView.m */; };
+		562FC13F202992DE005CEA83 /* LGRecitePlanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 562FC13E202992DE005CEA83 /* LGRecitePlanController.m */; };
 		56317B72201C1D6800AEC20B /* LGUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56317B71201C1D6800AEC20B /* LGUserManager.m */; };
 		563259EE201AC609007FF4D6 /* LGTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 563259ED201AC609007FF4D6 /* LGTool.m */; };
 		5639AF9F202441B300AA2CA5 /* LGPlanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5639AF9E202441B300AA2CA5 /* LGPlanModel.m */; };
@@ -72,6 +73,8 @@
 		5612BFAD202161E50038D653 /* UIScrollView+LGRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LGRefresh.m"; sourceTree = "<group>"; };
 		5612BFB02021AC3E0038D653 /* LGProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGProgressView.h; sourceTree = "<group>"; };
 		5612BFB12021AC3E0038D653 /* LGProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGProgressView.m; sourceTree = "<group>"; };
+		562FC13D202992DE005CEA83 /* LGRecitePlanController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGRecitePlanController.h; sourceTree = "<group>"; };
+		562FC13E202992DE005CEA83 /* LGRecitePlanController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGRecitePlanController.m; sourceTree = "<group>"; };
 		56317B70201C1D6800AEC20B /* LGUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGUserManager.h; sourceTree = "<group>"; };
 		56317B71201C1D6800AEC20B /* LGUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGUserManager.m; sourceTree = "<group>"; };
 		563259EC201AC609007FF4D6 /* LGTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTool.h; sourceTree = "<group>"; };
@@ -419,6 +422,8 @@
 				56CCA5E4201B083B0097DCAC /* LGReciteWordsController.m */,
 				566B985E202003E800D368AC /* LGNoStudyTypeController.h */,
 				566B985F202003E800D368AC /* LGNoStudyTypeController.m */,
+				562FC13D202992DE005CEA83 /* LGRecitePlanController.h */,
+				562FC13E202992DE005CEA83 /* LGRecitePlanController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -659,6 +664,7 @@
 				56317B72201C1D6800AEC20B /* LGUserManager.m in Sources */,
 				56506D052016D842000FD8FA /* LGProgressHUD.m in Sources */,
 				56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */,
+				562FC13F202992DE005CEA83 /* LGRecitePlanController.m in Sources */,
 				56A88849200CA53400847BE6 /* main.m in Sources */,
 				5612BFAB202154E30038D653 /* LGWordLibraryModel.m in Sources */,
 				56CCA5E5201B083B0097DCAC /* LGReciteWordsController.m in Sources */,

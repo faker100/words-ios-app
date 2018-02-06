@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 //切换学习方法成功,发送通知
-#define ChangeTypeNotification  @"ChangeTypeNotification"
-#define StudyTypeKey			@"StudyTypeKey"
+//#define ChangeTypeNotification  @"ChangeTypeNotification"
+//#define StudyTypeKey			@"StudyTypeKey"
 
 @interface LGStudyTypeController : UIViewController
 

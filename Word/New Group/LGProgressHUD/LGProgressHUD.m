@@ -61,9 +61,13 @@
 + (void)showMessageWithIcon:(NSString *)iconName message:(NSString *)message toView:(UIView *)view completionBlock:(MBProgressHUDCompletionBlock) completionBlock{
 	LGProgressHUD *hud = [LGProgressHUD configTypeToView:view];
 	hud.label.text = message;
-    hud.minSize = CGSizeMake(150, 125);
 	hud.completionBlock = completionBlock;
-	hud.mode = StringNotEmpty(iconName) ? MBProgressHUDModeCustomView : MBProgressHUDModeText;
+	if (StringNotEmpty(iconName)) {
+		hud.mode  = MBProgressHUDModeCustomView;
+		hud.minSize = CGSizeMake(150, 125);
+	}else{
+		hud.mode = MBProgressHUDModeText;
+	}
 	hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconName]];
 	[hud hideAnimated:YES afterDelay:1.5f];
 }

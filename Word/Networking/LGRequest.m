@@ -160,10 +160,15 @@
 
 - (void)uploadWordLibraryArray:(NSArray<LGPlanModel *> *)libraryArray completion:(comletionBlock)completion{
 	self.url = UPLOAD_WORD_LIBRARY_URL;
-	self.parameter = @{
-					   @"data" : [LGPlanModel mj_keyValuesArrayWithObjectArray:libraryArray]
-					   };
-	[self postRequestCompletion:completion];
+	if (ArrayNotEmpty(libraryArray)) {
+		NSArray *array = [LGPlanModel mj_keyValuesArrayWithObjectArray:libraryArray];
+		NSData *data = [NSJSONSerialization dataWithJSONObject:array options:NSJSONWritingPrettyPrinted error:nil];
+		NSString *jsonStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+		self.parameter = @{
+						   @"data" : jsonStr
+						   };
+		[self postRequestCompletion:completion];
+	}
 }
 
 @end

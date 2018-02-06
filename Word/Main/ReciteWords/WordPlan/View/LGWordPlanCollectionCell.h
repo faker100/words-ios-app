@@ -29,6 +29,6 @@
 //设置是否编辑状态
 @property (nonatomic, assign) BOOL  isEdit;
 
-@property (nonatomic, weak) LGPlanModel *planModel;
+@property (nonatomic, strong) LGPlanModel *planModel;
 
 @end

@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, LGUsernameType) {
 
 //学习模式
 typedef NS_ENUM(NSUInteger, LGStudyType) {
+	LGStudyNone = 0,			//没有学习模式
 	LGStudyEbbinghaus = 1, 		//艾宾浩斯记忆法
 	LGStudyReview = 2,			//复习记忆法
 	LGStudyOnlyNew = 3, 		//只背新单词

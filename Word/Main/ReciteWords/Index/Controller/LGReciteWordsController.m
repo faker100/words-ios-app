@@ -10,11 +10,13 @@
 #import "LGStudyTypeController.h"
 #import "LGUserManager.h"
 #import "LGNoStudyTypeController.h"
+#import "LGRecitePlanController.h"
 
 @interface LGReciteWordsController ()
 
 @property (nonatomic, strong) LGUserModel *user;
-@property (nonatomic, strong) LGNoStudyTypeController *noStudyTypeController;
+@property (nonatomic, strong) LGNoStudyTypeController *noStudyTypeController;  //没有记忆计划
+@property (nonatomic, strong) LGRecitePlanController *recitePlanController;     //有记忆计划
 
 @end
 
@@ -23,30 +25,64 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	[self configNavigationBar];
-	[self configData];
+	//[self configNavigationBar];
+	
+	[self.childViewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		if ([obj isKindOfClass:[LGNoStudyTypeController class]]) {
+			self.noStudyTypeController = obj;
+		}else{
+			self.recitePlanController = obj;
+		}
+	}];
+	[self showController:NO];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:LOGIN_NOTIFICATION object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeStudyType:) name:ChangeTypeNotification object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+	[self configData];
 }
 
 - (void)configData{
+	__weak typeof(self) weakSelf = self;
 	[self.request requestUserInfo:^(id response, LGError *error) {
-		self.user = [LGUserModel mj_objectWithKeyValues:response];
-		[LGUserManager shareManager].user = self.user;
-		
+		[LGUserManager shareManager].user = [LGUserModel mj_objectWithKeyValues:response[@"data"]];
+		[weakSelf showController:YES];
 	}];
+}
+
+
+/**
+ 转换 childController;
+ 有计划和记忆模式显示 LGRecitePlanController,
+ 没有计划和记忆模式显示 LGNoStudyTypeController
+
+ @param animated 是否动画
+ */
+- (void)showController:(BOOL)animated {
+	
+	NSTimeInterval duration = animated ? 0.5 : 0;
+	 LGUserModel *user = [LGUserManager shareManager].user;
+	
+	if (StringNotEmpty(user.planWords) && user.studyModel != LGStudyNone) {
+		[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
+	}else{
+		[self transitionFromViewController:self.recitePlanController toViewController:self.noStudyTypeController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
+	}
+	
+	
 }
 
 - (void)configNavigationBar{
 	
-//	UIButton *header = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-//	header.layer.cornerRadius = 22;
-//	
-//	[header setImage:PLACEHOLDERIMAGE forState:UIControlStateNormal];
-//	UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:header];
-//	
-//	self.navigationItem.leftBarButtonItem = leftItem;
+	UIButton *header = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
+	header.layer.cornerRadius = 22;
+	header.layer.masksToBounds = YES;
+	[header setImage:PLACEHOLDERIMAGE forState:UIControlStateNormal];
+	UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:header];
+	self.navigationItem.leftBarButtonItem = leftItem;
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -66,12 +102,7 @@
 //登录成功
 - (void)loginSuccess{
 	
-}
-
-- (void)changeStudyType:(NSNotification *) notification{
-
-	NSString *studyTypeName = notification.userInfo[StudyTypeKey];
-//	self.studyTypeLabel.text = [NSString stringWithFormat:@"你正在使用%@记忆单词",studyTypeName];
+	[self configData];
 }
 
 
