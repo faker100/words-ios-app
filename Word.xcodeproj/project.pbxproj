@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */; };
+		02F78A092029E54A0011096F /* LGReciteWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F78A082029E54A0011096F /* LGReciteWordModel.m */; };
 		3690868A07C9B63A30A721A0 /* Pods_Word.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66ACA9D95F507310F264822E /* Pods_Word.framework */; };
 		5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5606F8602015E45C0030E43C /* NSString+LGString.m */; };
 		560F0FCB2022AA7000324510 /* LGFreeWordListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F0FCA2022AA7000324510 /* LGFreeWordListCell.m */; };
@@ -61,6 +62,8 @@
 /* Begin PBXFileReference section */
 		0235DB982022147200E52A3F /* LGFreeLibraryWordListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGFreeLibraryWordListController.h; sourceTree = "<group>"; };
 		0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGFreeLibraryWordListController.m; sourceTree = "<group>"; };
+		02F78A072029E54A0011096F /* LGReciteWordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGReciteWordModel.h; path = Word/Main/ReciteWords/WordPlan/View/LGReciteWordModel.h; sourceTree = SOURCE_ROOT; };
+		02F78A082029E54A0011096F /* LGReciteWordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGReciteWordModel.m; path = Word/Main/ReciteWords/WordPlan/View/LGReciteWordModel.m; sourceTree = SOURCE_ROOT; };
 		5606F85F2015E45C0030E43C /* NSString+LGString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LGString.h"; sourceTree = "<group>"; };
 		5606F8602015E45C0030E43C /* NSString+LGString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LGString.m"; sourceTree = "<group>"; };
 		560F0FC92022AA7000324510 /* LGFreeWordListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGFreeWordListCell.h; sourceTree = "<group>"; };
@@ -166,6 +169,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02F78A062029E4E70011096F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02F78A072029E54A0011096F /* LGReciteWordModel.h */,
+				02F78A082029E54A0011096F /* LGReciteWordModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5612BFA8202154970038D653 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,13 +230,6 @@
 				563F7DA4202306B500944730 /* LGPlayer.m */,
 			);
 			path = Tool;
-			sourceTree = "<group>";
-		};
-		566B985D201FFF4E00D368AC /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		567C00F8201075C90083F3D5 /* Main */ = {
@@ -409,7 +414,7 @@
 		56CCA5E1201B07F60097DCAC /* Index */ = {
 			isa = PBXGroup;
 			children = (
-				566B985D201FFF4E00D368AC /* Model */,
+				02F78A062029E4E70011096F /* Model */,
 				56CCA5E2201B08050097DCAC /* Controller */,
 			);
 			path = Index;
@@ -653,6 +658,7 @@
 			files = (
 				565A30F7201331E000448B1C /* UIColor+LGColor.m in Sources */,
 				56C9899720207C0C0095A4BD /* LGNavigationItem.m in Sources */,
+				02F78A092029E54A0011096F /* LGReciteWordModel.m in Sources */,
 				56EAD86220197F2D0059604E /* LGFindPasswordController.m in Sources */,
 				565A30FA2013411200448B1C /* LGRegisterController.m in Sources */,
 				56FD20D62028256F003A6154 /* LGDeletePlanAlertView.m in Sources */,

@@ -99,3 +99,13 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 
 //修改词包计划
 #define UPLOAD_WORD_LIBRARY_URL			@"http://words.viplgw.cn/cn/app-api/update-package"
+
+
+//首页单词记忆计划
+#define INDEX_RECITE_PLAN_URL           @"http://words.viplgw.cn/cn/app-api/index"
+
+
+
+
+
+

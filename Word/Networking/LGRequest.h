@@ -137,4 +137,12 @@
  */
 - (void)uploadWordLibraryArray:(NSArray<LGPlanModel *> *)libraryArray completion:(comletionBlock)completion;
 
+
+/**
+ 首页单词计划
+
+ */
+- (void)requestIndexRecitePlan:(comletionBlock)completion;
+
+
 @end

@@ -171,4 +171,9 @@
 	}
 }
 
+- (void)requestIndexRecitePlan:(comletionBlock)completion{
+    self.url = INDEX_RECITE_PLAN_URL;
+    [self postRequestCompletion:completion];
+}
+
 @end

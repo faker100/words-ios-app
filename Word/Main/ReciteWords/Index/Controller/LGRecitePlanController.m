@@ -24,6 +24,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [self configData];
+}
+
+- (void)configData{
+    __weak typeof(self) weakSelf = self;
+    [self.request requestIndexRecitePlan:^(id response, LGError *error) {
+        if ([weakSelf isEqual:error]) {
+            NSLog(@"");
+        }
+    }];
+}
 
 /**
  打卡
@@ -41,5 +53,32 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+@end
+
+
+
+@implementation LGDottedLineView
+
+- (void)drawRect:(CGRect)rect{
+    [super drawRect:rect];
+    
+    CGContextRef currentContext = UIGraphicsGetCurrentContext();
+    //设置虚线颜色
+    CGContextSetStrokeColorWithColor(currentContext, [UIColor whiteColor].CGColor);
+    //设置虚线宽度
+    CGContextSetLineWidth(currentContext, 2);
+    CGContextSetShouldAntialias(currentContext, NO);
+    //设置虚线绘制起点
+    CGContextMoveToPoint(currentContext, 0, 0);
+    //设置虚线绘制终点
+    CGContextAddLineToPoint(currentContext, 0, self.frame.size.height);
+    //设置虚线排列的宽度间隔:下面的arr中的数字表示先绘制3个点再绘制1个点
+    CGFloat arr[] = {2,1};
+    //下面最后一个参数“1”代表排列的个数。
+    CGContextSetLineDash(currentContext, 0, arr, 1);
+    CGContextDrawPath(currentContext, kCGPathStroke);
+}
+
 
 @end

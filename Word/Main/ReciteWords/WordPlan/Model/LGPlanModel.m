@@ -20,9 +20,4 @@
 	return self.total.integerValue - self.userWords.integerValue;
 }
 
-
-- (void)dealloc{
-	NSLog(@"没了");
-}
-
 @end
