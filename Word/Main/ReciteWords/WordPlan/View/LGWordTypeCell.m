@@ -29,7 +29,6 @@
 	
 	CGFloat completionRate = wordTypeModel.userWords.floatValue / wordTypeModel.total.floatValue;
 	
-	completionRate = 0.5;
 	self.progressView.progress = completionRate;
 	if (completionRate <= 0.3) {
 		self.progressView.trackTintColor = [UIColor lg_colorWithType:LGColor_Dark_Yellow];

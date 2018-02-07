@@ -18,6 +18,8 @@
 
 - (void)awakeFromNib{
 	[super awakeFromNib];
+   // [self setNeedsLayout];
+    //[self layoutIfNeeded];
 	self.layer.cornerRadius = self.radius;
 	self.backgroundColor = self.progressTintColor;
 	self.progressLayer.cornerRadius = self.radius;
@@ -27,9 +29,14 @@
 	
 }
 
+
+- (void)layoutSubviews{
+    self.progress = self.progress;
+}
+
 - (void)setProgress:(float)progress{
 	_progress = MIN(progress, 1.0);
-	self.progressLayer.frame = CGRectMake(0, 0, self.layer.frame.size.width * _progress, self.layer.frame.size.height);
+    self.progressLayer.frame = CGRectMake(0, 0, self.layer.frame.size.width * self.progress, self.layer.frame.size.height);
 }
 
 - (CALayer *)progressLayer{

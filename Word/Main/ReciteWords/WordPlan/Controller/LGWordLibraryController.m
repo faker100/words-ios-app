@@ -34,7 +34,7 @@
 }
 
 - (void)viewDidLayoutSubviews {
-	
+    NSLog(@"很多次");
 }
 
 - (void)requestData{
@@ -42,10 +42,7 @@
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestWordLibraryList:^(id response, LGError *error) {
 		[LGProgressHUD hideHUDForView:self.view];
-        
-		if (error) {
-			[LGProgressHUD showError:error.errorMessage toView:self.view];
-		}else{
+        if ([self isNormal:error]) {
 			self.modelArray = [LGWordLibraryModel mj_objectArrayWithKeyValuesArray:response[@"package"]];
 			self.selectedModel = self.modelArray.firstObject;
 			[self.libraryTableView reloadData];

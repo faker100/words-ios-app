@@ -20,15 +20,13 @@
     // Do any additional setup after loading the view.
 }
 
-
 - (void)viewWillAppear:(BOOL)animated{
 	[self setStudyType];
-	
 }
 
 - (void)viewDidAppear:(BOOL)animated{
 	[self.view setNeedsLayout];
-	[self.view setNeedsLayout];
+	[self.view layoutIfNeeded];
 }
 
 /**

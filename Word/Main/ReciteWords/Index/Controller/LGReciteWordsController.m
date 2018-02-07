@@ -38,12 +38,16 @@
 			self.recitePlanController = obj;
 		}
 	}];
-	[self showController:NO];
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:LOGIN_NOTIFICATION object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
 	[self configData];
+}
+
+- (void)viewDidLayoutSubviews{
+    [self showController:NO];
 }
 
 - (void)configData{
