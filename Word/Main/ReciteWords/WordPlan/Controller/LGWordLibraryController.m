@@ -33,6 +33,10 @@
 	[self requestData];
 }
 
+- (void)viewDidLayoutSubviews {
+	
+}
+
 - (void)requestData{
 	
 	[LGProgressHUD showHUDAddedTo:self.view];

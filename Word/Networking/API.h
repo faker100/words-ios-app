@@ -104,7 +104,8 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 //首页单词记忆计划
 #define INDEX_RECITE_PLAN_URL           @"http://words.viplgw.cn/cn/app-api/index"
 
-
+//单词详情
+#define WORD_DETAIL_URL					@"http://words.viplgw.cn/cn/app-api/recite-words"
 
 
 

@@ -42,7 +42,7 @@
 		self.userNameTextField.text = user.username;
 	}
 	if (StringNotEmpty(user.password)) {
-		self.userNameTextField.text = user.password;
+		self.passwordTextField.text = user.password;
 	}
 	
 }

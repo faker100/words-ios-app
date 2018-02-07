@@ -176,4 +176,9 @@
     [self postRequestCompletion:completion];
 }
 
+- (void)requestReciteWordsCompletion:(comletionBlock)completion{
+	self.url = WORD_DETAIL_URL;
+	[self postRequestCompletion:completion];
+}
+
 @end

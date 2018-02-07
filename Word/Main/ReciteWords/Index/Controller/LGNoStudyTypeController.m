@@ -23,8 +23,13 @@
 
 - (void)viewWillAppear:(BOOL)animated{
 	[self setStudyType];
+	
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+	[self.view setNeedsLayout];
+	[self.view setNeedsLayout];
+}
 
 /**
  设置学习模式文字

@@ -30,6 +30,7 @@
 		565A30FA2013411200448B1C /* LGRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F92013411200448B1C /* LGRegisterController.m */; };
 		566B9860202003E800D368AC /* LGNoStudyTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 566B985F202003E800D368AC /* LGNoStudyTypeController.m */; };
 		567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 567C00FA2010A0360083F3D5 /* LGBaseRequest.m */; };
+		56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56801492202AE1FB0082D72F /* LGWordDetailController.m */; };
 		56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A8883A200CA53400847BE6 /* AppDelegate.m */; };
 		56A88841200CA53400847BE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A8883F200CA53400847BE6 /* Main.storyboard */; };
 		56A88843200CA53400847BE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A88842200CA53400847BE6 /* Assets.xcassets */; };
@@ -105,6 +106,8 @@
 		566B985F202003E800D368AC /* LGNoStudyTypeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGNoStudyTypeController.m; sourceTree = "<group>"; };
 		567C00F92010A0360083F3D5 /* LGBaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGBaseRequest.h; sourceTree = "<group>"; };
 		567C00FA2010A0360083F3D5 /* LGBaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGBaseRequest.m; sourceTree = "<group>"; };
+		56801491202AE1FB0082D72F /* LGWordDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordDetailController.h; sourceTree = "<group>"; };
+		56801492202AE1FB0082D72F /* LGWordDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordDetailController.m; sourceTree = "<group>"; };
 		56A88836200CA53400847BE6 /* Word.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Word.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A88839200CA53400847BE6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		56A8883A200CA53400847BE6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -243,6 +246,23 @@
 				56AF60CD2011E5B00067BD7B /* Login */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		5680148F202AE18E0082D72F /* WordDetail */ = {
+			isa = PBXGroup;
+			children = (
+				56801490202AE1A20082D72F /* Controller */,
+			);
+			path = WordDetail;
+			sourceTree = "<group>";
+		};
+		56801490202AE1A20082D72F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56801491202AE1FB0082D72F /* LGWordDetailController.h */,
+				56801492202AE1FB0082D72F /* LGWordDetailController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		56961CF5200D89B0009EA21C /* Categroy */ = {
@@ -453,6 +473,7 @@
 		56EAD86B2019C1A60059604E /* ReciteWords */ = {
 			isa = PBXGroup;
 			children = (
+				5680148F202AE18E0082D72F /* WordDetail */,
 				56C98980202016EA0095A4BD /* WordPlan */,
 				56CCA5E9201B29370097DCAC /* PersonalCenter */,
 				56CCA5E1201B07F60097DCAC /* Index */,
@@ -690,6 +711,7 @@
 				5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */,
 				56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */,
 				56C98994202050F60095A4BD /* LGWordTypeCell.m in Sources */,
+				56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */,
 				560F0FCB2022AA7000324510 /* LGFreeWordListCell.m in Sources */,
 				56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */,
 				56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */,

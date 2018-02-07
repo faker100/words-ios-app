@@ -145,4 +145,10 @@
 - (void)requestIndexRecitePlan:(comletionBlock)completion;
 
 
+/**
+ 背单词 (单词详情)
+
+ */
+- (void)requestReciteWordsCompletion:(comletionBlock)completion;
+
 @end

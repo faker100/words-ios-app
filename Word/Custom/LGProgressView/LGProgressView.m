@@ -24,6 +24,7 @@
 	self.progressLayer.backgroundColor = self.trackTintColor.CGColor;
 	self.progressLayer.frame = CGRectMake(0, 0, self.layer.frame.size.width * self.progress, self.layer.frame.size.height);
 	[self.layer addSublayer:self.progressLayer];
+	
 }
 
 - (void)setProgress:(float)progress{

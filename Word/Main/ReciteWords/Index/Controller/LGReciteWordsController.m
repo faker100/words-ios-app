@@ -18,6 +18,8 @@
 @property (nonatomic, strong) LGNoStudyTypeController *noStudyTypeController;  //没有记忆计划
 @property (nonatomic, strong) LGRecitePlanController *recitePlanController;     //有记忆计划
 
+@property (nonatomic, weak) UIViewController *currentShowController; //当前显示的 view;
+
 @end
 
 @implementation LGReciteWordsController
@@ -27,7 +29,9 @@
     // Do any additional setup after loading the view.
 	//[self configNavigationBar];
 	
+	self.currentShowController = self.childViewControllers.lastObject;
 	[self.childViewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		
 		if ([obj isKindOfClass:[LGNoStudyTypeController class]]) {
 			self.noStudyTypeController = obj;
 		}else{
@@ -55,7 +59,8 @@
  转换 childController;
  有计划和记忆模式显示 LGRecitePlanController,
  没有计划和记忆模式显示 LGNoStudyTypeController
-
+ 如果 toController 为当前显示 controller 则不转换;
+ 
  @param animated 是否动画
  */
 - (void)showController:(BOOL)animated {
@@ -64,9 +69,19 @@
 	 LGUserModel *user = [LGUserManager shareManager].user;
 	
 	if (StringNotEmpty(user.planWords) && user.studyModel != LGStudyNone) {
-		[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
+		
+		if (self.currentShowController == self.recitePlanController) return;
+		
+		[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:^(BOOL finished) {
+			self.currentShowController = self.recitePlanController;
+		}];
 	}else{
-		[self transitionFromViewController:self.recitePlanController toViewController:self.noStudyTypeController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
+		
+		if (self.currentShowController == self.noStudyTypeController) return;
+		
+		[self transitionFromViewController:self.recitePlanController toViewController:self.noStudyTypeController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:^(BOOL finished) {
+			self.currentShowController = self.noStudyTypeController;
+		}];
 	}
 	
 	
@@ -92,11 +107,14 @@
 //语音搜索
 - (IBAction)speakSearchAction:(id)sender {
 	NSLog(@"yuy");
+	[self transitionFromViewController:self.recitePlanController toViewController:self.noStudyTypeController duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
 }
 
 //拍照搜索
 - (IBAction)pictureSearch:(id)sender {
 	NSLog(@"拍照");
+	
+	[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
 }
 
 //登录成功
@@ -104,9 +122,6 @@
 	
 	[self configData];
 }
-
-
-
 
 /*
 #pragma mark - Navigation
