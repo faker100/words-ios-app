@@ -13,7 +13,6 @@
 
 @interface LGPlayer ()
 
-@property (nonatomic, strong) NSCache *cache;
 @property (nonatomic, strong) AVAudioPlayer *player;
 
 @end
@@ -45,14 +44,6 @@
 			}
 		}
 	}];
-}
-							   
-
-- (NSCache *)cache{
-	if (!_cache) {
-		_cache = [[NSCache alloc]init];
-	}
-	return _cache;
 }
 
 @end

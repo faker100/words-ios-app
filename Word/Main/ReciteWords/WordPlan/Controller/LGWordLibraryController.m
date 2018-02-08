@@ -33,10 +33,6 @@
 	[self requestData];
 }
 
-- (void)viewDidLayoutSubviews {
-    NSLog(@"很多次");
-}
-
 - (void)requestData{
 	
 	[LGProgressHUD showHUDAddedTo:self.view];
