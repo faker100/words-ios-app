@@ -151,4 +151,13 @@
  */
 - (void)requestReciteWordsCompletion:(comletionBlock)completion;
 
+
+/**
+ 修改单词状态
+
+ @param wordId 单词 id
+ @param status 单词状态
+ */
+- (void)updateWordStatus:(NSString *)wordId status:(LGWordStatus)status completion:(comletionBlock)completion;
+
 @end

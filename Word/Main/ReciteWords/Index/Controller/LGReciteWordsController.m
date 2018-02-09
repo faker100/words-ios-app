@@ -73,22 +73,14 @@
 	 LGUserModel *user = [LGUserManager shareManager].user;
 	
 	if (StringNotEmpty(user.planWords) && user.studyModel != LGStudyNone) {
-		
 		if (self.currentShowController == self.recitePlanController) return;
-		
-		[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:^(BOOL finished) {
-			self.currentShowController = self.recitePlanController;
-		}];
+		self.currentShowController = self.recitePlanController;
+		[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
 	}else{
-		
 		if (self.currentShowController == self.noStudyTypeController) return;
-		
-		[self transitionFromViewController:self.recitePlanController toViewController:self.noStudyTypeController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:^(BOOL finished) {
-			self.currentShowController = self.noStudyTypeController;
-		}];
+		self.currentShowController = self.noStudyTypeController;
+		[self transitionFromViewController:self.recitePlanController toViewController:self.noStudyTypeController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
 	}
-	
-	
 }
 
 - (void)configNavigationBar{

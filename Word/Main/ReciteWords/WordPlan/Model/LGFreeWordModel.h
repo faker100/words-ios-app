@@ -8,15 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, LGFreeWordStatus) {
-	LGFreeWordStatusNone,           //没背
-	LGFreeWordStatusKnow1,          //认识1
-	LGFreeWordStatusKnow2,     	    //认识2
-	LGFreeWordStatusIncognizance,   //不认识
-	LGFreeWordStatusVague,			//模糊
-};
-
-//2.认识，3，不认识，4模糊
 
 @interface LGFreeWordModel : NSObject
 
@@ -28,6 +19,6 @@ typedef NS_ENUM(NSUInteger, LGFreeWordStatus) {
 @property (nonatomic, strong) NSString *uk_audio;
 @property (nonatomic, strong) NSString *us_audio;
 @property (nonatomic, strong) NSString *mnemonic; //单词详情 助记
-@property (nonatomic, assign) LGFreeWordStatus firstStatus;
+@property (nonatomic, assign) LGWordStatus firstStatus;
 
 @end

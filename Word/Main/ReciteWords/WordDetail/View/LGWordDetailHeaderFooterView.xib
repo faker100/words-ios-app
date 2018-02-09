@@ -9,16 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
-            <connections>
-                <outlet property="titleLabel" destination="12Q-cb-exf" id="Urx-zO-bPZ"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LGWordDetailHeaderFooterView">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ExE-YG-6RS">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.90091007950000002" green="0.90992331500000001" blue="0.90576469900000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="eyO-CX-xOH">
                     <rect key="frame" x="30" y="330" width="6" height="7"/>
                     <constraints>
@@ -33,13 +33,19 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="ExE-YG-6RS" secondAttribute="bottom" id="2Ln-ZE-9VS"/>
+                <constraint firstAttribute="trailing" secondItem="ExE-YG-6RS" secondAttribute="trailing" id="AgL-MO-Vnn"/>
                 <constraint firstItem="eyO-CX-xOH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="DuJ-gw-c4Y"/>
                 <constraint firstItem="eyO-CX-xOH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="Ii6-In-MZM"/>
+                <constraint firstItem="ExE-YG-6RS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Mup-2G-63p"/>
                 <constraint firstItem="12Q-cb-exf" firstAttribute="leading" secondItem="eyO-CX-xOH" secondAttribute="trailing" constant="5" id="PxJ-ah-Q05"/>
+                <constraint firstItem="ExE-YG-6RS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VFC-wY-oYW"/>
                 <constraint firstItem="12Q-cb-exf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="mdZ-Jj-geV"/>
             </constraints>
+            <connections>
+                <outlet property="titleLabel" destination="12Q-cb-exf" id="gAQ-6m-7dj"/>
+            </connections>
         </view>
     </objects>
     <resources>

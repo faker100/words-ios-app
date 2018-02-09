@@ -31,6 +31,7 @@
 
 - (void)configInterface{
 	self.wordLabel.text = self.detailModel.words.word;
+	self.translateLabel.text = self.detailModel.words.translate;
 	[self.playerButton setTitle:[NSString stringWithFormat:@"  %@",self.detailModel.words.phonetic_us] forState:UIControlStateNormal];
 	[self.wordTabelView reloadData];
 }
@@ -45,8 +46,6 @@
 	}];
 }
 
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -60,24 +59,38 @@
 		[self isNormal:error];
 	}];
 }
+
 //报错
 - (IBAction)reportErrorsAction:(id)sender {
+	
 }
 
 //熟识
 - (IBAction)familiarAction:(id)sender {
+	[self updateWordStatus:LGWordStatusFamiliar];
 }
 
 //认识
 - (IBAction)knowAction:(id)sender {
+	[self updateWordStatus:LGWordStatusKnow];
 }
 
 //不认识
 - (IBAction)notKnowAction:(id)sender {
+	[self updateWordStatus:LGWordStatusIncognizance];
 }
 
 //模糊
 - (IBAction)vagueAction:(id)sender {
+	[self updateWordStatus:LGWordStatusVague];
+}
+
+- (void)updateWordStatus:(LGWordStatus) status{
+	[self.request updateWordStatus:self.detailModel.words.ID status:status completion:^(id response, LGError *error) {
+		if ([self isNormal:error]) {
+			
+		}
+	}];
 }
 
 #pragma mark -UITableViewDataSource
@@ -85,7 +98,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
 	return self.detailModel.dataSource.count;
-	//return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

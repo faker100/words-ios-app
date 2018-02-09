@@ -28,6 +28,15 @@ typedef NS_ENUM(NSInteger, LGUsernameType) {
 	
 };
 
+//单词状态
+typedef NS_ENUM(NSUInteger, LGWordStatus) {
+	LGWordStatusNone,           //没背
+	LGWordStatusFamiliar,       //熟识
+	LGWordStatusKnow,     	    //认识
+	LGWordStatusIncognizance,   //不认识
+	LGWordStatusVague,			//模糊
+};
+
 //学习模式
 typedef NS_ENUM(NSUInteger, LGStudyType) {
 	LGStudyNone = 0,			//没有学习模式
@@ -107,6 +116,7 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 //单词详情
 #define WORD_DETAIL_URL					@"http://words.viplgw.cn/cn/app-api/recite-words"
 
-
+//修改单词状态
+#define UPDATE_WORD_STATUS   			@"http://words.viplgw.cn/cn/app-api/update-status"
 
 

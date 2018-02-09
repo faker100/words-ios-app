@@ -181,4 +181,13 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)updateWordStatus:(NSString *)wordId status:(LGWordStatus)status completion:(comletionBlock)completion{
+	self.url = UPDATE_WORD_STATUS;
+	self.parameter = @{
+					   @"wordsId" : wordId,
+					   @"status" : @(status)
+					   };
+	[self postRequestCompletion:completion];
+}
+
 @end

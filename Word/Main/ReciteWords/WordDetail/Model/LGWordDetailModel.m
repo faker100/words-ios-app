@@ -52,6 +52,16 @@
 
 @implementation LGSentenceModel
 
+- (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property{
+	if ([property.name isEqualToString:@"chinese"]) {
+		NSString *str = [NSString stringWithFormat:@"%@",oldValue];
+		str = [str stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+		str = [str stringByReplacingOccurrencesOfString:@" " withString:@""];
+		return str;
+	}
+	return oldValue;
+}
+
 @end
 
 @implementation LGWordDetailTableDataSource

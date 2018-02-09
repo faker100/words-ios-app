@@ -27,17 +27,17 @@
 	self.wordMeaningLabel.text = wordModel.translate;
 	
 	switch (wordModel.firstStatus) {
-		case LGFreeWordStatusNone:
+		case LGWordStatusNone:
 			self.backgroundColor = [UIColor lg_colorWithHexString:@"f1f1f1"];
 			break;
-		case LGFreeWordStatusKnow1:
-		case LGFreeWordStatusKnow2:
+		case LGWordStatusFamiliar:
+		case LGWordStatusKnow:
 			self.backgroundColor = [UIColor lg_colorWithHexString:@"cbffe6"];
 			break;
-		case LGFreeWordStatusIncognizance:
+		case LGWordStatusIncognizance:
 			self.backgroundColor = [UIColor lg_colorWithHexString:@"f9c5c4"];
 			break;
-		case LGFreeWordStatusVague:
+		case LGWordStatusVague:
 			self.backgroundColor = [UIColor lg_colorWithHexString:@"fceac1"];
 			break;
 	}
