@@ -24,10 +24,6 @@
 	[self setStudyType];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-	[self.view setNeedsLayout];
-	[self.view layoutIfNeeded];
-}
 
 /**
  设置学习模式文字

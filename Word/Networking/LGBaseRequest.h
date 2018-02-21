@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+static dispatch_group_t requestGroup;  //用于优先执行的请求,（重置session请求）
+
 typedef NS_ENUM(NSUInteger, LGErrorType) {
 	LGSystemError,		//网络请求错误
 	LGServiceError,     //服务器提示错误
 	LGAPPError			//app 内部错误 (比如:播放音频失败)
 };
+
+
 
 @interface LGError : NSObject
 
@@ -29,7 +33,7 @@ typedef void(^downloadComletionBlock)(NSURL *filePath, LGError *error);
 @interface LGBaseRequest : NSObject
 
 @property (nonatomic, strong) NSURLSessionTask *task;    
-@property (nonatomic, strong) NSDictionary *parameter;   //请求参数
+@property (nonatomic, strong) NSDictionary *parameter;   //请求参数,指向 NSMutableDictionary 对象
 @property (nonatomic, strong) NSString *url;			//请求URL
 
 - (void)getRequestCompletion:(comletionBlock) completion;

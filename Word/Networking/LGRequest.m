@@ -35,7 +35,6 @@
 - (void)resetSessionRequest:(id) userInfo completion:(void (^)(void))completion{
 	
 	NSArray *urlArray = SESSION_URLS;
-	dispatch_group_t requestGroup = dispatch_group_create();
 	[urlArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 		dispatch_group_enter(requestGroup);
 		self.url = obj;
