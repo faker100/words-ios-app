@@ -35,6 +35,7 @@
 - (void)resetSessionRequest:(id) userInfo completion:(void (^)(void))completion{
 	
 	NSArray *urlArray = SESSION_URLS;
+	dispatch_group_t requestGroup = dispatch_group_create();
 	[urlArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 		dispatch_group_enter(requestGroup);
 		self.url = obj;
@@ -181,12 +182,27 @@
 }
 
 - (void)updateWordStatus:(NSString *)wordId status:(LGWordStatus)status completion:(comletionBlock)completion{
-	self.url = UPDATE_WORD_STATUS;
+	self.url = UPDATE_WORD_STATUS_URL;
 	self.parameter = @{
 					   @"wordsId" : wordId,
 					   @"status" : @(status)
 					   };
 	[self postRequestCompletion:completion];
 }
+
+- (void)requestEbbinghausReviewList:(comletionBlock)completion{
+	self.url = EBBINGHAUS_REVIEW_LIST_URL;
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestEbbinghausReviewWord:(NSString *)wordID completion:(comletionBlock)completion{
+	self.url = EBBINGHAUS_REVIEW_WORD_URL;
+	self.parameter = @{
+					   @"wordsId" : wordID,
+					   };
+	[self postRequestCompletion:completion];
+	
+}
+
 
 @end

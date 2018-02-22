@@ -18,9 +18,9 @@ static AFHTTPSessionManager *manager;
     if (self) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            requestGroup = dispatch_group_create();
+            //requestGroup = dispatch_group_create();
             manager = [AFHTTPSessionManager manager];
-            manager.requestSerializer.timeoutInterval = 20;
+        //    manager.requestSerializer.timeoutInterval = 20;
             manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
                                                                  @"application/json",
                                                                  @"text/json",
@@ -37,7 +37,7 @@ static AFHTTPSessionManager *manager;
 
 - (void)getRequestCompletion:(comletionBlock) completion{
     
-    dispatch_group_notify(requestGroup, dispatch_get_main_queue(), ^{
+	
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         self.task = [manager GET:self.url parameters:self.parameter progress:^(NSProgress * _Nonnull downloadProgress) {
             
@@ -48,12 +48,12 @@ static AFHTTPSessionManager *manager;
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [self dealRequestFailure:error completion:completion];
         }];
-    });
+   
 }
 
 - (void)postRequestCompletion:(comletionBlock) completion {
     
-    dispatch_group_notify(requestGroup, dispatch_get_main_queue(), ^{
+	
         [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         self.task = [manager POST:self.url parameters:self.parameter progress:^(NSProgress * _Nonnull downloadProgress) {
             
@@ -66,12 +66,12 @@ static AFHTTPSessionManager *manager;
             [self dealRequestFailure:error completion:completion];
             
         }];
-    });
+	
 }
 
 - (void)downloadRequest:(NSString *)url targetPath:(NSString *)path fileName:(NSString *)fileName completion:(downloadComletionBlock) completion{
     
-    dispatch_group_notify(requestGroup, dispatch_get_main_queue(), ^{
+	
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
         
         NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -92,7 +92,7 @@ static AFHTTPSessionManager *manager;
         }];
         
         [downloadTask resume];
-    });
+	
 }
 
 /**

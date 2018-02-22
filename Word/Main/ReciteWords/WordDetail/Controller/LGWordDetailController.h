@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
+	LGWordDetailReciteWords, 	   //背单词模式
+	LGWordDetailEbbinghausReview, //艾宾浩斯复习模式
+};
+
 @interface LGWordDetailController : UIViewController
+
+@property (nonatomic, assign) LGWordDetailControllerType type;
+
+
+// 艾宾浩斯复习模式(LGWordDetailEbbinghausReview)下需要复习单词的 id 列表
+@property (nonatomic, strong) NSMutableArray<NSString *> *reviewWordIdArray;
 
 //单词 label
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
@@ -29,7 +40,6 @@
 //顶部 单词区域
 @property (weak, nonatomic) IBOutlet UIView *wordView;
 
-//左边单词 tableView
 @property (weak, nonatomic) IBOutlet UITableView *wordTabelView;
 
 

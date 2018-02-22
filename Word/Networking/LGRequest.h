@@ -160,4 +160,18 @@
  */
 - (void)updateWordStatus:(NSString *)wordId status:(LGWordStatus)status completion:(comletionBlock)completion;
 
+
+/**
+ 请求艾宾浩斯复习单词列表
+ */
+- (void)requestEbbinghausReviewList:(comletionBlock)completion;
+
+
+/**
+ 请求艾宾浩斯复习单词
+ @param wordID 单词 id
+ */
+- (void)requestEbbinghausReviewWord:(NSString *)wordID completion:(comletionBlock)completion;
+
+
 @end

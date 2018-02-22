@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "LGProgressView.h"
+#import "LGDottedLineView.h"
 
-@class  LGDottedLineView;
 @interface LGRecitePlanController : UIViewController
 
 //坚持天数
@@ -37,13 +37,5 @@
 //今天需要背单词,今日需要复习
 @property (weak, nonatomic) IBOutlet UILabel *todayPlanLabel;
 
-
-@end
-
-
-/**
- 虚线
- */
-@interface LGDottedLineView : UIView
 
 @end

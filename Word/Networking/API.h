@@ -113,10 +113,14 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 //首页单词记忆计划
 #define INDEX_RECITE_PLAN_URL           @"http://words.viplgw.cn/cn/app-api/index"
 
-//单词详情
+//记单词
 #define WORD_DETAIL_URL					@"http://words.viplgw.cn/cn/app-api/recite-words"
 
 //修改单词状态
-#define UPDATE_WORD_STATUS   			@"http://words.viplgw.cn/cn/app-api/update-status"
+#define UPDATE_WORD_STATUS_URL   	    @"http://words.viplgw.cn/cn/app-api/update-status"
 
+//艾宾浩斯记忆列表
+#define EBBINGHAUS_REVIEW_LIST_URL      @"http://words.viplgw.cn/cn/app-api/is-review"
 
+//艾宾浩斯记忆单词
+#define EBBINGHAUS_REVIEW_WORD_URL		@"http://words.viplgw.cn/cn/app-api/get-words-details"

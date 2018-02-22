@@ -24,24 +24,62 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
-	[self requestData];
+	if (self.type == LGWordDetailReciteWords){
+		[self requestReciteWordsData];
+	}else if (self.type == LGWordDetailEbbinghausReview){
+		[self requestEbbinghausReviewWord];
+	}
 	
 	[self.wordTabelView registerNib:[UINib nibWithNibName:@"LGWordDetailHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGWordDetailHeaderFooterView"];
 }
 
-- (void)configInterface{
-	self.wordLabel.text = self.detailModel.words.word;
-	self.translateLabel.text = self.detailModel.words.translate;
-	[self.playerButton setTitle:[NSString stringWithFormat:@"  %@",self.detailModel.words.phonetic_us] forState:UIControlStateNormal];
+- (void)setDetailModel:(LGWordDetailModel *)detailModel {
+	_detailModel = detailModel;
+	self.wordLabel.text = detailModel.words.word;
+	self.translateLabel.text = detailModel.words.translate;
+	[self.playerButton setTitle:[NSString stringWithFormat:@"  %@",detailModel.words.phonetic_us] forState:UIControlStateNormal];
 	[self.wordTabelView reloadData];
 }
 
--(void)requestData {
+
+/**
+ * 请求背单词接口,code = 98进入复习模式
+ */
+- (void)requestReciteWordsData {
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestReciteWordsCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
+			NSInteger code = [NSString stringWithFormat:@"%@",response[@"code"]].integerValue;
+			if (code == 1){
+				self.detailModel = [LGWordDetailModel mj_objectWithKeyValues:response];
+			}else if (code == 98){
+				[self requestEbbinghausReviewWordArray];
+			}
+		}
+	}];
+}
+
+
+/**
+ 请求复习艾宾浩斯复习的第一个单词
+ */
+- (void)requestEbbinghausReviewWord{
+	[LGProgressHUD showHUDAddedTo:self.view];
+	[self.request requestEbbinghausReviewWord:self.reviewWordIdArray.firstObject completion:^(id response, LGError *error) {
+		if ([self isNormal:error]) {
 			self.detailModel = [LGWordDetailModel mj_objectWithKeyValues:response];
-			[self configInterface];
+		}
+	}];
+}
+
+/**
+ 请求艾宾浩斯复习列表
+ */
+- (void)requestEbbinghausReviewWordArray{
+	[self.request requestEbbinghausReviewList:^(id response, LGError *error) {
+		if ([self isNormal:error]) {
+			NSMutableArray *array  = [NSMutableArray arrayWithArray:response[@"words"]];
+			[self pushNextWordDetailController:LGWordDetailEbbinghausReview reviewWordIdArray:array animated:NO];
 		}
 	}];
 }
@@ -85,12 +123,50 @@
 	[self updateWordStatus:LGWordStatusVague];
 }
 
+
+/**
+ 更新单词状态,并跳转到下一个单词
+ 在艾宾浩斯复习模式下,循环复习 id 列表, 如果标记单词为认识,则从复习id列表中移除该单词,
+ 如果标记为其他状态,则把该单词移动到复习列表最后,直到所有单词都标记为认识
+ 当复习id列表为空时,进入背单词模式(LGWordDetailReciteWords)
+ @param status 标记单词状态
+ */
 - (void)updateWordStatus:(LGWordStatus) status{
+	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request updateWordStatus:self.detailModel.words.ID status:status completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			
+			if (self.type == LGWordDetailEbbinghausReview) {
+				NSString *wordID = self.reviewWordIdArray.firstObject;
+				[self.reviewWordIdArray removeObjectAtIndex:0];
+				if (status != LGWordStatusKnow) {
+					[self.reviewWordIdArray addObject:wordID];
+				}
+				LGWordDetailControllerType tempType = ArrayNotEmpty(self.reviewWordIdArray) ? LGWordDetailEbbinghausReview : LGWordDetailReciteWords;
+				[self pushNextWordDetailController:tempType reviewWordIdArray:self.reviewWordIdArray animated:YES];
+			}else{
+				[self pushNextWordDetailController:LGWordDetailReciteWords reviewWordIdArray:nil animated:YES];
+			}
 		}
 	}];
+}
+
+
+/**
+ 跳转到下一个 WordDetailController
+
+ @param type  下一个 controller 的模式
+ @param array 艾宾浩斯复习模式下(LGWordDetailEbbinghausReview)需要复习的单词 id 数组,其他模式为 nil
+ @param animated 是否跳转动画
+ */
+- (void)pushNextWordDetailController:(LGWordDetailControllerType) type reviewWordIdArray:(NSMutableArray *) array animated:(BOOL)animated{
+	
+	LGWordDetailController *wordDetailController = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGWordDetailController");
+	wordDetailController.type = type;
+	wordDetailController.reviewWordIdArray = array;
+	NSMutableArray *controllerArray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+	[controllerArray removeObject:self];
+	[controllerArray addObject:wordDetailController];
+	[self.navigationController setViewControllers:controllerArray animated:animated];
 }
 
 #pragma mark -UITableViewDataSource

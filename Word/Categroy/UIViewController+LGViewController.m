@@ -24,9 +24,16 @@
 }
 
 - (BOOL)isNormal:(LGError *)error{
-	[LGProgressHUD hideHUDForView:self.view];
+ 	return  [self isNormal:error showInView:nil];
+}
+
+- (BOOL)isNormal:(LGError *)error showInView:(UIView *)view{
+	if (!view) {
+		view = self.view;
+	}
+	[LGProgressHUD hideHUDForView:view];
 	if (error) {
-		[LGProgressHUD showError:error.errorMessage toView:self.view];
+		[LGProgressHUD showError:error.errorMessage toView:view];
 		return NO;
 	}else{
 		return YES;

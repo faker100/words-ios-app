@@ -25,6 +25,7 @@
 		563F7DA5202306B500944730 /* LGPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 563F7DA4202306B500944730 /* LGPlayer.m */; };
 		563F7DAB2023177E00944730 /* NSObject+LGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 563F7DAA2023177E00944730 /* NSObject+LGRequest.m */; };
 		56506D052016D842000FD8FA /* LGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56506D042016D842000FD8FA /* LGProgressHUD.m */; };
+		56585956203EB34300BB59ED /* LGDottedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56585955203EB34300BB59ED /* LGDottedLineView.m */; };
 		565A30F32013163400448B1C /* LGUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F22013163400448B1C /* LGUserModel.m */; };
 		565A30F7201331E000448B1C /* UIColor+LGColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F6201331E000448B1C /* UIColor+LGColor.m */; };
 		565A30FA2013411200448B1C /* LGRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F92013411200448B1C /* LGRegisterController.m */; };
@@ -99,6 +100,8 @@
 		563F7DAA2023177E00944730 /* NSObject+LGRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LGRequest.m"; sourceTree = "<group>"; };
 		56506D032016D842000FD8FA /* LGProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGProgressHUD.h; sourceTree = "<group>"; };
 		56506D042016D842000FD8FA /* LGProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGProgressHUD.m; sourceTree = "<group>"; };
+		56585954203EB34300BB59ED /* LGDottedLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDottedLineView.h; sourceTree = "<group>"; };
+		56585955203EB34300BB59ED /* LGDottedLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDottedLineView.m; sourceTree = "<group>"; };
 		565A30F02012D57700448B1C /* API.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = API.h; sourceTree = "<group>"; };
 		565A30F12013163400448B1C /* LGUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGUserModel.h; sourceTree = "<group>"; };
 		565A30F22013163400448B1C /* LGUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGUserModel.m; sourceTree = "<group>"; };
@@ -217,6 +220,7 @@
 		56506D012016D773000FD8FA /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				56585953203EB2F500BB59ED /* LGDottedLineView */,
 				5612BFAF2021AC060038D653 /* LGProgressView */,
 				56506D022016D7E7000FD8FA /* LGProgressHUD */,
 			);
@@ -231,6 +235,15 @@
 			);
 			name = LGProgressHUD;
 			path = "../New Group/LGProgressHUD";
+			sourceTree = "<group>";
+		};
+		56585953203EB2F500BB59ED /* LGDottedLineView */ = {
+			isa = PBXGroup;
+			children = (
+				56585954203EB34300BB59ED /* LGDottedLineView.h */,
+				56585955203EB34300BB59ED /* LGDottedLineView.m */,
+			);
+			path = LGDottedLineView;
 			sourceTree = "<group>";
 		};
 		565A30F420132F3700448B1C /* Tool */ = {
@@ -717,6 +730,7 @@
 				02F78A092029E54A0011096F /* LGReciteWordModel.m in Sources */,
 				56EAD86220197F2D0059604E /* LGFindPasswordController.m in Sources */,
 				565A30FA2013411200448B1C /* LGRegisterController.m in Sources */,
+				56585956203EB34300BB59ED /* LGDottedLineView.m in Sources */,
 				56FD20D62028256F003A6154 /* LGDeletePlanAlertView.m in Sources */,
 				5639AFA22024535700AA2CA5 /* LGPlanTableViewCell.m in Sources */,
 				56C989842020176A0095A4BD /* LGWordPlanController.m in Sources */,

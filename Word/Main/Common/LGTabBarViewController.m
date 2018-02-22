@@ -10,7 +10,13 @@
 #import "LGTool.h"
 
 @interface LGTabBarViewController ()
-
+{
+	/*
+	 * 登录界面,为了避免多次跳转,当loginNavigationController为 nil 时候才跳转
+	 * 在 viewDidAppear 置为 nil
+	 */
+	UIViewController *loginNavigationController;
+}
 @end
 
 @implementation LGTabBarViewController
@@ -35,10 +41,15 @@
 	
 	NSString *str = notification.userInfo[NO_LOGIN_ALERT_MESSAGE];
 	[LGProgressHUD showError:str toView:[UIApplication sharedApplication].keyWindow];
-	UIViewController *loginNavigationController = STORYBOARD_VIEWCONTROLLER(@"Login", @"LGLoginNavigationController");
-	[self presentViewController:loginNavigationController animated:YES completion:^{
-		
-	}];
+	if (!loginNavigationController) {
+		loginNavigationController = STORYBOARD_VIEWCONTROLLER(@"Login", @"LGLoginNavigationController");
+		[self presentViewController:loginNavigationController animated:YES completion:nil];
+	}
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+	[super viewDidAppear:animated];
+	loginNavigationController = nil;
 }
 
 //设置状态栏颜色

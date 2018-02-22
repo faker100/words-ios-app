@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-static dispatch_group_t requestGroup;  //用于优先执行的请求,（重置session请求）
+//static dispatch_group_t requestGroup;  //用于优先执行的请求,（重置session请求）
 
 typedef NS_ENUM(NSUInteger, LGErrorType) {
 	LGSystemError,		//网络请求错误
