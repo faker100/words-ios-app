@@ -30,6 +30,9 @@
 		565A30F7201331E000448B1C /* UIColor+LGColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F6201331E000448B1C /* UIColor+LGColor.m */; };
 		565A30FA2013411200448B1C /* LGRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F92013411200448B1C /* LGRegisterController.m */; };
 		566B9860202003E800D368AC /* LGNoStudyTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 566B985F202003E800D368AC /* LGNoStudyTypeController.m */; };
+		567A3AD4203FB72F00A41692 /* LGWordErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567A3AD3203FB72F00A41692 /* LGWordErrorViewController.m */; };
+		567A3AD7203FEB4100A41692 /* LGWordErrorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 567A3AD6203FEB4100A41692 /* LGWordErrorCell.m */; };
+		567A3AE020401D4E00A41692 /* LGIndexReviewAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567A3ADF20401D4E00A41692 /* LGIndexReviewAlertViewController.m */; };
 		567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 567C00FA2010A0360083F3D5 /* LGBaseRequest.m */; };
 		56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56801492202AE1FB0082D72F /* LGWordDetailController.m */; };
 		56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A8883A200CA53400847BE6 /* AppDelegate.m */; };
@@ -111,6 +114,12 @@
 		565A30F92013411200448B1C /* LGRegisterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGRegisterController.m; sourceTree = "<group>"; };
 		566B985E202003E800D368AC /* LGNoStudyTypeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGNoStudyTypeController.h; sourceTree = "<group>"; };
 		566B985F202003E800D368AC /* LGNoStudyTypeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGNoStudyTypeController.m; sourceTree = "<group>"; };
+		567A3AD2203FB72F00A41692 /* LGWordErrorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordErrorViewController.h; sourceTree = "<group>"; };
+		567A3AD3203FB72F00A41692 /* LGWordErrorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordErrorViewController.m; sourceTree = "<group>"; };
+		567A3AD5203FEB4100A41692 /* LGWordErrorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordErrorCell.h; sourceTree = "<group>"; };
+		567A3AD6203FEB4100A41692 /* LGWordErrorCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordErrorCell.m; sourceTree = "<group>"; };
+		567A3ADE20401D4E00A41692 /* LGIndexReviewAlertViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGIndexReviewAlertViewController.h; sourceTree = "<group>"; };
+		567A3ADF20401D4E00A41692 /* LGIndexReviewAlertViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGIndexReviewAlertViewController.m; sourceTree = "<group>"; };
 		567C00F92010A0360083F3D5 /* LGBaseRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGBaseRequest.h; sourceTree = "<group>"; };
 		567C00FA2010A0360083F3D5 /* LGBaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGBaseRequest.m; sourceTree = "<group>"; };
 		56801491202AE1FB0082D72F /* LGWordDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordDetailController.h; sourceTree = "<group>"; };
@@ -287,6 +296,8 @@
 			children = (
 				56801491202AE1FB0082D72F /* LGWordDetailController.h */,
 				56801492202AE1FB0082D72F /* LGWordDetailController.m */,
+				567A3AD2203FB72F00A41692 /* LGWordErrorViewController.h */,
+				567A3AD3203FB72F00A41692 /* LGWordErrorViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -431,6 +442,8 @@
 				56B7AAE8202C59EC00BDECED /* LGWordDetailHeaderFooterView.h */,
 				56B7AAE9202C59EC00BDECED /* LGWordDetailHeaderFooterView.m */,
 				56B7AAEB202C5A2400BDECED /* LGWordDetailHeaderFooterView.xib */,
+				567A3AD5203FEB4100A41692 /* LGWordErrorCell.h */,
+				567A3AD6203FEB4100A41692 /* LGWordErrorCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -496,6 +509,8 @@
 				566B985F202003E800D368AC /* LGNoStudyTypeController.m */,
 				562FC13D202992DE005CEA83 /* LGRecitePlanController.h */,
 				562FC13E202992DE005CEA83 /* LGRecitePlanController.m */,
+				567A3ADE20401D4E00A41692 /* LGIndexReviewAlertViewController.h */,
+				567A3ADF20401D4E00A41692 /* LGIndexReviewAlertViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -746,11 +761,13 @@
 				56A88849200CA53400847BE6 /* main.m in Sources */,
 				5612BFAB202154E30038D653 /* LGWordLibraryModel.m in Sources */,
 				56CCA5E5201B083B0097DCAC /* LGReciteWordsController.m in Sources */,
+				567A3AE020401D4E00A41692 /* LGIndexReviewAlertViewController.m in Sources */,
 				5612BFAE202161E50038D653 /* UIScrollView+LGRefresh.m in Sources */,
 				56B7AADF202BFAEB00BDECED /* LGWordDetailCell.m in Sources */,
 				56C9899120204F7C0095A4BD /* LGWordLibraryTypeCell.m in Sources */,
 				56C9898E2020461D0095A4BD /* LGWordLibraryController.m in Sources */,
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
+				567A3AD4203FB72F00A41692 /* LGWordErrorViewController.m in Sources */,
 				56EAD8722019C98B0059604E /* LGTabBarViewController.m in Sources */,
 				563F7DA22022BE8A00944730 /* UITableView+LGRefresh.m in Sources */,
 				565A30F32013163400448B1C /* LGUserModel.m in Sources */,
@@ -767,6 +784,7 @@
 				560F0FCB2022AA7000324510 /* LGFreeWordListCell.m in Sources */,
 				56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */,
 				56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */,
+				567A3AD7203FEB4100A41692 /* LGWordErrorCell.m in Sources */,
 				563F7DA5202306B500944730 /* LGPlayer.m in Sources */,
 				566B9860202003E800D368AC /* LGNoStudyTypeController.m in Sources */,
 				560F0FD12022AFBA00324510 /* LGFreeWordModel.m in Sources */,

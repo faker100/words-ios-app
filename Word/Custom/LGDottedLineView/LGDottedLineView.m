@@ -8,6 +8,12 @@
 
 #import "LGDottedLineView.h"
 
+@interface LGDottedLineView()
+
+//@property (nonatomic, assign) CGFloat *floatLenghts;
+
+@end
+
 @implementation LGDottedLineView
 
 - (void)drawRect:(CGRect)rect{
@@ -22,18 +28,18 @@
 	//设置虚线绘制起点
 	CGContextMoveToPoint(currentContext, 0, 0);
 	//设置虚线绘制终点
-	if (self.direction == 0) {
-		CGContextAddLineToPoint(currentContext, self.bounds.size.width, 0);
-	}else{
-		CGContextAddLineToPoint(currentContext, 0, self.bounds.size.height);
+	CGContextAddLineToPoint(currentContext, CGRectGetMaxX(self.bounds), CGRectGetMaxY(self.bounds));
+	
+	//设置虚线点
+	NSArray <NSString *> *array = [self.lengths componentsSeparatedByString:@","];
+	CGFloat floatLength[array.count];
+	if (ArrayNotEmpty(array)) {
+		for (int i = 0; i < array.count; i++) {
+			floatLength[i] = array[i].floatValue;
+			}
 	}
 	
-	//设置虚线排列的宽度间隔:下面的arr中的数字表示先绘制2个点再绘制1个点
-	NSArray <NSString *> *array = [self.lengths componentsSeparatedByString:@","];
-	//下面最后一个参数“1”代表排列的个数。
-	
-	CGFloat arr[] = {array.firstObject.floatValue,array.lastObject.floatValue};
-	CGContextSetLineDash(currentContext, 0, arr, 1);
+	CGContextSetLineDash(currentContext, 0, floatLength, array.count);
 	CGContextDrawPath(currentContext, kCGPathStroke);
 }
 

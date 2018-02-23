@@ -124,3 +124,6 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 
 //艾宾浩斯记忆单词
 #define EBBINGHAUS_REVIEW_WORD_URL		@"http://words.viplgw.cn/cn/app-api/get-words-details"
+
+//单词纠错
+#define WORD_ERROR_URL					@"http://words.viplgw.cn/cn/app-api/error-recovery"

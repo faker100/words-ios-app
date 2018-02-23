@@ -204,5 +204,14 @@
 	
 }
 
+- (void)submitWordErrorWithType:(NSUInteger)type content:(NSString *)content wordId:(NSString *)wordId completion:(comletionBlock)completion{
+	self.url = WORD_ERROR_URL;
+	self.parameter = @{
+					   @"type" : @(type),
+					   @"wordsId" : wordId ? wordId : @"",
+					   @"content" : content
+					   };
+	[self postRequestCompletion:completion];
+}
 
 @end

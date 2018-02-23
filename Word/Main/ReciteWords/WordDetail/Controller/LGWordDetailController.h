@@ -24,11 +24,6 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 //单词 label
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 
-
-//单词距离顶部距离
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *wordLabelTopLayout;
-
-
 //播放button距离单词label 的距离
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *playerButtonTopLayout;
 
@@ -42,5 +37,7 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 
 @property (weak, nonatomic) IBOutlet UITableView *wordTabelView;
 
+//单词纠错按钮,wordId 为空的时候不能点击
+@property (weak, nonatomic) IBOutlet UIButton *wordErrorButton;
 
 @end

@@ -174,4 +174,13 @@
 - (void)requestEbbinghausReviewWord:(NSString *)wordID completion:(comletionBlock)completion;
 
 
+/**
+ 提交单词纠错
+
+ @param type 错误类型:1-单词拼写错误, 2-格式有错误, 3-翻译错误, 4-其他
+ @param content 纠错信息
+ @param wordId 单词 id
+ */
+- (void)submitWordErrorWithType:(NSUInteger)type content:(NSString *)content wordId:(NSString *)wordId completion:(comletionBlock)completion;
+
 @end

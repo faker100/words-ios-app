@@ -11,6 +11,7 @@
 #import "LGWordDetailCell.h"
 #import "LGWordDetailHeaderFooterView.h"
 #import "LGPlayer.h"
+#import "LGWordErrorViewController.h"
 
 @interface LGWordDetailController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -98,10 +99,6 @@
 	}];
 }
 
-//报错
-- (IBAction)reportErrorsAction:(id)sender {
-	
-}
 
 //熟识
 - (IBAction)familiarAction:(id)sender {
@@ -201,14 +198,17 @@
 }
 
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"WordDetailToError"]) {
+		LGWordErrorViewController *controller = segue.destinationViewController;
+		controller.wordID = self.detailModel.words.ID;
+	}
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end
