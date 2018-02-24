@@ -1188,9 +1188,6 @@
                                                         <state key="normal" title=" 打卡" image="index_clock">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="clockAction:" destination="kd5-9s-h0d" eventType="touchUpInside" id="iSp-ag-ran"/>
-                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRe-Bn-2WN">
                                                         <rect key="frame" x="157" y="75" width="60" height="27"/>
