@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LGIndexReviewAlertCell" id="TSv-NR-hF5" customClass="LGIndexReviewAlertCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TSv-NR-hF5" id="n1R-6m-vfD">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle _normal" highlightedImage="circle _selected" translatesAutoresizingMaskIntoConstraints="NO" id="Teq-xI-3Ug">
+                        <rect key="frame" x="0.0" y="18.5" width="7" height="7"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="7" id="kPk-dZ-XBi"/>
+                            <constraint firstAttribute="width" constant="7" id="uLz-tb-qOO"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7y-HD-Dl9">
+                        <rect key="frame" x="22" y="14" width="353" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="r7y-HD-Dl9" secondAttribute="trailing" id="7Lr-RE-byk"/>
+                    <constraint firstItem="r7y-HD-Dl9" firstAttribute="centerY" secondItem="n1R-6m-vfD" secondAttribute="centerY" id="OHJ-kf-El1"/>
+                    <constraint firstItem="Teq-xI-3Ug" firstAttribute="leading" secondItem="n1R-6m-vfD" secondAttribute="leading" id="UCP-s6-baw"/>
+                    <constraint firstItem="Teq-xI-3Ug" firstAttribute="centerY" secondItem="n1R-6m-vfD" secondAttribute="centerY" id="dNq-Yn-Rrl"/>
+                    <constraint firstItem="r7y-HD-Dl9" firstAttribute="leading" secondItem="Teq-xI-3Ug" secondAttribute="trailing" constant="15" id="hHL-e4-7g5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionLabel" destination="r7y-HD-Dl9" id="yQF-0w-lQ7"/>
+            </connections>
+            <point key="canvasLocation" x="47" y="-10"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="circle _normal" width="7" height="8"/>
+        <image name="circle _selected" width="7" height="7"/>
+    </resources>
+</document>

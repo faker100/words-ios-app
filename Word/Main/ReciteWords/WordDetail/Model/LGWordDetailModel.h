@@ -26,14 +26,14 @@
 
 @interface LGSentenceModel : NSObject
 
-@property (nonatomic, strong) NSString *english;
-@property (nonatomic, strong) NSString *chinese;
+@property (nonatomic, copy) NSString *english;
+@property (nonatomic, copy) NSString *chinese;
 
 @end
 
 @interface LGWordDetailTableDataSource  : NSObject
 
-@property (nonatomic, strong) NSString *sectionTitle;
+@property (nonatomic, copy) NSString *sectionTitle;
 @property (nonatomic, strong) NSMutableArray<NSString *> *cellContent;
 
 @end

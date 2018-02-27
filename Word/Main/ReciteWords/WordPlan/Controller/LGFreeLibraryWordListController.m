@@ -85,7 +85,7 @@
 				[weakSelf.tableView reloadData];
 			}else{
 				[weakSelf.modelArray addObjectsFromArray:newModelArray];
-				[weakSelf.tableView addMoreDataWithType:LGTableReloadOnlyAddSection newModelArray:newModelArray];
+				[weakSelf.tableView addMoreDataWithType:LGTableReloadOnlyAddSection count:newModelArray.count];
 			}
 		}
     }];
@@ -117,7 +117,6 @@
 			[self isNormal:error];
 		}];
 	}
-	
 }
 
 /*

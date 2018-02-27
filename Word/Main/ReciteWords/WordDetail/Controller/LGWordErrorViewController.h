@@ -10,7 +10,7 @@
 
 @interface LGWordErrorViewController : UIViewController
 
-@property (nonatomic, strong) NSString *wordID;
+@property (nonatomic, copy) NSString *wordID;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

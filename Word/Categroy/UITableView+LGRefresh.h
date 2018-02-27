@@ -37,10 +37,10 @@ typedef void (^LGRefreshBlock)(LGCurrentRefreshType type);
 /**
  用于简单 table 样式的加载更多数据,加载前先更新好数据源
  
- @param modelArray 需要加载的数据数组
+ @param count 需要加载的数量
  
  @param type LGTableAddMoreDataType
  */
-- (void)addMoreDataWithType:(LGTableAddMoreDataType)type  newModelArray:(NSArray *)modelArray;
+- (void)addMoreDataWithType:(LGTableAddMoreDataType)type count:(NSInteger)count;
 
 @end

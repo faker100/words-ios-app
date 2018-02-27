@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LGIndexReviewModel.h"
 
-@interface LGIndexReviewAlertView : UIView
+@interface LGIndexReviewAlertView : UIView <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) LGIndexReviewModel *reviewModel;
+
+@property (weak, nonatomic) IBOutlet UILabel *wordLibNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

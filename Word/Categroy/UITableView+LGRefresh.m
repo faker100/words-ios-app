@@ -29,13 +29,13 @@
 	self.mj_footer = footerHeader;
 }
 
-- (void)addMoreDataWithType:(LGTableAddMoreDataType)type newModelArray:(NSArray *)modelArray{
+- (void)addMoreDataWithType:(LGTableAddMoreDataType)type count:(NSInteger)count{
 	
 	
-	 if(ArrayNotEmpty(modelArray)){
+	 if(count > 0){
 		NSMutableArray *indexPathArray =  [NSMutableArray array];
 		NSMutableIndexSet *sectionIndexSex = [NSMutableIndexSet indexSet];
-		for (int i = 0; i < modelArray.count; i++) {
+		for (int i = 0; i < count; i++) {
 			
 			NSIndexPath *indexPath;
 			if (type == LGTableReloadOnlyAddRow) {

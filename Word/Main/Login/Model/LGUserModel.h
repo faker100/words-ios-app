@@ -10,15 +10,15 @@
 
 @interface LGUserModel : NSObject
 
-@property (nonatomic, strong) NSString *email;
-@property (nonatomic, strong) NSString *nickname;
-@property (nonatomic, strong) NSString *password;
-@property (nonatomic, strong) NSString *phone;
-@property (nonatomic, strong) NSString *uid;
-@property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) NSString *createTime;
-@property (nonatomic, strong) NSString *startTime;
+@property (nonatomic, copy) NSString *email;
+@property (nonatomic, copy) NSString *nickname;
+@property (nonatomic, copy) NSString *password;
+@property (nonatomic, copy) NSString *phone;
+@property (nonatomic, copy) NSString *uid;
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *createTime;
+@property (nonatomic, copy) NSString *startTime;
 @property (nonatomic, assign) LGStudyType  studyModel; //用户学习模式;
-@property (nonatomic, strong) NSString *planWords; //判断用户当前词包是否有计划; nil 没有计划
+@property (nonatomic, copy) NSString *planWords; //判断用户当前词包是否有计划; nil 没有计划
 
 @end

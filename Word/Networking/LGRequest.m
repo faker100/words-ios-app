@@ -214,4 +214,9 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)requestEveryDayReviewCompletion:(comletionBlock)completion{
+	self.url = EVERY_DAY_REVIEW_URL;
+	[self postRequestCompletion:completion];
+}
+
 @end

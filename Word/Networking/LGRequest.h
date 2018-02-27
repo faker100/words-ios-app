@@ -183,4 +183,14 @@
  */
 - (void)submitWordErrorWithType:(NSUInteger)type content:(NSString *)content wordId:(NSString *)wordId completion:(comletionBlock)completion;
 
+
+
+/**
+ 每日复习
+ */
+- (void)requestEveryDayReviewCompletion:(comletionBlock)completion;
+
+
+
+
 @end

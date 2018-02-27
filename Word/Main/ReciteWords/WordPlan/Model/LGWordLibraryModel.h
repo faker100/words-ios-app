@@ -19,19 +19,19 @@ typedef NS_ENUM(NSUInteger, LGWordLibraryPrice) {
 
 @interface LGWordLibraryModel : NSObject
 
-@property (nonatomic, strong) NSString *ID;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *image;
+@property (nonatomic, copy) NSString *ID;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *image;
 @property (nonatomic, assign) LGWordLibraryPrice type;
-@property (nonatomic, strong) NSArray<LGChildWordLibraryModel *> *child;
+@property (nonatomic, copy) NSArray<LGChildWordLibraryModel *> *child;
 
 @end
 
 @interface LGChildWordLibraryModel : NSObject
 
-@property (nonatomic, strong) NSString *ID;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *total;
-@property (nonatomic, strong) NSString *userWords;
+@property (nonatomic, copy) NSString *ID;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *total;
+@property (nonatomic, copy) NSString *userWords;
 
 @end

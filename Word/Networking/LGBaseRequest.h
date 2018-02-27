@@ -20,7 +20,7 @@ typedef NS_ENUM(NSUInteger, LGErrorType) {
 
 @interface LGError : NSObject
 
-@property (nonatomic, strong) NSString *errorMessage;
+@property (nonatomic, copy) NSString *errorMessage;
 @property (nonatomic, assign) LGErrorType errorType;
 
 - (instancetype)initWithMessage:(NSString *)message type:(LGErrorType)type;

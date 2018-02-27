@@ -127,3 +127,9 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 
 //单词纠错
 #define WORD_ERROR_URL					@"http://words.viplgw.cn/cn/app-api/error-recovery"
+
+//每日复习弹框
+#define EVERY_DAY_REVIEW_URL			@"http://words.viplgw.cn/cn/app-api/review-case"
+
+//复习弹框获取单词
+#define ALERT_REVIEW_WORD_URL			@"http://words.viplgw.cn/cn/app-api/review-case-words"
