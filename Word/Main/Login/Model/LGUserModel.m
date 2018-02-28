@@ -8,6 +8,8 @@
 
 #import "LGUserModel.h"
 
+#define LGUSER_ISREVIEW_KEY  @"LGUSER_ISREVIEW_KEY"
+
 @implementation LGUserModel
 
 - (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property{
@@ -16,6 +18,14 @@
 		return @(type);
 	}
 	return oldValue;
+}
+
+- (void)setIsReview:(BOOL)isReview{
+	[[NSUserDefaults standardUserDefaults] setBool:isReview forKey:LGUSER_ISREVIEW_KEY];
+}
+
+- (BOOL)isReview{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:LGUSER_ISREVIEW_KEY];
 }
 
 @end

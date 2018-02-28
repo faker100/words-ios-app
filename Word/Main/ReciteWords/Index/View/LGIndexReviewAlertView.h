@@ -9,8 +9,25 @@
 #import <UIKit/UIKit.h>
 #import "LGIndexReviewModel.h"
 
+
+@protocol LGIndexReviewAlertViewDelegate
+
+/**
+ 立即复习
+ @param status 选择复习状态
+ */
+- (void)reviewWithStatus:(LGWordStatus) status;
+
+/**
+ 跳过复习
+ */
+- (void)skipReview;
+
+@end
+
 @interface LGIndexReviewAlertView : UIView <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, assign) id<LGIndexReviewAlertViewDelegate> delegate;
 @property (nonatomic, strong) LGIndexReviewModel *reviewModel;
 
 @property (weak, nonatomic) IBOutlet UILabel *wordLibNameLabel;

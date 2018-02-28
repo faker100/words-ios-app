@@ -15,7 +15,7 @@
 
 @interface LGWordDetailController () <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) LGWordDetailModel *detailModel;
+@property (nonatomic, strong) LGWordDetailModel *detailModel; //当前单词,重写 setter 刷新界面
 
 @end
 
@@ -25,14 +25,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
+	
 	if (self.type == LGWordDetailReciteWords){
 		[self requestReciteWordsData];
 	}else if (self.type == LGWordDetailEbbinghausReview){
 		[self requestEbbinghausReviewWord];
+	}else if (self.type == LGwordDetailTodayReview){
+		[self requestTodayReviewWord];
 	}
+	
+	self.title = [NSString stringWithFormat:@"%ld/%ld",self.currentNum.integerValue,self.total.integerValue];
 	
 	[self.wordTabelView registerNib:[UINib nibWithNibName:@"LGWordDetailHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGWordDetailHeaderFooterView"];
 }
+
+#pragma mark - setter  getter
 
 - (void)setDetailModel:(LGWordDetailModel *)detailModel {
 	_detailModel = detailModel;
@@ -42,6 +49,16 @@
 	[self.wordTabelView reloadData];
 }
 
+- (void)setType:(LGWordDetailControllerType)type{
+	_type = type;
+	if (self.type == LGwordDetailTodayReview) {
+		[self.vagueOrForgotButton setTitle:@"模糊" forState:UIControlStateNormal];
+	}else{
+		[self.vagueOrForgotButton setTitle:@"忘记" forState:UIControlStateNormal];
+	}
+}
+
+#pragma mark - 请求数据
 
 /**
  * 请求背单词接口,code = 98进入复习模式
@@ -79,11 +96,25 @@
 - (void)requestEbbinghausReviewWordArray{
 	[self.request requestEbbinghausReviewList:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			NSMutableArray *array  = [NSMutableArray arrayWithArray:response[@"words"]];
-			[self pushNextWordDetailController:LGWordDetailEbbinghausReview reviewWordIdArray:array animated:NO];
+			self.reviewWordIdArray  = [NSMutableArray arrayWithArray:response[@"words"]];
+			[self pushNextWordDetailController:LGWordDetailEbbinghausReview animated:NO];
 		}
 	}];
 }
+
+
+/**
+ 请求今日复习单词
+ */
+- (void)requestTodayReviewWord{
+	[self.request requestTodayReviewWordsWithStatus:self.todayReviewStatus completion:^(id response, LGError *error) {
+		if ([self isNormal:error]) {
+			self.detailModel = [LGWordDetailModel mj_objectWithKeyValues:response];
+		}
+	}];
+}
+
+#pragma mark -
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -115,58 +146,110 @@
 	[self updateWordStatus:LGWordStatusIncognizance];
 }
 
-//模糊
-- (IBAction)vagueAction:(id)sender {
-	[self updateWordStatus:LGWordStatusVague];
+// 在背单词模式下标记为模糊,其他复习模式下标记为忘记
+- (IBAction)vagueOrForgotAction:(id)sender {
+	
+	[self updateWordStatus:self.type == LGWordDetailReciteWords ? LGWordStatusVague : LGWordStatusForget];
+}
+
+
+#pragma mark - 修改单词状态
+
+- (void)updateWordStatus:(LGWordStatus) status{
+	
+	if (self.detailModel.words.ID == nil) return;
+	
+	switch (self.type) {
+		case LGWordDetailReciteWords:
+			[self updateReciteWordStatus:status];
+			break;
+			
+		case LGWordDetailEbbinghausReview:
+			[self updateEbbinghausReviewWordStatus:status];
+			break;
+			
+		case LGwordDetailTodayReview:
+			[self updateReviewWordStatus:status];
+			break;
+			
+		default:
+			break;
+	}
 }
 
 
 /**
- 更新单词状态,并跳转到下一个单词
- 在艾宾浩斯复习模式下,循环复习 id 列表, 如果标记单词为认识,则从复习id列表中移除该单词,
- 如果标记为其他状态,则把该单词移动到复习列表最后,直到所有单词都标记为认识
- 当复习id列表为空时,进入背单词模式(LGWordDetailReciteWords)
- @param status 标记单词状态
+ 背单词模式下更新单词状态,并跳转到下一个单词
+
+ @param status 单词状态
  */
-- (void)updateWordStatus:(LGWordStatus) status{
+- (void)updateReciteWordStatus:(LGWordStatus) status {
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request updateWordStatus:self.detailModel.words.ID status:status completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			if (self.type == LGWordDetailEbbinghausReview) {
-				NSString *wordID = self.reviewWordIdArray.firstObject;
-				[self.reviewWordIdArray removeObjectAtIndex:0];
-				if (status != LGWordStatusKnow) {
-					[self.reviewWordIdArray addObject:wordID];
-				}
-				LGWordDetailControllerType tempType = ArrayNotEmpty(self.reviewWordIdArray) ? LGWordDetailEbbinghausReview : LGWordDetailReciteWords;
-				[self pushNextWordDetailController:tempType reviewWordIdArray:self.reviewWordIdArray animated:YES];
-			}else{
-				[self pushNextWordDetailController:LGWordDetailReciteWords reviewWordIdArray:nil animated:YES];
-			}
+			[self pushNextWordDetailController:LGWordDetailReciteWords  animated:YES];
 		}
 	}];
 }
 
 
 /**
+ 在艾宾浩斯复习模式下更新单词状态,并跳转到下一个单词
+ 循环复习 id 列表, 如果标记单词为认识,则从复习id列表中移除该单词,
+ 如果标记为其他状态,则把该单词移动到复习列表最后,直到所有单词都标记为认识
+ 当复习id列表为空时,进入背单词模式(LGWordDetailReciteWords)
+
+ @param status 单词状态
+ */
+- (void)updateEbbinghausReviewWordStatus:(LGWordStatus) status {
+	[LGProgressHUD showHUDAddedTo:self.view];
+	[self.request updateWordStatus:self.detailModel.words.ID status:status completion:^(id response, LGError *error) {
+		if ([self isNormal:error]) {
+			NSString *wordID = self.reviewWordIdArray.firstObject;
+			[self.reviewWordIdArray removeObjectAtIndex:0];
+			if (status != LGWordStatusKnow) {
+					[self.reviewWordIdArray addObject:wordID];
+				}
+				LGWordDetailControllerType tempType = ArrayNotEmpty(self.reviewWordIdArray) ? LGWordDetailEbbinghausReview : LGWordDetailReciteWords;
+				[self pushNextWordDetailController:tempType  animated:YES];
+		}
+	}];
+}
+
+
+/**
+ 复习模式下修改单词状态,并跳转到下一个单词
+
+ @param status 单词状态
+ */
+- (void)updateReviewWordStatus:(LGWordStatus) status{
+	[LGProgressHUD showHUDAddedTo:self.view];
+	[self.request updateReviewWordStatus:status wordId:self.detailModel.words.ID completion:^(id response, LGError *error) {
+		if ([self isNormal:error]) {
+			[self pushNextWordDetailController:self.type  animated:YES];
+		}
+	}];
+}
+
+/**
  跳转到下一个 WordDetailController
 
  @param type  下一个 controller 的模式
- @param array 艾宾浩斯复习模式下(LGWordDetailEbbinghausReview)需要复习的单词 id 数组,其他模式为 nil
  @param animated 是否跳转动画
  */
-- (void)pushNextWordDetailController:(LGWordDetailControllerType) type reviewWordIdArray:(NSMutableArray *) array animated:(BOOL)animated{
+- (void)pushNextWordDetailController:(LGWordDetailControllerType) type animated:(BOOL)animated{
 	
 	LGWordDetailController *wordDetailController = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGWordDetailController");
 	wordDetailController.type = type;
-	wordDetailController.reviewWordIdArray = array;
+	wordDetailController.reviewWordIdArray = self.reviewWordIdArray;
+	wordDetailController.todayReviewStatus = self.todayReviewStatus;
 	NSMutableArray *controllerArray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
 	[controllerArray removeObject:self];
 	[controllerArray addObject:wordDetailController];
 	[self.navigationController setViewControllers:controllerArray animated:animated];
 }
 
-#pragma mark -UITableViewDataSource
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -183,15 +266,18 @@
 {
 	if (tableView == self.wordTabelView) {
 		LGWordDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailCell"];
-		cell.contentLabel.text = self.detailModel.dataSource[indexPath.section].cellContent[indexPath.row];
+		NSString *content = self.detailModel.dataSource[indexPath.section].cellContent[indexPath.row];
+		BOOL isFirst = indexPath.row == 0;
+		BOOL isLast  = indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1;
+		[cell setContentStr:content isFirst:isFirst isLast:isLast];
 		return cell;
 	}
 	return nil;
 }
 
-#pragma mark -UITableViewDelegate
+#pragma mark - UITableViewDelegate
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 	LGWordDetailHeaderFooterView *heaerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"LGWordDetailHeaderFooterView"];
 	heaerView.titleLabel.text = self.detailModel.dataSource[section].sectionTitle;
 	return heaerView;

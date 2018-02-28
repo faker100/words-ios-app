@@ -52,15 +52,20 @@
 	return cell;
 }
 
-#pragma mark -UITableViewDelegate
+#pragma mark - UITableViewDelegate
 
 //跳过复习
 - (IBAction)skipAction:(id)sender {
-	[self removeFromSuperview];
+	if (self.delegate) {
+		[self.delegate skipReview];
+	}
 }
 //立即复习
 - (IBAction)reviewAction:(id)sender {
-	
+	if (self.delegate) {
+		NSInteger index = [self.tableView indexPathForSelectedRow].row;
+		[self.delegate reviewWithStatus:self.reviewModel.dataSourceArray[index].status];
+	}
 }
 
 @end

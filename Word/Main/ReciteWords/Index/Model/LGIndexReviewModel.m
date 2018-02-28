@@ -17,6 +17,7 @@
 		LGReviewSubModel *model = [LGReviewSubModel new];
 		model.count = self.know;
 		model.descriptionStr = @"背认识的单词";
+		model.status = LGWordStatusKnow;
 		[self.dataSourceArray addObject:model];
 	}
 	
@@ -24,6 +25,7 @@
 		LGReviewSubModel *model = [LGReviewSubModel new];
 		model.count = self.incognizant;
 		model.descriptionStr = @"背不认识的单词";
+		model.status = LGWordStatusIncognizance;
 		[self.dataSourceArray addObject:model];
 	}
 	
@@ -31,6 +33,7 @@
 		LGReviewSubModel *model = [LGReviewSubModel new];
 		model.count = self.dim;
 		model.descriptionStr = @"背模糊的单词";
+		model.status = LGWordStatusVague;
 		[self.dataSourceArray addObject:model];
 	}
 	
@@ -38,6 +41,7 @@
 		LGReviewSubModel *model = [LGReviewSubModel new];
 		model.count = self.all;
 		model.descriptionStr = @"全部数";
+		model.status = 0;
 		[self.dataSourceArray addObject:model];
 	}
 }

@@ -11,8 +11,10 @@
 #import "LGUserManager.h"
 #import "LGIndexReviewAlertView.h"
 #import "LGIndexReviewModel.h"
+#import "LGWordDetailController.h"
 
-@interface LGRecitePlanController ()
+@interface LGRecitePlanController () <LGIndexReviewAlertViewDelegate>
+
 /**
  每日复习框
  */
@@ -34,10 +36,11 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-	[self configData];
+	[self configIndexData];
 }
 
-- (void)configData{
+
+- (void)configIndexData{
 	__weak typeof(self) weakSelf = self;
 	[self.request requestIndexRecitePlan:^(id response, LGError *error) {
 		if ([weakSelf isNormal:error showInView:self.parentViewController.view]) {
@@ -56,11 +59,18 @@
 
 
 /**
- 点击复习背单词,先检查是否已经提醒每日复习;
+ 点击开始背单词,先检查本地是否已经提醒每日复习;
+ 在 "只记新单词模式" 和 isReview 为 yes 时,不请求服务器
  */
 - (IBAction)beginReciteWordsAction:(id)sender {
 	
+	if ([LGUserManager shareManager].user.isReview || [LGUserManager shareManager].user.studyModel == LGStudyOnlyNew){
+		[self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:nil];
+		return;
+	};
+	
 	__weak typeof(self) weakSelf = self;
+	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestReciteWordsCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			NSInteger code = [NSString stringWithFormat:@"%@",response[@"code"]].integerValue;
@@ -72,15 +82,15 @@
 					if ([self isNormal:error]) {
 						LGIndexReviewModel *model = [LGIndexReviewModel mj_objectWithKeyValues:response];
 						model.currentWordLibName = self.reciteWordModel.packageName;
+						
+						// 测试
 						model.all = @"33";
 						model.know = @"123";
 						model.incognizant = @"555";
 						model.dim = @"3523";
-						
 						NSDictionary *dic = [model mj_keyValues];
-						
 						model = [LGIndexReviewModel mj_objectWithKeyValues:dic];
-						
+						//
 						[self showReviewAlertWithModel:model];
 					}
 				}];
@@ -95,6 +105,7 @@
 	if (!self.reviewAlertView) {
 		self.reviewAlertView = [[NSBundle mainBundle]loadNibNamed:@"LGIndexReviewAlertView" owner:nil options:nil].firstObject;
 		self.reviewAlertView.frame = self.view.window.bounds;
+		self.reviewAlertView.delegate = self;
 	}
 	self.reviewAlertView.reviewModel = reviewModel;
 	[self.view.window addSubview:self.reviewAlertView];
@@ -173,6 +184,36 @@
 }
 
 
+#pragma mark - LGIndexReviewAlertViewDelegate
+
+- (void)skipReview{
+	[self updateEveryDayReview];
+	[self.reviewAlertView removeFromSuperview];
+	self.reviewAlertView = nil;
+}
+
+- (void)reviewWithStatus:(LGWordStatus)status{
+	[self updateEveryDayReview];
+	[self.reviewAlertView removeFromSuperview];
+	self.reviewAlertView = nil;
+	[self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:@(status)];
+}
+
+
+/**
+ 通知服务器已经点击过复习弹框,为避免重复点击,本地先设置为 YES
+ */
+- (void)updateEveryDayReview{
+	
+	[LGUserManager shareManager].user.isReview = YES;
+	
+	[self.request updateEveryDayReviewCompletion:^(id response, LGError *error) {
+		if (![self isNormal:error]) {
+			[LGUserManager shareManager].user.isReview = NO;
+		}
+	}];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -180,12 +221,14 @@
 	
 	if ([segue.identifier isEqualToString:@"indexPlanToBeginReciteWords"]) {
 		
+			LGWordDetailController *controller = segue.destinationViewController;
+			controller.type = sender ? LGwordDetailTodayReview : LGWordDetailReciteWords;
+			controller.todayReviewStatus = [NSString stringWithFormat:@"%@",sender].integerValue;
+			controller.total = self.reciteWordModel.userPackage.planWords;
 	}
 	// Get the new view controller using [segue destinationViewController].
 	// Pass the selected object to the new view controller.
 }
-
-
 
 @end
 

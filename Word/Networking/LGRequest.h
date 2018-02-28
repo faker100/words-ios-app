@@ -186,11 +186,29 @@
 
 
 /**
- 每日复习
+ 每日复习弹框
  */
 - (void)requestEveryDayReviewCompletion:(comletionBlock)completion;
 
 
+/**
+ 点击每日复习弹框
+ */
+- (void)updateEveryDayReviewCompletion:(comletionBlock)completion;
 
+
+/**
+ 获取今日复习单词
+ @param status 选择复习单词类型
+ */
+- (void)requestTodayReviewWordsWithStatus:(LGWordStatus)status completion:(comletionBlock)completion;
+
+/**
+ 复习模式下修改单词状态
+
+ @param status 单词状态
+ @param wordId 单词 id
+ */
+- (void)updateReviewWordStatus:(LGWordStatus)status wordId:(NSString *)wordId completion:(comletionBlock)completion;
 
 @end

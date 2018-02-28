@@ -1444,7 +1444,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ywj-mj-Ihj">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="30" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ywj-mj-Ihj">
                                 <rect key="frame" x="0.0" y="64" width="375" height="523"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="NtV-db-o4S">
@@ -1497,7 +1497,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LGWordDetailCell" id="OuW-jO-dPn" customClass="LGWordDetailCell">
-                                        <rect key="frame" x="0.0" y="183" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="185" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OuW-jO-dPn" id="Snk-mC-gQx">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -1540,6 +1540,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="contentBackgroundView" destination="ZcK-ul-r69" id="dxP-ze-R4E"/>
                                             <outlet property="contentLabel" destination="dDz-Mm-QZe" id="Xd2-Iv-taB"/>
                                         </connections>
                                     </tableViewCell>
@@ -1600,7 +1601,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="vagueAction:" destination="QJ7-j4-1ND" eventType="touchUpInside" id="nLT-M0-NRi"/>
+                                            <action selector="vagueOrForgotAction:" destination="QJ7-j4-1ND" eventType="touchUpInside" id="st6-7Y-5zY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1666,6 +1667,7 @@
                         <outlet property="playerButton" destination="wQN-bB-oiq" id="Fi2-lP-PyG"/>
                         <outlet property="playerButtonTopLayout" destination="8uL-Pd-Y7t" id="bZx-sz-HBP"/>
                         <outlet property="translateLabel" destination="KhT-1m-tZ4" id="ncb-RU-L4F"/>
+                        <outlet property="vagueOrForgotButton" destination="ith-tx-ixi" id="k2H-fL-QyH"/>
                         <outlet property="wordLabel" destination="dvu-A0-X7B" id="a5M-5A-eLs"/>
                         <outlet property="wordTabelView" destination="ywj-mj-Ihj" id="rLH-39-9zR"/>
                         <outlet property="wordView" destination="NtV-db-o4S" id="y3A-7M-TCJ"/>

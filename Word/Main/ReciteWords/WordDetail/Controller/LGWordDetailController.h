@@ -9,17 +9,27 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
-	LGWordDetailReciteWords, 	   //背单词模式
-	LGWordDetailEbbinghausReview, //艾宾浩斯复习模式
+	LGWordDetailReciteWords = 0, 	   //背单词模式,默认
+	LGWordDetailEbbinghausReview,      //艾宾浩斯复习模式
+	LGwordDetailTodayReview		       //今日复习
 };
 
 @interface LGWordDetailController : UIViewController
 
+//controller 模式
 @property (nonatomic, assign) LGWordDetailControllerType type;
 
+//今日复习模式下(LGwordDetailTodayReview),要复习的状态,0为全部
+@property (nonatomic, assign) LGWordStatus todayReviewStatus;
 
 // 艾宾浩斯复习模式(LGWordDetailEbbinghausReview)下需要复习单词的 id 列表
 @property (nonatomic, strong) NSMutableArray<NSString *> *reviewWordIdArray;
+
+//当前单词顺序号 (title)
+@property (nonatomic, copy) NSString *currentNum;
+
+//单词总共个数 (title)
+@property (nonatomic, copy) NSString *total;
 
 //单词 label
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
@@ -35,9 +45,12 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 //顶部 单词区域
 @property (weak, nonatomic) IBOutlet UIView *wordView;
 
+// '模糊' / '忘记'按钮 , 复习模式下为'忘记',背单词模式下为 '模糊'
+@property (weak, nonatomic) IBOutlet UIButton *vagueOrForgotButton;
+
 @property (weak, nonatomic) IBOutlet UITableView *wordTabelView;
 
-//单词纠错按钮,wordId 为空的时候不能点击
+//单词纠错按钮
 @property (weak, nonatomic) IBOutlet UIButton *wordErrorButton;
 
 @end

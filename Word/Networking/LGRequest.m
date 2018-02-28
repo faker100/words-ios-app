@@ -219,4 +219,27 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)updateEveryDayReviewCompletion:(comletionBlock)completion{
+	self.url = UPDATE_IS_REVIEW_URL;
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestTodayReviewWordsWithStatus:(LGWordStatus)status completion:(comletionBlock)completion{
+	self.url = REVIEW_TODAY_URL;
+	self.parameter = @{
+					   @"status" :@(status)
+					   };
+	[self postRequestCompletion:completion];
+}
+
+- (void)updateReviewWordStatus:(LGWordStatus)status wordId:(NSString *)wordId completion:(comletionBlock)completion{
+	self.url = UPDATE_REVIEW_WORD_STATUS_URL;
+	self.parameter = @{
+					   @"wordsId" : wordId,
+					   @"status" : @(status)
+					   };
+	[self postRequestCompletion:completion];
+	
+}
+
 @end

@@ -30,11 +30,12 @@ typedef NS_ENUM(NSInteger, LGUsernameType) {
 
 //单词状态
 typedef NS_ENUM(NSUInteger, LGWordStatus) {
-	LGWordStatusNone,           //没背
-	LGWordStatusFamiliar,       //熟识
-	LGWordStatusKnow,     	    //认识
-	LGWordStatusIncognizance,   //不认识
-	LGWordStatusVague,			//模糊
+	LGWordStatusNone = 0,           //没背
+	LGWordStatusFamiliar = 1,       //熟识
+	LGWordStatusKnow = 2,     	    //认识
+	LGWordStatusIncognizance = 3,   //不认识
+	LGWordStatusVague = 4,			//模糊
+	LGWordStatusForget = 5          //忘记
 };
 
 //学习模式
@@ -109,7 +110,6 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 //修改词包计划
 #define UPLOAD_WORD_LIBRARY_URL			@"http://words.viplgw.cn/cn/app-api/update-package"
 
-
 //首页单词记忆计划
 #define INDEX_RECITE_PLAN_URL           @"http://words.viplgw.cn/cn/app-api/index"
 
@@ -133,3 +133,21 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 
 //复习弹框获取单词
 #define ALERT_REVIEW_WORD_URL			@"http://words.viplgw.cn/cn/app-api/review-case-words"
+
+//今日是否选择复习
+#define UPDATE_IS_REVIEW_URL			@"http://words.viplgw.cn/cn/app-api/update-is-review"
+
+//获取今日复习单词
+#define REVIEW_TODAY_URL				@"http://words.viplgw.cn/cn/app-api/review-case-words"
+
+//修改复习模式单词状态
+#define UPDATE_REVIEW_WORD_STATUS_URL	@"http://words.viplgw.cn/cn/app-api/review-update"
+
+
+
+
+
+
+
+
+

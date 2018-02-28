@@ -29,5 +29,8 @@
 @property (nonatomic, copy) NSString *count;
 @property (nonatomic, copy) NSString *descriptionStr;
 
+// 0 为全部
+@property (nonatomic, assign) LGWordStatus status;
+
 @end
 
