@@ -12,6 +12,7 @@
 #import "LGWordDetailHeaderFooterView.h"
 #import "LGPlayer.h"
 #import "LGWordErrorViewController.h"
+#import "LGTodayReviewWordModel.h"
 
 @interface LGWordDetailController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -25,21 +26,33 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
-	
-	if (self.type == LGWordDetailReciteWords){
+	if (self.type == LGWordDetailReciteWords)
+    {
 		[self requestReciteWordsData];
-	}else if (self.type == LGWordDetailEbbinghausReview){
-		[self requestEbbinghausReviewWord];
-	}else if (self.type == LGwordDetailTodayReview){
+        
+	}else if (self.type == LGWordDetailEbbinghausReview)
+    {
+		[self requestWordDetailWidthID:self.ebbinghausReviewWordIdArray.firstObject];
+        
+	}else if (self.type == LGwordDetailTodayReview)
+    {
 		[self requestTodayReviewWord];
 	}
-	
-	self.title = [NSString stringWithFormat:@"%ld/%ld",self.currentNum.integerValue,self.total.integerValue];
-	
+    [self.vagueOrForgotButton setTitle:self.type == LGwordDetailTodayReview ? @"忘记" : @"模糊" forState:UIControlStateNormal];
 	[self.wordTabelView registerNib:[UINib nibWithNibName:@"LGWordDetailHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGWordDetailHeaderFooterView"];
 }
 
-#pragma mark - setter  getter
+#pragma mark - Setter  Getter
+
+- (void)setCurrentNum:(NSString *)currentNum{
+    _currentNum = currentNum;
+    self.title = [NSString stringWithFormat:@"%ld/%ld",currentNum.integerValue,self.total.integerValue];
+}
+
+- (void)setTotal:(NSString *)total{
+    _total = total;
+    self.title = [NSString stringWithFormat:@"%ld/%ld",self.currentNum.integerValue,total.integerValue];
+}
 
 - (void)setDetailModel:(LGWordDetailModel *)detailModel {
 	_detailModel = detailModel;
@@ -47,15 +60,6 @@
 	self.translateLabel.text = detailModel.words.translate;
 	[self.playerButton setTitle:[NSString stringWithFormat:@"  %@",detailModel.words.phonetic_us] forState:UIControlStateNormal];
 	[self.wordTabelView reloadData];
-}
-
-- (void)setType:(LGWordDetailControllerType)type{
-	_type = type;
-	if (self.type == LGwordDetailTodayReview) {
-		[self.vagueOrForgotButton setTitle:@"模糊" forState:UIControlStateNormal];
-	}else{
-		[self.vagueOrForgotButton setTitle:@"忘记" forState:UIControlStateNormal];
-	}
 }
 
 #pragma mark - 请求数据
@@ -78,16 +82,19 @@
 }
 
 
+
 /**
- 请求复习艾宾浩斯复习的第一个单词
+ 通过单词id请求单词详情
+
+ @param wordID 单词id
  */
-- (void)requestEbbinghausReviewWord{
-	[LGProgressHUD showHUDAddedTo:self.view];
-	[self.request requestEbbinghausReviewWord:self.reviewWordIdArray.firstObject completion:^(id response, LGError *error) {
-		if ([self isNormal:error]) {
-			self.detailModel = [LGWordDetailModel mj_objectWithKeyValues:response];
-		}
-	}];
+- (void)requestWordDetailWidthID:(NSString *)wordID{
+    [LGProgressHUD showHUDAddedTo:self.view];
+    [self.request requestWordDetailWidthID:wordID completion:^(id response, LGError *error) {
+        if ([self isNormal:error]) {
+            self.detailModel = [LGWordDetailModel mj_objectWithKeyValues:response];
+        }
+    }];
 }
 
 /**
@@ -96,7 +103,7 @@
 - (void)requestEbbinghausReviewWordArray{
 	[self.request requestEbbinghausReviewList:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			self.reviewWordIdArray  = [NSMutableArray arrayWithArray:response[@"words"]];
+			self.ebbinghausReviewWordIdArray  = [NSMutableArray arrayWithArray:response[@"words"]];
 			[self pushNextWordDetailController:LGWordDetailEbbinghausReview animated:NO];
 		}
 	}];
@@ -106,10 +113,14 @@
 /**
  请求今日复习单词
  */
-- (void)requestTodayReviewWord{
+- (void)requestTodayReviewWord {
+
 	[self.request requestTodayReviewWordsWithStatus:self.todayReviewStatus completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			self.detailModel = [LGWordDetailModel mj_objectWithKeyValues:response];
+			LGTodayReviewWordModel *reviewWordModel = [LGTodayReviewWordModel mj_objectWithKeyValues:response];
+            self.total = reviewWordModel.all;
+            self.currentNum = @(reviewWordModel.did.integerValue + 1).stringValue;
+            [self requestWordDetailWidthID:reviewWordModel.wordsId];
 		}
 	}];
 }
@@ -205,12 +216,12 @@
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request updateWordStatus:self.detailModel.words.ID status:status completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			NSString *wordID = self.reviewWordIdArray.firstObject;
-			[self.reviewWordIdArray removeObjectAtIndex:0];
+			NSString *wordID = self.ebbinghausReviewWordIdArray.firstObject;
+			[self.ebbinghausReviewWordIdArray removeObjectAtIndex:0];
 			if (status != LGWordStatusKnow) {
-					[self.reviewWordIdArray addObject:wordID];
+					[self.ebbinghausReviewWordIdArray addObject:wordID];
 				}
-				LGWordDetailControllerType tempType = ArrayNotEmpty(self.reviewWordIdArray) ? LGWordDetailEbbinghausReview : LGWordDetailReciteWords;
+				LGWordDetailControllerType tempType = ArrayNotEmpty(self.ebbinghausReviewWordIdArray) ? LGWordDetailEbbinghausReview : LGWordDetailReciteWords;
 				[self pushNextWordDetailController:tempType  animated:YES];
 		}
 	}];
@@ -241,7 +252,7 @@
 	
 	LGWordDetailController *wordDetailController = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGWordDetailController");
 	wordDetailController.type = type;
-	wordDetailController.reviewWordIdArray = self.reviewWordIdArray;
+	wordDetailController.ebbinghausReviewWordIdArray = self.ebbinghausReviewWordIdArray;
 	wordDetailController.todayReviewStatus = self.todayReviewStatus;
 	NSMutableArray *controllerArray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
 	[controllerArray removeObject:self];

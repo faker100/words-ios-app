@@ -23,7 +23,7 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 @property (nonatomic, assign) LGWordStatus todayReviewStatus;
 
 // 艾宾浩斯复习模式(LGWordDetailEbbinghausReview)下需要复习单词的 id 列表
-@property (nonatomic, strong) NSMutableArray<NSString *> *reviewWordIdArray;
+@property (nonatomic, strong) NSMutableArray<NSString *> *ebbinghausReviewWordIdArray;
 
 //当前单词顺序号 (title)
 @property (nonatomic, copy) NSString *currentNum;

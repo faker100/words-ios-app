@@ -195,8 +195,8 @@
 	[self postRequestCompletion:completion];
 }
 
-- (void)requestEbbinghausReviewWord:(NSString *)wordID completion:(comletionBlock)completion{
-	self.url = EBBINGHAUS_REVIEW_WORD_URL;
+- (void)requestWordDetailWidthID:(NSString *)wordID completion:(comletionBlock)completion{
+	self.url = GET_WORD_DETAILS_URL;
 	self.parameter = @{
 					   @"wordsId" : wordID,
 					   };

@@ -168,10 +168,10 @@
 
 
 /**
- 请求艾宾浩斯复习单词
+ 通过单词id请求单词详情
  @param wordID 单词 id
  */
-- (void)requestEbbinghausReviewWord:(NSString *)wordID completion:(comletionBlock)completion;
+- (void)requestWordDetailWidthID:(NSString *)wordID completion:(comletionBlock)completion;
 
 
 /**
