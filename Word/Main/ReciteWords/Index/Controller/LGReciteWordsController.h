@@ -10,6 +10,8 @@
 
 @interface LGReciteWordsController : UIViewController
 
+//首页搜索框宽度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleViewWidthConstraint;
 
 
 @end

@@ -11,6 +11,7 @@
 #import "LGUserManager.h"
 #import "LGNoStudyTypeController.h"
 #import "LGRecitePlanController.h"
+#import <SDWebImage/UIButton+WebCache.h>
 
 @interface LGReciteWordsController ()
 
@@ -40,10 +41,32 @@
 	}];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:LOGIN_NOTIFICATION object:nil];
+	[self setLeftItem];
+	[self configNavigationItem];
+	
+}
+
+- (void)configNavigationItem{
+	self.titleViewWidthConstraint.constant = 200.0/375.0f * SCREEN_WIDTH;
+	NSArray <UIBarButtonItem *> *rightItemArray = self.navigationItem.rightBarButtonItems;
+	[rightItemArray.lastObject setImageInsets:UIEdgeInsetsMake(0, 15, 0, -15)];
+	
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
 	[self configData];
+}
+
+- (void)setLeftItem {
+	UIView *tempView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 37, 37)];
+	UIButton *itemButton = [[UIButton alloc]initWithFrame:tempView.bounds];
+	[itemButton sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN([LGUserManager shareManager].user.image])  forState:UIControlStateNormal placeholderImage:PLACEHOLDERIMAGE];
+	 [itemButton addTarget:self action:@selector(pushUserInfo) forControlEvents:UIControlEventTouchUpInside];
+	 itemButton.layer.cornerRadius = 20;
+	 itemButton.layer.masksToBounds = YES;
+	 [tempView addSubview:itemButton];
+	 self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:tempView];
 }
 
 - (void)viewDidLayoutSubviews{
@@ -53,8 +76,11 @@
 - (void)configData{
 	__weak typeof(self) weakSelf = self;
 	[self.request requestUserInfo:^(id response, LGError *error) {
-		[LGUserManager shareManager].user = [LGUserModel mj_objectWithKeyValues:response[@"data"]];
-		[weakSelf showController:YES];
+		if ([self isNormal:error]){
+			[LGUserManager shareManager].user = [LGUserModel mj_objectWithKeyValues:response[@"data"]];
+			[self setLeftItem];
+			[weakSelf showController:YES];
+		}
 	}];
 }
 
@@ -112,6 +138,11 @@
 	
 	[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
 }
+	 
+- (void)pushUserInfo{
+	[self performSegueWithIdentifier:@"IndexToUserCenter" sender:nil];
+}
+	 
 
 //登录成功
 - (void)loginSuccess{

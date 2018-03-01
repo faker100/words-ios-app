@@ -27,6 +27,7 @@
 		563F7DA22022BE8A00944730 /* UITableView+LGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 563F7DA12022BE8A00944730 /* UITableView+LGRefresh.m */; };
 		563F7DA5202306B500944730 /* LGPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 563F7DA4202306B500944730 /* LGPlayer.m */; };
 		563F7DAB2023177E00944730 /* NSObject+LGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 563F7DAA2023177E00944730 /* NSObject+LGRequest.m */; };
+		564EB7AC2047998500E47A1E /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 564EB7AB2047998500E47A1E /* NSDate+Utilities.m */; };
 		56506D052016D842000FD8FA /* LGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56506D042016D842000FD8FA /* LGProgressHUD.m */; };
 		56585956203EB34300BB59ED /* LGDottedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56585955203EB34300BB59ED /* LGDottedLineView.m */; };
 		5658D5A62040FF7600390FC4 /* LGIndexReviewAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5658D5A52040FF7600390FC4 /* LGIndexReviewAlertView.m */; };
@@ -110,6 +111,8 @@
 		563F7DA4202306B500944730 /* LGPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPlayer.m; sourceTree = "<group>"; };
 		563F7DA92023177E00944730 /* NSObject+LGRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LGRequest.h"; sourceTree = "<group>"; };
 		563F7DAA2023177E00944730 /* NSObject+LGRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LGRequest.m"; sourceTree = "<group>"; };
+		564EB7AA2047998400E47A1E /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
+		564EB7AB2047998500E47A1E /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		56506D032016D842000FD8FA /* LGProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGProgressHUD.h; sourceTree = "<group>"; };
 		56506D042016D842000FD8FA /* LGProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGProgressHUD.m; sourceTree = "<group>"; };
 		56585954203EB34300BB59ED /* LGDottedLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDottedLineView.h; sourceTree = "<group>"; };
@@ -330,6 +333,8 @@
 		56961CF5200D89B0009EA21C /* Categroy */ = {
 			isa = PBXGroup;
 			children = (
+				564EB7AA2047998400E47A1E /* NSDate+Utilities.h */,
+				564EB7AB2047998500E47A1E /* NSDate+Utilities.m */,
 				56AF60C82011DBBE0067BD7B /* CALayer+LGLayer.h */,
 				56AF60C92011DBBE0067BD7B /* CALayer+LGLayer.m */,
 				56AF60D32011EA050067BD7B /* UIViewController+LGViewController.h */,
@@ -797,6 +802,7 @@
 				56EAD8722019C98B0059604E /* LGTabBarViewController.m in Sources */,
 				563F7DA22022BE8A00944730 /* UITableView+LGRefresh.m in Sources */,
 				565A30F32013163400448B1C /* LGUserModel.m in Sources */,
+				564EB7AC2047998500E47A1E /* NSDate+Utilities.m in Sources */,
 				5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */,
 				5639AF9F202441B300AA2CA5 /* LGPlanModel.m in Sources */,
 				56AF60D52011EA050067BD7B /* UIViewController+LGViewController.m in Sources */,

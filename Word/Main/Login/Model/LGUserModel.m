@@ -7,6 +7,7 @@
 //
 
 #import "LGUserModel.h"
+#import "NSDate+Utilities.h"
 
 #define LGUSER_ISREVIEW_KEY  @"LGUSER_ISREVIEW_KEY"
 
@@ -17,15 +18,19 @@
 		NSInteger type = [NSString stringWithFormat:@"%@",oldValue].integerValue;
 		return @(type);
 	}
+	
 	return oldValue;
 }
 
 - (void)setIsReview:(BOOL)isReview{
-	[[NSUserDefaults standardUserDefaults] setBool:isReview forKey:LGUSER_ISREVIEW_KEY];
+	
+	[[NSUserDefaults standardUserDefaults] setObject: isReview ? [NSDate currentDay] : nil forKey:LGUSER_ISREVIEW_KEY];
 }
 
 - (BOOL)isReview{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:LGUSER_ISREVIEW_KEY];
+	
+	NSDate *date = [[NSUserDefaults standardUserDefaults] objectForKey:LGUSER_ISREVIEW_KEY];
+	return [date isToday];
 }
 
 @end

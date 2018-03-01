@@ -64,7 +64,7 @@
 - (IBAction)reviewAction:(id)sender {
 	if (self.delegate) {
 		NSInteger index = [self.tableView indexPathForSelectedRow].row;
-		[self.delegate reviewWithStatus:self.reviewModel.dataSourceArray[index].status];
+		[self.delegate reviewWithStatus:self.reviewModel.dataSourceArray[index]];
 	}
 }
 

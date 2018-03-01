@@ -12,11 +12,13 @@
 
 @protocol LGIndexReviewAlertViewDelegate
 
+
 /**
  立即复习
- @param status 选择复习状态
+
+ @param subModel 复习 Model
  */
-- (void)reviewWithStatus:(LGWordStatus) status;
+- (void)reviewWithStatus:(LGReviewSubModel *) subModel;
 
 /**
  跳过复习

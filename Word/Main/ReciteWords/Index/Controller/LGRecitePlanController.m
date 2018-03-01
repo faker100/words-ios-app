@@ -13,6 +13,7 @@
 #import "LGIndexReviewModel.h"
 #import "LGWordDetailController.h"
 
+
 @interface LGRecitePlanController () <LGIndexReviewAlertViewDelegate>
 
 /**
@@ -37,8 +38,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
 	[self configIndexData];
-}
 
+}
 
 - (void)configIndexData{
 	__weak typeof(self) weakSelf = self;
@@ -64,6 +65,8 @@
  */
 - (IBAction)beginReciteWordsAction:(id)sender {
 	
+	
+	
 	if ([LGUserManager shareManager].user.isReview || [LGUserManager shareManager].user.studyModel == LGStudyOnlyNew){
 		[self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:nil];
 		return;
@@ -74,23 +77,11 @@
 	[self.request requestReciteWordsCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			NSInteger code = [NSString stringWithFormat:@"%@",response[@"code"]].integerValue;
-			//
-			code = 97;
-			//
 			if (code == 97) {
 				[weakSelf.request requestEveryDayReviewCompletion:^(id response, LGError *error) {
 					if ([self isNormal:error]) {
 						LGIndexReviewModel *model = [LGIndexReviewModel mj_objectWithKeyValues:response];
 						model.currentWordLibName = self.reciteWordModel.packageName;
-						
-						// 测试
-						model.all = @"33";
-						model.know = @"123";
-						model.incognizant = @"555";
-						model.dim = @"3523";
-						NSDictionary *dic = [model mj_keyValues];
-						model = [LGIndexReviewModel mj_objectWithKeyValues:dic];
-						//
 						[self showReviewAlertWithModel:model];
 					}
 				}];
@@ -187,16 +178,16 @@
 #pragma mark - LGIndexReviewAlertViewDelegate
 
 - (void)skipReview{
-	[self updateEveryDayReview];
+	//[self updateEveryDayReview];
 	[self.reviewAlertView removeFromSuperview];
 	self.reviewAlertView = nil;
 }
 
-- (void)reviewWithStatus:(LGWordStatus)status{
-	[self updateEveryDayReview];
+- (void)reviewWithStatus:(LGReviewSubModel *)subModel{
+	//[self updateEveryDayReview];
 	[self.reviewAlertView removeFromSuperview];
 	self.reviewAlertView = nil;
-	[self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:@(status)];
+	[self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:subModel];
 }
 
 
@@ -222,9 +213,14 @@
 	if ([segue.identifier isEqualToString:@"indexPlanToBeginReciteWords"]) {
 		
 			LGWordDetailController *controller = segue.destinationViewController;
-			controller.type = sender ? LGwordDetailTodayReview : LGWordDetailReciteWords;
-			controller.todayReviewStatus = [NSString stringWithFormat:@"%@",sender].integerValue;
+		if ([sender isKindOfClass:[LGReviewSubModel class]]) {
+			controller.type  = LGwordDetailTodayReview;
+			controller.total = ((LGReviewSubModel *)sender).count;
+			controller.todayReviewStatus = ((LGReviewSubModel *)sender).status;
+		}else{
+			controller.type  = LGWordDetailReciteWords;
 			controller.total = self.reciteWordModel.userPackage.planWords;
+		}
 	}
 	// Get the new view controller using [segue destinationViewController].
 	// Pass the selected object to the new view controller.
