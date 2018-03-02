@@ -38,8 +38,8 @@
 	self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc]initWithString:@"请输入密码" attributes:attributeDic];
 	
 	LGUserModel *user = [LGUserManager shareManager].user;
-	if (StringNotEmpty(user.username)) {
-		self.userNameTextField.text = user.username;
+	if (StringNotEmpty(user.phone) || StringNotEmpty(user.email)) {
+		self.userNameTextField.text = StringNotEmpty(user.phone) ? user.phone : user.email;
 	}
 	if (StringNotEmpty(user.password)) {
 		self.passwordTextField.text = user.password;

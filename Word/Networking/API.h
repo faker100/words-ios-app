@@ -143,10 +143,11 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 //修改复习模式单词状态
 #define UPDATE_REVIEW_WORD_STATUS_URL	@"http://words.viplgw.cn/cn/app-api/review-update"
 
+//复习首页
+#define REVIEW_INDEX_URL			    @"http://words.viplgw.cn/cn/app-api/review-index"
 
-
-
-
+//复习错题本列表
+#define REVIEW_WRONG_WORDS_URL		    @"http://words.viplgw.cn/cn/app-api/wrong-index"
 
 
 

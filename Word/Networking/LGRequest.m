@@ -242,4 +242,15 @@
 	
 }
 
+- (void)requestReviewIndexCompletion:(comletionBlock)completion{
+	self.url = REVIEW_INDEX_URL;
+	[self postRequestCompletion:completion];
+}
+
+
+- (void)requestRevieWrongWordListCompletion:(comletionBlock)completion{
+	self.url = REVIEW_WRONG_WORDS_URL;
+	[self postRequestCompletion:completion];
+}
+
 @end

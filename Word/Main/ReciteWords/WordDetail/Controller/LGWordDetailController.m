@@ -58,6 +58,7 @@
 	_detailModel = detailModel;
 	self.wordLabel.text = detailModel.words.word;
 	self.translateLabel.text = detailModel.words.translate;
+	self.currentNum = @(detailModel.did.integerValue + 1).stringValue;
 	[self.playerButton setTitle:[NSString stringWithFormat:@"  %@",detailModel.words.phonetic_us] forState:UIControlStateNormal];
 	[self.wordTabelView reloadData];
 }
@@ -121,6 +122,7 @@
             self.total = reviewWordModel.all;
             self.currentNum = @(reviewWordModel.did.integerValue + 1).stringValue;
             [self requestWordDetailWidthID:reviewWordModel.wordsId];
+			
 		}
 	}];
 }
@@ -252,6 +254,7 @@
 	
 	LGWordDetailController *wordDetailController = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGWordDetailController");
 	wordDetailController.type = type;
+	wordDetailController.total = self.total;
 	wordDetailController.ebbinghausReviewWordIdArray = self.ebbinghausReviewWordIdArray;
 	wordDetailController.todayReviewStatus = self.todayReviewStatus;
 	NSMutableArray *controllerArray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];

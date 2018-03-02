@@ -41,6 +41,12 @@
 		567A3AD7203FEB4100A41692 /* LGWordErrorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 567A3AD6203FEB4100A41692 /* LGWordErrorCell.m */; };
 		567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 567C00FA2010A0360083F3D5 /* LGBaseRequest.m */; };
 		56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56801492202AE1FB0082D72F /* LGWordDetailController.m */; };
+		56994E9A20492BC3005648F6 /* LGReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56994E9920492BC3005648F6 /* LGReviewController.m */; };
+		56994E9D2049385E005648F6 /* LGReviewWrongListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56994E9C2049385E005648F6 /* LGReviewWrongListController.m */; };
+		56994EA0204938D6005648F6 /* LGReviewWrongCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56994E9F204938D6005648F6 /* LGReviewWrongCollectionCell.m */; };
+		56994EA420493A1F005648F6 /* LGReviewWrongCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56994EA220493A1F005648F6 /* LGReviewWrongCollectionReusableView.m */; };
+		56994EA520493A1F005648F6 /* LGReviewWrongCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56994EA320493A1F005648F6 /* LGReviewWrongCollectionReusableView.xib */; };
+		56994EA8204950A3005648F6 /* LGReviewWrongWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56994EA7204950A3005648F6 /* LGReviewWrongWordModel.m */; };
 		56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A8883A200CA53400847BE6 /* AppDelegate.m */; };
 		56A88841200CA53400847BE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A8883F200CA53400847BE6 /* Main.storyboard */; };
 		56A88843200CA53400847BE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A88842200CA53400847BE6 /* Assets.xcassets */; };
@@ -140,6 +146,17 @@
 		567C00FA2010A0360083F3D5 /* LGBaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGBaseRequest.m; sourceTree = "<group>"; };
 		56801491202AE1FB0082D72F /* LGWordDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordDetailController.h; sourceTree = "<group>"; };
 		56801492202AE1FB0082D72F /* LGWordDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordDetailController.m; sourceTree = "<group>"; };
+		56994E9820492BC3005648F6 /* LGReviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReviewController.h; sourceTree = "<group>"; };
+		56994E9920492BC3005648F6 /* LGReviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReviewController.m; sourceTree = "<group>"; };
+		56994E9B2049385E005648F6 /* LGReviewWrongListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReviewWrongListController.h; sourceTree = "<group>"; };
+		56994E9C2049385E005648F6 /* LGReviewWrongListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReviewWrongListController.m; sourceTree = "<group>"; };
+		56994E9E204938D6005648F6 /* LGReviewWrongCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReviewWrongCollectionCell.h; sourceTree = "<group>"; };
+		56994E9F204938D6005648F6 /* LGReviewWrongCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReviewWrongCollectionCell.m; sourceTree = "<group>"; };
+		56994EA120493A1F005648F6 /* LGReviewWrongCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReviewWrongCollectionReusableView.h; sourceTree = "<group>"; };
+		56994EA220493A1F005648F6 /* LGReviewWrongCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReviewWrongCollectionReusableView.m; sourceTree = "<group>"; };
+		56994EA320493A1F005648F6 /* LGReviewWrongCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGReviewWrongCollectionReusableView.xib; sourceTree = "<group>"; };
+		56994EA6204950A3005648F6 /* LGReviewWrongWordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReviewWrongWordModel.h; sourceTree = "<group>"; };
+		56994EA7204950A3005648F6 /* LGReviewWrongWordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReviewWrongWordModel.m; sourceTree = "<group>"; };
 		56A88836200CA53400847BE6 /* Word.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Word.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A88839200CA53400847BE6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		56A8883A200CA53400847BE6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -382,6 +399,48 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		56994E9420492B57005648F6 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				56994E9720492B79005648F6 /* Model */,
+				56994E9620492B70005648F6 /* Controller */,
+				56994E9520492B69005648F6 /* View */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		56994E9520492B69005648F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				56994E9E204938D6005648F6 /* LGReviewWrongCollectionCell.h */,
+				56994E9F204938D6005648F6 /* LGReviewWrongCollectionCell.m */,
+				56994EA120493A1F005648F6 /* LGReviewWrongCollectionReusableView.h */,
+				56994EA220493A1F005648F6 /* LGReviewWrongCollectionReusableView.m */,
+				56994EA320493A1F005648F6 /* LGReviewWrongCollectionReusableView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		56994E9620492B70005648F6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				56994E9820492BC3005648F6 /* LGReviewController.h */,
+				56994E9920492BC3005648F6 /* LGReviewController.m */,
+				56994E9B2049385E005648F6 /* LGReviewWrongListController.h */,
+				56994E9C2049385E005648F6 /* LGReviewWrongListController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		56994E9720492B79005648F6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				56994EA6204950A3005648F6 /* LGReviewWrongWordModel.h */,
+				56994EA7204950A3005648F6 /* LGReviewWrongWordModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		56A8882D200CA53400847BE6 = {
 			isa = PBXGroup;
 			children = (
@@ -569,6 +628,7 @@
 		56EAD86B2019C1A60059604E /* ReciteWords */ = {
 			isa = PBXGroup;
 			children = (
+				56994E9420492B57005648F6 /* Review */,
 				5680148F202AE18E0082D72F /* WordDetail */,
 				56C98980202016EA0095A4BD /* WordPlan */,
 				56CCA5E9201B29370097DCAC /* PersonalCenter */,
@@ -702,6 +762,7 @@
 				56EAD8682019C0FC0059604E /* PK.storyboard in Resources */,
 				56EAD8662019C0EB0059604E /* WordReport.storyboard in Resources */,
 				56A88841200CA53400847BE6 /* Main.storyboard in Resources */,
+				56994EA520493A1F005648F6 /* LGReviewWrongCollectionReusableView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,6 +841,7 @@
 				56C9899720207C0C0095A4BD /* LGNavigationItem.m in Sources */,
 				02F78A092029E54A0011096F /* LGReciteWordModel.m in Sources */,
 				56EAD86220197F2D0059604E /* LGFindPasswordController.m in Sources */,
+				56994EA0204938D6005648F6 /* LGReviewWrongCollectionCell.m in Sources */,
 				565A30FA2013411200448B1C /* LGRegisterController.m in Sources */,
 				56585956203EB34300BB59ED /* LGDottedLineView.m in Sources */,
 				56FD20D62028256F003A6154 /* LGDeletePlanAlertView.m in Sources */,
@@ -803,8 +865,11 @@
 				56C9899120204F7C0095A4BD /* LGWordLibraryTypeCell.m in Sources */,
 				56C9898E2020461D0095A4BD /* LGWordLibraryController.m in Sources */,
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
+				56994EA420493A1F005648F6 /* LGReviewWrongCollectionReusableView.m in Sources */,
 				567A3AD4203FB72F00A41692 /* LGWordErrorViewController.m in Sources */,
+				56994E9A20492BC3005648F6 /* LGReviewController.m in Sources */,
 				56224FCC20454F020093BC7A /* LGIndexReviewModel.m in Sources */,
+				56994E9D2049385E005648F6 /* LGReviewWrongListController.m in Sources */,
 				56EAD8722019C98B0059604E /* LGTabBarViewController.m in Sources */,
 				563F7DA22022BE8A00944730 /* UITableView+LGRefresh.m in Sources */,
 				565A30F32013163400448B1C /* LGUserModel.m in Sources */,
@@ -815,6 +880,7 @@
 				563259EE201AC609007FF4D6 /* LGTool.m in Sources */,
 				56AF60C52011CD2B0067BD7B /* LGRequest.m in Sources */,
 				5658D5A62040FF7600390FC4 /* LGIndexReviewAlertView.m in Sources */,
+				56994EA8204950A3005648F6 /* LGReviewWrongWordModel.m in Sources */,
 				563F7DAB2023177E00944730 /* NSObject+LGRequest.m in Sources */,
 				5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */,
 				56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */,

@@ -65,8 +65,6 @@
  */
 - (IBAction)beginReciteWordsAction:(id)sender {
 	
-	
-	
 	if ([LGUserManager shareManager].user.isReview || [LGUserManager shareManager].user.studyModel == LGStudyOnlyNew){
 		[self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:nil];
 		return;
@@ -77,6 +75,7 @@
 	[self.request requestReciteWordsCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			NSInteger code = [NSString stringWithFormat:@"%@",response[@"code"]].integerValue;
+			
 			if (code == 97) {
 				[weakSelf.request requestEveryDayReviewCompletion:^(id response, LGError *error) {
 					if ([self isNormal:error]) {

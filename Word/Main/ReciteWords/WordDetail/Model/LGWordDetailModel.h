@@ -15,7 +15,7 @@
 @property (nonatomic, strong) LGFreeWordModel *words;
 @property (nonatomic, strong) NSArray<LGSentenceModel *> *sentence;
 @property (nonatomic, strong) NSArray<LGSentenceModel *> *lowSentence;
-
+@property (nonatomic, copy) NSString *did; //已背单词
 
 /**
  自定义字段,用于背单词详情页tableview 的数据源

@@ -211,4 +211,17 @@
  */
 - (void)updateReviewWordStatus:(LGWordStatus)status wordId:(NSString *)wordId completion:(comletionBlock)completion;
 
+
+/**
+ 请求复习页面
+
+ */
+- (void)requestReviewIndexCompletion:(comletionBlock)completion;
+
+
+/**
+ 请求错题本
+ */
+- (void)requestRevieWrongWordListCompletion:(comletionBlock)completion;
+
 @end

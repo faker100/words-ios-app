@@ -17,6 +17,12 @@
 			 };
 }
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+	return @{
+			 @"did" : @"do"
+			 };
+}
+
 - (void)mj_keyValuesDidFinishConvertingToObject{
 	
 	self.dataSource = [NSMutableArray array];
