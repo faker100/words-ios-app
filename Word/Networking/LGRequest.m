@@ -249,8 +249,16 @@
 
 
 - (void)requestRevieWrongWordListCompletion:(comletionBlock)completion{
-	self.url = REVIEW_WRONG_WORDS_URL;
+	self.url = REVIEW_WRONG_WORDS_LIST_URL;
 	[self postRequestCompletion:completion];
+}
+
+- (void)requestReviewWrongWords:(NSString *)start Completion:(comletionBlock)completion{
+    self.url = GET_WROING_WORDS_URL;
+    self.parameter = @{
+                       @"start" : start
+                       };
+    [self postRequestCompletion:completion];
 }
 
 @end

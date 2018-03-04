@@ -224,4 +224,11 @@
  */
 - (void)requestRevieWrongWordListCompletion:(comletionBlock)completion;
 
+
+/**
+ 错题本复习单词id
+ @param start 起始数量
+ */
+- (void)requestReviewWrongWords:(NSString *)start Completion:(comletionBlock)completion;
+
 @end

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */; };
 		0239C1AC20485C460031C3FA /* LGTodayReviewWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0239C1AB20485C460031C3FA /* LGTodayReviewWordModel.m */; };
+		029F3C88204AEB7F0022FB4B /* LGSelectReviewTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029F3C87204AEB7F0022FB4B /* LGSelectReviewTypeView.m */; };
+		029F3C8A204AEB8C0022FB4B /* LGSelectReviewTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */; };
 		02F78A092029E54A0011096F /* LGReciteWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F78A082029E54A0011096F /* LGReciteWordModel.m */; };
 		3690868A07C9B63A30A721A0 /* Pods_Word.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66ACA9D95F507310F264822E /* Pods_Word.framework */; };
 		5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5606F8602015E45C0030E43C /* NSString+LGString.m */; };
@@ -85,6 +87,9 @@
 		0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGFreeLibraryWordListController.m; sourceTree = "<group>"; };
 		0239C1AA20485C460031C3FA /* LGTodayReviewWordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTodayReviewWordModel.h; sourceTree = "<group>"; };
 		0239C1AB20485C460031C3FA /* LGTodayReviewWordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTodayReviewWordModel.m; sourceTree = "<group>"; };
+		029F3C86204AEB7F0022FB4B /* LGSelectReviewTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSelectReviewTypeView.h; sourceTree = "<group>"; };
+		029F3C87204AEB7F0022FB4B /* LGSelectReviewTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGSelectReviewTypeView.m; sourceTree = "<group>"; };
+		029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGSelectReviewTypeView.xib; sourceTree = "<group>"; };
 		02F78A072029E54A0011096F /* LGReciteWordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGReciteWordModel.h; path = Word/Main/ReciteWords/WordPlan/View/LGReciteWordModel.h; sourceTree = SOURCE_ROOT; };
 		02F78A082029E54A0011096F /* LGReciteWordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGReciteWordModel.m; path = Word/Main/ReciteWords/WordPlan/View/LGReciteWordModel.m; sourceTree = SOURCE_ROOT; };
 		5606F85F2015E45C0030E43C /* NSString+LGString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LGString.h"; sourceTree = "<group>"; };
@@ -417,6 +422,9 @@
 				56994EA120493A1F005648F6 /* LGReviewWrongCollectionReusableView.h */,
 				56994EA220493A1F005648F6 /* LGReviewWrongCollectionReusableView.m */,
 				56994EA320493A1F005648F6 /* LGReviewWrongCollectionReusableView.xib */,
+				029F3C86204AEB7F0022FB4B /* LGSelectReviewTypeView.h */,
+				029F3C87204AEB7F0022FB4B /* LGSelectReviewTypeView.m */,
+				029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -753,6 +761,7 @@
 				56FD20D82028257D003A6154 /* LGDeletePlanAlertView.xib in Resources */,
 				56AF60C72011CDB90067BD7B /* Login.storyboard in Resources */,
 				56B7AAEC202C5A2400BDECED /* LGWordDetailHeaderFooterView.xib in Resources */,
+				029F3C8A204AEB8C0022FB4B /* LGSelectReviewTypeView.xib in Resources */,
 				5658D5A82040FF8600390FC4 /* LGIndexReviewAlertView.xib in Resources */,
 				56A88846200CA53400847BE6 /* LaunchScreen.storyboard in Resources */,
 				56A88843200CA53400847BE6 /* Assets.xcassets in Resources */,
@@ -852,6 +861,7 @@
 				567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */,
 				56B7AAEA202C59EC00BDECED /* LGWordDetailHeaderFooterView.m in Sources */,
 				56C9898820201CCF0095A4BD /* LGWordPlanCollectionCell.m in Sources */,
+				029F3C88204AEB7F0022FB4B /* LGSelectReviewTypeView.m in Sources */,
 				56317B72201C1D6800AEC20B /* LGUserManager.m in Sources */,
 				56506D052016D842000FD8FA /* LGProgressHUD.m in Sources */,
 				56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */,

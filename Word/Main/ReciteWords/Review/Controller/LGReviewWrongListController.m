@@ -9,13 +9,17 @@
 #import "LGReviewWrongListController.h"
 #import "LGReviewWrongCollectionCell.h"
 #import "LGReviewWrongCollectionReusableView.h"
+#import "LGSelectReviewTypeView.h"
+#import "LGWordDetailController.h"
 
-@interface LGReviewWrongListController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface LGReviewWrongListController ()<UICollectionViewDataSource, UICollectionViewDelegate, LGSelectReviewTypeViewDelegate>
 
 @property (nonatomic, assign) CGFloat cellSpace; //cell 之间的距离
 @property (nonatomic, assign) CGSize cellSize; //collection cell size;
 
 @property (nonatomic, strong) NSArray<LGReviewWrongWordModel *> *modelArray;
+@property (nonatomic, strong) LGSelectReviewTypeView *selectTypeView;  //选择复习方式view
+@property (nonatomic, assign) LGSelectReviewType selectedReviewType;    //选择的复习方式，默认中英
 
 @end
 
@@ -54,6 +58,22 @@
 	}];
 }
 
+
+
+/**
+ 选择复习方式
+ */
+- (IBAction)selectReviewTypeAction:(id)sender {
+    
+    if (!self.selectTypeView) {
+        self.selectTypeView = [[NSBundle mainBundle]loadNibNamed:@"LGSelectReviewTypeView" owner:nil options:nil].firstObject;
+        self.selectTypeView.frame = self.collectionView.frame;
+        self.selectTypeView.delegate = self;
+    }
+    
+    [self.view addSubview:self.selectTypeView];
+}
+
 #pragma mark - setter getter
 
 /**
@@ -73,7 +93,25 @@
 	return SCREEN_WIDTH == 320 ? CGSizeMake(100, 60) : CGSizeMake(110, 60);
 }
 
-
+#pragma mark - LGSelectReviewTypeViewDelegate
+- (void)selectedReviewType:(LGSelectReviewType)type{
+    self.selectedReviewType = type;
+    NSString *str;
+    switch (type) {
+        case LGSelectReviewChinese_English:
+            str = @"中英";
+            break;
+        case LGSelectReviewEnglish_Chinese:
+            str = @"英中";
+            break;
+        case LGSelectReviewDictation:
+            str = @"听写";
+            break;
+        default:
+            break;
+    }
+    [self.rightItemButton setTitle:str forState:UIControlStateNormal];
+}
 
 #pragma mark - UICollectionViewDataSource
 
@@ -97,19 +135,29 @@
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-	
+    ;// [self performSegueWithIdentifier:@"reviewWrongListToWordDetail" sender:self.modelArray[indexPath.row]];
+    [self.request requestReviewWrongWords:@"1" Completion:^(id response, LGError *error) {
+        NSLog(@"%@",response);
+    }];
 }
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"reviewWrongListToWordDetail"]) {
+        LGWordDetailController *controller = segue.destinationViewController;
+        controller.controllerType = LGwordDetailReview;
+        controller.reviewTyep = self.selectedReviewType;
+    }
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

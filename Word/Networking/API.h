@@ -46,6 +46,12 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 	LGStudyOnlyNew = 3, 		//只背新单词
 };
 
+//复习类型
+typedef NS_ENUM(NSUInteger, LGSelectReviewType) {
+    LGSelectReviewChinese_English,   //中英
+    LGSelectReviewEnglish_Chinese,   //英中
+    LGSelectReviewDictation          //听写
+};
 
 /*************************************** 各种 key **********************************/
 
@@ -147,8 +153,9 @@ typedef NS_ENUM(NSUInteger, LGStudyType) {
 #define REVIEW_INDEX_URL			    @"http://words.viplgw.cn/cn/app-api/review-index"
 
 //复习错题本列表
-#define REVIEW_WRONG_WORDS_URL		    @"http://words.viplgw.cn/cn/app-api/wrong-index"
+#define REVIEW_WRONG_WORDS_LIST_URL	    @"http://words.viplgw.cn/cn/app-api/wrong-index"
 
-
+//获取错题本单词
+#define GET_WROING_WORDS_URL            @"http://words.viplgw.cn/cn/app-api/wrong-words"
 
 

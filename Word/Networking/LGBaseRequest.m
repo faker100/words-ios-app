@@ -97,8 +97,9 @@ static AFHTTPSessionManager *manager;
 
 /**
  处理请求成功返回的 object
- 如果 responseObject 为数组类型,则为请求成功,执行 comletionBlock
- 如果 responseObject 为字典类型,则判断 code ,code-0失败, code-1成功, code-99未登录, 没有 code 字段默认为成功也执行comletionBlock
+ 
+ 如果 responseObject 为字典类型,则判断 code ,code-0失败, code-99未登录, 其他 code 字段默认为成功
+ 不为字典类型 comletionBlock
  */
 - (void)dealRequestSuccessResponse:(id)responseObject completion:(comletionBlock) completion{
 	
@@ -107,15 +108,10 @@ static AFHTTPSessionManager *manager;
 #endif
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 	if (completion) {
-		NSString *code = @"0";
-		if ([responseObject isKindOfClass:[NSArray class]]) {
-			
-			completion(responseObject, nil);
-			return;
-		}
+        
 		if ([responseObject isKindOfClass:[NSDictionary class]]) {
 			
-			code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
+			NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
 			if ([code isEqualToString:@"0"]) {
 				
 				NSString *message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];
@@ -131,8 +127,10 @@ static AFHTTPSessionManager *manager;
 			}else{
 				completion(responseObject, nil);
 			}
-		}
-	}
+        }else{
+            completion(responseObject, nil);
+        }
+    }
 }
 
 /**

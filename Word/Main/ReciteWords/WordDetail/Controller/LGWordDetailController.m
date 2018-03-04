@@ -26,19 +26,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
-	if (self.type == LGWordDetailReciteWords)
+	if (self.controllerType == LGWordDetailReciteWords)
     {
 		[self requestReciteWordsData];
         
-	}else if (self.type == LGWordDetailEbbinghausReview)
+	}else if (self.controllerType == LGWordDetailEbbinghausReview)
     {
 		[self requestWordDetailWidthID:self.ebbinghausReviewWordIdArray.firstObject];
         
-	}else if (self.type == LGwordDetailTodayReview)
+	}else if (self.controllerType == LGwordDetailTodayReview)
     {
 		[self requestTodayReviewWord];
-	}
-    [self.vagueOrForgotButton setTitle:self.type == LGwordDetailTodayReview ? @"忘记" : @"模糊" forState:UIControlStateNormal];
+        [self.vagueOrForgotButton setTitle:@"忘记" forState:UIControlStateNormal];
+        
+    }else if (self.controllerType == LGwordDetailReview)
+    {
+        [self.vagueOrForgotButton setTitle:@"忘记" forState:UIControlStateNormal];
+    }
+        
+    [self.vagueOrForgotButton setTitle:self.controllerType == LGwordDetailTodayReview ? @"忘记" : @"模糊" forState:UIControlStateNormal];
 	[self.wordTabelView registerNib:[UINib nibWithNibName:@"LGWordDetailHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGWordDetailHeaderFooterView"];
 }
 
@@ -162,7 +168,7 @@
 // 在背单词模式下标记为模糊,其他复习模式下标记为忘记
 - (IBAction)vagueOrForgotAction:(id)sender {
 	
-	[self updateWordStatus:self.type == LGWordDetailReciteWords ? LGWordStatusVague : LGWordStatusForget];
+	[self updateWordStatus:self.controllerType == LGWordDetailReciteWords ? LGWordStatusVague : LGWordStatusForget];
 }
 
 
@@ -172,7 +178,7 @@
 	
 	if (self.detailModel.words.ID == nil) return;
 	
-	switch (self.type) {
+	switch (self.controllerType) {
 		case LGWordDetailReciteWords:
 			[self updateReciteWordStatus:status];
 			break;
@@ -239,7 +245,7 @@
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request updateReviewWordStatus:status wordId:self.detailModel.words.ID completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			[self pushNextWordDetailController:self.type  animated:YES];
+			[self pushNextWordDetailController:self.controllerType  animated:YES];
 		}
 	}];
 }
@@ -253,7 +259,7 @@
 - (void)pushNextWordDetailController:(LGWordDetailControllerType) type animated:(BOOL)animated{
 	
 	LGWordDetailController *wordDetailController = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGWordDetailController");
-	wordDetailController.type = type;
+	wordDetailController.controllerType = type;
 	wordDetailController.total = self.total;
 	wordDetailController.ebbinghausReviewWordIdArray = self.ebbinghausReviewWordIdArray;
 	wordDetailController.todayReviewStatus = self.todayReviewStatus;

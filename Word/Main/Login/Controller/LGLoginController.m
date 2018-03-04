@@ -71,16 +71,12 @@
 	}
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request loginRequest:username password:password completion:^(id response, LGError *error) {
-		
-		[LGProgressHUD hideHUDForView:self.view];
-		if (error) {
-			[LGProgressHUD showError:error.errorMessage toView:self.view];
-		}else{
-			LGUserModel *model = [LGUserModel mj_objectWithKeyValues:response];
-			[LGUserManager shareManager].user = model;
-			[[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_NOTIFICATION object:nil];
-			[self.navigationController dismissViewControllerAnimated:YES completion:nil];
-		}
+        if ([self isNormal:error]) {
+            LGUserModel *model = [LGUserModel mj_objectWithKeyValues:response];
+            [LGUserManager shareManager].user = model;
+            [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_NOTIFICATION object:nil];
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }
 	}];
 }
 

@@ -213,11 +213,11 @@
 		
 			LGWordDetailController *controller = segue.destinationViewController;
 		if ([sender isKindOfClass:[LGReviewSubModel class]]) {
-			controller.type  = LGwordDetailTodayReview;
+			controller.controllerType  = LGwordDetailTodayReview;
 			controller.total = ((LGReviewSubModel *)sender).count;
 			controller.todayReviewStatus = ((LGReviewSubModel *)sender).status;
 		}else{
-			controller.type  = LGWordDetailReciteWords;
+			controller.controllerType  = LGWordDetailReciteWords;
 			controller.total = self.reciteWordModel.userPackage.planWords;
 		}
 	}

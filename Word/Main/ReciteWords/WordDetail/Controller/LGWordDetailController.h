@@ -11,13 +11,18 @@
 typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 	LGWordDetailReciteWords = 0, 	   //背单词模式,默认
 	LGWordDetailEbbinghausReview,      //艾宾浩斯复习模式
-	LGwordDetailTodayReview		       //今日复习
+	LGwordDetailTodayReview,		   //今日复习
+    LGwordDetailReview                 //复习
 };
+
 
 @interface LGWordDetailController : UIViewController
 
 //controller 模式
-@property (nonatomic, assign) LGWordDetailControllerType type;
+@property (nonatomic, assign) LGWordDetailControllerType controllerType;
+
+//正常复习模式下的复习方式
+@property (nonatomic, assign) LGSelectReviewType reviewTyep;
 
 //今日复习模式下(LGwordDetailTodayReview),要复习的状态,0为全部
 @property (nonatomic, assign) LGWordStatus todayReviewStatus;
@@ -50,7 +55,5 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 
 @property (weak, nonatomic) IBOutlet UITableView *wordTabelView;
 
-//单词纠错按钮
-@property (weak, nonatomic) IBOutlet UIButton *wordErrorButton;
 
 @end
