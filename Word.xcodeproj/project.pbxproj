@@ -22,6 +22,8 @@
 		56224FC7204547AF0093BC7A /* LGIndexReviewAlertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56224FC6204547AF0093BC7A /* LGIndexReviewAlertCell.m */; };
 		56224FC9204548360093BC7A /* LGIndexReviewAlertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56224FC8204548360093BC7A /* LGIndexReviewAlertCell.xib */; };
 		56224FCC20454F020093BC7A /* LGIndexReviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56224FCB20454F020093BC7A /* LGIndexReviewModel.m */; };
+		5627C9F2204D2EA90013F1CC /* LGTimeReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5627C9F1204D2EA90013F1CC /* LGTimeReviewController.m */; };
+		5627C9F5204D2F790013F1CC /* LGReviewSelectTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5627C9F4204D2F780013F1CC /* LGReviewSelectTimeCell.m */; };
 		562FC13F202992DE005CEA83 /* LGRecitePlanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 562FC13E202992DE005CEA83 /* LGRecitePlanController.m */; };
 		56317B72201C1D6800AEC20B /* LGUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56317B71201C1D6800AEC20B /* LGUserManager.m */; };
 		563259EE201AC609007FF4D6 /* LGTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 563259ED201AC609007FF4D6 /* LGTool.m */; };
@@ -72,6 +74,8 @@
 		56CCA5E5201B083B0097DCAC /* LGReciteWordsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5E4201B083B0097DCAC /* LGReciteWordsController.m */; };
 		56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5E7201B16050097DCAC /* LGNavigationController.m */; };
 		56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5EC201B29A60097DCAC /* LGStudyTypeController.m */; };
+		56E2538F204D00B7006D9B56 /* LGFinishWordTaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E2538E204D00B7006D9B56 /* LGFinishWordTaskView.m */; };
+		56E25391204D00C6006D9B56 /* LGFinishWordTaskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E25390204D00C6006D9B56 /* LGFinishWordTaskView.xib */; };
 		56EAD86220197F2D0059604E /* LGFindPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EAD86120197F2D0059604E /* LGFindPasswordController.m */; };
 		56EAD8642019C09A0059604E /* ReciteWords.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EAD8632019C09A0059604E /* ReciteWords.storyboard */; };
 		56EAD8662019C0EB0059604E /* WordReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EAD8652019C0EB0059604E /* WordReport.storyboard */; };
@@ -109,6 +113,10 @@
 		56224FC8204548360093BC7A /* LGIndexReviewAlertCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGIndexReviewAlertCell.xib; sourceTree = "<group>"; };
 		56224FCA20454F020093BC7A /* LGIndexReviewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGIndexReviewModel.h; sourceTree = "<group>"; };
 		56224FCB20454F020093BC7A /* LGIndexReviewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGIndexReviewModel.m; sourceTree = "<group>"; };
+		5627C9F0204D2EA90013F1CC /* LGTimeReviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTimeReviewController.h; sourceTree = "<group>"; };
+		5627C9F1204D2EA90013F1CC /* LGTimeReviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTimeReviewController.m; sourceTree = "<group>"; };
+		5627C9F3204D2F780013F1CC /* LGReviewSelectTimeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReviewSelectTimeCell.h; sourceTree = "<group>"; };
+		5627C9F4204D2F780013F1CC /* LGReviewSelectTimeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReviewSelectTimeCell.m; sourceTree = "<group>"; };
 		562FC13D202992DE005CEA83 /* LGRecitePlanController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGRecitePlanController.h; sourceTree = "<group>"; };
 		562FC13E202992DE005CEA83 /* LGRecitePlanController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGRecitePlanController.m; sourceTree = "<group>"; };
 		56317B70201C1D6800AEC20B /* LGUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGUserManager.h; sourceTree = "<group>"; };
@@ -205,6 +213,9 @@
 		56CCA5E7201B16050097DCAC /* LGNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGNavigationController.m; sourceTree = "<group>"; };
 		56CCA5EB201B29A60097DCAC /* LGStudyTypeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGStudyTypeController.h; sourceTree = "<group>"; };
 		56CCA5EC201B29A60097DCAC /* LGStudyTypeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGStudyTypeController.m; sourceTree = "<group>"; };
+		56E2538D204D00B7006D9B56 /* LGFinishWordTaskView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGFinishWordTaskView.h; sourceTree = "<group>"; };
+		56E2538E204D00B7006D9B56 /* LGFinishWordTaskView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGFinishWordTaskView.m; sourceTree = "<group>"; };
+		56E25390204D00C6006D9B56 /* LGFinishWordTaskView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGFinishWordTaskView.xib; sourceTree = "<group>"; };
 		56EAD86020197F2D0059604E /* LGFindPasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGFindPasswordController.h; sourceTree = "<group>"; };
 		56EAD86120197F2D0059604E /* LGFindPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGFindPasswordController.m; sourceTree = "<group>"; };
 		56EAD8632019C09A0059604E /* ReciteWords.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReciteWords.storyboard; sourceTree = "<group>"; };
@@ -425,6 +436,11 @@
 				029F3C86204AEB7F0022FB4B /* LGSelectReviewTypeView.h */,
 				029F3C87204AEB7F0022FB4B /* LGSelectReviewTypeView.m */,
 				029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */,
+				56E2538D204D00B7006D9B56 /* LGFinishWordTaskView.h */,
+				56E2538E204D00B7006D9B56 /* LGFinishWordTaskView.m */,
+				56E25390204D00C6006D9B56 /* LGFinishWordTaskView.xib */,
+				5627C9F3204D2F780013F1CC /* LGReviewSelectTimeCell.h */,
+				5627C9F4204D2F780013F1CC /* LGReviewSelectTimeCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -436,6 +452,8 @@
 				56994E9920492BC3005648F6 /* LGReviewController.m */,
 				56994E9B2049385E005648F6 /* LGReviewWrongListController.h */,
 				56994E9C2049385E005648F6 /* LGReviewWrongListController.m */,
+				5627C9F0204D2EA90013F1CC /* LGTimeReviewController.h */,
+				5627C9F1204D2EA90013F1CC /* LGTimeReviewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -765,6 +783,7 @@
 				5658D5A82040FF8600390FC4 /* LGIndexReviewAlertView.xib in Resources */,
 				56A88846200CA53400847BE6 /* LaunchScreen.storyboard in Resources */,
 				56A88843200CA53400847BE6 /* Assets.xcassets in Resources */,
+				56E25391204D00C6006D9B56 /* LGFinishWordTaskView.xib in Resources */,
 				56EAD86A2019C1300059604E /* Periphery.storyboard in Resources */,
 				56EAD8642019C09A0059604E /* ReciteWords.storyboard in Resources */,
 				56224FC9204548360093BC7A /* LGIndexReviewAlertCell.xib in Resources */,
@@ -885,6 +904,7 @@
 				565A30F32013163400448B1C /* LGUserModel.m in Sources */,
 				564EB7AC2047998500E47A1E /* NSDate+Utilities.m in Sources */,
 				5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */,
+				56E2538F204D00B7006D9B56 /* LGFinishWordTaskView.m in Sources */,
 				5639AF9F202441B300AA2CA5 /* LGPlanModel.m in Sources */,
 				56AF60D52011EA050067BD7B /* UIViewController+LGViewController.m in Sources */,
 				563259EE201AC609007FF4D6 /* LGTool.m in Sources */,
@@ -900,7 +920,9 @@
 				56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */,
 				56224FC7204547AF0093BC7A /* LGIndexReviewAlertCell.m in Sources */,
 				56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */,
+				5627C9F2204D2EA90013F1CC /* LGTimeReviewController.m in Sources */,
 				567A3AD7203FEB4100A41692 /* LGWordErrorCell.m in Sources */,
+				5627C9F5204D2F790013F1CC /* LGReviewSelectTimeCell.m in Sources */,
 				563F7DA5202306B500944730 /* LGPlayer.m in Sources */,
 				566B9860202003E800D368AC /* LGNoStudyTypeController.m in Sources */,
 				560F0FD12022AFBA00324510 /* LGFreeWordModel.m in Sources */,

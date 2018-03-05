@@ -42,6 +42,7 @@ typedef NS_ENUM(NSUInteger, LGChoosePlanType) {
 
 //对应(LGChoosePlanType) 为了在 storyboard里可视化,用NSInteger
 @property (nonatomic, assign) IBInspectable NSInteger planType;
+
 //中间高亮view
 @property (nonatomic, strong) UIView *selectedCellBackgroundView;
 

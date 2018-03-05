@@ -23,6 +23,15 @@
  */
 + (NSDate *) currentDay;
 
+/**
+ 返回两个时间段之间的日期
+
+ @param fromDate 开始时间
+ @param toDate 结束时间
+ @return 时间数组
+ */
++ (NSMutableArray<NSDate *> *) dateArrayFrom:(NSDate *) fromDate toDate:(NSDate *)toDate;
+
 // Relative dates from the current date
 + (NSDate *) dateTomorrow;
 + (NSDate *) dateYesterday;

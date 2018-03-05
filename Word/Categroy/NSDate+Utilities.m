@@ -10,7 +10,7 @@
  General Thanks: sstreza, Scott Lawrence, Kevin Ballard, NoOneButMe, Avi`, August Joki. Lily Vulcano, jcromartiej, Blagovest Dachev, Matthias Plappert,  Slava Bushtruk, Ali Servet Donmez, Ricardo1980, pip8786, Danny Thuerin, Dennis Madsen
  
  Include GMT and time zone utilities?
-*/
+ */
 
 #import "NSDate+Utilities.h"
 
@@ -23,12 +23,18 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 // Updated via Holger Haenisch
 + (NSCalendar *) currentCalendar
 {
-    static NSCalendar *sharedCalendar = nil;
+	static NSCalendar *sharedCalendar = nil;
 	if (!sharedCalendar){
-        sharedCalendar = [NSCalendar autoupdatingCurrentCalendar];
+		
+		if ([NSCalendar respondsToSelector:@selector(calendarWithIdentifier:)]) {
+			sharedCalendar  = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+		}else{
+			sharedCalendar = [NSCalendar currentCalendar];
+		}
+		//sharedCalendar = [NSCalendar autoupdatingCurrentCalendar];
 		[sharedCalendar setTimeZone:[NSTimeZone systemTimeZone]];
 	}
-    return sharedCalendar;
+	return sharedCalendar;
 }
 
 + (NSDate *) currentDay
@@ -46,17 +52,33 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 	return date;
 }
 
++ (NSArray<NSDate *> *) dateArrayFrom:(NSDate *) fromDate toDate:(NSDate *)toDate
+{
+	if (fromDate && toDate) {
+		NSMutableArray *dateArray = [NSMutableArray array];
+		[dateArray addObject:fromDate];
+		NSDate *nextDate = fromDate;
+		while (![[NSCalendar currentCalendar] isDate:nextDate inSameDayAsDate:toDate]) {
+			nextDate = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay value:1 toDate:nextDate options:NSCalendarWrapComponents];
+			[dateArray addObject:nextDate];
+		}
+		return dateArray;
+	}else{
+		return nil;
+	}
+}
+
 #pragma mark - Relative Dates
 
 + (NSDate *) dateWithDaysFromNow: (NSInteger) days
 {
-    // Thanks, Jim Morrison
+	// Thanks, Jim Morrison
 	return [[NSDate currentDay] dateByAddingDays:days];
 }
 
 + (NSDate *) dateWithDaysBeforeNow: (NSInteger) days
 {
-    // Thanks, Jim Morrison
+	// Thanks, Jim Morrison
 	return [[NSDate currentDay] dateBySubtractingDays:days];
 }
 
@@ -74,91 +96,91 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 {
 	NSTimeInterval aTimeInterval = [[NSDate currentDay] timeIntervalSinceReferenceDate] + D_HOUR * dHours;
 	NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
-	return newDate;	
+	return newDate;
 }
 
 + (NSDate *) dateWithHoursBeforeNow: (NSInteger) dHours
 {
 	NSTimeInterval aTimeInterval = [[NSDate currentDay] timeIntervalSinceReferenceDate] - D_HOUR * dHours;
 	NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
-	return newDate;	
+	return newDate;
 }
 
 + (NSDate *) dateWithMinutesFromNow: (NSInteger) dMinutes
 {
 	NSTimeInterval aTimeInterval = [[NSDate currentDay] timeIntervalSinceReferenceDate] + D_MINUTE * dMinutes;
 	NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
-	return newDate;		
+	return newDate;
 }
 
 + (NSDate *) dateWithMinutesBeforeNow: (NSInteger) dMinutes
 {
 	NSTimeInterval aTimeInterval = [[NSDate currentDay] timeIntervalSinceReferenceDate] - D_MINUTE * dMinutes;
 	NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
-	return newDate;		
+	return newDate;
 }
 
 #pragma mark - String Properties
 - (NSString *) stringWithFormat: (NSString *) format
 {
-    NSDateFormatter *formatter = [NSDateFormatter new];
-//    formatter.locale = [NSLocale currentLocale]; // Necessary?
-    formatter.dateFormat = format;
-    return [formatter stringFromDate:self];
+	NSDateFormatter *formatter = [NSDateFormatter new];
+	//    formatter.locale = [NSLocale currentLocale]; // Necessary?
+	formatter.dateFormat = format;
+	return [formatter stringFromDate:self];
 }
 
 - (NSString *) stringWithDateStyle: (NSDateFormatterStyle) dateStyle timeStyle: (NSDateFormatterStyle) timeStyle
 {
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    formatter.dateStyle = dateStyle;
-    formatter.timeStyle = timeStyle;
-//    formatter.locale = [NSLocale currentLocale]; // Necessary?
-    return [formatter stringFromDate:self];
+	NSDateFormatter *formatter = [NSDateFormatter new];
+	formatter.dateStyle = dateStyle;
+	formatter.timeStyle = timeStyle;
+	//    formatter.locale = [NSLocale currentLocale]; // Necessary?
+	return [formatter stringFromDate:self];
 }
 
 - (NSString *) shortString
 {
-    return [self stringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+	return [self stringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
 }
 
 - (NSString *) shortTimeString
 {
-    return [self stringWithDateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterShortStyle];
+	return [self stringWithDateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterShortStyle];
 }
 
 - (NSString *) shortDateString
 {
-    return [self stringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
+	return [self stringWithDateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
 }
 
 - (NSString *) mediumString
 {
-    return [self stringWithDateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle ];
+	return [self stringWithDateStyle:NSDateFormatterMediumStyle timeStyle:NSDateFormatterMediumStyle ];
 }
 
 - (NSString *) mediumTimeString
 {
-    return [self stringWithDateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterMediumStyle ];
+	return [self stringWithDateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterMediumStyle ];
 }
 
 - (NSString *) mediumDateString
 {
-    return [self stringWithDateStyle:NSDateFormatterMediumStyle  timeStyle:NSDateFormatterNoStyle];
+	return [self stringWithDateStyle:NSDateFormatterMediumStyle  timeStyle:NSDateFormatterNoStyle];
 }
 
 - (NSString *) longString
 {
-    return [self stringWithDateStyle:NSDateFormatterLongStyle timeStyle:NSDateFormatterLongStyle ];
+	return [self stringWithDateStyle:NSDateFormatterLongStyle timeStyle:NSDateFormatterLongStyle ];
 }
 
 - (NSString *) longTimeString
 {
-    return [self stringWithDateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterLongStyle ];
+	return [self stringWithDateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterLongStyle ];
 }
 
 - (NSString *) longDateString
 {
-    return [self stringWithDateStyle:NSDateFormatterLongStyle  timeStyle:NSDateFormatterNoStyle];
+	return [self stringWithDateStyle:NSDateFormatterLongStyle  timeStyle:NSDateFormatterNoStyle];
 }
 
 #pragma mark - Comparing Dates
@@ -168,7 +190,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 	NSDateComponents *components1 = [[NSDate currentCalendar] components:componentFlags fromDate:self];
 	NSDateComponents *components2 = [[NSDate currentCalendar] components:componentFlags fromDate:aDate];
 	return ((components1.year == components2.year) &&
-			(components1.month == components2.month) && 
+			(components1.month == components2.month) &&
 			(components1.day == components2.day));
 }
 
@@ -222,26 +244,26 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 // Thanks, mspasov
 - (BOOL) isSameMonthAsDate: (NSDate *) aDate
 {
-    NSDateComponents *components1 = [[NSDate currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth fromDate:self];
-    NSDateComponents *components2 = [[NSDate currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth fromDate:aDate];
-    return ((components1.month == components2.month) &&
-            (components1.year == components2.year));
+	NSDateComponents *components1 = [[NSDate currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth fromDate:self];
+	NSDateComponents *components2 = [[NSDate currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth fromDate:aDate];
+	return ((components1.month == components2.month) &&
+			(components1.year == components2.year));
 }
 
 - (BOOL) isThisMonth
 {
-    return [self isSameMonthAsDate:[NSDate currentDay]];
+	return [self isSameMonthAsDate:[NSDate currentDay]];
 }
 
 // Thanks Marcin Krzyzanowski, also for adding/subtracting years and months
 - (BOOL) isLastMonth
 {
-    return [self isSameMonthAsDate:[[NSDate currentDay] dateBySubtractingMonths:1]];
+	return [self isSameMonthAsDate:[[NSDate currentDay] dateBySubtractingMonths:1]];
 }
 
 - (BOOL) isNextMonth
 {
-    return [self isSameMonthAsDate:[[NSDate currentDay] dateByAddingMonths:1]];
+	return [self isSameMonthAsDate:[[NSDate currentDay] dateByAddingMonths:1]];
 }
 
 - (BOOL) isSameYearAsDate: (NSDate *) aDate
@@ -253,7 +275,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 
 - (BOOL) isThisYear
 {
-    // Thanks, baspellis
+	// Thanks, baspellis
 	return [self isSameYearAsDate:[NSDate currentDay]];
 }
 
@@ -286,29 +308,29 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 // Thanks, markrickert
 - (BOOL) isInFuture
 {
-    return ([self isLaterThanDate:[NSDate currentDay]]);
+	return ([self isLaterThanDate:[NSDate currentDay]]);
 }
 
 // Thanks, markrickert
 - (BOOL) isInPast
 {
-    return ([self isEarlierThanDate:[NSDate currentDay]]);
+	return ([self isEarlierThanDate:[NSDate currentDay]]);
 }
 
 
 #pragma mark - Roles
 - (BOOL) isTypicallyWeekend
 {
-    NSDateComponents *components = [[NSDate currentCalendar] components:NSCalendarUnitWeekday fromDate:self];
-    if ((components.weekday == 1) ||
-        (components.weekday == 7))
-        return YES;
-    return NO;
+	NSDateComponents *components = [[NSDate currentCalendar] components:NSCalendarUnitWeekday fromDate:self];
+	if ((components.weekday == 1) ||
+		(components.weekday == 7))
+		return YES;
+	return NO;
 }
 
 - (BOOL) isTypicallyWorkday
 {
-    return ![self isTypicallyWeekend];
+	return ![self isTypicallyWeekend];
 }
 
 #pragma mark - Adjusting Dates
@@ -316,37 +338,37 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 // Thaks, rsjohnson
 - (NSDate *) dateByAddingYears: (NSInteger) dYears
 {
-    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-    [dateComponents setYear:dYears];
-    NSDate *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:self options:0];
-    return newDate;
+	NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+	[dateComponents setYear:dYears];
+	NSDate *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:self options:0];
+	return newDate;
 }
 
 - (NSDate *) dateBySubtractingYears: (NSInteger) dYears
 {
-    return [self dateByAddingYears:-dYears];
+	return [self dateByAddingYears:-dYears];
 }
 
 - (NSDate *) dateByAddingMonths: (NSInteger) dMonths
 {
-    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-    [dateComponents setMonth:dMonths];
-    NSDate *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:self options:0];
-    return newDate;
+	NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+	[dateComponents setMonth:dMonths];
+	NSDate *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:self options:0];
+	return newDate;
 }
 
 - (NSDate *) dateBySubtractingMonths: (NSInteger) dMonths
 {
-    return [self dateByAddingMonths:-dMonths];
+	return [self dateByAddingMonths:-dMonths];
 }
 
 // Courtesy of dedan who mentions issues with Daylight Savings
 - (NSDate *) dateByAddingDays: (NSInteger) dDays
 {
-    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
-    [dateComponents setDay:dDays];
-    NSDate *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:self options:0];
-    return newDate;
+	NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+	[dateComponents setDay:dDays];
+	NSDate *newDate = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:self options:0];
+	return newDate;
 }
 
 - (NSDate *) dateBySubtractingDays: (NSInteger) dDays
@@ -358,7 +380,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 {
 	NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] + D_HOUR * dHours;
 	NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
-	return newDate;		
+	return newDate;
 }
 
 - (NSDate *) dateBySubtractingHours: (NSInteger) dHours
@@ -370,7 +392,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 {
 	NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] + D_MINUTE * dMinutes;
 	NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
-	return newDate;			
+	return newDate;
 }
 
 - (NSDate *) dateBySubtractingMinutes: (NSInteger) dMinutes
@@ -447,9 +469,9 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 // I have not yet thoroughly tested this
 - (NSInteger)distanceInDaysToDate:(NSDate *)anotherDate
 {
-    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay fromDate:self toDate:anotherDate options:0];
-    return components.day;
+	NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+	NSDateComponents *components = [gregorianCalendar components:NSCalendarUnitDay fromDate:self toDate:anotherDate options:0];
+	return components.day;
 }
 
 #pragma mark - Decomposing Dates

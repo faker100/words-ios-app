@@ -50,14 +50,15 @@
 }
 
 - (void)requestData{
+	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestRevieWrongWordListCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			self.modelArray = [LGReviewWrongWordModel mj_objectArrayWithKeyValuesArray:response];
+			if (!self.totalNum) self.totalNum = self.modelArray.lastObject.end;
 			[self.collectionView  reloadData];
 		}
 	}];
 }
-
 
 
 /**
@@ -128,20 +129,22 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
 	
 	LGReviewWrongCollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"LGReviewWrongCollectionReusableView" forIndexPath:indexPath];
-	header.totalLabel.text = [NSString stringWithFormat:@"共 %@ 词",self.totalNum];
+	header.totalLabel.text = [NSString stringWithFormat:@"共 %ld 词",self.totalNum.integerValue];
 	return header;
 }
 
 #pragma mark - UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    ;// [self performSegueWithIdentifier:@"reviewWrongListToWordDetail" sender:self.modelArray[indexPath.row]];
-    [self.request requestReviewWrongWords:@"1" Completion:^(id response, LGError *error) {
-        NSLog(@"%@",response);
+	
+	[LGProgressHUD showHUDAddedTo:self.view];
+    [self.request requestReviewWrongWordsWithStart:self.modelArray[indexPath.row].start Completion:^(id response, LGError *error) {
+		if ([self isNormal:error]) {
+			NSMutableArray<NSString *> *wordIdArray = [NSString mj_objectArrayWithKeyValuesArray:response];
+			[self performSegueWithIdentifier:@"reviewWrongListToWordDetail" sender:wordIdArray];
+		}
     }];
 }
-
-
 
 
 #pragma mark - Navigation
@@ -153,11 +156,9 @@
         LGWordDetailController *controller = segue.destinationViewController;
         controller.controllerType = LGwordDetailReview;
         controller.reviewTyep = self.selectedReviewType;
+		controller.reviewWordIdArray = (NSMutableArray *)sender;
+		controller.total = @(((NSMutableArray *)sender).count).stringValue;
     }
-    
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-
 
 @end

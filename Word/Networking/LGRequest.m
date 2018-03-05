@@ -253,7 +253,7 @@
 	[self postRequestCompletion:completion];
 }
 
-- (void)requestReviewWrongWords:(NSString *)start Completion:(comletionBlock)completion{
+- (void)requestReviewWrongWordsWithStart:(NSString *)start Completion:(comletionBlock)completion{
     self.url = GET_WROING_WORDS_URL;
     self.parameter = @{
                        @"start" : start

@@ -23,12 +23,14 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 
 //正常复习模式下的复习方式
 @property (nonatomic, assign) LGSelectReviewType reviewTyep;
+//正常复习模式下的复习 id 数组
+@property (nonatomic, strong) NSMutableArray<NSString *> *reviewWordIdArray;
 
 //今日复习模式下(LGwordDetailTodayReview),要复习的状态,0为全部
 @property (nonatomic, assign) LGWordStatus todayReviewStatus;
 
 // 艾宾浩斯复习模式(LGWordDetailEbbinghausReview)下需要复习单词的 id 列表
-@property (nonatomic, strong) NSMutableArray<NSString *> *ebbinghausReviewWordIdArray;
+@property (nonatomic, copy) NSMutableArray<NSString *> *ebbinghausReviewWordIdArray;
 
 //当前单词顺序号 (title)
 @property (nonatomic, copy) NSString *currentNum;

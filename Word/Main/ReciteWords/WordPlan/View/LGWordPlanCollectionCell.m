@@ -21,7 +21,6 @@
 	if (planModel != _planModel) {
 		_planModel = planModel;
 		NSInteger userWords = planModel.userWords.integerValue;
-		userWords = 80;
 		NSInteger total = planModel.total.integerValue;
 		[self.titleNameButton setTitle:[NSString stringWithFormat:@" %@",planModel.name] forState:UIControlStateNormal];
 		self.progressLabel.text = [NSString stringWithFormat:@"(%ld/%ld)",userWords,total];
