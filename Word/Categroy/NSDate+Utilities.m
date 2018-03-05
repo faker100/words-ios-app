@@ -39,33 +39,33 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 
 + (NSDate *) currentDay
 {
-	NSDate *date = [NSDate date];
-	
-	// 设置系统时区为本地时区
-	NSTimeZone *zone = [NSTimeZone systemTimeZone];
-	
-	// 计算本地时区与 GMT 时区的时间差
-	NSInteger interval = [zone secondsFromGMT];
-	
-	// 在 GMT 时间基础上追加时间差值，得到本地时间
-	date = [date dateByAddingTimeInterval:interval];
-	return date;
+    return  [[NSDate date] convertToSystemTimeZoneDate];
 }
 
 + (NSArray<NSDate *> *) dateArrayFrom:(NSDate *) fromDate toDate:(NSDate *)toDate
 {
 	if (fromDate && toDate) {
 		NSMutableArray *dateArray = [NSMutableArray array];
-		[dateArray addObject:fromDate];
 		NSDate *nextDate = fromDate;
-		while (![[NSCalendar currentCalendar] isDate:nextDate inSameDayAsDate:toDate]) {
-			nextDate = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay value:1 toDate:nextDate options:NSCalendarWrapComponents];
-			[dateArray addObject:nextDate];
-		}
+        do {
+            [dateArray addObject:nextDate];
+            nextDate = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay value:1 toDate:nextDate options:NSCalendarWrapComponents];
+        } while ([nextDate compare:toDate] == NSOrderedAscending);
+
 		return dateArray;
 	}else{
 		return nil;
 	}
+}
+
+- (NSDate *)convertToSystemTimeZoneDate {
+    
+    // 设置系统时区为本地时区
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    // 计算本地时区与 GMT 时区的时间差
+    NSInteger interval = [zone secondsFromGMT];
+    // 在 GMT 时间基础上追加时间差值，得到本地时间
+    return [self dateByAddingTimeInterval:interval];
 }
 
 #pragma mark - Relative Dates

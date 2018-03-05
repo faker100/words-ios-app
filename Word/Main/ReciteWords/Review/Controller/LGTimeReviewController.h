@@ -13,4 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *endTimeTableView;
 
+@property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
+
 @end

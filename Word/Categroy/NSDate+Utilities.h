@@ -32,6 +32,15 @@
  */
 + (NSMutableArray<NSDate *> *) dateArrayFrom:(NSDate *) fromDate toDate:(NSDate *)toDate;
 
+
+
+/**
+ 转换为系统时区的时间
+
+ @return 转换后的时间
+ */
+- (NSDate *)convertToSystemTimeZoneDate;
+
 // Relative dates from the current date
 + (NSDate *) dateTomorrow;
 + (NSDate *) dateYesterday;
