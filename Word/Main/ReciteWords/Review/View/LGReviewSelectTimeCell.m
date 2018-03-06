@@ -27,7 +27,7 @@
 	
 	if (!dateFormatter) {
 		dateFormatter = [[NSDateFormatter alloc]init];
-		[dateFormatter setDateFormat:@"yyyy.M.d"];
+		[dateFormatter setDateFormat:@"yyyy-M-d"];
 	}
 	return dateFormatter;
 }

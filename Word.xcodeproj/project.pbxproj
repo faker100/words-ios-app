@@ -65,6 +65,12 @@
 		56B7AADF202BFAEB00BDECED /* LGWordDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B7AADE202BFAEB00BDECED /* LGWordDetailCell.m */; };
 		56B7AAEA202C59EC00BDECED /* LGWordDetailHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B7AAE9202C59EC00BDECED /* LGWordDetailHeaderFooterView.m */; };
 		56B7AAEC202C5A2400BDECED /* LGWordDetailHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56B7AAEB202C5A2400BDECED /* LGWordDetailHeaderFooterView.xib */; };
+		56C64699204E43AB00E895B3 /* LGTimeReivewCountAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C64698204E43AB00E895B3 /* LGTimeReivewCountAlertView.m */; };
+		56C6469B204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C6469A204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib */; };
+		56C646A3204E64B000E895B3 /* WordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C646A2204E64B000E895B3 /* WordTests.m */; };
+		56C646AC204E67CD00E895B3 /* LGDictationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C646AB204E67CD00E895B3 /* LGDictationController.m */; };
+		56C646AF204E7A2F00E895B3 /* LGDictationReviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C646AE204E7A2F00E895B3 /* LGDictationReviewModel.m */; };
+		56C646B2204E85B200E895B3 /* LGDictationPractiseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C646B1204E85B200E895B3 /* LGDictationPractiseController.m */; };
 		56C989842020176A0095A4BD /* LGWordPlanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C989832020176A0095A4BD /* LGWordPlanController.m */; };
 		56C9898820201CCF0095A4BD /* LGWordPlanCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9898720201CCF0095A4BD /* LGWordPlanCollectionCell.m */; };
 		56C9898E2020461D0095A4BD /* LGWordLibraryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C9898D2020461D0095A4BD /* LGWordLibraryController.m */; };
@@ -85,6 +91,16 @@
 		56FD20D62028256F003A6154 /* LGDeletePlanAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FD20D52028256F003A6154 /* LGDeletePlanAlertView.m */; };
 		56FD20D82028257D003A6154 /* LGDeletePlanAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56FD20D72028257D003A6154 /* LGDeletePlanAlertView.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		56C646A5204E64B100E895B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56A8882E200CA53400847BE6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 56A88835200CA53400847BE6;
+			remoteInfo = Word;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0235DB982022147200E52A3F /* LGFreeLibraryWordListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGFreeLibraryWordListController.h; sourceTree = "<group>"; };
@@ -195,6 +211,18 @@
 		56B7AAE8202C59EC00BDECED /* LGWordDetailHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordDetailHeaderFooterView.h; sourceTree = "<group>"; };
 		56B7AAE9202C59EC00BDECED /* LGWordDetailHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordDetailHeaderFooterView.m; sourceTree = "<group>"; };
 		56B7AAEB202C5A2400BDECED /* LGWordDetailHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGWordDetailHeaderFooterView.xib; sourceTree = "<group>"; };
+		56C64697204E43AB00E895B3 /* LGTimeReivewCountAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTimeReivewCountAlertView.h; sourceTree = "<group>"; };
+		56C64698204E43AB00E895B3 /* LGTimeReivewCountAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTimeReivewCountAlertView.m; sourceTree = "<group>"; };
+		56C6469A204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGTimeReivewCountAlertView.xib; sourceTree = "<group>"; };
+		56C646A0204E64B000E895B3 /* WordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		56C646A2204E64B000E895B3 /* WordTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordTests.m; sourceTree = "<group>"; };
+		56C646A4204E64B100E895B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56C646AA204E67CD00E895B3 /* LGDictationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDictationController.h; sourceTree = "<group>"; };
+		56C646AB204E67CD00E895B3 /* LGDictationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDictationController.m; sourceTree = "<group>"; };
+		56C646AD204E7A2F00E895B3 /* LGDictationReviewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDictationReviewModel.h; sourceTree = "<group>"; };
+		56C646AE204E7A2F00E895B3 /* LGDictationReviewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDictationReviewModel.m; sourceTree = "<group>"; };
+		56C646B0204E85B200E895B3 /* LGDictationPractiseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDictationPractiseController.h; sourceTree = "<group>"; };
+		56C646B1204E85B200E895B3 /* LGDictationPractiseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDictationPractiseController.m; sourceTree = "<group>"; };
 		56C989822020176A0095A4BD /* LGWordPlanController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordPlanController.h; sourceTree = "<group>"; };
 		56C989832020176A0095A4BD /* LGWordPlanController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordPlanController.m; sourceTree = "<group>"; };
 		56C9898620201CCF0095A4BD /* LGWordPlanCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordPlanCollectionCell.h; sourceTree = "<group>"; };
@@ -238,6 +266,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3690868A07C9B63A30A721A0 /* Pods_Word.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56C6469D204E64B000E895B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +476,9 @@
 				56E25390204D00C6006D9B56 /* LGFinishWordTaskView.xib */,
 				5627C9F3204D2F780013F1CC /* LGReviewSelectTimeCell.h */,
 				5627C9F4204D2F780013F1CC /* LGReviewSelectTimeCell.m */,
+				56C64697204E43AB00E895B3 /* LGTimeReivewCountAlertView.h */,
+				56C64698204E43AB00E895B3 /* LGTimeReivewCountAlertView.m */,
+				56C6469A204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -454,6 +492,10 @@
 				56994E9C2049385E005648F6 /* LGReviewWrongListController.m */,
 				5627C9F0204D2EA90013F1CC /* LGTimeReviewController.h */,
 				5627C9F1204D2EA90013F1CC /* LGTimeReviewController.m */,
+				56C646AA204E67CD00E895B3 /* LGDictationController.h */,
+				56C646AB204E67CD00E895B3 /* LGDictationController.m */,
+				56C646B0204E85B200E895B3 /* LGDictationPractiseController.h */,
+				56C646B1204E85B200E895B3 /* LGDictationPractiseController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -463,6 +505,8 @@
 			children = (
 				56994EA6204950A3005648F6 /* LGReviewWrongWordModel.h */,
 				56994EA7204950A3005648F6 /* LGReviewWrongWordModel.m */,
+				56C646AD204E7A2F00E895B3 /* LGDictationReviewModel.h */,
+				56C646AE204E7A2F00E895B3 /* LGDictationReviewModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -471,6 +515,7 @@
 			isa = PBXGroup;
 			children = (
 				56A88838200CA53400847BE6 /* Word */,
+				56C646A1204E64B000E895B3 /* WordTests */,
 				56A88837200CA53400847BE6 /* Products */,
 				9BE54A705AB43572B2E7736A /* Pods */,
 				654614099BD54950F42E89C2 /* Frameworks */,
@@ -481,6 +526,7 @@
 			isa = PBXGroup;
 			children = (
 				56A88836200CA53400847BE6 /* Word.app */,
+				56C646A0204E64B000E895B3 /* WordTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -566,6 +612,15 @@
 				567A3AD6203FEB4100A41692 /* LGWordErrorCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		56C646A1204E64B000E895B3 /* WordTests */ = {
+			isa = PBXGroup;
+			children = (
+				56C646A2204E64B000E895B3 /* WordTests.m */,
+				56C646A4204E64B100E895B3 /* Info.plist */,
+			);
+			path = WordTests;
 			sourceTree = "<group>";
 		};
 		56C98980202016EA0095A4BD /* WordPlan */ = {
@@ -737,6 +792,24 @@
 			productReference = 56A88836200CA53400847BE6 /* Word.app */;
 			productType = "com.apple.product-type.application";
 		};
+		56C6469F204E64B000E895B3 /* WordTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56C646A7204E64B100E895B3 /* Build configuration list for PBXNativeTarget "WordTests" */;
+			buildPhases = (
+				56C6469C204E64B000E895B3 /* Sources */,
+				56C6469D204E64B000E895B3 /* Frameworks */,
+				56C6469E204E64B000E895B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56C646A6204E64B100E895B3 /* PBXTargetDependency */,
+			);
+			name = WordTests;
+			productName = WordTests;
+			productReference = 56C646A0204E64B000E895B3 /* WordTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -750,6 +823,11 @@
 					56A88835200CA53400847BE6 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+					};
+					56C6469F204E64B000E895B3 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 56A88835200CA53400847BE6;
 					};
 				};
 			};
@@ -767,6 +845,7 @@
 			projectRoot = "";
 			targets = (
 				56A88835200CA53400847BE6 /* Word */,
+				56C6469F204E64B000E895B3 /* WordTests */,
 			);
 		};
 /* End PBXProject section */
@@ -791,6 +870,14 @@
 				56EAD8662019C0EB0059604E /* WordReport.storyboard in Resources */,
 				56A88841200CA53400847BE6 /* Main.storyboard in Resources */,
 				56994EA520493A1F005648F6 /* LGReviewWrongCollectionReusableView.xib in Resources */,
+				56C6469B204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		56C6469E204E64B000E895B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,6 +960,7 @@
 				565A30FA2013411200448B1C /* LGRegisterController.m in Sources */,
 				56585956203EB34300BB59ED /* LGDottedLineView.m in Sources */,
 				56FD20D62028256F003A6154 /* LGDeletePlanAlertView.m in Sources */,
+				56C646AF204E7A2F00E895B3 /* LGDictationReviewModel.m in Sources */,
 				5639AFA22024535700AA2CA5 /* LGPlanTableViewCell.m in Sources */,
 				56C989842020176A0095A4BD /* LGWordPlanController.m in Sources */,
 				0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */,
@@ -894,6 +982,7 @@
 				56C9899120204F7C0095A4BD /* LGWordLibraryTypeCell.m in Sources */,
 				56C9898E2020461D0095A4BD /* LGWordLibraryController.m in Sources */,
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
+				56C64699204E43AB00E895B3 /* LGTimeReivewCountAlertView.m in Sources */,
 				56994EA420493A1F005648F6 /* LGReviewWrongCollectionReusableView.m in Sources */,
 				567A3AD4203FB72F00A41692 /* LGWordErrorViewController.m in Sources */,
 				56994E9A20492BC3005648F6 /* LGReviewController.m in Sources */,
@@ -907,6 +996,7 @@
 				56E2538F204D00B7006D9B56 /* LGFinishWordTaskView.m in Sources */,
 				5639AF9F202441B300AA2CA5 /* LGPlanModel.m in Sources */,
 				56AF60D52011EA050067BD7B /* UIViewController+LGViewController.m in Sources */,
+				56C646AC204E67CD00E895B3 /* LGDictationController.m in Sources */,
 				563259EE201AC609007FF4D6 /* LGTool.m in Sources */,
 				56AF60C52011CD2B0067BD7B /* LGRequest.m in Sources */,
 				5658D5A62040FF7600390FC4 /* LGIndexReviewAlertView.m in Sources */,
@@ -918,6 +1008,7 @@
 				56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */,
 				560F0FCB2022AA7000324510 /* LGFreeWordListCell.m in Sources */,
 				56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */,
+				56C646B2204E85B200E895B3 /* LGDictationPractiseController.m in Sources */,
 				56224FC7204547AF0093BC7A /* LGIndexReviewAlertCell.m in Sources */,
 				56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */,
 				5627C9F2204D2EA90013F1CC /* LGTimeReviewController.m in Sources */,
@@ -929,7 +1020,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		56C6469C204E64B000E895B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56C646A3204E64B000E895B3 /* WordTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		56C646A6204E64B100E895B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 56A88835200CA53400847BE6 /* Word */;
+			targetProxy = 56C646A5204E64B100E895B3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		56A8883F200CA53400847BE6 /* Main.storyboard */ = {
@@ -1093,6 +1200,36 @@
 			};
 			name = Release;
 		};
+		56C646A8204E64B100E895B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G6D8UC5DTE;
+				INFOPLIST_FILE = WordTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Charles.WordTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Word.app/Word";
+			};
+			name = Debug;
+		};
+		56C646A9204E64B100E895B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G6D8UC5DTE;
+				INFOPLIST_FILE = WordTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Charles.WordTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Word.app/Word";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1110,6 +1247,15 @@
 			buildConfigurations = (
 				56A8884D200CA53400847BE6 /* Debug */,
 				56A8884E200CA53400847BE6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56C646A7204E64B100E895B3 /* Build configuration list for PBXNativeTarget "WordTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56C646A8204E64B100E895B3 /* Debug */,
+				56C646A9204E64B100E895B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -23,7 +23,7 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 
 //正常复习模式下的复习方式
 @property (nonatomic, assign) LGSelectReviewType reviewTyep;
-//正常复习模式下的复习 id 数组
+//正常复习模式下的复习 id 数组, (error:用 copy 崩溃)
 @property (nonatomic, strong) NSMutableArray<NSString *> *reviewWordIdArray;
 
 //今日复习模式下(LGwordDetailTodayReview),要复习的状态,0为全部

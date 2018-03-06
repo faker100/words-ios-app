@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger, LGUsernameType) {
 
 //单词状态
 typedef NS_ENUM(NSUInteger, LGWordStatus) {
-	LGWordStatusNone = 0,           //没背
+	LGWordStatusNone = 0,           //没背 / 复习模块中 0 表示全部
 	LGWordStatusFamiliar = 1,       //熟识
 	LGWordStatusKnow = 2,     	    //认识
 	LGWordStatusIncognizance = 3,   //不认识
@@ -157,5 +157,17 @@ typedef NS_ENUM(NSUInteger, LGSelectReviewType) {
 
 //获取错题本单词
 #define GET_WROING_WORDS_URL            @"http://words.viplgw.cn/cn/app-api/wrong-words"
+
+//根据复习时间获取单词
+#define REIVEW_TIME_URL					@"http://words.viplgw.cn/cn/app-api/time-select"
+
+//听写练习首页
+#define DICTATION_INDEX_URL				@"http://words.viplgw.cn/cn/app-api/dictation-index"
+
+//听写练习
+#define DICTATION_PRACTISE_URL			@"http://words.viplgw.cn/cn/app-api/dictation-words"
+
+
+
 
 

@@ -261,4 +261,27 @@
     [self postRequestCompletion:completion];
 }
 
+- (void)requestRevieWordWithStartTime:(NSString *)startTime endTime:(NSString *)endTime Completion:(comletionBlock)completion{
+	self.url = REIVEW_TIME_URL;
+	self.parameter = @{
+					   @"start" : startTime,
+					   @"end" : endTime
+					   };
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestDicationIndexCompletion:(comletionBlock)completion{
+	self.url = DICTATION_INDEX_URL;
+	[self postRequestCompletion:completion];
+}
+
+
+- (void)requestDictationWordsWithStatus:(LGWordStatus)status completion:(comletionBlock)completion{
+	self.url = DICTATION_PRACTISE_URL;
+	self.parameter = @{
+					   @"status" : @(status)
+					   };
+	[self postRequestCompletion:completion];
+}
+
 @end

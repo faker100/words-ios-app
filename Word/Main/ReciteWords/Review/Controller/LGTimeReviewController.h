@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LGTimeReviewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UITableView *startTimeTableView;
 
 @property (weak, nonatomic) IBOutlet UITableView *endTimeTableView;
@@ -16,5 +17,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *endTimeLabel;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *rightItemButton;
 
 @end

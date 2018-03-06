@@ -140,7 +140,7 @@
 	[LGProgressHUD showHUDAddedTo:self.view];
     [self.request requestReviewWrongWordsWithStart:self.modelArray[indexPath.row].start Completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			NSMutableArray<NSString *> *wordIdArray = [NSString mj_objectArrayWithKeyValuesArray:response];
+			NSMutableArray<NSString *> *wordIdArray = [NSMutableArray arrayWithArray:response];
 			[self performSegueWithIdentifier:@"reviewWrongListToWordDetail" sender:wordIdArray];
 		}
     }];

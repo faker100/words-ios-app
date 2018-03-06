@@ -43,7 +43,6 @@
 + (void)showMessage:(NSString *)message toView:(UIView *)view{
 	
 	[LGProgressHUD showMessageWithIcon:nil message:message toView:view completionBlock:nil];
-	
 }
 
 + (LGProgressHUD *)configTypeToView:(UIView *)view {
@@ -65,10 +64,10 @@
 	if (StringNotEmpty(iconName)) {
 		hud.mode  = MBProgressHUDModeCustomView;
 		hud.minSize = CGSizeMake(150, 125);
+		hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconName]];
 	}else{
 		hud.mode = MBProgressHUDModeText;
 	}
-	hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:iconName]];
 	[hud hideAnimated:YES afterDelay:1.5f];
 }
 

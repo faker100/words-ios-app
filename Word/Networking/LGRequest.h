@@ -225,12 +225,37 @@
 - (void)requestRevieWrongWordListCompletion:(comletionBlock)completion;
 
 
-
 /**
  错题本复习单词id
 
  @param start 起始位置
  */
 - (void)requestReviewWrongWordsWithStart:(NSString *)start Completion:(comletionBlock)completion;
+
+
+/**
+ 根据时间段复习单词
+
+ @param startTime 开始时间
+ @param endTime 结束时间
+ */
+- (void)requestRevieWordWithStartTime:(NSString *)startTime endTime:(NSString *)endTime Completion:(comletionBlock)completion;
+
+/**
+ 听写练习首页
+ */
+- (void)requestDicationIndexCompletion:(comletionBlock)completion;
+
+
+
+/**
+ 听写练习 - 复习某状态下的单词
+
+ @param status 要复习的状态
+ */
+- (void)requestDictationWordsWithStatus:(LGWordStatus) status completion:(comletionBlock)completion;
+
+
+
 
 @end

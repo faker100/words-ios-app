@@ -264,7 +264,7 @@
  */
 - (void)pushNextWordDetailController:(LGWordDetailControllerType) type animated:(BOOL)animated{
 	
-	if (self.currentNum.integerValue < self.total.integerValue) {
+	if (self.currentNum.integerValue >= self.total.integerValue) {
 		[LGFinishWordTaskView showFinishToView:self.view.window sureBlock:^{
 			[self.navigationController popViewControllerAnimated:YES];
 		}];

@@ -9,13 +9,20 @@
 #import "LGTimeReviewController.h"
 #import "LGReviewSelectTimeCell.h"
 #import "NSDate+Utilities.h"
+#import "LGSelectReviewTypeView.h"
+#import "LGTimeReivewCountAlertView.h"
+#import "LGWordDetailController.h"
 
-
-@interface LGTimeReviewController () <UITableViewDelegate, UITableViewDataSource>
+@interface LGTimeReviewController () <UITableViewDelegate, UITableViewDataSource, LGSelectReviewTypeViewDelegate,LGTimeReivewCountAlertViewDelegate>
 
 @property (nonatomic, strong) NSArray<NSDate *> *startDateArray;   //开始日期数组
 @property (nonatomic, strong) NSArray<NSDate *> *endDateArray;     //截止日期数组
+@property (nonatomic, strong) LGSelectReviewTypeView *selectTypeView;  //选择复习方式view
+@property (nonatomic, assign) LGSelectReviewType selectedReviewType;    //选择的复习方式，默认中英
 
+@property (nonatomic, strong) LGTimeReivewCountAlertView *countAlertView;//单词总数提示框
+
+@property (nonatomic, strong) NSMutableArray *wordIDArray;
 
 @end
 
@@ -26,8 +33,6 @@
     // Do any additional setup after loading the view.
 	self.startDateArray = [NSDate dateArrayFrom:[[[NSCalendar currentCalendar] dateWithEra:1 year:2018 month:3 day:1 hour:0 minute:0 second:0 nanosecond:0]convertToSystemTimeZoneDate] toDate:[NSDate currentDay]];
     self.endDateArray = self.startDateArray;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.startTimeTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,7 +40,85 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)sureAction:(id)sender {
+	
+	NSString *startTimeStr = self.startTimeLabel.text;
+	NSString *endTimeStr   = self.endTimeLabel.text;
+	
+	if (StringNotEmpty(startTimeStr) && StringNotEmpty(endTimeStr)) {
+	
+		if ([startTimeStr compare:endTimeStr] != NSOrderedDescending) {
+			[LGProgressHUD showHUDAddedTo:self.view];
+			[self.request requestRevieWordWithStartTime:startTimeStr endTime:endTimeStr Completion:^(id response, LGError *error) {
+				if ([self isNormal:error]) {
+					[self showCountAlertView:[NSMutableArray arrayWithArray:response]];
+				}
+			}];
+		}else{
+			[LGProgressHUD showMessage:@"开始时间不能小于截止时间" toView:self.view];
+		}
+		
+	}else{
+		[LGProgressHUD showMessage:@"请选择时间段" toView:self.view];
+	}
+}
 
+//选择复习方式
+- (IBAction)selectReviewTypeAction:(id)sender {
+	if (!self.selectTypeView) {
+		self.selectTypeView = [[NSBundle mainBundle]loadNibNamed:@"LGSelectReviewTypeView" owner:nil options:nil].firstObject;
+		self.selectTypeView.frame = self.view.bounds;
+		self.selectTypeView.delegate = self;
+	}
+	
+	[self.view addSubview:self.selectTypeView];
+}
+
+
+/**
+ 显示复习单词数量
+
+ @param wordIDArray 单词数组
+ */
+- (void)showCountAlertView:(NSMutableArray *)wordIDArray{
+	self.wordIDArray = wordIDArray;
+	if (wordIDArray.count == 0) {
+		[LGProgressHUD showMessage:@"该时间段内没有需要复习的单词" toView:self.view];
+		return;
+	}
+	if (!self.countAlertView) {
+		self.countAlertView = [[NSBundle mainBundle]loadNibNamed:@"LGTimeReivewCountAlertView" owner:nil options:nil].firstObject;
+		self.countAlertView.delegate = self;
+		self.countAlertView.frame = self.view.window.bounds;
+	}
+	self.countAlertView.countLabel.text = @(wordIDArray.count).stringValue;
+	[self.view.window addSubview:self.countAlertView];
+}
+
+#pragma mark - LGTimeReivewCountAlertViewDelegate
+- (void)beginReview{
+	[self performSegueWithIdentifier:@"timeReviewToWordDetail" sender:nil];
+}
+
+#pragma mark - LGSelectReviewTypeViewDelegate
+- (void)selectedReviewType:(LGSelectReviewType)type{
+	self.selectedReviewType = type;
+	NSString *str;
+	switch (type) {
+		case LGSelectReviewChinese_English:
+			str = @"中英";
+			break;
+		case LGSelectReviewEnglish_Chinese:
+			str = @"英中";
+			break;
+		case LGSelectReviewDictation:
+			str = @"听写";
+			break;
+		default:
+			break;
+	}
+	[self.rightItemButton setTitle:str forState:UIControlStateNormal];
+}
 
 #pragma mark -UITableViewDataSource
 
@@ -55,17 +138,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	//[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	LGReviewSelectTimeCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+	if (tableView == self.startTimeTableView) {
+		self.startTimeLabel.text = cell.timeLabel.text;
+	}else{
+		self.endTimeLabel.text = cell.timeLabel.text;
+	}
 }
 
-/*
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	
+	LGWordDetailController *controller  = segue.destinationViewController;
+	controller.total = @(self.wordIDArray.count).stringValue;
+	controller.controllerType = LGwordDetailReview;
+	controller.reviewTyep = self.selectedReviewType;
+	controller.reviewWordIdArray = self.wordIDArray;
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end
