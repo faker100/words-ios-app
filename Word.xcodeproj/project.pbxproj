@@ -45,6 +45,8 @@
 		567A3AD7203FEB4100A41692 /* LGWordErrorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 567A3AD6203FEB4100A41692 /* LGWordErrorCell.m */; };
 		567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 567C00FA2010A0360083F3D5 /* LGBaseRequest.m */; };
 		56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56801492202AE1FB0082D72F /* LGWordDetailController.m */; };
+		56973641204FF50B00169C8A /* LGDictationUserAnswerCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56973640204FF50B00169C8A /* LGDictationUserAnswerCollectionCell.m */; };
+		56973644204FF54800169C8A /* LGDictationAnswerItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56973643204FF54800169C8A /* LGDictationAnswerItemCollectionCell.m */; };
 		56994E9A20492BC3005648F6 /* LGReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56994E9920492BC3005648F6 /* LGReviewController.m */; };
 		56994E9D2049385E005648F6 /* LGReviewWrongListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56994E9C2049385E005648F6 /* LGReviewWrongListController.m */; };
 		56994EA0204938D6005648F6 /* LGReviewWrongCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56994E9F204938D6005648F6 /* LGReviewWrongCollectionCell.m */; };
@@ -175,6 +177,10 @@
 		567C00FA2010A0360083F3D5 /* LGBaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGBaseRequest.m; sourceTree = "<group>"; };
 		56801491202AE1FB0082D72F /* LGWordDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordDetailController.h; sourceTree = "<group>"; };
 		56801492202AE1FB0082D72F /* LGWordDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordDetailController.m; sourceTree = "<group>"; };
+		5697363F204FF50B00169C8A /* LGDictationUserAnswerCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDictationUserAnswerCollectionCell.h; sourceTree = "<group>"; };
+		56973640204FF50B00169C8A /* LGDictationUserAnswerCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDictationUserAnswerCollectionCell.m; sourceTree = "<group>"; };
+		56973642204FF54800169C8A /* LGDictationAnswerItemCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDictationAnswerItemCollectionCell.h; sourceTree = "<group>"; };
+		56973643204FF54800169C8A /* LGDictationAnswerItemCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDictationAnswerItemCollectionCell.m; sourceTree = "<group>"; };
 		56994E9820492BC3005648F6 /* LGReviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReviewController.h; sourceTree = "<group>"; };
 		56994E9920492BC3005648F6 /* LGReviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReviewController.m; sourceTree = "<group>"; };
 		56994E9B2049385E005648F6 /* LGReviewWrongListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReviewWrongListController.h; sourceTree = "<group>"; };
@@ -479,6 +485,10 @@
 				56C64697204E43AB00E895B3 /* LGTimeReivewCountAlertView.h */,
 				56C64698204E43AB00E895B3 /* LGTimeReivewCountAlertView.m */,
 				56C6469A204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib */,
+				5697363F204FF50B00169C8A /* LGDictationUserAnswerCollectionCell.h */,
+				56973640204FF50B00169C8A /* LGDictationUserAnswerCollectionCell.m */,
+				56973642204FF54800169C8A /* LGDictationAnswerItemCollectionCell.h */,
+				56973643204FF54800169C8A /* LGDictationAnswerItemCollectionCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -963,6 +973,7 @@
 				56C646AF204E7A2F00E895B3 /* LGDictationReviewModel.m in Sources */,
 				5639AFA22024535700AA2CA5 /* LGPlanTableViewCell.m in Sources */,
 				56C989842020176A0095A4BD /* LGWordPlanController.m in Sources */,
+				56973641204FF50B00169C8A /* LGDictationUserAnswerCollectionCell.m in Sources */,
 				0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */,
 				0239C1AC20485C460031C3FA /* LGTodayReviewWordModel.m in Sources */,
 				567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */,
@@ -986,6 +997,7 @@
 				56994EA420493A1F005648F6 /* LGReviewWrongCollectionReusableView.m in Sources */,
 				567A3AD4203FB72F00A41692 /* LGWordErrorViewController.m in Sources */,
 				56994E9A20492BC3005648F6 /* LGReviewController.m in Sources */,
+				56973644204FF54800169C8A /* LGDictationAnswerItemCollectionCell.m in Sources */,
 				56224FCC20454F020093BC7A /* LGIndexReviewModel.m in Sources */,
 				56994E9D2049385E005648F6 /* LGReviewWrongListController.m in Sources */,
 				56EAD8722019C98B0059604E /* LGTabBarViewController.m in Sources */,

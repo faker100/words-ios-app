@@ -11,9 +11,26 @@
 @interface LGDictationPractiseController : UIViewController
 
 
-/**
- 听写练习单词的状态
- */
-@property (nonatomic, assign) LGWordStatus reviewStatus;
+//复习单词 id 的数组
+@property (nonatomic, strong) NSMutableArray <NSString *> *wordIDArray;
+
+//倒计时
+@property (weak, nonatomic) IBOutlet UIButton *countDownButton;
+
+//翻译 label
+@property (weak, nonatomic) IBOutlet UILabel *translateLabel;
+
+//播放按钮
+@property (weak, nonatomic) IBOutlet UIButton *playerButton;
+
+//用户答案
+@property (weak, nonatomic) IBOutlet UICollectionView *userAnswerCollection;
+
+//答案选项
+@property (weak, nonatomic) IBOutlet UICollectionView *answerCollection;
+
+//提示
+@property (weak, nonatomic) IBOutlet UIButton *promptButton;
+
 
 @end

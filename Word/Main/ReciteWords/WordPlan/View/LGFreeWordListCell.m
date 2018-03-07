@@ -40,6 +40,8 @@
 		case LGWordStatusVague:
 			self.backgroundColor = [UIColor lg_colorWithHexString:@"fceac1"];
 			break;
+		default:
+			break;
 	}
 	
 }

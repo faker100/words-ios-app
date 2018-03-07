@@ -112,11 +112,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 	LGFreeWordModel *wordModel = self.modelArray[indexPath.section];
-	if (StringNotEmpty(wordModel.us_audio)) {
-		[[LGPlayer sharedPlayer] playWithUrl:wordModel.us_audio completion:^(LGError *error) {
+	
+	[[LGPlayer sharedPlayer] playWithUrl:wordModel.us_audio completion:^(LGError *error) {
 			[self isNormal:error];
-		}];
-	}
+	}];
 }
 
 /*

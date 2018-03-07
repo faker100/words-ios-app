@@ -77,7 +77,8 @@
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestDictationWordsWithStatus:status completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			NSLog(@"%@",response);
+			NSMutableArray *wordIDArray = [NSMutableArray arrayWithArray:response];
+			[self performSegueWithIdentifier:@"dictationIndexToPractise" sender:wordIDArray];
 		}
 	}];
 }
@@ -86,6 +87,9 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	
+	LGDictationPractiseController *controller = segue.destinationViewController;
+	controller.wordIDArray = sender;
 	
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

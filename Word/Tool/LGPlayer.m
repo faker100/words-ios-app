@@ -30,20 +30,21 @@
 }
 
 - (void)playWithUrl:(NSString *)url completion:(void(^)(LGError *error))finish{
-	
-	__weak typeof(self) weakSelf = self;
-	[self.request downloadAudioFile:url completion:^(NSURL *filePath, LGError *error) {
-		if (error) {
-			if (finish) finish(error);
-		}else{
-			NSError *playError;
-			weakSelf.player = [[AVAudioPlayer alloc]initWithContentsOfURL:filePath error:&playError];
-			[weakSelf.player play];
-			if (finish) {
-				finish( playError ? [[LGError alloc]initWithMessage:@"播放失败" type:LGAPPError] : nil );
+	if (StringNotEmpty(url)) {
+		__weak typeof(self) weakSelf = self;
+		[self.request downloadAudioFile:url completion:^(NSURL *filePath, LGError *error) {
+			if (error) {
+				if (finish) finish(error);
+			}else{
+				NSError *playError;
+				weakSelf.player = [[AVAudioPlayer alloc]initWithContentsOfURL:filePath error:&playError];
+				[weakSelf.player play];
+				if (finish) {
+					finish( playError ? [[LGError alloc]initWithMessage:@"播放失败" type:LGAPPError] : nil );
+				}
 			}
-		}
-	}];
+		}];
+	}
 }
 
 @end
