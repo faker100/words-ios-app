@@ -9,8 +9,10 @@
 #import "LGDictationPractiseController.h"
 #import "LGWordDetailModel.h"
 #import "LGPlayer.h"
+#import "LGDictationAnswerItemCollectionCell.h"
+#import "LGDictationUserAnswerCollectionCell.h"
 
-@interface LGDictationPractiseController ()
+@interface LGDictationPractiseController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) LGWordDetailModel *wordDetailModel;
 
@@ -33,17 +35,19 @@
 	[self.request requestWordDetailWidthID:self.wordIDArray.firstObject completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			self.wordDetailModel = [LGWordDetailModel mj_objectWithKeyValues:response];
-			
 		}
 	}];
 }
 
-- (void)setWordDetailModel:(LGWordDetailModel *)wordDetailModel{
+- (void)setWordDetailModel:(LGWordDetailModel *)wordDetailModel {
 	_wordDetailModel = wordDetailModel;
 	self.translateLabel.text = wordDetailModel.words.translate;
 	[self.playerButton setTitle:wordDetailModel.words.phonetic_us forState:UIControlStateNormal];
-	
+    
+//    UICollectionViewLayout *userAnswerCollectionLayout =
+    
 }
+
 
 /**
  随机生成答案个数
@@ -98,6 +102,24 @@
 
 - (IBAction)playerAction:(id)sender {
 	[[LGPlayer sharedPlayer]playWithUrl:self.wordDetailModel.words.us_audio completion:nil];
+}
+
+#pragma mark - UICollectionViewDelegate
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.answerItemNum;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (collectionView == self.userAnswerCollection) {
+        
+        LGDictationUserAnswerCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LGDictationUserAnswerCollectionCell" forIndexPath:indexPath];
+        return cell;
+        
+    }else{
+        
+        LGDictationAnswerItemCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LGDictationAnswerItemCollectionCell" forIndexPath:indexPath];
+        return cell;
+    }
 }
 
 /*
