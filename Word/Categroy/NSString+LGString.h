@@ -14,4 +14,24 @@
 - (BOOL)isEmail;
 - (BOOL)isRightPassword;
 
+
+/**
+ 根据指定宽度下,获取文本高度
+
+ @param width 指定宽度
+ @param fontSize 字体大小
+ @return 高度
+ */
+- (CGFloat)getStringRectHeightOfWidth:(CGFloat)width fontSize:(CGFloat)fontSize;
+
+
+/**
+ 根据指定高度下,获取文本高度
+ 
+ @param height 指定高度
+ @param fontSize 字体大小
+ @return 宽度
+ */
+- (CGFloat)getStringRectWidthOfHeight:(CGFloat)height fontSize:(CGFloat)fontSize;
+
 @end

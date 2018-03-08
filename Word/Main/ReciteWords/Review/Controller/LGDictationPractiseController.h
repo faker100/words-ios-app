@@ -32,5 +32,7 @@
 //提示
 @property (weak, nonatomic) IBOutlet UIButton *promptButton;
 
+//外部scrollview
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

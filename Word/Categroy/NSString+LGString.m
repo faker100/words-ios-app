@@ -30,4 +30,19 @@
 	return [passWordPredicate evaluateWithObject:self];
 }
 
+- (CGFloat)getStringRectWidthOfHeight:(CGFloat)height fontSize:(CGFloat)fontSize{
+	
+	NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]};
+	CGRect rect = [self boundingRectWithSize:CGSizeMake(0, height) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
+	return  rect.size.width;
+}
+
+- (CGFloat)getStringRectHeightOfWidth:(CGFloat)width fontSize:(CGFloat)fontSize{
+	
+	NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]};
+	CGRect rect = [self boundingRectWithSize:CGSizeMake(width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil];
+	return  rect.size.height;
+}
+
+
 @end

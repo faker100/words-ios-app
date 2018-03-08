@@ -25,4 +25,13 @@
  */
 + (NSString *)getAudioFilePath;
 
+
+/**
+ 倒计时
+
+ @param second 倒计时秒数
+ @param completion 每秒回调一次
+ */
++ (void)beginCountDownWithSecond:(NSInteger)second completion:(void(^)(NSInteger currtentSecond))completion;
+
 @end

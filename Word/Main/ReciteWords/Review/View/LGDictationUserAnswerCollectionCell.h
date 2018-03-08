@@ -10,4 +10,7 @@
 
 @interface LGDictationUserAnswerCollectionCell : UICollectionViewCell
 
+
+@property (weak, nonatomic) IBOutlet UILabel *userAnswerLabel;
+
 @end
