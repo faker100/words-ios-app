@@ -155,7 +155,7 @@
 	
 	LGWordDetailController *controller  = segue.destinationViewController;
 	controller.total = @(self.wordIDArray.count).stringValue;
-	controller.controllerType = LGwordDetailReview;
+	controller.controllerType = LGWordDetailReview;
 	controller.reviewTyep = self.selectedReviewType;
 	controller.reviewWordIdArray = self.wordIDArray;
     // Get the new view controller using [segue destinationViewController].

@@ -17,6 +17,6 @@
 
 @interface LGSelectReviewTypeView : UIView 
 
-@property (nonatomic, assign) id<LGSelectReviewTypeViewDelegate>delegate;
+@property (nonatomic, weak) id<LGSelectReviewTypeViewDelegate>delegate;
 
 @end

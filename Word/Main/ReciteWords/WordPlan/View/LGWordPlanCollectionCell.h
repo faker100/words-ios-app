@@ -18,7 +18,7 @@
 @interface LGWordPlanCollectionCell : UICollectionViewCell
 
 
-@property (nonatomic, assign) id<LGWordPlanCollectionCellDelegate> delegate;
+@property (nonatomic, weak) id<LGWordPlanCollectionCellDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIView *bgColorView;
 //标题
 @property (weak, nonatomic) IBOutlet UIButton *titleNameButton;

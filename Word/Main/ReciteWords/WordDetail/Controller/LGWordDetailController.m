@@ -7,7 +7,6 @@
 //
 
 #import "LGWordDetailController.h"
-#import "LGWordDetailModel.h"
 #import "LGWordDetailCell.h"
 #import "LGWordDetailHeaderFooterView.h"
 #import "LGPlayer.h"
@@ -35,16 +34,24 @@
 	{
 		[self requestWordDetailWidthID:self.ebbinghausReviewWordIdArray.firstObject];
 			
-	}else if (self.controllerType == LGwordDetailTodayReview)
+	}else if (self.controllerType == LGWordDetailTodayReview)
 	{
 		[self requestTodayReviewWord];
 		[self.vagueOrForgotButton setTitle:@"忘记" forState:UIControlStateNormal];
 				
-	}else if (self.controllerType == LGwordDetailReview)
+	}else if (self.controllerType == LGWordDetailReview)
 	{
 		[self.vagueOrForgotButton setTitle:@"忘记" forState:UIControlStateNormal];
 		self.currentNum = @(self.total.integerValue - self.reviewWordIdArray.count + 1).stringValue;
 		[self requestWordDetailWidthID:self.reviewWordIdArray.firstObject];
+	
+	}else if (self.controllerType == LGWordDetailDictationPrompt)
+	{
+		self.statusViewHeightConstraint.constant = 0;
+		self.detailModel = self.dictationPromptWord;
+		self.familiarItemButton.hidden = YES;
+		self.title = @"听写练习";
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"backArrow"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissController)];
 	}
 	
 	[self.wordTabelView registerNib:[UINib nibWithNibName:@"LGWordDetailHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGWordDetailHeaderFooterView"];
@@ -172,6 +179,9 @@
 	[self updateWordStatus:self.controllerType == LGWordDetailReciteWords ? LGWordStatusVague : LGWordStatusForget];
 }
 
+- (void)dismissController{
+	[self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark - 修改单词状态
 
@@ -188,10 +198,10 @@
 			[self updateEbbinghausReviewWordStatus:status];
 			break;
 			
-		case LGwordDetailTodayReview:
+		case LGWordDetailTodayReview:
 			[self updateReviewWordStatus:status];
 			break;
-		case LGwordDetailReview:
+		case LGWordDetailReview:
 			[self updateReviewWordStatus:status];
 			break;
 		default:
@@ -248,7 +258,7 @@
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request updateReviewWordStatus:status wordId:self.detailModel.words.ID completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			if (self.controllerType == LGwordDetailReview) {
+			if (self.controllerType == LGWordDetailReview) {
 				[self.reviewWordIdArray removeObjectAtIndex:0];
 			}
 			[self pushNextWordDetailController:self.controllerType  animated:YES];

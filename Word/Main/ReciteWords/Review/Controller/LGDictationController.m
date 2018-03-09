@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	
 	[self requestData];
 }
 
@@ -35,9 +36,9 @@
 
 - (void)setReviewModel:(LGDictationReviewModel *)reviewModel {
 	_reviewModel = reviewModel;
-	self.allLabel.text         = [NSString stringWithFormat:@"( 共%@词 )",reviewModel.all];
-	self.dimLabel.text    	   = [NSString stringWithFormat:@"( 共%@词 )",reviewModel.dim];
-	self.incognizantLabel.text = [NSString stringWithFormat:@"( 共%@词 )",reviewModel.incognizant];
+	self.allLabel.text         = [NSString stringWithFormat:@"( 共%ld词 )",reviewModel.all.integerValue];
+	self.dimLabel.text    	   = [NSString stringWithFormat:@"( 共%ld词 )",reviewModel.dim.integerValue];
+	self.incognizantLabel.text = [NSString stringWithFormat:@"( 共%ld词 )",reviewModel.incognizant.integerValue];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,6 +91,7 @@
 	
 	LGDictationPractiseController *controller = segue.destinationViewController;
 	controller.wordIDArray = sender;
+	controller.total = @(((NSMutableArray *)sender).count).stringValue;
 	
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

@@ -1013,7 +1013,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ztP-Gl-zh1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1556.8" y="-102.09895052473765"/>
+            <point key="canvasLocation" x="1675" y="-104"/>
         </scene>
         <!--雷哥词包-->
         <scene sceneID="o1j-q5-hQK">
@@ -2263,12 +2263,12 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2501.5999999999999" y="2590.704647676162"/>
+            <point key="canvasLocation" x="2502" y="2628"/>
         </scene>
         <!--听写练习-->
         <scene sceneID="ral-Ym-szb">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="FIU-L0-eAE" customClass="LGDictationPractiseController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LGDictationPractiseController" automaticallyAdjustsScrollViewInsets="NO" id="FIU-L0-eAE" customClass="LGDictationPractiseController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RCD-kz-g7w"/>
                         <viewControllerLayoutGuide type="bottom" id="UwZ-Zy-3Jz"/>
@@ -2294,7 +2294,7 @@
                                             <action selector="playerAction:" destination="FIU-L0-eAE" eventType="touchUpInside" id="25f-rF-ysa"/>
                                         </connections>
                                     </button>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="coD-gL-yhf">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="coD-gL-yhf">
                                         <rect key="frame" x="37.5" y="197.5" width="300" height="195"/>
                                         <color key="backgroundColor" red="0.93813836574554443" green="0.92939478158950806" blue="0.93321412801742554" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -2319,7 +2319,7 @@
                                                             <rect key="frame" x="5" y="0.0" width="40" height="50"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
+                                                            <color key="highlightedColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         </label>
                                                     </subviews>
                                                 </view>
@@ -2343,6 +2343,11 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="dataSource" destination="FIU-L0-eAE" id="n6X-fw-uSR"/>
                                             <outlet property="delegate" destination="FIU-L0-eAE" id="ua4-Qh-eeO"/>
@@ -2409,7 +2414,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haG-Gb-sgF">
-                                        <rect key="frame" x="30" y="425" width="315" height="40"/>
+                                        <rect key="frame" x="5" y="415" width="365" height="40"/>
                                         <color key="backgroundColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="CBo-p4-ZnJ"/>
@@ -2423,45 +2428,48 @@
                                                 <integer key="value" value="4"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="Ygg-Be-MQ9" kind="presentation" identifier="dictationToWordDetail" id="vJR-g9-e7M"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="haG-Gb-sgF" firstAttribute="leading" secondItem="9ys-i5-NSg" secondAttribute="leading" priority="750" constant="5" id="41D-KU-Cdp"/>
                                     <constraint firstItem="coD-gL-yhf" firstAttribute="centerX" secondItem="9ys-i5-NSg" secondAttribute="centerX" id="8pR-qH-vdE"/>
                                     <constraint firstItem="OUL-BX-Id4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9ys-i5-NSg" secondAttribute="top" constant="10" id="9me-Wb-bUg"/>
                                     <constraint firstItem="haG-Gb-sgF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="coD-gL-yhf" secondAttribute="bottom" constant="10" id="BMY-rT-06d"/>
-                                    <constraint firstAttribute="trailing" secondItem="haG-Gb-sgF" secondAttribute="trailing" constant="30" id="LBm-fd-J1F"/>
+                                    <constraint firstItem="haG-Gb-sgF" firstAttribute="centerX" secondItem="9ys-i5-NSg" secondAttribute="centerX" id="T2t-ly-2RM"/>
                                     <constraint firstItem="coD-gL-yhf" firstAttribute="centerY" secondItem="9ys-i5-NSg" secondAttribute="centerY" constant="50" id="U9O-oA-I8S"/>
-                                    <constraint firstItem="haG-Gb-sgF" firstAttribute="top" secondItem="coD-gL-yhf" secondAttribute="bottom" priority="250" constant="32.5" id="Una-ue-I1h"/>
                                     <constraint firstItem="kk5-Yj-0ta" firstAttribute="top" secondItem="OUL-BX-Id4" secondAttribute="bottom" id="YW0-Jx-p7f"/>
                                     <constraint firstItem="coD-gL-yhf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="jfS-8m-N4h" secondAttribute="bottom" constant="15" id="ZnG-Bw-XKv"/>
+                                    <constraint firstItem="haG-Gb-sgF" firstAttribute="width" relation="greaterThanOrEqual" secondItem="coD-gL-yhf" secondAttribute="width" id="aCt-7J-z59"/>
                                     <constraint firstItem="OUL-BX-Id4" firstAttribute="centerX" secondItem="9ys-i5-NSg" secondAttribute="centerX" id="bcY-oa-ltI"/>
                                     <constraint firstItem="coD-gL-yhf" firstAttribute="top" secondItem="jfS-8m-N4h" secondAttribute="bottom" priority="750" constant="50" id="dEZ-1a-brl"/>
-                                    <constraint firstAttribute="trailing" secondItem="coD-gL-yhf" secondAttribute="trailing" priority="750" constant="40" id="dG4-fw-Uf7"/>
+                                    <constraint firstAttribute="trailing" secondItem="coD-gL-yhf" secondAttribute="trailing" priority="250" constant="40" id="dG4-fw-Uf7"/>
                                     <constraint firstItem="kk5-Yj-0ta" firstAttribute="leading" secondItem="9ys-i5-NSg" secondAttribute="leading" id="fhn-PH-yZd"/>
                                     <constraint firstItem="jfS-8m-N4h" firstAttribute="leading" secondItem="9ys-i5-NSg" secondAttribute="leading" id="h2Q-f3-DqL"/>
                                     <constraint firstItem="jfS-8m-N4h" firstAttribute="top" secondItem="kk5-Yj-0ta" secondAttribute="bottom" constant="10" id="hHH-9e-eq8"/>
                                     <constraint firstAttribute="trailing" secondItem="jfS-8m-N4h" secondAttribute="trailing" id="jHv-Ow-pIp"/>
-                                    <constraint firstItem="coD-gL-yhf" firstAttribute="leading" secondItem="9ys-i5-NSg" secondAttribute="leading" priority="750" constant="40" id="rOF-dR-P8f"/>
+                                    <constraint firstItem="coD-gL-yhf" firstAttribute="leading" secondItem="9ys-i5-NSg" secondAttribute="leading" priority="250" constant="40" id="rOF-dR-P8f"/>
+                                    <constraint firstItem="haG-Gb-sgF" firstAttribute="top" secondItem="coD-gL-yhf" secondAttribute="bottom" priority="250" constant="22.5" id="tGp-Mb-7yj"/>
                                     <constraint firstAttribute="trailing" secondItem="kk5-Yj-0ta" secondAttribute="trailing" id="uqf-7H-iVd"/>
-                                    <constraint firstAttribute="bottom" secondItem="haG-Gb-sgF" secondAttribute="bottom" constant="35" id="wet-Fc-Yq4"/>
-                                    <constraint firstItem="haG-Gb-sgF" firstAttribute="leading" secondItem="9ys-i5-NSg" secondAttribute="leading" constant="30" id="zni-be-Aq3"/>
+                                    <constraint firstAttribute="bottom" secondItem="haG-Gb-sgF" secondAttribute="bottom" priority="750" constant="10" id="wet-Fc-Yq4"/>
+                                    <constraint firstAttribute="trailing" secondItem="haG-Gb-sgF" secondAttribute="trailing" priority="750" constant="5" id="yHR-Bc-zDb"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UwZ-Zy-3Jz" firstAttribute="top" secondItem="9ys-i5-NSg" secondAttribute="bottom" id="GVv-TK-vbO"/>
-                            <constraint firstAttribute="trailing" secondItem="haG-Gb-sgF" secondAttribute="trailing" constant="30" id="PDr-dl-Hsj"/>
                             <constraint firstAttribute="trailing" secondItem="9ys-i5-NSg" secondAttribute="trailing" id="Z3Z-6k-e0X"/>
-                            <constraint firstItem="haG-Gb-sgF" firstAttribute="leading" secondItem="tCS-CS-KHX" secondAttribute="leading" constant="30" id="Z61-jT-JPW"/>
                             <constraint firstItem="9ys-i5-NSg" firstAttribute="top" secondItem="RCD-kz-g7w" secondAttribute="bottom" id="jft-ow-goi"/>
                             <constraint firstItem="9ys-i5-NSg" firstAttribute="leading" secondItem="tCS-CS-KHX" secondAttribute="leading" id="oe3-BF-6Ta"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="听写练习" id="UgS-CD-hiE">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="5DS-dp-mq5">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YWS-xw-Ggw">
+                            <button key="customView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YWS-xw-Ggw">
                                 <rect key="frame" x="319" y="11" width="40" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -2484,6 +2492,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fD-of-Wph" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3360.8000000000002" y="2590.704647676162"/>
+        </scene>
+        <!--Dictation Prompt Controller-->
+        <scene sceneID="jvF-v8-gOT">
+            <objects>
+                <navigationController id="Ygg-Be-MQ9" customClass="LGDictationPromptController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="backArrow" backIndicatorTransitionMaskImage="backArrow" id="a3h-Kd-6dc">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QJ7-j4-1ND" kind="relationship" relationship="rootViewController" id="0qc-de-HrR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="otQ-GT-okK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4236" y="2591"/>
         </scene>
         <!--0/0-->
         <scene sceneID="HV6-cV-UxX">
@@ -2603,7 +2634,7 @@
                                     <outlet property="delegate" destination="QJ7-j4-1ND" id="4uO-QE-1TL"/>
                                 </connections>
                             </tableView>
-                            <view alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wp-6Z-XkT">
+                            <view clipsSubviews="YES" alpha="0.94999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wp-6Z-XkT">
                                 <rect key="frame" x="0.0" y="587" width="375" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23o-3D-pIK">
@@ -2687,7 +2718,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="0/0" id="awS-MV-zaS">
+                    <navigationItem key="navigationItem" title="0/0" id="awS-MV-zaS" customClass="LGNavigationItem">
                         <rightBarButtonItems>
                             <barButtonItem style="plain" id="Lae-aN-6cG">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K6z-fJ-h2h">
@@ -2717,8 +2748,10 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
+                        <outlet property="familiarItemButton" destination="gCE-bY-S0k" id="XN4-tF-ZmQ"/>
                         <outlet property="playerButton" destination="wQN-bB-oiq" id="Fi2-lP-PyG"/>
                         <outlet property="playerButtonTopLayout" destination="8uL-Pd-Y7t" id="bZx-sz-HBP"/>
+                        <outlet property="statusViewHeightConstraint" destination="QRW-fj-9js" id="w3T-an-hfK"/>
                         <outlet property="translateLabel" destination="KhT-1m-tZ4" id="ncb-RU-L4F"/>
                         <outlet property="vagueOrForgotButton" destination="ith-tx-ixi" id="k2H-fL-QyH"/>
                         <outlet property="wordLabel" destination="dvu-A0-X7B" id="a5M-5A-eLs"/>
@@ -2894,7 +2927,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEd-X0-QQZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2502" y="595"/>
+            <point key="canvasLocation" x="2714" y="621"/>
         </scene>
         <!--错题本-->
         <scene sceneID="iWg-rl-bVV">
@@ -3034,7 +3067,7 @@
         <image name="wrong_list" width="110" height="76"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1XL-m5-7tM"/>
+        <segue reference="0qc-de-HrR"/>
         <segue reference="KlX-L8-DQM"/>
         <segue reference="LvP-Fa-FPQ"/>
     </inferredMetricsTieBreakers>

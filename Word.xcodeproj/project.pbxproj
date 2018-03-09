@@ -41,6 +41,7 @@
 		565A30F7201331E000448B1C /* UIColor+LGColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F6201331E000448B1C /* UIColor+LGColor.m */; };
 		565A30FA2013411200448B1C /* LGRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F92013411200448B1C /* LGRegisterController.m */; };
 		566B9860202003E800D368AC /* LGNoStudyTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 566B985F202003E800D368AC /* LGNoStudyTypeController.m */; };
+		5678C38B20527C56009CD723 /* LGDictationPromptController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5678C38A20527C56009CD723 /* LGDictationPromptController.m */; };
 		567A3AD4203FB72F00A41692 /* LGWordErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567A3AD3203FB72F00A41692 /* LGWordErrorViewController.m */; };
 		567A3AD7203FEB4100A41692 /* LGWordErrorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 567A3AD6203FEB4100A41692 /* LGWordErrorCell.m */; };
 		567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 567C00FA2010A0360083F3D5 /* LGBaseRequest.m */; };
@@ -169,6 +170,8 @@
 		565A30F92013411200448B1C /* LGRegisterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGRegisterController.m; sourceTree = "<group>"; };
 		566B985E202003E800D368AC /* LGNoStudyTypeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGNoStudyTypeController.h; sourceTree = "<group>"; };
 		566B985F202003E800D368AC /* LGNoStudyTypeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGNoStudyTypeController.m; sourceTree = "<group>"; };
+		5678C38920527C56009CD723 /* LGDictationPromptController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDictationPromptController.h; sourceTree = "<group>"; };
+		5678C38A20527C56009CD723 /* LGDictationPromptController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDictationPromptController.m; sourceTree = "<group>"; };
 		567A3AD2203FB72F00A41692 /* LGWordErrorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordErrorViewController.h; sourceTree = "<group>"; };
 		567A3AD3203FB72F00A41692 /* LGWordErrorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordErrorViewController.m; sourceTree = "<group>"; };
 		567A3AD5203FEB4100A41692 /* LGWordErrorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordErrorCell.h; sourceTree = "<group>"; };
@@ -506,6 +509,8 @@
 				56C646AB204E67CD00E895B3 /* LGDictationController.m */,
 				56C646B0204E85B200E895B3 /* LGDictationPractiseController.h */,
 				56C646B1204E85B200E895B3 /* LGDictationPractiseController.m */,
+				5678C38920527C56009CD723 /* LGDictationPromptController.h */,
+				5678C38A20527C56009CD723 /* LGDictationPromptController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1018,6 +1023,7 @@
 				56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */,
 				56C98994202050F60095A4BD /* LGWordTypeCell.m in Sources */,
 				56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */,
+				5678C38B20527C56009CD723 /* LGDictationPromptController.m in Sources */,
 				560F0FCB2022AA7000324510 /* LGFreeWordListCell.m in Sources */,
 				56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */,
 				56C646B2204E85B200E895B3 /* LGDictationPractiseController.m in Sources */,

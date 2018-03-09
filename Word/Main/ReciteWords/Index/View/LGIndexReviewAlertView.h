@@ -29,7 +29,7 @@
 
 @interface LGIndexReviewAlertView : UIView <UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, assign) id<LGIndexReviewAlertViewDelegate> delegate;
+@property (nonatomic, weak) id<LGIndexReviewAlertViewDelegate> delegate;
 @property (nonatomic, strong) LGIndexReviewModel *reviewModel;
 
 @property (weak, nonatomic) IBOutlet UILabel *wordLibNameLabel;

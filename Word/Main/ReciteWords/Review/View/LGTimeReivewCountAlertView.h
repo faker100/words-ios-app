@@ -16,7 +16,7 @@
 
 @interface LGTimeReivewCountAlertView : UIView
 
-@property (nonatomic, assign) id<LGTimeReivewCountAlertViewDelegate>delegate;
+@property (nonatomic, weak) id<LGTimeReivewCountAlertViewDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 

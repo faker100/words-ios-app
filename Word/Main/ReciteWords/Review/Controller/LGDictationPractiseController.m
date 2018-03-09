@@ -14,6 +14,7 @@
 #import "UIScrollView+LGRefresh.h"
 #import "NSString+LGString.h"
 #import "LGTool.h"
+#import "LGDictationPromptController.h"
 
 @interface LGDictationPractiseController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -42,6 +43,9 @@
 }
 
 - (void)configUserInterface{
+	
+	self.currentNum = @(self.total.integerValue - self.wordIDArray.count +1).stringValue;
+	
 	[self.scrollView setHeaderRefresh:^{
 		[self requestData:NO];
 	}];
@@ -149,9 +153,19 @@
 
 #pragma mark - setter getter
 
+- (void)setCurrentNum:(NSString *)currentNum{
+	_currentNum = currentNum;
+	self.title = [NSString stringWithFormat:@"%ld/%ld",currentNum.integerValue,self.total.integerValue];
+}
+
+- (void)setTotal:(NSString *)total{
+	_total = total;
+	self.title = [NSString stringWithFormat:@"%ld/%ld",self.currentNum.integerValue,total.integerValue];
+}
+
 - (void)setWordDetailModel:(LGWordDetailModel *)wordDetailModel {
 	_wordDetailModel = wordDetailModel;
-	_wordDetailModel.words.word = @"abcdefghijklmn";
+	[self playerAction:nil];
 	//先重置数据
 	self.answerItemNum = 0;
 	self.userAnswerArray = nil;
@@ -250,11 +264,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+//语音播放
 - (IBAction)playerAction:(id)sender {
 	[[LGPlayer sharedPlayer]playWithUrl:self.wordDetailModel.words.us_audio completion:nil];
 }
 
-#pragma mark - UICollectionViewDelegate
+#pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.answerItemNum;
 }
@@ -272,14 +287,81 @@
     }
 }
 
-/*
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+	
+	[collectionView deselectItemAtIndexPath:indexPath animated:YES];
+	if (collectionView == self.answerCollection) {
+		__block BOOL isFinish = NO;
+		 __weak typeof(self) weakSelf = self;
+		//把所选片段替换到用户答案数组中第一个为 @"" 的地方
+		[self.userAnswerArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+			if (obj.length == 0) {
+				weakSelf.userAnswerArray[idx] = weakSelf.answerItemArray[indexPath.row];
+				*stop = YES;
+			}
+		}];
+		
+		[self.userAnswerCollection reloadData];
+		
+		//判断是否所有答案都选了
+		[self.userAnswerArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+			isFinish = obj.length > 0;
+			*stop = !isFinish;
+		}];
+		
+		if (isFinish) {
+			[self isSure];
+		}
+	}else{
+		self.userAnswerArray[indexPath.row] = @"";
+		[self.userAnswerCollection reloadData];
+	}
+	
+}
+
+#pragma mark -
+
+//判断答案是否正确
+- (void)isSure{
+	
+	__block NSMutableString *userAnswer = [NSMutableString string];
+	[self.userAnswerArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		[userAnswer appendString:obj];
+	}];
+	if ([userAnswer isEqualToString:self.wordDetailModel.words.word]) {
+		NSLog(@"ok");
+		LGDictationPractiseController *nextController = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGDictationPractiseController");
+		[self.wordIDArray removeObjectAtIndex:0];
+		nextController.wordIDArray = self.wordIDArray;
+		nextController.total = self.total;
+		NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+		[viewControllers removeObject:self];
+		[viewControllers addObject:nextController];
+		[self.navigationController setViewControllers:viewControllers animated:YES];
+	}else{
+		NSLog(@"no");
+	}
+	
+}
+
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	
+	if ([segue.identifier isEqualToString:@"dictationToWordDetail"]){
+		LGDictationPromptController *navigationController = segue.destinationViewController;
+		LGWordDetailController *wordDetailController = navigationController.viewControllers.firstObject;
+		wordDetailController.dictationPromptWord = self.wordDetailModel;
+		wordDetailController.controllerType = LGWordDetailDictationPrompt;
+	}
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

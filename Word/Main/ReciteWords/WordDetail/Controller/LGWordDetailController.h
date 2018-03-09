@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LGWordDetailModel.h"
 
 typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 	LGWordDetailReciteWords = 0, 	   //背单词模式,默认
 	LGWordDetailEbbinghausReview,      //艾宾浩斯复习模式
-	LGwordDetailTodayReview,		   //今日复习
-    LGwordDetailReview                 //复习
+	LGWordDetailTodayReview,		   //今日复习
+    LGWordDetailReview,                //错题本复习/时间复习
+	LGWordDetailDictationPrompt        //听写练习提示
 };
 
 
@@ -26,7 +28,10 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 //正常复习模式下的复习 id 数组, (error:用 copy 崩溃)
 @property (nonatomic, strong) NSMutableArray<NSString *> *reviewWordIdArray;
 
-//今日复习模式下(LGwordDetailTodayReview),要复习的状态,0为全部
+//听写练习提示模式下的提示单词
+@property (nonatomic, strong) LGWordDetailModel *dictationPromptWord;
+
+//今日复习模式下(LGWordDetailTodayReview),要复习的状态,0为全部
 @property (nonatomic, assign) LGWordStatus todayReviewStatus;
 
 // 艾宾浩斯复习模式(LGWordDetailEbbinghausReview)下需要复习单词的 id 列表
@@ -49,6 +54,7 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 
 //译文
 @property (weak, nonatomic) IBOutlet UILabel *translateLabel;
+
 //顶部 单词区域
 @property (weak, nonatomic) IBOutlet UIView *wordView;
 
@@ -57,5 +63,10 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 
 @property (weak, nonatomic) IBOutlet UITableView *wordTabelView;
 
+//底部单词状态 view 的高度约束,在听写练习提示模式下,高度为0,隐藏
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *statusViewHeightConstraint;
+
+//熟适
+@property (weak, nonatomic) IBOutlet UIButton *familiarItemButton;
 
 @end

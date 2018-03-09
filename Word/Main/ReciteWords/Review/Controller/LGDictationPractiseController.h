@@ -11,7 +11,7 @@
 @interface LGDictationPractiseController : UIViewController
 
 
-//复习单词 id 的数组
+//复习单词 id 的数组 (copy 崩溃)
 @property (nonatomic, strong) NSMutableArray <NSString *> *wordIDArray;
 
 //倒计时
@@ -34,5 +34,12 @@
 
 //外部scrollview
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+//当前单词顺序号 (title)
+@property (nonatomic, copy) NSString *currentNum;
+
+//单词总共个数 (title)
+@property (nonatomic, copy) NSString *total;
+
 
 @end

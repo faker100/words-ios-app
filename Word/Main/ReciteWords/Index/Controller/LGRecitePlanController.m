@@ -213,7 +213,7 @@
 		
 			LGWordDetailController *controller = segue.destinationViewController;
 		if ([sender isKindOfClass:[LGReviewSubModel class]]) {
-			controller.controllerType  = LGwordDetailTodayReview;
+			controller.controllerType  = LGWordDetailTodayReview;
 			controller.total = ((LGReviewSubModel *)sender).count;
 			controller.todayReviewStatus = ((LGReviewSubModel *)sender).status;
 		}else{

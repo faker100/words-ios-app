@@ -154,7 +154,7 @@
     
     if ([segue.identifier isEqualToString:@"reviewWrongListToWordDetail"]) {
         LGWordDetailController *controller = segue.destinationViewController;
-        controller.controllerType = LGwordDetailReview;
+        controller.controllerType = LGWordDetailReview;
         controller.reviewTyep = self.selectedReviewType;
 		controller.reviewWordIdArray = (NSMutableArray *)sender;
 		controller.total = @(((NSMutableArray *)sender).count).stringValue;
