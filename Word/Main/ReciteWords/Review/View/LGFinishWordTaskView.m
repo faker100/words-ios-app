@@ -27,9 +27,17 @@
 }
 
 
-+ (void)showFinishToView:(UIView *)view sureBlock:(void(^)(void))sureBlock {
++ (void)showFinishToView:(UIView *)view type:(LGFinishWordTaskType)type sureBlock:(void(^)(void))sureBlock {
 	LGFinishWordTaskView *alertView = [[NSBundle mainBundle]loadNibNamed:@"LGFinishWordTaskView" owner:nil options:nil].firstObject;
 	alertView.frame = view.bounds;
+    
+    if (type == LGFinishReview) {
+        alertView.titleLabel.text = @"今天你的复习任务";
+        alertView.reviewImageView.hidden = NO;
+    }else{
+        alertView.titleLabel.text = @"今天单词任务";
+        alertView.reciteWordsImageView.hidden = NO;
+    }
 	[view addSubview:alertView];
 	alertView.sureActionBlock = sureBlock;
 }

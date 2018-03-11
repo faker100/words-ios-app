@@ -275,7 +275,15 @@
 - (void)pushNextWordDetailController:(LGWordDetailControllerType) type animated:(BOOL)animated{
 	
 	if (self.currentNum.integerValue >= self.total.integerValue) {
-		[LGFinishWordTaskView showFinishToView:self.view.window sureBlock:^{
+        
+        LGFinishWordTaskType finishType;
+        if (type == LGWordDetailReciteWords || type == LGWordDetailEbbinghausReview) {
+            finishType = LGFinishReciteWords;
+        }else{
+            finishType = LGFinishReview;
+        }
+        
+		[LGFinishWordTaskView showFinishToView:self.view.window type:finishType sureBlock:^{
 			[self.navigationController popViewControllerAnimated:YES];
 		}];
 		

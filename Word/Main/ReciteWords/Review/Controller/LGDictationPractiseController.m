@@ -46,8 +46,9 @@
 	
 	self.currentNum = @(self.total.integerValue - self.wordIDArray.count +1).stringValue;
 	
+    __weak typeof(self) weakSelf = self;
 	[self.scrollView setHeaderRefresh:^{
-		[self requestData:NO];
+		[weakSelf requestData:NO];
 	}];
 }
 
@@ -254,8 +255,9 @@
 //倒计时
 - (void)beginCountDown {
 	
+    __weak typeof(self) weakSelf = self;
 	[LGTool beginCountDownWithSecond:16 completion:^(NSInteger currtentSecond) {
-		[self.countDownButton setTitle:@(currtentSecond).stringValue forState:UIControlStateNormal];
+		[weakSelf.countDownButton setTitle:@(currtentSecond).stringValue forState:UIControlStateNormal];
 	}];
 }
 
