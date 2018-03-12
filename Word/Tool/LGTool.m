@@ -7,6 +7,8 @@
 //
 
 #import "LGTool.h"
+#import <AVFoundation/AVCaptureDevice.h>
+#import <Photos/PHPhotoLibrary.h>
 
 @implementation LGTool
 
@@ -64,4 +66,53 @@
 	//开始执行dispatch源
 	dispatch_resume(_timer);
 }
+
+
++ (BOOL)checkDevicePermissions:(LGDevicePermissionsType)type{
+	
+	__block BOOL flag = YES;
+	
+	NSString *message = @"";
+	
+	if (type == LGDeviceCamera) {
+		AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+		if (status == AVAuthorizationStatusRestricted || status == AVAuthorizationStatusDenied) {
+			flag = NO;
+			message = @"请在\"设置-隐私-相机\"选项中,允许访问你的相机";
+		}
+	}
+	
+	
+	if (type == LGDevicePhotosAlbum) {
+		PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+		if (status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied) {
+			flag = NO;
+			message = @"请在\"设置-隐私-照片\"选项中,允许访问你的照片";
+		}
+
+	}
+	
+	if (type == LGDeviceMicrophone) {
+		AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
+		if (status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied) {
+			flag = NO;
+			message = @"请在\"设置-隐私-麦克风\"选项中,允许访问你的麦克风";
+		}
+	}
+	
+	if (!flag) {
+		
+		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
+		[alertController addAction:[UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil]];
+		[alertController addAction:[UIAlertAction actionWithTitle:@"设置" style:UIAlertActionStyleDefault  handler:^(UIAlertAction * _Nonnull action) {
+			NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+			if ([[UIApplication sharedApplication] canOpenURL:url]) {
+				[[UIApplication sharedApplication] openURL:url];
+			}
+		}]];
+	}
+	
+	return flag;
+}
+
 @end

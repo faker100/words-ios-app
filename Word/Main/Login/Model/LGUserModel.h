@@ -19,6 +19,7 @@
 @property (nonatomic, copy) NSString *createTime;
 @property (nonatomic, copy) NSString *startTime;
 @property (nonatomic, copy) NSString *image;
+@property (nonatomic, copy) NSString *fontSize;   //设置中的字体大小
 @property (nonatomic, assign) LGStudyType  studyModel; //用户学习模式;
 @property (nonatomic, copy) NSString *planWords; //判断用户当前词包是否有计划; nil 没有计划
 @property (nonatomic, assign) BOOL isReview; //是否已经看过首页今日复习弹框

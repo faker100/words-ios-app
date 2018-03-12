@@ -68,6 +68,12 @@
 		56B7AADF202BFAEB00BDECED /* LGWordDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B7AADE202BFAEB00BDECED /* LGWordDetailCell.m */; };
 		56B7AAEA202C59EC00BDECED /* LGWordDetailHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56B7AAE9202C59EC00BDECED /* LGWordDetailHeaderFooterView.m */; };
 		56B7AAEC202C5A2400BDECED /* LGWordDetailHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56B7AAEB202C5A2400BDECED /* LGWordDetailHeaderFooterView.xib */; };
+		56BBBFB820561C740057BDF2 /* LGPersonalCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BBBFB720561C740057BDF2 /* LGPersonalCenterController.m */; };
+		56BBBFBB20561DA40057BDF2 /* LGPersonalInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BBBFBA20561DA40057BDF2 /* LGPersonalInfoController.m */; };
+		56BBBFBF205622060057BDF2 /* LGPersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BBBFBE205622060057BDF2 /* LGPersonalCell.m */; };
+		56BBBFC320564B930057BDF2 /* LGSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BBBFC220564B930057BDF2 /* LGSettingModel.m */; };
+		56BBBFC7205664B60057BDF2 /* LGSettingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BBBFC6205664B60057BDF2 /* LGSettingHeaderView.m */; };
+		56BBBFC9205664C10057BDF2 /* LGSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56BBBFC8205664C10057BDF2 /* LGSettingHeaderView.xib */; };
 		56C64699204E43AB00E895B3 /* LGTimeReivewCountAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C64698204E43AB00E895B3 /* LGTimeReivewCountAlertView.m */; };
 		56C6469B204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C6469A204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib */; };
 		56C646A3204E64B000E895B3 /* WordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C646A2204E64B000E895B3 /* WordTests.m */; };
@@ -220,6 +226,17 @@
 		56B7AAE8202C59EC00BDECED /* LGWordDetailHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordDetailHeaderFooterView.h; sourceTree = "<group>"; };
 		56B7AAE9202C59EC00BDECED /* LGWordDetailHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordDetailHeaderFooterView.m; sourceTree = "<group>"; };
 		56B7AAEB202C5A2400BDECED /* LGWordDetailHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGWordDetailHeaderFooterView.xib; sourceTree = "<group>"; };
+		56BBBFB620561C740057BDF2 /* LGPersonalCenterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPersonalCenterController.h; sourceTree = "<group>"; };
+		56BBBFB720561C740057BDF2 /* LGPersonalCenterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPersonalCenterController.m; sourceTree = "<group>"; };
+		56BBBFB920561DA40057BDF2 /* LGPersonalInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPersonalInfoController.h; sourceTree = "<group>"; };
+		56BBBFBA20561DA40057BDF2 /* LGPersonalInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPersonalInfoController.m; sourceTree = "<group>"; };
+		56BBBFBD205622060057BDF2 /* LGPersonalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPersonalCell.h; sourceTree = "<group>"; };
+		56BBBFBE205622060057BDF2 /* LGPersonalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPersonalCell.m; sourceTree = "<group>"; };
+		56BBBFC120564B930057BDF2 /* LGSettingModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSettingModel.h; sourceTree = "<group>"; };
+		56BBBFC220564B930057BDF2 /* LGSettingModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGSettingModel.m; sourceTree = "<group>"; };
+		56BBBFC5205664B60057BDF2 /* LGSettingHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSettingHeaderView.h; sourceTree = "<group>"; };
+		56BBBFC6205664B60057BDF2 /* LGSettingHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGSettingHeaderView.m; sourceTree = "<group>"; };
+		56BBBFC8205664C10057BDF2 /* LGSettingHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGSettingHeaderView.xib; sourceTree = "<group>"; };
 		56C64697204E43AB00E895B3 /* LGTimeReivewCountAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTimeReivewCountAlertView.h; sourceTree = "<group>"; };
 		56C64698204E43AB00E895B3 /* LGTimeReivewCountAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTimeReivewCountAlertView.m; sourceTree = "<group>"; };
 		56C6469A204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGTimeReivewCountAlertView.xib; sourceTree = "<group>"; };
@@ -629,6 +646,27 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		56BBBFBC205621DF0057BDF2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				56BBBFBD205622060057BDF2 /* LGPersonalCell.h */,
+				56BBBFBE205622060057BDF2 /* LGPersonalCell.m */,
+				56BBBFC5205664B60057BDF2 /* LGSettingHeaderView.h */,
+				56BBBFC6205664B60057BDF2 /* LGSettingHeaderView.m */,
+				56BBBFC8205664C10057BDF2 /* LGSettingHeaderView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		56BBBFC4205650F40057BDF2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				56BBBFC120564B930057BDF2 /* LGSettingModel.h */,
+				56BBBFC220564B930057BDF2 /* LGSettingModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		56C646A1204E64B000E895B3 /* WordTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -707,6 +745,8 @@
 		56CCA5E9201B29370097DCAC /* PersonalCenter */ = {
 			isa = PBXGroup;
 			children = (
+				56BBBFC4205650F40057BDF2 /* Model */,
+				56BBBFBC205621DF0057BDF2 /* View */,
 				56CCA5EA201B297C0097DCAC /* Controller */,
 			);
 			path = PersonalCenter;
@@ -717,6 +757,10 @@
 			children = (
 				56CCA5EB201B29A60097DCAC /* LGStudyTypeController.h */,
 				56CCA5EC201B29A60097DCAC /* LGStudyTypeController.m */,
+				56BBBFB620561C740057BDF2 /* LGPersonalCenterController.h */,
+				56BBBFB720561C740057BDF2 /* LGPersonalCenterController.m */,
+				56BBBFB920561DA40057BDF2 /* LGPersonalInfoController.h */,
+				56BBBFBA20561DA40057BDF2 /* LGPersonalInfoController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -877,6 +921,7 @@
 				5658D5A82040FF8600390FC4 /* LGIndexReviewAlertView.xib in Resources */,
 				56A88846200CA53400847BE6 /* LaunchScreen.storyboard in Resources */,
 				56A88843200CA53400847BE6 /* Assets.xcassets in Resources */,
+				56BBBFC9205664C10057BDF2 /* LGSettingHeaderView.xib in Resources */,
 				56E25391204D00C6006D9B56 /* LGFinishWordTaskView.xib in Resources */,
 				56EAD86A2019C1300059604E /* Periphery.storyboard in Resources */,
 				56EAD8642019C09A0059604E /* ReciteWords.storyboard in Resources */,
@@ -972,6 +1017,7 @@
 				02F78A092029E54A0011096F /* LGReciteWordModel.m in Sources */,
 				56EAD86220197F2D0059604E /* LGFindPasswordController.m in Sources */,
 				56994EA0204938D6005648F6 /* LGReviewWrongCollectionCell.m in Sources */,
+				56BBBFC320564B930057BDF2 /* LGSettingModel.m in Sources */,
 				565A30FA2013411200448B1C /* LGRegisterController.m in Sources */,
 				56585956203EB34300BB59ED /* LGDottedLineView.m in Sources */,
 				56FD20D62028256F003A6154 /* LGDeletePlanAlertView.m in Sources */,
@@ -981,6 +1027,7 @@
 				56973641204FF50B00169C8A /* LGDictationUserAnswerCollectionCell.m in Sources */,
 				0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */,
 				0239C1AC20485C460031C3FA /* LGTodayReviewWordModel.m in Sources */,
+				56BBBFB820561C740057BDF2 /* LGPersonalCenterController.m in Sources */,
 				567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */,
 				56B7AAEA202C59EC00BDECED /* LGWordDetailHeaderFooterView.m in Sources */,
 				56C9898820201CCF0095A4BD /* LGWordPlanCollectionCell.m in Sources */,
@@ -992,10 +1039,12 @@
 				56B7AADB202BE37800BDECED /* LGWordDetailModel.m in Sources */,
 				56A88849200CA53400847BE6 /* main.m in Sources */,
 				5612BFAB202154E30038D653 /* LGWordLibraryModel.m in Sources */,
+				56BBBFC7205664B60057BDF2 /* LGSettingHeaderView.m in Sources */,
 				56CCA5E5201B083B0097DCAC /* LGReciteWordsController.m in Sources */,
 				5612BFAE202161E50038D653 /* UIScrollView+LGRefresh.m in Sources */,
 				56B7AADF202BFAEB00BDECED /* LGWordDetailCell.m in Sources */,
 				56C9899120204F7C0095A4BD /* LGWordLibraryTypeCell.m in Sources */,
+				56BBBFBB20561DA40057BDF2 /* LGPersonalInfoController.m in Sources */,
 				56C9898E2020461D0095A4BD /* LGWordLibraryController.m in Sources */,
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
 				56C64699204E43AB00E895B3 /* LGTimeReivewCountAlertView.m in Sources */,
@@ -1022,6 +1071,7 @@
 				5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */,
 				56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */,
 				56C98994202050F60095A4BD /* LGWordTypeCell.m in Sources */,
+				56BBBFBF205622060057BDF2 /* LGPersonalCell.m in Sources */,
 				56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */,
 				5678C38B20527C56009CD723 /* LGDictationPromptController.m in Sources */,
 				560F0FCB2022AA7000324510 /* LGFreeWordListCell.m in Sources */,
@@ -1194,7 +1244,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Word/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Charles.Word;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LeiGeWord.Word;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1212,7 +1262,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Word/Supporting files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Charles.Word;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LeiGeWord.Word;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

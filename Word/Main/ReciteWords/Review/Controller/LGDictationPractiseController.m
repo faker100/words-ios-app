@@ -15,6 +15,7 @@
 #import "NSString+LGString.h"
 #import "LGTool.h"
 #import "LGDictationPromptController.h"
+#import "LGFinishWordTaskView.h"
 
 @interface LGDictationPractiseController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -245,7 +246,6 @@
 		else if (word.length <= 5) _answerItemNum = arc4random_uniform(2) + 4;
 		else if (word.length <= 24)_answerItemNum = arc4random_uniform(3) + 4;
 		else	_answerItemNum = 6;
-	
 		return _answerItemNum;
 	}
 }
@@ -333,15 +333,21 @@
 		[userAnswer appendString:obj];
 	}];
 	if ([userAnswer isEqualToString:self.wordDetailModel.words.word]) {
-		NSLog(@"ok");
-		LGDictationPractiseController *nextController = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGDictationPractiseController");
-		[self.wordIDArray removeObjectAtIndex:0];
-		nextController.wordIDArray = self.wordIDArray;
-		nextController.total = self.total;
-		NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-		[viewControllers removeObject:self];
-		[viewControllers addObject:nextController];
-		[self.navigationController setViewControllers:viewControllers animated:YES];
+		
+		if (self.currentNum.integerValue == self.total.integerValue) {
+			[LGFinishWordTaskView showFinishToView:self.view type:LGFinishReview sureBlock:^{
+				[self.navigationController popViewControllerAnimated:YES];
+			}];
+		}else{
+			LGDictationPractiseController *nextController = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGDictationPractiseController");
+			[self.wordIDArray removeObjectAtIndex:0];
+			nextController.wordIDArray = self.wordIDArray;
+			nextController.total = self.total;
+			NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+			[viewControllers removeObject:self];
+			[viewControllers addObject:nextController];
+			[self.navigationController setViewControllers:viewControllers animated:YES];
+		}
 	}else{
 		NSLog(@"no");
 	}

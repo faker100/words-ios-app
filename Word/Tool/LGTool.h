@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, LGDevicePermissionsType) {
+	LGDevicePhotosAlbum, //相册权限
+	LGDeviceCamera, 	 //相机权限
+	LGDeviceMicrophone   //麦克风权限
+};
 
 @interface LGTool : NSObject
 
@@ -33,5 +38,17 @@
  @param completion 每秒回调一次
  */
 + (void)beginCountDownWithSecond:(NSInteger)second completion:(void(^)(NSInteger currtentSecond))completion;
+
+
+
+/**
+ 判断设备是否有访问相机/相册/麦克风等权限,并可以跳转到设置
+
+ @param type 权限
+ @return YES-有  NO-没有
+ */
++ (BOOL)checkDevicePermissions:(LGDevicePermissionsType) type;
+
+
 
 @end

@@ -10,6 +10,7 @@
 #import "NSDate+Utilities.h"
 
 #define LGUSER_ISREVIEW_KEY  @"LGUSER_ISREVIEW_KEY"
+#define FONT_SIZE_KEY	     @"FONT_SIZE_KEY"
 
 @implementation LGUserModel
 
@@ -20,6 +21,14 @@
 	}
 	
 	return oldValue;
+}
+
+- (void)setFontSize:(NSString *)fontSize{
+	[[NSUserDefaults standardUserDefaults]setObject:fontSize forKey:FONT_SIZE_KEY];
+}
+
+- (NSString *)fontSize{
+	return [[NSUserDefaults standardUserDefaults]objectForKey:FONT_SIZE_KEY];
 }
 
 - (void)setIsReview:(BOOL)isReview{
