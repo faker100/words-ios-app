@@ -65,7 +65,7 @@
  */
 - (IBAction)beginReciteWordsAction:(id)sender {
 	
-	if ([LGUserManager shareManager].user.isReview || [LGUserManager shareManager].user.studyModel == LGStudyOnlyNew){
+	if ([LGUserManager shareManager].user.isTodayReview || [LGUserManager shareManager].user.studyModel == LGStudyOnlyNew){
 		[self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:nil];
 		return;
 	};
@@ -195,11 +195,11 @@
  */
 - (void)updateEveryDayReview{
 	
-	[LGUserManager shareManager].user.isReview = YES;
+	[LGUserManager shareManager].user.isTodayReview = YES;
 	
 	[self.request updateEveryDayReviewCompletion:^(id response, LGError *error) {
 		if (![self isNormal:error]) {
-			[LGUserManager shareManager].user.isReview = NO;
+			[LGUserManager shareManager].user.isTodayReview = NO;
 		}
 	}];
 }

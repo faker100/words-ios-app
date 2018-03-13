@@ -284,4 +284,9 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)requestPKRankCompletion:(comletionBlock)completion{
+	self.url = PK_INDEX_RANK_URL;
+	[self postRequestCompletion:completion];
+}
+
 @end

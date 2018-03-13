@@ -19,7 +19,7 @@
     // Do any additional setup after loading the view.
 	self.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationBar.delegate = self;
-	[self.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} forState:UIControlStateNormal];
+	
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{

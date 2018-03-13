@@ -31,12 +31,12 @@
 	return [[NSUserDefaults standardUserDefaults]objectForKey:FONT_SIZE_KEY];
 }
 
-- (void)setIsReview:(BOOL)isReview{
+- (void)setIsTodayReview:(BOOL)isTodayReview{
 	
-	[[NSUserDefaults standardUserDefaults] setObject: isReview ? [NSDate currentDay] : nil forKey:LGUSER_ISREVIEW_KEY];
+	[[NSUserDefaults standardUserDefaults] setObject: isTodayReview ? [NSDate currentDay] : nil forKey:LGUSER_ISREVIEW_KEY];
 }
 
-- (BOOL)isReview{
+- (BOOL)isTodayReview{
 	
 	NSDate *date = [[NSUserDefaults standardUserDefaults] objectForKey:LGUSER_ISREVIEW_KEY];
 	return [date isToday];

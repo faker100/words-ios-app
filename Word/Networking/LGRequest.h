@@ -256,6 +256,11 @@
 - (void)requestDictationWordsWithStatus:(LGWordStatus) status completion:(comletionBlock)completion;
 
 
+/**
+ PK首页排行
+
+ */
+- (void)requestPKRankCompletion:(comletionBlock)completion;
 
 
 @end

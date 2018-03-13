@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LGPKRankHeadView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBo-ir-xJS">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <color key="backgroundColor" red="0.9371759295463562" green="0.93730723857879639" blue="0.9371345043182373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="a3I-ZZ-g2n"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_ranking_list" translatesAutoresizingMaskIntoConstraints="NO" id="grt-ta-he2">
+                    <rect key="frame" x="111" y="5" width="153" height="44"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="grt-ta-he2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="bjd-kc-pKE"/>
+                <constraint firstAttribute="trailing" secondItem="ZBo-ir-xJS" secondAttribute="trailing" id="hMx-V8-4bo"/>
+                <constraint firstItem="grt-ta-he2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="iBL-Vj-gGb"/>
+                <constraint firstItem="ZBo-ir-xJS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="o4g-wx-aUr"/>
+                <constraint firstItem="ZBo-ir-xJS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="x0O-RQ-CJu"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="35.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="pk_ranking_list" width="153" height="44"/>
+    </resources>
+</document>

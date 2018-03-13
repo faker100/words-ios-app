@@ -13,6 +13,9 @@
 		029F3C8A204AEB8C0022FB4B /* LGSelectReviewTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */; };
 		02F78A092029E54A0011096F /* LGReciteWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F78A082029E54A0011096F /* LGReciteWordModel.m */; };
 		3690868A07C9B63A30A721A0 /* Pods_Word.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66ACA9D95F507310F264822E /* Pods_Word.framework */; };
+		560699DF2057BC6D00574437 /* LGPKRankHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560699DE2057BC6D00574437 /* LGPKRankHeadView.m */; };
+		560699E12057BC7B00574437 /* LGPKRankHeadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 560699E02057BC7B00574437 /* LGPKRankHeadView.xib */; };
+		560699E42057D9B500574437 /* LGPKContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 560699E32057D9B500574437 /* LGPKContainerController.m */; };
 		5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */ = {isa = PBXBuildFile; fileRef = 5606F8602015E45C0030E43C /* NSString+LGString.m */; };
 		560F0FCB2022AA7000324510 /* LGFreeWordListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F0FCA2022AA7000324510 /* LGFreeWordListCell.m */; };
 		560F0FD12022AFBA00324510 /* LGFreeWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 560F0FD02022AFBA00324510 /* LGFreeWordModel.m */; };
@@ -41,6 +44,9 @@
 		565A30F7201331E000448B1C /* UIColor+LGColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F6201331E000448B1C /* UIColor+LGColor.m */; };
 		565A30FA2013411200448B1C /* LGRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 565A30F92013411200448B1C /* LGRegisterController.m */; };
 		566B9860202003E800D368AC /* LGNoStudyTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 566B985F202003E800D368AC /* LGNoStudyTypeController.m */; };
+		566FF2D120577B86004574EA /* LGPKIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 566FF2D020577B86004574EA /* LGPKIndexViewController.m */; };
+		566FF2D520577D95004574EA /* LGPKRankingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 566FF2D420577D95004574EA /* LGPKRankingCell.m */; };
+		566FF2D92057A686004574EA /* LGPKRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 566FF2D82057A686004574EA /* LGPKRankModel.m */; };
 		5678C38B20527C56009CD723 /* LGDictationPromptController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5678C38A20527C56009CD723 /* LGDictationPromptController.m */; };
 		567A3AD4203FB72F00A41692 /* LGWordErrorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567A3AD3203FB72F00A41692 /* LGWordErrorViewController.m */; };
 		567A3AD7203FEB4100A41692 /* LGWordErrorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 567A3AD6203FEB4100A41692 /* LGWordErrorCell.m */; };
@@ -121,6 +127,11 @@
 		029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGSelectReviewTypeView.xib; sourceTree = "<group>"; };
 		02F78A072029E54A0011096F /* LGReciteWordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGReciteWordModel.h; path = Word/Main/ReciteWords/WordPlan/View/LGReciteWordModel.h; sourceTree = SOURCE_ROOT; };
 		02F78A082029E54A0011096F /* LGReciteWordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGReciteWordModel.m; path = Word/Main/ReciteWords/WordPlan/View/LGReciteWordModel.m; sourceTree = SOURCE_ROOT; };
+		560699DD2057BC6D00574437 /* LGPKRankHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKRankHeadView.h; sourceTree = "<group>"; };
+		560699DE2057BC6D00574437 /* LGPKRankHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKRankHeadView.m; sourceTree = "<group>"; };
+		560699E02057BC7B00574437 /* LGPKRankHeadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGPKRankHeadView.xib; sourceTree = "<group>"; };
+		560699E22057D9B500574437 /* LGPKContainerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKContainerController.h; sourceTree = "<group>"; };
+		560699E32057D9B500574437 /* LGPKContainerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKContainerController.m; sourceTree = "<group>"; };
 		5606F85F2015E45C0030E43C /* NSString+LGString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+LGString.h"; sourceTree = "<group>"; };
 		5606F8602015E45C0030E43C /* NSString+LGString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LGString.m"; sourceTree = "<group>"; };
 		560F0FC92022AA7000324510 /* LGFreeWordListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGFreeWordListCell.h; sourceTree = "<group>"; };
@@ -176,6 +187,12 @@
 		565A30F92013411200448B1C /* LGRegisterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGRegisterController.m; sourceTree = "<group>"; };
 		566B985E202003E800D368AC /* LGNoStudyTypeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGNoStudyTypeController.h; sourceTree = "<group>"; };
 		566B985F202003E800D368AC /* LGNoStudyTypeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGNoStudyTypeController.m; sourceTree = "<group>"; };
+		566FF2CF20577B86004574EA /* LGPKIndexViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKIndexViewController.h; sourceTree = "<group>"; };
+		566FF2D020577B86004574EA /* LGPKIndexViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKIndexViewController.m; sourceTree = "<group>"; };
+		566FF2D320577D95004574EA /* LGPKRankingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKRankingCell.h; sourceTree = "<group>"; };
+		566FF2D420577D95004574EA /* LGPKRankingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKRankingCell.m; sourceTree = "<group>"; };
+		566FF2D72057A686004574EA /* LGPKRankModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKRankModel.h; sourceTree = "<group>"; };
+		566FF2D82057A686004574EA /* LGPKRankModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKRankModel.m; sourceTree = "<group>"; };
 		5678C38920527C56009CD723 /* LGDictationPromptController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDictationPromptController.h; sourceTree = "<group>"; };
 		5678C38A20527C56009CD723 /* LGDictationPromptController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDictationPromptController.m; sourceTree = "<group>"; };
 		567A3AD2203FB72F00A41692 /* LGWordErrorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordErrorViewController.h; sourceTree = "<group>"; };
@@ -391,6 +408,48 @@
 				563F7DA4202306B500944730 /* LGPlayer.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		566FF2CD20577B38004574EA /* PK */ = {
+			isa = PBXGroup;
+			children = (
+				566FF2D62057A65F004574EA /* Model */,
+				566FF2D220577CCA004574EA /* View */,
+				566FF2CE20577B4B004574EA /* Controller */,
+			);
+			path = PK;
+			sourceTree = "<group>";
+		};
+		566FF2CE20577B4B004574EA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				566FF2CF20577B86004574EA /* LGPKIndexViewController.h */,
+				566FF2D020577B86004574EA /* LGPKIndexViewController.m */,
+				560699E22057D9B500574437 /* LGPKContainerController.h */,
+				560699E32057D9B500574437 /* LGPKContainerController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		566FF2D220577CCA004574EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				566FF2D320577D95004574EA /* LGPKRankingCell.h */,
+				566FF2D420577D95004574EA /* LGPKRankingCell.m */,
+				560699DD2057BC6D00574437 /* LGPKRankHeadView.h */,
+				560699DE2057BC6D00574437 /* LGPKRankHeadView.m */,
+				560699E02057BC7B00574437 /* LGPKRankHeadView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		566FF2D62057A65F004574EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				566FF2D72057A686004574EA /* LGPKRankModel.h */,
+				566FF2D82057A686004574EA /* LGPKRankModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		567C00F8201075C90083F3D5 /* Main */ = {
@@ -787,6 +846,7 @@
 		56EAD86D2019C1C70059604E /* PK */ = {
 			isa = PBXGroup;
 			children = (
+				566FF2CD20577B38004574EA /* PK */,
 			);
 			path = PK;
 			sourceTree = "<group>";
@@ -920,6 +980,7 @@
 				029F3C8A204AEB8C0022FB4B /* LGSelectReviewTypeView.xib in Resources */,
 				5658D5A82040FF8600390FC4 /* LGIndexReviewAlertView.xib in Resources */,
 				56A88846200CA53400847BE6 /* LaunchScreen.storyboard in Resources */,
+				560699E12057BC7B00574437 /* LGPKRankHeadView.xib in Resources */,
 				56A88843200CA53400847BE6 /* Assets.xcassets in Resources */,
 				56BBBFC9205664C10057BDF2 /* LGSettingHeaderView.xib in Resources */,
 				56E25391204D00C6006D9B56 /* LGFinishWordTaskView.xib in Resources */,
@@ -1037,6 +1098,7 @@
 				56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */,
 				562FC13F202992DE005CEA83 /* LGRecitePlanController.m in Sources */,
 				56B7AADB202BE37800BDECED /* LGWordDetailModel.m in Sources */,
+				560699E42057D9B500574437 /* LGPKContainerController.m in Sources */,
 				56A88849200CA53400847BE6 /* main.m in Sources */,
 				5612BFAB202154E30038D653 /* LGWordLibraryModel.m in Sources */,
 				56BBBFC7205664B60057BDF2 /* LGSettingHeaderView.m in Sources */,
@@ -1065,11 +1127,15 @@
 				56C646AC204E67CD00E895B3 /* LGDictationController.m in Sources */,
 				563259EE201AC609007FF4D6 /* LGTool.m in Sources */,
 				56AF60C52011CD2B0067BD7B /* LGRequest.m in Sources */,
+				566FF2D92057A686004574EA /* LGPKRankModel.m in Sources */,
+				566FF2D120577B86004574EA /* LGPKIndexViewController.m in Sources */,
 				5658D5A62040FF7600390FC4 /* LGIndexReviewAlertView.m in Sources */,
 				56994EA8204950A3005648F6 /* LGReviewWrongWordModel.m in Sources */,
 				563F7DAB2023177E00944730 /* NSObject+LGRequest.m in Sources */,
+				566FF2D520577D95004574EA /* LGPKRankingCell.m in Sources */,
 				5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */,
 				56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */,
+				560699DF2057BC6D00574437 /* LGPKRankHeadView.m in Sources */,
 				56C98994202050F60095A4BD /* LGWordTypeCell.m in Sources */,
 				56BBBFBF205622060057BDF2 /* LGPersonalCell.m in Sources */,
 				56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */,

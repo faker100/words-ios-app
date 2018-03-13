@@ -29,7 +29,7 @@ typedef void (^LGRefreshBlock)(LGCurrentRefreshType type);
 /**
  设置上拉,下拉刷新 (如果只需下拉刷新,用(UIScrollView+LGRefresh.h 的 setHeaderRefresh))
 
- @param refreshBlock 返回当前刷新位置
+ @param refreshBlock 返回当前刷新类型
  */
 - (void)setRefreshBlock:(LGRefreshBlock) refreshBlock;
 

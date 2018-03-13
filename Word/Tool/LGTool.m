@@ -78,7 +78,7 @@
 		AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
 		if (status == AVAuthorizationStatusRestricted || status == AVAuthorizationStatusDenied) {
 			flag = NO;
-			message = @"请在\"设置-隐私-相机\"选项中,允许访问你的相机";
+			message = @"请在iPhone的\"设置-隐私-相机\"选项中,允许访问你的相机";
 		}
 	}
 	
@@ -87,7 +87,7 @@
 		PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
 		if (status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied) {
 			flag = NO;
-			message = @"请在\"设置-隐私-照片\"选项中,允许访问你的照片";
+			message = @"请在iPhone的\"设置-隐私-照片\"选项中,允许访问你的照片";
 		}
 
 	}
@@ -96,7 +96,7 @@
 		AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
 		if (status == PHAuthorizationStatusRestricted || status == PHAuthorizationStatusDenied) {
 			flag = NO;
-			message = @"请在\"设置-隐私-麦克风\"选项中,允许访问你的麦克风";
+			message = @"请在iPhone的\"设置-隐私-麦克风\"选项中,允许访问你的麦克风";
 		}
 	}
 	
@@ -110,6 +110,7 @@
 				[[UIApplication sharedApplication] openURL:url];
 			}
 		}]];
+		[[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:alertController animated:YES completion:nil];
 	}
 	
 	return flag;
