@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -546,12 +546,12 @@
                             </constraints>
                         </view>
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="camera" style="plain" id="ZJ7-hj-2Zj">
+                            <barButtonItem image="camera" id="ZJ7-hj-2Zj">
                                 <connections>
                                     <action selector="pictureSearch:" destination="qXg-Ed-8An" id="FsG-tN-IKN"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="microphone" landscapeImage="microphone" style="plain" id="4Nl-yA-I06">
+                            <barButtonItem image="microphone" landscapeImage="microphone" id="4Nl-yA-I06">
                                 <inset key="largeContentSizeImageInsets" minX="1" minY="1" maxX="1" maxY="1"/>
                                 <connections>
                                     <action selector="speakSearchAction:" destination="qXg-Ed-8An" id="9ys-I0-Gsh"/>
@@ -1114,7 +1114,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="我的计划" id="e7f-gM-cHL">
                         <barButtonItem key="backBarButtonItem" title=" " id="feY-YV-Fjm"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="xhx-Vm-wWE">
+                        <barButtonItem key="rightBarButtonItem" id="xhx-Vm-wWE">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DmF-2a-3MA">
                                 <rect key="frame" x="363" y="7" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1154,7 +1154,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="ddN-Hq-M3k">
-                                <rect key="frame" x="0.0" y="20" width="187" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="187" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -1204,7 +1204,7 @@
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="ytU-Hm-Tgg">
-                                <rect key="frame" x="188" y="20" width="187" height="647"/>
+                                <rect key="frame" x="188" y="64" width="187" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LGWordTypeCell" rowHeight="80" id="2NK-Ro-Ie2" customClass="LGWordTypeCell">
@@ -1314,7 +1314,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="54" sectionHeaderHeight="1" sectionFooterHeight="5" translatesAutoresizingMaskIntoConstraints="NO" id="2ti-iU-c7s">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" red="0.92541211843490601" green="0.92554193735122681" blue="0.92537122964859009" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="Ac7-ww-QIh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2173,7 +2173,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="按时间复习" id="Ql9-oA-Tof">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="5q0-Gn-pfs">
+                        <barButtonItem key="rightBarButtonItem" id="5q0-Gn-pfs">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0nX-cD-ph6">
                                 <rect key="frame" x="287" y="11" width="72" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2606,7 +2606,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="听写练习" id="UgS-CD-hiE">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="5DS-dp-mq5">
+                        <barButtonItem key="rightBarButtonItem" id="5DS-dp-mq5">
                             <button key="customView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YWS-xw-Ggw">
                                 <rect key="frame" x="319" y="11" width="40" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2859,7 +2859,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="0/0" id="awS-MV-zaS" customClass="LGNavigationItem">
                         <rightBarButtonItems>
-                            <barButtonItem style="plain" id="Lae-aN-6cG">
+                            <barButtonItem id="Lae-aN-6cG">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="K6z-fJ-h2h">
                                     <rect key="frame" x="309" y="11" width="50" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2870,7 +2870,7 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
-                            <barButtonItem title="熟识" image="familiar" style="plain" id="1ge-Mf-UTs">
+                            <barButtonItem title="Item" id="1ge-Mf-UTs">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gCE-bY-S0k">
                                     <rect key="frame" x="250" y="11" width="51" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3140,7 +3140,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="错题本" id="yok-xQ-REw">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="n1U-p8-w3d">
+                        <barButtonItem key="rightBarButtonItem" id="n1U-p8-w3d">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6fn-nC-L3k">
                                 <rect key="frame" x="287" y="11" width="72" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -3207,8 +3207,8 @@
         <image name="wrong_list" width="110" height="76"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0qc-de-HrR"/>
-        <segue reference="KlX-L8-DQM"/>
+        <segue reference="1XL-m5-7tM"/>
+        <segue reference="h7P-UJ-txp"/>
         <segue reference="LvP-Fa-FPQ"/>
     </inferredMetricsTieBreakers>
 </document>
