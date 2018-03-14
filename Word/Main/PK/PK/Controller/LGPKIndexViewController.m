@@ -81,7 +81,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	
 	return self.rankModel.rankingList.count;
 }
 
@@ -93,6 +92,10 @@
 }
 
 #pragma mark -UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+	return 56;
+}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 	return [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"LGPKRankHeadView"];

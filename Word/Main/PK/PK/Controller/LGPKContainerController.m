@@ -8,7 +8,7 @@
 
 #import "LGPKContainerController.h"
 
-@interface LGPKContainerController ()
+@interface LGPKContainerController () <UIScrollViewDelegate>
 
 @end
 
@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,6 +25,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)pkAction:(id)sender {
+	
+}
+
+- (IBAction)discoverAction:(id)sender {
+	
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	NSLog(@"%f",scrollView.contentOffset.x);
+	self.selectBarLeftConstraint.constant = scrollView.contentOffset.x;
+	[UIView animateWithDuration:0 animations:^{
+		[self.selectBar layoutIfNeeded];
+	}];
+}
 /*
 #pragma mark - Navigation
 

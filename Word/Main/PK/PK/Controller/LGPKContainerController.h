@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LGPKContainerController : UIViewController
+@interface LGPKContainerController : UIViewController 
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+//navigationBar中选择条左边约束,用来设置选择条左右滑动
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *selectBarLeftConstraint;
+
+//navigationBar中滚动选择条
+@property (weak, nonatomic) IBOutlet UIView *selectBar;
 
 @end
