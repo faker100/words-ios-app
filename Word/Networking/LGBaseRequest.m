@@ -92,7 +92,20 @@ static AFHTTPSessionManager *manager;
 	}];
 	
 	[downloadTask resume];
+}
+
+- (void)uploadRequest:(NSString *)url{
 	
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+	
+	self.task = [manager uploadTaskWithRequest:request fromData:nil progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+		
+	}];
+	[manager uploadTaskWithRequest:request fromData:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+		
+	} completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+		
+	}];
 }
 
 /**

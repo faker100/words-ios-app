@@ -52,6 +52,9 @@ typedef void(^downloadComletionBlock)(NSURL *filePath, LGError *error);
  */
 - (void)downloadRequest:(NSString *)url targetPath:(NSString *) path fileName:(NSString *)fileName completion:(downloadComletionBlock) completion;
 
+
+- (void)uploadRequest:(NSString *)url;
+
 @end
 
 

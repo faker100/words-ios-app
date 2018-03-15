@@ -8,6 +8,9 @@
 
 #import "LGPKContainerController.h"
 
+//(163,选择条距离左边最大距离,titleview.width - selectbar.width)
+ float maxSelectBarSpace = 163;
+
 @interface LGPKContainerController () <UIScrollViewDelegate>
 
 @end
@@ -26,22 +29,24 @@
 }
 
 - (IBAction)pkAction:(id)sender {
-	
+	[self.scrollView setContentOffset:CGPointZero animated:YES];
 }
 
 - (IBAction)discoverAction:(id)sender {
-	
+	[self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH, 0) animated:YES];
 }
 
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-	NSLog(@"%f",scrollView.contentOffset.x);
-	self.selectBarLeftConstraint.constant = scrollView.contentOffset.x;
+
+	//scrollview 偏移量换算成顶部选择条距离左边的距离.
+	self.selectBarLeftConstraint.constant = scrollView.contentOffset.x / SCREEN_WIDTH * maxSelectBarSpace;;
 	[UIView animateWithDuration:0 animations:^{
 		[self.selectBar layoutIfNeeded];
 	}];
 }
+
 /*
 #pragma mark - Navigation
 

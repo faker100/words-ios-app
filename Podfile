@@ -8,4 +8,5 @@ target ‘Word’ do
   pod 'MJExtension'
   pod 'IQKeyboardManager'
   pod 'MBProgressHUD'
+  pod ‘JPush’
 end
