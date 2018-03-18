@@ -8,6 +8,8 @@
 
 #import "LGBaseRequest.h"
 #import <AFNetworking/AFNetworking.h>
+#import "LGUserManager.h"
+#import "NSDate+Utilities.h"
 
 static AFHTTPSessionManager *manager;
 
@@ -94,18 +96,27 @@ static AFHTTPSessionManager *manager;
 	[downloadTask resume];
 }
 
-- (void)uploadRequest:(NSString *)url{
+- (void)uploadRequest:(NSString *)url data:(NSData *)data Completion:(comletionBlock) completion{
 	
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	
-	self.task = [manager uploadTaskWithRequest:request fromData:nil progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-		
-	}];
-	[manager uploadTaskWithRequest:request fromData:nil progress:^(NSProgress * _Nonnull uploadProgress) {
-		
-	} completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-		
-	}];
+    [manager POST:url parameters:self.parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        // 使用formData来拼接数据
+        NSString *fileName = [NSString stringWithFormat:@"%f%@.jpg",[NSDate currentDate].timeIntervalSince1970,[LGUserManager shareManager].user.phone];
+        [formData appendPartWithFileData:data name:@"upload" fileName:fileName mimeType:@"image/jpeg"];
+
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        NSLog(@"%f",1.0 * uploadProgress.completedUnitCount / uploadProgress.totalUnitCount);
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        [self dealRequestSuccessResponse:responseObject completion:completion];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        [self dealRequestFailure:error completion:completion];
+    }];
 }
 
 /**

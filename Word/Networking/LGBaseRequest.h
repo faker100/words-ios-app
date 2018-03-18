@@ -52,8 +52,13 @@ typedef void(^downloadComletionBlock)(NSURL *filePath, LGError *error);
  */
 - (void)downloadRequest:(NSString *)url targetPath:(NSString *) path fileName:(NSString *)fileName completion:(downloadComletionBlock) completion;
 
+/**
+ 上传文件  （目前只封装了图片上传）
 
-- (void)uploadRequest:(NSString *)url;
+ @param url 上传地址
+ @param data data
+ */
+- (void)uploadRequest:(NSString *)url data:(NSData *)data Completion:(comletionBlock) completion;
 
 @end
 

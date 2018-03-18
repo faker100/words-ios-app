@@ -289,4 +289,10 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)uploadHeaderImage:(UIImage *)headImage Completion:(comletionBlock)completion{
+    NSData *imageData = UIImageJPEGRepresentation(headImage,1.0);
+    [self uploadRequest:UPDATE_HEAD_IMG_URL data:imageData Completion:completion];
+    
+}
+
 @end

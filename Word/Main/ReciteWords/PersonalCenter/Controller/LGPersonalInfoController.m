@@ -26,8 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	[self.tableView registerNib:[UINib nibWithNibName:@"LGSettingHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGSettingHeaderView"];
-	[self.tableView reloadData];
+    [self.tableView registerNib:[UINib nibWithNibName:@"LGSettingHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGSettingHeaderView"];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -231,8 +231,16 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
 	
-	UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
-	
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    [LGProgressHUD showHUDAddedTo:self.view];
+   [self.request uploadHeaderImage:image Completion:^(id response, LGError *error) {
+       if([self isNormal:error]){
+           [LGUserManager shareManager].user.image = response[@"data"][@"photourl"];
+           self.section_Array = nil;   //数据源 section_Array 的get方法重新初始化
+           [self.tableView reloadData];
+       }
+       
+   }];
 	
 	[picker dismissViewControllerAnimated:YES completion:nil];
 }

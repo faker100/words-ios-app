@@ -37,7 +37,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 	return sharedCalendar;
 }
 
-+ (NSDate *) currentDay
++ (NSDate *) currentDate
 {
     return  [[NSDate date] convertToSystemTimeZoneDate];
 }
@@ -73,13 +73,13 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 + (NSDate *) dateWithDaysFromNow: (NSInteger) days
 {
 	// Thanks, Jim Morrison
-	return [[NSDate currentDay] dateByAddingDays:days];
+	return [[NSDate currentDate] dateByAddingDays:days];
 }
 
 + (NSDate *) dateWithDaysBeforeNow: (NSInteger) days
 {
 	// Thanks, Jim Morrison
-	return [[NSDate currentDay] dateBySubtractingDays:days];
+	return [[NSDate currentDate] dateBySubtractingDays:days];
 }
 
 + (NSDate *) dateTomorrow
@@ -94,28 +94,28 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 
 + (NSDate *) dateWithHoursFromNow: (NSInteger) dHours
 {
-	NSTimeInterval aTimeInterval = [[NSDate currentDay] timeIntervalSinceReferenceDate] + D_HOUR * dHours;
+	NSTimeInterval aTimeInterval = [[NSDate currentDate] timeIntervalSinceReferenceDate] + D_HOUR * dHours;
 	NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
 	return newDate;
 }
 
 + (NSDate *) dateWithHoursBeforeNow: (NSInteger) dHours
 {
-	NSTimeInterval aTimeInterval = [[NSDate currentDay] timeIntervalSinceReferenceDate] - D_HOUR * dHours;
+	NSTimeInterval aTimeInterval = [[NSDate currentDate] timeIntervalSinceReferenceDate] - D_HOUR * dHours;
 	NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
 	return newDate;
 }
 
 + (NSDate *) dateWithMinutesFromNow: (NSInteger) dMinutes
 {
-	NSTimeInterval aTimeInterval = [[NSDate currentDay] timeIntervalSinceReferenceDate] + D_MINUTE * dMinutes;
+	NSTimeInterval aTimeInterval = [[NSDate currentDate] timeIntervalSinceReferenceDate] + D_MINUTE * dMinutes;
 	NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
 	return newDate;
 }
 
 + (NSDate *) dateWithMinutesBeforeNow: (NSInteger) dMinutes
 {
-	NSTimeInterval aTimeInterval = [[NSDate currentDay] timeIntervalSinceReferenceDate] - D_MINUTE * dMinutes;
+	NSTimeInterval aTimeInterval = [[NSDate currentDate] timeIntervalSinceReferenceDate] - D_MINUTE * dMinutes;
 	NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
 	return newDate;
 }
@@ -196,7 +196,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 
 - (BOOL) isToday
 {
-	return [self isEqualToDateIgnoringTime:[NSDate currentDay]];
+	return [self isEqualToDateIgnoringTime:[NSDate currentDate]];
 }
 
 - (BOOL) isTomorrow
@@ -224,19 +224,19 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 
 - (BOOL) isThisWeek
 {
-	return [self isSameWeekAsDate:[NSDate currentDay]];
+	return [self isSameWeekAsDate:[NSDate currentDate]];
 }
 
 - (BOOL) isNextWeek
 {
-	NSTimeInterval aTimeInterval = [[NSDate currentDay] timeIntervalSinceReferenceDate] + D_WEEK;
+	NSTimeInterval aTimeInterval = [[NSDate currentDate] timeIntervalSinceReferenceDate] + D_WEEK;
 	NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
 	return [self isSameWeekAsDate:newDate];
 }
 
 - (BOOL) isLastWeek
 {
-	NSTimeInterval aTimeInterval = [[NSDate currentDay] timeIntervalSinceReferenceDate] - D_WEEK;
+	NSTimeInterval aTimeInterval = [[NSDate currentDate] timeIntervalSinceReferenceDate] - D_WEEK;
 	NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
 	return [self isSameWeekAsDate:newDate];
 }
@@ -252,18 +252,18 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 
 - (BOOL) isThisMonth
 {
-	return [self isSameMonthAsDate:[NSDate currentDay]];
+	return [self isSameMonthAsDate:[NSDate currentDate]];
 }
 
 // Thanks Marcin Krzyzanowski, also for adding/subtracting years and months
 - (BOOL) isLastMonth
 {
-	return [self isSameMonthAsDate:[[NSDate currentDay] dateBySubtractingMonths:1]];
+	return [self isSameMonthAsDate:[[NSDate currentDate] dateBySubtractingMonths:1]];
 }
 
 - (BOOL) isNextMonth
 {
-	return [self isSameMonthAsDate:[[NSDate currentDay] dateByAddingMonths:1]];
+	return [self isSameMonthAsDate:[[NSDate currentDate] dateByAddingMonths:1]];
 }
 
 - (BOOL) isSameYearAsDate: (NSDate *) aDate
@@ -276,13 +276,13 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 - (BOOL) isThisYear
 {
 	// Thanks, baspellis
-	return [self isSameYearAsDate:[NSDate currentDay]];
+	return [self isSameYearAsDate:[NSDate currentDate]];
 }
 
 - (BOOL) isNextYear
 {
 	NSDateComponents *components1 = [[NSDate currentCalendar] components:NSCalendarUnitYear fromDate:self];
-	NSDateComponents *components2 = [[NSDate currentCalendar] components:NSCalendarUnitYear fromDate:[NSDate currentDay]];
+	NSDateComponents *components2 = [[NSDate currentCalendar] components:NSCalendarUnitYear fromDate:[NSDate currentDate]];
 	
 	return (components1.year == (components2.year + 1));
 }
@@ -290,7 +290,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 - (BOOL) isLastYear
 {
 	NSDateComponents *components1 = [[NSDate currentCalendar] components:NSCalendarUnitYear fromDate:self];
-	NSDateComponents *components2 = [[NSDate currentCalendar] components:NSCalendarUnitYear fromDate:[NSDate currentDay]];
+	NSDateComponents *components2 = [[NSDate currentCalendar] components:NSCalendarUnitYear fromDate:[NSDate currentDate]];
 	
 	return (components1.year == (components2.year - 1));
 }
@@ -308,13 +308,13 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 // Thanks, markrickert
 - (BOOL) isInFuture
 {
-	return ([self isLaterThanDate:[NSDate currentDay]]);
+	return ([self isLaterThanDate:[NSDate currentDate]]);
 }
 
 // Thanks, markrickert
 - (BOOL) isInPast
 {
-	return ([self isEarlierThanDate:[NSDate currentDay]]);
+	return ([self isEarlierThanDate:[NSDate currentDate]]);
 }
 
 
@@ -478,7 +478,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 
 - (NSInteger) nearestHour
 {
-	NSTimeInterval aTimeInterval = [[NSDate currentDay] timeIntervalSinceReferenceDate] + D_MINUTE * 30;
+	NSTimeInterval aTimeInterval = [[NSDate currentDate] timeIntervalSinceReferenceDate] + D_MINUTE * 30;
 	NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
 	NSDateComponents *components = [[NSDate currentCalendar] components:NSCalendarUnitHour fromDate:newDate];
 	return components.hour;

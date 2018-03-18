@@ -33,7 +33,7 @@
 
 - (void)setIsTodayReview:(BOOL)isTodayReview{
 	
-	[[NSUserDefaults standardUserDefaults] setObject: isTodayReview ? [NSDate currentDay] : nil forKey:LGUSER_ISREVIEW_KEY];
+	[[NSUserDefaults standardUserDefaults] setObject: isTodayReview ? [NSDate currentDate] : nil forKey:LGUSER_ISREVIEW_KEY];
 }
 
 - (BOOL)isTodayReview{

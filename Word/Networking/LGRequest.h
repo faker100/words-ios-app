@@ -263,4 +263,11 @@
 - (void)requestPKRankCompletion:(comletionBlock)completion;
 
 
+/**
+ 上传头像
+
+ @param headImage 头像
+ */
+- (void)uploadHeaderImage:(UIImage *)headImage Completion:(comletionBlock)completion;
+
 @end

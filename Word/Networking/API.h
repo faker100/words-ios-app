@@ -67,7 +67,7 @@ typedef NS_ENUM(NSUInteger, LGSelectReviewType) {
 
 
 #define WORD_DOMAIN(url) 	 [NSString stringWithFormat:@"http://words.viplgw.cn/%@",url]
-
+#define GMAT_DOMAIN(url)     [NSString stringWithFormat:@"http://www.gmatonline.cn/%@",url]
 
 /*************************************** 接口 **********************************/
 
@@ -170,5 +170,6 @@ typedef NS_ENUM(NSUInteger, LGSelectReviewType) {
 //pk首页排名
 #define PK_INDEX_RANK_URL				@"http://words.viplgw.cn/cn/app-api/pk-index"
 
-
+//上传头像
+#define UPDATE_HEAD_IMG_URL             @"http://www.gmatonline.cn/index.php?web/webapi/fileimg"
 

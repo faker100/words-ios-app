@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	self.startDateArray = [NSDate dateArrayFrom:[[[NSCalendar currentCalendar] dateWithEra:1 year:2018 month:3 day:1 hour:0 minute:0 second:0 nanosecond:0]convertToSystemTimeZoneDate] toDate:[NSDate currentDay]];
+	self.startDateArray = [NSDate dateArrayFrom:[[[NSCalendar currentCalendar] dateWithEra:1 year:2018 month:3 day:1 hour:0 minute:0 second:0 nanosecond:0]convertToSystemTimeZoneDate] toDate:[NSDate currentDate]];
     self.endDateArray = self.startDateArray;
 }
 

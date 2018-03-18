@@ -21,7 +21,7 @@
 
  @return 当前时间
  */
-+ (NSDate *) currentDay;
++ (NSDate *) currentDate;
 
 /**
  返回两个时间段之间的日期
