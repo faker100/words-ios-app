@@ -173,3 +173,5 @@ typedef NS_ENUM(NSUInteger, LGSelectReviewType) {
 //上传头像
 #define UPDATE_HEAD_IMG_URL             @"http://www.gmatonline.cn/index.php?web/webapi/fileimg"
 
+//pk匹配
+#define PK_MATCHING_URL					@"http://words.viplgw.cn/cn/app-api/pk-matching"

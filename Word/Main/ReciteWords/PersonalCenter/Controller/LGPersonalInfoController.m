@@ -37,6 +37,8 @@
 
 //退出
 - (IBAction)logoutAction:(id)sender {
+	[self.navigationController popToRootViewControllerAnimated:YES];
+	[[NSNotificationCenter defaultCenter] postNotificationName:NO_LOGIN_NOTIFICATION object:nil];
 	
 }
 

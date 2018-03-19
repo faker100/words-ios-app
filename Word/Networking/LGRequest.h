@@ -270,4 +270,11 @@
  */
 - (void)uploadHeaderImage:(UIImage *)headImage Completion:(comletionBlock)completion;
 
+
+/**
+ PK匹配
+ 
+ */
+- (void)requestPkMatchingCompletion:(comletionBlock)completion;
+
 @end

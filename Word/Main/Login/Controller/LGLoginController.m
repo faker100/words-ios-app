@@ -8,6 +8,7 @@
 
 #import "LGLoginController.h"
 #import "LGUserManager.h"
+#import "JPUSHService.h"
 
 @interface LGLoginController ()
 
@@ -74,6 +75,7 @@
         if ([self isNormal:error]) {
             LGUserModel *model = [LGUserModel mj_objectWithKeyValues:response];
             [LGUserManager shareManager].user = model;
+			[JPUSHService setAlias:[NSString stringWithFormat:@"lgw%@",model.uid] completion:nil seq:nil];
             [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_NOTIFICATION object:nil];
             [self.navigationController dismissViewControllerAnimated:YES completion:nil];
         }

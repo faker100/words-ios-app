@@ -50,7 +50,9 @@
 - (void)showLogin:(NSNotification *)notification {
 	
 	NSString *str = notification.userInfo[NO_LOGIN_ALERT_MESSAGE];
-	[LGProgressHUD showError:str toView:[UIApplication sharedApplication].keyWindow];
+	if (str) {
+		[LGProgressHUD showError:str toView:[UIApplication sharedApplication].keyWindow];
+	}
 	if (!loginNavigationController) {
 		loginNavigationController = STORYBOARD_VIEWCONTROLLER(@"Login", @"LGLoginNavigationController");
 		[self presentViewController:loginNavigationController animated:YES completion:nil];

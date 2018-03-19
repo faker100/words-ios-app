@@ -295,4 +295,9 @@
     
 }
 
+- (void)requestPkMatchingCompletion:(comletionBlock)completion{
+	self.url = PK_MATCHING_URL;
+	[self postRequestCompletion:completion];
+}
+
 @end
