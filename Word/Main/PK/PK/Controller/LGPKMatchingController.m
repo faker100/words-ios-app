@@ -7,6 +7,7 @@
 //
 
 #import "LGPKMatchingController.h"
+#import "JPUSHService.h"
 
 @interface LGPKMatchingController ()
 
@@ -17,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self addNotification];
+    
+    
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestPkMatchingCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
@@ -26,10 +30,30 @@
 	}];
 }
 
+/*********************** 接收自定义消息 **************************/
+//添加监听者
+- (void)addNotification{
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
+}
+
+- (void)networkDidReceiveMessage:(NSNotification *)notification {
+    
+    NSDictionary *userInfo = [notification userInfo];
+    [LGProgressHUD showMessage:userInfo.description toView:self.view.window];
+    NSLog(@"%@",userInfo);
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:kJPFNetworkDidReceiveMessageNotification object:nil];
+}
+
+
 
 /*
 #pragma mark - Navigation

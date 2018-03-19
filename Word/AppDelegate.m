@@ -137,20 +137,6 @@
 				 apsForProduction:isProduction
 			advertisingIdentifier:nil];
 	
-	/*********************** 接收自定义消息 **************************/
-	//添加监听者
-	
-	NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
-	[defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
-
-}
-//在APP打开的情况下，接收自定义的方法
-
-- (void)networkDidReceiveMessage:(NSNotification *)notification {
-	
-	NSDictionary *userInfo = [notification userInfo];
-	[LGProgressHUD showMessage:userInfo.description toView:self.window];
-	NSLog(@"%@",userInfo);
 }
 
 //弹出键盘

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -528,10 +528,48 @@
         <scene sceneID="zdE-vl-0id">
             <objects>
                 <viewController id="pYm-Q3-Ovg" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="u76-H9-Aqv"/>
+                        <viewControllerLayoutGuide type="bottom" id="65V-tV-cdn"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="p29-AR-4Dl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Omt-d8-bob">
+                                <rect key="frame" x="67" y="227.5" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="KyY-Ge-9Wz"/>
+                                    <constraint firstAttribute="height" constant="128" id="Xoi-QE-M1y"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lwz-dm-cZc">
+                                <rect key="frame" x="67" y="401" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwY-VQ-PTv">
+                                <rect key="frame" x="0.0" y="20" width="375" height="207.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4gF-s4-VJP">
+                                        <rect key="frame" x="109" y="39" width="240" height="128"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="4gF-s4-VJP" firstAttribute="centerX" secondItem="gwY-VQ-PTv" secondAttribute="centerX" id="85l-g9-w1I"/>
+                                    <constraint firstItem="4gF-s4-VJP" firstAttribute="centerY" secondItem="gwY-VQ-PTv" secondAttribute="centerY" id="mMn-y6-Rmq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Omt-d8-bob" firstAttribute="centerY" secondItem="p29-AR-4Dl" secondAttribute="centerY" id="C7f-lK-Thl"/>
+                            <constraint firstItem="gwY-VQ-PTv" firstAttribute="leading" secondItem="p29-AR-4Dl" secondAttribute="leading" id="Odm-y3-oJa"/>
+                            <constraint firstItem="Omt-d8-bob" firstAttribute="top" secondItem="gwY-VQ-PTv" secondAttribute="bottom" id="R0A-h0-mUe"/>
+                            <constraint firstItem="gwY-VQ-PTv" firstAttribute="top" secondItem="u76-H9-Aqv" secondAttribute="bottom" id="Slr-l4-elH"/>
+                            <constraint firstItem="Omt-d8-bob" firstAttribute="centerX" secondItem="p29-AR-4Dl" secondAttribute="centerX" id="dN4-bT-R1s"/>
+                            <constraint firstAttribute="trailing" secondItem="gwY-VQ-PTv" secondAttribute="trailing" id="nnr-C4-JqF"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gsd-ku-qSX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -542,6 +580,10 @@
         <scene sceneID="90k-sp-Xcj">
             <objects>
                 <viewController id="Op9-Dt-Hlm" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fQp-cr-ut2"/>
+                        <viewControllerLayoutGuide type="bottom" id="zZU-4U-nwr"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Lc7-Gy-T2H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
