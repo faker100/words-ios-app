@@ -19,15 +19,50 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self addNotification];
-    
-    
-	[LGProgressHUD showHUDAddedTo:self.view];
+	
+	[self beginMatching];
+
+//	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestPkMatchingCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			NSLog(@"%@",response);
-			self.testLabel.text = [NSString stringWithFormat:@"%@",response];
+		
 		}
 	}];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+	[self.navigationController.navigationBar setShadowImage:[UIImage new]];
+	self.edgesForExtendedLayout=UIRectEdgeTop;
+	//self.navigationController.navigationBar.translucent = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+	[super viewWillDisappear:animated];
+	[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+}
+
+
+- (void)viewDidLayoutSubviews{
+	NSLog(@"11111");
+	CGFloat radius = CGRectGetWidth(self.opponentHeadImageView.frame) / 2.0f;
+	self.opponentWordNumLabel.layer.cornerRadius = radius;
+	self.opponentHeadImageView.layer.cornerRadius = radius;
+}
+
+//开始匹配
+- (void)beginMatching{
+	NSArray<UIImage *> *imageArray = @[
+										[UIImage imageNamed:@"pk_matching0"],
+										[UIImage imageNamed:@"pk_matching1"],
+										[UIImage imageNamed:@"pk_matching2"],
+										[UIImage imageNamed:@"pk_matching3"],
+										];
+	[self.matchingImageView setAnimationImages:imageArray];
+	self.matchingImageView.animationDuration = 1;
+	self.matchingImageView.animationRepeatCount = 0;
+	[self.matchingImageView startAnimating];
 }
 
 /*********************** 接收自定义消息 **************************/
@@ -53,8 +88,6 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self name:kJPFNetworkDidReceiveMessageNotification object:nil];
 }
 
-
-
 /*
 #pragma mark - Navigation
 
@@ -66,3 +99,5 @@
 */
 
 @end
+
+
