@@ -289,7 +289,7 @@
 	[self postRequestCompletion:completion];
 }
 
-- (void)uploadHeaderImage:(UIImage *)headImage Completion:(comletionBlock)completion{
+- (void)uploadHeaderImage:(UIImage *)headImage completion:(comletionBlock)completion{
     NSData *imageData = UIImageJPEGRepresentation(headImage,1.0);
     [self uploadRequest:UPDATE_HEAD_IMG_URL data:imageData Completion:completion];
     
@@ -297,6 +297,15 @@
 
 - (void)requestPkMatchingCompletion:(comletionBlock)completion{
 	self.url = PK_MATCHING_URL;
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestPkChoice:(LGPKChoice)choice opponentUid:(NSString *)uid completion:(comletionBlock)completion{
+	self.url = PK_CHOICE_URL;
+	self.parameter = @{
+					   @"uid" : uid ? uid : @"",
+					   @"type" : @(choice)
+					   };
 	[self postRequestCompletion:completion];
 }
 

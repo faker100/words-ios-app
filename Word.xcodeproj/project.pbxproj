@@ -38,6 +38,7 @@
 		5647C2F0205F567C00DFDB77 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5647C2EF205F567C00DFDB77 /* NotificationService.m */; };
 		5647C2F4205F567C00DFDB77 /* Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5647C2EC205F567B00DFDB77 /* Notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5647C2FB205F66E300DFDB77 /* LGPKMatchingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5647C2FA205F66E300DFDB77 /* LGPKMatchingController.m */; };
+		564AE27B206237B90007AA48 /* LGMatchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 564AE27A206237B90007AA48 /* LGMatchModel.m */; };
 		564EB7AC2047998500E47A1E /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 564EB7AB2047998500E47A1E /* NSDate+Utilities.m */; };
 		56506D052016D842000FD8FA /* LGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56506D042016D842000FD8FA /* LGProgressHUD.m */; };
 		56585956203EB34300BB59ED /* LGDottedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56585955203EB34300BB59ED /* LGDottedLineView.m */; };
@@ -200,6 +201,8 @@
 		5647C2F1205F567C00DFDB77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5647C2F9205F66E300DFDB77 /* LGPKMatchingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKMatchingController.h; sourceTree = "<group>"; };
 		5647C2FA205F66E300DFDB77 /* LGPKMatchingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKMatchingController.m; sourceTree = "<group>"; };
+		564AE279206237B90007AA48 /* LGMatchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGMatchModel.h; sourceTree = "<group>"; };
+		564AE27A206237B90007AA48 /* LGMatchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGMatchModel.m; sourceTree = "<group>"; };
 		564EB7AA2047998400E47A1E /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		564EB7AB2047998500E47A1E /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		56506D032016D842000FD8FA /* LGProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGProgressHUD.h; sourceTree = "<group>"; };
@@ -498,6 +501,8 @@
 			children = (
 				566FF2D72057A686004574EA /* LGPKRankModel.h */,
 				566FF2D82057A686004574EA /* LGPKRankModel.m */,
+				564AE279206237B90007AA48 /* LGMatchModel.h */,
+				564AE27A206237B90007AA48 /* LGMatchModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1231,6 +1236,7 @@
 				566FF2D120577B86004574EA /* LGPKIndexViewController.m in Sources */,
 				5658D5A62040FF7600390FC4 /* LGIndexReviewAlertView.m in Sources */,
 				56994EA8204950A3005648F6 /* LGReviewWrongWordModel.m in Sources */,
+				564AE27B206237B90007AA48 /* LGMatchModel.m in Sources */,
 				563F7DAB2023177E00944730 /* NSObject+LGRequest.m in Sources */,
 				566FF2D520577D95004574EA /* LGPKRankingCell.m in Sources */,
 				5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */,

@@ -36,8 +36,10 @@ typedef NS_ENUM(NSUInteger, LGDevicePermissionsType) {
 
  @param second 倒计时秒数
  @param completion 每秒回调一次
+ 
+ @return 时间源, 可以用于取消
  */
-+ (void)beginCountDownWithSecond:(NSInteger)second completion:(void(^)(NSInteger currtentSecond))completion;
++ (dispatch_source_t)beginCountDownWithSecond:(NSInteger)second completion:(void(^)(NSInteger currtentSecond))completion;
 
 
 

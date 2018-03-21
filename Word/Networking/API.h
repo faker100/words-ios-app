@@ -53,6 +53,13 @@ typedef NS_ENUM(NSUInteger, LGSelectReviewType) {
     LGSelectReviewDictation          //听写
 };
 
+//同意/取消 pk
+typedef NS_ENUM(NSUInteger, LGPKChoice) {
+	LGPKChoiceAgree = 1,  //同意 pk
+	LGPKChoiceCancel = 2  //取消 pk
+	
+};
+
 /*************************************** 各种 key **********************************/
 
 // code = 99 未登录通知
@@ -175,3 +182,7 @@ typedef NS_ENUM(NSUInteger, LGSelectReviewType) {
 
 //pk匹配
 #define PK_MATCHING_URL					@"http://words.viplgw.cn/cn/app-api/pk-matching"
+
+//同意/取消 pk
+#define PK_CHOICE_URL					@"http://words.viplgw.cn/cn/app-api/pk-choice"
+

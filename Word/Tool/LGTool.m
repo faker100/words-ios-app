@@ -41,10 +41,12 @@
 }
 
 
-+ (void)beginCountDownWithSecond:(NSInteger)second completion:(void(^)(NSInteger currtentSecond))completion{
++ (dispatch_source_t)beginCountDownWithSecond:(NSInteger)second completion:(void(^)(NSInteger currtentSecond))completion{
 	__block NSInteger timeout = second;
+	//创建一个并发队列
+	dispatch_queue_t queue = dispatch_queue_create("countDown", DISPATCH_QUEUE_CONCURRENT);
 	//创建timer
-	dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
+	dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
 	//设置1s触发一次，0s的误差
 	dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
 																					  //触发的事件
@@ -65,6 +67,7 @@
 	});
 	//开始执行dispatch源
 	dispatch_resume(_timer);
+	return _timer;
 }
 
 

@@ -268,7 +268,7 @@
 
  @param headImage 头像
  */
-- (void)uploadHeaderImage:(UIImage *)headImage Completion:(comletionBlock)completion;
+- (void)uploadHeaderImage:(UIImage *)headImage completion:(comletionBlock)completion;
 
 
 /**
@@ -276,5 +276,14 @@
  
  */
 - (void)requestPkMatchingCompletion:(comletionBlock)completion;
+
+/**
+ 同意/取消 pk
+
+ @param choice 同意/取消 LGPKChoice
+ @param uid 对手 id
+
+ */
+- (void)requestPkChoice:(LGPKChoice)choice opponentUid:(NSString *)uid completion:(comletionBlock)completion;
 
 @end
