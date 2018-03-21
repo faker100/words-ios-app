@@ -11,6 +11,7 @@
 		0239C1AC20485C460031C3FA /* LGTodayReviewWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0239C1AB20485C460031C3FA /* LGTodayReviewWordModel.m */; };
 		029F3C88204AEB7F0022FB4B /* LGSelectReviewTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029F3C87204AEB7F0022FB4B /* LGSelectReviewTypeView.m */; };
 		029F3C8A204AEB8C0022FB4B /* LGSelectReviewTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */; };
+		02C1DFAD2062BA9200217244 /* LGUpdateUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C1DFAC2062BA9200217244 /* LGUpdateUserInfoController.m */; };
 		02F78A092029E54A0011096F /* LGReciteWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F78A082029E54A0011096F /* LGReciteWordModel.m */; };
 		3690868A07C9B63A30A721A0 /* Pods_Word.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66ACA9D95F507310F264822E /* Pods_Word.framework */; };
 		560699DF2057BC6D00574437 /* LGPKRankHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 560699DE2057BC6D00574437 /* LGPKRankHeadView.m */; };
@@ -150,6 +151,8 @@
 		029F3C86204AEB7F0022FB4B /* LGSelectReviewTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSelectReviewTypeView.h; sourceTree = "<group>"; };
 		029F3C87204AEB7F0022FB4B /* LGSelectReviewTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGSelectReviewTypeView.m; sourceTree = "<group>"; };
 		029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGSelectReviewTypeView.xib; sourceTree = "<group>"; };
+		02C1DFAB2062BA9200217244 /* LGUpdateUserInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGUpdateUserInfoController.h; sourceTree = "<group>"; };
+		02C1DFAC2062BA9200217244 /* LGUpdateUserInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGUpdateUserInfoController.m; sourceTree = "<group>"; };
 		02F78A072029E54A0011096F /* LGReciteWordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LGReciteWordModel.h; path = Word/Main/ReciteWords/WordPlan/View/LGReciteWordModel.h; sourceTree = SOURCE_ROOT; };
 		02F78A082029E54A0011096F /* LGReciteWordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LGReciteWordModel.m; path = Word/Main/ReciteWords/WordPlan/View/LGReciteWordModel.m; sourceTree = SOURCE_ROOT; };
 		560699DD2057BC6D00574437 /* LGPKRankHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKRankHeadView.h; sourceTree = "<group>"; };
@@ -878,6 +881,8 @@
 				56BBBFB720561C740057BDF2 /* LGPersonalCenterController.m */,
 				56BBBFB920561DA40057BDF2 /* LGPersonalInfoController.h */,
 				56BBBFBA20561DA40057BDF2 /* LGPersonalInfoController.m */,
+				02C1DFAB2062BA9200217244 /* LGUpdateUserInfoController.h */,
+				02C1DFAC2062BA9200217244 /* LGUpdateUserInfoController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1208,6 +1213,7 @@
 				5612BFAB202154E30038D653 /* LGWordLibraryModel.m in Sources */,
 				56BBBFC7205664B60057BDF2 /* LGSettingHeaderView.m in Sources */,
 				56CCA5E5201B083B0097DCAC /* LGReciteWordsController.m in Sources */,
+				02C1DFAD2062BA9200217244 /* LGUpdateUserInfoController.m in Sources */,
 				5612BFAE202161E50038D653 /* UIScrollView+LGRefresh.m in Sources */,
 				56B7AADF202BFAEB00BDECED /* LGWordDetailCell.m in Sources */,
 				56C9899120204F7C0095A4BD /* LGWordLibraryTypeCell.m in Sources */,

@@ -12,6 +12,7 @@
 #import "LGUserManager.h"
 #import "LGSettingHeaderView.h"
 #import "LGTool.h"
+#import "LGUpdateUserInfoController.h"
 
 @interface LGPersonalInfoController ()<UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -195,8 +196,15 @@
 	if (indexPath.section == 0) {
 		if (indexPath.row == 0) {
 			[self changeHead];
-		}
+        }else if (indexPath.row == 3){
+            [self performSegueWithIdentifier:@"settingToUpdateInfo" sender:@(LGUpdatePhone)];
+        }else if (indexPath.row == 4){
+            [self performSegueWithIdentifier:@"settingToUpdateInfo" sender:@(LGUpdateEmail)];
+        }else if (indexPath.row == 5){
+            [self performSegueWithIdentifier:@"settingToUpdateInfo" sender:@(LGUpdatePassword)];
+        }
 	}
+    
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -251,14 +259,20 @@
 	[picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"settingToUpdateInfo"]) {
+        LGUpdateUserInfoController *controller = segue.destinationViewController;
+        controller.type = ((NSNumber *)sender).integerValue;
+    }
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end
