@@ -41,6 +41,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	LGPKAnswerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGPKAnswerCell"];
+    cell.answerLabel.text = @"4234234234234";
 	return cell;
 }
 
