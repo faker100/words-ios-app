@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -213,7 +213,7 @@
                             <constraint firstItem="ZD0-zh-Q4e" firstAttribute="top" relation="greaterThanOrEqual" secondItem="CfF-By-ZKw" secondAttribute="bottom" constant="10" id="C4Y-Pc-n9K"/>
                             <constraint firstItem="Ofw-WE-99o" firstAttribute="top" secondItem="r90-MB-J5l" secondAttribute="bottom" id="JJi-UU-4ZF"/>
                             <constraint firstAttribute="trailing" secondItem="CfF-By-ZKw" secondAttribute="trailing" constant="10" id="Lhz-CS-sGl"/>
-                            <constraint firstItem="ZD0-zh-Q4e" firstAttribute="top" secondItem="Ofw-WE-99o" secondAttribute="bottom" id="QLh-BT-24o"/>
+                            <constraint firstAttribute="bottom" secondItem="Ofw-WE-99o" secondAttribute="bottom" id="QLh-BT-24o"/>
                             <constraint firstItem="Ofw-WE-99o" firstAttribute="leading" secondItem="YUp-AL-X2Q" secondAttribute="leading" id="dyV-QU-xIB"/>
                             <constraint firstItem="CfF-By-ZKw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="r90-MB-J5l" secondAttribute="bottom" constant="10" id="ufb-gk-dwY"/>
                             <constraint firstItem="CfF-By-ZKw" firstAttribute="leading" secondItem="YUp-AL-X2Q" secondAttribute="leading" constant="10" id="uzU-Kc-4mT"/>
@@ -668,7 +668,7 @@
                     <navigationItem key="navigationItem" id="Zgs-Vk-263" customClass="LGNavigationItem">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="taB-4d-SCU">
-                            <rect key="frame" x="79" y="7" width="200" height="30"/>
+                            <rect key="frame" x="73" y="7" width="200" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mo2-xr-gNv">
@@ -1948,7 +1948,7 @@
                                 <rect key="frame" x="20" y="53" width="157.5" height="157.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wrong_list" translatesAutoresizingMaskIntoConstraints="NO" id="fwQ-ws-bJA">
-                                        <rect key="frame" x="23" y="31" width="110" height="76"/>
+                                        <rect key="frame" x="23.5" y="31.5" width="110" height="76"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="110" id="ZuO-5r-gK2"/>
                                             <constraint firstAttribute="width" secondItem="fwQ-ws-bJA" secondAttribute="height" multiplier="220:152" id="rhb-Lz-WQZ"/>
@@ -1965,7 +1965,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="错题本" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70N-X6-UlB">
-                                        <rect key="frame" x="52" y="114" width="52" height="21"/>
+                                        <rect key="frame" x="52.5" y="114.5" width="52" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1991,10 +1991,10 @@
                                 <rect key="frame" x="197.5" y="53" width="157.5" height="157.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time_review" translatesAutoresizingMaskIntoConstraints="NO" id="D5f-mf-9k6">
-                                        <rect key="frame" x="24" y="31" width="110" height="76"/>
+                                        <rect key="frame" x="24.5" y="31.5" width="110" height="76"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间复习" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAJ-Ve-NQW">
-                                        <rect key="frame" x="44.5" y="114" width="69.5" height="21"/>
+                                        <rect key="frame" x="44" y="114.5" width="69.5" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -3361,4 +3361,5 @@
         <segue reference="KlX-L8-DQM"/>
         <segue reference="d6X-YM-4Fn"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

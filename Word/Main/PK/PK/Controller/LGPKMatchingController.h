@@ -59,5 +59,9 @@ typedef NS_ENUM(NSUInteger, LGMatchingType) {
 
 @end
 
+//自定义跳转
+@interface LGMatchToPKSegue : UIStoryboardSegue
+
+@end
 
 

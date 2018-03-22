@@ -39,7 +39,9 @@
 		5647C2F0205F567C00DFDB77 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5647C2EF205F567C00DFDB77 /* NotificationService.m */; };
 		5647C2F4205F567C00DFDB77 /* Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5647C2EC205F567B00DFDB77 /* Notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5647C2FB205F66E300DFDB77 /* LGPKMatchingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5647C2FA205F66E300DFDB77 /* LGPKMatchingController.m */; };
-		564AE27B206237B90007AA48 /* LGMatchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 564AE27A206237B90007AA48 /* LGMatchModel.m */; };
+		564A6B932063521400242FC0 /* LGJPushReceiveMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 564A6B922063521400242FC0 /* LGJPushReceiveMessageModel.m */; };
+		564A6B962063B87000242FC0 /* LGAtPKController.m in Sources */ = {isa = PBXBuildFile; fileRef = 564A6B952063B87000242FC0 /* LGAtPKController.m */; };
+		564A6B992063BD5E00242FC0 /* LGPKAnswerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 564A6B982063BD5E00242FC0 /* LGPKAnswerCell.m */; };
 		564EB7AC2047998500E47A1E /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 564EB7AB2047998500E47A1E /* NSDate+Utilities.m */; };
 		56506D052016D842000FD8FA /* LGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56506D042016D842000FD8FA /* LGProgressHUD.m */; };
 		56585956203EB34300BB59ED /* LGDottedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56585955203EB34300BB59ED /* LGDottedLineView.m */; };
@@ -204,8 +206,12 @@
 		5647C2F1205F567C00DFDB77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5647C2F9205F66E300DFDB77 /* LGPKMatchingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKMatchingController.h; sourceTree = "<group>"; };
 		5647C2FA205F66E300DFDB77 /* LGPKMatchingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKMatchingController.m; sourceTree = "<group>"; };
-		564AE279206237B90007AA48 /* LGMatchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGMatchModel.h; sourceTree = "<group>"; };
-		564AE27A206237B90007AA48 /* LGMatchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGMatchModel.m; sourceTree = "<group>"; };
+		564A6B912063521400242FC0 /* LGJPushReceiveMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGJPushReceiveMessageModel.h; sourceTree = "<group>"; };
+		564A6B922063521400242FC0 /* LGJPushReceiveMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGJPushReceiveMessageModel.m; sourceTree = "<group>"; };
+		564A6B942063B87000242FC0 /* LGAtPKController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGAtPKController.h; sourceTree = "<group>"; };
+		564A6B952063B87000242FC0 /* LGAtPKController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGAtPKController.m; sourceTree = "<group>"; };
+		564A6B972063BD5E00242FC0 /* LGPKAnswerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKAnswerCell.h; sourceTree = "<group>"; };
+		564A6B982063BD5E00242FC0 /* LGPKAnswerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKAnswerCell.m; sourceTree = "<group>"; };
 		564EB7AA2047998400E47A1E /* NSDate+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Utilities.h"; sourceTree = "<group>"; };
 		564EB7AB2047998500E47A1E /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		56506D032016D842000FD8FA /* LGProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGProgressHUD.h; sourceTree = "<group>"; };
@@ -483,6 +489,8 @@
 				560699E32057D9B500574437 /* LGPKContainerController.m */,
 				5647C2F9205F66E300DFDB77 /* LGPKMatchingController.h */,
 				5647C2FA205F66E300DFDB77 /* LGPKMatchingController.m */,
+				564A6B942063B87000242FC0 /* LGAtPKController.h */,
+				564A6B952063B87000242FC0 /* LGAtPKController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -495,6 +503,8 @@
 				560699DD2057BC6D00574437 /* LGPKRankHeadView.h */,
 				560699DE2057BC6D00574437 /* LGPKRankHeadView.m */,
 				560699E02057BC7B00574437 /* LGPKRankHeadView.xib */,
+				564A6B972063BD5E00242FC0 /* LGPKAnswerCell.h */,
+				564A6B982063BD5E00242FC0 /* LGPKAnswerCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -504,8 +514,8 @@
 			children = (
 				566FF2D72057A686004574EA /* LGPKRankModel.h */,
 				566FF2D82057A686004574EA /* LGPKRankModel.m */,
-				564AE279206237B90007AA48 /* LGMatchModel.h */,
-				564AE27A206237B90007AA48 /* LGMatchModel.m */,
+				564A6B912063521400242FC0 /* LGJPushReceiveMessageModel.h */,
+				564A6B922063521400242FC0 /* LGJPushReceiveMessageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1220,6 +1230,7 @@
 				56BBBFBB20561DA40057BDF2 /* LGPersonalInfoController.m in Sources */,
 				56C9898E2020461D0095A4BD /* LGWordLibraryController.m in Sources */,
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
+				564A6B932063521400242FC0 /* LGJPushReceiveMessageModel.m in Sources */,
 				56C64699204E43AB00E895B3 /* LGTimeReivewCountAlertView.m in Sources */,
 				56994EA420493A1F005648F6 /* LGReviewWrongCollectionReusableView.m in Sources */,
 				567A3AD4203FB72F00A41692 /* LGWordErrorViewController.m in Sources */,
@@ -1234,6 +1245,7 @@
 				5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */,
 				56E2538F204D00B7006D9B56 /* LGFinishWordTaskView.m in Sources */,
 				5639AF9F202441B300AA2CA5 /* LGPlanModel.m in Sources */,
+				564A6B962063B87000242FC0 /* LGAtPKController.m in Sources */,
 				56AF60D52011EA050067BD7B /* UIViewController+LGViewController.m in Sources */,
 				56C646AC204E67CD00E895B3 /* LGDictationController.m in Sources */,
 				563259EE201AC609007FF4D6 /* LGTool.m in Sources */,
@@ -1242,13 +1254,13 @@
 				566FF2D120577B86004574EA /* LGPKIndexViewController.m in Sources */,
 				5658D5A62040FF7600390FC4 /* LGIndexReviewAlertView.m in Sources */,
 				56994EA8204950A3005648F6 /* LGReviewWrongWordModel.m in Sources */,
-				564AE27B206237B90007AA48 /* LGMatchModel.m in Sources */,
 				563F7DAB2023177E00944730 /* NSObject+LGRequest.m in Sources */,
 				566FF2D520577D95004574EA /* LGPKRankingCell.m in Sources */,
 				5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */,
 				56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */,
 				560699DF2057BC6D00574437 /* LGPKRankHeadView.m in Sources */,
 				56C98994202050F60095A4BD /* LGWordTypeCell.m in Sources */,
+				564A6B992063BD5E00242FC0 /* LGPKAnswerCell.m in Sources */,
 				56BBBFBF205622060057BDF2 /* LGPersonalCell.m in Sources */,
 				56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */,
 				5678C38B20527C56009CD723 /* LGDictationPromptController.m in Sources */,

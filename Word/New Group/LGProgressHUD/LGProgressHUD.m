@@ -58,6 +58,8 @@
 
 
 + (void)showMessageWithIcon:(NSString *)iconName message:(NSString *)message toView:(UIView *)view completionBlock:(MBProgressHUDCompletionBlock) completionBlock{
+	
+	
 	LGProgressHUD *hud = [LGProgressHUD configTypeToView:view];
 	hud.label.text = message;
 	hud.completionBlock = completionBlock;

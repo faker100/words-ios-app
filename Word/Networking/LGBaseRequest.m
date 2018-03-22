@@ -55,7 +55,6 @@ static AFHTTPSessionManager *manager;
 
 - (void)postRequestCompletion:(comletionBlock) completion {
 	
-	
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	self.task = [manager POST:self.url parameters:self.parameter progress:^(NSProgress * _Nonnull downloadProgress) {
 		

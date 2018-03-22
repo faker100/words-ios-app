@@ -8,7 +8,7 @@
 
 #import "LGPKMatchingController.h"
 #import "JPUSHService.h"
-#import "LGMatchModel.h"
+#import "LGJpushReceiveMessageModel.h"
 #import "LGUserManager.h"
 #import "LGTool.h"
 
@@ -17,6 +17,7 @@
 	dispatch_source_t timer;
 }
 
+@property (nonatomic, assign) BOOL disappearWithAgreePK; //离开界面时,是否因为是否同意 pk
 @property (nonatomic, strong) LGMatchUserModel *opponentModel;    //对手信息
 @property (nonatomic, strong) LGMatchUserModel *currentUserModel; //当前用户信息
 
@@ -27,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-//	self.matchType = LGWillMatching;
+
 	//倒计时图片不变形
 	self.countDownButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
 	//用户默认头像
@@ -54,7 +55,10 @@
 
 - (void)viewDidDisappear:(BOOL)animated{
 	[super viewDidDisappear:animated];
-	[[NSNotificationCenter defaultCenter]removeObserver:self name:kJPFNetworkDidReceiveMessageNotification object:nil];
+	[self removeNotification];
+	if (!self.disappearWithAgreePK) {
+		[self requestPkChoice:LGPKChoiceCancel completion:nil];
+	}
 }
 
 - (void)viewDidLayoutSubviews{
@@ -87,31 +91,62 @@
 	[self.matchingImageView startAnimating];
 }
 
-/*********************** 接收自定义消息 **************************/
-//添加监听者
+
 - (void)addNotification{
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+	
+	/*********************** 接收自定义消息 **************************/
+	
     [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
+	
+	/*********************** 退出 app 时 **************************/
+	[defaultCenter addObserver:self selector:@selector(applicationWillTerminate) name:UIApplicationWillTerminateNotification object:nil];
 }
 
+- (void)removeNotification{
+	
+	NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+	
+	[defaultCenter removeObserver:self name:kJPFNetworkDidReceiveMessageNotification object:nil];
+	[defaultCenter removeObserver:self name:UIApplicationWillTerminateNotification object:nil];
+}
 
+//杀死 app 时
+- (void)applicationWillTerminate{
+	
+	[self requestPkChoice:LGPKChoiceCancel completion:nil];
+}
 
-//接受自定义消息
+/**
+ 接受自定义消息
+ userInfo 中 type = 1 匹配对手
+ 			 type = 2 都准备成功,跳转 pk界面
+             type = 3 取消对手
+ 
+ */
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
     
     NSDictionary *userInfo = [notification userInfo];
-	LGMatchModel *matchModel = [LGMatchModel mj_objectWithKeyValues:userInfo[@"extras"][@"message"]];
 	
-	[self setMatchType:LGMatchSuccess animated:YES];
+	LGJPushReceiveMessageModel *pushModel = [LGJPushReceiveMessageModel mj_objectWithKeyValues:userInfo];
 	
-	if ([matchModel.user1.uid isEqualToString:[LGUserManager shareManager].user.uid]) {
-		self.currentUserModel = matchModel.user1;
-		self.opponentModel = matchModel.user2;
-	}else{
-		self.currentUserModel = matchModel.user2;
-		self.opponentModel = matchModel.user1;
+	if (pushModel.extras.type == 1) {
+		LGMatchModel *matchModel = pushModel.extras.message;
+		[self setMatchType:LGMatchSuccess animated:YES];
+		if ([matchModel.user1.uid isEqualToString:[LGUserManager shareManager].user.uid]) {
+			self.currentUserModel = matchModel.user1;
+			self.opponentModel = matchModel.user2;
+		}else{
+			self.currentUserModel = matchModel.user2;
+			self.opponentModel = matchModel.user1;
+		}
+	}else if (pushModel.extras.type == 2){
+		self.disappearWithAgreePK = YES;
+		[self performSegueWithIdentifier:@"matchPkToBeginPk" sender:nil];
+	}else if (pushModel.extras.type == 3){
+		[LGProgressHUD showMessage:pushModel.content toView:self.view.window];
+		[self setMatchType:LGMatching animated:YES];
 	}
-	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,14 +156,21 @@
 
 //重新匹配
 - (IBAction)rematchAction:(id)sender {
-	[self setMatchType:LGMatching animated:YES];
 	
+	__weak typeof(self) weakSelf = self;
+	[self requestPkChoice:LGPKChoiceCancel completion:^{
+		[weakSelf setMatchType:LGMatching animated:YES];
+	}];
 }
 
 //开始 pk
 - (IBAction)beginPkAction:(id)sender {
 	
-	[self requestPkChoice:LGPKChoiceAgree];
+	[self requestPkChoice:LGPKChoiceAgree completion:^{
+		if (timer) {
+			dispatch_source_cancel(timer);
+		}
+	}];
 }
 
 //设置对手信息
@@ -166,13 +208,19 @@
 	return attribute;
 }
 
-- (void)requestPkChoice:(LGPKChoice)choice{
-	__weak typeof(self) weakSelf = self;
+
+/**
+ 同意 / 取消 pk
+
+ @param choice  pk选择
+ @completion 请求后回调
+ */
+- (void)requestPkChoice:(LGPKChoice)choice completion:(void(^)(void))completion {
+	
 	[self.request requestPkChoice:choice opponentUid:self.opponentModel.uid completion:^(id response, LGError *error) {
+		
 		if ([self isNormal:error]) {
-			if (choice == LGPKChoiceAgree) {
-				[weakSelf performSegueWithIdentifier:@"matchPkToBeginPk" sender:nil];
-			}
+			if (completion) completion();
 		}
 	}];
 }
@@ -230,12 +278,7 @@
 		[self.view layoutIfNeeded];
 		[self uploadHeadRadius];
 	} completion:nil];
-	
-	
-	
-	
 	//重新倒计时,取消之前的倒计时
-	
 	if (timer) {
 		dispatch_source_cancel(timer);
 	}
@@ -246,8 +289,13 @@
 	}else{
 		[self.matchingImageView stopAnimating];
 		self.matchingImageView.image = [UIImage imageNamed:@"pk_match_success"];
-		timer = [LGTool beginCountDownWithSecond:30 completion:^(NSInteger currtentSecond) {
+		
+		//倒计时到了后,取消匹配
+		timer = [LGTool beginCountDownWithSecond:15 completion:^(NSInteger currtentSecond) {
 			[self.countDownButton setTitle:[NSString stringWithFormat:@"倒计时 : %lds",currtentSecond] forState:UIControlStateNormal];
+			if (currtentSecond == 0) {
+				[self.navigationController popViewControllerAnimated:YES];
+			}
 		}];
 	}
 }
@@ -263,6 +311,33 @@
 }
 
 
+- (void)dealloc{
+	if (timer) {
+		dispatch_source_cancel(timer);
+	}
+}
+
 @end
+
+
+@implementation  LGMatchToPKSegue
+
+
+/**
+ 自定义跳转,先正常 push保证匹配页面controller的 各种 生命周期函数调用, 再在 navigation.controllers 中去移除匹配页面,使pk页面返回时,不出现匹配页面
+ */
+- (void)perform{
+	
+	UIViewController *sourceVC = self.sourceViewController;
+	UIViewController *destinationVC = self.destinationViewController;
+	[sourceVC.navigationController pushViewController:destinationVC animated:YES];
+	
+	NSMutableArray  *controllers = [NSMutableArray arrayWithArray:sourceVC.navigationController.viewControllers];
+	[controllers removeObject:sourceVC];
+	[sourceVC.navigationController setViewControllers:controllers animated:YES];
+}
+
+@end
+
 
 
