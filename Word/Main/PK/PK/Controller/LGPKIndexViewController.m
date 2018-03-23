@@ -52,9 +52,6 @@
 
 - (void)setRankModel:(LGPKRankModel *)rankModel{
 	_rankModel = rankModel;
-	
-	_rankModel.rankingList = @[rankModel.rankingList.firstObject,rankModel.rankingList.firstObject,rankModel.rankingList.firstObject,rankModel.rankingList.firstObject,rankModel.rankingList.firstObject,rankModel.rankingList.firstObject,rankModel.rankingList.firstObject,rankModel.rankingList.firstObject,rankModel.rankingList.firstObject,rankModel.rankingList.firstObject,rankModel.rankingList.firstObject,rankModel.rankingList.firstObject,rankModel.rankingList.firstObject,rankModel.rankingList.firstObject];
-	
 	[self configTableHeadView:rankModel.user];
 	[self.tableView reloadData];
 }

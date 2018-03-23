@@ -17,8 +17,28 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+	if (selected) {
+		self.contentView.backgroundColor = [UIColor lg_colorWithType:LGColor_theme_Color];
+	}else{
+		[self setNormal];
+	}
+}
 
-    // Configure the view for the selected state
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
+	[super setHighlighted:highlighted animated:animated];
+	if (highlighted == YES) {
+		self.contentView.backgroundColor = [UIColor lg_colorWithType:LGColor_theme_Color];
+	}else{
+		[self setNormal];
+	}
+}
+
+- (void)setWrong{
+	self.contentView.backgroundColor = [UIColor lg_colorWithType:LGColor_pk_red];
+}
+
+- (void)setNormal{
+	self.contentView.backgroundColor = [UIColor lg_colorWithHexString:@"f1efe4"];
 }
 
 @end

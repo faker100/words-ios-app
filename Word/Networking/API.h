@@ -60,6 +60,17 @@ typedef NS_ENUM(NSUInteger, LGPKChoice) {
 	
 };
 
+
+/**
+ pk 用户答案对错
+ */
+typedef NS_ENUM(NSUInteger, LGPKAnswerType) {
+	LGPKAnswerFalse = 0, //错误
+	LGPKAnswerTrue = 1, //正确
+	
+	
+};
+
 /*************************************** 各种 key **********************************/
 
 // code = 99 未登录通知
@@ -186,3 +197,11 @@ typedef NS_ENUM(NSUInteger, LGPKChoice) {
 //同意/取消 pk
 #define PK_CHOICE_URL					@"http://words.viplgw.cn/cn/app-api/pk-choice"
 
+//pk 答案
+#define PK_ANSWER_URL					@"http://words.viplgw.cn/cn/app-api/pk-answer"
+
+//pk 时候 app 退后台
+#define PK_BACKGROUND_URL				@"http://words.viplgw.cn/cn/app-api/user-exit"
+
+//pk 时 激活 app 重新连接 pk
+#define PK_CONNECT_URL			@"http://words.viplgw.cn/cn/app-api/pk-connect"

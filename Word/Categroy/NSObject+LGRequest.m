@@ -25,4 +25,8 @@
 	objc_setAssociatedObject(self, @selector(request), request, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+- (NSDictionary *)lg_description{
+	return [self mj_keyValues];
+}
+
 @end

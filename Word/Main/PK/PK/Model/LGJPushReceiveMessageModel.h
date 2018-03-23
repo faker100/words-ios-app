@@ -24,7 +24,9 @@
 
 /**
  消息不同  message  类型不同,
- type = 1 为 LGMatchUserModel类型
+ type = 1 为 LGMatchModel类型
+ type = 2 为 LGReadyPKModel类型;
+ type = 3 为 nil类型
  */
 @property (nonatomic, strong) id message;
 @property (nonatomic, assign) NSInteger type;
@@ -51,5 +53,32 @@
 
 @end
 
-#pragma mark - 取消匹配
+#pragma mark - 准备 pk
+
+@interface LGPKWordModel : NSObject
+
+@property (nonatomic, copy) NSString *answer;
+@property (nonatomic, copy) NSString *phonetic_uk; //音标
+@property (nonatomic, copy) NSString *select;
+@property (nonatomic, copy) NSString *uk_audio;
+@property (nonatomic, copy) NSString *word;
+@property (nonatomic, copy) NSString *wordsId;
+
+//自定义属性, 以\n 分割 服务器 json 中的 select,在随机打乱答案
+@property (nonatomic, copy) NSArray<NSString *> *selectArray;
+//在selectArray中正确答案的 index ,0开始
+@property (nonatomic, assign) NSInteger trueAnswerIndex;
+
+@end
+
+@interface LGReadyPKModel : NSObject
+
+@property (nonatomic, copy) NSString *totalId;
+@property (nonatomic, copy) NSArray<LGPKWordModel *> *words;
+
+@end
+
+
+
+
 

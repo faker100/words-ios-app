@@ -55,6 +55,9 @@
 			color = [UIColor lg_colorWithHexString:@"FFC600"];
 		case LGColor_Dark_Yellow:
 			color = [UIColor lg_colorWithHexString:@"EEC15F"];
+			break;
+		case LGColor_pk_red:
+			color = [UIColor lg_colorWithHexString:@"ff213b"];
 		default:
 			break;
 	}

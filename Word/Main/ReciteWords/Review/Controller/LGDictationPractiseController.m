@@ -208,7 +208,7 @@
 			}
 			[itemLengthArray addObject:@(length)];
 		}
-		//随机打乱片段长度数组
+		//随机打乱片段长度数组,(随机返回 NSComparisonResult)
 		[itemLengthArray sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
 			return arc4random_uniform(3) - 1;
 		}];

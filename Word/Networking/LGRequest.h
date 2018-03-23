@@ -286,4 +286,35 @@
  */
 - (void)requestPkChoice:(LGPKChoice)choice opponentUid:(NSString *)uid completion:(comletionBlock)completion;
 
+/**
+ PK 上传用户答案
+
+ @param type 正确
+ @param totalId 匹配时给的 totalid
+ @param wordId 单词 id
+ @param answer 选择答案
+ @param duration 答题用时
+ */
+- (void)commitPKAnswer:(LGPKAnswerType)type totalId:(NSString *)totalId wordId:(NSString *)wordId answer:(NSString *)answer duration:(NSInteger)duration completion:(comletionBlock)completion;
+
+
+/**
+ PK时 app 退到后台
+
+ @param uid 当前用户 id
+ @param totalId 匹配时给的 totalid
+ @param num 当前第几题
+ @param time 当前题目用的时长
+ */
+- (void)requestPKExit:(NSString *)uid totalId:(NSString *)totalId currentQuestionIndex:(NSInteger)num duration:(NSInteger)time;
+
+
+/**
+ PK 重连
+
+ @param uid 当前用户 id
+ @param totalId 匹配时给的 totalid
+ */
+- (void)requestPKConnect:(NSString *)uid totalId:(NSString *)totalId completion:(comletionBlock)completion;
+
 @end

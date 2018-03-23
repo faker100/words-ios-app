@@ -11,6 +11,7 @@
 #import "LGJpushReceiveMessageModel.h"
 #import "LGUserManager.h"
 #import "LGTool.h"
+#import "LGAtPKController.h"
 
 @interface LGPKMatchingController ()
 {
@@ -142,7 +143,7 @@
 		}
 	}else if (pushModel.extras.type == 2){
 		self.disappearWithAgreePK = YES;
-		[self performSegueWithIdentifier:@"matchPkToBeginPk" sender:nil];
+		[self performSegueWithIdentifier:@"matchPkToBeginPk" sender:pushModel.extras.message];
 	}else if (pushModel.extras.type == 3){
 		[LGProgressHUD showMessage:pushModel.content toView:self.view.window];
 		[self setMatchType:LGMatching animated:YES];
@@ -301,19 +302,22 @@
 }
 
 
+- (void)dealloc{
+	if (timer) {
+		dispatch_source_cancel(timer);
+	}
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
-
-- (void)dealloc{
-	if (timer) {
-		dispatch_source_cancel(timer);
+	if ([segue.identifier isEqualToString:@"matchPkToBeginPk"]) {
+		LGAtPKController *atPKController = segue.destinationViewController;
+		atPKController.pkModel = sender;
+		atPKController.opponentModel = self.opponentModel;
+		atPKController.currentUserModel = self.currentUserModel;
 	}
 }
 

@@ -12,5 +12,15 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *answerLabel;
 
+/**
+ 设置答案错误状态
+ */
+- (void)setWrong;
+
+
+/**
+ 设置正常状态
+ */
+- (void)setNormal;
 
 @end

@@ -13,4 +13,7 @@
 
 @property (nonatomic, strong) LGRequest *request;
 
+//用于 debug
+- (NSDictionary *)lg_description;
+
 @end

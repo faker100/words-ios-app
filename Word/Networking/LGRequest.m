@@ -309,4 +309,36 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)commitPKAnswer:(LGPKAnswerType)type totalId:(NSString *)totalId wordId:(NSString *)wordId answer:(NSString *)answer duration:(NSInteger)duration completion:(comletionBlock)completion{
+	self.url = PK_ANSWER_URL;
+	self.parameter = @{
+					   @"totalId" : totalId,
+					   @"wordsId" : wordId,
+					   @"answer" : answer ? answer : @"",
+					   @"type" : @(type),
+					   @"duration" : @(duration)
+					   };
+	
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestPKExit:(NSString *)uid totalId:(NSString *)totalId currentQuestionIndex:(NSInteger)num duration:(NSInteger)time{
+	self.url = PK_BACKGROUND_URL;
+	self.parameter = @{
+					    @"totalId" : totalId,
+						@"uid" : uid,
+						@"num" :@(num),
+						@"time" : @(time)
+					   };
+	[self postRequestCompletion:nil];
+}
+
+- (void)requestPKConnect:(NSString *)uid totalId:(NSString *)totalId completion:(comletionBlock)completion{
+	self.url = PK_CONNECT_URL;
+	self.parameter = @{
+					   @"uid" : uid,
+					   @"totalId" : totalId,
+					   };
+}
+
 @end

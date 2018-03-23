@@ -13,7 +13,8 @@ typedef NS_ENUM(NSUInteger, LGColorType) {
 	LGColor_Title_1_Color,    //一级标题颜色
 	LGColor_Title_2_Color,   //二级标题颜色
 	LGColor_Yellow,   		 //黄色
-	LGColor_Dark_Yellow		//深黄色
+	LGColor_Dark_Yellow,	//深黄色
+	LGColor_pk_red			//pk 中的 红色
 	
 };
 
