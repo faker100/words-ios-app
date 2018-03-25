@@ -18,7 +18,7 @@
 typedef NS_ENUM(NSInteger, LGCheckCodeUseType) {
 	LGCheckCodeUseTypeRegister = 1,
 	LGCheckCodeUseTypeForgetPassword = 2,
-	LGCheckCodeUseTypeReplacePassword = 3
+	LGCheckCodeUseTypeChangeUser = 3
 };
 
 //用户名类型
@@ -92,6 +92,7 @@ typedef NS_ENUM(NSUInteger, LGPKAnswerType) {
 //登录
 #define LOGIN_URL						 @"http://login.gmatonline.cn/cn/app-api/check-login"
 
+
 //获取 session
 #define SESSION_URLS      				 @[@"http://www.toeflonline.cn/cn/app-api/unify-login",@"http://www.smartapply.cn/cn/app-api/unify-login",@"http://www.gmatonline.cn/index.php?web/appapi/unifyLogin",@"http://bbs.viplgw.cn/cn/app-api/unify-login",@"http://words.viplgw.cn/cn/app-api/unify-login"]
 
@@ -109,6 +110,12 @@ typedef NS_ENUM(NSUInteger, LGPKAnswerType) {
 
 //找回密码
 #define FIND_PASSWORD_URL				@"http://login.gmatonline.cn/cn/app-api/find-pass"
+
+//修改用户邮箱，密码，手机
+#define UPDATE_USER_URL                 @"http://login.gmatonline.cn/cn/app-api/update-user"
+
+//上传头像
+#define UPDATE_HEAD_IMG_URL             @"http://www.gmatonline.cn/index.php?web/webapi/fileimg"
 
 //更改学习模式
 #define UPDATE_STUDY_TYPE_URL			@"http://words.viplgw.cn/cn/app-api/update-model"
@@ -188,9 +195,6 @@ typedef NS_ENUM(NSUInteger, LGPKAnswerType) {
 //pk首页排名
 #define PK_INDEX_RANK_URL				@"http://words.viplgw.cn/cn/app-api/pk-index"
 
-//上传头像
-#define UPDATE_HEAD_IMG_URL             @"http://www.gmatonline.cn/index.php?web/webapi/fileimg"
-
 //pk匹配
 #define PK_MATCHING_URL					@"http://words.viplgw.cn/cn/app-api/pk-matching"
 
@@ -204,4 +208,6 @@ typedef NS_ENUM(NSUInteger, LGPKAnswerType) {
 #define PK_BACKGROUND_URL				@"http://words.viplgw.cn/cn/app-api/user-exit"
 
 //pk 时 激活 app 重新连接 pk
-#define PK_CONNECT_URL			@"http://words.viplgw.cn/cn/app-api/pk-connect"
+#define PK_CONNECT_URL			        @"http://words.viplgw.cn/cn/app-api/pk-connect"
+
+

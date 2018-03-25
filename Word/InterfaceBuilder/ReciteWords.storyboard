@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -422,7 +422,7 @@
                                             <action selector="sureAction:" destination="DsW-4o-azR" eventType="touchUpInside" id="kBn-OU-T6k"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQ3-yM-CVt">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQ3-yM-CVt">
                                         <rect key="frame" x="180" y="117" width="125" height="38"/>
                                         <color key="backgroundColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -438,6 +438,9 @@
                                                 <integer key="value" value="5"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="getCodeAction:" destination="DsW-4o-azR" eventType="touchUpInside" id="Bvr-BB-MF9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -487,9 +490,9 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="originalInfoTextField" destination="DWq-pf-kc2" id="h7d-0j-D99"/>
+                        <outlet property="textField1" destination="DWq-pf-kc2" id="qq9-eF-vng"/>
+                        <outlet property="textField2" destination="g84-fr-fBb" id="t1e-ey-5cF"/>
                         <outlet property="titleLabel" destination="MOF-9A-GnO" id="nh9-Kg-PMN"/>
-                        <outlet property="updateInfoTextField" destination="g84-fr-fBb" id="jQt-tj-EOZ"/>
                         <outlet property="verificationCodeButton" destination="EQ3-yM-CVt" id="683-Nb-UEq"/>
                         <outlet property="verificationCodeWidthConstraint" destination="9S1-Pf-QHN" id="dRs-kO-cBC"/>
                     </connections>
@@ -668,7 +671,7 @@
                     <navigationItem key="navigationItem" id="Zgs-Vk-263" customClass="LGNavigationItem">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="taB-4d-SCU">
-                            <rect key="frame" x="73" y="7" width="200" height="30"/>
+                            <rect key="frame" x="79" y="7" width="200" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mo2-xr-gNv">

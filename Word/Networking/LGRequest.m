@@ -339,6 +339,37 @@
 					   @"uid" : uid,
 					   @"totalId" : totalId,
 					   };
+    [self postRequestCompletion:completion];
+}
+
+- (void)updatePhone:(NSString *)phone code:(NSString *)code completion:(comletionBlock)completion{
+    self.url = UPDATE_USER_URL;
+    self.parameter = @{
+                       @"uid" : [LGUserManager shareManager].user.uid,
+                       @"phone" : phone,
+                       @"code" : code
+                       };
+    [self postRequestCompletion:completion];
+}
+
+- (void)updateEmail:(NSString *)emial code:(NSString *)code completion:(comletionBlock)completion{
+    self.url = UPDATE_USER_URL;
+    self.parameter = @{
+                       @"uid" : [LGUserManager shareManager].user.uid,
+                       @"email" : emial,
+                       @"code" : code
+                       };
+    [self postRequestCompletion:completion];
+}
+
+- (void)updatePassword:(NSString *)oldPassword newPassword:(NSString *)newPassword completion:(comletionBlock)completion{
+    self.url = UPDATE_USER_URL;
+    self.parameter = @{
+                       @"uid" : [LGUserManager shareManager].user.uid,
+                       @"oldPass" : oldPassword,
+                       @"newPass" : newPassword
+                       };
+    [self postRequestCompletion:completion];
 }
 
 @end

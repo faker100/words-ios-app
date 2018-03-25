@@ -20,11 +20,12 @@ typedef NS_ENUM(NSUInteger, LGUpdateUserInfoType) {
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
-//原信息
-@property (weak, nonatomic) IBOutlet UITextField *originalInfoTextField;
+//新电话，新邮箱，原密码
+@property (weak, nonatomic) IBOutlet UITextField *textField1;
 
-//新信息
-@property (weak, nonatomic) IBOutlet UITextField *updateInfoTextField;
+//验证码、新密码textfield
+@property (weak, nonatomic) IBOutlet UITextField *textField2;
+
 //获取验证码
 @property (weak, nonatomic) IBOutlet UIButton *verificationCodeButton;
 

@@ -317,4 +317,31 @@
  */
 - (void)requestPKConnect:(NSString *)uid totalId:(NSString *)totalId completion:(comletionBlock)completion;
 
+
+/**
+ 修改手机号
+
+ @param phone 新手机号
+ @param code 验证码
+ */
+- (void)updatePhone:(NSString *)phone code:(NSString *)code completion:(comletionBlock)completion;
+
+
+/**
+ 修改邮箱
+
+ @param emial 新邮箱
+ @param code 验证码
+ */
+- (void)updateEmail:(NSString *)emial code:(NSString *)code completion:(comletionBlock)completion;
+
+
+/**
+ 修改密码
+
+ @param oldPassword 旧密码
+ @param newPassword 新密码
+ */
+- (void)updatePassword:(NSString *)oldPassword newPassword:(NSString *)newPassword completion:(comletionBlock)completion;;
+
 @end
