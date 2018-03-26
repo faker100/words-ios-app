@@ -39,6 +39,7 @@
 		5647C2F0205F567C00DFDB77 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5647C2EF205F567C00DFDB77 /* NotificationService.m */; };
 		5647C2F4205F567C00DFDB77 /* Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5647C2EC205F567B00DFDB77 /* Notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5647C2FB205F66E300DFDB77 /* LGPKMatchingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5647C2FA205F66E300DFDB77 /* LGPKMatchingController.m */; };
+		56485D9120690A2F00352E22 /* LGPKResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56485D9020690A2F00352E22 /* LGPKResultController.m */; };
 		564A6B932063521400242FC0 /* LGJPushReceiveMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 564A6B922063521400242FC0 /* LGJPushReceiveMessageModel.m */; };
 		564A6B962063B87000242FC0 /* LGAtPKController.m in Sources */ = {isa = PBXBuildFile; fileRef = 564A6B952063B87000242FC0 /* LGAtPKController.m */; };
 		564A6B992063BD5E00242FC0 /* LGPKAnswerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 564A6B982063BD5E00242FC0 /* LGPKAnswerCell.m */; };
@@ -206,6 +207,8 @@
 		5647C2F1205F567C00DFDB77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5647C2F9205F66E300DFDB77 /* LGPKMatchingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKMatchingController.h; sourceTree = "<group>"; };
 		5647C2FA205F66E300DFDB77 /* LGPKMatchingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKMatchingController.m; sourceTree = "<group>"; };
+		56485D8F20690A2F00352E22 /* LGPKResultController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKResultController.h; sourceTree = "<group>"; };
+		56485D9020690A2F00352E22 /* LGPKResultController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKResultController.m; sourceTree = "<group>"; };
 		564A6B912063521400242FC0 /* LGJPushReceiveMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGJPushReceiveMessageModel.h; sourceTree = "<group>"; };
 		564A6B922063521400242FC0 /* LGJPushReceiveMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGJPushReceiveMessageModel.m; sourceTree = "<group>"; };
 		564A6B942063B87000242FC0 /* LGAtPKController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGAtPKController.h; sourceTree = "<group>"; };
@@ -491,6 +494,8 @@
 				5647C2FA205F66E300DFDB77 /* LGPKMatchingController.m */,
 				564A6B942063B87000242FC0 /* LGAtPKController.h */,
 				564A6B952063B87000242FC0 /* LGAtPKController.m */,
+				56485D8F20690A2F00352E22 /* LGPKResultController.h */,
+				56485D9020690A2F00352E22 /* LGPKResultController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1211,6 +1216,7 @@
 				56BBBFB820561C740057BDF2 /* LGPersonalCenterController.m in Sources */,
 				567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */,
 				56B7AAEA202C59EC00BDECED /* LGWordDetailHeaderFooterView.m in Sources */,
+				56485D9120690A2F00352E22 /* LGPKResultController.m in Sources */,
 				56C9898820201CCF0095A4BD /* LGWordPlanCollectionCell.m in Sources */,
 				029F3C88204AEB7F0022FB4B /* LGSelectReviewTypeView.m in Sources */,
 				56317B72201C1D6800AEC20B /* LGUserManager.m in Sources */,

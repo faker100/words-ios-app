@@ -20,6 +20,8 @@
 		self.message = [LGMatchModel mj_objectWithKeyValues:self.message];
 	}else if (self.type == 2){
 		self.message = [LGReadyPKModel mj_objectWithKeyValues:self.message];
+	}else if (self.type == 4){
+		self.message = [LGAtPKModel mj_objectWithKeyValues:self.message];
 	}
 }
 
@@ -65,6 +67,14 @@
 	
 	self.selectArray = tempArray;
 }
+
+@end
+
+@implementation LGAccuracyModel
+
+@end
+
+@implementation LGAtPKModel
 
 @end
 

@@ -24,9 +24,10 @@
 
 /**
  消息不同  message  类型不同,
- type = 1 为 LGMatchModel类型
- type = 2 为 LGReadyPKModel类型;
- type = 3 为 nil类型
+ type = 1 为 LGMatchModel类型,匹配成功
+ type = 2 为 LGReadyPKModel类型,准备 pk
+ type = 3 为 nil类型,取消 Pk
+ type = 4 为 LGAtPKModel类型, 正在 pk, pk 中胜率
  */
 @property (nonatomic, strong) id message;
 @property (nonatomic, assign) NSInteger type;
@@ -78,6 +79,21 @@
 
 @end
 
+#pragma mark - PK中的胜率
+
+@interface LGAccuracyModel : NSObject
+
+@property (nonatomic, copy) NSString *accuracy;
+@property (nonatomic, copy) NSString *uid;
+
+@end
+
+@interface LGAtPKModel : NSObject
+
+@property (nonatomic, strong) LGAccuracyModel *user1;
+@property (nonatomic, strong) LGAccuracyModel *user2;
+
+@end
 
 
 

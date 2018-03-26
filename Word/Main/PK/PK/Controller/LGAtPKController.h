@@ -21,15 +21,19 @@
 
 //用户头像
 @property (weak, nonatomic) IBOutlet UIImageView *userHeadImageView;
-//用户进度
+
+//用户进度 (暂时隐藏了 hidden = yes)
 @property (weak, nonatomic) IBOutlet UILabel *userProgressLabel;
+
 //用户胜率
 @property (weak, nonatomic) IBOutlet UILabel *userWinLabel;
 
 //对手头像
 @property (weak, nonatomic) IBOutlet UIImageView *opponentImageView;
-//对手进度
+
+//对手进度 (暂时隐藏了 hidden = yes)
 @property (weak, nonatomic) IBOutlet UILabel *opponentProgressLabel;
+
 //对手胜率
 @property (weak, nonatomic) IBOutlet UILabel *opponentWinLabel;
 //双方胜率进度
@@ -40,5 +44,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 //音频
 @property (weak, nonatomic) IBOutlet UIButton *audioButton;
+
+//等待对手 image
+@property (weak, nonatomic) IBOutlet UIImageView *waitImageView;
+
 
 @end

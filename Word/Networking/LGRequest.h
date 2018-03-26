@@ -67,6 +67,40 @@
 - (void)findPasswordRequest:(NSString *)username password:(NSString *)password code:(NSString *)code usernameType:(LGUsernameType)usernameType completion:(comletionBlock)completion;
 
 
+
+/**
+ 上传头像
+ 
+ @param headImage 头像
+ */
+- (void)uploadHeaderImage:(UIImage *)headImage completion:(comletionBlock)completion;
+
+/**
+ 修改手机号
+ 
+ @param phone 新手机号
+ @param code 验证码
+ */
+- (void)updatePhone:(NSString *)phone code:(NSString *)code completion:(comletionBlock)completion;
+
+
+/**
+ 修改邮箱
+ 
+ @param emial 新邮箱
+ @param code 验证码
+ */
+- (void)updateEmail:(NSString *)emial code:(NSString *)code completion:(comletionBlock)completion;
+
+
+/**
+ 修改密码
+ 
+ @param oldPassword 旧密码
+ @param newPassword 新密码
+ */
+- (void)updatePassword:(NSString *)oldPassword newPassword:(NSString *)newPassword completion:(comletionBlock)completion;
+
 /**
  更改学习模式
 
@@ -264,14 +298,6 @@
 
 
 /**
- 上传头像
-
- @param headImage 头像
- */
-- (void)uploadHeaderImage:(UIImage *)headImage completion:(comletionBlock)completion;
-
-
-/**
  PK匹配
  
  */
@@ -303,7 +329,7 @@
 
  @param uid 当前用户 id
  @param totalId 匹配时给的 totalid
- @param num 当前第几题
+ @param num 当前第几题,从 1 开始
  @param time 当前题目用的时长
  */
 - (void)requestPKExit:(NSString *)uid totalId:(NSString *)totalId currentQuestionIndex:(NSInteger)num duration:(NSInteger)time;
@@ -319,29 +345,29 @@
 
 
 /**
- 修改手机号
+ PK 完成
 
- @param phone 新手机号
- @param code 验证码
+ @param opponentUid 对手 id
+ @param totalId 匹配时给的 totalid
  */
-- (void)updatePhone:(NSString *)phone code:(NSString *)code completion:(comletionBlock)completion;
+- (void)requestPKFinish:(NSString *)opponentUid totalId:(NSString *)totalId completion:(comletionBlock)completion;
 
 
 /**
- 修改邮箱
+ PK 结果
 
- @param emial 新邮箱
- @param code 验证码
+ @param opponentUid  对手 id
+ @param totalId 匹配时给的 totalid
  */
-- (void)updateEmail:(NSString *)emial code:(NSString *)code completion:(comletionBlock)completion;
+- (void)requestPKResult:(NSString *)opponentUid totalId:(NSString *)totalId completion:(comletionBlock)completion;
 
 
 /**
- 修改密码
+ PK 轮训
 
- @param oldPassword 旧密码
- @param newPassword 新密码
+ @param opponentUid 对手 id
+ @param totalId 匹配时给的 totalid
  */
-- (void)updatePassword:(NSString *)oldPassword newPassword:(NSString *)newPassword completion:(comletionBlock)completion;;
+- (void)requestPKPoll:(NSString *)opponentUid totalId:(NSString *)totalId completion:(comletionBlock)completion;
 
 @end

@@ -11,9 +11,10 @@
 #import "LGTool.h"
 #import "JPUSHService.h"
 #import "LGPlayer.h"
+#import "LGJPushReceiveMessageModel.h"
 
 //倒计时时间
-NSInteger countDown = 10;
+NSInteger countDown = 20;
 
 @interface LGAtPKController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -70,20 +71,57 @@ NSInteger countDown = 10;
 }
 
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
-	NSLog(@"%@",notification.userInfo);
+	
+	LGJPushReceiveMessageModel *pushModel = [LGJPushReceiveMessageModel mj_objectWithKeyValues:notification.userInfo];
+	if (pushModel.extras.type == 4) {
+		LGAtPKModel *pkModel = pushModel.extras.message;
+		LGAccuracyModel *currentUser;
+		LGAccuracyModel *opponentUser;
+		if ([pkModel.user1.uid isEqualToString:self.currentUserModel.uid]) {
+			currentUser  = pkModel.user1;
+			opponentUser = pkModel.user2;
+		}else{
+			currentUser  = pkModel.user2;
+			opponentUser = pkModel.user1;
+		}
+		self.userWinLabel.text = [NSString stringWithFormat:@"%@%%",currentUser.accuracy];
+		self.opponentWinLabel.text = [NSString stringWithFormat:@"%@%%",opponentUser.accuracy];
+		CGFloat tem = currentUser.accuracy.floatValue + opponentUser.accuracy.floatValue;
+		self.winProgressView.progress = tem == 0 ? 0.5 : currentUser.accuracy.integerValue / tem;
+	}
+	
 }
 
 //退出 app
 - (void)applicationExit{
-	[self.request requestPKExit:self.currentUserModel.uid totalId:self.pkModel.totalId currentQuestionIndex:self.currentWordIndex duration:countDown - self.currentTime];
+	[self.request requestPKExit:self.currentUserModel.uid totalId:self.pkModel.totalId currentQuestionIndex:self.currentWordIndex + 1 duration:countDown - self.currentTime];
 }
 
-//激活 app
+
+/**
+ 激活 app,重连 Pk
+ code = 0 超时失败,返回首页
+ code = 1 重连成功
+ */
 - (void)applicationBecomeActive{
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestPKConnect:self.currentUserModel.uid totalId:self.pkModel.totalId completion:^(id response, LGError *error) {
-		if ([self isNormal:error]) {
+		if ([self isNormal:error showInView:self.view.window]) {
 			
+			/**
+			 重连后应该到第几题,如果超过题目总数则调用结果接口
+			 如果没超过题目总数,则跳转到该题目
+			 num 从 1 开始
+			 */
+			NSInteger num = [NSString stringWithFormat:@"%@",response[@"num"]].integerValue;
+			if (num > self.pkModel.words.count) {
+				[self requestFinishPK];
+			}else{
+				NSInteger time = [NSString stringWithFormat:@"%@",response[@"time"]].integerValue;
+				[self setCurrentWordModel:self.pkModel.words[num - 1] beginCountDown:time];
+			}
+		}else{
+			[self.navigationController popToRootViewControllerAnimated:YES];
 		}
 	}];
 }
@@ -94,20 +132,34 @@ NSInteger countDown = 10;
 
 
 #pragma mark - setter getter
-- (void)setCurrentWordModel:(LGPKWordModel *)currentWordModel{
+
+
+
+
+/**
+ 设置当前 题目
+
+ @param currentWordModel 当前题目
+ @param time 题目倒计时时长
+ */
+- (void)setCurrentWordModel:(LGPKWordModel *)currentWordModel beginCountDown:(NSInteger)time{
 	_currentWordModel = currentWordModel;
 	self.wordLabel.text = currentWordModel.word;
 	[self.audioButton setTitle:currentWordModel.phonetic_uk forState:UIControlStateNormal];
 	self.tableView.allowsSelection = YES;
 	[self.tableView reloadData];
-	[self beginCountDown:countDown];
+	[self beginCountDown:time];
+}
+
+- (void)setCurrentWordModel:(LGPKWordModel *)currentWordModel{
+	_currentWordModel  = currentWordModel;
+	[self setCurrentWordModel:currentWordModel beginCountDown:countDown];
 }
 
 - (void)setCurrentTime:(NSInteger)currentTime{
 	_currentTime = currentTime;
 	self.timeLabel.text = [NSString stringWithFormat:@"%lds",currentTime];
 	if (currentTime == 0) {
-		
 		[self nextQuestionWithCurrentAnswer:@"" duration:countDown];
 	}
 }
@@ -144,12 +196,73 @@ NSInteger countDown = 10;
 	
 	NSArray<LGPKWordModel *> *words = self.pkModel.words;
 	if (self.currentWordIndex == words.count - 1) {
-		
+		[self requestFinishPK];
 	}else{
 		self.currentWordModel = words[self.currentWordIndex + 1];
+
 	}
 }
 
+
+/**
+ 请求结束 PK
+ code = 1,跳转结果页
+ code = 2,显示等待对手页面
+ */
+- (void)requestFinishPK{
+	[LGProgressHUD showHUDAddedTo:self.view];
+	[self.request requestPKFinish:self.opponentModel.uid totalId:self.pkModel.totalId completion:^(id response, LGError *error) {
+		if ([self isNormal:error]) {
+			NSInteger code = [NSString stringWithFormat:@"%@",response[@"code"]].integerValue;
+			if (code == 1) {
+				[self performSegueWithIdentifier:@"PKToResult" sender:nil];
+			}else{
+				[self showWait];
+			}
+		}
+	}];
+}
+
+
+/**
+ 显示等待对手页面,请求
+ code = 1结果页
+ code = 2每2秒请求一次轮询接口(requestPKPoll)
+ */
+- (void)showWait {
+	self.tableView.hidden   = YES;
+	self.audioButton.hidden = YES;
+	self.wordLabel.hidden   = YES;
+	self.timeLabel.hidden   = YES;
+	self.waitImageView.hidden = NO;
+	[LGProgressHUD showHUDAddedTo:self.view];
+	[self.request requestPKPoll:self.opponentModel.uid totalId:self.pkModel.totalId completion:^(id response, LGError *error) {
+		if ([self isNormal:error]) {
+			NSInteger code = [NSString stringWithFormat:@"%@",response[@"code"]].integerValue;
+			if (code == 1) {
+				[self performSegueWithIdentifier:@"PKToResult" sender:nil];
+			}else{
+				//2秒之后
+				dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+					[self showWait];
+				});
+			}
+			
+		}
+	}];
+}
+
+/**
+ 请求 PK 结果
+ */
+- (void)requestPKResult{
+	[LGProgressHUD showHUDAddedTo:self.view];
+	[self.request requestPKResult:self.opponentModel.uid totalId:self.pkModel.totalId completion:^(id response, LGError *error) {
+		if ([self isNormal:error]) {
+			NSLog(@"%@",response);
+		}
+	}];
+}
 
 /**
  提交答案
@@ -201,6 +314,10 @@ NSInteger countDown = 10;
 	return 48;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+	return 0.1;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	//答题所用时间
@@ -211,13 +328,17 @@ NSInteger countDown = 10;
 	
 	tableView.allowsSelection = NO;
 	
-	//如果选择不是正确答案时,把正确答案高亮(setWrong)
+	//如果选择不是正确答案时,把正确答案改成选中状态(selected),用户选择的错误答案改成错误高亮(setWrong方法)
 	if (indexPath.section != self.currentWordModel.trueAnswerIndex) {
+		
 		NSIndexPath *trueIndexPath = [NSIndexPath indexPathForRow:0 inSection:self.currentWordModel.trueAnswerIndex];
-		LGPKAnswerCell *cell = [tableView cellForRowAtIndexPath:trueIndexPath];
-		[cell setWrong];
+		LGPKAnswerCell *trueCell = [tableView cellForRowAtIndexPath:trueIndexPath];
+		trueCell.selected = YES;
+		
+		LGPKAnswerCell *userCell = [tableView cellForRowAtIndexPath:indexPath];
+		[userCell setWrong];
 	}
-	//1秒之后
+	
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		NSString *userAnswer = self.currentWordModel.selectArray[indexPath.section];
 		[self nextQuestionWithCurrentAnswer:userAnswer duration:duration];

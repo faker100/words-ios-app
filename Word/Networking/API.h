@@ -210,4 +210,11 @@ typedef NS_ENUM(NSUInteger, LGPKAnswerType) {
 //pk 时 激活 app 重新连接 pk
 #define PK_CONNECT_URL			        @"http://words.viplgw.cn/cn/app-api/pk-connect"
 
+//pk 完成
+#define PK_FINISH_URL					@"http://words.viplgw.cn/cn/app-api/pk-finish"
 
+//pk 结果
+#define PK_RESULT_URL					@"http://words.viplgw.cn/cn/app-api/pk-result"
+
+//pk 轮询请求
+#define PK_POLL_URL						@"http://words.viplgw.cn/cn/app-api/pk-poll"

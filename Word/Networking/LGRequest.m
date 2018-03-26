@@ -60,15 +60,17 @@
 }
 
 - (void)requestCheckCode:(NSString *)username usernameType:(LGUsernameType)usernameType useType:(LGCheckCodeUseType)useType completion:(comletionBlock)completion{
-	self.parameter = (NSMutableDictionary *)self.parameter;
-	[self.parameter setValue:@(useType) forKey:@"type"];
+	
+	NSMutableDictionary *tempParameter = [NSMutableDictionary dictionary];
+	[tempParameter setValue:@(useType) forKey:@"type"];
 	if (usernameType == LGUsernamePhoneType) {
 		self.url = GET_CHECK_CODE_PHONE;
-		[self.parameter setValue:username forKey:@"phoneNum"];
+		[tempParameter setValue:username forKey:@"phoneNum"];
 	}else{
 		self.url = GET_CHECK_CODE_EMAIL;
-		[self.parameter setValue:username forKey:@"email"];
+		[tempParameter setValue:username forKey:@"email"];
 	}
+	self.parameter = tempParameter;
 	[self postRequestCompletion:completion];
 }
 
@@ -371,5 +373,34 @@
                        };
     [self postRequestCompletion:completion];
 }
+
+- (void)requestPKFinish:(NSString *)uid totalId:(NSString *)totalId completion:(comletionBlock)completion{
+	self.url = PK_FINISH_URL;
+	self.parameter = @{
+					   @"uid" : uid,
+					   @"totalId" : totalId
+					   };
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestPKResult:(NSString *)uid totalId:(NSString *)totalId completion:(comletionBlock)completion{
+	self.url = PK_RESULT_URL;
+	self.parameter = @{
+					   @"uid" : uid,
+					   @"totalId" : totalId
+					   };
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestPKPoll:(NSString *)opponentUid totalId:(NSString *)totalId completion:(comletionBlock)completion{
+	self.url = PK_POLL_URL;
+	self.parameter = @{
+					   @"uid2" : opponentUid,
+					   @"totalId" : totalId
+					   };
+	[self postRequestCompletion:completion];
+}
+
+
 
 @end

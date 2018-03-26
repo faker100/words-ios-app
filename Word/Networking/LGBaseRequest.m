@@ -31,8 +31,6 @@ static AFHTTPSessionManager *manager;
 																 @"text/plain",
 																 nil];
 		});
-		//NSMutableDictionary 对象
-		self.parameter = [NSMutableDictionary dictionary];
 	}
 	return self;
 }

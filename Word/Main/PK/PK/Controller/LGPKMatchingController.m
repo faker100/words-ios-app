@@ -57,7 +57,9 @@
 - (void)viewDidDisappear:(BOOL)animated{
 	[super viewDidDisappear:animated];
 	[self removeNotification];
-	if (!self.disappearWithAgreePK) {
+	
+	//当界面消失时,如果不是因为同意 pk跳转的界面, 并且已经匹配成功,则调用取消匹配接口
+	if ((!self.disappearWithAgreePK) && self.matchType == LGMatchSuccess) {
 		[self requestPkChoice:LGPKChoiceCancel completion:nil];
 	}
 }
@@ -120,7 +122,7 @@
 
 /**
  接受自定义消息
- userInfo 中 type = 1 匹配对手
+ userInfo 中 type = 1 匹配对手成功
  			 type = 2 都准备成功,跳转 pk界面
              type = 3 取消对手
  
