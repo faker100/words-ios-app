@@ -64,7 +64,7 @@
         [LGProgressHUD showHUDAddedTo:self.view];
         [self.request updatePhone:text1 code:text2 completion:^(id response, LGError *error) {
             if ([self isNormal:error]) {
-                [self updateInfoSuccess];
+				[self updateInfoSuccess:text1];
             }
         }];
     }else if (self.type == LGUpdateEmail){
@@ -79,7 +79,7 @@
         [LGProgressHUD showHUDAddedTo:self.view];
         [self.request updateEmail:text1 code:text2 completion:^(id response, LGError *error) {
             if ([self isNormal:error]) {
-                [self updateInfoSuccess];
+				[self updateInfoSuccess:text1];
             }
         }];
     }else{
@@ -93,14 +93,34 @@
         }
         [LGProgressHUD showHUDAddedTo:self.view];
         [self.request updatePassword:text1 newPassword:text2 completion:^(id response, LGError *error) {
-            [self updateInfoSuccess];
+			if ([self isNormal:error]) {
+				[self updateInfoSuccess:text1];
+			}
+			
         }];
     }
 }
 
-//修改成功
-- (void)updateInfoSuccess{
-    
+
+/**
+ 修改成功,更新本地
+
+ @param info 修改成功的信息
+ */
+- (void)updateInfoSuccess:(NSString *)info{
+	
+	LGUserModel *user = [LGUserManager shareManager].user;
+	if (self.type == LGUpdateEmail) {
+		user.email = info;
+	}else if (self.type == LGUpdatePhone){
+		user.phone = info;
+	}else{
+		user.password = info;
+	}
+	
+	[LGProgressHUD showSuccess:@"修改成功" toView:self.view completionBlock:^{
+		[self dismissViewControllerAnimated:YES completion:nil];
+	}];
 }
 
 //获取验证码
@@ -127,7 +147,7 @@
     [LGProgressHUD showHUDAddedTo:self.view];
      [self.request requestCheckCode:str usernameType:usernameType useType:LGCheckCodeUseTypeChangeUser completion:^(id response, LGError *error) {
         if ([self isNormal:error]) {
-           // [self beginCountDown];
+            [self beginCountDown];
         }
     }];
 }
@@ -135,7 +155,7 @@
 //倒计时
 - (void)beginCountDown{
     self.verificationCodeButton.enabled = NO;
-    time = [LGTool beginCountDownWithSecond:60 completion:^(NSInteger currtentSecond) {
+    time = [LGTool beginCountDownWithSecond:4 completion:^(NSInteger currtentSecond) {
         if (currtentSecond == 0) {
             self.verificationCodeButton.enabled = YES;
         }

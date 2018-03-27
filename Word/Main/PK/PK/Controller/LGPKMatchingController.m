@@ -70,7 +70,7 @@
 }
 
 /**
- 更新圆形头像
+ 更新圆形头像,适配不同屏幕
  */
 - (void)uploadHeadRadius{
 	CGFloat radius = CGRectGetWidth(self.opponentHeadImageView.frame) / 2.0f;
@@ -169,7 +169,10 @@
 //开始 pk
 - (IBAction)beginPkAction:(id)sender {
 	
+	[self setPKButtonEnable:NO];
+	
 	[self requestPkChoice:LGPKChoiceAgree completion:^{
+		
 		if (timer) {
 			dispatch_source_cancel(timer);
 		}
@@ -224,6 +227,8 @@
 		
 		if ([self isNormal:error]) {
 			if (completion) completion();
+		}else{
+			[self setPKButtonEnable:YES];
 		}
 	}];
 }
@@ -239,6 +244,7 @@
 	
 	//切换 匹配中 后 发起匹配请求
 	if (matchType == LGMatching) {
+		[self setPKButtonEnable:YES];
 		[self.request requestPkMatchingCompletion:^(id response, LGError *error) {
 			if ([self isNormal:error]) {
 				
@@ -304,6 +310,16 @@
 }
 
 
+/**
+ 设置 pk 按钮状态背景
+
+ @param enable 是否可用
+ */
+- (void)setPKButtonEnable:(BOOL)enable {
+	self.beginPKButton.enabled = enable;
+	self.beginPKButton.backgroundColor = enable ? [UIColor lg_colorWithType:LGColor_Yellow] : [UIColor grayColor];
+}
+
 - (void)dealloc{
 	if (timer) {
 		dispatch_source_cancel(timer);
@@ -326,24 +342,6 @@
 @end
 
 
-@implementation  LGMatchToPKSegue
-
-
-/**
- 自定义跳转,先正常 push保证匹配页面controller的 各种 生命周期函数调用, 再在 navigation.controllers 中去移除匹配页面,使pk页面返回时,不出现匹配页面
- */
-- (void)perform{
-	
-	UIViewController *sourceVC = self.sourceViewController;
-	UIViewController *destinationVC = self.destinationViewController;
-	[sourceVC.navigationController pushViewController:destinationVC animated:YES];
-	
-	NSMutableArray  *controllers = [NSMutableArray arrayWithArray:sourceVC.navigationController.viewControllers];
-	[controllers removeObject:sourceVC];
-	[sourceVC.navigationController setViewControllers:controllers animated:YES];
-}
-
-@end
 
 
 

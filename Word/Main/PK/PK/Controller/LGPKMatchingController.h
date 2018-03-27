@@ -51,6 +51,9 @@ typedef NS_ENUM(NSUInteger, LGMatchingType) {
 //对手/用户,胜利/失败的 icon, 仅用于动画隐藏显示
 @property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *iconArray;
 
+//开始Pk 按钮
+@property (weak, nonatomic) IBOutlet UIButton *beginPKButton;
+
 /**
  底部 "重新匹配  "立即 Pk" button 约束
  默认, -70,隐藏是为0;
@@ -59,9 +62,5 @@ typedef NS_ENUM(NSUInteger, LGMatchingType) {
 
 @end
 
-//自定义跳转
-@interface LGMatchToPKSegue : UIStoryboardSegue
-
-@end
 
 

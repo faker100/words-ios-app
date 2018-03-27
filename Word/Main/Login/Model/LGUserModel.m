@@ -11,6 +11,9 @@
 
 #define LGUSER_ISREVIEW_KEY  @"LGUSER_ISREVIEW_KEY"
 #define FONT_SIZE_KEY	     @"FONT_SIZE_KEY"
+#define EMAIL_KEY			 @"EMAIL_KEY"
+#define PHONE_KEY			 @"PHONE_KEY"
+#define NICKNAME_KEY		 @"NICKNAME_KEY"
 
 @implementation LGUserModel
 
@@ -19,7 +22,6 @@
 		NSInteger type = [NSString stringWithFormat:@"%@",oldValue].integerValue;
 		return @(type);
 	}
-	
 	return oldValue;
 }
 
@@ -40,6 +42,30 @@
 	
 	NSDate *date = [[NSUserDefaults standardUserDefaults] objectForKey:LGUSER_ISREVIEW_KEY];
 	return [date isToday];
+}
+
+- (void)setEmail:(NSString *)email{
+	[[NSUserDefaults standardUserDefaults]setObject:email forKey:EMAIL_KEY];
+}
+
+- (NSString *)email{
+	return [[NSUserDefaults standardUserDefaults] objectForKey:EMAIL_KEY];
+}
+
+- (void)setPhone:(NSString *)phone{
+	[[NSUserDefaults standardUserDefaults]setObject:phone forKey:PHONE_KEY];
+}
+
+- (NSString *)phone{
+	return [[NSUserDefaults standardUserDefaults] objectForKey:PHONE_KEY];
+}
+
+- (void)setNickname:(NSString *)nickname{
+	[[NSUserDefaults standardUserDefaults]setObject:nickname forKey:NICKNAME_KEY];
+}
+
+- (NSString *)nickname{
+	return [[NSUserDefaults standardUserDefaults] objectForKey:NICKNAME_KEY];
 }
 
 @end

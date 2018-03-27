@@ -12,6 +12,7 @@
 #import "JPUSHService.h"
 #import "LGPlayer.h"
 #import "LGJPushReceiveMessageModel.h"
+#import "LGPKResultController.h"
 
 //倒计时时间
 NSInteger countDown = 20;
@@ -22,8 +23,11 @@ NSInteger countDown = 20;
 }
 @property (nonatomic, assign) NSInteger currentWordIndex;//当前单词 在 pkModel.words 中的 index
 @property (nonatomic, strong) LGPKWordModel *currentWordModel; //当前显示单词
-
+@property (nonatomic, assign) CGFloat userRighCount; //用户答对题目总数;
 @property (nonatomic, assign) NSInteger currentTime; //当前倒计时
+
+@property (nonatomic, assign) CGFloat userAccuracy; //用户正确率
+@property (nonatomic, assign) CGFloat opponentAccuracy; //对手正确率
 
 @end
 
@@ -70,24 +74,23 @@ NSInteger countDown = 20;
 	[defaultCenter removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
 }
 
+
+/**
+ 接受 jpush 应用内消息通知
+
+ */
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
 	
 	LGJPushReceiveMessageModel *pushModel = [LGJPushReceiveMessageModel mj_objectWithKeyValues:notification.userInfo];
 	if (pushModel.extras.type == 4) {
 		LGAtPKModel *pkModel = pushModel.extras.message;
-		LGAccuracyModel *currentUser;
-		LGAccuracyModel *opponentUser;
-		if ([pkModel.user1.uid isEqualToString:self.currentUserModel.uid]) {
-			currentUser  = pkModel.user1;
-			opponentUser = pkModel.user2;
-		}else{
-			currentUser  = pkModel.user2;
-			opponentUser = pkModel.user1;
-		}
-		self.userWinLabel.text = [NSString stringWithFormat:@"%@%%",currentUser.accuracy];
-		self.opponentWinLabel.text = [NSString stringWithFormat:@"%@%%",opponentUser.accuracy];
-		CGFloat tem = currentUser.accuracy.floatValue + opponentUser.accuracy.floatValue;
-		self.winProgressView.progress = tem == 0 ? 0.5 : currentUser.accuracy.integerValue / tem;
+		
+		//找到对手model
+		LGAccuracyModel *opponentUser = [pkModel.user1.uid isEqualToString:self.currentUserModel.uid] ? pkModel.user2 : pkModel.user1;
+		
+		self.opponentAccuracy = opponentUser.accuracy.floatValue;
+		self.userWinLabel.text = [NSString stringWithFormat:@"%.1f%%",self.userRighCount / self.pkModel.words.count];
+		self.opponentWinLabel.text = [NSString stringWithFormat:@"%.1f%%",opponentUser.accuracy.floatValue];
 	}
 	
 }
@@ -105,6 +108,9 @@ NSInteger countDown = 20;
  */
 - (void)applicationBecomeActive{
 	[LGProgressHUD showHUDAddedTo:self.view];
+	if (timer) {
+		dispatch_source_cancel(timer);
+	}
 	[self.request requestPKConnect:self.currentUserModel.uid totalId:self.pkModel.totalId completion:^(id response, LGError *error) {
 		if ([self isNormal:error showInView:self.view.window]) {
 			
@@ -133,8 +139,18 @@ NSInteger countDown = 20;
 
 #pragma mark - setter getter
 
+- (void)setUserAccuracy:(CGFloat)userAccuracy{
+	_userAccuracy = userAccuracy;
+	self.userWinLabel.text = [NSString stringWithFormat:@"%.1f%%",userAccuracy];
+	[self updateAccuracyProgress];
+	
+}
 
-
+- (void)setOpponentAccuracy:(CGFloat)opponentAccuracy{
+	_opponentAccuracy = opponentAccuracy;
+	self.opponentWinLabel.text = [NSString stringWithFormat:@"%.1f%%",opponentAccuracy];
+	[self updateAccuracyProgress];
+}
 
 /**
  设置当前 题目
@@ -229,13 +245,12 @@ NSInteger countDown = 20;
  code = 1结果页
  code = 2每2秒请求一次轮询接口(requestPKPoll)
  */
-- (void)showWait {
+- (void)showWait{
 	self.tableView.hidden   = YES;
 	self.audioButton.hidden = YES;
 	self.wordLabel.hidden   = YES;
 	self.timeLabel.hidden   = YES;
 	self.waitImageView.hidden = NO;
-	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestPKPoll:self.opponentModel.uid totalId:self.pkModel.totalId completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			NSInteger code = [NSString stringWithFormat:@"%@",response[@"code"]].integerValue;
@@ -252,17 +267,6 @@ NSInteger countDown = 20;
 	}];
 }
 
-/**
- 请求 PK 结果
- */
-- (void)requestPKResult{
-	[LGProgressHUD showHUDAddedTo:self.view];
-	[self.request requestPKResult:self.opponentModel.uid totalId:self.pkModel.totalId completion:^(id response, LGError *error) {
-		if ([self isNormal:error]) {
-			NSLog(@"%@",response);
-		}
-	}];
-}
 
 /**
  提交答案
@@ -302,7 +306,7 @@ NSInteger countDown = 20;
 	LGPKAnswerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGPKAnswerCell"];
 	LGPKWordModel *pkWord = self.pkModel.words[self.currentWordIndex];
     cell.answerLabel.text = pkWord.selectArray[indexPath.section];
-	[cell setNormal];
+	cell.type = LGPKAnswerCellNormal;
 	return cell;
 }
 
@@ -328,31 +332,67 @@ NSInteger countDown = 20;
 	
 	tableView.allowsSelection = NO;
 	
-	//如果选择不是正确答案时,把正确答案改成选中状态(selected),用户选择的错误答案改成错误高亮(setWrong方法)
-	if (indexPath.section != self.currentWordModel.trueAnswerIndex) {
-		
+	/**
+	 * 用户选择正确答案时,正确个数+1
+	 * 如果选择不是正确答案时,把正确答案改成选中状态(selected),用户选择的错误答案改成错误高亮(setWrong方法)
+	 */
+	if (indexPath.section == self.currentWordModel.trueAnswerIndex) {
+		self.userRighCount++;
+	}else{
 		NSIndexPath *trueIndexPath = [NSIndexPath indexPathForRow:0 inSection:self.currentWordModel.trueAnswerIndex];
 		LGPKAnswerCell *trueCell = [tableView cellForRowAtIndexPath:trueIndexPath];
-		trueCell.selected = YES;
+		trueCell.type = LGPKAnswerCellRigh;
 		
 		LGPKAnswerCell *userCell = [tableView cellForRowAtIndexPath:indexPath];
-		[userCell setWrong];
+		userCell.type = LGPKAnswerCellWrong;
 	}
 	
+	self.userAccuracy = self.userRighCount / self.pkModel.words.count;
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		NSString *userAnswer = self.currentWordModel.selectArray[indexPath.section];
 		[self nextQuestionWithCurrentAnswer:userAnswer duration:duration];
 	});
 }
 
-/*
+
+/**
+ 更新正确率进度条
+ */
+- (void)updateAccuracyProgress{
+	//计算双方正确率和
+	CGFloat totalAccuracy = self.opponentAccuracy + self.userAccuracy;
+	//当前用户正确率占比
+	CGFloat userAccuracyProgress = 0;
+	//对手正确率占比
+	CGFloat opponentAccuracyProgress = 0;
+	if (totalAccuracy != 0) {
+		userAccuracyProgress = self.opponentAccuracy / totalAccuracy;
+		opponentAccuracyProgress = self.opponentAccuracy / totalAccuracy;
+	}
+	//设置进度条进度,双方正确率都为0时,进度为 50%
+	CGFloat tem = userAccuracyProgress + opponentAccuracyProgress;
+	self.winProgressView.progress = tem == 0 ? 0.5 : userAccuracyProgress / tem;
+}
+
+- (void)dealloc{
+	if (timer) {
+		dispatch_source_cancel(timer);
+	}
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"PKToResult"]) {
+		LGPKResultController *result = segue.destinationViewController;
+		result.opponentUserModel = self.opponentModel;
+		result.currentUserModel  = self.currentUserModel;
+		result.pkModel = self.pkModel;
+	}
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

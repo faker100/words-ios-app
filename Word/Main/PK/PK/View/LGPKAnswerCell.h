@@ -8,19 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, LGPKAnswerCellType) {
+	LGPKAnswerCellNormal,
+	LGPKAnswerCellRigh,
+	LGPKAnswerCellWrong,
+};
+
 @interface LGPKAnswerCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *answerLabel;
 
-/**
- 设置答案错误状态
- */
-- (void)setWrong;
+@property (nonatomic, assign) LGPKAnswerCellType type;
 
+@property (nonatomic, assign) BOOL wrong;
 
-/**
- 设置正常状态
- */
-- (void)setNormal;
 
 @end

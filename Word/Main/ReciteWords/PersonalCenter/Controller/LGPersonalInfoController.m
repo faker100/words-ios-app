@@ -17,6 +17,10 @@
 @interface LGPersonalInfoController ()<UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 
+
+/**
+ 当为 nil 时重新初始化table数据源
+ */
 @property (nonatomic, strong) NSMutableArray<NSMutableArray<LGSettingModel*> *> *section_Array;
 
 
@@ -28,7 +32,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.tableView registerNib:[UINib nibWithNibName:@"LGSettingHeaderView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGSettingHeaderView"];
-    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,9 +46,15 @@
 	
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	self.section_Array = nil;
+	[self.tableView reloadData];
+}
 
 
 #pragma mark - getter
+
 - (NSMutableArray<NSMutableArray<LGSettingModel *> *> *)section_Array{
 	if (!_section_Array) {
 		

@@ -88,6 +88,8 @@
 		56BBBFC320564B930057BDF2 /* LGSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BBBFC220564B930057BDF2 /* LGSettingModel.m */; };
 		56BBBFC7205664B60057BDF2 /* LGSettingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BBBFC6205664B60057BDF2 /* LGSettingHeaderView.m */; };
 		56BBBFC9205664C10057BDF2 /* LGSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56BBBFC8205664C10057BDF2 /* LGSettingHeaderView.xib */; };
+		56C078D52069DFF700C0F513 /* LGPKResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C078D42069DFF700C0F513 /* LGPKResultModel.m */; };
+		56C078D92069E7E300C0F513 /* LGSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C078D82069E7E300C0F513 /* LGSegue.m */; };
 		56C64699204E43AB00E895B3 /* LGTimeReivewCountAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C64698204E43AB00E895B3 /* LGTimeReivewCountAlertView.m */; };
 		56C6469B204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56C6469A204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib */; };
 		56C646A3204E64B000E895B3 /* WordTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C646A2204E64B000E895B3 /* WordTests.m */; };
@@ -300,6 +302,10 @@
 		56BBBFC5205664B60057BDF2 /* LGSettingHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSettingHeaderView.h; sourceTree = "<group>"; };
 		56BBBFC6205664B60057BDF2 /* LGSettingHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGSettingHeaderView.m; sourceTree = "<group>"; };
 		56BBBFC8205664C10057BDF2 /* LGSettingHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGSettingHeaderView.xib; sourceTree = "<group>"; };
+		56C078D32069DFF700C0F513 /* LGPKResultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKResultModel.h; sourceTree = "<group>"; };
+		56C078D42069DFF700C0F513 /* LGPKResultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKResultModel.m; sourceTree = "<group>"; };
+		56C078D72069E7E300C0F513 /* LGSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSegue.h; sourceTree = "<group>"; };
+		56C078D82069E7E300C0F513 /* LGSegue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGSegue.m; sourceTree = "<group>"; };
 		56C64697204E43AB00E895B3 /* LGTimeReivewCountAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTimeReivewCountAlertView.h; sourceTree = "<group>"; };
 		56C64698204E43AB00E895B3 /* LGTimeReivewCountAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTimeReivewCountAlertView.m; sourceTree = "<group>"; };
 		56C6469A204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGTimeReivewCountAlertView.xib; sourceTree = "<group>"; };
@@ -421,6 +427,7 @@
 		56506D012016D773000FD8FA /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				56C078D62069E7A200C0F513 /* LGSegue */,
 				56585953203EB2F500BB59ED /* LGDottedLineView */,
 				5612BFAF2021AC060038D653 /* LGProgressView */,
 				56506D022016D7E7000FD8FA /* LGProgressHUD */,
@@ -521,6 +528,8 @@
 				566FF2D82057A686004574EA /* LGPKRankModel.m */,
 				564A6B912063521400242FC0 /* LGJPushReceiveMessageModel.h */,
 				564A6B922063521400242FC0 /* LGJPushReceiveMessageModel.m */,
+				56C078D32069DFF700C0F513 /* LGPKResultModel.h */,
+				56C078D42069DFF700C0F513 /* LGPKResultModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -800,6 +809,15 @@
 				56BBBFC220564B930057BDF2 /* LGSettingModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		56C078D62069E7A200C0F513 /* LGSegue */ = {
+			isa = PBXGroup;
+			children = (
+				56C078D72069E7E300C0F513 /* LGSegue.h */,
+				56C078D82069E7E300C0F513 /* LGSegue.m */,
+			);
+			path = LGSegue;
 			sourceTree = "<group>";
 		};
 		56C646A1204E64B000E895B3 /* WordTests */ = {
@@ -1278,9 +1296,11 @@
 				56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */,
 				5627C9F2204D2EA90013F1CC /* LGTimeReviewController.m in Sources */,
 				567A3AD7203FEB4100A41692 /* LGWordErrorCell.m in Sources */,
+				56C078D92069E7E300C0F513 /* LGSegue.m in Sources */,
 				5627C9F5204D2F790013F1CC /* LGReviewSelectTimeCell.m in Sources */,
 				563F7DA5202306B500944730 /* LGPlayer.m in Sources */,
 				566B9860202003E800D368AC /* LGNoStudyTypeController.m in Sources */,
+				56C078D52069DFF700C0F513 /* LGPKResultModel.m in Sources */,
 				560F0FD12022AFBA00324510 /* LGFreeWordModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

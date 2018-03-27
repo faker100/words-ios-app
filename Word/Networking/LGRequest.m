@@ -62,13 +62,13 @@
 - (void)requestCheckCode:(NSString *)username usernameType:(LGUsernameType)usernameType useType:(LGCheckCodeUseType)useType completion:(comletionBlock)completion{
 	
 	NSMutableDictionary *tempParameter = [NSMutableDictionary dictionary];
-	[tempParameter setValue:@(useType) forKey:@"type"];
+	[tempParameter setObject:@(useType) forKey:@"type"];
 	if (usernameType == LGUsernamePhoneType) {
 		self.url = GET_CHECK_CODE_PHONE;
-		[tempParameter setValue:username forKey:@"phoneNum"];
+		[tempParameter setObject:username forKey:@"phoneNum"];
 	}else{
 		self.url = GET_CHECK_CODE_EMAIL;
-		[tempParameter setValue:username forKey:@"email"];
+		[tempParameter setObject:username forKey:@"email"];
 	}
 	self.parameter = tempParameter;
 	[self postRequestCompletion:completion];

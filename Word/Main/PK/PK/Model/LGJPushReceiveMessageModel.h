@@ -60,7 +60,7 @@
 
 @property (nonatomic, copy) NSString *answer;
 @property (nonatomic, copy) NSString *phonetic_uk; //音标
-@property (nonatomic, copy) NSString *select;
+@property (nonatomic, copy) NSString *select;	//选项字符串
 @property (nonatomic, copy) NSString *uk_audio;
 @property (nonatomic, copy) NSString *word;
 @property (nonatomic, copy) NSString *wordsId;
@@ -69,6 +69,7 @@
 @property (nonatomic, copy) NSArray<NSString *> *selectArray;
 //在selectArray中正确答案的 index ,0开始
 @property (nonatomic, assign) NSInteger trueAnswerIndex;
+
 
 @end
 
