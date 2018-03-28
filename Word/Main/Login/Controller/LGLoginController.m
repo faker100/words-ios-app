@@ -38,12 +38,14 @@
 	self.userNameTextField.attributedPlaceholder = [[NSAttributedString alloc]initWithString:@"请输入手机号/邮箱" attributes:attributeDic];
 	self.passwordTextField.attributedPlaceholder = [[NSAttributedString alloc]initWithString:@"请输入密码" attributes:attributeDic];
 	
-	LGUserModel *user = [LGUserManager shareManager].user;
-	if (StringNotEmpty(user.phone) || StringNotEmpty(user.email)) {
-		self.userNameTextField.text = StringNotEmpty(user.phone) ? user.phone : user.email;
+	NSString *phone    = [LGUserManager previousPhone];
+	NSString *email    = [LGUserManager previousEmail];
+	NSString *password = [LGUserManager previousPassword];
+	if (StringNotEmpty(phone) || StringNotEmpty(email)) {
+		self.userNameTextField.text = StringNotEmpty(phone) ? phone : email;
 	}
-	if (StringNotEmpty(user.password)) {
-		self.passwordTextField.text = user.password;
+	if (StringNotEmpty(password)) {
+		self.passwordTextField.text = password;
 	}
 	
 }

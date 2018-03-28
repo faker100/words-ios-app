@@ -74,7 +74,7 @@ typedef NS_ENUM(NSUInteger, LGPKAnswerType) {
 /*************************************** 各种 key **********************************/
 
 // code = 99 未登录通知
-#define NO_LOGIN_NOTIFICATION 	@"not_logged"
+#define SHOW_LOGIN_NOTIFICATION 	@"not_logged"
 
 #define LOGIN_NOTIFICATION      @"login_success"
 
@@ -116,6 +116,9 @@ typedef NS_ENUM(NSUInteger, LGPKAnswerType) {
 
 //上传头像
 #define UPDATE_HEAD_IMG_URL             @"http://www.gmatonline.cn/index.php?web/webapi/fileimg"
+
+//更改昵称
+#define UPDATE_NICKNAME_URL				@"http://login.gmatonline.cn/cn/app-api/change-nickname"
 
 //更改学习模式
 #define UPDATE_STUDY_TYPE_URL			@"http://words.viplgw.cn/cn/app-api/update-model"

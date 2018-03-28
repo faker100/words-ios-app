@@ -21,13 +21,13 @@ NSInteger countDown = 20;
 {
 	dispatch_source_t timer;
 }
-@property (nonatomic, assign) NSInteger currentWordIndex;//当前单词 在 pkModel.words 中的 index
+@property (nonatomic, assign) NSInteger currentWordIndex;//当前单词 在 pkModel.words 中的 index,0开始
 @property (nonatomic, strong) LGPKWordModel *currentWordModel; //当前显示单词
 @property (nonatomic, assign) CGFloat userRighCount; //用户答对题目总数;
 @property (nonatomic, assign) NSInteger currentTime; //当前倒计时
 
-@property (nonatomic, assign) CGFloat userAccuracy; //用户正确率
-@property (nonatomic, assign) CGFloat opponentAccuracy; //对手正确率
+@property (nonatomic, assign) CGFloat userAccuracy; //用户正确率  百分比
+@property (nonatomic, assign) CGFloat opponentAccuracy; //对手正确率 百分比
 
 @end
 
@@ -36,10 +36,16 @@ NSInteger countDown = 20;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	[self configDefaultData];
+}
+
+//默认数据
+- (void)configDefaultData{
 	[self.navigationController setNavigationBarHidden:YES];
 	[self.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(self.currentUserModel.image)] placeholderImage:[UIImage imageNamed:@"pk_default_opponent"]];
 	[self.opponentImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(self.opponentModel.image)] placeholderImage:[UIImage imageNamed:@"pk_default_opponent"]];
 	self.currentWordModel = self.pkModel.words.firstObject;
+	self.opponentProgressLabel.text = [NSString stringWithFormat:@"1/%ld",self.pkModel.words.count];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -83,14 +89,12 @@ NSInteger countDown = 20;
 	
 	LGJPushReceiveMessageModel *pushModel = [LGJPushReceiveMessageModel mj_objectWithKeyValues:notification.userInfo];
 	if (pushModel.extras.type == 4) {
-		LGAtPKModel *pkModel = pushModel.extras.message;
+		LGAtPKModel *atPKModel = pushModel.extras.message;
 		
-		//找到对手model
-		LGAccuracyModel *opponentUser = [pkModel.user1.uid isEqualToString:self.currentUserModel.uid] ? pkModel.user2 : pkModel.user1;
-		
+		//找到对手model,(用户的信息本地计算)
+		LGAccuracyModel *opponentUser = [atPKModel.user1.uid isEqualToString:self.currentUserModel.uid] ? atPKModel.user2 : atPKModel.user1;
+		self.opponentProgressLabel.text = [NSString stringWithFormat:@"%@/%ld",opponentUser.num,self.pkModel.words.count];
 		self.opponentAccuracy = opponentUser.accuracy.floatValue;
-		self.userWinLabel.text = [NSString stringWithFormat:@"%.1f%%",self.userRighCount / self.pkModel.words.count];
-		self.opponentWinLabel.text = [NSString stringWithFormat:@"%.1f%%",opponentUser.accuracy.floatValue];
 	}
 	
 }
@@ -153,13 +157,14 @@ NSInteger countDown = 20;
 }
 
 /**
- 设置当前 题目
+ 设置当前题目,更新做题进度
 
  @param currentWordModel 当前题目
  @param time 题目倒计时时长
  */
 - (void)setCurrentWordModel:(LGPKWordModel *)currentWordModel beginCountDown:(NSInteger)time{
 	_currentWordModel = currentWordModel;
+	self.userProgressLabel.text = [NSString stringWithFormat:@"%ld/%ld",self.currentWordIndex + 1,self.pkModel.words.count];
 	self.wordLabel.text = currentWordModel.word;
 	[self.audioButton setTitle:currentWordModel.phonetic_uk forState:UIControlStateNormal];
 	self.tableView.allowsSelection = YES;
@@ -185,6 +190,9 @@ NSInteger countDown = 20;
 }
 
 #pragma mark -
+
+
+
 /**
  倒计时
 
@@ -246,11 +254,12 @@ NSInteger countDown = 20;
  code = 2每2秒请求一次轮询接口(requestPKPoll)
  */
 - (void)showWait{
+	[self beginWaitAnimation];
 	self.tableView.hidden   = YES;
 	self.audioButton.hidden = YES;
 	self.wordLabel.hidden   = YES;
 	self.timeLabel.hidden   = YES;
-	self.waitImageView.hidden = NO;
+	self.waitView.hidden = NO;
 	[self.request requestPKPoll:self.opponentModel.uid totalId:self.pkModel.totalId completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			NSInteger code = [NSString stringWithFormat:@"%@",response[@"code"]].integerValue;
@@ -267,6 +276,23 @@ NSInteger countDown = 20;
 	}];
 }
 
+/**
+ "请等待..."动画
+ */
+- (void)beginWaitAnimation{
+	if (self.waitImageView.isAnimating) return;
+	
+	NSArray<UIImage *> *imageArray = @[
+									   [UIImage imageNamed:@"pk_wait_1"],
+									   [UIImage imageNamed:@"pk_wait_2"],
+									   [UIImage imageNamed:@"pk_wait_3"],
+									   [UIImage imageNamed:@"pk_wait_4"],
+									   ];
+	[self.waitImageView setAnimationImages:imageArray];
+	self.waitImageView.animationDuration = 1;
+	self.waitImageView.animationRepeatCount = 0;
+	[self.waitImageView startAnimating];
+}
 
 /**
  提交答案
@@ -346,8 +372,8 @@ NSInteger countDown = 20;
 		LGPKAnswerCell *userCell = [tableView cellForRowAtIndexPath:indexPath];
 		userCell.type = LGPKAnswerCellWrong;
 	}
-	
-	self.userAccuracy = self.userRighCount / self.pkModel.words.count;
+	//用户正确率 百分比
+	self.userAccuracy = self.userRighCount / (self.currentWordIndex + 1) * 100;
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		NSString *userAnswer = self.currentWordModel.selectArray[indexPath.section];
 		[self nextQuestionWithCurrentAnswer:userAnswer duration:duration];
@@ -366,7 +392,7 @@ NSInteger countDown = 20;
 	//对手正确率占比
 	CGFloat opponentAccuracyProgress = 0;
 	if (totalAccuracy != 0) {
-		userAccuracyProgress = self.opponentAccuracy / totalAccuracy;
+		userAccuracyProgress = self.userAccuracy / totalAccuracy;
 		opponentAccuracyProgress = self.opponentAccuracy / totalAccuracy;
 	}
 	//设置进度条进度,双方正确率都为0时,进度为 50%

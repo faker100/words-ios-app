@@ -374,6 +374,14 @@
     [self postRequestCompletion:completion];
 }
 
+- (void)updateNickname:(NSString *)nickname completion:(comletionBlock)completion{
+	self.url = UPDATE_NICKNAME_URL;
+	self.parameter = @{
+					   @"nickname" : nickname
+					   };
+	[self postRequestCompletion:completion];
+}
+
 - (void)requestPKFinish:(NSString *)uid totalId:(NSString *)totalId completion:(comletionBlock)completion{
 	self.url = PK_FINISH_URL;
 	self.parameter = @{

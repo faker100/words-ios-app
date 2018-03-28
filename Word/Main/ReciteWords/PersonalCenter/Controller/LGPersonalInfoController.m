@@ -41,9 +41,10 @@
 
 //退出
 - (IBAction)logoutAction:(id)sender {
-	[self.navigationController popToRootViewControllerAnimated:YES];
-	[[NSNotificationCenter defaultCenter] postNotificationName:NO_LOGIN_NOTIFICATION object:nil];
 	
+	[[LGUserManager shareManager] logout];
+	[[NSNotificationCenter defaultCenter] postNotificationName:SHOW_LOGIN_NOTIFICATION object:nil];
+	[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -58,7 +59,7 @@
 - (NSMutableArray<NSMutableArray<LGSettingModel *> *> *)section_Array{
 	if (!_section_Array) {
 		
-		/***************************  section 1  ***************************/
+		/***************************  section 0  ***************************/
 		
 		NSMutableArray *section_1 = [NSMutableArray array];
 		LGUserModel *user = [LGUserManager shareManager].user;
@@ -97,7 +98,7 @@
 			[section_1 addObject:model];
 		}
 		
-		/***************************  section 2  ***************************/
+		/***************************  section 1  ***************************/
 		
 		NSMutableArray *section_2 = [NSMutableArray array];
 		for (int i = 0; i < 3; i++) {
@@ -124,23 +125,25 @@
 			[section_2 addObject:model];
 		}
 		
-		/***************************  section 3  ***************************/
+		/***************************  section 2  ***************************/
 		
 		NSMutableArray *section_3 = [NSMutableArray array];
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 1; i++) {
 			LGSettingModel *model = [LGSettingModel new];
 			model.type = LGSettingMore;
 			if (i == 0) {
 				model.infoTitle = @"版本检测";
 				model.info 		= [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
-			}else{
+			}
+		/*	}else{
 				model.infoTitle = @"缓存";
 				model.info = @"";
 			}
+		 */
 			[section_3 addObject:model];
 		}
 		
-		/***************************  section 4  ***************************/
+		/***************************  section 3  ***************************/
 		
 		NSMutableArray *section_4 = [NSMutableArray array];
 		LGSettingModel *model = [LGSettingModel new];
@@ -205,13 +208,19 @@
 	if (indexPath.section == 0) {
 		if (indexPath.row == 0) {
 			[self changeHead];
-        }else if (indexPath.row == 3){
+		}else if (indexPath.row == 2){
+			[self performSegueWithIdentifier:@"settingToNickname" sender:nil];
+		}else if (indexPath.row == 3){
             [self performSegueWithIdentifier:@"settingToUpdateInfo" sender:@(LGUpdatePhone)];
         }else if (indexPath.row == 4){
             [self performSegueWithIdentifier:@"settingToUpdateInfo" sender:@(LGUpdateEmail)];
         }else if (indexPath.row == 5){
             [self performSegueWithIdentifier:@"settingToUpdateInfo" sender:@(LGUpdatePassword)];
         }
+	}else if (indexPath.section == 3){
+		if (indexPath.row == 0) {
+			[self performSegueWithIdentifier:@"settingToFont" sender:nil];
+		}
 	}
     
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];

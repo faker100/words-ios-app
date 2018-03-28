@@ -7,6 +7,7 @@
 //
 
 #import "LGPersonalCenterController.h"
+#import "LGUserManager.h"
 
 @interface LGPersonalCenterController ()
 
@@ -24,9 +25,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidLayoutSubviews{
+	
+	if ([[LGUserManager shareManager] isLogin]) {
+		LGUserModel *user = [LGUserManager shareManager].user;
+		self.userNameLabel.text = user.nickname;
+		[self.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(user.image)] placeholderImage:PLACEHOLDERIMAGE];
+	}else{
+		self.userNameLabel.text = @"请登录";
+	}
+}
+
 //跳转个人资料
 - (IBAction)pushToUserInfo:(id)sender {
-	[self performSegueWithIdentifier:@"personalCenterToPersonInfo" sender:nil];
+	if ([[LGUserManager shareManager] isLogin]) {
+		[self performSegueWithIdentifier:@"personalCenterToPersonInfo" sender:nil];
+	}else{
+		[[NSNotificationCenter defaultCenter] postNotificationName:SHOW_LOGIN_NOTIFICATION object:nil];
+	}
+	
 }
 
 /*

@@ -13,7 +13,7 @@
 - (BOOL)isPhoneNum;
 - (BOOL)isEmail;
 - (BOOL)isRightPassword;
-
+- (BOOL)isNickname;
 
 /**
  根据指定宽度下,获取文本高度

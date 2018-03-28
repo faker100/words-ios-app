@@ -84,8 +84,9 @@
 
 @interface LGAccuracyModel : NSObject
 
-@property (nonatomic, copy) NSString *accuracy;
+@property (nonatomic, copy) NSString *accuracy; //正确率
 @property (nonatomic, copy) NSString *uid;
+@property (nonatomic, copy) NSString *num; //进度
 
 @end
 

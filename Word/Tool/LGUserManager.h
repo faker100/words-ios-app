@@ -23,6 +23,30 @@
 //清除 cookie
 + (void)cleanCookie;
 
+//是否登录
 - (BOOL)isLogin;
+
+//退出登录
+- (void)logout;
+
+
+/**
+ 上一个用户的电话,用于登录界面的默认值
+ 
+ */
++ (NSString *)previousPhone;
+
+/**
+ 上一个用户的邮箱,用于登录界面的默认值
+ 
+ */
++ (NSString *)previousEmail;
+
+/**
+ 上一个用户的手机,用于登录界面的默认值
+ 
+ */
++ (NSString *)previousPassword;
+
 
 @end

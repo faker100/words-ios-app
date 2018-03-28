@@ -101,6 +101,14 @@
  */
 - (void)updatePassword:(NSString *)oldPassword newPassword:(NSString *)newPassword completion:(comletionBlock)completion;
 
+
+/**
+ 修改昵称
+
+ @param nickname 昵称
+ */
+- (void)updateNickname:(NSString *)nickname completion:(comletionBlock)completion;
+
 /**
  更改学习模式
 

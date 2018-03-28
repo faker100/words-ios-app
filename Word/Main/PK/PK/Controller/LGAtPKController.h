@@ -45,7 +45,10 @@
 //音频
 @property (weak, nonatomic) IBOutlet UIButton *audioButton;
 
-//等待对手 image
+//等待对手 view
+@property (weak, nonatomic) IBOutlet UIView *waitView;
+
+//"请等待..." image
 @property (weak, nonatomic) IBOutlet UIImageView *waitImageView;
 
 

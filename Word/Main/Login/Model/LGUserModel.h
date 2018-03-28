@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+#define LGUSER_ISREVIEW_KEY  @"LGUSER_ISREVIEW_KEY"
+#define FONT_SIZE_KEY	     @"FONT_SIZE_KEY"
+#define EMAIL_KEY			 @"EMAIL_KEY"
+#define PHONE_KEY			 @"PHONE_KEY"
+#define NICKNAME_KEY		 @"NICKNAME_KEY"
+#define PASSWORD_KEY		 @"PASSWORD_KEY"
+
 @interface LGUserModel : NSObject
 
 @property (nonatomic, copy) NSString *email;
@@ -26,5 +33,8 @@
 @property (nonatomic, assign) LGStudyType  studyModel; //用户学习模式;
 @property (nonatomic, copy) NSString *planWords; //判断用户当前词包是否有计划; nil 没有计划
 @property (nonatomic, assign) BOOL isTodayReview; //是否已经看过首页今日复习弹框
+
+
+
 
 @end

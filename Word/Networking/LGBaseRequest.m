@@ -142,7 +142,7 @@ static AFHTTPSessionManager *manager;
 				
 				//发出未登录通知
 				NSString *message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];
-				[[NSNotificationCenter defaultCenter] postNotificationName:NO_LOGIN_NOTIFICATION object:nil userInfo:@{NO_LOGIN_ALERT_MESSAGE : message}];
+				[[NSNotificationCenter defaultCenter] postNotificationName:SHOW_LOGIN_NOTIFICATION object:nil userInfo:@{NO_LOGIN_ALERT_MESSAGE : message}];
 				completion(responseObject,[[LGError alloc]initWithMessage:message type:LGServiceError]);
 				
 			}else{

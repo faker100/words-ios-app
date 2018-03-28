@@ -30,6 +30,12 @@
 	return [passWordPredicate evaluateWithObject:self];
 }
 
+- (BOOL)isNickname{
+	NSString *nicknameRegex = @"[\u4e00-\u9fa5a-zA-Z0-9]{2,8}";
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", nicknameRegex];
+	return [predicate evaluateWithObject:self];
+}
+
 - (CGFloat)getStringRectWidthOfHeight:(CGFloat)height fontSize:(CGFloat)fontSize{
 	
 	NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]};

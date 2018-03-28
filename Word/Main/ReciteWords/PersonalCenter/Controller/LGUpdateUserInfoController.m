@@ -117,7 +117,7 @@
 	}else{
 		user.password = info;
 	}
-	
+	[self.request resetSessionRequest:[[LGUserManager shareManager].user mj_keyValues]  completion:nil];
 	[LGProgressHUD showSuccess:@"修改成功" toView:self.view completionBlock:^{
 		[self dismissViewControllerAnimated:YES completion:nil];
 	}];

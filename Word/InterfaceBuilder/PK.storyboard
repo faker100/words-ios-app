@@ -219,6 +219,9 @@
                                                 <userDefinedRuntimeAttribute type="color" keyPath="trackTintColor">
                                                     <color key="value" red="0.93477475639999996" green="0.75796490910000003" blue="0.37356475" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="词汇量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QC9-Af-f7w">
@@ -826,11 +829,39 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_pk_bg" translatesAutoresizingMaskIntoConstraints="NO" id="VL7-th-9sk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_wait" translatesAutoresizingMaskIntoConstraints="NO" id="mPX-Cx-gZ3">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNo-Ut-ggn">
                                 <rect key="frame" x="0.0" y="151" width="375" height="516"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_wait_opponent" translatesAutoresizingMaskIntoConstraints="NO" id="m7d-U0-1q6">
+                                        <rect key="frame" x="0.0" y="30" width="375" height="254.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="m7d-U0-1q6" secondAttribute="height" multiplier="654:444" id="kMh-Pq-PCJ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_wait_1" translatesAutoresizingMaskIntoConstraints="NO" id="ufd-0r-rPn">
+                                        <rect key="frame" x="0.0" y="304.5" width="375" height="106"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ufd-0r-rPn" secondAttribute="height" multiplier="707:200" id="EdW-x0-Fcp"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="m7d-U0-1q6" secondAttribute="trailing" id="4ea-x2-xpp"/>
+                                    <constraint firstItem="m7d-U0-1q6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JNo-Ut-ggn" secondAttribute="leading" id="8Mr-Tg-Lqz"/>
+                                    <constraint firstItem="ufd-0r-rPn" firstAttribute="top" secondItem="m7d-U0-1q6" secondAttribute="bottom" constant="20" id="BzV-hS-989"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ufd-0r-rPn" secondAttribute="trailing" id="C1c-J4-BnY"/>
+                                    <constraint firstAttribute="trailing" secondItem="ufd-0r-rPn" secondAttribute="trailing" priority="750" id="Opp-JQ-sAm"/>
+                                    <constraint firstItem="m7d-U0-1q6" firstAttribute="top" secondItem="JNo-Ut-ggn" secondAttribute="top" constant="30" id="PNq-zh-PjZ"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ufd-0r-rPn" secondAttribute="bottom" id="Vby-fP-Qk3"/>
+                                    <constraint firstItem="ufd-0r-rPn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JNo-Ut-ggn" secondAttribute="leading" id="f99-sM-Lri"/>
+                                    <constraint firstItem="ufd-0r-rPn" firstAttribute="leading" secondItem="JNo-Ut-ggn" secondAttribute="leading" priority="750" id="kZN-N7-FuO"/>
+                                    <constraint firstAttribute="trailing" secondItem="m7d-U0-1q6" secondAttribute="trailing" id="oRa-Rs-S37"/>
+                                    <constraint firstItem="m7d-U0-1q6" firstAttribute="leading" secondItem="JNo-Ut-ggn" secondAttribute="leading" id="w7Q-Jb-0eK"/>
+                                </constraints>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_default_opponent" translatesAutoresizingMaskIntoConstraints="NO" id="eV8-uQ-w84">
-                                <rect key="frame" x="276" y="60" width="64" height="64"/>
+                                <rect key="frame" x="265.5" y="60" width="64" height="64"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -845,7 +876,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_default_opponent" translatesAutoresizingMaskIntoConstraints="NO" id="Eor-fv-bTk">
-                                <rect key="frame" x="35" y="60" width="64" height="64"/>
+                                <rect key="frame" x="45.5" y="60" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Eor-fv-bTk" secondAttribute="height" multiplier="1:1" id="SMm-dc-hVd"/>
                                     <constraint firstAttribute="height" constant="64" id="p8Z-YW-Lr4"/>
@@ -863,8 +894,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进度 : 0/0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hdA-TD-IJZ">
-                                <rect key="frame" x="276.5" y="60" width="64" height="64"/>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进度 : 1/8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hdA-TD-IJZ">
+                                <rect key="frame" x="265.5" y="60" width="64" height="64"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2188035103" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -876,8 +907,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进度 : 0/0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="f02-2f-qXi">
-                                <rect key="frame" x="35" y="60" width="64" height="64"/>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="进度 : 1/8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="f02-2f-qXi">
+                                <rect key="frame" x="45.5" y="60" width="64" height="64"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2188035103" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -890,7 +921,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-ws-S5o" customClass="LGProgressView">
-                                <rect key="frame" x="52" y="137" width="271" height="13"/>
+                                <rect key="frame" x="62.5" y="137" width="250" height="13"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13" id="iiN-v9-lwM"/>
@@ -910,14 +941,14 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAm-JN-jJ9">
-                                <rect key="frame" x="333" y="136.5" width="17" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="0.0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAm-JN-jJ9">
+                                <rect key="frame" x="322.5" y="136.5" width="27.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="0.12941176470588234" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnS-9B-oKN">
-                                <rect key="frame" x="25" y="136.5" width="17" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="0.0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnS-9B-oKN">
+                                <rect key="frame" x="25" y="136.5" width="27.5" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="0.77647058820000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1006,14 +1037,12 @@
                             <constraint firstItem="sLa-L8-1pd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FAb-ws-S5o" secondAttribute="bottom" constant="5" id="2yH-XO-mSm"/>
                             <constraint firstItem="Zb0-LL-gw8" firstAttribute="top" secondItem="ZV5-yT-qZh" secondAttribute="bottom" priority="250" constant="40" id="30j-xv-Dg0"/>
                             <constraint firstItem="XHC-bv-eFv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sLa-L8-1pd" secondAttribute="bottom" constant="10" id="5g9-m5-wBw"/>
-                            <constraint firstAttribute="trailing" secondItem="mPX-Cx-gZ3" secondAttribute="trailing" id="8B4-Qi-Hbk"/>
                             <constraint firstItem="Zb0-LL-gw8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ZV5-yT-qZh" secondAttribute="bottom" constant="20" id="8rE-8U-UcP"/>
-                            <constraint firstItem="GhD-7c-nCO" firstAttribute="top" secondItem="mPX-Cx-gZ3" secondAttribute="bottom" id="9mI-Ml-Vp8"/>
                             <constraint firstItem="f02-2f-qXi" firstAttribute="centerX" secondItem="Eor-fv-bTk" secondAttribute="centerX" id="AH9-ZN-QLh"/>
-                            <constraint firstItem="mPX-Cx-gZ3" firstAttribute="leading" secondItem="JlV-ov-pmA" secondAttribute="leading" id="AkR-jA-HcG"/>
                             <constraint firstItem="FAb-ws-S5o" firstAttribute="top" secondItem="Eor-fv-bTk" secondAttribute="bottom" constant="13" id="CT9-Ih-CK0"/>
                             <constraint firstItem="VL7-th-9sk" firstAttribute="top" secondItem="JlV-ov-pmA" secondAttribute="top" id="GCx-c6-oTg"/>
                             <constraint firstItem="Eor-fv-bTk" firstAttribute="top" secondItem="Ad3-xn-YSD" secondAttribute="bottom" priority="749" constant="40" id="GR5-5Y-1IR"/>
+                            <constraint firstItem="JNo-Ut-ggn" firstAttribute="top" secondItem="xAm-JN-jJ9" secondAttribute="bottom" id="H0u-BG-j9r"/>
                             <constraint firstItem="ZV5-yT-qZh" firstAttribute="centerX" secondItem="JlV-ov-pmA" secondAttribute="centerX" id="Hrv-gJ-gN7"/>
                             <constraint firstItem="eV8-uQ-w84" firstAttribute="centerY" secondItem="hdA-TD-IJZ" secondAttribute="centerY" id="KGf-ER-R18"/>
                             <constraint firstAttribute="trailing" secondItem="xAm-JN-jJ9" secondAttribute="trailing" constant="25" id="NMV-Tl-NI4"/>
@@ -1036,9 +1065,12 @@
                             <constraint firstItem="eV8-uQ-w84" firstAttribute="width" secondItem="Eor-fv-bTk" secondAttribute="width" id="cig-Ii-zmI"/>
                             <constraint firstItem="GhD-7c-nCO" firstAttribute="top" secondItem="Zb0-LL-gw8" secondAttribute="bottom" constant="10" id="cjZ-hk-uHf"/>
                             <constraint firstItem="VL7-th-9sk" firstAttribute="leading" secondItem="JlV-ov-pmA" secondAttribute="leading" id="eWS-et-SVe"/>
+                            <constraint firstAttribute="trailing" secondItem="JNo-Ut-ggn" secondAttribute="trailing" id="gmY-Ss-XPl"/>
                             <constraint firstItem="hdA-TD-IJZ" firstAttribute="width" secondItem="eV8-uQ-w84" secondAttribute="width" id="hUK-9g-dzQ"/>
+                            <constraint firstItem="JNo-Ut-ggn" firstAttribute="leading" secondItem="JlV-ov-pmA" secondAttribute="leading" id="ixV-0r-VAc"/>
                             <constraint firstItem="Eor-fv-bTk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ad3-xn-YSD" secondAttribute="bottom" constant="10" id="jFR-Zi-cyb"/>
                             <constraint firstItem="sLa-L8-1pd" firstAttribute="top" secondItem="FAb-ws-S5o" secondAttribute="bottom" priority="750" constant="25" id="jVt-0b-G1G"/>
+                            <constraint firstItem="GhD-7c-nCO" firstAttribute="top" secondItem="JNo-Ut-ggn" secondAttribute="bottom" id="mD0-Wh-2IU"/>
                             <constraint firstItem="xAm-JN-jJ9" firstAttribute="leading" secondItem="FAb-ws-S5o" secondAttribute="trailing" constant="10" id="nBQ-Y4-waf"/>
                             <constraint firstItem="GhD-7c-nCO" firstAttribute="top" secondItem="VL7-th-9sk" secondAttribute="bottom" id="odo-vd-hPz"/>
                             <constraint firstItem="XHC-bv-eFv" firstAttribute="leading" secondItem="JlV-ov-pmA" secondAttribute="leading" id="pih-LH-bAE"/>
@@ -1047,7 +1079,6 @@
                             <constraint firstAttribute="trailing" secondItem="Zb0-LL-gw8" secondAttribute="trailing" priority="750" constant="50" id="s9g-iU-hph"/>
                             <constraint firstItem="XHC-bv-eFv" firstAttribute="top" secondItem="sLa-L8-1pd" secondAttribute="bottom" priority="250" constant="60" id="vW6-Wd-fDK"/>
                             <constraint firstAttribute="trailing" secondItem="XHC-bv-eFv" secondAttribute="trailing" id="wjt-b2-Bhi"/>
-                            <constraint firstItem="mPX-Cx-gZ3" firstAttribute="top" secondItem="xAm-JN-jJ9" secondAttribute="bottom" id="xox-RR-No6"/>
                             <constraint firstItem="eV8-uQ-w84" firstAttribute="centerX" secondItem="hdA-TD-IJZ" secondAttribute="centerX" id="zEL-ad-Cyc"/>
                         </constraints>
                     </view>
@@ -1062,7 +1093,8 @@
                         <outlet property="userHeadImageView" destination="Eor-fv-bTk" id="Lpw-6J-ZUx"/>
                         <outlet property="userProgressLabel" destination="f02-2f-qXi" id="xoK-cu-fYY"/>
                         <outlet property="userWinLabel" destination="YnS-9B-oKN" id="8hg-DG-sRF"/>
-                        <outlet property="waitImageView" destination="mPX-Cx-gZ3" id="Ppo-nb-i7i"/>
+                        <outlet property="waitImageView" destination="ufd-0r-rPn" id="0xg-76-DtT"/>
+                        <outlet property="waitView" destination="JNo-Ut-ggn" id="gxz-VD-fWf"/>
                         <outlet property="winProgressView" destination="FAb-ws-S5o" id="kY4-Mw-yJv"/>
                         <outlet property="wordLabel" destination="XHC-bv-eFv" id="tGA-Xr-BIh"/>
                         <segue destination="hgf-pw-rbY" kind="custom" identifier="PKToResult" customClass="LGSegue" id="nJM-Di-ML0"/>
@@ -1188,11 +1220,9 @@
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="3"/>
+                                        <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.masksToBounds">
-                                        <integer key="value" value="0"/>
-                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="错误 : 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfk-Kl-9EM">
@@ -1203,8 +1233,9 @@
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="3"/>
+                                        <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正确 : 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Kj1-yI-W0J">
@@ -1215,8 +1246,9 @@
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="3"/>
+                                        <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="错误 : 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09G-bp-4xO">
@@ -1227,8 +1259,9 @@
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="3"/>
+                                        <integer key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_result_winer" translatesAutoresizingMaskIntoConstraints="NO" id="S60-WQ-NHT">
@@ -1336,7 +1369,8 @@
         <image name="pk_result_win" width="296" height="228"/>
         <image name="pk_result_winer" width="71" height="61"/>
         <image name="pk_vs" width="56" height="76"/>
-        <image name="pk_wait" width="353" height="357"/>
+        <image name="pk_wait_1" width="353" height="100"/>
+        <image name="pk_wait_opponent" width="327" height="222"/>
         <image name="pk_win" width="9" height="12"/>
         <image name="placeholderImage" width="170" height="170"/>
         <image name="player_icon" width="13" height="11"/>

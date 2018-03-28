@@ -33,8 +33,8 @@
 	
 	[self configTabbarItem];
 	
-	//服务器返回未登录的时候
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLogin:) name:NO_LOGIN_NOTIFICATION object:nil];
+	//跳转登录,( 服务器返回未登录的时候 )
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLogin:) name:SHOW_LOGIN_NOTIFICATION object:nil];
 }
 
 //配置 tabbaritem

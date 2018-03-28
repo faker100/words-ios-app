@@ -9,12 +9,6 @@
 #import "LGUserModel.h"
 #import "NSDate+Utilities.h"
 
-#define LGUSER_ISREVIEW_KEY  @"LGUSER_ISREVIEW_KEY"
-#define FONT_SIZE_KEY	     @"FONT_SIZE_KEY"
-#define EMAIL_KEY			 @"EMAIL_KEY"
-#define PHONE_KEY			 @"PHONE_KEY"
-#define NICKNAME_KEY		 @"NICKNAME_KEY"
-
 @implementation LGUserModel
 
 - (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property{
@@ -67,5 +61,15 @@
 - (NSString *)nickname{
 	return [[NSUserDefaults standardUserDefaults] objectForKey:NICKNAME_KEY];
 }
+
+- (void)setPassword:(NSString *)password{
+	[[NSUserDefaults standardUserDefaults]setObject:password forKey:PASSWORD_KEY];
+}
+
+- (NSString *)password{
+	return [[NSUserDefaults standardUserDefaults] objectForKey:PASSWORD_KEY];
+}
+
+
 
 @end

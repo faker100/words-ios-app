@@ -45,6 +45,12 @@
 	return self.user && StringNotEmpty(self.user.uid);
 }
 
+- (void)logout{
+	
+	[LGUserManager cleanCookie];
+	self.user = nil;
+}
+
 + (void)configCookie {
 	
 	NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
@@ -65,6 +71,18 @@
 	[cookieStorage.cookies enumerateObjectsUsingBlock:^(NSHTTPCookie * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 			[cookieStorage deleteCookie:obj];
 	}];
+}
+
++ (NSString *)previousPhone{
+	return [[NSUserDefaults standardUserDefaults] objectForKey:PHONE_KEY];
+}
+
++ (NSString *)previousEmail{
+	return [[NSUserDefaults standardUserDefaults] objectForKey:EMAIL_KEY];
+}
+
++ (NSString *)previousPassword{
+	return [[NSUserDefaults standardUserDefaults] objectForKey:PASSWORD_KEY];
 }
 
 @end
