@@ -56,16 +56,14 @@
 
 //跳过复习
 - (IBAction)skipAction:(id)sender {
-	if (self.delegate) {
-		[self.delegate skipReview];
-	}
+	
+	[self.delegate skipReview];
 }
 //立即复习
 - (IBAction)reviewAction:(id)sender {
-	if (self.delegate) {
-		NSInteger index = [self.tableView indexPathForSelectedRow].row;
-		[self.delegate reviewWithStatus:self.reviewModel.dataSourceArray[index]];
-	}
+
+	NSInteger index = [self.tableView indexPathForSelectedRow].row;
+	[self.delegate reviewWithStatus:self.reviewModel.dataSourceArray[index]];
 }
 
 @end

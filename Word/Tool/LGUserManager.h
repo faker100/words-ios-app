@@ -8,12 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "LGUserModel.h"
+#import "LGClockModel.h"
 
 #define UserDefaultKey @"userKey"
+#define CLOCK_KEY		@"CLOCK_KEY"
 
 @interface LGUserManager : NSObject
 
 @property (nonatomic, strong) LGUserModel *user;
+
+//用户闹钟
+@property (nonatomic, strong) NSMutableArray<LGClockModel *> *clockArray;
 
 + (instancetype)shareManager;
 
@@ -28,7 +33,6 @@
 
 //退出登录
 - (void)logout;
-
 
 /**
  上一个用户的电话,用于登录界面的默认值

@@ -115,7 +115,7 @@ typedef NS_ENUM(NSUInteger, LGPKAnswerType) {
 #define UPDATE_USER_URL                 @"http://login.gmatonline.cn/cn/app-api/update-user"
 
 //上传头像
-#define UPDATE_HEAD_IMG_URL             @"http://www.gmatonline.cn/index.php?web/webapi/fileimg"
+#define UPDATE_HEAD_IMG_URL             @"http://words.viplgw.cn/cn/app-api/app-image"
 
 //更改昵称
 #define UPDATE_NICKNAME_URL				@"http://login.gmatonline.cn/cn/app-api/change-nickname"

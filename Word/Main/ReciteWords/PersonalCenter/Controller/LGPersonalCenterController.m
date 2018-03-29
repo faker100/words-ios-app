@@ -25,8 +25,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidLayoutSubviews{
-	
+
+- (void)viewWillAppear:(BOOL)animated{
 	if ([[LGUserManager shareManager] isLogin]) {
 		LGUserModel *user = [LGUserManager shareManager].user;
 		self.userNameLabel.text = user.nickname;

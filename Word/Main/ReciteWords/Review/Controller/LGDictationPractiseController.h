@@ -11,7 +11,7 @@
 @interface LGDictationPractiseController : UIViewController
 
 
-//复习单词 id 的数组 (copy 崩溃)
+//复习单词 id 的数组
 @property (nonatomic, strong) NSMutableArray <NSString *> *wordIDArray;
 
 //倒计时

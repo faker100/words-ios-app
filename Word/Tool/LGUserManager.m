@@ -40,6 +40,15 @@
 	}
 }
 
+- (void)setClockArray:(NSMutableArray<LGClockModel *> *)clockArray{
+	[[NSUserDefaults standardUserDefaults] setObject:[LGClockModel mj_keyValuesArrayWithObjectArray:clockArray] forKey:CLOCK_KEY];
+}
+
+- (NSMutableArray<LGClockModel *> *)clockArray{
+	id arr = [[NSUserDefaults standardUserDefaults] objectForKey:CLOCK_KEY];
+	return arr ? [LGClockModel mj_objectArrayWithKeyValuesArray:arr] : [NSMutableArray array];
+}
+
 - (BOOL)isLogin{
 	
 	return self.user && StringNotEmpty(self.user.uid);

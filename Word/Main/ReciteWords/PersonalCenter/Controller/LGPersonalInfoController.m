@@ -263,8 +263,8 @@
     [LGProgressHUD showHUDAddedTo:self.view];
    [self.request uploadHeaderImage:image completion:^(id response, LGError *error) {
        if([self isNormal:error]){
-           [LGUserManager shareManager].user.image = response[@"data"][@"photourl"];
-           self.section_Array = nil;   //数据源 section_Array 的get方法重新初始化
+           [LGUserManager shareManager].user.image = response[@"image"];
+           self.section_Array = nil;   //数据源, section_Array 的get方法重新初始化
            [self.tableView reloadData];
        }
        

@@ -31,7 +31,7 @@
 		self.moreWidthConstraint.constant = 0;
 		self.headImageView.hidden = NO;
 		
-		[self.headImageView sd_setImageWithURL:[NSURL URLWithString:GMAT_DOMAIN(settingModel.info)] placeholderImage:PLACEHOLDERIMAGE];
+		[self.headImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(settingModel.info)] placeholderImage:PLACEHOLDERIMAGE];
 		
 	}else if (settingModel.type == LGSettingMore){
 		self.infoLabel.hidden = NO;

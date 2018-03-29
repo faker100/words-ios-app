@@ -61,6 +61,12 @@
 		567A3AD7203FEB4100A41692 /* LGWordErrorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 567A3AD6203FEB4100A41692 /* LGWordErrorCell.m */; };
 		567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 567C00FA2010A0360083F3D5 /* LGBaseRequest.m */; };
 		567D2786206B75C700EEB79E /* LGFontSizeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567D2785206B75C700EEB79E /* LGFontSizeController.m */; };
+		567FDF0C206C7748007FFFB2 /* LGClockListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567FDF0B206C7748007FFFB2 /* LGClockListController.m */; };
+		567FDF0F206C77F5007FFFB2 /* LGClockListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 567FDF0E206C77F5007FFFB2 /* LGClockListCell.m */; };
+		567FDF12206C7B15007FFFB2 /* LGAddClockController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567FDF11206C7B15007FFFB2 /* LGAddClockController.m */; };
+		567FDF15206C7DFF007FFFB2 /* LGClockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 567FDF14206C7DFF007FFFB2 /* LGClockModel.m */; };
+		567FDF18206CC108007FFFB2 /* LGChooseWeekController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567FDF17206CC108007FFFB2 /* LGChooseWeekController.m */; };
+		567FDF1B206CC131007FFFB2 /* LGChooseWeekCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 567FDF1A206CC131007FFFB2 /* LGChooseWeekCell.m */; };
 		56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56801492202AE1FB0082D72F /* LGWordDetailController.m */; };
 		56973641204FF50B00169C8A /* LGDictationUserAnswerCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56973640204FF50B00169C8A /* LGDictationUserAnswerCollectionCell.m */; };
 		56973644204FF54800169C8A /* LGDictationAnswerItemCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56973643204FF54800169C8A /* LGDictationAnswerItemCollectionCell.m */; };
@@ -255,6 +261,18 @@
 		567C00FA2010A0360083F3D5 /* LGBaseRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGBaseRequest.m; sourceTree = "<group>"; };
 		567D2784206B75C700EEB79E /* LGFontSizeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGFontSizeController.h; sourceTree = "<group>"; };
 		567D2785206B75C700EEB79E /* LGFontSizeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGFontSizeController.m; sourceTree = "<group>"; };
+		567FDF0A206C7748007FFFB2 /* LGClockListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGClockListController.h; sourceTree = "<group>"; };
+		567FDF0B206C7748007FFFB2 /* LGClockListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGClockListController.m; sourceTree = "<group>"; };
+		567FDF0D206C77F5007FFFB2 /* LGClockListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGClockListCell.h; sourceTree = "<group>"; };
+		567FDF0E206C77F5007FFFB2 /* LGClockListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGClockListCell.m; sourceTree = "<group>"; };
+		567FDF10206C7B15007FFFB2 /* LGAddClockController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGAddClockController.h; sourceTree = "<group>"; };
+		567FDF11206C7B15007FFFB2 /* LGAddClockController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGAddClockController.m; sourceTree = "<group>"; };
+		567FDF13206C7DFF007FFFB2 /* LGClockModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGClockModel.h; sourceTree = "<group>"; };
+		567FDF14206C7DFF007FFFB2 /* LGClockModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGClockModel.m; sourceTree = "<group>"; };
+		567FDF16206CC108007FFFB2 /* LGChooseWeekController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGChooseWeekController.h; sourceTree = "<group>"; };
+		567FDF17206CC108007FFFB2 /* LGChooseWeekController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGChooseWeekController.m; sourceTree = "<group>"; };
+		567FDF19206CC131007FFFB2 /* LGChooseWeekCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGChooseWeekCell.h; sourceTree = "<group>"; };
+		567FDF1A206CC131007FFFB2 /* LGChooseWeekCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGChooseWeekCell.m; sourceTree = "<group>"; };
 		56801491202AE1FB0082D72F /* LGWordDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordDetailController.h; sourceTree = "<group>"; };
 		56801492202AE1FB0082D72F /* LGWordDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordDetailController.m; sourceTree = "<group>"; };
 		5697363F204FF50B00169C8A /* LGDictationUserAnswerCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDictationUserAnswerCollectionCell.h; sourceTree = "<group>"; };
@@ -804,6 +822,10 @@
 				56BBBFC5205664B60057BDF2 /* LGSettingHeaderView.h */,
 				56BBBFC6205664B60057BDF2 /* LGSettingHeaderView.m */,
 				56BBBFC8205664C10057BDF2 /* LGSettingHeaderView.xib */,
+				567FDF0D206C77F5007FFFB2 /* LGClockListCell.h */,
+				567FDF0E206C77F5007FFFB2 /* LGClockListCell.m */,
+				567FDF19206CC131007FFFB2 /* LGChooseWeekCell.h */,
+				567FDF1A206CC131007FFFB2 /* LGChooseWeekCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -813,6 +835,8 @@
 			children = (
 				56BBBFC120564B930057BDF2 /* LGSettingModel.h */,
 				56BBBFC220564B930057BDF2 /* LGSettingModel.m */,
+				567FDF13206C7DFF007FFFB2 /* LGClockModel.h */,
+				567FDF14206C7DFF007FFFB2 /* LGClockModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -926,6 +950,12 @@
 				5673C92A206B42F4000C21DE /* LGUpdateNicknameController.m */,
 				567D2784206B75C700EEB79E /* LGFontSizeController.h */,
 				567D2785206B75C700EEB79E /* LGFontSizeController.m */,
+				567FDF0A206C7748007FFFB2 /* LGClockListController.h */,
+				567FDF0B206C7748007FFFB2 /* LGClockListController.m */,
+				567FDF10206C7B15007FFFB2 /* LGAddClockController.h */,
+				567FDF11206C7B15007FFFB2 /* LGAddClockController.m */,
+				567FDF16206CC108007FFFB2 /* LGChooseWeekController.h */,
+				567FDF17206CC108007FFFB2 /* LGChooseWeekController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1253,6 +1283,7 @@
 				562FC13F202992DE005CEA83 /* LGRecitePlanController.m in Sources */,
 				56B7AADB202BE37800BDECED /* LGWordDetailModel.m in Sources */,
 				560699E42057D9B500574437 /* LGPKContainerController.m in Sources */,
+				567FDF1B206CC131007FFFB2 /* LGChooseWeekCell.m in Sources */,
 				56A88849200CA53400847BE6 /* main.m in Sources */,
 				5612BFAB202154E30038D653 /* LGWordLibraryModel.m in Sources */,
 				56BBBFC7205664B60057BDF2 /* LGSettingHeaderView.m in Sources */,
@@ -1289,22 +1320,27 @@
 				566FF2D92057A686004574EA /* LGPKRankModel.m in Sources */,
 				566FF2D120577B86004574EA /* LGPKIndexViewController.m in Sources */,
 				5658D5A62040FF7600390FC4 /* LGIndexReviewAlertView.m in Sources */,
+				567FDF0F206C77F5007FFFB2 /* LGClockListCell.m in Sources */,
 				56994EA8204950A3005648F6 /* LGReviewWrongWordModel.m in Sources */,
 				563F7DAB2023177E00944730 /* NSObject+LGRequest.m in Sources */,
 				566FF2D520577D95004574EA /* LGPKRankingCell.m in Sources */,
 				5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */,
 				56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */,
 				560699DF2057BC6D00574437 /* LGPKRankHeadView.m in Sources */,
+				567FDF0C206C7748007FFFB2 /* LGClockListController.m in Sources */,
 				56C98994202050F60095A4BD /* LGWordTypeCell.m in Sources */,
 				564A6B992063BD5E00242FC0 /* LGPKAnswerCell.m in Sources */,
 				56BBBFBF205622060057BDF2 /* LGPersonalCell.m in Sources */,
 				56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */,
 				5678C38B20527C56009CD723 /* LGDictationPromptController.m in Sources */,
+				567FDF18206CC108007FFFB2 /* LGChooseWeekController.m in Sources */,
 				560F0FCB2022AA7000324510 /* LGFreeWordListCell.m in Sources */,
 				56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */,
 				56C646B2204E85B200E895B3 /* LGDictationPractiseController.m in Sources */,
 				5647C2FB205F66E300DFDB77 /* LGPKMatchingController.m in Sources */,
 				56224FC7204547AF0093BC7A /* LGIndexReviewAlertCell.m in Sources */,
+				567FDF15206C7DFF007FFFB2 /* LGClockModel.m in Sources */,
+				567FDF12206C7B15007FFFB2 /* LGAddClockController.m in Sources */,
 				56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */,
 				5627C9F2204D2EA90013F1CC /* LGTimeReviewController.m in Sources */,
 				567A3AD7203FEB4100A41692 /* LGWordErrorCell.m in Sources */,
