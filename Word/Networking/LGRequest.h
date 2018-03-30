@@ -371,11 +371,18 @@
 
 
 /**
- PK 轮训
+ PK 轮循
 
  @param opponentUid 对手 id
  @param totalId 匹配时给的 totalid
  */
 - (void)requestPKPoll:(NSString *)opponentUid totalId:(NSString *)totalId completion:(comletionBlock)completion;
+
+
+/**
+ 背单词轨迹
+ 
+ */
+- (void)reqeustTrackCompletion:(comletionBlock)completion;
 
 @end

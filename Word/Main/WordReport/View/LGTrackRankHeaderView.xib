@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LGTrackRankHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Spj-Pp-sdh">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImage" translatesAutoresizingMaskIntoConstraints="NO" id="DW2-bt-y55">
+                            <rect key="frame" x="20" y="12" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="NxR-QX-yvc"/>
+                                <constraint firstAttribute="width" secondItem="DW2-bt-y55" secondAttribute="height" multiplier="1:1" id="hX6-xv-GVK"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EpO-Jy-Tow">
+                            <rect key="frame" x="70" y="16" width="35.5" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="2zS-va-YEh"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="词汇量 : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSR-pd-rI9">
+                            <rect key="frame" x="70" y="40" width="40" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SoB-2K-Bgq">
+                            <rect key="frame" x="110" y="37" width="9" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你的排名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmS-rx-0VJ">
+                            <rect key="frame" x="308.5" y="40" width="41" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <color key="textColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="report_rank" translatesAutoresizingMaskIntoConstraints="NO" id="UxC-Hb-Gnz">
+                            <rect key="frame" x="303" y="0.0" width="52" height="38"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="10000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tM4-0m-rFf">
+                            <rect key="frame" x="311" y="11.5" width="36" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.86678504943847656" green="0.93385511636734009" blue="0.90578287839889526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="UxC-Hb-Gnz" firstAttribute="top" secondItem="Spj-Pp-sdh" secondAttribute="top" id="Bkm-dt-Ua5"/>
+                        <constraint firstItem="gSR-pd-rI9" firstAttribute="bottom" secondItem="DW2-bt-y55" secondAttribute="bottom" id="CAq-Is-DAY"/>
+                        <constraint firstItem="tM4-0m-rFf" firstAttribute="trailing" secondItem="UxC-Hb-Gnz" secondAttribute="trailing" constant="-8" id="J92-mN-e71"/>
+                        <constraint firstItem="SoB-2K-Bgq" firstAttribute="centerY" secondItem="gSR-pd-rI9" secondAttribute="centerY" id="JAa-Hc-gf7"/>
+                        <constraint firstItem="SoB-2K-Bgq" firstAttribute="leading" secondItem="gSR-pd-rI9" secondAttribute="trailing" id="NF7-49-dYJ"/>
+                        <constraint firstItem="XmS-rx-0VJ" firstAttribute="centerY" secondItem="SoB-2K-Bgq" secondAttribute="centerY" id="P4H-fW-rlD"/>
+                        <constraint firstItem="gSR-pd-rI9" firstAttribute="leading" secondItem="EpO-Jy-Tow" secondAttribute="leading" id="Zy3-km-leK"/>
+                        <constraint firstItem="EpO-Jy-Tow" firstAttribute="leading" secondItem="DW2-bt-y55" secondAttribute="trailing" constant="10" id="agf-pg-GVl"/>
+                        <constraint firstItem="tM4-0m-rFf" firstAttribute="leading" secondItem="UxC-Hb-Gnz" secondAttribute="leading" constant="8" id="bel-ZH-V1r"/>
+                        <constraint firstItem="tM4-0m-rFf" firstAttribute="centerY" secondItem="UxC-Hb-Gnz" secondAttribute="centerY" id="iwg-qj-Aiq"/>
+                        <constraint firstAttribute="trailing" secondItem="UxC-Hb-Gnz" secondAttribute="trailing" constant="20" id="nWB-QX-dPa"/>
+                        <constraint firstItem="DW2-bt-y55" firstAttribute="centerY" secondItem="Spj-Pp-sdh" secondAttribute="centerY" id="o3o-rQ-cHj"/>
+                        <constraint firstItem="DW2-bt-y55" firstAttribute="leading" secondItem="Spj-Pp-sdh" secondAttribute="leading" constant="20" id="pPB-vX-lrn"/>
+                        <constraint firstItem="gSR-pd-rI9" firstAttribute="top" secondItem="EpO-Jy-Tow" secondAttribute="bottom" constant="10" id="r60-74-PlV"/>
+                        <constraint firstItem="XmS-rx-0VJ" firstAttribute="centerX" secondItem="tM4-0m-rFf" secondAttribute="centerX" id="zOh-nO-jUg"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Spj-Pp-sdh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7L3-31-oaV"/>
+                <constraint firstItem="Spj-Pp-sdh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Xn6-WM-ADH"/>
+                <constraint firstAttribute="bottom" secondItem="Spj-Pp-sdh" secondAttribute="bottom" id="kq5-jb-wDZ"/>
+                <constraint firstAttribute="trailing" secondItem="Spj-Pp-sdh" secondAttribute="trailing" id="wK0-we-u7u"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="headImageView" destination="DW2-bt-y55" id="IjW-me-sVm"/>
+                <outlet property="rankLabel" destination="tM4-0m-rFf" id="PcX-dY-fr9"/>
+                <outlet property="usernameLabel" destination="EpO-Jy-Tow" id="LK0-Cz-4y4"/>
+                <outlet property="vocabularyLabel" destination="SoB-2K-Bgq" id="60U-Uh-lat"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="55"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="placeholderImage" width="170" height="170"/>
+        <image name="report_rank" width="46" height="38"/>
+    </resources>
+</document>

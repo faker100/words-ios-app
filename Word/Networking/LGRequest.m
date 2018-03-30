@@ -409,6 +409,9 @@
 	[self postRequestCompletion:completion];
 }
 
-
+- (void)reqeustTrackCompletion:(comletionBlock)completion{
+	self.url = PK_TACK_URL;
+	[self postRequestCompletion:completion];
+}
 
 @end

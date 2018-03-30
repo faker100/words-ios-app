@@ -153,7 +153,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="scrollView" destination="AT2-Ih-bqa" id="v71-Zl-buH"/>
-                        <outlet property="selectBar" destination="BNZ-V1-e8U" id="Qfj-VH-TU9"/>
+                        <outlet property="selectBar" destination="BNZ-V1-e8U" id="MrG-Wi-HeQ"/>
                         <outlet property="selectBarLeftConstraint" destination="bvm-nl-RiL" id="Geb-uj-pJB"/>
                     </connections>
                 </viewController>
@@ -314,14 +314,18 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIV-be-Je2">
-                                                    <rect key="frame" x="25" y="19.5" width="27" height="22"/>
+                                                    <rect key="frame" x="25" y="16.5" width="28" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="28" id="grt-x4-d1J"/>
+                                                        <constraint firstAttribute="height" constant="28" id="hJZ-Fe-mb9"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" image="pk_first">
                                                         <color key="titleColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderImage" translatesAutoresizingMaskIntoConstraints="NO" id="X2D-VP-cPg">
-                                                    <rect key="frame" x="62" y="10" width="40" height="40"/>
+                                                    <rect key="frame" x="63" y="10" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="47p-an-Hns"/>
                                                         <constraint firstAttribute="width" constant="40" id="Qcz-tM-rqc"/>
@@ -334,7 +338,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsN-ET-D2W">
-                                                    <rect key="frame" x="112" y="15" width="125" height="12"/>
+                                                    <rect key="frame" x="113" y="15" width="125" height="12"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="125" id="C1k-TG-4TM"/>
                                                         <constraint firstAttribute="height" constant="12" id="Pt0-zq-D4I"/>
@@ -344,20 +348,20 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_lose" translatesAutoresizingMaskIntoConstraints="NO" id="pjl-dM-NTR">
-                                                    <rect key="frame" x="188.5" y="35" width="11" height="11"/>
+                                                    <rect key="frame" x="189.5" y="35" width="11" height="11"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="11" id="1Ik-II-Z1I"/>
                                                         <constraint firstAttribute="width" constant="11" id="yBi-zU-B2Z"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lose:2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSk-Yb-0A3">
-                                                    <rect key="frame" x="202.5" y="33" width="34.5" height="14.5"/>
+                                                    <rect key="frame" x="203.5" y="33" width="34.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_win" translatesAutoresizingMaskIntoConstraints="NO" id="hsX-yw-OXO">
-                                                    <rect key="frame" x="112" y="34" width="10" height="13"/>
+                                                    <rect key="frame" x="113" y="34" width="10" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="DgD-WW-CC1"/>
                                                         <constraint firstAttribute="width" constant="10" id="kgq-dh-IaU"/>
@@ -370,7 +374,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="win:9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTp-pc-jbx">
-                                                    <rect key="frame" x="125" y="34" width="30.5" height="14.5"/>
+                                                    <rect key="frame" x="126" y="34" width="30.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.93477475639999996" green="0.75796490910000003" blue="0.37356475" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>

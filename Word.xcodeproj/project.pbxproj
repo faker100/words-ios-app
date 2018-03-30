@@ -23,6 +23,15 @@
 		5612BFAB202154E30038D653 /* LGWordLibraryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612BFAA202154E30038D653 /* LGWordLibraryModel.m */; };
 		5612BFAE202161E50038D653 /* UIScrollView+LGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612BFAD202161E50038D653 /* UIScrollView+LGRefresh.m */; };
 		5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5612BFB12021AC3E0038D653 /* LGProgressView.m */; };
+		5621AB0A206DD6E100AB0CD0 /* LGReportContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5621AB09206DD6E100AB0CD0 /* LGReportContainerController.m */; };
+		5621AB0D206E1A1E00AB0CD0 /* LGTrackController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5621AB0C206E1A1E00AB0CD0 /* LGTrackController.m */; };
+		5621AB10206E1B6200AB0CD0 /* LGTrackRankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5621AB0F206E1B6200AB0CD0 /* LGTrackRankCell.m */; };
+		5621AB13206E1D3500AB0CD0 /* LGTrackFinishProgressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5621AB12206E1D3500AB0CD0 /* LGTrackFinishProgressCell.m */; };
+		5621AB16206E204700AB0CD0 /* LGTrackRankHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5621AB15206E204700AB0CD0 /* LGTrackRankHeaderView.m */; };
+		5621AB18206E204F00AB0CD0 /* LGTrackRankHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5621AB17206E204F00AB0CD0 /* LGTrackRankHeaderView.xib */; };
+		5621AB1B206E275600AB0CD0 /* LGTrackFinishHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5621AB1A206E275600AB0CD0 /* LGTrackFinishHeaderView.m */; };
+		5621AB1D206E275E00AB0CD0 /* LGTrackFinishHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5621AB1C206E275E00AB0CD0 /* LGTrackFinishHeaderView.xib */; };
+		5621AB20206E31D900AB0CD0 /* LGTrackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5621AB1F206E31D900AB0CD0 /* LGTrackModel.m */; };
 		56224FC7204547AF0093BC7A /* LGIndexReviewAlertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56224FC6204547AF0093BC7A /* LGIndexReviewAlertCell.m */; };
 		56224FC9204548360093BC7A /* LGIndexReviewAlertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56224FC8204548360093BC7A /* LGIndexReviewAlertCell.xib */; };
 		56224FCC20454F020093BC7A /* LGIndexReviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56224FCB20454F020093BC7A /* LGIndexReviewModel.m */; };
@@ -185,6 +194,22 @@
 		5612BFAD202161E50038D653 /* UIScrollView+LGRefresh.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+LGRefresh.m"; sourceTree = "<group>"; };
 		5612BFB02021AC3E0038D653 /* LGProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGProgressView.h; sourceTree = "<group>"; };
 		5612BFB12021AC3E0038D653 /* LGProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGProgressView.m; sourceTree = "<group>"; };
+		5621AB08206DD6E100AB0CD0 /* LGReportContainerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReportContainerController.h; sourceTree = "<group>"; };
+		5621AB09206DD6E100AB0CD0 /* LGReportContainerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReportContainerController.m; sourceTree = "<group>"; };
+		5621AB0B206E1A1E00AB0CD0 /* LGTrackController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTrackController.h; sourceTree = "<group>"; };
+		5621AB0C206E1A1E00AB0CD0 /* LGTrackController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTrackController.m; sourceTree = "<group>"; };
+		5621AB0E206E1B6200AB0CD0 /* LGTrackRankCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTrackRankCell.h; sourceTree = "<group>"; };
+		5621AB0F206E1B6200AB0CD0 /* LGTrackRankCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTrackRankCell.m; sourceTree = "<group>"; };
+		5621AB11206E1D3500AB0CD0 /* LGTrackFinishProgressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTrackFinishProgressCell.h; sourceTree = "<group>"; };
+		5621AB12206E1D3500AB0CD0 /* LGTrackFinishProgressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTrackFinishProgressCell.m; sourceTree = "<group>"; };
+		5621AB14206E204700AB0CD0 /* LGTrackRankHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTrackRankHeaderView.h; sourceTree = "<group>"; };
+		5621AB15206E204700AB0CD0 /* LGTrackRankHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTrackRankHeaderView.m; sourceTree = "<group>"; };
+		5621AB17206E204F00AB0CD0 /* LGTrackRankHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGTrackRankHeaderView.xib; sourceTree = "<group>"; };
+		5621AB19206E275600AB0CD0 /* LGTrackFinishHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTrackFinishHeaderView.h; sourceTree = "<group>"; };
+		5621AB1A206E275600AB0CD0 /* LGTrackFinishHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTrackFinishHeaderView.m; sourceTree = "<group>"; };
+		5621AB1C206E275E00AB0CD0 /* LGTrackFinishHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGTrackFinishHeaderView.xib; sourceTree = "<group>"; };
+		5621AB1E206E31D900AB0CD0 /* LGTrackModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTrackModel.h; sourceTree = "<group>"; };
+		5621AB1F206E31D900AB0CD0 /* LGTrackModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTrackModel.m; sourceTree = "<group>"; };
 		56224FC5204547AF0093BC7A /* LGIndexReviewAlertCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGIndexReviewAlertCell.h; sourceTree = "<group>"; };
 		56224FC6204547AF0093BC7A /* LGIndexReviewAlertCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGIndexReviewAlertCell.m; sourceTree = "<group>"; };
 		56224FC8204548360093BC7A /* LGIndexReviewAlertCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGIndexReviewAlertCell.xib; sourceTree = "<group>"; };
@@ -436,6 +461,43 @@
 				5612BFB12021AC3E0038D653 /* LGProgressView.m */,
 			);
 			path = LGProgressView;
+			sourceTree = "<group>";
+		};
+		5621AB05206DD69100AB0CD0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5621AB08206DD6E100AB0CD0 /* LGReportContainerController.h */,
+				5621AB09206DD6E100AB0CD0 /* LGReportContainerController.m */,
+				5621AB0B206E1A1E00AB0CD0 /* LGTrackController.h */,
+				5621AB0C206E1A1E00AB0CD0 /* LGTrackController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5621AB06206DD69F00AB0CD0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5621AB0E206E1B6200AB0CD0 /* LGTrackRankCell.h */,
+				5621AB0F206E1B6200AB0CD0 /* LGTrackRankCell.m */,
+				5621AB11206E1D3500AB0CD0 /* LGTrackFinishProgressCell.h */,
+				5621AB12206E1D3500AB0CD0 /* LGTrackFinishProgressCell.m */,
+				5621AB14206E204700AB0CD0 /* LGTrackRankHeaderView.h */,
+				5621AB15206E204700AB0CD0 /* LGTrackRankHeaderView.m */,
+				5621AB17206E204F00AB0CD0 /* LGTrackRankHeaderView.xib */,
+				5621AB19206E275600AB0CD0 /* LGTrackFinishHeaderView.h */,
+				5621AB1A206E275600AB0CD0 /* LGTrackFinishHeaderView.m */,
+				5621AB1C206E275E00AB0CD0 /* LGTrackFinishHeaderView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5621AB07206DD6A400AB0CD0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5621AB1E206E31D900AB0CD0 /* LGTrackModel.h */,
+				5621AB1F206E31D900AB0CD0 /* LGTrackModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		5647C2ED205F567C00DFDB77 /* Notification */ = {
@@ -975,6 +1037,9 @@
 		56EAD86C2019C1B70059604E /* WordReport */ = {
 			isa = PBXGroup;
 			children = (
+				5621AB07206DD6A400AB0CD0 /* Model */,
+				5621AB06206DD69F00AB0CD0 /* View */,
+				5621AB05206DD69100AB0CD0 /* Controller */,
 			);
 			path = WordReport;
 			sourceTree = "<group>";
@@ -1150,6 +1215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56FD20D82028257D003A6154 /* LGDeletePlanAlertView.xib in Resources */,
+				5621AB1D206E275E00AB0CD0 /* LGTrackFinishHeaderView.xib in Resources */,
 				56AF60C72011CDB90067BD7B /* Login.storyboard in Resources */,
 				56B7AAEC202C5A2400BDECED /* LGWordDetailHeaderFooterView.xib in Resources */,
 				029F3C8A204AEB8C0022FB4B /* LGSelectReviewTypeView.xib in Resources */,
@@ -1160,6 +1226,7 @@
 				56BBBFC9205664C10057BDF2 /* LGSettingHeaderView.xib in Resources */,
 				56E25391204D00C6006D9B56 /* LGFinishWordTaskView.xib in Resources */,
 				56EAD86A2019C1300059604E /* Periphery.storyboard in Resources */,
+				5621AB18206E204F00AB0CD0 /* LGTrackRankHeaderView.xib in Resources */,
 				56EAD8642019C09A0059604E /* ReciteWords.storyboard in Resources */,
 				56224FC9204548360093BC7A /* LGIndexReviewAlertCell.xib in Resources */,
 				56EAD8682019C0FC0059604E /* PK.storyboard in Resources */,
@@ -1282,8 +1349,11 @@
 				56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */,
 				562FC13F202992DE005CEA83 /* LGRecitePlanController.m in Sources */,
 				56B7AADB202BE37800BDECED /* LGWordDetailModel.m in Sources */,
+				5621AB13206E1D3500AB0CD0 /* LGTrackFinishProgressCell.m in Sources */,
 				560699E42057D9B500574437 /* LGPKContainerController.m in Sources */,
 				567FDF1B206CC131007FFFB2 /* LGChooseWeekCell.m in Sources */,
+				5621AB1B206E275600AB0CD0 /* LGTrackFinishHeaderView.m in Sources */,
+				5621AB0A206DD6E100AB0CD0 /* LGReportContainerController.m in Sources */,
 				56A88849200CA53400847BE6 /* main.m in Sources */,
 				5612BFAB202154E30038D653 /* LGWordLibraryModel.m in Sources */,
 				56BBBFC7205664B60057BDF2 /* LGSettingHeaderView.m in Sources */,
@@ -1300,6 +1370,8 @@
 				56C64699204E43AB00E895B3 /* LGTimeReivewCountAlertView.m in Sources */,
 				56994EA420493A1F005648F6 /* LGReviewWrongCollectionReusableView.m in Sources */,
 				567A3AD4203FB72F00A41692 /* LGWordErrorViewController.m in Sources */,
+				5621AB10206E1B6200AB0CD0 /* LGTrackRankCell.m in Sources */,
+				5621AB16206E204700AB0CD0 /* LGTrackRankHeaderView.m in Sources */,
 				56994E9A20492BC3005648F6 /* LGReviewController.m in Sources */,
 				5673C92B206B42F4000C21DE /* LGUpdateNicknameController.m in Sources */,
 				56973644204FF54800169C8A /* LGDictationAnswerItemCollectionCell.m in Sources */,
@@ -1312,7 +1384,9 @@
 				5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */,
 				56E2538F204D00B7006D9B56 /* LGFinishWordTaskView.m in Sources */,
 				5639AF9F202441B300AA2CA5 /* LGPlanModel.m in Sources */,
+				5621AB20206E31D900AB0CD0 /* LGTrackModel.m in Sources */,
 				564A6B962063B87000242FC0 /* LGAtPKController.m in Sources */,
+				5621AB0D206E1A1E00AB0CD0 /* LGTrackController.m in Sources */,
 				56AF60D52011EA050067BD7B /* UIViewController+LGViewController.m in Sources */,
 				56C646AC204E67CD00E895B3 /* LGDictationController.m in Sources */,
 				563259EE201AC609007FF4D6 /* LGTool.m in Sources */,

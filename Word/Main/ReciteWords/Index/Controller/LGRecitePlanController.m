@@ -177,13 +177,13 @@
 #pragma mark - LGIndexReviewAlertViewDelegate
 
 - (void)skipReview{
-	//[self updateEveryDayReview];
+	[self updateEveryDayReview];
 	[self.reviewAlertView removeFromSuperview];
 	self.reviewAlertView = nil;
 }
 
 - (void)reviewWithStatus:(LGReviewSubModel *)subModel{
-	//[self updateEveryDayReview];
+	[self updateEveryDayReview];
 	[self.reviewAlertView removeFromSuperview];
 	self.reviewAlertView = nil;
 	[self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:subModel];

@@ -221,3 +221,6 @@ typedef NS_ENUM(NSUInteger, LGPKAnswerType) {
 
 //pk 轮询请求
 #define PK_POLL_URL						@"http://words.viplgw.cn/cn/app-api/pk-poll"
+
+//背单词轨迹
+#define PK_TACK_URL						@"http://words.viplgw.cn/cn/app-api/track"
