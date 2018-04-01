@@ -52,6 +52,7 @@
 - (void)requestData{
 	[self.request reqeustTrackCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
+            [self.tableView lg_endRefreshing];
 			self.trackModel = [LGTrackModel mj_objectWithKeyValues:response];
 		}
 	}];
@@ -65,14 +66,11 @@
 	
 	NSString *totalDayStr =  [NSString stringWithFormat:@"总天数:%@天",trackModel.insistDay];
 	NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc]initWithString:totalDayStr];
-	[attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, totalDayStr.length)];
-	
-//	[attrString addAttribute:NSForegroundColorAttributeName value:[UIFont systemFontOfSize:14] range:NSMakeRange(0, totalDayStr.length)];
-	
+	[attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:10] range:NSMakeRange(0, totalDayStr.length)];
 	[attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:[totalDayStr rangeOfString:trackModel.insistDay]];
-	
 	self.totalDayLabel.attributedText = attrString;
-	
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark -UITableViewDataSource
@@ -84,7 +82,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (section == 0) { return 5;}
+	if (section == 0) { return self.trackModel.package.count;}
 	if (section == 1) { return 10;}
 	return 0;
 }
@@ -93,6 +91,7 @@
 {
 	if (indexPath.section == 0) {
 		LGTrackFinishProgressCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGTrackFinishProgressCell"];
+        cell.packageModel = self.trackModel.package[indexPath.row];
 		return cell;
 	}else{
 		LGTrackRankCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGTrackRankCell"];
@@ -102,10 +101,10 @@
 
 #pragma mark -UITableViewDelegate
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//	return 0;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return indexPath.section == 0 ? 25 : 63;
+}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 	if (section == 0) {
@@ -113,6 +112,7 @@
 		return finishHeader;
 	}else{
 		LGTrackRankHeaderView *rankHeader = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"LGTrackRankHeaderView"];
+        rankHeader.userRankData = self.trackModel.data;
 		return rankHeader;
 	}
 }
@@ -120,7 +120,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
 	return 15;
-	
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

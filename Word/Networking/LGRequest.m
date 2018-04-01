@@ -414,4 +414,14 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)requestBeginEstimateCompletion:(comletionBlock)comletion{
+    self.url = BEGIN_ESTIMATE_URL;
+    [self postRequestCompletion:comletion];
+}
+
+- (void)reqeustEstimateWordsCompletion:(comletionBlock)completion{
+    self.url = ESTIMATE_WORD_URL;
+    [self postRequestCompletion:completion];
+}
+
 @end

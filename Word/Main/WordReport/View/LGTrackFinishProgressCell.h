@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "LGProgressView.h"
+#import "LGTrackModel.h"
 
 @interface LGTrackFinishProgressCell : UITableViewCell
+
+@property (nonatomic, strong) LGTracPackageModel *packageModel;
 
 //包名
 @property (weak, nonatomic) IBOutlet UILabel *packageNameLabel;
@@ -18,6 +21,6 @@
 @property (weak, nonatomic) IBOutlet LGProgressView *progressView;
 
 //完成情况
-@property (weak, nonatomic) IBOutlet UILabel *LGProgressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 
 @end

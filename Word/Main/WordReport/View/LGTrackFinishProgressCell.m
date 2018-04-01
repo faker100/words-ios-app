@@ -21,6 +21,13 @@
     // Configure the view for the selected state
 }
 
+- (void)setPackageModel:(LGTracPackageModel *)packageModel{
+    _packageModel = packageModel;
+    self.packageNameLabel.text = packageModel.name;
+    self.progressView.progress = packageModel.console.floatValue / packageModel.all.floatValue;
+    self.progressLabel.text = [NSString stringWithFormat:@"(%@/%@)",packageModel.console,packageModel.all];
+}
+
 //- (void)setRank:(LGRank *)rankModel rangking:(NSInteger)ranking {
 //	UIImage *rankImage = nil;
 //	NSString *rankStr = @"";

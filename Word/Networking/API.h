@@ -224,3 +224,11 @@ typedef NS_ENUM(NSUInteger, LGPKAnswerType) {
 
 //背单词轨迹
 #define PK_TACK_URL						@"http://words.viplgw.cn/cn/app-api/track"
+
+//开始评估
+#define BEGIN_ESTIMATE_URL              @"http://words.viplgw.cn/cn/app-api/ev-start"
+
+//评估单词
+#define ESTIMATE_WORD_URL               @"http://words.viplgw.cn/cn/app-api/ev-words"
+
+

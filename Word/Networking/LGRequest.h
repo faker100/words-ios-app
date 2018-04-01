@@ -381,8 +381,22 @@
 
 /**
  背单词轨迹
- 
  */
 - (void)reqeustTrackCompletion:(comletionBlock)completion;
+
+
+
+/**
+ 开始评估
+
+ */
+- (void)requestBeginEstimateCompletion:(comletionBlock)comletion;
+
+
+/**
+ 评估单词
+
+ */
+- (void)reqeustEstimateWordsCompletion:(comletionBlock)completion;
 
 @end
