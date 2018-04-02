@@ -16,8 +16,8 @@
     LGUserModel *user = [LGUserManager shareManager].user;
     self.usernameLabel.text = user.nickname;
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(user.image)] placeholderImage:PLACEHOLDERIMAGE];
-    self.vocabularyLabel.text = userRankData.num;
-    self.rankLabel.text = userRankData.rank;
+    self.vocabularyLabel.text = @(userRankData.num).stringValue;
+    self.rankLabel.text = @(userRankData.rank).stringValue;
 }
 
 @end

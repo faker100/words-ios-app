@@ -13,6 +13,7 @@
 #import "UIScrollView+LGRefresh.h"
 #import "LGTrackFinishHeaderView.h"
 #import "LGTrackModel.h"
+#import "LGBeginEstimateController.h"
 
 @interface LGTrackController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -127,14 +128,21 @@
 	return section == 0 ? 30 : 64;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	
+	if ([segue.identifier isEqualToString:@"reportIndexToEstimate"]) {
+		LGBeginEstimateController *controller = segue.destinationViewController;
+		controller.vocabulary = self.trackModel.data.num;
+	}
+	
+	
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

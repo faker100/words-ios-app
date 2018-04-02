@@ -37,11 +37,27 @@ typedef NS_ENUM(NSUInteger, LGDevicePermissionsType) {
  @param second 倒计时秒数
  @param completion 每秒回调一次
  
- @return 时间源, 可以用于取消
+ @return 时间源, 可以用于取消时间
  */
 + (dispatch_source_t)beginCountDownWithSecond:(NSInteger)second completion:(void(^)(NSInteger currtentSecond))completion;
 
 
+
+/**
+  计时器,从0开始
+
+ @param completion 每秒回调一次
+ @return 时间源, 可以用于取消时间
+ */
++ (dispatch_source_t)timerCompletion:(void(^)(NSInteger currtentSecond))completion;
+
+
+
+/**
+ 取消计时
+
+ */
++ (void)cancelTimer:(dispatch_source_t)timer;
 
 /**
  判断设备是否有访问相机/相册/麦克风等权限,并可以跳转到设置

@@ -329,7 +329,7 @@
  @param answer 选择答案
  @param duration 答题用时
  */
-- (void)commitPKAnswer:(LGPKAnswerType)type totalId:(NSString *)totalId wordId:(NSString *)wordId answer:(NSString *)answer duration:(NSInteger)duration completion:(comletionBlock)completion;
+- (void)commitPKAnswer:(LGAnswerType)type totalId:(NSString *)totalId wordId:(NSString *)wordId answer:(NSString *)answer duration:(NSInteger)duration completion:(comletionBlock)completion;
 
 
 /**
@@ -398,5 +398,17 @@
 
  */
 - (void)reqeustEstimateWordsCompletion:(comletionBlock)completion;
+
+
+/**
+ 提交评估答案
+
+ @param answer 用户选择答案
+ @param type 对错
+ @param wordId 单词 id
+ @param duration 持续做题时间
+ @param isKnow 是否认识
+ */
+- (void)submitEstimateAnswer:(NSString *)answer type:(LGAnswerType)type wordId:(NSString *)wordId duration:(NSInteger)duration isKnow:(BOOL)isKnow Completion:(comletionBlock)completion;
 
 @end

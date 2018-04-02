@@ -173,9 +173,7 @@
 	
 	[self requestPkChoice:LGPKChoiceAgree completion:^{
 		
-		if (timer) {
-			dispatch_source_cancel(timer);
-		}
+		[LGTool cancelTimer:timer];
 	}];
 }
 
@@ -288,9 +286,7 @@
 		[self uploadHeadRadius];
 	} completion:nil];
 	//重新倒计时,取消之前的倒计时
-	if (timer) {
-		dispatch_source_cancel(timer);
-	}
+	[LGTool cancelTimer:timer];
 	
 	//显示 "匹配中..."
 	if (isMatching) {
@@ -321,9 +317,7 @@
 }
 
 - (void)dealloc{
-	if (timer) {
-		dispatch_source_cancel(timer);
-	}
+	[LGTool cancelTimer:timer];
 }
 
 #pragma mark - Navigation

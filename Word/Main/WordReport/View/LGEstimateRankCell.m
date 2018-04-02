@@ -1,14 +1,14 @@
 //
-//  LGEstimaCell.m
+//  LGEstimateRankCell.m
 //  Word
 //
-//  Created by caoguochi on 2018/4/1.
+//  Created by Charles Cao on 2018/4/2.
 //  Copyright © 2018年 Charles. All rights reserved.
 //
 
-#import "LGEstimaCell.h"
+#import "LGEstimateRankCell.h"
 
-@implementation LGEstimaCell
+@implementation LGEstimateRankCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -55,10 +55,10 @@
 @interface LGTrackUserDataModel : NSObject
 
 //用户词汇量
-@property (nonatomic, copy) NSString *num;
+@property (nonatomic, assign) NSInteger num;
 
 //用户排名
-@property (nonatomic, copy) NSString *rank;
+@property (nonatomic, assign) NSInteger rank;
 
 @end
 

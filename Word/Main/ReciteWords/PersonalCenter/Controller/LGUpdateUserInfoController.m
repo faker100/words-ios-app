@@ -17,7 +17,7 @@
     NSString *infoPlaceholder1;
     NSString *infoPlaceholder2;
     CGFloat constant;
-    dispatch_source_t time;
+    dispatch_source_t timer;
 }
 @end
 
@@ -155,7 +155,7 @@
 //倒计时
 - (void)beginCountDown{
     self.verificationCodeButton.enabled = NO;
-    time = [LGTool beginCountDownWithSecond:4 completion:^(NSInteger currtentSecond) {
+    timer = [LGTool beginCountDownWithSecond:4 completion:^(NSInteger currtentSecond) {
         if (currtentSecond == 0) {
             self.verificationCodeButton.enabled = YES;
         }
@@ -185,9 +185,8 @@
 }
 
 - (void)dealloc{
-    if (time) {
-        dispatch_source_cancel(time);
-    }
+
+	[LGTool cancelTimer:timer];
 }
 
 /*

@@ -31,6 +31,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)lg_pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+	
+	//获取当前 controller
+	UIViewController *currentController = self.viewControllers.lastObject;
+	//push 到下一个 controller
+	[self pushViewController:viewController animated:animated];
+	
+	//移除上一个 controller
+	NSMutableArray *controllers = [NSMutableArray arrayWithArray:self.viewControllers];
+	[controllers removeObject:currentController];
+	[self setViewControllers:controllers animated:YES];
+}
 
 #pragma mark - UINavigationBarDelegate
 

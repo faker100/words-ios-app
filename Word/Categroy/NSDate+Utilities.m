@@ -49,7 +49,7 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 		NSDate *nextDate = fromDate;
         do {
             [dateArray addObject:nextDate];
-            nextDate = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay value:1 toDate:nextDate options:NSCalendarWrapComponents];
+            nextDate = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay value:1 toDate:nextDate options:NSCalendarMatchNextTime];
         } while ([nextDate compare:toDate] == NSOrderedAscending);
 
 		return dateArray;

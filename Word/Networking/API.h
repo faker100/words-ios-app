@@ -62,11 +62,11 @@ typedef NS_ENUM(NSUInteger, LGPKChoice) {
 
 
 /**
- pk 用户答案对错
+ pk,评估 用户答案对错
  */
-typedef NS_ENUM(NSUInteger, LGPKAnswerType) {
-	LGPKAnswerFalse = 0, //错误
-	LGPKAnswerTrue = 1, //正确
+typedef NS_ENUM(NSUInteger, LGAnswerType) {
+	LGAnswerFalse = 0, //错误
+	LGAnswerTrue = 1, //正确
 	
 	
 };
@@ -231,4 +231,6 @@ typedef NS_ENUM(NSUInteger, LGPKAnswerType) {
 //评估单词
 #define ESTIMATE_WORD_URL               @"http://words.viplgw.cn/cn/app-api/ev-words"
 
+//提交评估答案
+#define SUBMIT_ESTIMATE_ANSWER_URL		@"http://words.viplgw.cn/cn/app-api/ev-answer"
 

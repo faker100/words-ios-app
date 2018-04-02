@@ -311,7 +311,7 @@
 	[self postRequestCompletion:completion];
 }
 
-- (void)commitPKAnswer:(LGPKAnswerType)type totalId:(NSString *)totalId wordId:(NSString *)wordId answer:(NSString *)answer duration:(NSInteger)duration completion:(comletionBlock)completion{
+- (void)commitPKAnswer:(LGAnswerType)type totalId:(NSString *)totalId wordId:(NSString *)wordId answer:(NSString *)answer duration:(NSInteger)duration completion:(comletionBlock)completion{
 	self.url = PK_ANSWER_URL;
 	self.parameter = @{
 					   @"totalId" : totalId,
@@ -422,6 +422,18 @@
 - (void)reqeustEstimateWordsCompletion:(comletionBlock)completion{
     self.url = ESTIMATE_WORD_URL;
     [self postRequestCompletion:completion];
+}
+
+- (void)submitEstimateAnswer:(NSString *)answer type:(LGAnswerType)type wordId:(NSString *)wordId duration:(NSInteger)duration isKnow:(BOOL)isKnow Completion:(comletionBlock)completion{
+	self.url = SUBMIT_ESTIMATE_ANSWER_URL;
+	self.parameter = @{
+					   @"wordId" :wordId,
+					   @"type" : @(type),
+					   @"answer" : answer ? answer : @"",
+					   @"duration" : @(duration),
+					   @"status" : isKnow ? @"0" : @"1"
+					   };
+	[self postRequestCompletion:completion];
 }
 
 @end

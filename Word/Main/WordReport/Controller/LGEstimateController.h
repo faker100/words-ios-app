@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LGEstimaController : UIViewController
+@interface LGEstimateController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 

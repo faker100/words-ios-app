@@ -112,9 +112,7 @@ NSInteger countDown = 20;
  */
 - (void)applicationBecomeActive{
 	[LGProgressHUD showHUDAddedTo:self.view];
-	if (timer) {
-		dispatch_source_cancel(timer);
-	}
+	[LGTool cancelTimer:timer];
 	[self.request requestPKConnect:self.currentUserModel.uid totalId:self.pkModel.totalId completion:^(id response, LGError *error) {
 		if ([self isNormal:error showInView:self.view.window]) {
 			
@@ -199,9 +197,7 @@ NSInteger countDown = 20;
  @param second 倒计时总共时长
  */
 - (void)beginCountDown:(NSInteger)second{
-	if (timer) {
-		dispatch_source_cancel(timer);
-	}
+	[LGTool cancelTimer:timer];
 	timer = [LGTool beginCountDownWithSecond:second completion:^(NSInteger currtentSecond) {
 		self.currentTime = currtentSecond;
 	}];
@@ -302,7 +298,7 @@ NSInteger countDown = 20;
  */
 - (void)commitAnswer:(NSString *)chooseAnswer duration:(NSInteger)duration{
 	
-	LGPKAnswerType type = [chooseAnswer isEqualToString:self.currentWordModel.answer] ? LGPKAnswerTrue : LGPKAnswerFalse;
+	LGAnswerType type = [chooseAnswer isEqualToString:self.currentWordModel.answer] ? LGAnswerTrue : LGAnswerFalse;
 	
 	[self.request commitPKAnswer:type totalId:self.pkModel.totalId wordId:self.currentWordModel.wordsId answer:chooseAnswer duration:duration completion:^(id response, LGError *error) {
 		
@@ -351,9 +347,7 @@ NSInteger countDown = 20;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	//答题所用时间
-	if (timer) {
-		dispatch_source_cancel(timer);
-	}
+	[LGTool cancelTimer:timer];
 	NSInteger duration = countDown - self.currentTime;
 	
 	tableView.allowsSelection = NO;
@@ -401,9 +395,7 @@ NSInteger countDown = 20;
 }
 
 - (void)dealloc{
-	if (timer) {
-		dispatch_source_cancel(timer);
-	}
+	[LGTool cancelTimer:timer];
 }
 
 #pragma mark - Navigation

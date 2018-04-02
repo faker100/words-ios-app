@@ -69,6 +69,35 @@
 	return _timer;
 }
 
++ (dispatch_source_t)timerCompletion:(void(^)(NSInteger currtentSecond))completion{
+	__block NSInteger timeCount = 0;
+	//创建一个并发队列
+	dispatch_queue_t queue = dispatch_queue_create("timeCount", DISPATCH_QUEUE_CONCURRENT);
+	//创建timer
+	dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+	//设置1s触发一次，0s的误差
+	dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+																					  //触发的事件
+	dispatch_source_set_event_handler(_timer, ^{
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			//更新主界面的操作
+			if (completion) {
+				completion(timeCount);
+			}
+			timeCount++;
+		});
+	});
+	//开始执行dispatch源
+	dispatch_resume(_timer);
+	return _timer;
+}
+
++ (void)cancelTimer:(dispatch_source_t)timer{
+	if (timer) {
+		dispatch_source_cancel(timer);
+	}
+}
 
 + (BOOL)checkDevicePermissions:(LGDevicePermissionsType)type{
 	

@@ -22,14 +22,7 @@
     LGUserModel *user = [LGUserManager shareManager].user;
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(user.image)] placeholderImage:PLACEHOLDERIMAGE];
     self.usernameLabel.text = user.nickname;
-    [self requestData];
-    
-    [self.request reqeustEstimateWordsCompletion:^(id response, LGError *error) {
-        if ([self isNormal:error]) {
-            NSLog(@"%@",response);
-        }
-    }];
-    
+	self.vocabularyLabel.text = self.vocabulary == 0 ? @"未评估" : @(self.vocabulary).stringValue;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,14 +31,20 @@
 }
 
 
+/**
+ 开始评估
 
-- (void)requestData{
-    
-    [self.request requestBeginEstimateCompletion:^(id response, LGError *error) {
-        if ([self isNormal:error]) {
-            NSLog(@"%@",response);
-        }
-    }];
+ */
+- (IBAction)beginEstimateAction:(id)sender {
+	[LGProgressHUD showHUDAddedTo:self.view];
+	[self.request requestBeginEstimateCompletion:^(id response, LGError *error) {
+		if ([self isNormal:error]) {
+			NSString *code = response[@"code"];
+			if (code.integerValue == 1) {
+				[self performSegueWithIdentifier:@"beginEstimateToEstimate" sender:nil];
+			}
+		}
+	}];
 }
 
 /*
