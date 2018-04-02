@@ -144,5 +144,24 @@
     // Pass the selected object to the new view controller.
 }
 
+@end
+
+
+@implementation LGPieChartView
+
+- (void)drawRect:(CGRect)rect{
+    CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
+    CGFloat radius = (CGRectGetHeight(rect) - 20) / 2.0f;
+    UIBezierPath *pie = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:0 endAngle:2 * M_PI * 0.35 clockwise:YES];
+    
+    [pie addArcWithCenter:center radius:radius startAngle:2 * M_PI * 0.35 endAngle:2 * M_PI clockwise:YES];
+    
+    [pie addLineToPoint:center];
+    [pie closePath];
+    
+    [pie fill];
+    
+}
 
 @end
+

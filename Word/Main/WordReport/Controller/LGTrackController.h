@@ -25,3 +25,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *incognizanceLabel;
 
 @end
+
+@interface LGPieChartView : UIView
+
+
+
+@end
