@@ -63,9 +63,15 @@
 	BOOL isKnow = StringNotEmpty(answer);
 	[LGProgressHUD showHUDAddedTo:self.view];
 	
-	[self.request submitEstimateAnswer:answer type:type wordId:self.wordModel.wordsId duration:duration isKnow:isKnow Completion:^(id response, LGError *error) {
+	[self.request submitEstimateAnswer:answer type:type wordId:self.wordModel.wordsId duration:duration isKnow:isKnow completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			[self pushNextController];
+			NSInteger code = [NSString stringWithFormat:@"%@",response[@"code"]].integerValue;
+			if (code == 1) {
+				[self pushNextController];
+			}else if(code == 2){
+				[self performSegueWithIdentifier:@"estimateToResult" sender:nil];
+			}
+			
 		}else{
 			self.tableView.allowsSelection = YES;
 		}
@@ -89,6 +95,7 @@
 	self.wordLabel.text = wordModel.word;
 	self.phoneticLabel.text = wordModel.phonetic_uk;
 	[self.tableView reloadData];
+	[self playAction:nil];
 }
 
 
@@ -114,6 +121,7 @@
 
 //不认识
 - (IBAction)notKnowAction:(UIButton *)sender {
+	self.tableView.allowsSelection = NO;
 	[self submiteAnswer:nil];
 }
 
@@ -144,7 +152,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	
-	tableView.allowsSelection = NO;
+
 	LGEstimateCell *cell  = [tableView cellForRowAtIndexPath:indexPath];
 	NSString *userAnswer = cell.answerLabel.text;
 	
@@ -153,6 +161,8 @@
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 		[tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:self.wordModel.trueAnswerIndex] animated:YES scrollPosition:UITableViewScrollPositionNone];
 	}
+	tableView.allowsSelection = NO;
+	
 	[self submiteAnswer:userAnswer];
 }
 

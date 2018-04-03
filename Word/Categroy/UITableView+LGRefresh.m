@@ -38,7 +38,7 @@
 		for (int i = 0; i < count; i++) {
 			
 			NSIndexPath *indexPath;
-			if (type == LGTableReloadOnlyAddRow) {
+			if (type == LGTableReloadOnlyRow) {
 				indexPath = [NSIndexPath indexPathForRow:[self numberOfRowsInSection:0] + i inSection:0];
 			}else{
 				indexPath = [NSIndexPath indexPathForRow:0 inSection:[self numberOfSections] + i];
@@ -47,7 +47,7 @@
 			[indexPathArray addObject:indexPath];
 		}
 		[self beginUpdates];
-		if (type == LGTableReloadOnlyAddSection)
+		if (type == LGTableReloadOnlySection)
 		{
 			[self insertSections:sectionIndexSex withRowAnimation:UITableViewRowAnimationFade];
 		}

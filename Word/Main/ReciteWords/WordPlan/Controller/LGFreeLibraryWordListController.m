@@ -85,7 +85,7 @@
 				[weakSelf.tableView reloadData];
 			}else{
 				[weakSelf.modelArray addObjectsFromArray:newModelArray];
-				[weakSelf.tableView addMoreDataWithType:LGTableReloadOnlyAddSection count:newModelArray.count];
+				[weakSelf.tableView addMoreDataWithType:LGTableReloadOnlySection count:newModelArray.count];
 			}
 		}
     }];

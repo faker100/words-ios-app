@@ -10,6 +10,9 @@
 
 @interface LGEstimateRankController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *userHeadImageView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 

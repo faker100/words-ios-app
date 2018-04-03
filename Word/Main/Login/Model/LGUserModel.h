@@ -17,6 +17,7 @@
 
 @interface LGUserModel : NSObject
 
+
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSString *nickname;
 @property (nonatomic, copy) NSString *password;

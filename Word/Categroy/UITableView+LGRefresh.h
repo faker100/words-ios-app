@@ -16,8 +16,8 @@ typedef NS_ENUM(NSUInteger, LGCurrentRefreshType) {
 
 //简单加载更多数据方式
 typedef NS_ENUM(NSUInteger, LGTableAddMoreDataType) {
-	LGTableReloadOnlyAddRow,		// 用于section始终为1,加载 row 数量的布局
-	LGTableReloadOnlyAddSection,    // 用于每个section 的 row 始终为1,加载 section数量 的 group table 样式
+	LGTableReloadOnlyRow,		// 用于section始终为1,加载 row 数量的布局
+	LGTableReloadOnlySection,    // 用于每个section 的 row 始终为1,加载 section数量 的 group table 样式
 };
 
 typedef void (^LGRefreshBlock)(LGCurrentRefreshType type);

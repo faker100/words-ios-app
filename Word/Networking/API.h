@@ -234,3 +234,16 @@ typedef NS_ENUM(NSUInteger, LGAnswerType) {
 //提交评估答案
 #define SUBMIT_ESTIMATE_ANSWER_URL		@"http://words.viplgw.cn/cn/app-api/ev-answer"
 
+//评估列表
+#define ESTIMATE_LIST_URL				@"http://words.viplgw.cn/cn/app-api/ev-rank-list"
+
+//评估结果
+#define ESTIMATE_RESULT_RUL				@"http://words.viplgw.cn/cn/app-api/ev-result"
+
+
+
+
+
+
+
+

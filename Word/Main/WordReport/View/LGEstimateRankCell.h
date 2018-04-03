@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LGEstimateRankModel.h"
 
 @interface LGEstimateRankCell : UITableViewCell
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 
@@ -21,5 +23,13 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *rankLabel;
 
+
+/**
+ 设置排名
+
+ @param model 数据
+ @param rank 排名
+ */
+- (void)setRankModel:(LGEstimateRankModel *)model rank:(NSInteger)rank;
 
 @end

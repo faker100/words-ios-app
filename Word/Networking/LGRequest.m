@@ -424,15 +424,29 @@
     [self postRequestCompletion:completion];
 }
 
-- (void)submitEstimateAnswer:(NSString *)answer type:(LGAnswerType)type wordId:(NSString *)wordId duration:(NSInteger)duration isKnow:(BOOL)isKnow Completion:(comletionBlock)completion{
+- (void)submitEstimateAnswer:(NSString *)answer type:(LGAnswerType)type wordId:(NSString *)wordId duration:(NSInteger)duration isKnow:(BOOL)isKnow completion:(comletionBlock)completion{
 	self.url = SUBMIT_ESTIMATE_ANSWER_URL;
 	self.parameter = @{
-					   @"wordId" :wordId,
+					   @"wordsId" :wordId,
 					   @"type" : @(type),
 					   @"answer" : answer ? answer : @"",
 					   @"duration" : @(duration),
 					   @"status" : isKnow ? @"0" : @"1"
 					   };
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestRankList:(NSString *)page pageSize:(NSString *)pageSize completion:(comletionBlock)completion{
+	self.url = ESTIMATE_LIST_URL;
+	self.parameter = @{
+					   @"page" : page,
+					   @"pageSize" : pageSize
+					   };
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestEstimateResultCompletion:(comletionBlock)completion{
+	self.url = ESTIMATE_RESULT_RUL;
 	[self postRequestCompletion:completion];
 }
 

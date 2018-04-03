@@ -409,6 +409,21 @@
  @param duration 持续做题时间
  @param isKnow 是否认识
  */
-- (void)submitEstimateAnswer:(NSString *)answer type:(LGAnswerType)type wordId:(NSString *)wordId duration:(NSInteger)duration isKnow:(BOOL)isKnow Completion:(comletionBlock)completion;
+- (void)submitEstimateAnswer:(NSString *)answer type:(LGAnswerType)type wordId:(NSString *)wordId duration:(NSInteger)duration isKnow:(BOOL)isKnow completion:(comletionBlock)completion;
+
+
+/**
+ 评估排名列表
+
+ @param page 页数
+ @param pageSize pageSize
+ */
+- (void)requestRankList:(NSString *)page pageSize:(NSString *)pageSize completion:(comletionBlock)completion;
+
+/**
+ 评估结果
+ 
+ */
+- (void)requestEstimateResultCompletion:(comletionBlock)completion;
 
 @end
