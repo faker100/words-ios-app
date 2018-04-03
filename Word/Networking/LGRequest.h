@@ -379,6 +379,14 @@
 - (void)requestPKPoll:(NSString *)opponentUid totalId:(NSString *)totalId completion:(comletionBlock)completion;
 
 
+
+/**
+ PK 发现
+
+ @param page 页数
+ */
+- (void)requestPKDiscover:(NSString *)page Completion:(comletionBlock)completion;
+
 /**
  背单词轨迹
  */
@@ -425,5 +433,6 @@
  
  */
 - (void)requestEstimateResultCompletion:(comletionBlock)completion;
+
 
 @end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */; };
 		0239C1AC20485C460031C3FA /* LGTodayReviewWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0239C1AB20485C460031C3FA /* LGTodayReviewWordModel.m */; };
+		0243675F2073CB1C006FDB95 /* LGPKDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */; };
 		029F3C88204AEB7F0022FB4B /* LGSelectReviewTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029F3C87204AEB7F0022FB4B /* LGSelectReviewTypeView.m */; };
 		029F3C8A204AEB8C0022FB4B /* LGSelectReviewTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */; };
 		02C1DFAD2062BA9200217244 /* LGUpdateUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C1DFAC2062BA9200217244 /* LGUpdateUserInfoController.m */; };
@@ -182,6 +183,8 @@
 		0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGFreeLibraryWordListController.m; sourceTree = "<group>"; };
 		0239C1AA20485C460031C3FA /* LGTodayReviewWordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTodayReviewWordModel.h; sourceTree = "<group>"; };
 		0239C1AB20485C460031C3FA /* LGTodayReviewWordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTodayReviewWordModel.m; sourceTree = "<group>"; };
+		0243675D2073CB1C006FDB95 /* LGPKDiscoverController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKDiscoverController.h; sourceTree = "<group>"; };
+		0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKDiscoverController.m; sourceTree = "<group>"; };
 		029F3C86204AEB7F0022FB4B /* LGSelectReviewTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSelectReviewTypeView.h; sourceTree = "<group>"; };
 		029F3C87204AEB7F0022FB4B /* LGSelectReviewTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGSelectReviewTypeView.m; sourceTree = "<group>"; };
 		029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGSelectReviewTypeView.xib; sourceTree = "<group>"; };
@@ -624,16 +627,6 @@
 			path = Tool;
 			sourceTree = "<group>";
 		};
-		566FF2CD20577B38004574EA /* PK */ = {
-			isa = PBXGroup;
-			children = (
-				566FF2D62057A65F004574EA /* Model */,
-				566FF2D220577CCA004574EA /* View */,
-				566FF2CE20577B4B004574EA /* Controller */,
-			);
-			path = PK;
-			sourceTree = "<group>";
-		};
 		566FF2CE20577B4B004574EA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +640,8 @@
 				564A6B952063B87000242FC0 /* LGAtPKController.m */,
 				56485D8F20690A2F00352E22 /* LGPKResultController.h */,
 				56485D9020690A2F00352E22 /* LGPKResultController.m */,
+				0243675D2073CB1C006FDB95 /* LGPKDiscoverController.h */,
+				0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1105,7 +1100,9 @@
 		56EAD86D2019C1C70059604E /* PK */ = {
 			isa = PBXGroup;
 			children = (
-				566FF2CD20577B38004574EA /* PK */,
+				566FF2D62057A65F004574EA /* Model */,
+				566FF2D220577CCA004574EA /* View */,
+				566FF2CE20577B4B004574EA /* Controller */,
 			);
 			path = PK;
 			sourceTree = "<group>";
@@ -1412,6 +1409,7 @@
 				562FC13F202992DE005CEA83 /* LGRecitePlanController.m in Sources */,
 				5607F372207238BC001A4DAB /* LGEstimateRankController.m in Sources */,
 				56B7AADB202BE37800BDECED /* LGWordDetailModel.m in Sources */,
+				0243675F2073CB1C006FDB95 /* LGPKDiscoverController.m in Sources */,
 				5621AB13206E1D3500AB0CD0 /* LGTrackFinishProgressCell.m in Sources */,
 				560699E42057D9B500574437 /* LGPKContainerController.m in Sources */,
 				567FDF1B206CC131007FFFB2 /* LGChooseWeekCell.m in Sources */,

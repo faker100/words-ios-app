@@ -1341,10 +1341,10 @@
             </objects>
             <point key="canvasLocation" x="3909.5999999999999" y="-227.13643178410797"/>
         </scene>
-        <!--View Controller-->
+        <!--Discover Controller-->
         <scene sceneID="pvH-VH-KCG">
             <objects>
-                <viewController id="Rij-Xf-s6i" sceneMemberID="viewController">
+                <viewController id="Rij-Xf-s6i" customClass="LGPKDiscoverController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="D9h-fD-N6Z"/>
                         <viewControllerLayoutGuide type="bottom" id="RAD-dG-VHt"/>

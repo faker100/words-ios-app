@@ -84,7 +84,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	if (section == 0) { return self.trackModel.package.count;}
-	if (section == 1) { return 10;}
+	if (section == 1) { return self.trackModel.rank.count;}
 	return 0;
 }
 
@@ -96,6 +96,7 @@
 		return cell;
 	}else{
 		LGTrackRankCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGTrackRankCell"];
+        [cell setTrackRankModel:self.trackModel.rank[indexPath.row] rank:indexPath.row + 1];
 		return cell;
 	}
 }
@@ -138,8 +139,6 @@
 		LGBeginEstimateController *controller = segue.destinationViewController;
 		controller.vocabulary = self.trackModel.data.num;
 	}
-	
-	
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
@@ -152,15 +151,19 @@
 - (void)drawRect:(CGRect)rect{
     CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
     CGFloat radius = (CGRectGetHeight(rect) - 20) / 2.0f;
-    UIBezierPath *pie = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:0 endAngle:2 * M_PI * 0.35 clockwise:YES];
+   
+    UIBezierPath *pie = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:11 * M_PI/6 endAngle:  M_PI/6  clockwise:YES];
+    pie.lineWidth = 10;
+//    [pie addLineToPoint:center];
+//    [pie closePath];
+    [pie stroke];
     
-    [pie addArcWithCenter:center radius:radius startAngle:2 * M_PI * 0.35 endAngle:2 * M_PI clockwise:YES];
-    
-    [pie addLineToPoint:center];
-    [pie closePath];
-    
-    [pie fill];
-    
+    UIBezierPath *pie2 = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:M_PI/6 endAngle:11 * M_PI/6 clockwise:YES];
+    [[UIColor redColor]setStroke];
+    pie2.lineWidth = 10;
+//    [pie2 addLineToPoint:center];
+//    [pie2 closePath];
+    [pie2 stroke];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LGTrackModel.h"
 
 @interface LGTrackRankCell : UITableViewCell
 
@@ -21,4 +22,14 @@
 
 //词汇量
 @property (weak, nonatomic) IBOutlet UILabel *vocabularyLabel;
+
+
+/**
+ 设置单词轨迹
+
+ @param rankModel 数据
+ @param rank 排名
+ */
+- (void)setTrackRankModel:(LGTrackRankModel *)rankModel rank:(NSInteger)rank;
+
 @end

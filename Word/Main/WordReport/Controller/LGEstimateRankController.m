@@ -9,7 +9,7 @@
 #import "LGEstimateRankController.h"
 #import "LGEstimateRankCell.h"
 #import "UITableView+LGRefresh.h"
-
+#import "LGUserManager.h"
 
 @interface LGEstimateRankController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -24,13 +24,20 @@
     // Do any additional setup after loading the view.
 	self.rankArray = [NSMutableArray array];
 	[self requestData:YES];
-	[self configRefresh];
+	[self configUI];
 }
 
-- (void)configRefresh{
+
+- (void)configUI{
+    
 	[self.tableView setRefreshBlock:^(LGCurrentRefreshType type) {
 		[self requestData:NO];
 	}];
+    
+    LGUserModel *user = [LGUserManager shareManager].user;
+    
+    [self.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(user.image)] placeholderImage:PLACEHOLDERIMAGE];
+    self.usernameLabel.text = user.nickname;
 }
 
 - (void)requestData:(BOOL)showLoading{

@@ -409,6 +409,15 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)requestPKDiscover:(NSString *)page Completion:(comletionBlock)completion{
+    self.url = PK_DISCOVER_URL;
+    self.parameter = @{
+                       @"page" : page,
+                       @"pageSize" : @"20"
+                       };
+    [self postRequestCompletion:completion];
+}
+
 - (void)reqeustTrackCompletion:(comletionBlock)completion{
 	self.url = PK_TACK_URL;
 	[self postRequestCompletion:completion];

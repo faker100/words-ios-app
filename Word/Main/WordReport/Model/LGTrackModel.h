@@ -64,5 +64,10 @@
 
 @interface LGTrackRankModel : NSObject
 
+@property (nonatomic, copy) NSString *image;
+@property (nonatomic, copy) NSString *nickname;
+//单词量
+@property (nonatomic, copy) NSString *num;
+
 @end
 
