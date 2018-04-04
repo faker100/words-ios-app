@@ -103,6 +103,10 @@
 		56A88843200CA53400847BE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A88842200CA53400847BE6 /* Assets.xcassets */; };
 		56A88846200CA53400847BE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A88844200CA53400847BE6 /* LaunchScreen.storyboard */; };
 		56A88849200CA53400847BE6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A88848200CA53400847BE6 /* main.m */; };
+		56ABC90C2074633100F328A8 /* LGReportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56ABC90B2074633100F328A8 /* LGReportController.m */; };
+		56ABC90F20749F3200F328A8 /* LGPKDiscoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56ABC90E20749F3200F328A8 /* LGPKDiscoverCell.m */; };
+		56ABC9152074A0B200F328A8 /* LGPKDiscoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56ABC9142074A0B200F328A8 /* LGPKDiscoverModel.m */; };
+		56ABC9182074A9F500F328A8 /* LGDiscoverDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56ABC9172074A9F500F328A8 /* LGDiscoverDetailController.m */; };
 		56AF60C52011CD2B0067BD7B /* LGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AF60C42011CD2B0067BD7B /* LGRequest.m */; };
 		56AF60C72011CDB90067BD7B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56AF60C62011CDB90067BD7B /* Login.storyboard */; };
 		56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AF60C92011DBBE0067BD7B /* CALayer+LGLayer.m */; };
@@ -361,6 +365,14 @@
 		56A88845200CA53400847BE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56A88847200CA53400847BE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56A88848200CA53400847BE6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		56ABC90A2074633100F328A8 /* LGReportController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReportController.h; sourceTree = "<group>"; };
+		56ABC90B2074633100F328A8 /* LGReportController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReportController.m; sourceTree = "<group>"; };
+		56ABC90D20749F3200F328A8 /* LGPKDiscoverCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKDiscoverCell.h; sourceTree = "<group>"; };
+		56ABC90E20749F3200F328A8 /* LGPKDiscoverCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKDiscoverCell.m; sourceTree = "<group>"; };
+		56ABC9132074A0B200F328A8 /* LGPKDiscoverModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKDiscoverModel.h; sourceTree = "<group>"; };
+		56ABC9142074A0B200F328A8 /* LGPKDiscoverModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKDiscoverModel.m; sourceTree = "<group>"; };
+		56ABC9162074A9F500F328A8 /* LGDiscoverDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDiscoverDetailController.h; sourceTree = "<group>"; };
+		56ABC9172074A9F500F328A8 /* LGDiscoverDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDiscoverDetailController.m; sourceTree = "<group>"; };
 		56AF60C32011CD2B0067BD7B /* LGRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGRequest.h; sourceTree = "<group>"; };
 		56AF60C42011CD2B0067BD7B /* LGRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGRequest.m; sourceTree = "<group>"; };
 		56AF60C62011CDB90067BD7B /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -516,6 +528,8 @@
 				5607F371207238BC001A4DAB /* LGEstimateRankController.m */,
 				568C8C9820732DC7009668AD /* LGEstimateResultController.h */,
 				568C8C9920732DC7009668AD /* LGEstimateResultController.m */,
+				56ABC90A2074633100F328A8 /* LGReportController.h */,
+				56ABC90B2074633100F328A8 /* LGReportController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -642,6 +656,8 @@
 				56485D9020690A2F00352E22 /* LGPKResultController.m */,
 				0243675D2073CB1C006FDB95 /* LGPKDiscoverController.h */,
 				0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */,
+				56ABC9162074A9F500F328A8 /* LGDiscoverDetailController.h */,
+				56ABC9172074A9F500F328A8 /* LGDiscoverDetailController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -656,6 +672,8 @@
 				560699E02057BC7B00574437 /* LGPKRankHeadView.xib */,
 				564A6B972063BD5E00242FC0 /* LGPKAnswerCell.h */,
 				564A6B982063BD5E00242FC0 /* LGPKAnswerCell.m */,
+				56ABC90D20749F3200F328A8 /* LGPKDiscoverCell.h */,
+				56ABC90E20749F3200F328A8 /* LGPKDiscoverCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -669,6 +687,8 @@
 				564A6B922063521400242FC0 /* LGJPushReceiveMessageModel.m */,
 				56C078D32069DFF700C0F513 /* LGPKResultModel.h */,
 				56C078D42069DFF700C0F513 /* LGPKResultModel.m */,
+				56ABC9132074A0B200F328A8 /* LGPKDiscoverModel.h */,
+				56ABC9142074A0B200F328A8 /* LGPKDiscoverModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1380,6 +1400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				565A30F7201331E000448B1C /* UIColor+LGColor.m in Sources */,
+				56ABC9182074A9F500F328A8 /* LGDiscoverDetailController.m in Sources */,
 				56C9899720207C0C0095A4BD /* LGNavigationItem.m in Sources */,
 				02F78A092029E54A0011096F /* LGReciteWordModel.m in Sources */,
 				56EAD86220197F2D0059604E /* LGFindPasswordController.m in Sources */,
@@ -1423,6 +1444,7 @@
 				56BBBFC7205664B60057BDF2 /* LGSettingHeaderView.m in Sources */,
 				56CCA5E5201B083B0097DCAC /* LGReciteWordsController.m in Sources */,
 				02C1DFAD2062BA9200217244 /* LGUpdateUserInfoController.m in Sources */,
+				56ABC9152074A0B200F328A8 /* LGPKDiscoverModel.m in Sources */,
 				5612BFAE202161E50038D653 /* UIScrollView+LGRefresh.m in Sources */,
 				5688DE5F207395FC001608CB /* LGEstimateRankModel.m in Sources */,
 				56B7AADF202BFAEB00BDECED /* LGWordDetailCell.m in Sources */,
@@ -1433,6 +1455,7 @@
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
 				564A6B932063521400242FC0 /* LGJPushReceiveMessageModel.m in Sources */,
 				56C64699204E43AB00E895B3 /* LGTimeReivewCountAlertView.m in Sources */,
+				56ABC90C2074633100F328A8 /* LGReportController.m in Sources */,
 				56994EA420493A1F005648F6 /* LGReviewWrongCollectionReusableView.m in Sources */,
 				567A3AD4203FB72F00A41692 /* LGWordErrorViewController.m in Sources */,
 				5621AB10206E1B6200AB0CD0 /* LGTrackRankCell.m in Sources */,
@@ -1460,6 +1483,7 @@
 				566FF2D120577B86004574EA /* LGPKIndexViewController.m in Sources */,
 				5658D5A62040FF7600390FC4 /* LGIndexReviewAlertView.m in Sources */,
 				567FDF0F206C77F5007FFFB2 /* LGClockListCell.m in Sources */,
+				56ABC90F20749F3200F328A8 /* LGPKDiscoverCell.m in Sources */,
 				56994EA8204950A3005648F6 /* LGReviewWrongWordModel.m in Sources */,
 				563F7DAB2023177E00944730 /* NSObject+LGRequest.m in Sources */,
 				566FF2D520577D95004574EA /* LGPKRankingCell.m in Sources */,

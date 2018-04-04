@@ -243,8 +243,11 @@ typedef NS_ENUM(NSUInteger, LGAnswerType) {
 //评估结果
 #define ESTIMATE_RESULT_RUL				@"http://words.viplgw.cn/cn/app-api/ev-result"
 
+//单词报表
+#define WORD_REPORT_URL					@"http://words.viplgw.cn/cn/app-api/words-report"
 
-
+//切换月报告
+#define CHAGNE_REPORT_URL			    @"http://words.viplgw.cn/cn/app-api/api-report"
 
 
 

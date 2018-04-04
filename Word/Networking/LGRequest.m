@@ -409,10 +409,10 @@
 	[self postRequestCompletion:completion];
 }
 
-- (void)requestPKDiscover:(NSString *)page Completion:(comletionBlock)completion{
+- (void)requestPKDiscoverWithPage:(NSInteger)page completion:(comletionBlock)completion{
     self.url = PK_DISCOVER_URL;
     self.parameter = @{
-                       @"page" : page,
+                       @"page" : @(page),
                        @"pageSize" : @"20"
                        };
     [self postRequestCompletion:completion];
@@ -456,6 +456,19 @@
 
 - (void)requestEstimateResultCompletion:(comletionBlock)completion{
 	self.url = ESTIMATE_RESULT_RUL;
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestReportCompletion:(comletionBlock)completion{
+	self.url = WORD_REPORT_URL;
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestChangeMonthReport:(NSString *)month completion:(comletionBlock)completion{
+	self.url = CHAGNE_REPORT_URL;
+	self.parameter = @{
+					   @"month" : month
+					   };
 	[self postRequestCompletion:completion];
 }
 

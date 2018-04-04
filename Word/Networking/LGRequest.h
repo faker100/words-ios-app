@@ -385,7 +385,7 @@
 
  @param page 页数
  */
-- (void)requestPKDiscover:(NSString *)page Completion:(comletionBlock)completion;
+- (void)requestPKDiscoverWithPage:(NSInteger)page completion:(comletionBlock)completion;
 
 /**
  背单词轨迹
@@ -434,5 +434,19 @@
  */
 - (void)requestEstimateResultCompletion:(comletionBlock)completion;
 
+
+/**
+ 月报告
+
+ */
+- (void)requestReportCompletion:(comletionBlock)completion;
+
+/**
+ 月报告切换
+
+ @param month 月份 格式 xxxx-xx-01
+
+ */
+- (void)requestChangeMonthReport:(NSString *)month completion:(comletionBlock)completion;
 
 @end
