@@ -30,7 +30,7 @@
 
 - (LGClockModel *)clockModel{
 	if (!_clockModel) {
-		_clockModel = [LGClockModel new];
+		_clockModel = [[LGClockModel alloc]init];
 		_clockModel.isUse = YES;
 	}
 	return _clockModel;

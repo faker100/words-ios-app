@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LGTrackPieView.h"
 
 @interface LGTrackController : UIViewController
 
@@ -24,10 +25,9 @@
 //不认识数
 @property (weak, nonatomic) IBOutlet UILabel *incognizanceLabel;
 
-@end
-
-@interface LGPieChartView : UIView
-
+//饼状图view
+@property (weak, nonatomic) IBOutlet LGTrackPieView *pieView;
 
 
 @end
+

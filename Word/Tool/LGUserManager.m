@@ -11,7 +11,7 @@
 @implementation LGUserManager
 @synthesize user = _user;
 
-+ (id)shareManager{
++ (instancetype)shareManager{
 	static LGUserManager *mannager;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
@@ -40,14 +40,6 @@
 	}
 }
 
-- (void)setClockArray:(NSMutableArray<LGClockModel *> *)clockArray{
-	[[NSUserDefaults standardUserDefaults] setObject:[LGClockModel mj_keyValuesArrayWithObjectArray:clockArray] forKey:CLOCK_KEY];
-}
-
-- (NSMutableArray<LGClockModel *> *)clockArray{
-	id arr = [[NSUserDefaults standardUserDefaults] objectForKey:CLOCK_KEY];
-	return arr ? [LGClockModel mj_objectArrayWithKeyValuesArray:arr] : [NSMutableArray array];
-}
 
 - (BOOL)isLogin{
 	

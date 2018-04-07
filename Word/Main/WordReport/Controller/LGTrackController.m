@@ -60,11 +60,13 @@
 }
 
 - (void)setTrackModel:(LGTrackModel *)trackModel{
+    
 	_trackModel = trackModel;
 	self.totalWordsLabel.text = trackModel.userAllWords;
 	self.knowLabel.text = trackModel.know;
 	self.incognizanceLabel.text = trackModel.notKnow;
-	
+    [self.pieView setPieDayStudy:trackModel.everydayNew.integerValue dayReview:trackModel.review.integerValue];
+    
 	NSString *totalDayStr =  [NSString stringWithFormat:@"总天数:%@天",trackModel.insistDay];
 	NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc]initWithString:totalDayStr];
 	[attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:10] range:NSMakeRange(0, totalDayStr.length)];
@@ -141,29 +143,6 @@
 	}
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-
-@end
-
-
-@implementation LGPieChartView
-
-- (void)drawRect:(CGRect)rect{
-    CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
-    CGFloat radius = (CGRectGetHeight(rect) - 20) / 2.0f;
-   
-    UIBezierPath *pie = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:11 * M_PI/6 endAngle:  M_PI/6  clockwise:YES];
-    pie.lineWidth = 10;
-//    [pie addLineToPoint:center];
-//    [pie closePath];
-    [pie stroke];
-    
-    UIBezierPath *pie2 = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:M_PI/6 endAngle:11 * M_PI/6 clockwise:YES];
-    [[UIColor redColor]setStroke];
-    pie2.lineWidth = 10;
-//    [pie2 addLineToPoint:center];
-//    [pie2 closePath];
-    [pie2 stroke];
 }
 
 @end

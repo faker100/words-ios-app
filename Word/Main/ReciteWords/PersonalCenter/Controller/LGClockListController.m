@@ -8,10 +8,11 @@
 
 #import "LGClockListController.h"
 #import "LGClockListCell.h"
-#import "LGUserManager.h"
 #import "LGAddClockController.h"
+#import "LGClockManager.h"
 
 @interface LGClockListController () <UITableViewDelegate, UITableViewDataSource, LGAddClockControllerDelegate,LGClockListCellDelegate>
+
 
 @property (nonatomic, strong) NSMutableArray<LGClockModel *> *clockArray;
 
@@ -23,7 +24,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	self.tableView.tableFooterView = [UIView new];
-	self.clockArray = [LGUserManager shareManager].clockArray;
+    self.tableView.rowHeight = 85;
+	self.clockArray = [LGClockManager allClocks];
 	[self.tableView reloadData];
 }
 
@@ -32,8 +34,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark -UITableViewDataSource
 
+#pragma mark -UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -57,21 +59,40 @@
 	[self performSegueWithIdentifier:@"clockListToEdit" sender:self.clockArray[indexPath.row]];
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [[LGClockManager shareManager] removeClock:self.clockArray[indexPath.row]];
+        [self.clockArray removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 #pragma mark - LGAddClockControllerDelegate
 - (void)saveClock:(LGClockModel *)clockModel{
 	
 	//不在数组中,为添加新闹钟
 	if (![self.clockArray containsObject:clockModel]) {
-		[self.clockArray addObject:clockModel];
+        [[LGClockManager shareManager] addClock:clockModel completion:^(BOOL isSuccess) {
+            if (isSuccess) {
+                [self.clockArray addObject:clockModel];
+            }else{
+                [LGProgressHUD showMessage:@"添加失败" toView:self.view];
+            }
+        }];
 	}
-	[LGUserManager shareManager].clockArray = self.clockArray;
+
 	[self.tableView reloadData];
 }
 
 #pragma mark - LGClockListCellDelegate
 - (void)setUseClock:(LGClockModel *)clock isUse:(BOOL)isUse{
 	clock.isUse = isUse;
-	[LGUserManager shareManager].clockArray = self.clockArray;
+    //更新本地闹钟
+	[[LGClockManager shareManager] updateClock:clock];
 }
 
 #pragma mark - Navigation

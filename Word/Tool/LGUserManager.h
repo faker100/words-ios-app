@@ -10,15 +10,14 @@
 #import "LGUserModel.h"
 #import "LGClockModel.h"
 
-#define UserDefaultKey @"userKey"
-#define CLOCK_KEY		@"CLOCK_KEY"
+#define UserDefaultKey  @"userKey"
+
 
 @interface LGUserManager : NSObject
 
 @property (nonatomic, strong) LGUserModel *user;
 
-//用户闹钟
-@property (nonatomic, strong) NSMutableArray<LGClockModel *> *clockArray;
+
 
 + (instancetype)shareManager;
 

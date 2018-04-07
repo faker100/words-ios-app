@@ -69,7 +69,7 @@
 
 // iOS 10 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
-	NSLog(@"%@",NSStringFromSelector(_cmd));
+
 	if (@available(iOS 10.0, *)) {
 	// Required
 	NSDictionary * userInfo = notification.request.content.userInfo;
@@ -83,7 +83,6 @@
 // iOS 10 Support
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
 	// Required
-	NSLog(@"%@",NSStringFromSelector(_cmd));
 	if (@available(iOS 10.0, *)) {
 	NSDictionary * userInfo = response.notification.request.content.userInfo;
 	if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
@@ -146,7 +145,6 @@
 	manager.enableAutoToolbar = NO;
 	manager.shouldResignOnTouchOutside = YES;
 }
-
 
 
 

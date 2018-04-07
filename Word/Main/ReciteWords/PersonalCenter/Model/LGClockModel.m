@@ -7,9 +7,17 @@
 //
 
 #import "LGClockModel.h"
+#import "NSDate+Utilities.h"
 
 @implementation LGClockModel
 
+-(instancetype)init{
+    self = [super init];
+    if (self) {
+        self.identifier = @([[NSDate currentDate]timeIntervalSince1970]).stringValue;
+    }
+    return self;
+}
 
 - (NSString *)weakStr{
 	
@@ -22,7 +30,6 @@
 		[self.week enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 			[temp appendFormat:@"%@  ",[LGClockModel weekNumToString:obj]];
 		}];
-		
 		return temp;
 	}
 }

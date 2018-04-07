@@ -131,6 +131,18 @@
 		}
 	}
 	
+    if (type == LGDeviceNotification) {
+        if (@available(iOS 10.0, *)){
+            
+        }else{
+            if ([[UIApplication sharedApplication] currentUserNotificationSettings].types  == UIRemoteNotificationTypeNone) {
+                flag == NO;
+                message = @"请在iPhone的\"设置-通知\"选项中,允许通知";
+            }
+        }
+        
+    }
+    
 	if (!flag) {
 		
 		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];

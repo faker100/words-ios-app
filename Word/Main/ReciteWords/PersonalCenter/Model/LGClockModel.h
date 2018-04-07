@@ -24,6 +24,14 @@
 //星期数组, @"1" @"2" @"3" @"4" @"5" @"6" @"7"
 @property (nonatomic, copy) NSArray<NSString *> *week;
 
+//闹钟标识:创建时间戳
+@property (nonatomic, copy) NSString *identifier;
+
+- (instancetype)init;
+
+//当前闹钟日期 
+- (NSDate *)date;
+
 /**
  星期字符串拼接
 
@@ -39,6 +47,7 @@
  @return 星期一
  */
 + (NSString *)weekNumToString:(NSString *)weekNum;
+
 
 @end
 

@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		022FACAA20760290006F8D1C /* LGTrackPieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 022FACA920760290006F8D1C /* LGTrackPieView.m */; };
+		022FACAD20761C8E006F8D1C /* LGReportPieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 022FACAC20761C8E006F8D1C /* LGReportPieView.m */; };
+		022FACB020761CE7006F8D1C /* LGReportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 022FACAF20761CE7006F8D1C /* LGReportModel.m */; };
 		0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */; };
 		0239C1AC20485C460031C3FA /* LGTodayReviewWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0239C1AB20485C460031C3FA /* LGTodayReviewWordModel.m */; };
 		0243675F2073CB1C006FDB95 /* LGPKDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */; };
+		02645BF620787E8C00328E75 /* LGClockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02645BF520787E8C00328E75 /* LGClockManager.m */; };
 		029F3C88204AEB7F0022FB4B /* LGSelectReviewTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029F3C87204AEB7F0022FB4B /* LGSelectReviewTypeView.m */; };
 		029F3C8A204AEB8C0022FB4B /* LGSelectReviewTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */; };
+		02C019BC2077399D0006DC05 /* LGReportLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C019BB2077399D0006DC05 /* LGReportLineChartView.m */; };
 		02C1DFAD2062BA9200217244 /* LGUpdateUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C1DFAC2062BA9200217244 /* LGUpdateUserInfoController.m */; };
 		02F123592070D575001A851B /* LGBeginEstimateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F123582070D575001A851B /* LGBeginEstimateController.m */; };
 		02F1236220712906001A851B /* LGEstimateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1236120712906001A851B /* LGEstimateController.m */; };
@@ -51,8 +56,6 @@
 		563F7DA22022BE8A00944730 /* UITableView+LGRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 563F7DA12022BE8A00944730 /* UITableView+LGRefresh.m */; };
 		563F7DA5202306B500944730 /* LGPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 563F7DA4202306B500944730 /* LGPlayer.m */; };
 		563F7DAB2023177E00944730 /* NSObject+LGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 563F7DAA2023177E00944730 /* NSObject+LGRequest.m */; };
-		5647C2F0205F567C00DFDB77 /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5647C2EF205F567C00DFDB77 /* NotificationService.m */; };
-		5647C2F4205F567C00DFDB77 /* Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5647C2EC205F567B00DFDB77 /* Notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5647C2FB205F66E300DFDB77 /* LGPKMatchingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5647C2FA205F66E300DFDB77 /* LGPKMatchingController.m */; };
 		56485D9120690A2F00352E22 /* LGPKResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56485D9020690A2F00352E22 /* LGPKResultController.m */; };
 		564A6B932063521400242FC0 /* LGJPushReceiveMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 564A6B922063521400242FC0 /* LGJPushReceiveMessageModel.m */; };
@@ -152,13 +155,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5647C2F2205F567C00DFDB77 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 56A8882E200CA53400847BE6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5647C2EB205F567B00DFDB77;
-			remoteInfo = Notification;
-		};
 		56C646A5204E64B100E895B3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 56A8882E200CA53400847BE6 /* Project object */;
@@ -175,7 +171,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				5647C2F4205F567C00DFDB77 /* Notification.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,15 +178,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		022FACA820760290006F8D1C /* LGTrackPieView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTrackPieView.h; sourceTree = "<group>"; };
+		022FACA920760290006F8D1C /* LGTrackPieView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTrackPieView.m; sourceTree = "<group>"; };
+		022FACAB20761C8E006F8D1C /* LGReportPieView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReportPieView.h; sourceTree = "<group>"; };
+		022FACAC20761C8E006F8D1C /* LGReportPieView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReportPieView.m; sourceTree = "<group>"; };
+		022FACAE20761CE7006F8D1C /* LGReportModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReportModel.h; sourceTree = "<group>"; };
+		022FACAF20761CE7006F8D1C /* LGReportModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReportModel.m; sourceTree = "<group>"; };
 		0235DB982022147200E52A3F /* LGFreeLibraryWordListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGFreeLibraryWordListController.h; sourceTree = "<group>"; };
 		0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGFreeLibraryWordListController.m; sourceTree = "<group>"; };
 		0239C1AA20485C460031C3FA /* LGTodayReviewWordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTodayReviewWordModel.h; sourceTree = "<group>"; };
 		0239C1AB20485C460031C3FA /* LGTodayReviewWordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTodayReviewWordModel.m; sourceTree = "<group>"; };
 		0243675D2073CB1C006FDB95 /* LGPKDiscoverController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKDiscoverController.h; sourceTree = "<group>"; };
 		0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKDiscoverController.m; sourceTree = "<group>"; };
+		02645BF420787E8C00328E75 /* LGClockManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGClockManager.h; sourceTree = "<group>"; };
+		02645BF520787E8C00328E75 /* LGClockManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGClockManager.m; sourceTree = "<group>"; };
 		029F3C86204AEB7F0022FB4B /* LGSelectReviewTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSelectReviewTypeView.h; sourceTree = "<group>"; };
 		029F3C87204AEB7F0022FB4B /* LGSelectReviewTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGSelectReviewTypeView.m; sourceTree = "<group>"; };
 		029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGSelectReviewTypeView.xib; sourceTree = "<group>"; };
+		02C019BA2077399D0006DC05 /* LGReportLineChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReportLineChartView.h; sourceTree = "<group>"; };
+		02C019BB2077399D0006DC05 /* LGReportLineChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReportLineChartView.m; sourceTree = "<group>"; };
 		02C1DFAB2062BA9200217244 /* LGUpdateUserInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGUpdateUserInfoController.h; sourceTree = "<group>"; };
 		02C1DFAC2062BA9200217244 /* LGUpdateUserInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGUpdateUserInfoController.m; sourceTree = "<group>"; };
 		02F123572070D575001A851B /* LGBeginEstimateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGBeginEstimateController.h; sourceTree = "<group>"; };
@@ -265,7 +270,6 @@
 		563F7DA92023177E00944730 /* NSObject+LGRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LGRequest.h"; sourceTree = "<group>"; };
 		563F7DAA2023177E00944730 /* NSObject+LGRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LGRequest.m"; sourceTree = "<group>"; };
 		5647C2E7205F4FCE00DFDB77 /* Word.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Word.entitlements; sourceTree = "<group>"; };
-		5647C2EC205F567B00DFDB77 /* Notification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Notification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5647C2EE205F567C00DFDB77 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
 		5647C2EF205F567C00DFDB77 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
 		5647C2F1205F567C00DFDB77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -455,13 +459,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5647C2E9205F567B00DFDB77 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		56A88833200CA53400847BE6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -556,6 +553,12 @@
 				568C8C96207326BB009668AD /* LGEstimateResultHeaderView.xib */,
 				568C8C9B20732EE3009668AD /* LGEstimateResultCell.h */,
 				568C8C9C20732EE3009668AD /* LGEstimateResultCell.m */,
+				022FACA820760290006F8D1C /* LGTrackPieView.h */,
+				022FACA920760290006F8D1C /* LGTrackPieView.m */,
+				022FACAB20761C8E006F8D1C /* LGReportPieView.h */,
+				022FACAC20761C8E006F8D1C /* LGReportPieView.m */,
+				02C019BA2077399D0006DC05 /* LGReportLineChartView.h */,
+				02C019BB2077399D0006DC05 /* LGReportLineChartView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -571,6 +574,8 @@
 				562E9D0C20734E8800691A52 /* LGEstimateResultModel.m */,
 				5688DE5D207395FC001608CB /* LGEstimateRankModel.h */,
 				5688DE5E207395FC001608CB /* LGEstimateRankModel.m */,
+				022FACAE20761CE7006F8D1C /* LGReportModel.h */,
+				022FACAF20761CE7006F8D1C /* LGReportModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -637,6 +642,8 @@
 				56317B71201C1D6800AEC20B /* LGUserManager.m */,
 				563F7DA3202306B500944730 /* LGPlayer.h */,
 				563F7DA4202306B500944730 /* LGPlayer.m */,
+				02645BF420787E8C00328E75 /* LGClockManager.h */,
+				02645BF520787E8C00328E75 /* LGClockManager.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -860,7 +867,6 @@
 			children = (
 				56A88836200CA53400847BE6 /* Word.app */,
 				56C646A0204E64B000E895B3 /* WordTests.xctest */,
-				5647C2EC205F567B00DFDB77 /* Notification.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1167,23 +1173,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5647C2EB205F567B00DFDB77 /* Notification */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5647C2F5205F567C00DFDB77 /* Build configuration list for PBXNativeTarget "Notification" */;
-			buildPhases = (
-				5647C2E8205F567B00DFDB77 /* Sources */,
-				5647C2E9205F567B00DFDB77 /* Frameworks */,
-				5647C2EA205F567B00DFDB77 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = Notification;
-			productName = Notification;
-			productReference = 5647C2EC205F567B00DFDB77 /* Notification.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		56A88835200CA53400847BE6 /* Word */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56A8884C200CA53400847BE6 /* Build configuration list for PBXNativeTarget "Word" */;
@@ -1199,7 +1188,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				5647C2F3205F567C00DFDB77 /* PBXTargetDependency */,
 			);
 			name = Word;
 			productName = Word;
@@ -1234,10 +1222,6 @@
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = Charles;
 				TargetAttributes = {
-					5647C2EB205F567B00DFDB77 = {
-						CreatedOnToolsVersion = 9.1;
-						ProvisioningStyle = Automatic;
-					};
 					56A88835200CA53400847BE6 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
@@ -1272,19 +1256,11 @@
 			targets = (
 				56A88835200CA53400847BE6 /* Word */,
 				56C6469F204E64B000E895B3 /* WordTests */,
-				5647C2EB205F567B00DFDB77 /* Notification */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5647C2EA205F567B00DFDB77 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		56A88834200CA53400847BE6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1387,14 +1363,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5647C2E8205F567B00DFDB77 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5647C2F0205F567C00DFDB77 /* NotificationService.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		56A88832200CA53400847BE6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1413,6 +1381,7 @@
 				56C646AF204E7A2F00E895B3 /* LGDictationReviewModel.m in Sources */,
 				5639AFA22024535700AA2CA5 /* LGPlanTableViewCell.m in Sources */,
 				56C989842020176A0095A4BD /* LGWordPlanController.m in Sources */,
+				02C019BC2077399D0006DC05 /* LGReportLineChartView.m in Sources */,
 				56973641204FF50B00169C8A /* LGDictationUserAnswerCollectionCell.m in Sources */,
 				0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */,
 				0239C1AC20485C460031C3FA /* LGTodayReviewWordModel.m in Sources */,
@@ -1451,6 +1420,7 @@
 				567D2786206B75C700EEB79E /* LGFontSizeController.m in Sources */,
 				56C9899120204F7C0095A4BD /* LGWordLibraryTypeCell.m in Sources */,
 				56BBBFBB20561DA40057BDF2 /* LGPersonalInfoController.m in Sources */,
+				022FACAA20760290006F8D1C /* LGTrackPieView.m in Sources */,
 				56C9898E2020461D0095A4BD /* LGWordLibraryController.m in Sources */,
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
 				564A6B932063521400242FC0 /* LGJPushReceiveMessageModel.m in Sources */,
@@ -1470,6 +1440,7 @@
 				565A30F32013163400448B1C /* LGUserModel.m in Sources */,
 				564EB7AC2047998500E47A1E /* NSDate+Utilities.m in Sources */,
 				5606F8612015E45C0030E43C /* NSString+LGString.m in Sources */,
+				02645BF620787E8C00328E75 /* LGClockManager.m in Sources */,
 				56E2538F204D00B7006D9B56 /* LGFinishWordTaskView.m in Sources */,
 				5639AF9F202441B300AA2CA5 /* LGPlanModel.m in Sources */,
 				5621AB20206E31D900AB0CD0 /* LGTrackModel.m in Sources */,
@@ -1496,6 +1467,7 @@
 				564A6B992063BD5E00242FC0 /* LGPKAnswerCell.m in Sources */,
 				56BBBFBF205622060057BDF2 /* LGPersonalCell.m in Sources */,
 				56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */,
+				022FACB020761CE7006F8D1C /* LGReportModel.m in Sources */,
 				5678C38B20527C56009CD723 /* LGDictationPromptController.m in Sources */,
 				567FDF18206CC108007FFFB2 /* LGChooseWeekController.m in Sources */,
 				560F0FCB2022AA7000324510 /* LGFreeWordListCell.m in Sources */,
@@ -1504,6 +1476,7 @@
 				5647C2FB205F66E300DFDB77 /* LGPKMatchingController.m in Sources */,
 				56224FC7204547AF0093BC7A /* LGIndexReviewAlertCell.m in Sources */,
 				567FDF15206C7DFF007FFFB2 /* LGClockModel.m in Sources */,
+				022FACAD20761C8E006F8D1C /* LGReportPieView.m in Sources */,
 				567FDF12206C7B15007FFFB2 /* LGAddClockController.m in Sources */,
 				56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */,
 				5627C9F2204D2EA90013F1CC /* LGTimeReviewController.m in Sources */,
@@ -1530,11 +1503,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5647C2F3205F567C00DFDB77 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5647C2EB205F567B00DFDB77 /* Notification */;
-			targetProxy = 5647C2F2205F567C00DFDB77 /* PBXContainerItemProxy */;
-		};
 		56C646A6204E64B100E895B3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 56A88835200CA53400847BE6 /* Word */;
@@ -1562,36 +1530,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		5647C2F6205F567C00DFDB77 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G6D8UC5DTE;
-				INFOPLIST_FILE = Notification/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LeiGeWord.Word.Notification;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		5647C2F7205F567C00DFDB77 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G6D8UC5DTE;
-				INFOPLIST_FILE = Notification/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LeiGeWord.Word.Notification;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		56A8884A200CA53400847BE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1769,15 +1707,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5647C2F5205F567C00DFDB77 /* Build configuration list for PBXNativeTarget "Notification" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5647C2F6205F567C00DFDB77 /* Debug */,
-				5647C2F7205F567C00DFDB77 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		56A88831200CA53400847BE6 /* Build configuration list for PBXProject "Word" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

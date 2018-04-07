@@ -8,8 +8,11 @@
 
 #import "LGReportController.h"
 #import "UIScrollView+LGRefresh.h"
+#import "LGReportModel.h"
 
 @interface LGReportController ()
+
+@property (nonatomic, strong) LGReportModel *reportModel;
 
 @end
 
@@ -33,8 +36,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
-	[self reqeustData];
-	[self changeMonthData:@"2018-03-01"];
+	//[self reqeustData];
+//    [self changeMonthData:@"2018-03-01"];
 }
 
 //请求报表
@@ -42,7 +45,7 @@
 	[self.request requestReportCompletion:^(id response, LGError *error) {
 		[self.scrollView lg_endRefreshing];
 		if ([self isNormal:error]) {
-			NSLog(@"%@",response);
+            self.reportModel = [LGReportModel mj_objectWithKeyValues:response];
 		}
 	}];
 }
@@ -51,9 +54,50 @@
 - (void)changeMonthData:(NSString *)month{
 	[self.request requestChangeMonthReport:month completion:^(id response, LGError *error) {
 		if ([self isNormal:error]){
-			
+            //利用 LGReportModel 解析month
+            LGReportModel *report = [LGReportModel mj_objectWithKeyValues:response];
+            self.lineChartView.month = report.month;
 		}
 	}];
+}
+
+- (void)setReportModel:(LGReportModel *)reportModel{
+    _reportModel = reportModel;
+    
+    self.weekTotalLabel.text = [NSString stringWithFormat:@"总量:%@",reportModel.week.all];
+    [self.weekData enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UIButton *btn = (UIButton *)obj;
+        NSString *description;
+        NSString *num;
+        switch (btn.tag) {
+            case 100:
+                description = @"熟知量";
+                num = reportModel.week.knowWell;
+                break;
+            case 101:
+                description = @"认识量";
+                num = reportModel.week.know;
+                break;
+            case 102:
+                description = @"模糊量";
+                num = reportModel.week.dim;
+                break;
+            case 103:
+                description = @"忘记量";
+                num = reportModel.week.forget;
+                break;
+            case 104:
+                description = @"不认识";
+                num = reportModel.week.notKnow;
+                break;
+            default:
+                break;
+        }
+        [btn setTitle:[NSString stringWithFormat:@"%@   %@",description,num] forState:UIControlStateNormal];
+    }];
+    
+    self.reportPieView.weekReportModel = reportModel.week;
+    self.lineChartView.month = reportModel.month;
 }
 
 /*

@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, LGDevicePermissionsType) {
-	LGDevicePhotosAlbum, //相册权限
-	LGDeviceCamera, 	 //相机权限
-	LGDeviceMicrophone   //麦克风权限
+	LGDevicePhotosAlbum,  //相册权限
+	LGDeviceCamera, 	  //相机权限
+	LGDeviceMicrophone,   //麦克风权限
+    LGDeviceNotification  //通知权限
 };
 
 @interface LGTool : NSObject
