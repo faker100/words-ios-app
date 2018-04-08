@@ -21,11 +21,16 @@
     // Configure the view for the selected state
 }
 
+- (void)setLiveModel:(LGLivePreviewModel *)liveModel{
+	_liveModel = liveModel;
+	[self.tableView reloadData];
+}
+
 #pragma mark -UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 0;
+	return self.liveModel.data.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -35,8 +40,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	
-	return nil;
+	LGLivePreviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGLivePreviewCell"];
+	return cell;
 }
 
 #pragma mark -UITableViewDelegate
