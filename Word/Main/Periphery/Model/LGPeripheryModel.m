@@ -20,6 +20,9 @@
 			 };
 }
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{@"aCase" : @"case"};
+}
 
 @end
 
@@ -52,7 +55,8 @@
 			 @"courseTime" : @"cnName",
 			 @"teacherName" : @"listeningFile",
 			 @"teacherImage" : @"article",
-			 @"ID" : @"id"
+			 @"ID" : @"id",
+             @"courseDescription" : @"alternatives"
 			 };
 }
 
@@ -60,6 +64,15 @@
 
 
 @implementation LGChoicenessModel
+
+- (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property{
+    
+    if ([property.name isEqualToString:@"courseType"]) {
+        NSString *temp = (NSString *)oldValue;
+        return @(temp.integerValue);
+    }
+    return oldValue;
+}
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName{
 	return @{
@@ -69,4 +82,6 @@
 
 @end
 
+@implementation LGCaseModel
+@end
 

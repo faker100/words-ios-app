@@ -21,26 +21,28 @@
     // Configure the view for the selected state
 }
 
-- (void)setLiveModel:(LGLivePreviewModel *)liveModel{
-	_liveModel = liveModel;
-	[self.tableView reloadData];
+
+- (void)setLivePreview:(NSArray<LGLivePreviewModel *> *)livePreview{
+    _livePreview = livePreview;
+    [self.tableView reloadData];
 }
 
 #pragma mark -UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return self.liveModel.data.count;
+	return self.livePreview.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 0;
+	return self.livePreview[section].data.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	LGLivePreviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGLivePreviewCell"];
+    cell.classModel = self.livePreview[indexPath.section].data[indexPath.row];
 	return cell;
 }
 
@@ -48,18 +50,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 0;
+    return 140;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-	return 0;
-}
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-	return 0;
-}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];

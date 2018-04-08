@@ -11,6 +11,9 @@
 #import "UIScrollView+LGRefresh.h"
 #import "LGPublicCourseCollectionCell.h"
 #import "LGPeripheryLiveCell.h"
+#import "LGPeripherySectionHeader.h"
+#import "LGClassicCourseCell.h"
+#import "LGPeripheryCaseCell.h"
 
 @interface LGPeripheryController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -87,7 +90,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 1;
+	return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -101,14 +104,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (indexPath.section == 1) {
-		
-	}else if (indexPath.section == 2){
-		
+	if (indexPath.section == 0) {
+        LGPeripheryLiveCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGPeripheryLiveCell"];
+        cell.livePreview = self.peripheryModel.livePreview;
+        return cell;
+	}else if (indexPath.section == 1){
+        LGClassicCourseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGClassicCourseCell"];
+        cell.choiceness = self.peripheryModel.choiceness;
+        return cell;
 	}else{
-		
+        LGPeripheryCaseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGPeripheryCaseCell"];
+        cell.caseModel = self.peripheryModel.aCase[indexPath.row];
+        return cell;
 	}
-	return nil;
 }
 
 #pragma mark -UITableViewDelegate
@@ -117,14 +125,36 @@
 {
 	if (indexPath.section == 0) {
 		return 348;
-	}
-	return 0;
+    }else if (indexPath.section == 1){
+        //在375屏幕下，cell高度为 320，等比例换算其他屏幕下的尺寸
+        return  320.0 / 375.0 * SCREEN_WIDTH;
+    }else{
+        return 44;
+    }
+	
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    LGPeripherySectionHeader *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"LGPeripherySectionHeader"];
+    if (section == 0) {
+        header.type = LGPeripherySectionLive;
+    }else if(section == 1){
+        header.type = LGPeripherySectionClassic;
+    }else{
+        header.type = LGPeripherySectionCase;
+    }
+    return header;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-	return 12;
+	return 45;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 12;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];

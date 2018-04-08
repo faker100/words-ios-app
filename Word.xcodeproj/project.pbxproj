@@ -13,11 +13,13 @@
 		0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */; };
 		0239C1AC20485C460031C3FA /* LGTodayReviewWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0239C1AB20485C460031C3FA /* LGTodayReviewWordModel.m */; };
 		0243675F2073CB1C006FDB95 /* LGPKDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */; };
+		024711B3207AA4D40016B03C /* LGPeripheryCaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 024711B2207AA4D40016B03C /* LGPeripheryCaseCell.m */; };
 		02645BF620787E8C00328E75 /* LGClockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02645BF520787E8C00328E75 /* LGClockManager.m */; };
 		029F3C88204AEB7F0022FB4B /* LGSelectReviewTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029F3C87204AEB7F0022FB4B /* LGSelectReviewTypeView.m */; };
 		029F3C8A204AEB8C0022FB4B /* LGSelectReviewTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */; };
 		02C019BC2077399D0006DC05 /* LGReportLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C019BB2077399D0006DC05 /* LGReportLineChartView.m */; };
 		02C1DFAD2062BA9200217244 /* LGUpdateUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C1DFAC2062BA9200217244 /* LGUpdateUserInfoController.m */; };
+		02C817F4207A9B5800003D4D /* LGClassicCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C817F3207A9B5800003D4D /* LGClassicCourseCell.m */; };
 		02F123592070D575001A851B /* LGBeginEstimateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F123582070D575001A851B /* LGBeginEstimateController.m */; };
 		02F1236220712906001A851B /* LGEstimateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1236120712906001A851B /* LGEstimateController.m */; };
 		02F78A092029E54A0011096F /* LGReciteWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F78A082029E54A0011096F /* LGReciteWordModel.m */; };
@@ -198,6 +200,8 @@
 		0239C1AB20485C460031C3FA /* LGTodayReviewWordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTodayReviewWordModel.m; sourceTree = "<group>"; };
 		0243675D2073CB1C006FDB95 /* LGPKDiscoverController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKDiscoverController.h; sourceTree = "<group>"; };
 		0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKDiscoverController.m; sourceTree = "<group>"; };
+		024711B1207AA4D40016B03C /* LGPeripheryCaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPeripheryCaseCell.h; sourceTree = "<group>"; };
+		024711B2207AA4D40016B03C /* LGPeripheryCaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPeripheryCaseCell.m; sourceTree = "<group>"; };
 		02645BF420787E8C00328E75 /* LGClockManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGClockManager.h; sourceTree = "<group>"; };
 		02645BF520787E8C00328E75 /* LGClockManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGClockManager.m; sourceTree = "<group>"; };
 		029F3C86204AEB7F0022FB4B /* LGSelectReviewTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSelectReviewTypeView.h; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 		02C019BB2077399D0006DC05 /* LGReportLineChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReportLineChartView.m; sourceTree = "<group>"; };
 		02C1DFAB2062BA9200217244 /* LGUpdateUserInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGUpdateUserInfoController.h; sourceTree = "<group>"; };
 		02C1DFAC2062BA9200217244 /* LGUpdateUserInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGUpdateUserInfoController.m; sourceTree = "<group>"; };
+		02C817F2207A9B5800003D4D /* LGClassicCourseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGClassicCourseCell.h; sourceTree = "<group>"; };
+		02C817F3207A9B5800003D4D /* LGClassicCourseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGClassicCourseCell.m; sourceTree = "<group>"; };
 		02F123572070D575001A851B /* LGBeginEstimateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGBeginEstimateController.h; sourceTree = "<group>"; };
 		02F123582070D575001A851B /* LGBeginEstimateController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGBeginEstimateController.m; sourceTree = "<group>"; };
 		02F1236020712906001A851B /* LGEstimateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGEstimateController.h; sourceTree = "<group>"; };
@@ -1147,6 +1153,10 @@
 				56D3284A207A148E0041502B /* LGPeripheryLiveCell.m */,
 				56D3284C207A15430041502B /* LGLivePreviewCell.h */,
 				56D3284D207A15430041502B /* LGLivePreviewCell.m */,
+				02C817F2207A9B5800003D4D /* LGClassicCourseCell.h */,
+				02C817F3207A9B5800003D4D /* LGClassicCourseCell.m */,
+				024711B1207AA4D40016B03C /* LGPeripheryCaseCell.h */,
+				024711B2207AA4D40016B03C /* LGPeripheryCaseCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1462,6 +1472,7 @@
 				562E9D0D20734E8800691A52 /* LGEstimateResultModel.m in Sources */,
 				56D3284E207A15430041502B /* LGLivePreviewCell.m in Sources */,
 				56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */,
+				024711B3207AA4D40016B03C /* LGPeripheryCaseCell.m in Sources */,
 				562FC13F202992DE005CEA83 /* LGRecitePlanController.m in Sources */,
 				5607F372207238BC001A4DAB /* LGEstimateRankController.m in Sources */,
 				56B7AADB202BE37800BDECED /* LGWordDetailModel.m in Sources */,
@@ -1538,6 +1549,7 @@
 				56BBBFBF205622060057BDF2 /* LGPersonalCell.m in Sources */,
 				56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */,
 				022FACB020761CE7006F8D1C /* LGReportModel.m in Sources */,
+				02C817F4207A9B5800003D4D /* LGClassicCourseCell.m in Sources */,
 				5678C38B20527C56009CD723 /* LGDictationPromptController.m in Sources */,
 				567FDF18206CC108007FFFB2 /* LGChooseWeekController.m in Sources */,
 				560F0FCB2022AA7000324510 /* LGFreeWordListCell.m in Sources */,

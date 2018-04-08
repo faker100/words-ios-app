@@ -11,7 +11,7 @@
 
 @interface LGPeripheryLiveCell : UITableViewCell <UITableViewDataSource, UITableViewDataSource>
 
-@property (nonatomic, strong) LGLivePreviewModel *liveModel;
+@property (nonatomic, strong) NSArray<LGLivePreviewModel *> *livePreview;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

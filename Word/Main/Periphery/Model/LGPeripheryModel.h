@@ -58,7 +58,7 @@
 @property (nonatomic, copy) NSString *ID;
 
 //根据categoryId转换
-//@property (nonatomic, assign) LGCourseType *courseType;
+@property (nonatomic, assign) LGCourseType courseType;
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *url;
