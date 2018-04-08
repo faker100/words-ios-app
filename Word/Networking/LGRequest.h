@@ -449,4 +449,32 @@
  */
 - (void)requestChangeMonthReport:(NSString *)month completion:(comletionBlock)completion;
 
+/**
+ 周边
+
+ */
+- (void)requestRimCompletion:(comletionBlock)completion;
+
+
+/**
+ 课程列表
+
+ @param type 课程类型
+ */
+- (void)requestCourseListWithType:(LGCourseType)type completion:(comletionBlock)completion;
+
+
+
+/**
+ 公开课列表
+
+ @param page 页数
+ */
+- (void)requestPublickListWithPage:(NSInteger)page completion:(comletionBlock)completion;
+
+
+
+
+
+
 @end

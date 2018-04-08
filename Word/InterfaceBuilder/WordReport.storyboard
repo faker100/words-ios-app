@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -342,6 +342,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pL-nl-3Wv">
                                                 <rect key="frame" x="304" y="5" width="46" height="30"/>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <segue destination="UBf-ZN-sJD" kind="show" identifier="reportToSelectTime" id="cAx-SY-cEY"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sD5-ob-K9o" customClass="LGReportLineChartView">
                                                 <rect key="frame" x="20" y="56" width="335" height="250"/>
@@ -490,6 +493,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="STJ-Rw-OKN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="489" y="918"/>
+        </scene>
+        <!--选择时间-->
+        <scene sceneID="icg-GO-tiY">
+            <objects>
+                <viewController title="选择时间" hidesBottomBarWhenPushed="YES" id="UBf-ZN-sJD" customClass="LGReportSelectTimeController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AAq-mE-pd7"/>
+                        <viewControllerLayoutGuide type="bottom" id="KF1-pt-KNb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="K1U-Zi-KHO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="523"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ipx-UH-VKc">
+                                <rect key="frame" x="0.0" y="65" width="375" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="YaM-u3-wey"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="UBf-ZN-sJD" id="CIh-t0-9ep"/>
+                                    <outlet property="delegate" destination="UBf-ZN-sJD" id="CeV-4T-YRr"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ui7-6V-N9X">
+                                <rect key="frame" x="30" y="372.5" width="315" height="40"/>
+                                <color key="backgroundColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="3RV-4m-Srl"/>
+                                    <constraint firstAttribute="height" constant="40" id="O0t-cO-lYj"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="260" id="W2c-c4-ouf"/>
+                                </constraints>
+                                <state key="normal" title="确      定">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sureAction:" destination="UBf-ZN-sJD" eventType="touchUpInside" id="yZN-R9-EqB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Ui7-6V-N9X" secondAttribute="trailing" constant="30" id="1m5-wC-sia"/>
+                            <constraint firstItem="Ui7-6V-N9X" firstAttribute="leading" secondItem="K1U-Zi-KHO" secondAttribute="leading" constant="30" id="44g-pM-WAg"/>
+                            <constraint firstAttribute="trailing" secondItem="Ipx-UH-VKc" secondAttribute="trailing" id="PWa-nX-Z1V"/>
+                            <constraint firstItem="Ui7-6V-N9X" firstAttribute="centerY" secondItem="K1U-Zi-KHO" secondAttribute="centerY" multiplier="3:2" id="UWj-Bp-wGR"/>
+                            <constraint firstItem="Ipx-UH-VKc" firstAttribute="leading" secondItem="K1U-Zi-KHO" secondAttribute="leading" id="aSu-GX-dHo"/>
+                            <constraint firstItem="Ipx-UH-VKc" firstAttribute="centerY" secondItem="K1U-Zi-KHO" secondAttribute="centerY" multiplier="2:3" id="lza-gt-3F1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="picker" destination="Ipx-UH-VKc" id="UWc-dt-SEs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kql-pw-D9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282" y="918"/>
         </scene>
         <!--Track Controller-->
         <scene sceneID="4Q1-gb-bR3">
@@ -777,7 +841,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1N-M1-IUk" customClass="LGDottedLineView">
-                                                    <rect key="frame" x="0.0" y="61" width="375" height="1"/>
+                                                    <rect key="frame" x="0.0" y="62" width="375" height="1"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="tX0-Rb-6DR"/>

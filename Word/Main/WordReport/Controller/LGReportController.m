@@ -9,10 +9,14 @@
 #import "LGReportController.h"
 #import "UIScrollView+LGRefresh.h"
 #import "LGReportModel.h"
+#import "LGReportSelectTimeController.h"
+#import "NSDate+Utilities.h"
 
-@interface LGReportController ()
+@interface LGReportController () <LGReportSelectTimeControllerDelegate>
 
 @property (nonatomic, strong) LGReportModel *reportModel;
+
+@property (nonatomic, copy) NSString *currentDateStr;
 
 @end
 
@@ -22,11 +26,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
+	self.currentDateStr = [[NSDate currentDate] stringWithFormat:@"yyyy-MM-01"];
+
 	__weak typeof(self) weakSelf = self;
 	[self.scrollView setHeaderRefresh:^{
 		[weakSelf reqeustData];
 	}];
-	
+		[self reqeustData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,10 +40,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-	[super viewWillAppear:animated];
-	//[self reqeustData];
-//    [self changeMonthData:@"2018-03-01"];
+- (void)setCurrentDateStr:(NSString *)currentDateStr{
+	_currentDateStr = currentDateStr;
+	self.monthLabel.text = currentDateStr;
 }
 
 //请求报表
@@ -100,14 +105,24 @@
     self.lineChartView.month = reportModel.month;
 }
 
-/*
+#pragma mark - LGReportSelectTimeController
+
+- (void)selectedTime:(NSString *)timeStr{
+	[self changeMonthData:timeStr];
+	self.currentDateStr = timeStr;
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"reportToSelectTime"]) {
+		LGReportSelectTimeController *controller = [segue destinationViewController];
+		controller.delegate = self;
+	}
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

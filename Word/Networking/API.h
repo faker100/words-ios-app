@@ -60,15 +60,26 @@ typedef NS_ENUM(NSUInteger, LGPKChoice) {
 	
 };
 
-
 /**
  pk,评估 用户答案对错
  */
 typedef NS_ENUM(NSUInteger, LGAnswerType) {
 	LGAnswerFalse = 0, //错误
 	LGAnswerTrue = 1, //正确
+};
+
+
+/**
+ 周边,课程类型
+ */
+typedef NS_ENUM(NSUInteger, LGCourseType) {
 	
-	
+	LGCourseGMAT   = 1, // GMAT
+	LGCourseTOEFL  = 2, //托福
+	LGCourseIELTS  = 3, //yasi
+	LGCourseSat    = 4, //sat
+	LGCourseGRE    = 5, //gre
+	LGCourseSchool = 6, //留学
 };
 
 /*************************************** 各种 key **********************************/
@@ -86,6 +97,7 @@ typedef NS_ENUM(NSUInteger, LGAnswerType) {
 
 #define WORD_DOMAIN(url) 	 [NSString stringWithFormat:@"http://words.viplgw.cn/%@",url]
 #define GMAT_DOMAIN(url)     [NSString stringWithFormat:@"http://www.gmatonline.cn/%@",url]
+#define OPEN_DOMAIN(url)     [NSString stringWithFormat:@"http://open.viplgw.cn/%@",url]
 
 /*************************************** 接口 **********************************/
 
@@ -248,6 +260,21 @@ typedef NS_ENUM(NSUInteger, LGAnswerType) {
 
 //切换月报告
 #define CHAGNE_REPORT_URL			    @"http://words.viplgw.cn/cn/app-api/api-report"
+
+//周边首页
+#define PERIPHERY_URL					@"http://words.viplgw.cn/cn/app-api/rim"
+
+//课程列表
+#define COURSE_LIST_URL					@"http://words.viplgw.cn/cn/app-api/course-list"
+
+//案例列表
+#define CASE_LIST_URL					@"http://words.viplgw.cn/cn/app-api/case-list"
+
+//公开课列表
+#define PUBLIC_LIST_URL					@"http://words.viplgw.cn/cn/app-api/public-list"
+
+
+
 
 
 

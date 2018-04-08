@@ -472,4 +472,26 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)requestRimCompletion:(comletionBlock)completion{
+	self.url = PERIPHERY_URL;
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestCourseListWithType:(LGCourseType)type completion:(comletionBlock)completion{
+	self.url = COURSE_LIST_URL;
+	self.parameter = @{
+					   @"type":@(type)
+					   };
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestPublickListWithPage:(NSInteger)page completion:(comletionBlock)completion{
+	self.url = PUBLIC_LIST_URL;
+	self.parameter = @{
+					   @"page" : @(page),
+					   @"pageSize" : @"20"
+					   };
+	[self postRequestCompletion:completion];
+}
+
 @end
