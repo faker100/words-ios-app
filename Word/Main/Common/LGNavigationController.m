@@ -17,13 +17,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
-    self.navigationBar.delegate = self;
-	
+	self.navigationBar.delegate = self;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
 	return  UIStatusBarStyleLightContent;
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+	[super viewDidAppear:animated];
+	
 }
 
 - (void)didReceiveMemoryWarning {

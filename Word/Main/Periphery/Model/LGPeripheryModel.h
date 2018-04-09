@@ -32,6 +32,8 @@
 
 @property (nonatomic, copy) NSString *image;
 
+@property (nonatomic, copy) NSString *viewCount;
+
 @property (nonatomic, copy) NSString *title;
 //课程类型
 @property (nonatomic, copy) NSString *catName;
@@ -39,8 +41,11 @@
 //课程时间
 @property (nonatomic, copy) NSString *courseTime;
 
-//课程简介
+//课程简介 不带 html 标签
 @property (nonatomic, copy) NSString *courseDescription;
+
+//课程简介 带 html标签
+@property (nonatomic, copy) NSString *courseDescriptionHTML;
 
 @property (nonatomic, copy) NSString *teacherImage;
 

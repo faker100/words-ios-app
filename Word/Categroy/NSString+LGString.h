@@ -34,4 +34,13 @@
  */
 - (CGFloat)getStringRectWidthOfHeight:(CGFloat)height fontSize:(CGFloat)fontSize;
 
+//替换多余行高
+- (NSString *)replaceParagraphSpace;
+
+//替换完整图片地址
+- (NSString *)replaceImageUrl:(NSString *)imageUrlStr htmlStr:(NSString *)htmlStr;
+
+//HTML 转换 attributeString
+- (NSAttributedString *)htmlToAttributeStringContent:(NSString *)imageUrl width:(CGFloat)contentWidth;
+
 @end

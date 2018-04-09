@@ -56,7 +56,8 @@
 			 @"teacherName" : @"listeningFile",
 			 @"teacherImage" : @"article",
 			 @"ID" : @"id",
-             @"courseDescription" : @"alternatives"
+             @"courseDescription" : @"alternatives",
+			 @"courseDescriptionHTML" : @"sentenceNumber"
 			 };
 }
 

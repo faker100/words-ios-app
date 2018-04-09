@@ -57,6 +57,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	if (self.delegate) {
+		LGLivePreviewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+		[self.delegate selectedModel:cell.classModel];
+	}
 }
 
 @end

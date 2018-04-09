@@ -29,7 +29,7 @@
 	self.timeLabel.text = [NSString stringWithFormat:@"  %@  ",classModel.courseTime ];
 	self.courseTitleLabel.text = classModel.title;
 	self.courseDescriptionLabel.text = classModel.courseDescription;
-	[self.teacherImageView sd_setImageWithURL:[NSURL URLWithString:OPEN_DOMAIN(classModel.teacherImage)] placeholderImage:PLACEHOLDERIMAGE];
+	[self.teacherImageView sd_setImageWithURL:[NSURL URLWithString:OPPEN_DOMAIN(classModel.teacherImage)] placeholderImage:PLACEHOLDERIMAGE];
 	self.teacherNameLabel.text = classModel.teacherName;
 }
 

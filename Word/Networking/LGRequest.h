@@ -474,7 +474,7 @@
 
 
 
-
+- (void)requestCaseListCompletion:(comletionBlock)completion;
 
 
 @end

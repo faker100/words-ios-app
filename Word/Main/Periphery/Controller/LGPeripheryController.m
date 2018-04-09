@@ -14,8 +14,11 @@
 #import "LGPeripherySectionHeader.h"
 #import "LGClassicCourseCell.h"
 #import "LGPeripheryCaseCell.h"
+#import "LGCaseDetailController.h"
+#import "LGCourseListController.h"
+#import "LGPublicDetailController.h"
 
-@interface LGPeripheryController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface LGPeripheryController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource ,LGPeripherySectionHeaderDelegate, LGPeripheryLiveCellDelegate>
 
 @property (nonatomic, strong) LGPeripheryModel *peripheryModel;
 
@@ -29,13 +32,6 @@
 	
 	[self configUI];
 	[self requestData];
-	
-	[self.request requestCourseListWithType:LGCourseGMAT completion:^(id response, LGError *error) {
-		if ([self isNormal:error]) {
-			
-		}
-	}];
-	
 }
 
 - (void)configUI{
@@ -66,8 +62,21 @@
 
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
-	[self.navigationController setNavigationBarHidden:YES];
+	//隐藏会造成 navigationBar.delegate 失效
+	//[self.navigationController setNavigationBarHidden:YES];
+	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+	[self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
+
+- (void)viewWillDisappear:(BOOL)animated{
+	[super viewWillDisappear:animated];
+
+	//[self.navigationController setNavigationBarHidden:NO];
+	[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+	[self.navigationController.navigationBar setShadowImage:nil];
+}
+
+
 
 - (void)viewDidLayoutSubviews{
 	self.tableView.contentOffset = CGPointZero;
@@ -85,6 +94,16 @@
 	[self.tableView reloadData];
 }
 
+#pragma mark - Tap Gesture
+
+/**
+ 顶部课程
+
+ @param sender <#sender description#>
+ */
+- (IBAction)tapCourse:(UITapGestureRecognizer *)sender {
+	[self performSegueWithIdentifier:@"peripheyToCourseList" sender:@(sender.view.tag - 1000)];
+}
 
 #pragma mark -UITableViewDataSource
 
@@ -107,6 +126,7 @@
 	if (indexPath.section == 0) {
         LGPeripheryLiveCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGPeripheryLiveCell"];
         cell.livePreview = self.peripheryModel.livePreview;
+		cell.delegate = self;
         return cell;
 	}else if (indexPath.section == 1){
         LGClassicCourseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGClassicCourseCell"];
@@ -143,6 +163,7 @@
     }else{
         header.type = LGPeripherySectionCase;
     }
+	header.delegate = self;
     return header;
 }
 
@@ -158,6 +179,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	if (indexPath.section == 2) {
+		[self performSegueWithIdentifier:@"peripheryToCaseDetail" sender:self.peripheryModel.aCase[indexPath.row]];
+	}
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -171,15 +195,43 @@
 	return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+	[self performSegueWithIdentifier:@"peripheryToPublicDetail" sender:self.peripheryModel.recentClass[indexPath.row]];
+}
 
-/*
+#pragma mark - LGPeripherySectionHeaderDelegate
+- (void)moreWithType:(LGPeripherySectionHeaderType)type{
+	if (type == LGPeripherySectionLive) {
+		[self performSegueWithIdentifier:@"peripheryToPublicList" sender:nil];
+	}else if (type == LGPeripherySectionClassic){
+		
+	}else if (type == LGPeripherySectionCase){
+		[self performSegueWithIdentifier:@"peripheryToCaseList" sender:nil];
+	}
+}
+
+#pragma mark - LGPeripheryLiveCellDelegate
+- (void)selectedModel:(LGLivePreviewModel *)livePreviewModel{
+	[self performSegueWithIdentifier:@"peripheryToPublicDetail" sender:livePreviewModel];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"peripheryToCaseDetail"]) {
+		LGCaseDetailController *controller = segue.destinationViewController;
+		controller.caseModel = sender;
+	}else if ([segue.identifier isEqualToString:@"peripheyToCourseList"]){
+		LGCourseListController *controller = segue.destinationViewController;
+		controller.type = ((NSNumber *)sender).integerValue;
+	}else if ([segue.identifier isEqualToString:@"peripheryToPublicDetail"]){
+		LGPublicDetailController *controller = segue.destinationViewController;
+		controller.classModel = sender;
+	}
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

@@ -15,18 +15,23 @@
 	switch (type) {
 		case LGPeripherySectionLive:
 			self.sectionTitleLabel.text = @"直播预告";
-			self.moreLabel.hidden = NO;
+			self.moreButton.hidden = NO;
 			break;
 		case LGPeripherySectionClassic:
 			self.sectionTitleLabel.text = @"经典课程";
-			self.moreLabel.hidden = YES;
+			self.moreButton.hidden = YES;
 			break;
 		case LGPeripherySectionCase:
 			self.sectionTitleLabel.text = @"学员评价";
-			self.moreLabel.hidden = NO;
+			self.moreButton.hidden = NO;
 			break;
 		default:
 			break;
+	}
+}
+- (IBAction)moreAction:(id)sender {
+	if (self.delegate) {
+		[self.delegate moreWithType:self.type];
 	}
 }
 

@@ -23,17 +23,18 @@
 	[attributeString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attributeString.length)];
 	self.contentLabel.attributedText = attributeString;
 	[self.contentLabel sizeToFit];
-	CALayer *radiusLayer;
-	CGFloat bgViewHeight = self.contentLabel.bounds.size.height + 8;
-	if (isLast && isFirst) {
-				radiusLayer = [self getRadiusLayer:UIRectCornerAllCorners cornerRadius:5 height:bgViewHeight];
-			}else if (isFirst) {
-				self.contentBackgroundView.layer.mask = [self getRadiusLayer:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadius:5 height:bgViewHeight] ;
-			}else if (isLast) {
-				self.contentBackgroundView.layer.mask = [self getRadiusLayer:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadius:5 height:bgViewHeight];
-			}else{
-				self.contentBackgroundView.layer.mask = [self getRadiusLayer:UIRectCornerAllCorners cornerRadius:0 height:bgViewHeight];
-			}
+	
+//	CALayer *radiusLayer;
+//	CGFloat bgViewHeight = self.contentLabel.bounds.size.height + 8;
+//	if (isLast && isFirst) {
+//				radiusLayer = [self getRadiusLayer:UIRectCornerAllCorners cornerRadius:5 height:bgViewHeight];
+//			}else if (isFirst) {
+//				self.contentBackgroundView.layer.mask = [self getRadiusLayer:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadius:5 height:bgViewHeight] ;
+//			}else if (isLast) {
+//				self.contentBackgroundView.layer.mask = [self getRadiusLayer:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadius:5 height:bgViewHeight];
+//			}else{
+//				self.contentBackgroundView.layer.mask = [self getRadiusLayer:UIRectCornerAllCorners cornerRadius:0 height:bgViewHeight];
+//			}
 }
 
 

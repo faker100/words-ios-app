@@ -494,4 +494,9 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)requestCaseListCompletion:(comletionBlock)completion{
+	self.url = CASE_LIST_URL;
+	[self postRequestCompletion:completion];
+}
+
 @end

@@ -30,6 +30,7 @@
 
 	__weak typeof(self) weakSelf = self;
 	[self.scrollView setHeaderRefresh:^{
+		self.currentDateStr = [[NSDate currentDate] stringWithFormat:@"yyyy-MM-01"];
 		[weakSelf reqeustData];
 	}];
 		[self reqeustData];

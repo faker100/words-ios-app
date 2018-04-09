@@ -129,14 +129,14 @@
 //语音搜索
 - (IBAction)speakSearchAction:(id)sender {
 	NSLog(@"yuy");
-	[self transitionFromViewController:self.recitePlanController toViewController:self.noStudyTypeController duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
+//	[self transitionFromViewController:self.recitePlanController toViewController:self.noStudyTypeController duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
 }
 
 //拍照搜索
 - (IBAction)pictureSearch:(id)sender {
 	NSLog(@"拍照");
 	
-	[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
+//	[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
 }
 	 
 - (void)pushUserInfo{

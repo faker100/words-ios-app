@@ -12,7 +12,7 @@
 
 - (void)setClassModel:(LGRecentClassModel *)classModel{
 	_classModel = classModel;
-	[self.imageView sd_setImageWithURL:[NSURL URLWithString:OPEN_DOMAIN(classModel.image)] placeholderImage:PLACEHOLDERIMAGE];
+	[self.imageView sd_setImageWithURL:[NSURL URLWithString:OPPEN_DOMAIN(classModel.image)] placeholderImage:PLACEHOLDERIMAGE];
 	self.courseTimeLabel.text = classModel.courseTime;
 }
 

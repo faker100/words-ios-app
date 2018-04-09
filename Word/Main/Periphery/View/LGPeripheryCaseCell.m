@@ -23,7 +23,7 @@
 
 - (void)setCaseModel:(LGCaseModel *)caseModel{
     _caseModel = caseModel;
-    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(caseModel.image)] placeholderImage:PLACEHOLDERIMAGE];
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:caseModel.image] placeholderImage:PLACEHOLDERIMAGE];
     self.nameLabel.text = caseModel.name;
     self.contentLabel.text = caseModel.content;
 }

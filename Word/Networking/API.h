@@ -95,9 +95,9 @@ typedef NS_ENUM(NSUInteger, LGCourseType) {
 /*************************************** 域名 **********************************/
 
 
-#define WORD_DOMAIN(url) 	 [NSString stringWithFormat:@"http://words.viplgw.cn/%@",url]
-#define GMAT_DOMAIN(url)     [NSString stringWithFormat:@"http://www.gmatonline.cn/%@",url]
-#define OPEN_DOMAIN(url)     [NSString stringWithFormat:@"http://open.viplgw.cn/%@",url]
+#define WORD_DOMAIN(url) 	  [NSString stringWithFormat:@"http://words.viplgw.cn/%@",url]
+#define GMAT_DOMAIN(url)      [NSString stringWithFormat:@"http://www.gmatonline.cn/%@",url]
+#define OPPEN_DOMAIN(url)     [NSString stringWithFormat:@"http://open.viplgw.cn/%@",url]
 
 /*************************************** 接口 **********************************/
 
@@ -272,6 +272,7 @@ typedef NS_ENUM(NSUInteger, LGCourseType) {
 
 //公开课列表
 #define PUBLIC_LIST_URL					@"http://words.viplgw.cn/cn/app-api/public-list"
+
 
 
 

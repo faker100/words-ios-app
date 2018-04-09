@@ -50,5 +50,60 @@
 	return  rect.size.height;
 }
 
+//替换多余行高
+- (NSString *)replaceParagraphSpace{
+	NSString *returnStr = [self stringByReplacingOccurrencesOfString:@"<p><br/></p>" withString:@""];
+	NSString *space = @"<p><span style=\"font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 12px;\"><br/></span></p>";
+	returnStr = [self stringByReplacingOccurrencesOfString:space withString:@""];
+	returnStr = [self stringByReplacingOccurrencesOfString:@"<p> </p>" withString:@""];
+	returnStr = [self stringByReplacingOccurrencesOfString:@"<p><br/></p>" withString:@""];
+	return returnStr;
+}
+
+//替换完整图片地址
+- (NSString *)replaceImageUrl:(NSString *)imageUrlStr  htmlStr:(NSString *)htmlStr{
+	NSString *returnStr = htmlStr;
+	NSString *regexString = @"<img.*?\\ssrc=\".*?\"";
+	NSRegularExpression *reqular = [NSRegularExpression regularExpressionWithPattern:regexString options:NSRegularExpressionDotMatchesLineSeparators error:nil];
+	NSArray *resultArray  = [reqular matchesInString:htmlStr options:NSMatchingReportCompletion range:NSMakeRange(0, htmlStr.length)];
+	if (resultArray && resultArray.count > 0) {
+		for (NSTextCheckingResult *result in resultArray) {
+			NSRange range = result.range;
+			NSString *subStr = [htmlStr substringWithRange:range];
+			if (!( [subStr containsString:@" src=\"http"] || [subStr containsString:@"data:image"])) {
+				NSRange srcRange = [subStr rangeOfString:@" src=\""];
+				NSMutableString *tempStr =  [[NSMutableString alloc]initWithString:subStr];
+				[tempStr insertString:imageUrlStr atIndex:NSMaxRange(srcRange)];
+				returnStr = [htmlStr stringByReplacingOccurrencesOfString:subStr withString:tempStr];
+				return [self replaceImageUrl:imageUrlStr htmlStr:returnStr];
+			}
+		}
+	}
+	return returnStr;
+}
+
+
+- (NSAttributedString *)htmlToAttributeStringContent:(NSString *)imageUrl width:(CGFloat)contentWidth {
+	
+	NSString *str  = [self replaceImageUrl:imageUrl htmlStr:self ];
+	str = [str replaceParagraphSpace];
+	
+	NSData *htmlData = [str dataUsingEncoding:NSUTF8StringEncoding];
+	NSDictionary *importParams = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+								   NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]
+								   };
+	NSError *error = nil;
+	NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithData:htmlData options:importParams documentAttributes:NULL error:&error];
+	[attributeString enumerateAttribute:NSAttachmentAttributeName inRange:NSMakeRange(0, attributeString.length) options:NSAttributedStringEnumerationReverse usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
+		if (value) {
+			NSTextAttachment *textAttachment = value;
+			CGSize size = textAttachment.bounds.size;
+			if (size.width > contentWidth) {
+				textAttachment.bounds = CGRectMake(0, 0, contentWidth-5, size.height / size.width * (contentWidth-5));
+			}
+		}
+	}];
+	return attributeString;
+}
 
 @end

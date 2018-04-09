@@ -7,6 +7,7 @@
 //
 
 #import "LGDiscoverDetailController.h"
+#import "LGWebController.h"
 
 @interface LGDiscoverDetailController ()
 
@@ -29,6 +30,12 @@
 	self.discoverNameLabel.text = self.discoverModel.name;
 	self.discoverTitleLabel.text = self.discoverModel.title;
 	[self.discoverImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(self.discoverModel.image)]];
+}
+
+//报名
+- (IBAction)signAction:(id)sender {
+	LGWebController *web = [LGWebController contactAdvisorWebController];
+	[self.navigationController pushViewController:web animated:YES];
 }
 
 
