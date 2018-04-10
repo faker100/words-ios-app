@@ -44,7 +44,7 @@
     UILabel *titleLabel = [self viewWithTag:101];
     switch (choicenessModel.courseType) {
         case LGCourseGMAT:
-            courseTypeLabel.text = @" GAMT ";
+            courseTypeLabel.text = @" GMAT ";
             break;
         case LGCourseTOEFL:
             courseTypeLabel.text = @" TOEFL ";

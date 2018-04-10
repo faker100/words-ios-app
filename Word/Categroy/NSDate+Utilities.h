@@ -33,6 +33,13 @@
 + (NSMutableArray<NSDate *> *) dateArrayFrom:(NSDate *) fromDate toDate:(NSDate *)toDate;
 
 
+/**
+ 指定时间所在月份的一个天是周几
+
+ @param date 月份
+ @return 周几
+ */
++ (NSInteger)firstWeekDayOfMonth:(NSDate *)date;
 
 /**
  转换为系统时区的时间
@@ -99,7 +106,7 @@
 // Adjusting dates
 - (NSDate *) dateByAddingYears: (NSInteger) dYears;
 - (NSDate *) dateBySubtractingYears: (NSInteger) dYears;
-- (NSDate *) dateByAddingMonths: (NSInteger) dMonths;
+- (NSDate *)  : (NSInteger) dMonths;
 - (NSDate *) dateBySubtractingMonths: (NSInteger) dMonths;
 - (NSDate *) dateByAddingDays: (NSInteger) dDays;
 - (NSDate *) dateBySubtractingDays: (NSInteger) dDays;

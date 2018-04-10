@@ -499,4 +499,14 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)reqeustSignCompletion:(comletionBlock)completion{
+	self.url = SIGN_URL;
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestUserSignCompletion:(comletionBlock)completion{
+	self.url = SIGN_LIST_URL;
+	[self postRequestCompletion:completion];
+}
+
 @end

@@ -22,7 +22,7 @@
 			self.moreButton.hidden = YES;
 			break;
 		case LGPeripherySectionCase:
-			self.sectionTitleLabel.text = @"学员评价";
+			self.sectionTitleLabel.text = @"学员案例";
 			self.moreButton.hidden = NO;
 			break;
 		default:

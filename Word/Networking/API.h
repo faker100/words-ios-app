@@ -138,6 +138,12 @@ typedef NS_ENUM(NSUInteger, LGCourseType) {
 //用户资料
 #define USER_INFO_URL					@"http://words.viplgw.cn/cn/app-api/user-info"
 
+//打卡
+#define SIGN_URL						@"http://words.viplgw.cn/cn/app-api/sign"
+
+//打卡列表
+#define SIGN_LIST_URL					@"http://words.viplgw.cn/cn/app-api/user-sign"
+
 //我的计划
 #define MY_PLAN_URL						@"http://words.viplgw.cn/cn/app-api/user-package"
 

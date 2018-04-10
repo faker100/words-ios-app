@@ -474,7 +474,22 @@
 
 
 
+/**
+ 学生案例
+ 
+ */
 - (void)requestCaseListCompletion:(comletionBlock)completion;
 
+
+/**
+ 打卡
+ */
+- (void)reqeustSignCompletion:(comletionBlock)completion;
+
+
+/**
+ 用户签到列表
+ */
+- (void)requestUserSignCompletion:(comletionBlock)completion;
 
 @end

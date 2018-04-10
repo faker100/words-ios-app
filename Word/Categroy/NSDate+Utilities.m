@@ -17,7 +17,7 @@
 // Thanks, AshFurrow
 static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekOfYear |  NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitWeekday | NSCalendarUnitWeekdayOrdinal);
 
-@implementation NSDate (Utilities)
+@implementation NSDate(Utilities)
 
 // Courtesy of Lukasz Margielewski
 // Updated via Holger Haenisch
@@ -56,6 +56,19 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
 	}else{
 		return nil;
 	}
+}
+
++ (NSInteger)firstWeekDayOfMonth:(NSDate *)date{
+	
+	NSDateComponents *components = [NSDateComponents new];
+	components.year = date.year;
+	components.month = date.month;
+	components.day = 1;
+	
+	NSDate *firstDate = [[NSDate currentCalendar] dateFromComponents:components];
+	firstDate = [firstDate convertToSystemTimeZoneDate];
+	return firstDate.weekday;
+	
 }
 
 - (NSDate *)convertToSystemTimeZoneDate {

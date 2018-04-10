@@ -243,7 +243,7 @@
         <!--打卡签到-->
         <scene sceneID="o9r-Yp-HsF">
             <objects>
-                <viewController title="打卡签到" id="fid-tG-EnI" sceneMemberID="viewController">
+                <viewController title="打卡签到" id="fid-tG-EnI" customClass="LGSignController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0CS-Zo-U5I"/>
                         <viewControllerLayoutGuide type="bottom" id="pLv-vt-nsg"/>
@@ -277,15 +277,69 @@
                                         <state key="normal" title="签  到">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="signAction:" destination="fid-tG-EnI" eventType="touchUpInside" id="iSS-1V-HM5"/>
+                                        </connections>
                                     </button>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="adm-n9-4ct">
+                                        <rect key="frame" x="0.0" y="34" width="355" height="271"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7jd-9h-oES">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LGSignCollectionCell" id="4ZI-PW-Q5H" customClass="LGSignCollectionCell">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FEU-We-zsK">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <state key="normal" title="1">
+                                                                <color key="titleColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </state>
+                                                        </button>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstItem="FEU-We-zsK" firstAttribute="leading" secondItem="4ZI-PW-Q5H" secondAttribute="leading" id="F2k-uK-Tl3"/>
+                                                    <constraint firstItem="FEU-We-zsK" firstAttribute="top" secondItem="4ZI-PW-Q5H" secondAttribute="top" id="eIe-SA-aG7"/>
+                                                    <constraint firstAttribute="trailing" secondItem="FEU-We-zsK" secondAttribute="trailing" id="hYd-bv-ANq"/>
+                                                    <constraint firstAttribute="bottom" secondItem="FEU-We-zsK" secondAttribute="bottom" id="kLo-ub-Kmd"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="dayButton" destination="FEU-We-zsK" id="aLD-Vy-Aaa"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="fid-tG-EnI" id="pDu-1M-05Y"/>
+                                            <outlet property="delegate" destination="fid-tG-EnI" id="h8B-bK-EHe"/>
+                                        </connections>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.9332546591758728" green="0.93338543176651001" blue="0.93321341276168823" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="adm-n9-4ct" firstAttribute="top" secondItem="jqm-8S-ZFa" secondAttribute="bottom" id="1LH-Tr-6QB"/>
                                     <constraint firstItem="jqm-8S-ZFa" firstAttribute="centerX" secondItem="rvo-Zs-0ID" secondAttribute="centerX" id="219-GS-xgb"/>
                                     <constraint firstItem="3xG-Uu-gG8" firstAttribute="centerY" secondItem="w3A-Ka-7ni" secondAttribute="centerY" id="BDQ-eP-X31"/>
                                     <constraint firstItem="jqm-8S-ZFa" firstAttribute="top" secondItem="rvo-Zs-0ID" secondAttribute="top" constant="13" id="M6m-e9-01n"/>
+                                    <constraint firstAttribute="trailing" secondItem="adm-n9-4ct" secondAttribute="trailing" id="U7g-Kc-vQa"/>
+                                    <constraint firstItem="3xG-Uu-gG8" firstAttribute="top" secondItem="adm-n9-4ct" secondAttribute="bottom" id="ZmI-gP-wxQ"/>
                                     <constraint firstItem="w3A-Ka-7ni" firstAttribute="leading" secondItem="rvo-Zs-0ID" secondAttribute="leading" constant="15" id="eNE-tZ-cc6"/>
                                     <constraint firstAttribute="trailing" secondItem="3xG-Uu-gG8" secondAttribute="trailing" constant="15" id="fJo-RH-uwL"/>
+                                    <constraint firstItem="adm-n9-4ct" firstAttribute="leading" secondItem="rvo-Zs-0ID" secondAttribute="leading" id="r8b-mu-6Zg"/>
                                     <constraint firstAttribute="bottom" secondItem="3xG-Uu-gG8" secondAttribute="bottom" constant="25" id="vHO-iz-eCO"/>
                                     <constraint firstAttribute="width" secondItem="rvo-Zs-0ID" secondAttribute="height" multiplier="355:360" id="wCX-Aa-2ZJ"/>
                                 </constraints>
@@ -299,9 +353,17 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9Q-Zf-gjV">
+                                        <rect key="frame" x="319.5" y="19" width="10.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="W9Q-Zf-gjV" firstAttribute="centerY" secondItem="pJ6-Pu-Zrh" secondAttribute="centerY" id="Ivk-kh-rx0"/>
+                                    <constraint firstAttribute="trailing" secondItem="W9Q-Zf-gjV" secondAttribute="trailing" constant="25" id="LSx-kB-qGX"/>
                                     <constraint firstAttribute="height" constant="60" id="NWM-TC-cM7"/>
                                     <constraint firstItem="y2C-v9-hrG" firstAttribute="centerY" secondItem="pJ6-Pu-Zrh" secondAttribute="centerY" id="TpM-qF-8gd"/>
                                     <constraint firstItem="y2C-v9-hrG" firstAttribute="leading" secondItem="pJ6-Pu-Zrh" secondAttribute="leading" constant="20" id="wpx-L0-qfV"/>
@@ -319,6 +381,13 @@
                         </constraints>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="collectionView" destination="adm-n9-4ct" id="Meu-Os-7jx"/>
+                        <outlet property="dateLabel" destination="jqm-8S-ZFa" id="18d-in-KBN"/>
+                        <outlet property="numLable" destination="W9Q-Zf-gjV" id="YsH-5Y-gg5"/>
+                        <outlet property="signButton" destination="3xG-Uu-gG8" id="zmW-lz-j9a"/>
+                        <outlet property="totalSignLabel" destination="w3A-Ka-7ni" id="QJA-qC-bxZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="153-vS-rpY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
