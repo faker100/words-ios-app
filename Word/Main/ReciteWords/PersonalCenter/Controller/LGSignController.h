@@ -15,6 +15,8 @@
 //签到按钮
 @property (weak, nonatomic) IBOutlet UIButton *signButton;
 
+//当前日期
+@property (weak, nonatomic) IBOutlet UILabel *currentLabel;
 
 //累计打卡
 @property (weak, nonatomic) IBOutlet UILabel *totalSignLabel;
@@ -24,3 +26,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
+

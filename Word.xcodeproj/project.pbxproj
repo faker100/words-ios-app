@@ -86,6 +86,14 @@
 		564B3275207B4398005E7658 /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 564B326D207B4398005E7658 /* NJKWebViewProgressView.m */; };
 		564EB7AC2047998500E47A1E /* NSDate+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 564EB7AB2047998500E47A1E /* NSDate+Utilities.m */; };
 		56506D052016D842000FD8FA /* LGProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 56506D042016D842000FD8FA /* LGProgressHUD.m */; };
+		5657ECAC207DE71C00E89FC2 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5657ECAB207DE71C00E89FC2 /* OpenAL.framework */; };
+		5657ECAE207DE73400E89FC2 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5657ECAD207DE73400E89FC2 /* libz.tbd */; };
+		5657ECB0207DE75D00E89FC2 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5657ECAF207DE75D00E89FC2 /* libiconv.tbd */; };
+		5657ECB2207DE76D00E89FC2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5657ECB1207DE76D00E89FC2 /* libsqlite3.tbd */; };
+		5657ECB4207DE77700E89FC2 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5657ECB3207DE77700E89FC2 /* GLKit.framework */; };
+		5657ECB7207DE7ED00E89FC2 /* VodSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5657ECB6207DE7ED00E89FC2 /* VodSDK.framework */; };
+		5657ECBA207DE9BA00E89FC2 /* LGTryListenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5657ECB9207DE9BA00E89FC2 /* LGTryListenController.m */; };
+		5657ECBD207DEA0500E89FC2 /* LGT.m in Sources */ = {isa = PBXBuildFile; fileRef = 5657ECBC207DEA0500E89FC2 /* LGT.m */; };
 		56585956203EB34300BB59ED /* LGDottedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56585955203EB34300BB59ED /* LGDottedLineView.m */; };
 		5658D5A62040FF7600390FC4 /* LGIndexReviewAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5658D5A52040FF7600390FC4 /* LGIndexReviewAlertView.m */; };
 		5658D5A82040FF8600390FC4 /* LGIndexReviewAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5658D5A72040FF8600390FC4 /* LGIndexReviewAlertView.xib */; };
@@ -124,7 +132,7 @@
 		56994EA420493A1F005648F6 /* LGReviewWrongCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56994EA220493A1F005648F6 /* LGReviewWrongCollectionReusableView.m */; };
 		56994EA520493A1F005648F6 /* LGReviewWrongCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56994EA320493A1F005648F6 /* LGReviewWrongCollectionReusableView.xib */; };
 		56994EA8204950A3005648F6 /* LGReviewWrongWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56994EA7204950A3005648F6 /* LGReviewWrongWordModel.m */; };
-		56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A8883A200CA53400847BE6 /* AppDelegate.m */; };
+		56A8883B200CA53400847BE6 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 56A8883A200CA53400847BE6 /* AppDelegate.mm */; };
 		56A88841200CA53400847BE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A8883F200CA53400847BE6 /* Main.storyboard */; };
 		56A88843200CA53400847BE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56A88842200CA53400847BE6 /* Assets.xcassets */; };
 		56A88846200CA53400847BE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56A88844200CA53400847BE6 /* LaunchScreen.storyboard */; };
@@ -363,6 +371,16 @@
 		564EB7AB2047998500E47A1E /* NSDate+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Utilities.m"; sourceTree = "<group>"; };
 		56506D032016D842000FD8FA /* LGProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGProgressHUD.h; sourceTree = "<group>"; };
 		56506D042016D842000FD8FA /* LGProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGProgressHUD.m; sourceTree = "<group>"; };
+		5657ECAB207DE71C00E89FC2 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		5657ECAD207DE73400E89FC2 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		5657ECAF207DE75D00E89FC2 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		5657ECB1207DE76D00E89FC2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		5657ECB3207DE77700E89FC2 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		5657ECB6207DE7ED00E89FC2 /* VodSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VodSDK.framework; sourceTree = "<group>"; };
+		5657ECB8207DE9BA00E89FC2 /* LGTryListenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTryListenController.h; sourceTree = "<group>"; };
+		5657ECB9207DE9BA00E89FC2 /* LGTryListenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTryListenController.m; sourceTree = "<group>"; };
+		5657ECBB207DEA0500E89FC2 /* LGT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGT.h; sourceTree = "<group>"; };
+		5657ECBC207DEA0500E89FC2 /* LGT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGT.m; sourceTree = "<group>"; };
 		56585954203EB34300BB59ED /* LGDottedLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDottedLineView.h; sourceTree = "<group>"; };
 		56585955203EB34300BB59ED /* LGDottedLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDottedLineView.m; sourceTree = "<group>"; };
 		5658D5A42040FF7600390FC4 /* LGIndexReviewAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGIndexReviewAlertView.h; sourceTree = "<group>"; };
@@ -439,7 +457,7 @@
 		56994EA7204950A3005648F6 /* LGReviewWrongWordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReviewWrongWordModel.m; sourceTree = "<group>"; };
 		56A88836200CA53400847BE6 /* Word.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Word.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A88839200CA53400847BE6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		56A8883A200CA53400847BE6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		56A8883A200CA53400847BE6 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		56A88840200CA53400847BE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56A88842200CA53400847BE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56A88845200CA53400847BE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -554,6 +572,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5657ECB4207DE77700E89FC2 /* GLKit.framework in Frameworks */,
+				5657ECB2207DE76D00E89FC2 /* libsqlite3.tbd in Frameworks */,
+				5657ECB7207DE7ED00E89FC2 /* VodSDK.framework in Frameworks */,
+				5657ECB0207DE75D00E89FC2 /* libiconv.tbd in Frameworks */,
+				5657ECAE207DE73400E89FC2 /* libz.tbd in Frameworks */,
+				5657ECAC207DE71C00E89FC2 /* OpenAL.framework in Frameworks */,
 				3690868A07C9B63A30A721A0 /* Pods_Word.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,9 +762,11 @@
 			path = NJKWebViewProgress;
 			sourceTree = "<group>";
 		};
-		56506D012016D773000FD8FA /* Custom */ = {
+		56506D012016D773000FD8FA /* Extend */ = {
 			isa = PBXGroup;
 			children = (
+				5657ECB5207DE7CD00E89FC2 /* VodSDK */,
+				56961CF5200D89B0009EA21C /* Categroy */,
 				564B325B207B4398005E7658 /* AXWebViewController */,
 				564B3257207B42F1005E7658 /* LGWebController */,
 				56C078D62069E7A200C0F513 /* LGSegue */,
@@ -748,7 +774,7 @@
 				5612BFAF2021AC060038D653 /* LGProgressView */,
 				56506D022016D7E7000FD8FA /* LGProgressHUD */,
 			);
-			path = Custom;
+			path = Extend;
 			sourceTree = "<group>";
 		};
 		56506D022016D7E7000FD8FA /* LGProgressHUD */ = {
@@ -759,6 +785,14 @@
 			);
 			name = LGProgressHUD;
 			path = "../New Group/LGProgressHUD";
+			sourceTree = "<group>";
+		};
+		5657ECB5207DE7CD00E89FC2 /* VodSDK */ = {
+			isa = PBXGroup;
+			children = (
+				5657ECB6207DE7ED00E89FC2 /* VodSDK.framework */,
+			);
+			path = VodSDK;
 			sourceTree = "<group>";
 		};
 		56585953203EB2F500BB59ED /* LGDottedLineView */ = {
@@ -1028,12 +1062,11 @@
 				567C00F8201075C90083F3D5 /* Main */,
 				56961CF6200D8A9C009EA21C /* InterfaceBuilder */,
 				56961CF7200D8ACA009EA21C /* Networking */,
-				56506D012016D773000FD8FA /* Custom */,
-				56961CF5200D89B0009EA21C /* Categroy */,
+				56506D012016D773000FD8FA /* Extend */,
 				565A30F420132F3700448B1C /* Tool */,
 				56AF60CC2011DF930067BD7B /* Supporting files */,
 				56A88839200CA53400847BE6 /* AppDelegate.h */,
-				56A8883A200CA53400847BE6 /* AppDelegate.m */,
+				56A8883A200CA53400847BE6 /* AppDelegate.mm */,
 			);
 			path = Word;
 			sourceTree = "<group>";
@@ -1288,6 +1321,8 @@
 				564B3246207B09A7005E7658 /* LGCourseListCell.m */,
 				564B3251207B37BC005E7658 /* LGPublicListCell.h */,
 				564B3252207B37BC005E7658 /* LGPublicListCell.m */,
+				5657ECBB207DEA0500E89FC2 /* LGT.h */,
+				5657ECBC207DEA0500E89FC2 /* LGT.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1309,6 +1344,8 @@
 				564B324F207B375C005E7658 /* LGPublicController.m */,
 				564B3254207B3FE6005E7658 /* LGPublicDetailController.h */,
 				564B3255207B3FE6005E7658 /* LGPublicDetailController.m */,
+				5657ECB8207DE9BA00E89FC2 /* LGTryListenController.h */,
+				5657ECB9207DE9BA00E89FC2 /* LGTryListenController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1371,6 +1408,11 @@
 		654614099BD54950F42E89C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5657ECB3207DE77700E89FC2 /* GLKit.framework */,
+				5657ECB1207DE76D00E89FC2 /* libsqlite3.tbd */,
+				5657ECAF207DE75D00E89FC2 /* libiconv.tbd */,
+				5657ECAD207DE73400E89FC2 /* libz.tbd */,
+				5657ECAB207DE71C00E89FC2 /* OpenAL.framework */,
 				66ACA9D95F507310F264822E /* Pods_Word.framework */,
 			);
 			name = Frameworks;
@@ -1639,6 +1681,7 @@
 				5612BFAB202154E30038D653 /* LGWordLibraryModel.m in Sources */,
 				02F1236220712906001A851B /* LGEstimateController.m in Sources */,
 				56BBBFC7205664B60057BDF2 /* LGSettingHeaderView.m in Sources */,
+				5657ECBA207DE9BA00E89FC2 /* LGTryListenController.m in Sources */,
 				56CCA5E5201B083B0097DCAC /* LGReciteWordsController.m in Sources */,
 				02C1DFAD2062BA9200217244 /* LGUpdateUserInfoController.m in Sources */,
 				56ABC9152074A0B200F328A8 /* LGPKDiscoverModel.m in Sources */,
@@ -1699,7 +1742,7 @@
 				566FF2D520577D95004574EA /* LGPKRankingCell.m in Sources */,
 				568C8C9D20732EE4009668AD /* LGEstimateResultCell.m in Sources */,
 				5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */,
-				56A8883B200CA53400847BE6 /* AppDelegate.m in Sources */,
+				56A8883B200CA53400847BE6 /* AppDelegate.mm in Sources */,
 				56D3283D2079B8A40041502B /* LGReportSelectTimeController.m in Sources */,
 				560699DF2057BC6D00574437 /* LGPKRankHeadView.m in Sources */,
 				5638863A207C557300C05E01 /* LGSignModel.m in Sources */,
@@ -1730,6 +1773,7 @@
 				56C078D92069E7E300C0F513 /* LGSegue.m in Sources */,
 				5627C9F5204D2F790013F1CC /* LGReviewSelectTimeCell.m in Sources */,
 				564B3244207B0961005E7658 /* LGCourseListController.m in Sources */,
+				5657ECBD207DEA0500E89FC2 /* LGT.m in Sources */,
 				563F7DA5202306B500944730 /* LGPlayer.m in Sources */,
 				566B9860202003E800D368AC /* LGNoStudyTypeController.m in Sources */,
 				56C078D52069DFF700C0F513 /* LGPKResultModel.m in Sources */,
@@ -1890,6 +1934,11 @@
 				CODE_SIGN_ENTITLEMENTS = Word/Word.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G6D8UC5DTE;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word/Extend/VodSDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Supporting files/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Word/Supporting files/Info.plist";
@@ -1909,6 +1958,11 @@
 				CODE_SIGN_ENTITLEMENTS = Word/Word.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G6D8UC5DTE;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Word/Extend/VodSDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Supporting files/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Word/Supporting files/Info.plist";

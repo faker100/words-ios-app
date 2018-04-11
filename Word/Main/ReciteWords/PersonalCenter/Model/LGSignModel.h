@@ -20,4 +20,5 @@
 //签到日期数组
 @property (nonatomic, strong) NSMutableArray *data;
 
+
 @end
