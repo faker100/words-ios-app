@@ -93,7 +93,6 @@
 		5657ECB4207DE77700E89FC2 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5657ECB3207DE77700E89FC2 /* GLKit.framework */; };
 		5657ECB7207DE7ED00E89FC2 /* VodSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5657ECB6207DE7ED00E89FC2 /* VodSDK.framework */; };
 		5657ECBA207DE9BA00E89FC2 /* LGTryListenController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5657ECB9207DE9BA00E89FC2 /* LGTryListenController.m */; };
-		5657ECBD207DEA0500E89FC2 /* LGT.m in Sources */ = {isa = PBXBuildFile; fileRef = 5657ECBC207DEA0500E89FC2 /* LGT.m */; };
 		56585956203EB34300BB59ED /* LGDottedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56585955203EB34300BB59ED /* LGDottedLineView.m */; };
 		5658D5A62040FF7600390FC4 /* LGIndexReviewAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5658D5A52040FF7600390FC4 /* LGIndexReviewAlertView.m */; };
 		5658D5A82040FF8600390FC4 /* LGIndexReviewAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5658D5A72040FF8600390FC4 /* LGIndexReviewAlertView.xib */; };
@@ -379,8 +378,6 @@
 		5657ECB6207DE7ED00E89FC2 /* VodSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VodSDK.framework; sourceTree = "<group>"; };
 		5657ECB8207DE9BA00E89FC2 /* LGTryListenController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTryListenController.h; sourceTree = "<group>"; };
 		5657ECB9207DE9BA00E89FC2 /* LGTryListenController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTryListenController.m; sourceTree = "<group>"; };
-		5657ECBB207DEA0500E89FC2 /* LGT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGT.h; sourceTree = "<group>"; };
-		5657ECBC207DEA0500E89FC2 /* LGT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGT.m; sourceTree = "<group>"; };
 		56585954203EB34300BB59ED /* LGDottedLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDottedLineView.h; sourceTree = "<group>"; };
 		56585955203EB34300BB59ED /* LGDottedLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDottedLineView.m; sourceTree = "<group>"; };
 		5658D5A42040FF7600390FC4 /* LGIndexReviewAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGIndexReviewAlertView.h; sourceTree = "<group>"; };
@@ -1321,8 +1318,6 @@
 				564B3246207B09A7005E7658 /* LGCourseListCell.m */,
 				564B3251207B37BC005E7658 /* LGPublicListCell.h */,
 				564B3252207B37BC005E7658 /* LGPublicListCell.m */,
-				5657ECBB207DEA0500E89FC2 /* LGT.h */,
-				5657ECBC207DEA0500E89FC2 /* LGT.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1773,7 +1768,6 @@
 				56C078D92069E7E300C0F513 /* LGSegue.m in Sources */,
 				5627C9F5204D2F790013F1CC /* LGReviewSelectTimeCell.m in Sources */,
 				564B3244207B0961005E7658 /* LGCourseListController.m in Sources */,
-				5657ECBD207DEA0500E89FC2 /* LGT.m in Sources */,
 				563F7DA5202306B500944730 /* LGPlayer.m in Sources */,
 				566B9860202003E800D368AC /* LGNoStudyTypeController.m in Sources */,
 				56C078D52069DFF700C0F513 /* LGPKResultModel.m in Sources */,

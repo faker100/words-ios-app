@@ -12,6 +12,13 @@
 
 
 /**
+ 设置 navigationbar 透明
+
+ @param flag yes - 透明 , no - 不透明
+ */
+- (void)transparenceBar:(BOOL) flag;
+
+/**
  push 到下一个 controller 后,移除上一个 controller
 
  @param viewController 下一个 controller

@@ -74,6 +74,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+//支持视频播放页面的横竖屏
+-(BOOL)shouldAutorotate {
+	return [self.selectedViewController shouldAutorotate];
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+	return [self.selectedViewController supportedInterfaceOrientations];
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+	return [self.selectedViewController preferredInterfaceOrientationForPresentation];
+}
+
+
 /*
 #pragma mark - Navigation
 

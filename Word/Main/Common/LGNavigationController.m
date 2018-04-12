@@ -29,6 +29,13 @@
 	
 }
 
+- (void)transparenceBar:(BOOL) flag{
+	UIImage *bgImage = flag ? [UIImage new] : nil;
+	UIImage *shadowImage = flag ? [UIImage new] : nil;
+	[self.navigationBar setBackgroundImage:bgImage forBarMetrics:UIBarMetricsDefault];
+	[self.navigationBar setShadowImage:shadowImage];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -45,6 +52,19 @@
 	NSMutableArray *controllers = [NSMutableArray arrayWithArray:self.viewControllers];
 	[controllers removeObject:currentController];
 	[self setViewControllers:controllers animated:YES];
+}
+
+#pragma mark - 横竖屏
+-(BOOL)shouldAutorotate {
+	return [[self.viewControllers lastObject] shouldAutorotate];
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+	return [[self.viewControllers lastObject] supportedInterfaceOrientations];
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+	return [[self.viewControllers lastObject] preferredInterfaceOrientationForPresentation];
 }
 
 #pragma mark - UINavigationBarDelegate

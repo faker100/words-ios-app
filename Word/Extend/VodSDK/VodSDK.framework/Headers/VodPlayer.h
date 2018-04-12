@@ -230,7 +230,7 @@ typedef enum
 
 /**
  * 文档信息回调
- * @param position 文档信息
+ * @param docInfos 文档信息
  */
 - (void)onDocInfo:(NSArray*)docInfos;
 
