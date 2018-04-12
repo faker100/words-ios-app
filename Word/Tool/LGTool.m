@@ -136,7 +136,7 @@
             
         }else{
             if ([[UIApplication sharedApplication] currentUserNotificationSettings].types  == UIRemoteNotificationTypeNone) {
-                flag == NO;
+                flag = NO;
                 message = @"请在iPhone的\"设置-通知\"选项中,允许通知";
             }
         }

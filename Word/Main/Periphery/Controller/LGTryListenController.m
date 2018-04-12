@@ -141,7 +141,11 @@
 
  */
 - (IBAction)fullScreenAction:(UIButton *)sender {
-	self.traitCollection 
+    CGFloat angle = M_PI_2 - 0.00001;
+    
+    [UIView animateWithDuration:0.2f animations:^{
+        self.view.transform = CGAffineTransformMakeRotation(angle);
+    }];
 }
 
 //滑块拖动中
@@ -261,7 +265,7 @@
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-	return UIInterfaceOrientationMaskPortrait;
+	return UIInterfaceOrientationMaskAll;
 }
 
 //- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
