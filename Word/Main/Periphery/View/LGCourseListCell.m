@@ -30,6 +30,9 @@
 }
 
 - (IBAction)tryListenAction:(id)sender {
+	if (self.delegate) {
+		[self.delegate tryListen:self.courseModel];
+	}
 }
 
 @end

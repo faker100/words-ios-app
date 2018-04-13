@@ -509,4 +509,13 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)requestSearchWordWithStr:(NSString *)str completion:(comletionBlock)completion{
+	self.url = SEARCH_WORD_RUL;
+	self.parameter = @{
+					   @"str" : str
+					   };
+	[self postRequestCompletion:completion];
+	
+}
+
 @end

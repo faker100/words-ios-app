@@ -136,6 +136,12 @@
 - (IBAction)pictureSearch:(id)sender {
 	NSLog(@"拍照");
 	
+	[self.request requestSearchWordWithStr:@"A" completion:^(id response, LGError *error) {
+		if([self isNormal:error]){
+			NSLog(@"%@",response);
+		}
+	}];
+	
 //	[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
 }
 	 

@@ -15,5 +15,6 @@
 @property (nonatomic, copy) NSString *image;
 @property (nonatomic, copy) NSString *content;
 @property (nonatomic, copy) NSString *ID;
+@property (nonatomic, copy) NSString *date;
 
 @end

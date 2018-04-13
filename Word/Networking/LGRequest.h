@@ -492,4 +492,13 @@
  */
 - (void)requestUserSignCompletion:(comletionBlock)completion;
 
+
+/**
+ 搜索单词
+
+ @param str 字符串
+
+ */
+- (void)requestSearchWordWithStr:(NSString *)str completion:(comletionBlock)completion;
+
 @end

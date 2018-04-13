@@ -62,12 +62,11 @@
 }
 
 - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window{
-    if (self.isForceLandscape) {
-        return UIInterfaceOrientationMaskLandscape;
-    }else if (self.isForcePortrait){
-        return UIInterfaceOrientationMaskPortrait;
-    }
-    return UIInterfaceOrientationMaskAll;
+	if (self.allowRotation == YES) {
+		return UIInterfaceOrientationMaskLandscapeRight;
+	}else{
+		return (UIInterfaceOrientationMaskPortrait);
+	}
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{

@@ -279,6 +279,8 @@ typedef NS_ENUM(NSUInteger, LGCourseType) {
 //公开课列表
 #define PUBLIC_LIST_URL					@"http://words.viplgw.cn/cn/app-api/public-list"
 
+//搜索单词
+#define SEARCH_WORD_RUL					@"http://words.viplgw.cn/cn/app-api/search-words"
 
 
 

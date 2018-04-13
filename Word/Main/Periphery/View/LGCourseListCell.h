@@ -9,9 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "LGCourseModel.h"
 
+@protocol LGCourseListCellDelegate
+
+- (void)tryListen:(LGCourseModel *)model;
+
+@end
+
 @interface LGCourseListCell : UITableViewCell
 
 @property (nonatomic, strong) LGCourseModel *courseModel;
+
+@property (nonatomic, weak) id<LGCourseListCellDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIImageView *courseImageView;
 

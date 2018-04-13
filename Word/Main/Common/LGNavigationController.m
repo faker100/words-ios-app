@@ -54,19 +54,6 @@
 	[self setViewControllers:controllers animated:YES];
 }
 
-#pragma mark - 横竖屏
--(BOOL)shouldAutorotate {
-	return [[self.viewControllers lastObject] shouldAutorotate];
-}
-
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-	return [[self.viewControllers lastObject] supportedInterfaceOrientations];
-}
-
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-	return [[self.viewControllers lastObject] preferredInterfaceOrientationForPresentation];
-}
-
 #pragma mark - UINavigationBarDelegate
 
 - (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPushItem:(UINavigationItem *)item{

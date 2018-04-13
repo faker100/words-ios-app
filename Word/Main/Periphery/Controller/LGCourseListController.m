@@ -11,8 +11,9 @@
 #import "LGCourseModel.h"
 #import "UIScrollView+LGRefresh.h"
 #import "LGCourseDetailController.h"
+#import "LGTryListenController.h"
 
-@interface LGCourseListController ()<UITableViewDataSource, UITableViewDelegate>
+@interface LGCourseListController ()<UITableViewDataSource, UITableViewDelegate, LGCourseListCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray<LGCourseModel *> *courseModel;
 
@@ -67,6 +68,7 @@
 {
 	LGCourseListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGCourseListCell"];
 	cell.courseModel = self.courseModel[indexPath.section];
+	cell.delegate = self;
 	return cell;
 }
 
@@ -88,6 +90,11 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - LGCourseListCellDelegate
+
+- (void)tryListen:(LGCourseModel *)model{
+	[self performSegueWithIdentifier:@"listToTryListen" sender:model];
+}
 
 #pragma mark - Navigation
 
@@ -96,6 +103,9 @@
 	if ([segue.identifier isEqualToString:@"courseListToCourseDetail"]) {
 		LGCourseDetailController *controller = segue.destinationViewController;
 		controller.courseModel = sender;
+	}else if ([segue.identifier isEqualToString:@"listToTryListen"]){
+		LGTryListenController *controlle  = segue.destinationViewController;
+		controlle.courseModel = sender;
 	}
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

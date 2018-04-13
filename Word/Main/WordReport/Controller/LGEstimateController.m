@@ -71,7 +71,6 @@
 			}else if(code == 2){
 				[self performSegueWithIdentifier:@"estimateToResult" sender:nil];
 			}
-			
 		}else{
 			self.tableView.allowsSelection = YES;
 		}

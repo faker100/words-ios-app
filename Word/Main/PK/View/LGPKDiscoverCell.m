@@ -19,7 +19,7 @@
 	_discoverModel = discoverModel;
 	[self.bgImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(discoverModel.image)]];
 	self.discoverTitleLabel.text = discoverModel.title;
-	self.discoverNameLabel.text = discoverModel.name;
+	self.dateLabel.text = discoverModel.date;
 }
 
 @end
