@@ -236,14 +236,8 @@ typedef NS_ENUM(NSUInteger, LGNotificationRepeatType) {
 - (void)removeNotification_iOS10:(LGClockModel *)clock{
     // 移除未展示过的通知
     if (@available(iOS 10.0, *)) {
-        [[UNUserNotificationCenter currentNotificationCenter] getPendingNotificationRequestsWithCompletionHandler:^(NSArray<UNNotificationRequest *> * _Nonnull requests) {
-            NSLog(@"%@",requests);
-        }];
         
         [[UNUserNotificationCenter currentNotificationCenter] removePendingNotificationRequestsWithIdentifiers:clock.identifiers];
-        [[UNUserNotificationCenter currentNotificationCenter] getPendingNotificationRequestsWithCompletionHandler:^(NSArray<UNNotificationRequest *> * _Nonnull requests) {
-            NSLog(@"%@",requests);
-        }];
     }
 }
 
