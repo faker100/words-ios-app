@@ -510,6 +510,9 @@
 }
 
 - (void)requestSearchWordWithStr:(NSString *)str completion:(comletionBlock)completion{
+    if (self.task) {
+        [self.task cancel];
+    }
 	self.url = SEARCH_WORD_RUL;
 	self.parameter = @{
 					   @"str" : str

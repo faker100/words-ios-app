@@ -52,7 +52,12 @@
 		self.familiarItemButton.hidden = YES;
 		self.title = @"听写练习";
 	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"backArrow"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissController)];
-	}
+    }else if (self.controllerType == LGWordDetailSearch){
+        self.title = self.searchWordStr;
+        self.statusViewHeightConstraint.constant = 0;
+        self.familiarItemButton.hidden = YES;
+        [self requestWordDetailWidthID:self.searchWordID];
+    }
 	
 	[self.wordTabelView registerNib:[UINib nibWithNibName:@"LGWordDetailHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGWordDetailHeaderFooterView"];
 }

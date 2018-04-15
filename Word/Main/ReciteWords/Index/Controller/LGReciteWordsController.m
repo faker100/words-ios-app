@@ -12,14 +12,19 @@
 #import "LGNoStudyTypeController.h"
 #import "LGRecitePlanController.h"
 #import <SDWebImage/UIButton+WebCache.h>
+#import "LGTextSearchController.h"
+#import "LGWordDetailController.h"
+#import "LGTool.h"
 
-@interface LGReciteWordsController ()
+@interface LGReciteWordsController () <LGTextSearchControllerDelegate>
 
 @property (nonatomic, strong) LGUserModel *user;
 @property (nonatomic, strong) LGNoStudyTypeController *noStudyTypeController;  //没有记忆计划
 @property (nonatomic, strong) LGRecitePlanController *recitePlanController;     //有记忆计划
 
 @property (nonatomic, weak) UIViewController *currentShowController; //当前显示的 view;
+
+@property (nonatomic, strong) UISearchController *searchController;
 
 @end
 
@@ -28,8 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	//[self configNavigationBar];
-	
+    
 	self.currentShowController = self.childViewControllers.lastObject;
 	[self.childViewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 		
@@ -41,16 +45,50 @@
 	}];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess) name:LOGIN_NOTIFICATION object:nil];
-	[self setLeftItem];
+	[self configLeftItem];
 	[self configNavigationItem];
 	
 }
 
+- (UISearchController *)searchController{
+    if (!_searchController) {
+        
+       LGTextSearchController *resultController =  STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGTextSearchController");
+        resultController.delegate = self;
+        _searchController = [[UISearchController alloc]initWithSearchResultsController:resultController];
+        _searchController.searchBar.tintColor = [UIColor lg_colorWithType:LGColor_theme_Color];
+        _searchController.searchResultsUpdater = resultController;
+    }
+    return _searchController;
+}
+
 - (void)configNavigationItem{
-	self.titleViewWidthConstraint.constant = 200.0/375.0f * SCREEN_WIDTH;
-	NSArray <UIBarButtonItem *> *rightItemArray = self.navigationItem.rightBarButtonItems;
-	[rightItemArray.lastObject setImageInsets:UIEdgeInsetsMake(0, 15, 0, -15)];
-	
+    
+    CGFloat width = 200.0/375.0f * SCREEN_WIDTH;
+	self.titleViewWidthConstraint.constant = width;
+
+    UIButton *titleBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, width, 30)];
+    titleBtn.contentEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 0);
+    titleBtn.layer.cornerRadius = 4;
+    titleBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [titleBtn setTitle:@"  搜索单词" forState:UIControlStateNormal];
+    [titleBtn setImage:[UIImage imageNamed:@"search_icon"] forState:UIControlStateNormal];
+    titleBtn.backgroundColor = [UIColor lg_colorWithHexString:@"20A870"];
+    titleBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    self.navigationItem.titleView = titleBtn;
+    [titleBtn addTarget:self action:@selector(textSearchAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *voidceBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [voidceBtn setImage:[UIImage imageNamed:@"microphone"] forState:UIControlStateNormal];
+    [voidceBtn addTarget:self action:@selector(speakSearchAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *voiceItem = [[UIBarButtonItem alloc]initWithCustomView:voidceBtn];
+    
+    UIButton *picBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+    [picBtn setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
+    [picBtn addTarget:self action:@selector(pictureSearch:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *picItem = [[UIBarButtonItem alloc]initWithCustomView:picBtn];
+
+    self.navigationItem.rightBarButtonItems = @[voiceItem,picItem];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -58,12 +96,12 @@
 	[self configData];
 }
 
-- (void)setLeftItem {
-	UIView *tempView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 37, 37)];
+- (void)configLeftItem {
+	UIView *tempView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 38, 38)];
 	UIButton *itemButton = [[UIButton alloc]initWithFrame:tempView.bounds];
 	[itemButton sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN([LGUserManager shareManager].user.image])  forState:UIControlStateNormal placeholderImage:PLACEHOLDERIMAGE];
 	 [itemButton addTarget:self action:@selector(pushUserInfo) forControlEvents:UIControlEventTouchUpInside];
-	 itemButton.layer.cornerRadius = 20;
+	 itemButton.layer.cornerRadius = 19;
 	 itemButton.layer.masksToBounds = YES;
 	 [tempView addSubview:itemButton];
 	 self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:tempView];
@@ -78,7 +116,7 @@
 	[self.request requestUserInfo:^(id response, LGError *error) {
 		if ([self isNormal:error]){
 			[LGUserManager shareManager].user = [LGUserModel mj_objectWithKeyValues:response[@"data"]];
-			[self setLeftItem];
+			[self configLeftItem];
 			[weakSelf showController:YES];
 		}
 	}];
@@ -109,40 +147,29 @@
 	}
 }
 
-- (void)configNavigationBar{
-	
-	UIButton *header = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
-	header.layer.cornerRadius = 22;
-	header.layer.masksToBounds = YES;
-	[header setImage:PLACEHOLDERIMAGE forState:UIControlStateNormal];
-	UIBarButtonItem *leftItem = [[UIBarButtonItem alloc]initWithCustomView:header];
-	self.navigationItem.leftBarButtonItem = leftItem;
-}
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+//文字搜索
+- (void)textSearchAction{
+    
+    [self.navigationController.tabBarController presentViewController:self.searchController animated:YES completion:nil];
+}
+     
 //语音搜索
-- (IBAction)speakSearchAction:(id)sender {
+- (void)speakSearchAction:(id)sender {
 	NSLog(@"yuy");
-//	[self transitionFromViewController:self.recitePlanController toViewController:self.noStudyTypeController duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
 }
 
 //拍照搜索
-- (IBAction)pictureSearch:(id)sender {
-	NSLog(@"拍照");
-	
-	[self.request requestSearchWordWithStr:@"A" completion:^(id response, LGError *error) {
-		if([self isNormal:error]){
-			NSLog(@"%@",response);
-		}
-	}];
-	
-//	[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
+- (void)pictureSearch:(id)sender {
+    BOOL flag = [LGTool checkDevicePermissions:LGDeviceCamera];
+    if(flag){
+        [self performSegueWithIdentifier:@"indexToPhotoSearch" sender:nil];
+    }
 }
 	 
 - (void)pushUserInfo{
@@ -156,14 +183,29 @@
 	[self configData];
 }
 
-/*
+#pragma mark - LGTextSearchControllerDelegate
+- (void)selctedSearchModel:(LGSearchModel *)searchModel{
+    self.searchController.active = NO;
+    [self performSegueWithIdentifier:@"searchToWordDetail" sender:searchModel];
+}
+     
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if([segue.identifier isEqualToString:@"searchToWordDetail"]){
+        LGSearchModel *searchModel = sender;
+        LGWordDetailController *controller = segue.destinationViewController;
+        controller.controllerType = LGWordDetailSearch;
+        controller.searchWordID = searchModel.ID;
+        controller.searchWordStr = searchModel.word;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end
+

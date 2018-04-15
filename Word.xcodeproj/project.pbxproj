@@ -20,6 +20,10 @@
 		02C019BC2077399D0006DC05 /* LGReportLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C019BB2077399D0006DC05 /* LGReportLineChartView.m */; };
 		02C1DFAD2062BA9200217244 /* LGUpdateUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C1DFAC2062BA9200217244 /* LGUpdateUserInfoController.m */; };
 		02C817F4207A9B5800003D4D /* LGClassicCourseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02C817F3207A9B5800003D4D /* LGClassicCourseCell.m */; };
+		02D6E3CA20834A5600EE7F98 /* LGTextSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D6E3C920834A5600EE7F98 /* LGTextSearchController.m */; };
+		02D6E3CD208366E600EE7F98 /* LGSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D6E3CC208366E600EE7F98 /* LGSearchModel.m */; };
+		02D6E3D020839BFE00EE7F98 /* LGCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D6E3CF20839BFE00EE7F98 /* LGCameraManager.m */; };
+		02D6E3D32083A00600EE7F98 /* LGImageSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D6E3D22083A00600EE7F98 /* LGImageSearchController.m */; };
 		02F123592070D575001A851B /* LGBeginEstimateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F123582070D575001A851B /* LGBeginEstimateController.m */; };
 		02F1236220712906001A851B /* LGEstimateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1236120712906001A851B /* LGEstimateController.m */; };
 		02F78A092029E54A0011096F /* LGReciteWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F78A082029E54A0011096F /* LGReciteWordModel.m */; };
@@ -241,6 +245,14 @@
 		02C1DFAC2062BA9200217244 /* LGUpdateUserInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGUpdateUserInfoController.m; sourceTree = "<group>"; };
 		02C817F2207A9B5800003D4D /* LGClassicCourseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGClassicCourseCell.h; sourceTree = "<group>"; };
 		02C817F3207A9B5800003D4D /* LGClassicCourseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGClassicCourseCell.m; sourceTree = "<group>"; };
+		02D6E3C820834A5600EE7F98 /* LGTextSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTextSearchController.h; sourceTree = "<group>"; };
+		02D6E3C920834A5600EE7F98 /* LGTextSearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTextSearchController.m; sourceTree = "<group>"; };
+		02D6E3CB208366E600EE7F98 /* LGSearchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSearchModel.h; sourceTree = "<group>"; };
+		02D6E3CC208366E600EE7F98 /* LGSearchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGSearchModel.m; sourceTree = "<group>"; };
+		02D6E3CE20839BFE00EE7F98 /* LGCameraManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGCameraManager.h; sourceTree = "<group>"; };
+		02D6E3CF20839BFE00EE7F98 /* LGCameraManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGCameraManager.m; sourceTree = "<group>"; };
+		02D6E3D12083A00600EE7F98 /* LGImageSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGImageSearchController.h; sourceTree = "<group>"; };
+		02D6E3D22083A00600EE7F98 /* LGImageSearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGImageSearchController.m; sourceTree = "<group>"; };
 		02F123572070D575001A851B /* LGBeginEstimateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGBeginEstimateController.h; sourceTree = "<group>"; };
 		02F123582070D575001A851B /* LGBeginEstimateController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGBeginEstimateController.m; sourceTree = "<group>"; };
 		02F1236020712906001A851B /* LGEstimateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGEstimateController.h; sourceTree = "<group>"; };
@@ -589,6 +601,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02D6E3C420834A1900EE7F98 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				02D6E3C720834A3200EE7F98 /* View */,
+				02D6E3C620834A2D00EE7F98 /* Model */,
+				02D6E3C520834A2400EE7F98 /* Controller */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		02D6E3C520834A2400EE7F98 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				02D6E3C820834A5600EE7F98 /* LGTextSearchController.h */,
+				02D6E3C920834A5600EE7F98 /* LGTextSearchController.m */,
+				02D6E3D12083A00600EE7F98 /* LGImageSearchController.h */,
+				02D6E3D22083A00600EE7F98 /* LGImageSearchController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		02D6E3C620834A2D00EE7F98 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				02D6E3CB208366E600EE7F98 /* LGSearchModel.h */,
+				02D6E3CC208366E600EE7F98 /* LGSearchModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		02D6E3C720834A3200EE7F98 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		02F78A062029E4E70011096F /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,6 +874,8 @@
 				563F7DA4202306B500944730 /* LGPlayer.m */,
 				02645BF420787E8C00328E75 /* LGClockManager.h */,
 				02645BF520787E8C00328E75 /* LGClockManager.m */,
+				02D6E3CE20839BFE00EE7F98 /* LGCameraManager.h */,
+				02D6E3CF20839BFE00EE7F98 /* LGCameraManager.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1348,6 +1399,7 @@
 		56EAD86B2019C1A60059604E /* ReciteWords */ = {
 			isa = PBXGroup;
 			children = (
+				02D6E3C420834A1900EE7F98 /* Search */,
 				56994E9420492B57005648F6 /* Review */,
 				5680148F202AE18E0082D72F /* WordDetail */,
 				56C98980202016EA0095A4BD /* WordPlan */,
@@ -1629,6 +1681,7 @@
 				56994EA0204938D6005648F6 /* LGReviewWrongCollectionCell.m in Sources */,
 				56BBBFC320564B930057BDF2 /* LGSettingModel.m in Sources */,
 				565A30FA2013411200448B1C /* LGRegisterController.m in Sources */,
+				02D6E3D32083A00600EE7F98 /* LGImageSearchController.m in Sources */,
 				5607F375207238F9001A4DAB /* LGEstimateRankCell.m in Sources */,
 				56585956203EB34300BB59ED /* LGDottedLineView.m in Sources */,
 				56FD20D62028256F003A6154 /* LGDeletePlanAlertView.m in Sources */,
@@ -1659,6 +1712,7 @@
 				56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */,
 				024711B3207AA4D40016B03C /* LGPeripheryCaseCell.m in Sources */,
 				562FC13F202992DE005CEA83 /* LGRecitePlanController.m in Sources */,
+				02D6E3D020839BFE00EE7F98 /* LGCameraManager.m in Sources */,
 				5607F372207238BC001A4DAB /* LGEstimateRankController.m in Sources */,
 				56B7AADB202BE37800BDECED /* LGWordDetailModel.m in Sources */,
 				564B3275207B4398005E7658 /* NJKWebViewProgressView.m in Sources */,
@@ -1701,6 +1755,7 @@
 				56D328432079FCAF0041502B /* LGPublicCourseCollectionCell.m in Sources */,
 				56994E9A20492BC3005648F6 /* LGReviewController.m in Sources */,
 				5673C92B206B42F4000C21DE /* LGUpdateNicknameController.m in Sources */,
+				02D6E3CD208366E600EE7F98 /* LGSearchModel.m in Sources */,
 				56973644204FF54800169C8A /* LGDictationAnswerItemCollectionCell.m in Sources */,
 				56224FCC20454F020093BC7A /* LGIndexReviewModel.m in Sources */,
 				56994E9D2049385E005648F6 /* LGReviewWrongListController.m in Sources */,
@@ -1756,6 +1811,7 @@
 				56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */,
 				56C646B2204E85B200E895B3 /* LGDictationPractiseController.m in Sources */,
 				5647C2FB205F66E300DFDB77 /* LGPKMatchingController.m in Sources */,
+				02D6E3CA20834A5600EE7F98 /* LGTextSearchController.m in Sources */,
 				56224FC7204547AF0093BC7A /* LGIndexReviewAlertCell.m in Sources */,
 				567FDF15206C7DFF007FFFB2 /* LGClockModel.m in Sources */,
 				022FACAD20761C8E006F8D1C /* LGReportPieView.m in Sources */,

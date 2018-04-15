@@ -14,7 +14,8 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 	LGWordDetailEbbinghausReview,      //艾宾浩斯复习模式
 	LGWordDetailTodayReview,		   //今日复习
     LGWordDetailReview,                //错题本复习/时间复习
-	LGWordDetailDictationPrompt        //听写练习提示
+	LGWordDetailDictationPrompt,       //听写练习提示
+    LGWordDetailSearch,                //搜索单词
 };
 
 
@@ -22,6 +23,11 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 
 //controller 模式
 @property (nonatomic, assign) LGWordDetailControllerType controllerType;
+
+//搜索模式下的单词
+@property (nonatomic, copy) NSString *searchWordStr;
+//搜索模式下的单词id
+@property (nonatomic, copy) NSString *searchWordID;
 
 //正常复习模式下的复习方式
 @property (nonatomic, assign) LGSelectReviewType reviewTyep;
@@ -66,7 +72,7 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 //底部单词状态 view 的高度约束,在听写练习提示模式下,高度为0,隐藏
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *statusViewHeightConstraint;
 
-//熟适
+//熟识
 @property (weak, nonatomic) IBOutlet UIButton *familiarItemButton;
 
 @end
