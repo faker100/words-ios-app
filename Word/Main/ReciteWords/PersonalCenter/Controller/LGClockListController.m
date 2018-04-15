@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [[LGClockManager shareManager] checkAllClock];
 	self.tableView.tableFooterView = [UIView new];
     self.tableView.rowHeight = 85;
 	self.clockArray = [LGClockManager allClocks];
@@ -73,26 +75,39 @@
 
 #pragma mark - LGAddClockControllerDelegate
 - (void)saveClock:(LGClockModel *)clockModel{
-	
+
 	//不在数组中,为添加新闹钟
-	if (![self.clockArray containsObject:clockModel]) {
+	if ([self.clockArray containsObject:clockModel]) {
+        [[LGClockManager shareManager] updateClockDate:clockModel completion:^(BOOL isSuccess) {
+            if (!isSuccess) {
+                [LGProgressHUD showMessage:@"更新失败" toView:self.view];
+            }
+        }];
+    }else{
         [[LGClockManager shareManager] addClock:clockModel completion:^(BOOL isSuccess) {
             if (isSuccess) {
                 [self.clockArray addObject:clockModel];
+                [self.tableView reloadData];
             }else{
                 [LGProgressHUD showMessage:@"添加失败" toView:self.view];
             }
         }];
-	}
+    }
 
 	[self.tableView reloadData];
 }
 
 #pragma mark - LGClockListCellDelegate
 - (void)setUseClock:(LGClockModel *)clock isUse:(BOOL)isUse{
-	clock.isUse = isUse;
+    
+    clock.isUse = isUse;
     //更新本地闹钟
-	[[LGClockManager shareManager] updateClock:clock];
+    [[LGClockManager shareManager] updateClockUse:clock completion:^(BOOL isSuccess) {
+        if (!isSuccess) {
+            [LGProgressHUD showMessage:@"更新失败" toView:self.view];
+        }
+    }];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Navigation

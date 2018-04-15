@@ -92,6 +92,10 @@ static const unsigned componentFlags = (NSCalendarUnitYear| NSCalendarUnitMonth 
     return [self dateByAddingTimeInterval:interval];
 }
 
+- (NSDateComponents *)components{
+    return  [[NSDate currentCalendar] components:componentFlags fromDate:self];
+}
+
 #pragma mark - Relative Dates
 
 + (NSDate *) dateWithDaysFromNow: (NSInteger) days

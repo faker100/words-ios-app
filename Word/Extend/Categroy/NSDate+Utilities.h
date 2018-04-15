@@ -50,6 +50,9 @@
  */
 - (NSDate *)convertToSystemTimeZoneDate;
 
+//当前时间转换成 NSDateComponents
+- (NSDateComponents *)components;
+
 // Relative dates from the current date
 + (NSDate *) dateTomorrow;
 + (NSDate *) dateYesterday;
@@ -108,7 +111,7 @@
 // Adjusting dates
 - (NSDate *) dateByAddingYears: (NSInteger) dYears;
 - (NSDate *) dateBySubtractingYears: (NSInteger) dYears;
-- (NSDate *)  : (NSInteger) dMonths;
+- (NSDate *) dateByAddingMonths: (NSInteger) dMonths;
 - (NSDate *) dateBySubtractingMonths: (NSInteger) dMonths;
 - (NSDate *) dateByAddingDays: (NSInteger) dDays;
 - (NSDate *) dateBySubtractingDays: (NSInteger) dDays;

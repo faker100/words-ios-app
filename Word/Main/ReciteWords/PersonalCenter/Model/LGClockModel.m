@@ -11,14 +11,6 @@
 
 @implementation LGClockModel
 
--(instancetype)init{
-    self = [super init];
-    if (self) {
-        self.identifier = @([[NSDate currentDate]timeIntervalSince1970]).stringValue;
-    }
-    return self;
-}
-
 - (NSString *)weakStr{
 	
 	if (self.week.count == 7) {
@@ -48,6 +40,34 @@
 	if (num == 6) return @"星期六";
 	if (num == 7) return @"星期日";
 	return @"";
+}
+
+- (NSString *)ID{
+    return [self.identifiers componentsJoinedByString:@","];
+}
+
+- (NSMutableArray<NSString *> *)identifiers{
+    if (!_identifiers) {
+        _identifiers = [NSMutableArray array];
+        NSString *str = @([NSDate date].timeIntervalSince1970).stringValue;
+        if (self.week.count == 7) {
+            [_identifiers addObject:[NSString stringWithFormat:@"%@_0",str]];
+        }else if (self.week.count == 0){
+            [_identifiers addObject:[NSString stringWithFormat:@"%@_-1",str]];
+        }else{
+            [self.week enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                [_identifiers addObject:[NSString stringWithFormat:@"%@_%@",str, obj]];
+            }];
+        }
+    }
+    return _identifiers;
+}
+
+- (NSString *)description{
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[self mj_keyValues]
+                                                       options:NSJSONWritingPrettyPrinted 
+                                                         error:nil];
+    return [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
 @end

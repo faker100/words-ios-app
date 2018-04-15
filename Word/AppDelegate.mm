@@ -17,6 +17,7 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
+
 @interface AppDelegate () <JPUSHRegisterDelegate>
 
 
@@ -54,6 +55,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 	// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 	[self.vodplayer resetAudioPlayer];
+    
 }
 
 
@@ -77,7 +79,7 @@
 #pragma mark- JPUSHRegisterDelegate
 
 // iOS 10 Support
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler  API_AVAILABLE(ios(10.0)){
 
 	if (@available(iOS 10.0, *)) {
 	// Required
@@ -90,7 +92,7 @@
 }
 
 // iOS 10 Support
-- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler  API_AVAILABLE(ios(10.0)){
 	// Required
 	if (@available(iOS 10.0, *)) {
 	NSDictionary * userInfo = response.notification.request.content.userInfo;

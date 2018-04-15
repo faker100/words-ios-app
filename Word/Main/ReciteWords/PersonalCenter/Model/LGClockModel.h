@@ -11,6 +11,8 @@
 
 @interface LGClockModel : NSObject
 
+//闹钟id，所有identifier，拼接 (componentsJoinedByString:@",")
+@property (nonatomic, copy) NSString *ID;
 
 @property (nonatomic, assign) NSInteger hour;
 @property (nonatomic, assign) NSInteger minute;
@@ -24,13 +26,12 @@
 //星期数组, @"1" @"2" @"3" @"4" @"5" @"6" @"7"
 @property (nonatomic, copy) NSArray<NSString *> *week;
 
-//闹钟标识:创建时间戳
-@property (nonatomic, copy) NSString *identifier;
+/**
+ 闹钟标识:创建时间戳_重复周数 (重复周数： -1--不重复 , 0--每天, 1/2/3/4/5/6/7--重复周数)
+ 在 [LGClockManager checkAllClock]中以 "_" 分割字符串获取时间戳
+ */
+@property (nonatomic, strong) NSMutableArray<NSString *> *identifiers;
 
-- (instancetype)init;
-
-//当前闹钟日期 
-- (NSDate *)date;
 
 /**
  星期字符串拼接
