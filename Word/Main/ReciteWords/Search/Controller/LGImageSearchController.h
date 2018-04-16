@@ -13,10 +13,9 @@
 //中间裁剪区域
 @property (weak, nonatomic) IBOutlet UIView *cutView;
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cutViewTopConstraint;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cutViewLeftConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cutViewRightConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cutViewBottomConstraint;
+//裁剪区域宽度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cutViewWidthConstraint;
+//裁剪区域高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cutViewHeightConstraint;
 
 @end
