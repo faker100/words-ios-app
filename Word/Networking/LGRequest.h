@@ -501,4 +501,6 @@
  */
 - (void)requestSearchWordWithStr:(NSString *)str completion:(comletionBlock)completion;
 
+
+
 @end

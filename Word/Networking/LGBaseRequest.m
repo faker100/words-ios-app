@@ -7,11 +7,8 @@
 //
 
 #import "LGBaseRequest.h"
-#import <AFNetworking/AFNetworking.h>
 #import "LGUserManager.h"
 #import "NSDate+Utilities.h"
-
-static AFHTTPSessionManager *manager;
 
 @implementation LGBaseRequest
 
@@ -20,7 +17,7 @@ static AFHTTPSessionManager *manager;
 	if (self) {
 		static dispatch_once_t onceToken;
 		dispatch_once(&onceToken, ^{
-			//requestGroup = dispatch_group_create();
+			
 			manager = [AFHTTPSessionManager manager];
 			manager.requestSerializer.timeoutInterval = 30;
 			manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:

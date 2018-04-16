@@ -469,6 +469,7 @@
 	self.parameter = @{
 					   @"month" : month
 					   };
+	
 	[self postRequestCompletion:completion];
 }
 
@@ -518,7 +519,7 @@
 					   @"str" : str
 					   };
 	[self postRequestCompletion:completion];
-	
 }
+
 
 @end

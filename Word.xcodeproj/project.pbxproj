@@ -51,6 +51,7 @@
 		56224FC7204547AF0093BC7A /* LGIndexReviewAlertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56224FC6204547AF0093BC7A /* LGIndexReviewAlertCell.m */; };
 		56224FC9204548360093BC7A /* LGIndexReviewAlertCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56224FC8204548360093BC7A /* LGIndexReviewAlertCell.xib */; };
 		56224FCC20454F020093BC7A /* LGIndexReviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56224FCB20454F020093BC7A /* LGIndexReviewModel.m */; };
+		56267F5620844E1300A53D66 /* LGBaiduOcrManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56267F5520844E1300A53D66 /* LGBaiduOcrManager.m */; };
 		5627C9F2204D2EA90013F1CC /* LGTimeReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5627C9F1204D2EA90013F1CC /* LGTimeReviewController.m */; };
 		5627C9F5204D2F790013F1CC /* LGReviewSelectTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5627C9F4204D2F780013F1CC /* LGReviewSelectTimeCell.m */; };
 		562E9D0D20734E8800691A52 /* LGEstimateResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 562E9D0C20734E8800691A52 /* LGEstimateResultModel.m */; };
@@ -301,6 +302,8 @@
 		56224FC8204548360093BC7A /* LGIndexReviewAlertCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGIndexReviewAlertCell.xib; sourceTree = "<group>"; };
 		56224FCA20454F020093BC7A /* LGIndexReviewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGIndexReviewModel.h; sourceTree = "<group>"; };
 		56224FCB20454F020093BC7A /* LGIndexReviewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGIndexReviewModel.m; sourceTree = "<group>"; };
+		56267F5420844E1300A53D66 /* LGBaiduOcrManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGBaiduOcrManager.h; sourceTree = "<group>"; };
+		56267F5520844E1300A53D66 /* LGBaiduOcrManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGBaiduOcrManager.m; sourceTree = "<group>"; };
 		5627C9F0204D2EA90013F1CC /* LGTimeReviewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTimeReviewController.h; sourceTree = "<group>"; };
 		5627C9F1204D2EA90013F1CC /* LGTimeReviewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTimeReviewController.m; sourceTree = "<group>"; };
 		5627C9F3204D2F780013F1CC /* LGReviewSelectTimeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReviewSelectTimeCell.h; sourceTree = "<group>"; };
@@ -876,6 +879,8 @@
 				02645BF520787E8C00328E75 /* LGClockManager.m */,
 				02D6E3CE20839BFE00EE7F98 /* LGCameraManager.h */,
 				02D6E3CF20839BFE00EE7F98 /* LGCameraManager.m */,
+				56267F5420844E1300A53D66 /* LGBaiduOcrManager.h */,
+				56267F5520844E1300A53D66 /* LGBaiduOcrManager.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1804,6 +1809,7 @@
 				564B324A207B0E6A005E7658 /* LGCourseModel.m in Sources */,
 				022FACB020761CE7006F8D1C /* LGReportModel.m in Sources */,
 				02C817F4207A9B5800003D4D /* LGClassicCourseCell.m in Sources */,
+				56267F5620844E1300A53D66 /* LGBaiduOcrManager.m in Sources */,
 				5678C38B20527C56009CD723 /* LGDictationPromptController.m in Sources */,
 				567FDF18206CC108007FFFB2 /* LGChooseWeekController.m in Sources */,
 				560F0FCB2022AA7000324510 /* LGFreeWordListCell.m in Sources */,

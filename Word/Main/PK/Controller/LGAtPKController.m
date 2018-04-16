@@ -15,7 +15,7 @@
 #import "LGPKResultController.h"
 
 //倒计时时间
-NSInteger countDown = 20;
+NSInteger countDown = 10;
 
 @interface LGAtPKController () <UITableViewDelegate, UITableViewDataSource>
 {

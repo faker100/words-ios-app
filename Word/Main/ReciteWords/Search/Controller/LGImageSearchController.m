@@ -8,6 +8,7 @@
 
 #import "LGImageSearchController.h"
 #import "LGCameraManager.h"
+#import "LGBaiduOcrManager.h"
 
 @interface LGImageSearchController ()
 
@@ -22,7 +23,8 @@
     // Do any additional setup after loading the view.
     self.cameraManager = [LGCameraManager new];
     [self.cameraManager reload];
-    [self.view.layer addSublayer:self.cameraManager.previewLayer];
+	[self.view.layer insertSublayer:self.cameraManager.previewLayer atIndex:0];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -33,6 +35,36 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
+/**
+ 拖动裁剪区域
+ 
+
+ */
+- (IBAction)panCutViewAction:(UIPanGestureRecognizer *)sender {
+	CGPoint locationPoint = [sender locationInView:sender.view];
+	CGPoint point = [sender translationInView:sender.view];
+	
+	
+	NSLog(@"%@",NSStringFromCGPoint(locationPoint));
+	
+//	NSLog(@"%@",NSStringFromCGPoint(point));
+}
+
+- (IBAction)photographAction:(id)sender {
+	[self.cameraManager cutCameraImageDataComplete:^(NSData *imageData) {
+		
+		UIImage *image = [UIImage imageWithData:imageData];
+		
+		[LGBaiduOcrManager requestWithImage:image complete:^(NSString *string) {
+			
+		}];
+	}];
+}
+
 
 /*
 #pragma mark - Navigation
