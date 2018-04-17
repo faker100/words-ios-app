@@ -16,7 +16,7 @@
 
 @property (nonatomic, strong) AVCaptureStillImageOutput *imageOutput;
 
-@property (nonatomic, strong) AVCaptureSession *session;
+
 
 @end
 

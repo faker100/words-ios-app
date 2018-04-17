@@ -19,6 +19,8 @@
 
 @property (nonatomic, assign) AVCaptureDevicePosition devicePosition;
 
+@property (nonatomic, strong) AVCaptureSession *session;
+
 @property (nonatomic, assign, getter=flashLightIsOpening) BOOL openFlashLight;
 
 - (void)reload;

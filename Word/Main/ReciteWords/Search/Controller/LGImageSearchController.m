@@ -10,6 +10,8 @@
 #import "LGCameraManager.h"
 #import "LGBaiduOcrManager.h"
 #import "LGSearchController.h"
+#import "LGWordDetailController.h"
+#import "LGTool.h"
 
 //拖动手势开始点击区域，根据不同区域，裁剪区域
 typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
@@ -26,7 +28,7 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
     LGPanTouchZoneHeight
 };
 
-@interface LGImageSearchController () <LGTextSearchControllerDelegate>
+@interface LGImageSearchController () <LGTextSearchControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     LGPanTouchZone zone;
     CGPoint lastPanPoint;
@@ -50,6 +52,11 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.cameraManager.openFlashLight = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -207,19 +214,64 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
 	}];
 }
 
-#pragma mark - LGTextSearchControllerDelegate
-- (void)selctedSearchModel:(LGSearchModel *)searchModel{
-	NSLog(@"%@",[searchModel mj_keyValues]);
+- (IBAction)dismissAction:(id)sender {
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
+//相册
+- (IBAction)photoLibraryAction:(id)sender {
+    if ([LGTool checkDevicePermissions:LGDevicePhotosAlbum]) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+        imagePicker.delegate = self;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        [self.navigationController presentViewController:imagePicker animated:YES completion:nil];
+    }
+}
+
+- (IBAction)lightAction:(id)sender {
+    self.cameraManager.openFlashLight = !self.cameraManager.openFlashLight;
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - LGTextSearchControllerDelegate
+- (void)selctedSearchModel:(LGSearchModel *)searchModel{
+    self.searchController.active = NO;
+    [self performSegueWithIdentifier:@"imageSearchToDetail" sender:searchModel];
+}
+
+#pragma mark -
+-(void)dealloc{
+    [self.cameraManager.session stopRunning];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"imageSearchToDetail"]) {
+        LGSearchModel *searchModel = sender;
+        LGWordDetailController *controller = segue.destinationViewController;
+        controller.controllerType = LGWordDetailSearch;
+        controller.searchWordStr = searchModel.word;
+        controller.searchWordID = searchModel.ID;
+    }
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

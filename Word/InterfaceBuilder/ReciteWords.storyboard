@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -2381,6 +2381,9 @@
                                                 <integer key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="lightAction:" destination="VTb-Yc-b3E" eventType="touchUpInside" id="0k7-gY-Hrr"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.28181185787671231" colorSpace="calibratedWhite"/>
@@ -2432,6 +2435,9 @@
                                                 <integer key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="photoLibraryAction:" destination="VTb-Yc-b3E" eventType="touchUpInside" id="IUq-QG-QQr"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xDL-6z-00B">
                                         <rect key="frame" x="300" y="97.5" width="50" height="50"/>
@@ -2448,6 +2454,9 @@
                                                 <integer key="value" value="25"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="dismissAction:" destination="VTb-Yc-b3E" eventType="touchUpInside" id="v5R-Vv-mOX"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.28181185790000002" colorSpace="calibratedWhite"/>
@@ -2589,6 +2598,7 @@
                         <outlet property="cutView" destination="SvS-vW-8V9" id="n7y-Jy-lIr"/>
                         <outlet property="cutViewHeightConstraint" destination="1aN-pq-3v2" id="Q4H-3z-1Ic"/>
                         <outlet property="cutViewWidthConstraint" destination="icx-Ag-rpI" id="sLz-DO-2xd"/>
+                        <segue destination="QJ7-j4-1ND" kind="show" identifier="imageSearchToDetail" id="w8j-GT-4Av"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GMM-8V-wHD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2599,6 +2609,35 @@
                 </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1508" y="843.32833583208401"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wrP-EP-yE3">
+            <objects>
+                <viewController id="3M7-JG-V0S" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2kp-eD-3mJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="4bC-Eb-Ilt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cxq-Uu-aE6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GBd-mN-ANz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GBd-mN-ANz" firstAttribute="leading" secondItem="Cxq-Uu-aE6" secondAttribute="leading" id="C66-DY-Og8"/>
+                            <constraint firstAttribute="trailing" secondItem="GBd-mN-ANz" secondAttribute="trailing" id="Pyd-uF-W4Z"/>
+                            <constraint firstAttribute="bottom" secondItem="GBd-mN-ANz" secondAttribute="bottom" id="rBS-Bu-rCC"/>
+                            <constraint firstItem="GBd-mN-ANz" firstAttribute="top" secondItem="Cxq-Uu-aE6" secondAttribute="top" id="wpQ-nk-qDj"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tzw-I9-kN0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-666" y="855"/>
         </scene>
         <!--Recite Plan Controller-->
         <scene sceneID="zvW-Yw-kql">
@@ -4090,11 +4129,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Jfz-ta-05V"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wcP-pu-1cV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="54" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hu7-Jc-TEG">
-                                <rect key="frame" x="0.0" y="64" width="375" height="490"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="0.95286101102828979" green="0.95299440622329712" blue="0.95281893014907837" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="IY6-9U-3fY">
                                     <rect key="frame" x="0.0" y="82" width="375" height="300"/>
@@ -4473,7 +4512,7 @@
         <image name="wrong_list" width="110" height="76"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8q9-OG-OD1"/>
+        <segue reference="w8j-GT-4Av"/>
         <segue reference="KlX-L8-DQM"/>
         <segue reference="LvP-Fa-FPQ"/>
         <segue reference="zSQ-aM-XvC"/>

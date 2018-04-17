@@ -21,41 +21,25 @@ static NSString *kHTBaiduOcrSecretKey = @"amZ3IMbbAjH2qStVvYGYstrrUfKfqrgu";
 	
 	[LGBaiduOcrManager reqeustBaiduOauthToken:^(NSString *access_token) {
 		
-		NSData *data = UIImageJPEGRepresentation(image, 1.0f);
-		NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn];
-		
-//		encodedImageStr = [encodedImageStr stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
-//		encodedImageStr = [encodedImageStr stringByReplacingOccurrencesOfString:@"/" withString:@"%2F"];
-//		encodedImageStr = [encodedImageStr stringByReplacingOccurrencesOfString:@"=" withString:@"%3D"];
-		
-		encodedImageStr = (NSString *)
-		CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-																  (CFStringRef)encodedImageStr,
-																  NULL,
-																  (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-																  kCFStringEncodingUTF8));
-		
-		
-		
-		encodedImageStr = [encodedImageStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-		
-	//	NSData *decodedImageData = [[NSData alloc]
-									
-//									initWithBase64EncodedString:encodedImageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
-		
-		//UIImage *decodedImage = [UIImage imageWithData:decodedImageData];
-		
-		
-		//UIImageWriteToSavedPhotosAlbum(decodedImage, nil, nil, NULL);
+        NSData *imageData = [LGBaiduOcrManager jpgDataWithImage:image sizeLimit:1024000];
+        NSString *encodedImageStr = [imageData base64EncodedStringWithOptions:0];
+        
 		
 		NSURLSession *session = [NSURLSession sharedSession];
-		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic?access_token=%@",access_token]];
+		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic?access_token=%@",access_token]];
 		
+        NSDictionary *bodyDic = @{
+                                  @"probability" : @"true",
+                                  @"detect_direction" : @"true",
+                                  @"language_type" : @"ENG",
+                                  @"image" : encodedImageStr
+                                  };
 		
 		NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 		request.HTTPMethod = @"POST";
 		[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-		[request setHTTPBody:[[NSString stringWithFormat:@"probability=true&language_type=ENG&image=%@", encodedImageStr] dataUsingEncoding:NSUTF8StringEncoding]];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+		[request setHTTPBody:[[self wwwFormWithDictionary:bodyDic] dataUsingEncoding:NSUTF8StringEncoding]];
 		
 		NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
 			dispatch_async(dispatch_get_main_queue(), ^{
@@ -64,15 +48,15 @@ static NSString *kHTBaiduOcrSecretKey = @"amZ3IMbbAjH2qStVvYGYstrrUfKfqrgu";
 					return;
 				}
 				NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-				NSString *error_code = [NSString stringWithFormat:@"%@",[dic objectForKey:@"error_code"]];
-				if (error_code.length > 0) {
-					NSInteger code = error_code.integerValue;
+				
+				if (dic[@"error_code"]) {
+					NSInteger code = [dic[@"error_code"] integerValue];
 					if (code == 100 || code == 110 || code == 111) {
 						[LGBaiduOcrManager reqeustBaiduOauthToken:nil];
 						complete(@"");
 						return;
 					}
-				}else{
+                }else{
 					NSArray *array = [dic objectForKey:@"words_result"];
 					if (array.count > 0) {
 						complete(array.firstObject[@"words"]);
@@ -80,7 +64,7 @@ static NSString *kHTBaiduOcrSecretKey = @"amZ3IMbbAjH2qStVvYGYstrrUfKfqrgu";
 						complete(@"");
 					}
 					return;
-				}
+                }
 				complete(@"");
 			});
 		}];
@@ -117,6 +101,39 @@ static NSString *kHTBaiduOcrSecretKey = @"amZ3IMbbAjH2qStVvYGYstrrUfKfqrgu";
 	}
 }
 
++ (NSData *)jpgDataWithImage:(UIImage *)image sizeLimit:(NSUInteger)maxSize {
+    CGFloat compressionQuality = 1.0;
+    NSData *imageData = nil;
+    
+    int i = 0;
+    do{
+        imageData = UIImageJPEGRepresentation(image, compressionQuality);
+        compressionQuality -= 0.1;
+        i += 1;
+    }while(i < 3 && imageData.length > maxSize);
+    return imageData;
+}
+
++ (NSString *)wwwFormWithDictionary:(NSDictionary *)dict {
+    NSMutableString *result = [[NSMutableString alloc] init];
+    if (dict != nil) {
+        for (NSString *key in dict) {
+            if (result.length)
+                [result appendString:@"&"];
+            [result appendString:[self base64Escape:key]];
+            [result appendString:@"="];
+            [result appendString:[self base64Escape:dict[key]]];
+        }
+    }
+    return result;
+}
+
+
++ (NSString *)base64Escape:(NSString *)string {
+    NSCharacterSet *URLBase64CharacterSet = [[NSCharacterSet characterSetWithCharactersInString:@"/+=\n"] invertedSet];
+    return [string stringByAddingPercentEncodingWithAllowedCharacters:URLBase64CharacterSet];
+}
+
 @end
 
 
@@ -124,7 +141,6 @@ static NSString *kHTBaiduOcrSecretKey = @"amZ3IMbbAjH2qStVvYGYstrrUfKfqrgu";
 
 - (BOOL)isValid{
 	if (self.token.length == 0) return NO;
-	
 	if ([[NSDate date]timeIntervalSince1970] - self.createTime < 3600 * 24 * 25 ) {
 		return YES;
 	}else{

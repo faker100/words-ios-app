@@ -246,8 +246,7 @@
 	}]];
 	[alertController addAction:[UIAlertAction actionWithTitle:@"从相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 		imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-		BOOL flag = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum];
-		NSLog(@"%d",flag);
+
 		[self.navigationController.tabBarController presentViewController:imagePicker animated:YES completion:nil];
 		
 	}]];
