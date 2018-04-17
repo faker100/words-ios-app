@@ -8,7 +8,7 @@
 
 #import "LGDictationController.h"
 #import "LGDictationReviewModel.h"
-#import "LGDictationPractiseController.h"
+#import "LGDictationGroupController.h"
 
 @interface LGDictationController ()
 
@@ -26,7 +26,6 @@
 }
 
 - (void)requestData{
-	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestDicationIndexCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			self.reviewModel = [LGDictationReviewModel mj_objectWithKeyValues:response];
@@ -52,36 +51,17 @@
  */
 - (IBAction)chooseReviewStatus:(UITapGestureRecognizer *)sender {
 	UIView *view = sender.view;
-	if (view.tag == 100 && self.reviewModel.dim.integerValue > 0) {
-		
-		[self requestDictationWordsWithStatus:LGWordStatusVague];
-		
-	}else if(view.tag == 101 && self.reviewModel.incognizant.integerValue > 0)
-	{
-		[self requestDictationWordsWithStatus:LGWordStatusIncognizance];
 	
-	}else if (view.tag == 102 && self.reviewModel.all.integerValue > 0)
-	{
-		[self requestDictationWordsWithStatus:LGWordStatusNone];
+	if (view.tag == 100 && self.reviewModel.dim.integerValue > 0) {
+		[self performSegueWithIdentifier:@"dictationIndexToGroup" sender:@(LGWordStatusVague)];
+	}else if(view.tag == 101 && self.reviewModel.incognizant.integerValue > 0){
+
+		[self performSegueWithIdentifier:@"dictationIndexToGroup" sender:@(LGWordStatusIncognizance)];
+	}else if (view.tag == 102 && self.reviewModel.all.integerValue > 0){
+		[self performSegueWithIdentifier:@"dictationIndexToGroup" sender:@(LGWordStatusNone)];
 	}else{
 		[LGProgressHUD showMessage:@"没有复习的单词" toView:self.view];
 	}
-}
-
-
-/**
- 请求某状态下的单词
-
- @param status 要复习的状态
- */
-- (void)requestDictationWordsWithStatus:(LGWordStatus)status{
-	[LGProgressHUD showHUDAddedTo:self.view];
-	[self.request requestDictationWordsWithStatus:status completion:^(id response, LGError *error) {
-		if ([self isNormal:error]) {
-			NSMutableArray *wordIDArray = [NSMutableArray arrayWithArray:response];
-			[self performSegueWithIdentifier:@"dictationIndexToPractise" sender:wordIDArray];
-		}
-	}];
 }
 
 #pragma mark - Navigation
@@ -89,10 +69,22 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	
-	LGDictationPractiseController *controller = segue.destinationViewController;
-	controller.wordIDArray = sender;
-	controller.total = @(((NSMutableArray *)sender).count).stringValue;
-	
+	if ([segue.identifier isEqualToString:@"dictationIndexToGroup"]) {
+		LGDictationGroupController *controller = segue.destinationViewController;
+		NSInteger status = ((NSNumber *)sender).integerValue;
+		controller.status = status;
+		
+		if (status == LGWordStatusVague){
+			controller.title = @"模糊词组";
+			controller.totalNum = self.reviewModel.dim;
+		}else if (status == LGWordStatusIncognizance){
+			controller.title = @"不认识词组";
+			controller.totalNum = self.reviewModel.incognizant;
+		}else{
+			controller.title = @"全部词组";
+			controller.totalNum = self.reviewModel.all;
+		}
+	}
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }

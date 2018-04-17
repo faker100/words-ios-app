@@ -18,6 +18,7 @@
 + (void)hideHUDForView:(UIView *)view {
 	
 	[super hideHUDForView:view animated:YES];
+	
 }
 
 + (void)showError:(NSString *)text toView:(UIView *)view{

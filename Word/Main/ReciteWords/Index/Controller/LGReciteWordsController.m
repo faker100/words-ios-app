@@ -15,6 +15,7 @@
 #import "LGTextSearchController.h"
 #import "LGWordDetailController.h"
 #import "LGTool.h"
+#import "LGSearchController.h"
 
 @interface LGReciteWordsController () <LGTextSearchControllerDelegate>
 
@@ -24,7 +25,7 @@
 
 @property (nonatomic, weak) UIViewController *currentShowController; //当前显示的 view;
 
-@property (nonatomic, strong) UISearchController *searchController;
+@property (nonatomic, strong) LGSearchController *searchController;
 
 @end
 
@@ -50,14 +51,10 @@
 	
 }
 
-- (UISearchController *)searchController{
+- (LGSearchController *)searchController{
     if (!_searchController) {
-        
-       LGTextSearchController *resultController =  STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGTextSearchController");
-        resultController.delegate = self;
-        _searchController = [[UISearchController alloc]initWithSearchResultsController:resultController];
-        _searchController.searchBar.tintColor = [UIColor lg_colorWithType:LGColor_theme_Color];
-        _searchController.searchResultsUpdater = resultController;
+		
+		_searchController = [[LGSearchController alloc]initWithText:@"" delegate:self];
     }
     return _searchController;
 }

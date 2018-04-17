@@ -213,6 +213,9 @@ typedef NS_ENUM(NSUInteger, LGCourseType) {
 //听写练习
 #define DICTATION_PRACTISE_URL			@"http://words.viplgw.cn/cn/app-api/dictation-words"
 
+//听写联系分组
+#define DICTATION_GROUP_URL				@"http://words.viplgw.cn/cn/app-api/dictation-group"
+
 //pk首页排名
 #define PK_INDEX_RANK_URL				@"http://words.viplgw.cn/cn/app-api/pk-index"
 

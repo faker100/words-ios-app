@@ -9,6 +9,7 @@
 #import "LGImageSearchController.h"
 #import "LGCameraManager.h"
 #import "LGBaiduOcrManager.h"
+#import "LGSearchController.h"
 
 //拖动手势开始点击区域，根据不同区域，裁剪区域
 typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
@@ -25,13 +26,14 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
     LGPanTouchZoneHeight
 };
 
-@interface LGImageSearchController ()
+@interface LGImageSearchController () <LGTextSearchControllerDelegate>
 {
     LGPanTouchZone zone;
     CGPoint lastPanPoint;
 }
 
 @property (nonatomic, strong) LGCameraManager *cameraManager;
+@property (nonatomic, strong) LGSearchController *searchController;
 
 @end
 
@@ -54,8 +56,6 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 
 /**
@@ -133,6 +133,12 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
     }
 }
 
+
+/**
+ 根据 pan 手势点击区域,判断拖动区域
+
+ @param point 起始点
+ */
 - (LGPanTouchZone)touchZoneWithPoint:(CGPoint)point{
     
     CGFloat cutViewHeight = CGRectGetHeight(self.cutView.bounds);
@@ -151,15 +157,7 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
     CGRect bottomRect = CGRectMake(25, cutViewHeight - 25, cutViewWidth - 2 * 25, 50);
     CGRect rightRect = CGRectMake(cutViewWidth - 25, 25, 50, cutViewHeight - 2 * 25);
     
-//    [self.cutView addSubview:[[UIView alloc]initWithFrame:leftTopRect]];
-//    [self.cutView addSubview:[[UIView alloc]initWithFrame:rightTopRect]];
-//    [self.cutView addSubview:[[UIView alloc]initWithFrame:leftBottomRect]];
-//    [self.cutView addSubview:[[UIView alloc]initWithFrame:rightBottomRect]];
-//    [self.cutView addSubview:[[UIView alloc]initWithFrame:topRect]];
-//    [self.cutView addSubview:[[UIView alloc]initWithFrame:leftRect]];
-//    [self.cutView addSubview:[[UIView alloc]initWithFrame:bottomRect]];
-//    [self.cutView addSubview:[[UIView alloc]initWithFrame:rightRect]];
-    
+	
     if (CGRectContainsPoint(leftTopRect, point))     return  LGPanTouchZoneLeftTop;
     if (CGRectContainsPoint(rightTopRect, point))    return  LGPanTouchZoneRightTop;
     if (CGRectContainsPoint(leftBottomRect, point))  return  LGPanTouchZoneleftBottom;
@@ -173,16 +171,46 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
 }
 
 - (IBAction)photographAction:(id)sender {
+
+	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.cameraManager cutCameraImageDataComplete:^(NSData *imageData) {
+
+		UIImage *originImage = [UIImage imageWithData:imageData];
+
+		CGFloat scale = [UIScreen mainScreen].scale;
+		//缩小原图
+		CGFloat scaleSize = SCREEN_WIDTH / originImage.size.width;
+		UIGraphicsBeginImageContextWithOptions(CGSizeMake(originImage.size.width * scaleSize, originImage.size.height * scaleSize), NO, scale);
+		[originImage drawInRect:self.view.bounds];
+		UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+		UIGraphicsEndImageContext();
 		
-		UIImage *image = [UIImage imageWithData:imageData];
 		
-		[LGBaiduOcrManager requestWithImage:image complete:^(NSString *string) {
-			
+		//根据屏幕比率,换算裁剪区域
+		CGRect cutViewRect = self.cutView.frame;
+		cutViewRect = CGRectMake( CGRectGetMinX(cutViewRect) * scale, CGRectGetMinY(cutViewRect) * scale, CGRectGetWidth(cutViewRect) * scale, CGRectGetHeight(cutViewRect) * scale);
+		
+ 		//裁剪
+		CGImageRef imageRef = CGImageCreateWithImageInRect([scaledImage CGImage], cutViewRect);
+		UIImage * cutImage = [UIImage imageWithCGImage:imageRef];
+		CGImageRelease(imageRef);
+		//请求
+		[LGBaiduOcrManager requestWithImage:cutImage complete:^(NSString *string) {
+			[LGProgressHUD hideHUDForView:self.view];
+			if (string.length > 0) {
+				self.searchController = [[LGSearchController alloc]initWithText:string delegate:self];
+				[self.navigationController presentViewController:self.searchController animated:YES completion:nil];
+			}else{
+				[LGProgressHUD showMessage:@"解析失败" toView:self.view];
+			}
 		}];
 	}];
 }
 
+#pragma mark - LGTextSearchControllerDelegate
+- (void)selctedSearchModel:(LGSearchModel *)searchModel{
+	NSLog(@"%@",[searchModel mj_keyValues]);
+}
 
 /*
 #pragma mark - Navigation

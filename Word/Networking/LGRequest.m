@@ -277,11 +277,19 @@
 	[self postRequestCompletion:completion];
 }
 
-
-- (void)requestDictationWordsWithStatus:(LGWordStatus)status completion:(comletionBlock)completion{
-	self.url = DICTATION_PRACTISE_URL;
+- (void)requestDicationGroupWithStatus:(LGWordStatus)status completion:(comletionBlock)completion{
+	self.url = DICTATION_GROUP_URL;
 	self.parameter = @{
 					   @"status" : @(status)
+					   };
+	[self postRequestCompletion:completion];
+}
+
+- (void)requestDictationWordsWithStatus:(LGWordStatus)status start:(NSInteger)start completion:(comletionBlock)completion{
+	self.url = DICTATION_PRACTISE_URL;
+	self.parameter = @{
+					   @"status" : @(status),
+					   @"start" : @(start)
 					   };
 	[self postRequestCompletion:completion];
 }

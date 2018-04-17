@@ -23,13 +23,33 @@ static NSString *kHTBaiduOcrSecretKey = @"amZ3IMbbAjH2qStVvYGYstrrUfKfqrgu";
 		
 		NSData *data = UIImageJPEGRepresentation(image, 1.0f);
 		NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithCarriageReturn];
-	
-		encodedImageStr = [encodedImageStr stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
-		encodedImageStr = [encodedImageStr stringByReplacingOccurrencesOfString:@"/" withString:@"%2F"];
-		encodedImageStr = [encodedImageStr stringByReplacingOccurrencesOfString:@"=" withString:@"%3D"];
+		
+//		encodedImageStr = [encodedImageStr stringByReplacingOccurrencesOfString:@"+" withString:@"%2B"];
+//		encodedImageStr = [encodedImageStr stringByReplacingOccurrencesOfString:@"/" withString:@"%2F"];
+//		encodedImageStr = [encodedImageStr stringByReplacingOccurrencesOfString:@"=" withString:@"%3D"];
+		
+		encodedImageStr = (NSString *)
+		CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+																  (CFStringRef)encodedImageStr,
+																  NULL,
+																  (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+																  kCFStringEncodingUTF8));
+		
+		
+		
+		encodedImageStr = [encodedImageStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+		
+	//	NSData *decodedImageData = [[NSData alloc]
+									
+//									initWithBase64EncodedString:encodedImageStr options:NSDataBase64DecodingIgnoreUnknownCharacters];
+		
+		//UIImage *decodedImage = [UIImage imageWithData:decodedImageData];
+		
+		
+		//UIImageWriteToSavedPhotosAlbum(decodedImage, nil, nil, NULL);
 		
 		NSURLSession *session = [NSURLSession sharedSession];
-		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://aip.baidubce.com/rest/2.0/ocr/v1/general_basic?access_token=%@",access_token]];
+		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://aip.baidubce.com/rest/2.0/ocr/v1/accurate_basic?access_token=%@",access_token]];
 		
 		
 		NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -38,29 +58,31 @@ static NSString *kHTBaiduOcrSecretKey = @"amZ3IMbbAjH2qStVvYGYstrrUfKfqrgu";
 		[request setHTTPBody:[[NSString stringWithFormat:@"probability=true&language_type=ENG&image=%@", encodedImageStr] dataUsingEncoding:NSUTF8StringEncoding]];
 		
 		NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-			if (error) {
-				complete(@"");
-				return;
-			}
-			NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-			NSString *error_code = [dic objectForKey:@"error_code"];
-			if (error_code.length > 0) {
-				NSInteger code = error_code.integerValue;
-				if (code == 100 || code == 110 || code == 111) {
-					[LGBaiduOcrManager reqeustBaiduOauthToken:nil];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				if (error) {
 					complete(@"");
 					return;
 				}
-			}else{
-				NSArray *array = [dic objectForKey:@"words_result"];
-				if (array.count > 0) {
-					complete(array.firstObject[@"words"]);
+				NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+				NSString *error_code = [NSString stringWithFormat:@"%@",[dic objectForKey:@"error_code"]];
+				if (error_code.length > 0) {
+					NSInteger code = error_code.integerValue;
+					if (code == 100 || code == 110 || code == 111) {
+						[LGBaiduOcrManager reqeustBaiduOauthToken:nil];
+						complete(@"");
+						return;
+					}
 				}else{
-					complete(@"");
+					NSArray *array = [dic objectForKey:@"words_result"];
+					if (array.count > 0) {
+						complete(array.firstObject[@"words"]);
+					}else{
+						complete(@"");
+					}
+					return;
 				}
-				return;
-			}
-			complete(@"");
+				complete(@"");
+			});
 		}];
 		[dataTask resume];
 	}];
@@ -72,26 +94,26 @@ static NSString *kHTBaiduOcrSecretKey = @"amZ3IMbbAjH2qStVvYGYstrrUfKfqrgu";
 	if (tokenModel && tokenModel.isValid && complete) {
 		complete(tokenModel.token);
 	}else{
-	
-	NSURLSession *session = [NSURLSession sharedSession];
-	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=%@&client_secret=%@&",kHTBaiduOcrApiKey,kHTBaiduOcrSecretKey]];
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-	request.HTTPMethod = @"POST";
-	NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		if (error == nil) {
-			NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-			NSString *access_token = dic[@"access_token"];
-	
-			LGBaiduTokenModel *tokenModel = [LGBaiduTokenModel new];
-			tokenModel.token = access_token;
-			tokenModel.createTime = [[NSDate date] timeIntervalSince1970];
-			[[NSUserDefaults standardUserDefaults]setObject:[tokenModel mj_keyValues] forKey:kHTBaiduOcrKey];
-			if (complete) {
-				complete(access_token);
+		
+		NSURLSession *session = [NSURLSession sharedSession];
+		NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=%@&client_secret=%@&",kHTBaiduOcrApiKey,kHTBaiduOcrSecretKey]];
+		NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+		request.HTTPMethod = @"POST";
+		NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+			if (error == nil) {
+				NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+				NSString *access_token = dic[@"access_token"];
+				
+				LGBaiduTokenModel *tokenModel = [LGBaiduTokenModel new];
+				tokenModel.token = access_token;
+				tokenModel.createTime = [[NSDate date] timeIntervalSince1970];
+				[[NSUserDefaults standardUserDefaults]setObject:[tokenModel mj_keyValues] forKey:kHTBaiduOcrKey];
+				if (complete) {
+					complete(access_token);
+				}
 			}
-		}
-	}];
-	[dataTask resume];
+		}];
+		[dataTask resume];
 	}
 }
 

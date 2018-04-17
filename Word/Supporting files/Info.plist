@@ -43,7 +43,9 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>需要访问麦克风录音</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>需要访问相册存取图片</string>
+	<string>需要访问相册获取图片</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>需要访问相册存图片</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

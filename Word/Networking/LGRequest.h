@@ -289,13 +289,20 @@
 - (void)requestDicationIndexCompletion:(comletionBlock)completion;
 
 
+/**
+ 听写联系分组
+
+ */
+- (void)requestDicationGroupWithStatus:(LGWordStatus)status completion:(comletionBlock)completion;
+
 
 /**
  听写练习 - 复习某状态下的单词
 
- @param status 要复习的状态
+ @param status 状态
+ @param start 分组开始
  */
-- (void)requestDictationWordsWithStatus:(LGWordStatus) status completion:(comletionBlock)completion;
+- (void)requestDictationWordsWithStatus:(LGWordStatus)status start:(NSInteger)start completion:(comletionBlock)completion;
 
 
 /**

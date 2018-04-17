@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface LGImageSearchController : UIViewController
 
 //中间裁剪区域
