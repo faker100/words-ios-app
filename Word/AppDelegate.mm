@@ -10,6 +10,8 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "LGUserManager.h"
 #import "LGRequest.h"
+#import "IFlyMSC/IFlyMSC.h"
+
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
 // iOS10注册APNs所需头文件
@@ -31,6 +33,7 @@
 	self.window.backgroundColor = [UIColor whiteColor];
 	[self configJPush:launchOptions];
 	[self configIQkeyboard];
+	[self configIFly];
 	return YES;
 }
 
@@ -117,7 +120,9 @@
 	[JPUSHService handleRemoteNotification:userInfo];
 }
 
-//极光推送
+/**
+ 极光推送
+ */
 - (void)configJPush:(NSDictionary *)launchOptions{
 	
 	/*********************** apns **************************/
@@ -149,7 +154,9 @@
 	
 }
 
-//弹出键盘
+/**
+ 键盘
+ */
 - (void)configIQkeyboard {
 	IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
 	manager.enable = YES;
@@ -158,5 +165,21 @@
 }
 
 
+/**
+ 讯飞语音
+ */
+- (void)configIFly{
+	//Set log level
+	[IFlySetting setLogFile:LVL_NONE];
+	
+	//Set whether to output log messages in Xcode console
+#ifdef DEBUG
+	[IFlySetting showLogcat:YES];
+#else
+	[IFlySetting showLogcat:NO];
+#endif
+	//Set APPID
+	[IFlySpeechUtility createUtility:@"appid=5ad6dd9c"];
+}
 
 @end

@@ -16,6 +16,7 @@
 #import "LGWordDetailController.h"
 #import "LGTool.h"
 #import "LGSearchController.h"
+#import "LGVoiceSearchController.h"
 
 @interface LGReciteWordsController () <LGTextSearchControllerDelegate>
 
@@ -75,17 +76,20 @@
     self.navigationItem.titleView = titleBtn;
     [titleBtn addTarget:self action:@selector(textSearchAction) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *voidceBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+    UIButton *voidceBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30,30)];
+	
     [voidceBtn setImage:[UIImage imageNamed:@"microphone"] forState:UIControlStateNormal];
     [voidceBtn addTarget:self action:@selector(speakSearchAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *voiceItem = [[UIBarButtonItem alloc]initWithCustomView:voidceBtn];
     
     UIButton *picBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+	
     [picBtn setImage:[UIImage imageNamed:@"camera"] forState:UIControlStateNormal];
     [picBtn addTarget:self action:@selector(pictureSearch:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *picItem = [[UIBarButtonItem alloc]initWithCustomView:picBtn];
-
+	
     self.navigationItem.rightBarButtonItems = @[voiceItem,picItem];
+	
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -158,7 +162,12 @@
      
 //语音搜索
 - (void)speakSearchAction:(id)sender {
-	NSLog(@"yuy");
+	BOOL flag = [LGTool checkDevicePermissions:LGDeviceMicrophone];
+	if (flag){
+		LGVoiceSearchController *voiceSearch = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGVoiceSearchController");
+		[self.navigationController.tabBarController presentViewController:voiceSearch animated:YES completion:nil];
+		//[self performSegueWithIdentifier:@"indexToVoiceSearch" sender:nil];
+	}
 }
 
 //拍照搜索

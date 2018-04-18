@@ -157,6 +157,10 @@
 		56BAB94E2086E2D50010CED8 /* AipCutImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BAB94D2086E2D40010CED8 /* AipCutImageView.m */; };
 		56BAB9512086E2FE0010CED8 /* AipImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BAB9502086E2FE0010CED8 /* AipImageView.m */; };
 		56BAB9542086EA430010CED8 /* UIImage+AipCameraAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BAB9532086EA420010CED8 /* UIImage+AipCameraAddition.m */; };
+		56BAB957208721790010CED8 /* LGVoiceSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BAB956208721790010CED8 /* LGVoiceSearchController.m */; };
+		56BAB95A208728290010CED8 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BAB959208728290010CED8 /* iflyMSC.framework */; };
+		56BAB95C208731450010CED8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BAB95B208731450010CED8 /* AddressBook.framework */; };
+		56BAB95E208732540010CED8 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BAB95D208732530010CED8 /* Contacts.framework */; };
 		56BBBFB820561C740057BDF2 /* LGPersonalCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BBBFB720561C740057BDF2 /* LGPersonalCenterController.m */; };
 		56BBBFBB20561DA40057BDF2 /* LGPersonalInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BBBFBA20561DA40057BDF2 /* LGPersonalInfoController.m */; };
 		56BBBFBF205622060057BDF2 /* LGPersonalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BBBFBE205622060057BDF2 /* LGPersonalCell.m */; };
@@ -338,9 +342,6 @@
 		563F7DA92023177E00944730 /* NSObject+LGRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LGRequest.h"; sourceTree = "<group>"; };
 		563F7DAA2023177E00944730 /* NSObject+LGRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LGRequest.m"; sourceTree = "<group>"; };
 		5647C2E7205F4FCE00DFDB77 /* Word.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Word.entitlements; sourceTree = "<group>"; };
-		5647C2EE205F567C00DFDB77 /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
-		5647C2EF205F567C00DFDB77 /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
-		5647C2F1205F567C00DFDB77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5647C2F9205F66E300DFDB77 /* LGPKMatchingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKMatchingController.h; sourceTree = "<group>"; };
 		5647C2FA205F66E300DFDB77 /* LGPKMatchingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKMatchingController.m; sourceTree = "<group>"; };
 		56485D8F20690A2F00352E22 /* LGPKResultController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKResultController.h; sourceTree = "<group>"; };
@@ -511,6 +512,11 @@
 		56BAB9502086E2FE0010CED8 /* AipImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AipImageView.m; sourceTree = "<group>"; };
 		56BAB9522086EA420010CED8 /* UIImage+AipCameraAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AipCameraAddition.h"; sourceTree = "<group>"; };
 		56BAB9532086EA420010CED8 /* UIImage+AipCameraAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AipCameraAddition.m"; sourceTree = "<group>"; };
+		56BAB955208721790010CED8 /* LGVoiceSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGVoiceSearchController.h; sourceTree = "<group>"; };
+		56BAB956208721790010CED8 /* LGVoiceSearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGVoiceSearchController.m; sourceTree = "<group>"; };
+		56BAB959208728290010CED8 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
+		56BAB95B208731450010CED8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		56BAB95D208732530010CED8 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		56BBBFB620561C740057BDF2 /* LGPersonalCenterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPersonalCenterController.h; sourceTree = "<group>"; };
 		56BBBFB720561C740057BDF2 /* LGPersonalCenterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPersonalCenterController.m; sourceTree = "<group>"; };
 		56BBBFB920561DA40057BDF2 /* LGPersonalInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPersonalInfoController.h; sourceTree = "<group>"; };
@@ -599,10 +605,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56BAB95E208732540010CED8 /* Contacts.framework in Frameworks */,
+				56BAB95C208731450010CED8 /* AddressBook.framework in Frameworks */,
 				5657ECB4207DE77700E89FC2 /* GLKit.framework in Frameworks */,
 				5657ECB2207DE76D00E89FC2 /* libsqlite3.tbd in Frameworks */,
 				5657ECB7207DE7ED00E89FC2 /* VodSDK.framework in Frameworks */,
 				5657ECB0207DE75D00E89FC2 /* libiconv.tbd in Frameworks */,
+				56BAB95A208728290010CED8 /* iflyMSC.framework in Frameworks */,
 				5657ECAE207DE73400E89FC2 /* libz.tbd in Frameworks */,
 				5657ECAC207DE71C00E89FC2 /* OpenAL.framework in Frameworks */,
 				3690868A07C9B63A30A721A0 /* Pods_Word.framework in Frameworks */,
@@ -638,6 +647,8 @@
 				02D6E3D22083A00600EE7F98 /* LGImageSearchController.m */,
 				56F09F092085CF2D00311863 /* LGSearchController.h */,
 				56F09F0A2085CF2D00311863 /* LGSearchController.m */,
+				56BAB955208721790010CED8 /* LGVoiceSearchController.h */,
+				56BAB956208721790010CED8 /* LGVoiceSearchController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -763,16 +774,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		5647C2ED205F567C00DFDB77 /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				5647C2EE205F567C00DFDB77 /* NotificationService.h */,
-				5647C2EF205F567C00DFDB77 /* NotificationService.m */,
-				5647C2F1205F567C00DFDB77 /* Info.plist */,
-			);
-			path = Notification;
-			sourceTree = "<group>";
-		};
 		564B3257207B42F1005E7658 /* LGWebController */ = {
 			isa = PBXGroup;
 			children = (
@@ -831,6 +832,7 @@
 		56506D012016D773000FD8FA /* Extend */ = {
 			isa = PBXGroup;
 			children = (
+				56BAB95F20873BB60010CED8 /* New Group */,
 				56BAB94B2086E0AB0010CED8 /* BaiduCutImageView */,
 				5657ECB5207DE7CD00E89FC2 /* VodSDK */,
 				56961CF5200D89B0009EA21C /* Categroy */,
@@ -1112,7 +1114,6 @@
 			children = (
 				56A88838200CA53400847BE6 /* Word */,
 				56C646A1204E64B000E895B3 /* WordTests */,
-				5647C2ED205F567C00DFDB77 /* Notification */,
 				56A88837200CA53400847BE6 /* Products */,
 				9BE54A705AB43572B2E7736A /* Pods */,
 				654614099BD54950F42E89C2 /* Frameworks */,
@@ -1222,6 +1223,13 @@
 				56BAB94D2086E2D40010CED8 /* AipCutImageView.m */,
 			);
 			path = BaiduCutImageView;
+			sourceTree = "<group>";
+		};
+		56BAB95F20873BB60010CED8 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		56BBBFBC205621DF0057BDF2 /* View */ = {
@@ -1493,6 +1501,9 @@
 		654614099BD54950F42E89C2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				56BAB95D208732530010CED8 /* Contacts.framework */,
+				56BAB95B208731450010CED8 /* AddressBook.framework */,
+				56BAB959208728290010CED8 /* iflyMSC.framework */,
 				5657ECB3207DE77700E89FC2 /* GLKit.framework */,
 				5657ECB1207DE76D00E89FC2 /* libsqlite3.tbd */,
 				5657ECAF207DE75D00E89FC2 /* libiconv.tbd */,
@@ -1800,6 +1811,7 @@
 				02D6E3CD208366E600EE7F98 /* LGSearchModel.m in Sources */,
 				56973644204FF54800169C8A /* LGDictationAnswerItemCollectionCell.m in Sources */,
 				56224FCC20454F020093BC7A /* LGIndexReviewModel.m in Sources */,
+				56BAB957208721790010CED8 /* LGVoiceSearchController.m in Sources */,
 				56994E9D2049385E005648F6 /* LGReviewWrongListController.m in Sources */,
 				564B3247207B09A7005E7658 /* LGCourseListCell.m in Sources */,
 				56EAD8722019C98B0059604E /* LGTabBarViewController.m in Sources */,
@@ -2032,6 +2044,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Word/Extend/VodSDK",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Supporting files/PrefixHeader.pch";
@@ -2056,6 +2069,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Word/Extend/VodSDK",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Supporting files/PrefixHeader.pch";
