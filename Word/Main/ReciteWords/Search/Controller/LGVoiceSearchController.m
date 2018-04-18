@@ -8,9 +8,12 @@
 
 #import "LGVoiceSearchController.h"
 #import "IFlyMSC/IFlyMSC.h"
+#import "LGSearchController.h"
+#import "LGWordDetailController.h"
 
-@interface LGVoiceSearchController ()<IFlySpeechRecognizerDelegate>
+@interface LGVoiceSearchController ()<IFlySpeechRecognizerDelegate, LGTextSearchControllerDelegate>
 
+@property (nonatomic, strong) LGSearchController *searchController;
 @property (nonatomic, strong) IFlySpeechRecognizer *iFlySpeechRecognizer;
 @property (nonatomic, strong) NSMutableString *resultStr; //结果;
 
@@ -28,6 +31,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.iFlySpeechRecognizer cancel];
+    [self.iFlySpeechRecognizer setDelegate:nil];
+    [self.iFlySpeechRecognizer setParameter:@"" forKey:[IFlySpeechConstant PARAMS]];
+    
+}
+
 - (IBAction)dismissAction:(id)sender {
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -38,15 +49,16 @@
 }
 //录音
 - (IBAction)voiceAction:(UIButton *)sender {
-	
-
 	self.resultStr = [NSMutableString string];
 	[self.iFlySpeechRecognizer cancel];
 	BOOL ret = [self.iFlySpeechRecognizer startListening];
 	if (ret) {
-		NSLog(@"开始录音");
+        self.voiceButton.backgroundColor = [UIColor whiteColor];
+        self.voiceButton.tintColor = [UIColor lg_colorWithType:LGColor_theme_Color];
+        self.statusLabel.text = @"正在识别,请讲英语";
+        self.voiceButton.enabled = NO;
 	}else{
-		NSLog(@"失败");
+		self.statusLabel.text = @"录音失败!";
 	}
 	
 }
@@ -63,11 +75,8 @@
 		[_iFlySpeechRecognizer setParameter:nil forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
 		 [_iFlySpeechRecognizer setParameter:[IFlySpeechConstant LANGUAGE_ENGLISH] forKey:[IFlySpeechConstant LANGUAGE]];
 		[_iFlySpeechRecognizer setParameter:@"" forKey:[IFlySpeechConstant ACCENT]];
+        [_iFlySpeechRecognizer setParameter:@"0" forKey:[IFlySpeechConstant ASR_PTT]];
 		_iFlySpeechRecognizer.delegate = self;
-		
-//		IATConfig *instance = [IATConfig sharedInstance];
-//		instance.language = [IFlySpeechConstant LANGUAGE_ENGLISH];
-//		instance.accent = @"";
 	}
 	return _iFlySpeechRecognizer;
 }
@@ -85,19 +94,35 @@
 		[tempResultString appendFormat:@"%@",key];
 	}
 	
-	[self.resultStr appendString:tempResultString];
+	
 	
 	NSString *resultFromJson = [LGVoiceSearchController stringFromJson:tempResultString];
+    
+    [self.resultStr appendString:resultFromJson];
+    
 //	NSString * resultFromJson =  [ISRDataHelper stringFromJson:resultString];
 //	_textView.text = [NSString stringWithFormat:@"%@%@", _textView.text,resultFromJson];
 	
 	if (isLast){
-		NSLog(@"结果：%@",  resultFromJson);
+		NSLog(@"结果：%@",  self.resultStr);
 	}
 }
 //识别会话结束返回代理
 - (void)onError: (IFlySpeechError *) error{
-	
+    
+    if (self.resultStr.length > 0) {
+        self.voiceButton.backgroundColor = [UIColor lg_colorWithType:LGColor_theme_Color];
+        self.statusLabel.text = @"点击开始识别";
+        self.searchController = [[LGSearchController alloc]initWithText:self.resultStr delegate:self];
+//        [self.navigationController presentViewController:self.searchController animated:YES completion:nil];
+        [self performSegueWithIdentifier:@"voiceSearchToDetail" sender:nil];
+    }else{
+        self.voiceButton.backgroundColor = [UIColor lg_colorWithType:LGColor_pk_red];
+        self.statusLabel.text = @"识别失败,请重试";
+    }
+    self.voiceButton.tintColor = [UIColor whiteColor];
+    self.voiceButton.enabled = YES;
+    
 }
 //停止录音回调
 - (void) onEndOfSpeech{
@@ -109,7 +134,15 @@
 }
 //音量回调函数
 - (void) onVolumeChanged: (int)volume{
-	
+    //默认 94
+    CGFloat height = 94.0 + volume * 2;
+    self.circleViewHeightConstraint.constant = height;
+    self.circleView.layer.cornerRadius = height/2.0;
+    [UIView animateWithDuration:0.8 animations:^{
+        
+        [self.circleView layoutIfNeeded];
+        
+    } completion:nil];
 }
 //会话取消回调
 - (void) onCancel{
@@ -150,14 +183,26 @@
 	return tempStr;
 }
 
-/*
+#pragma mark - LGTextSearchControllerDelegate
+
+- (void)selctedSearchModel:(LGSearchModel *)searchModel{
+    [self performSegueWithIdentifier:@"voiceSearchToDetail" sender:searchModel];
+}
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"LGWordDetailController"]) {
+        LGSearchModel *model = sender;
+        LGWordDetailController *controller = segue.destinationViewController;
+        controller.controllerType = LGWordDetailReciteWords;
+       // controller.searchWordID = model.ID;
+      //  controller.searchWordStr = model.word;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
 
 @end

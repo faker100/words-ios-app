@@ -14,6 +14,7 @@
 		0239C1AC20485C460031C3FA /* LGTodayReviewWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0239C1AB20485C460031C3FA /* LGTodayReviewWordModel.m */; };
 		0243675F2073CB1C006FDB95 /* LGPKDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */; };
 		024711B3207AA4D40016B03C /* LGPeripheryCaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 024711B2207AA4D40016B03C /* LGPeripheryCaseCell.m */; };
+		0260D51320877CAB009E446E /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0260D51220877CAB009E446E /* iflyMSC.framework */; };
 		02645BF620787E8C00328E75 /* LGClockManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02645BF520787E8C00328E75 /* LGClockManager.m */; };
 		029F3C88204AEB7F0022FB4B /* LGSelectReviewTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 029F3C87204AEB7F0022FB4B /* LGSelectReviewTypeView.m */; };
 		029F3C8A204AEB8C0022FB4B /* LGSelectReviewTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 029F3C89204AEB8C0022FB4B /* LGSelectReviewTypeView.xib */; };
@@ -158,7 +159,6 @@
 		56BAB9512086E2FE0010CED8 /* AipImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BAB9502086E2FE0010CED8 /* AipImageView.m */; };
 		56BAB9542086EA430010CED8 /* UIImage+AipCameraAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BAB9532086EA420010CED8 /* UIImage+AipCameraAddition.m */; };
 		56BAB957208721790010CED8 /* LGVoiceSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BAB956208721790010CED8 /* LGVoiceSearchController.m */; };
-		56BAB95A208728290010CED8 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BAB959208728290010CED8 /* iflyMSC.framework */; };
 		56BAB95C208731450010CED8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BAB95B208731450010CED8 /* AddressBook.framework */; };
 		56BAB95E208732540010CED8 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56BAB95D208732530010CED8 /* Contacts.framework */; };
 		56BBBFB820561C740057BDF2 /* LGPersonalCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BBBFB720561C740057BDF2 /* LGPersonalCenterController.m */; };
@@ -244,6 +244,7 @@
 		0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKDiscoverController.m; sourceTree = "<group>"; };
 		024711B1207AA4D40016B03C /* LGPeripheryCaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPeripheryCaseCell.h; sourceTree = "<group>"; };
 		024711B2207AA4D40016B03C /* LGPeripheryCaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPeripheryCaseCell.m; sourceTree = "<group>"; };
+		0260D51220877CAB009E446E /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		02645BF420787E8C00328E75 /* LGClockManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGClockManager.h; sourceTree = "<group>"; };
 		02645BF520787E8C00328E75 /* LGClockManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGClockManager.m; sourceTree = "<group>"; };
 		029F3C86204AEB7F0022FB4B /* LGSelectReviewTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSelectReviewTypeView.h; sourceTree = "<group>"; };
@@ -514,7 +515,6 @@
 		56BAB9532086EA420010CED8 /* UIImage+AipCameraAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AipCameraAddition.m"; sourceTree = "<group>"; };
 		56BAB955208721790010CED8 /* LGVoiceSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGVoiceSearchController.h; sourceTree = "<group>"; };
 		56BAB956208721790010CED8 /* LGVoiceSearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGVoiceSearchController.m; sourceTree = "<group>"; };
-		56BAB959208728290010CED8 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		56BAB95B208731450010CED8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		56BAB95D208732530010CED8 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		56BBBFB620561C740057BDF2 /* LGPersonalCenterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPersonalCenterController.h; sourceTree = "<group>"; };
@@ -611,9 +611,9 @@
 				5657ECB2207DE76D00E89FC2 /* libsqlite3.tbd in Frameworks */,
 				5657ECB7207DE7ED00E89FC2 /* VodSDK.framework in Frameworks */,
 				5657ECB0207DE75D00E89FC2 /* libiconv.tbd in Frameworks */,
-				56BAB95A208728290010CED8 /* iflyMSC.framework in Frameworks */,
 				5657ECAE207DE73400E89FC2 /* libz.tbd in Frameworks */,
 				5657ECAC207DE71C00E89FC2 /* OpenAL.framework in Frameworks */,
+				0260D51320877CAB009E446E /* iflyMSC.framework in Frameworks */,
 				3690868A07C9B63A30A721A0 /* Pods_Word.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -832,7 +832,7 @@
 		56506D012016D773000FD8FA /* Extend */ = {
 			isa = PBXGroup;
 			children = (
-				56BAB95F20873BB60010CED8 /* New Group */,
+				56BAB95F20873BB60010CED8 /* iflyMSC */,
 				56BAB94B2086E0AB0010CED8 /* BaiduCutImageView */,
 				5657ECB5207DE7CD00E89FC2 /* VodSDK */,
 				56961CF5200D89B0009EA21C /* Categroy */,
@@ -1225,11 +1225,12 @@
 			path = BaiduCutImageView;
 			sourceTree = "<group>";
 		};
-		56BAB95F20873BB60010CED8 /* New Group */ = {
+		56BAB95F20873BB60010CED8 /* iflyMSC */ = {
 			isa = PBXGroup;
 			children = (
+				0260D51220877CAB009E446E /* iflyMSC.framework */,
 			);
-			path = "New Group";
+			path = iflyMSC;
 			sourceTree = "<group>";
 		};
 		56BBBFBC205621DF0057BDF2 /* View */ = {
@@ -1503,7 +1504,6 @@
 			children = (
 				56BAB95D208732530010CED8 /* Contacts.framework */,
 				56BAB95B208731450010CED8 /* AddressBook.framework */,
-				56BAB959208728290010CED8 /* iflyMSC.framework */,
 				5657ECB3207DE77700E89FC2 /* GLKit.framework */,
 				5657ECB1207DE76D00E89FC2 /* libsqlite3.tbd */,
 				5657ECAF207DE75D00E89FC2 /* libiconv.tbd */,
@@ -2045,6 +2045,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Word/Extend/VodSDK",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Word/Extend/iflyMSC",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Supporting files/PrefixHeader.pch";
@@ -2070,6 +2071,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Word/Extend/VodSDK",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Word/Extend/iflyMSC",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Supporting files/PrefixHeader.pch";
