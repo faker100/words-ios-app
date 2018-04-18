@@ -10,6 +10,8 @@
 #import "LGWebController.h"
 #import "NSString+LGString.h"
 
+
+
 @interface LGCourseDetailController ()
 
 @end

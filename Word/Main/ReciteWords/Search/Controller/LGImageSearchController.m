@@ -12,6 +12,15 @@
 #import "LGSearchController.h"
 #import "LGWordDetailController.h"
 #import "LGTool.h"
+#import "AipCutImageView.h"
+#import "AipImageView.h"
+#import "UIImage+AipCameraAddition.h"
+#import "LGNavigationController.h"
+
+#define V_X(v)      v.frame.origin.x
+#define V_Y(v)      v.frame.origin.y
+#define V_H(v)      v.frame.size.height
+#define V_W(v)      v.frame.size.width
 
 //拖动手势开始点击区域，根据不同区域，裁剪区域
 typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
@@ -37,6 +46,16 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
 @property (nonatomic, strong) LGCameraManager *cameraManager;
 @property (nonatomic, strong) LGSearchController *searchController;
 
+@property (assign, nonatomic) UIImageOrientation imageOrientation;
+@property (assign, nonatomic) UIDeviceOrientation imageDeviceOrientation;
+
+@property (weak, nonatomic) IBOutlet AipCutImageView *cutImageView;
+@property (weak, nonatomic) IBOutlet AipImageView *maskImageView;
+@property (assign, nonatomic) CGSize size;
+
+
+@property (weak, nonatomic) IBOutlet UIView *cutPhotoToolView;
+
 @end
 
 @implementation LGImageSearchController
@@ -44,19 +63,27 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	[self setUpMaskImageView];
     self.cameraManager = [LGCameraManager new];
     [self.cameraManager reload];
 	[self.view.layer insertSublayer:self.cameraManager.previewLayer atIndex:0];
     [self touchZoneWithPoint:CGPointZero];
+	self.title = @"";
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	[self.navigationController setNavigationBarHidden:YES];
+}
+
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.cameraManager.openFlashLight = NO;
+	[self.navigationController setNavigationBarHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,7 +93,7 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
 
 
 /**
- 拖动裁剪区域
+ 拖动拍照时的裁剪区域
 
  */
 - (IBAction)panCutViewAction:(UIPanGestureRecognizer *)sender {
@@ -92,7 +119,6 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
     
         lastPanPoint = point;
         
-        NSLog(@"%@",NSStringFromCGPoint(point));
         
         switch (zone) {
             case LGPanTouchZoneTop:
@@ -130,7 +156,11 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
             default:
                 break;
         }
-        
+		
+		//高宽最小 50;
+		if (self.cutViewWidthConstraint.constant <= 50) self.cutViewWidthConstraint.constant = 50;
+		if (self.cutViewHeightConstraint.constant <= 50) self.cutViewHeightConstraint.constant = 50;
+		
         [UIView animateWithDuration:0 animations:^{
             [self.cutView layoutIfNeeded];
         }];
@@ -179,7 +209,7 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
 
 - (IBAction)photographAction:(id)sender {
 
-	[LGProgressHUD showHUDAddedTo:self.view];
+
 	[self.cameraManager cutCameraImageDataComplete:^(NSData *imageData) {
 
 		UIImage *originImage = [UIImage imageWithData:imageData];
@@ -202,15 +232,7 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
 		UIImage * cutImage = [UIImage imageWithCGImage:imageRef];
 		CGImageRelease(imageRef);
 		//请求
-		[LGBaiduOcrManager requestWithImage:cutImage complete:^(NSString *string) {
-			[LGProgressHUD hideHUDForView:self.view];
-			if (string.length > 0) {
-				self.searchController = [[LGSearchController alloc]initWithText:string delegate:self];
-				[self.navigationController presentViewController:self.searchController animated:YES completion:nil];
-			}else{
-				[LGProgressHUD showMessage:@"解析失败" toView:self.view];
-			}
-		}];
+		[self requestWithImage:cutImage];
 	}];
 }
 
@@ -232,11 +254,231 @@ typedef NS_ENUM(NSUInteger, LGPanTouchZone) {
     self.cameraManager.openFlashLight = !self.cameraManager.openFlashLight;
 }
 
+//设置背景图
+- (void)setupCutImageView:(UIImage *)image fromPhotoLib:(BOOL)isFromLib {
+	
+	if (isFromLib) {
+		self.cutImageView.userInteractionEnabled = YES;
+	}else{
+		self.cutImageView.userInteractionEnabled = NO;
+	}
+	[self.cutImageView setBGImage:image fromPhotoLib:isFromLib useGestureRecognizer:NO];
+	self.cutImageView.hidden = NO;
+	self.maskImageView.hidden = NO;
+	self.cutPhotoToolView.hidden = NO;
+}
+
+//设置相册模式裁剪框
+- (void)setUpMaskImageView {
+	
+	self.maskImageView.showMidLines = YES;
+	self.maskImageView.needScaleCrop = YES;
+	self.maskImageView.showCrossLines = YES;
+	self.maskImageView.cropAreaCornerWidth = 30;
+	self.maskImageView.cropAreaCornerHeight = 30;
+	self.maskImageView.minSpace = 30;
+	self.maskImageView.cropAreaCornerLineColor = [UIColor colorWithWhite:1 alpha:1];
+	self.maskImageView.cropAreaBorderLineColor = [UIColor colorWithWhite:1 alpha:0.7];
+	self.maskImageView.cropAreaCornerLineWidth = 3;
+	self.maskImageView.cropAreaBorderLineWidth = 1;
+	self.maskImageView.cropAreaMidLineWidth = 30;
+	self.maskImageView.cropAreaMidLineHeight = 1;
+	self.maskImageView.cropAreaCrossLineColor = [UIColor colorWithWhite:1 alpha:0.5];
+	self.maskImageView.cropAreaCrossLineWidth = 1;
+	self.maskImageView.cropAspectRatio = 662/1010.0;
+	
+}
+
+//关闭裁剪照片
+- (IBAction)closeCutPhotoAction:(id)sender {
+	self.cutImageView.hidden = YES;
+	self.maskImageView.hidden = YES;
+	self.cutPhotoToolView.hidden = YES;
+}
+
+
+- (IBAction)pressTransform:(id)sender {
+	
+	//向右转90'
+	self.cutImageView.bgImageView.transform = CGAffineTransformRotate (self.cutImageView.bgImageView.transform, M_PI_2);
+	if (self.imageOrientation == UIImageOrientationUp) {
+		
+		self.imageOrientation = UIImageOrientationRight;
+	}else if (self.imageOrientation == UIImageOrientationRight){
+		
+		self.imageOrientation = UIImageOrientationDown;
+	}else if (self.imageOrientation == UIImageOrientationDown){
+		
+		self.imageOrientation = UIImageOrientationLeft;
+	}else{
+		
+		self.imageOrientation = UIImageOrientationUp;
+	}
+	
+}
+
+//上传图片识别结果
+- (IBAction)pressCheckChoose:(id)sender {
+	
+	
+	CGRect rect  = [self transformTheRect];
+	
+	UIImage *cutImage = [self.cutImageView cutImageFromView:self.cutImageView.bgImageView withSize:self.size atFrame:rect];
+	
+	UIImage *image = [UIImage sapicamera_rotateImageEx:cutImage.CGImage byDeviceOrientation:self.imageDeviceOrientation];
+	
+	UIImage *finalImage = [UIImage sapicamera_rotateImageEx:image.CGImage orientation:self.imageOrientation];
+	
+	[self requestWithImage:finalImage];
+	
+}
+
+//请求
+- (void)requestWithImage:(UIImage *)image{
+	[LGProgressHUD showHUDAddedTo:self.view];
+	[LGBaiduOcrManager requestWithImage:image complete:^(NSString *string) {
+		[LGProgressHUD hideHUDForView:self.view];
+		if (string.length > 0) {
+			self.searchController = [[LGSearchController alloc]initWithText:string delegate:self];
+			[self.navigationController presentViewController:self.searchController animated:YES completion:nil];
+		}else{
+			[LGProgressHUD showMessage:@"解析失败" toView:self.view];
+		}
+	}];
+}
+
+- (CGRect)transformTheRect{
+	
+	CGFloat x;
+	CGFloat y;
+	CGFloat width;
+	CGFloat height;
+	
+	CGFloat cropAreaViewX = V_X(self.maskImageView.cropAreaView);
+	CGFloat cropAreaViewY = V_Y(self.maskImageView.cropAreaView);
+	CGFloat cropAreaViewW = V_W(self.maskImageView.cropAreaView);
+	CGFloat cropAreaViewH = V_H(self.maskImageView.cropAreaView);
+	
+	CGFloat bgImageViewX  = V_X(self.cutImageView.bgImageView);
+	CGFloat bgImageViewY  = V_Y(self.cutImageView.bgImageView);
+	CGFloat bgImageViewW  = V_W(self.cutImageView.bgImageView);
+	CGFloat bgImageViewH  = V_H(self.cutImageView.bgImageView);
+	
+	if (self.imageOrientation == UIImageOrientationUp) {
+		
+		
+		if (cropAreaViewX< bgImageViewX) {
+			
+			x = 0;
+			width = cropAreaViewW - (bgImageViewX - cropAreaViewX);
+		}else{
+			
+			x = cropAreaViewX-bgImageViewX;
+			width = cropAreaViewW;
+		}
+		
+		if (cropAreaViewY< bgImageViewY) {
+			
+			y = 0;
+			height = cropAreaViewH - (bgImageViewY - cropAreaViewY);
+		}else{
+			
+			y = cropAreaViewY-bgImageViewY;
+			height = cropAreaViewH;
+		}
+		
+		self.size = CGSizeMake(bgImageViewW, bgImageViewH);
+	}else if (self.imageOrientation == UIImageOrientationRight){
+		
+		if (cropAreaViewY<bgImageViewY) {
+			
+			x = 0;
+			width = cropAreaViewH - (bgImageViewY - cropAreaViewY);
+		}else{
+			
+			x = cropAreaViewY - bgImageViewY;
+			width = cropAreaViewH;
+		}
+		
+		CGFloat newCardViewX = cropAreaViewX + cropAreaViewW;
+		CGFloat newBgImageViewX = bgImageViewX + bgImageViewW;
+		
+		if (newCardViewX>newBgImageViewX) {
+			y = 0;
+			height = cropAreaViewW - (newCardViewX - newBgImageViewX);
+		}else{
+			
+			y = newBgImageViewX - newCardViewX;
+			height = cropAreaViewW;
+		}
+		
+		self.size = CGSizeMake(bgImageViewH, bgImageViewW);
+	}else if (self.imageOrientation == UIImageOrientationLeft){
+		
+		if (cropAreaViewX < bgImageViewX) {
+			
+			y = 0;
+			height = cropAreaViewW - (bgImageViewX - cropAreaViewX);
+		}else{
+			
+			y = cropAreaViewX-bgImageViewX;
+			height = cropAreaViewW;
+		}
+		
+		CGFloat newCardViewY = cropAreaViewY + cropAreaViewH;
+		CGFloat newBgImageViewY = bgImageViewY + bgImageViewH;
+		
+		if (newCardViewY< newBgImageViewY) {
+			
+			x = newBgImageViewY - newCardViewY;
+			width = cropAreaViewH;
+		}else{
+			
+			x = 0;
+			width = cropAreaViewH - (newCardViewY - newBgImageViewY);
+		}
+		
+		self.size = CGSizeMake(bgImageViewH, bgImageViewW);
+	}else{
+		
+		CGFloat newCardViewX = cropAreaViewX + cropAreaViewW;
+		CGFloat newBgImageViewX = bgImageViewX + bgImageViewW;
+		
+		CGFloat newCardViewY = cropAreaViewY + cropAreaViewH;
+		CGFloat newBgImageViewY = bgImageViewY + bgImageViewH;
+		
+		if (newCardViewX < newBgImageViewX) {
+			
+			x = newBgImageViewX - newCardViewX;
+			width = cropAreaViewW;
+		}else{
+			
+			x = 0;
+			width = cropAreaViewW - (newCardViewX - newBgImageViewX);
+		}
+		
+		if (newCardViewY < newBgImageViewY) {
+			
+			y = newBgImageViewY - newCardViewY;
+			height = cropAreaViewH;
+			
+		}else{
+			
+			y = 0;
+			height = cropAreaViewH - (newCardViewY - newBgImageViewY);
+		}
+		
+		self.size = CGSizeMake(bgImageViewW, bgImageViewH);
+	}
+	
+	return CGRectMake(x, y, width, height);
+}
+
 #pragma mark - UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    
+	[self setupCutImageView:image fromPhotoLib:YES];
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
