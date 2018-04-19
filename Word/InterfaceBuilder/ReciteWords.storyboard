@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -1416,7 +1416,6 @@
                         <segue destination="bxT-jk-UUG" kind="show" identifier="IndexToUserCenter" id="m0A-Hc-o8e"/>
                         <segue destination="QJ7-j4-1ND" kind="show" identifier="searchToWordDetail" id="7HY-mJ-fEd"/>
                         <segue destination="O1o-Jm-dFA" kind="presentation" identifier="indexToPhotoSearch" id="Cr8-tg-7Hr"/>
-                        <segue destination="iHN-v7-wIz" kind="presentation" identifier="indexToVoiceSearch" id="cmT-mJ-6Ne"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Hw-MQ-tcB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2339,7 +2338,7 @@
         <!--Voice Search Controller-->
         <scene sceneID="odf-FC-niE">
             <objects>
-                <viewController storyboardIdentifier="LGVoiceSearchController" modalPresentationStyle="overCurrentContext" id="QSy-E4-Ska" customClass="LGVoiceSearchController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LGVoiceSearchController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="QSy-E4-Ska" customClass="LGVoiceSearchController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kOA-Sp-k8s"/>
                         <viewControllerLayoutGuide type="bottom" id="K2G-zY-a6C"/>
@@ -2427,6 +2426,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="IHP-cq-irx"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="circleView" destination="qyo-78-Ep6" id="Nlo-FQ-SaB"/>
@@ -2449,10 +2449,18 @@
         <!--Navigation Controller-->
         <scene sceneID="da7-NE-mZJ">
             <objects>
-                <navigationController modalPresentationStyle="overCurrentContext" id="iHN-v7-wIz" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LGVoiceSearchNavigation" modalPresentationStyle="overCurrentContext" id="iHN-v7-wIz" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hz0-r8-5S5">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="QSy-E4-Ska" kind="relationship" relationship="rootViewController" id="i2C-cK-r52"/>

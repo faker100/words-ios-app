@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	self.title = @"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,8 +32,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	self.navigationController.navigationBarHidden = YES;
+}
+
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+	self.navigationController.navigationBarHidden = NO;
     [self.iFlySpeechRecognizer cancel];
     [self.iFlySpeechRecognizer setDelegate:nil];
     [self.iFlySpeechRecognizer setParameter:@"" forKey:[IFlySpeechConstant PARAMS]];
@@ -73,6 +80,9 @@
 		[_iFlySpeechRecognizer setParameter: @"iat" forKey: [IFlySpeechConstant IFLY_DOMAIN]];
 		//asr_audio_path 是录音文件名，设置value为nil或者为空取消保存，默认保存目录在Library/cache下。
 		[_iFlySpeechRecognizer setParameter:nil forKey:[IFlySpeechConstant ASR_AUDIO_PATH]];
+		//前端点超时
+		[_iFlySpeechRecognizer setParameter:@"3000" forKey:[IFlySpeechConstant VAD_BOS]];
+		//识别语言
 		 [_iFlySpeechRecognizer setParameter:[IFlySpeechConstant LANGUAGE_ENGLISH] forKey:[IFlySpeechConstant LANGUAGE]];
 		[_iFlySpeechRecognizer setParameter:@"" forKey:[IFlySpeechConstant ACCENT]];
         [_iFlySpeechRecognizer setParameter:@"0" forKey:[IFlySpeechConstant ASR_PTT]];
@@ -114,8 +124,7 @@
         self.voiceButton.backgroundColor = [UIColor lg_colorWithType:LGColor_theme_Color];
         self.statusLabel.text = @"点击开始识别";
         self.searchController = [[LGSearchController alloc]initWithText:self.resultStr delegate:self];
-//        [self.navigationController presentViewController:self.searchController animated:YES completion:nil];
-        [self performSegueWithIdentifier:@"voiceSearchToDetail" sender:nil];
+        [self.navigationController presentViewController:self.searchController animated:YES completion:nil];
     }else{
         self.voiceButton.backgroundColor = [UIColor lg_colorWithType:LGColor_pk_red];
         self.statusLabel.text = @"识别失败,请重试";
@@ -186,6 +195,7 @@
 #pragma mark - LGTextSearchControllerDelegate
 
 - (void)selctedSearchModel:(LGSearchModel *)searchModel{
+	self.searchController.active = NO;
     [self performSegueWithIdentifier:@"voiceSearchToDetail" sender:searchModel];
 }
 
@@ -194,12 +204,12 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"LGWordDetailController"]) {
+    if ([segue.identifier isEqualToString:@"voiceSearchToDetail"]) {
         LGSearchModel *model = sender;
         LGWordDetailController *controller = segue.destinationViewController;
-        controller.controllerType = LGWordDetailReciteWords;
-       // controller.searchWordID = model.ID;
-      //  controller.searchWordStr = model.word;
+        controller.controllerType = LGWordDetailSearch;
+        controller.searchWordID = model.ID;
+        controller.searchWordStr = model.word;
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

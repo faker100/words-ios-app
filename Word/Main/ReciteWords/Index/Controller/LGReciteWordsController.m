@@ -164,9 +164,10 @@
 - (void)speakSearchAction:(id)sender {
 	BOOL flag = [LGTool checkDevicePermissions:LGDeviceMicrophone];
 	if (flag){
-		LGVoiceSearchController *voiceSearch = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGVoiceSearchController");
-		[self.navigationController.tabBarController presentViewController:voiceSearch animated:YES completion:nil];
-		//[self performSegueWithIdentifier:@"indexToVoiceSearch" sender:nil];
+		UINavigationController *voiceSearchNav = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGVoiceSearchNavigation");
+		self.navigationController.tabBarController.modalPresentationStyle = UIModalPresentationCurrentContext;
+		[self.navigationController.tabBarController presentViewController:voiceSearchNav animated:YES completion:nil];
+		
 	}
 }
 
