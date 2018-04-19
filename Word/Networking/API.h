@@ -85,12 +85,13 @@ typedef NS_ENUM(NSUInteger, LGCourseType) {
 /*************************************** 各种 key **********************************/
 
 // code = 99 未登录通知
-#define SHOW_LOGIN_NOTIFICATION 	@"not_logged"
+#define SHOW_LOGIN_NOTIFICATION  @"not_logged"
 
-#define LOGIN_NOTIFICATION      @"login_success"
+#define LOGIN_NOTIFICATION       @"login_success"
 
 //未登录时提示语
-#define NO_LOGIN_ALERT_MESSAGE  @"noLoginMessage"
+#define NO_LOGIN_ALERT_MESSAGE   @"noLoginMessage"
+
 
 /*************************************** 域名 **********************************/
 

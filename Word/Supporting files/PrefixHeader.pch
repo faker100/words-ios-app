@@ -19,6 +19,7 @@
 #import "LGProgressHUD.h"
 #import "NSString+LGString.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UIView+LGNightView.h"
 
 #define PLACEHOLDERIMAGE [UIImage imageNamed:@"placeholderImage"]
 

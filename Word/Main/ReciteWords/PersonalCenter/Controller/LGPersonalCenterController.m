@@ -8,6 +8,7 @@
 
 #import "LGPersonalCenterController.h"
 #import "LGUserManager.h"
+#import "LGThemeManager.h"
 
 @interface LGPersonalCenterController ()
 
@@ -44,6 +45,10 @@
 		[[NSNotificationCenter defaultCenter] postNotificationName:SHOW_LOGIN_NOTIFICATION object:nil];
 	}
 	
+}
+- (IBAction)nightThemeAction:(UIButton *)sender {
+	LGThemeType type = [LGThemeManager shareManager].currentTheme;
+	[LGThemeManager shareManager].currentTheme = type == LGThemeDay ? LGThemeNight : LGThemeDay;
 }
 
 /*

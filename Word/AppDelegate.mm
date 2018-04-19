@@ -30,6 +30,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
+	
+	//[UIColor yellowColor]
+	
+	NSLog(@"%@",[UIColor hexStringFromColor:[UIColor whiteColor]]);
+	
 	self.window.backgroundColor = [UIColor whiteColor];
 	[self configJPush:launchOptions];
 	[self configIQkeyboard];
@@ -174,7 +179,8 @@
 	
 	//Set whether to output log messages in Xcode console
 #ifdef DEBUG
-	[IFlySetting showLogcat:YES];
+	//暂时不需要日志,调试语音的时候在打开
+	[IFlySetting showLogcat:NO];
 #else
 	[IFlySetting showLogcat:NO];
 #endif

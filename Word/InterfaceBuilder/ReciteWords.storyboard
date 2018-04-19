@@ -164,6 +164,9 @@
                                                 <state key="normal" title="   夜间模式" image="user_center_moon">
                                                     <color key="titleColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="nightThemeAction:" destination="bxT-jk-UUG" eventType="touchUpInside" id="jYZ-kW-jjw"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.86659330129623413" green="0.86671525239944458" blue="0.86655491590499878" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -249,14 +252,14 @@
                         <viewControllerLayoutGuide type="bottom" id="pLv-vt-nsg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kPZ-kR-WvA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign_bg" translatesAutoresizingMaskIntoConstraints="NO" id="0s9-S0-4R7">
-                                <rect key="frame" x="0.0" y="20" width="375" height="534"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvo-Zs-0ID">
-                                <rect key="frame" x="10" y="30" width="355" height="360"/>
+                                <rect key="frame" x="10" y="74" width="355" height="360"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018年4月1日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqm-8S-ZFa">
                                         <rect key="frame" x="123.5" y="13" width="108.5" height="21"/>
@@ -364,7 +367,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pJ6-Pu-Zrh">
-                                <rect key="frame" x="10" y="410" width="355" height="60"/>
+                                <rect key="frame" x="10" y="454" width="355" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="雷豆总数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2C-v9-hrG">
                                         <rect key="frame" x="20" y="19.5" width="69.5" height="21"/>
@@ -1251,14 +1254,14 @@
                         <viewControllerLayoutGuide type="bottom" id="imB-jm-ED5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FYR-Dk-rHW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="study_model_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ngd-6R-RCe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajn-79-YBx">
-                                <rect key="frame" x="49" y="311.5" width="277" height="44"/>
+                                <rect key="frame" x="49" y="255" width="277" height="44"/>
                                 <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="277" id="AWM-fO-zke"/>
@@ -1279,7 +1282,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIM-jJ-JOI">
-                                <rect key="frame" x="49" y="370.5" width="277" height="44"/>
+                                <rect key="frame" x="49" y="314" width="277" height="44"/>
                                 <color key="backgroundColor" red="0.91756963729999996" green="0.91769838329999998" blue="0.91752910610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="只背新单词 ( 快速记忆 )">
@@ -1296,7 +1299,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请 选 择 合 适 你 的 背 单 词 模 式" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqu-26-sFh">
-                                <rect key="frame" x="97.5" y="127" width="180" height="48"/>
+                                <rect key="frame" x="97.5" y="83" width="180" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="Uft-4b-bjj"/>
                                     <constraint firstAttribute="height" constant="48" id="akR-l0-N9n"/>
@@ -1306,13 +1309,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在个人中心-学习模式可更换设置模式哦~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCK-Sv-ao1">
-                                <rect key="frame" x="76.5" y="634.5" width="222" height="14.5"/>
+                                <rect key="frame" x="76.5" y="521.5" width="222" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pws-N4-6tu">
-                                <rect key="frame" x="49" y="252.5" width="277" height="44"/>
+                                <rect key="frame" x="49" y="196" width="277" height="44"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="艾宾浩斯记忆法 ( 科学记忆 )">
@@ -1531,7 +1534,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="8d5-wA-4KA" secondAttribute="trailing" id="ToB-fu-u1F"/>
                             <constraint firstItem="D3l-Wr-jec" firstAttribute="top" secondItem="8d5-wA-4KA" secondAttribute="bottom" id="U9e-g1-D9V"/>
@@ -4703,9 +4706,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="cEs-TV-B6O"/>
         <segue reference="KlX-L8-DQM"/>
-        <segue reference="LvP-Fa-FPQ"/>
-        <segue reference="zSQ-aM-XvC"/>
-        <segue reference="hYn-yE-S8V"/>
+        <segue reference="d6X-YM-4Fn"/>
+        <segue reference="r6J-bg-Bb8"/>
+        <segue reference="nSa-WJ-PGB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

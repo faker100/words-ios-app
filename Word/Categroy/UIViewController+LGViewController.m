@@ -14,8 +14,7 @@
 
 
 + (void)load{
-    [super load];
-    method_exchangeImplementations(class_getInstanceMethod(self.class, NSSelectorFromString(@"dealloc")),class_getInstanceMethod(self.class, @selector(lg_dealloc)));
+    method_exchangeImplementations(class_getInstanceMethod(self, NSSelectorFromString(@"dealloc")),class_getInstanceMethod(self, @selector(lg_dealloc)));
 }
 
 - (void)lg_dealloc{

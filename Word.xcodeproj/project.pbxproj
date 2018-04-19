@@ -125,6 +125,8 @@
 		567FDF1B206CC131007FFFB2 /* LGChooseWeekCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 567FDF1A206CC131007FFFB2 /* LGChooseWeekCell.m */; };
 		56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56801492202AE1FB0082D72F /* LGWordDetailController.m */; };
 		5688DE5F207395FC001608CB /* LGEstimateRankModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5688DE5E207395FC001608CB /* LGEstimateRankModel.m */; };
+		568C5FFF208839DF006E4F17 /* UIView+LGNightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 568C5FFE208839DF006E4F17 /* UIView+LGNightView.m */; };
+		568C60022088481A006E4F17 /* LGThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 568C60012088481A006E4F17 /* LGThemeManager.m */; };
 		568C8C9520732698009668AD /* LGEstimateResultHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 568C8C9420732698009668AD /* LGEstimateResultHeaderView.m */; };
 		568C8C97207326BB009668AD /* LGEstimateResultHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 568C8C96207326BB009668AD /* LGEstimateResultHeaderView.xib */; };
 		568C8C9A20732DC7009668AD /* LGEstimateResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = 568C8C9920732DC7009668AD /* LGEstimateResultController.m */; };
@@ -452,6 +454,10 @@
 		56801492202AE1FB0082D72F /* LGWordDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordDetailController.m; sourceTree = "<group>"; };
 		5688DE5D207395FC001608CB /* LGEstimateRankModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGEstimateRankModel.h; sourceTree = "<group>"; };
 		5688DE5E207395FC001608CB /* LGEstimateRankModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGEstimateRankModel.m; sourceTree = "<group>"; };
+		568C5FFD208839DF006E4F17 /* UIView+LGNightView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+LGNightView.h"; sourceTree = "<group>"; };
+		568C5FFE208839DF006E4F17 /* UIView+LGNightView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+LGNightView.m"; sourceTree = "<group>"; };
+		568C60002088481A006E4F17 /* LGThemeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGThemeManager.h; sourceTree = "<group>"; };
+		568C60012088481A006E4F17 /* LGThemeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGThemeManager.m; sourceTree = "<group>"; };
 		568C8C9320732698009668AD /* LGEstimateResultHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGEstimateResultHeaderView.h; sourceTree = "<group>"; };
 		568C8C9420732698009668AD /* LGEstimateResultHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGEstimateResultHeaderView.m; sourceTree = "<group>"; };
 		568C8C96207326BB009668AD /* LGEstimateResultHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGEstimateResultHeaderView.xib; sourceTree = "<group>"; };
@@ -835,7 +841,6 @@
 				56BAB95F20873BB60010CED8 /* iflyMSC */,
 				56BAB94B2086E0AB0010CED8 /* BaiduCutImageView */,
 				5657ECB5207DE7CD00E89FC2 /* VodSDK */,
-				56961CF5200D89B0009EA21C /* Categroy */,
 				564B325B207B4398005E7658 /* AXWebViewController */,
 				564B3257207B42F1005E7658 /* LGWebController */,
 				56C078D62069E7A200C0F513 /* LGSegue */,
@@ -889,6 +894,7 @@
 		565A30F420132F3700448B1C /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				568C5FF92088391C006E4F17 /* NightTheme */,
 				563259EC201AC609007FF4D6 /* LGTool.h */,
 				563259ED201AC609007FF4D6 /* LGTool.m */,
 				56317B70201C1D6800AEC20B /* LGUserManager.h */,
@@ -989,6 +995,17 @@
 				567A3AD3203FB72F00A41692 /* LGWordErrorViewController.m */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		568C5FF92088391C006E4F17 /* NightTheme */ = {
+			isa = PBXGroup;
+			children = (
+				568C5FFD208839DF006E4F17 /* UIView+LGNightView.h */,
+				568C5FFE208839DF006E4F17 /* UIView+LGNightView.m */,
+				568C60002088481A006E4F17 /* LGThemeManager.h */,
+				568C60012088481A006E4F17 /* LGThemeManager.m */,
+			);
+			path = NightTheme;
 			sourceTree = "<group>";
 		};
 		56961CF5200D89B0009EA21C /* Categroy */ = {
@@ -1137,6 +1154,7 @@
 				56961CF6200D8A9C009EA21C /* InterfaceBuilder */,
 				56961CF7200D8ACA009EA21C /* Networking */,
 				56506D012016D773000FD8FA /* Extend */,
+				56961CF5200D89B0009EA21C /* Categroy */,
 				565A30F420132F3700448B1C /* Tool */,
 				56AF60CC2011DF930067BD7B /* Supporting files */,
 				56A88839200CA53400847BE6 /* AppDelegate.h */,
@@ -1772,6 +1790,7 @@
 				0243675F2073CB1C006FDB95 /* LGPKDiscoverController.m in Sources */,
 				5621AB13206E1D3500AB0CD0 /* LGTrackFinishProgressCell.m in Sources */,
 				560699E42057D9B500574437 /* LGPKContainerController.m in Sources */,
+				568C60022088481A006E4F17 /* LGThemeManager.m in Sources */,
 				564B325A207B4318005E7658 /* LGWebController.m in Sources */,
 				567FDF1B206CC131007FFFB2 /* LGChooseWeekCell.m in Sources */,
 				567993292071CF2F00F851F1 /* LGEstimateWordModel.m in Sources */,
@@ -1869,6 +1888,7 @@
 				5647C2FB205F66E300DFDB77 /* LGPKMatchingController.m in Sources */,
 				02D6E3CA20834A5600EE7F98 /* LGTextSearchController.m in Sources */,
 				56224FC7204547AF0093BC7A /* LGIndexReviewAlertCell.m in Sources */,
+				568C5FFF208839DF006E4F17 /* UIView+LGNightView.m in Sources */,
 				567FDF15206C7DFF007FFFB2 /* LGClockModel.m in Sources */,
 				022FACAD20761C8E006F8D1C /* LGReportPieView.m in Sources */,
 				567FDF12206C7B15007FFFB2 /* LGAddClockController.m in Sources */,

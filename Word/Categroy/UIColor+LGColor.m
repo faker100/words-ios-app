@@ -43,25 +43,46 @@
 	UIColor *color;
 	switch (type) {
 		case LGColor_theme_Color:
-			color = [UIColor lg_colorWithHexString:@"37bc85"];
+			color = [UIColor lg_colorWithHexString:theme_Color];
 			break;
 		case LGColor_Title_1_Color:
-			color = [UIColor lg_colorWithHexString:@"454545"];
+			color = [UIColor lg_colorWithHexString:title_1_Color];
 			break;
 		case LGColor_Title_2_Color:
-			color = [UIColor lg_colorWithHexString:@"7A7A7A"];
+			color = [UIColor lg_colorWithHexString:title_2_Color];
 			break;
 		case LGColor_Yellow:
-			color = [UIColor lg_colorWithHexString:@"FFC600"];
+			color = [UIColor lg_colorWithHexString:yellow];
+			break;
 		case LGColor_Dark_Yellow:
-			color = [UIColor lg_colorWithHexString:@"EEC15F"];
+			color = [UIColor lg_colorWithHexString:dark_Yellow];
 			break;
 		case LGColor_pk_red:
-			color = [UIColor lg_colorWithHexString:@"ff213b"];
+			color = [UIColor lg_colorWithHexString:pk_red];
 		default:
 			break;
 	}
 	return color;
+}
+
+
+// UIColor转#ffffff格式的字符串
++ (NSString *)hexStringFromColor:(UIColor *)color {
+	
+	if (color == nil) {
+		return @"";
+	}
+	
+	const CGFloat *components = CGColorGetComponents(color.CGColor);
+	
+	CGFloat r = components[0];
+	CGFloat g = components[1];
+	CGFloat b = components[2];
+	
+	return [NSString stringWithFormat:@"%02lX%02lX%02lX",
+			lroundf(r * 255),
+			lroundf(g * 255),
+			lroundf(b * 255)];
 }
 
 @end
