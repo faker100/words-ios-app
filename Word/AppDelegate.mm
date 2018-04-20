@@ -31,10 +31,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
 	
-	//[UIColor yellowColor]
-	
-	NSLog(@"%@",[UIColor hexStringFromColor:[UIColor whiteColor]]);
-	
 	self.window.backgroundColor = [UIColor whiteColor];
 	[self configJPush:launchOptions];
 	[self configIQkeyboard];

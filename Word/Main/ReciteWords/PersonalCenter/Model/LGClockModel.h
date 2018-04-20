@@ -23,7 +23,7 @@
 //是否使用
 @property (nonatomic, assign) BOOL isUse;
 
-//星期数组, @"1" @"2" @"3" @"4" @"5" @"6" @"7"
+//星期数组, @"1" @"2" @"3" @"4" @"5" @"6" @"7" 为空时,表示不重复
 @property (nonatomic, copy) NSArray<NSString *> *week;
 
 /**

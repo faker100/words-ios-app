@@ -26,7 +26,10 @@
 	[self.imageView sd_setImageWithURL:[NSURL URLWithString:OPPEN_DOMAIN(self.classModel.image)] placeholderImage:PLACEHOLDERIMAGE];
 	self.nameLabel.text = self.classModel.title;
 	self.joinLabel.text = [NSString stringWithFormat:@"%@人已加入",self.classModel.viewCount];
-	self.contentTextView.attributedText = [self.classModel.courseDescriptionHTML htmlToAttributeStringContent:OPPEN_DOMAIN(@"") width:SCREEN_WIDTH];
+	[self.classModel.courseDescriptionHTML htmlToAttributeStringContent:OPPEN_DOMAIN(@"") width:SCREEN_WIDTH completion:^(NSMutableAttributedString *attrStr) {
+		self.contentTextView.attributedText = attrStr;
+	}];
+//	self.contentTextView.attributedText = [self.classModel.courseDescriptionHTML htmlToAttributeStringContent:OPPEN_DOMAIN(@"") width:SCREEN_WIDTH];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

@@ -11,9 +11,9 @@
 
 @implementation UIView (LGNightView)
 
-+ (void)load{
-	method_exchangeImplementations(class_getInstanceMethod(self, @selector(setBackgroundColor:)),class_getInstanceMethod(self, @selector(lg_setBackgroundColor:)));
-}
+//+ (void)load{
+//	method_exchangeImplementations(class_getInstanceMethod(self, @selector(setBackgroundColor:)),class_getInstanceMethod(self, @selector(lg_setBackgroundColor:)));
+//}
 
 - (void)lg_setBackgroundColor:(UIColor *)color{
 	
@@ -22,7 +22,7 @@
 		NSLog(@"%@",[LGThemeManager colorForCurrentTheme:color]);
 	}
 	
-	[self lg_setBackgroundColor:[UIColor blueColor]];
+	//[self lg_setBackgroundColor:[UIColor blueColor]];
 	return;
 	
 	if (self.isCustomTheme) {

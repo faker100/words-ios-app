@@ -13,8 +13,11 @@
 #import "LGWordErrorViewController.h"
 #import "LGTodayReviewWordModel.h"
 #import "LGFinishWordTaskView.h"
+#import "LGWordDetailQuestionCell.h"
+#import "LGWordDetailSelectItemCell.h"
+#import "LGThirdPartyCell.h"
 
-@interface LGWordDetailController () <UITableViewDelegate, UITableViewDataSource>
+@interface LGWordDetailController () <UITableViewDelegate, UITableViewDataSource,LGThirdPartyCellDelegate>
 
 @property (nonatomic, strong) LGWordDetailModel *detailModel; //当前单词,重写 setter 刷新界面
 
@@ -162,6 +165,10 @@
 	}];
 }
 
+//隐藏遮罩层
+- (IBAction)hiddenMasksAction:(id)sender {
+	self.masksView.hidden = YES;
+}
 
 //熟识
 - (IBAction)familiarAction:(id)sender {
@@ -310,26 +317,47 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+	
 	return self.detailModel.dataSource.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+	//最后一个section 为第三方词典接口
+	if (section == [tableView numberOfSections] - 1) {
+		return 1;
+	}else{
+		return self.detailModel.dataSource[section].cellContent.count;
+	}
 	
-	return self.detailModel.dataSource[section].cellContent.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	if (tableView == self.wordTabelView) {
+	LGWordDetailTableDataSource *dataSource = self.detailModel.dataSource[indexPath.section];
+	
+	if (dataSource.type == LGDataSourceText) {
 		LGWordDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailCell"];
-		NSString *content = self.detailModel.dataSource[indexPath.section].cellContent[indexPath.row];
+		NSString *content = dataSource.cellContent[indexPath.row];
 		BOOL isFirst = indexPath.row == 0;
 		BOOL isLast  = indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1;
 		[cell setContentStr:content isFirst:isFirst isLast:isLast];
 		return cell;
+	}else if(dataSource.type == LGDataSourceQuestion){
+		if (indexPath.row == 0) {
+			LGWordDetailQuestionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailQuestionCell"];
+			cell.question = dataSource.cellContent[0];
+			return cell;
+		}else{
+			LGWordDetailSelectItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailSelectItemCell"];
+			
+			return cell;
+		}
+	}else{
+		LGThirdPartyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGThirdPartyCell"];
+		cell.delegate = self;
+		return cell;
 	}
-	return nil;
 }
 
 #pragma mark - UITableViewDelegate
@@ -340,6 +368,10 @@
 	return heaerView;
 }
 
+#pragma mark - LGThirdPartyCellDelegate
+- (void)selectedThirdParty:(LGThirdPartyType)type{
+	NSLog(@"%@",type);
+}
 
 #pragma mark - Navigation
 
@@ -353,5 +385,24 @@
 	// Pass the selected object to the new view controller.
 }
 
+
+@end
+
+@implementation LGWordDetailHeaderView
+
+- (void)drawRect:(CGRect)rect{
+	
+	CGFloat grayHeight = 30.0;
+	
+	UIBezierPath *path = [[UIBezierPath alloc]init];
+	[path moveToPoint:CGPointMake(0, CGRectGetWidth(rect))];
+	[path addLineToPoint:CGPointMake(0, CGRectGetHeight(rect) - grayHeight)];
+	
+	[path addCurveToPoint:CGPointMake(CGRectGetWidth(rect), CGRectGetHeight(rect)  - grayHeight) controlPoint1:CGPointMake(CGRectGetMidX(rect) / 4 * 3, CGRectGetHeight(rect) + grayHeight) controlPoint2:CGPointMake(CGRectGetMidX(rect)/4 * 5, CGRectGetHeight(rect) - grayHeight * 3)];
+	[path addLineToPoint:CGPointMake(CGRectGetWidth(rect), CGRectGetHeight(rect))];
+	[path closePath];
+	[[UIColor lg_colorWithHexString:@"F1F1F1"]setFill];
+	[path fill];
+}
 
 @end

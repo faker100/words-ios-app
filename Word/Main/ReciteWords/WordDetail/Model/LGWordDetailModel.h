@@ -9,12 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "LGFreeWordModel.h"
 
-@class LGSentenceModel , LGWordDetailTableDataSource;
+//cell 类型
+typedef NS_ENUM(NSUInteger, LGWordDetailTableDataSourceType) {
+	LGDataSourceText,	    //普通文字类型
+	LGDataSourceQuestion,   //列题
+	LGDataSourceThirdParty  //第三方
+};
+
+@class LGSentenceModel , LGWordDetailTableDataSource, LGQuestionSelectItemModel, LGQuestionModel;
 @interface LGWordDetailModel : NSObject
 
 @property (nonatomic, strong) LGFreeWordModel *words;
 @property (nonatomic, strong) NSArray<LGSentenceModel *> *sentence;
 @property (nonatomic, strong) NSArray<LGSentenceModel *> *lowSentence;
+@property (nonatomic, strong) LGQuestionModel *question;
 @property (nonatomic, copy) NSString *did; //已背单词
 
 /**
@@ -33,7 +41,24 @@
 
 @interface LGWordDetailTableDataSource  : NSObject
 
-@property (nonatomic, copy) NSString *sectionTitle;
-@property (nonatomic, strong) NSMutableArray<NSString *> *cellContent;
+@property (nonatomic, copy)  NSString *sectionTitle;
+@property (nonatomic, strong) NSMutableArray *cellContent;
+@property (nonatomic, assign) LGWordDetailTableDataSourceType type;
+
+@end
+
+
+@interface LGQuestionModel : NSObject
+
+@property (nonatomic, copy) NSString *question;
+@property (nonatomic, copy) NSString *questionanswer;
+@property (nonatomic, copy) NSArray<LGQuestionSelectItemModel *> *selectItemArr;
+
+@end
+
+@interface LGQuestionSelectItemModel : NSObject
+
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *select;
 
 @end

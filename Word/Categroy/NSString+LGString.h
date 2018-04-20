@@ -41,6 +41,6 @@
 - (NSString *)replaceImageUrl:(NSString *)imageUrlStr htmlStr:(NSString *)htmlStr;
 
 //HTML 转换 attributeString
-- (NSAttributedString *)htmlToAttributeStringContent:(NSString *)imageUrl width:(CGFloat)contentWidth;
+- (void)htmlToAttributeStringContent:(NSString *)imageUrl width:(CGFloat)contentWidth completion:(void(^)(NSMutableAttributedString *attrStr))completion;
 
 @end

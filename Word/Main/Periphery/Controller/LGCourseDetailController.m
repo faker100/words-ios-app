@@ -46,7 +46,12 @@
 	[self.imageView sd_setImageWithURL:[NSURL URLWithString:self.courseModel.image] placeholderImage:PLACEHOLDERIMAGE];
 	self.nameLabel.text = self.courseModel.name;
 	self.joinNumLabel.text = [NSString stringWithFormat:@"%@人已加入",self.courseModel.view];
-	self.contentTextView.attributedText = [self.courseModel.content htmlToAttributeStringContent:@"" width:SCREEN_WIDTH];
+	
+	[self.courseModel.content htmlToAttributeStringContent:@"" width:SCREEN_WIDTH completion:^(NSMutableAttributedString *attrStr) {
+		self.contentTextView.attributedText = attrStr;
+	}];
+	
+	 //self.contentTextView.attributedText = [self.courseModel.content htmlToAttributeStringContent:@"" width:SCREEN_WIDTH];
 }
 
 //咨询

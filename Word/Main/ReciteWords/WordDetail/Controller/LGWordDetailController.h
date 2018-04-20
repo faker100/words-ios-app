@@ -49,6 +49,9 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 //单词总共个数 (title)
 @property (nonatomic, copy) NSString *total;
 
+//遮罩层
+@property (weak, nonatomic) IBOutlet UIView *masksView;
+
 //单词 label
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 
@@ -76,3 +79,9 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 @property (weak, nonatomic) IBOutlet UIButton *familiarItemButton;
 
 @end
+
+//单词部分曲线
+@interface LGWordDetailHeaderView : UIView
+
+@end
+

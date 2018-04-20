@@ -84,6 +84,8 @@
 						[self showReviewAlertWithModel:model];
 					}
 				}];
+			}else if(code == 96){
+				
 			}else{
 				[weakSelf performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:nil];
 			}

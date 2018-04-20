@@ -83,27 +83,33 @@
 }
 
 
-- (NSAttributedString *)htmlToAttributeStringContent:(NSString *)imageUrl width:(CGFloat)contentWidth {
+- (void)htmlToAttributeStringContent:(NSString *)imageUrl width:(CGFloat)contentWidth completion:(void (^)(NSMutableAttributedString *))completion{
 	
-	NSString *str  = [self replaceImageUrl:imageUrl htmlStr:self ];
-	str = [str replaceParagraphSpace];
-	
-	NSData *htmlData = [str dataUsingEncoding:NSUTF8StringEncoding];
-	NSDictionary *importParams = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-								   NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]
-								   };
-	NSError *error = nil;
-	NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithData:htmlData options:importParams documentAttributes:NULL error:&error];
-	[attributeString enumerateAttribute:NSAttachmentAttributeName inRange:NSMakeRange(0, attributeString.length) options:NSAttributedStringEnumerationReverse usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
-		if (value) {
-			NSTextAttachment *textAttachment = value;
-			CGSize size = textAttachment.bounds.size;
-			if (size.width > contentWidth) {
-				textAttachment.bounds = CGRectMake(0, 0, contentWidth-5, size.height / size.width * (contentWidth-5));
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		NSString *str  = [self replaceImageUrl:imageUrl htmlStr:self ];
+		str = [str replaceParagraphSpace];
+		
+		NSData *htmlData = [str dataUsingEncoding:NSUTF8StringEncoding];
+		NSDictionary *importParams = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+									   NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]
+									   };
+		NSError *error = nil;
+		NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithData:htmlData options:importParams documentAttributes:NULL error:&error];
+		[attributeString enumerateAttribute:NSAttachmentAttributeName inRange:NSMakeRange(0, attributeString.length) options:NSAttributedStringEnumerationReverse usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
+			if (value) {
+				NSTextAttachment *textAttachment = value;
+				CGSize size = textAttachment.bounds.size;
+				if (size.width > contentWidth) {
+					textAttachment.bounds = CGRectMake(0, 0, contentWidth-5, size.height / size.width * (contentWidth-5));
+				}
 			}
-		}
-	}];
-	return attributeString;
+		}];
+	
+		// 回到主线程
+		dispatch_async(dispatch_get_main_queue(), ^{
+			completion(attributeString);
+		});
+	});
 }
 
 @end

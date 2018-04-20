@@ -29,6 +29,7 @@
 	
 	if (StringNotEmpty(self.words.mnemonic)) {
 		LGWordDetailTableDataSource *dataSource = [[LGWordDetailTableDataSource alloc]init];
+		dataSource.type = LGDataSourceText;
 		dataSource.sectionTitle = @"助记";
 		[dataSource.cellContent addObject:self.words.mnemonic];
 		[self.dataSource addObject:dataSource];
@@ -36,6 +37,7 @@
 	if (ArrayNotEmpty(self.lowSentence)) {
 		LGWordDetailTableDataSource *dataSource = [[LGWordDetailTableDataSource alloc]init];
 		dataSource.sectionTitle = @"短句";
+		dataSource.type = LGDataSourceText;
 		[self.lowSentence enumerateObjectsUsingBlock:^(LGSentenceModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 			NSString *str = [NSString stringWithFormat:@"%@\n%@",obj.english,obj.chinese];
 			[dataSource.cellContent addObject:str];
@@ -45,12 +47,27 @@
 	if (ArrayNotEmpty(self.sentence)) {
 		LGWordDetailTableDataSource *dataSource = [[LGWordDetailTableDataSource alloc]init];
 		dataSource.sectionTitle = @"例句";
+		dataSource.type = LGDataSourceText;
 		[self.sentence enumerateObjectsUsingBlock:^(LGSentenceModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 			NSString *str = [NSString stringWithFormat:@"%@\n%@",obj.english,obj.chinese];
 			[dataSource.cellContent addObject:str];
 		}];
 		[self.dataSource addObject:dataSource];
 	}
+	
+	if (self.question && [self.question isKindOfClass:[LGQuestionModel class]]) {
+		LGWordDetailTableDataSource *dataSource = [[LGWordDetailTableDataSource alloc]init];
+		dataSource.sectionTitle = @"例题入口";
+		dataSource.type = LGDataSourceQuestion;
+		[dataSource.cellContent addObject:self.question.question];
+		[dataSource.cellContent addObjectsFromArray:self.question.selectItemArr];
+		[self.dataSource addObject:dataSource];
+	}
+	
+	LGWordDetailTableDataSource *dataSource = [[LGWordDetailTableDataSource alloc]init];
+	dataSource.sectionTitle = @"词典接口";
+	dataSource.type = LGDataSourceThirdParty;
+	[self.dataSource addObject:dataSource];
 }
 
 @end
@@ -79,5 +96,27 @@
 	}
 	return self;
 }
+
+@end
+
+@implementation LGQuestionModel
+
++ (NSDictionary *)mj_objectClassInArray{
+	return @{
+			 @"selectItemArr" : @"LGQuestionSelectItemModel"
+			 };
+}
+
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+	return @{
+			 @"selectItemArr" : @"qslctarr"
+			 };
+}
+
+@end
+
+@implementation LGQuestionSelectItemModel
+
+
 
 @end
