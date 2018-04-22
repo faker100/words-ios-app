@@ -11,7 +11,13 @@
 #import "LGUserManager.h"
 #import "LGRequest.h"
 #import "IFlyMSC/IFlyMSC.h"
-
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+//腾讯开放平台（对应QQ和QQ空间）SDK头文件
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+//微信SDK头文件
+#import "WXApi.h"
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
 // iOS10注册APNs所需头文件
@@ -35,6 +41,7 @@
 	[self configJPush:launchOptions];
 	[self configIQkeyboard];
 	[self configIFly];
+    [self configShareSDK];
 	return YES;
 }
 
@@ -182,6 +189,44 @@
 #endif
 	//Set APPID
 	[IFlySpeechUtility createUtility:@"appid=5ad6dd9c"];
+}
+
+
+/**
+ ShareSDK
+ */
+- (void)configShareSDK{
+    [ShareSDK registerActivePlatforms:@[
+                                        @(SSDKPlatformTypeWechat),
+                                        @(SSDKPlatformTypeQQ),
+                                        ]
+        onImport:^(SSDKPlatformType platformType){
+         switch (platformType)
+         {
+             case SSDKPlatformTypeWechat:
+                 [ShareSDKConnector connectWeChat:[WXApi class]];
+                 break;
+             case SSDKPlatformTypeQQ:
+                 [ShareSDKConnector connectQQ:[QQApiInterface class] tencentOAuthClass:[TencentOAuth class]];
+                 break;
+             default:
+                 break;
+         }
+     }onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo){
+         switch (platformType){
+             case SSDKPlatformTypeWechat:
+                 [appInfo SSDKSetupWeChatByAppId:@"wx43edda5db10ec254"
+                                       appSecret:@"9d9423bcf1f9c6b60a65a0dc999af53b"];
+                 break;
+             case SSDKPlatformTypeQQ:
+                 [appInfo SSDKSetupQQByAppId:@"100371282"
+                                      appKey:@"aed9b0303e3ed1e27bae87c33761161d"
+                                    authType:SSDKAuthTypeBoth];
+                 break;
+             default:
+                 break;
+         }
+     }];
 }
 
 @end

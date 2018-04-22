@@ -8,7 +8,7 @@
 
 #import "UIViewController+LGViewController.h"
 #import <objc/runtime.h>
-
+#import "LGShareView.h"
 
 @implementation UIViewController (LGViewController)
 
@@ -37,6 +37,26 @@
 	}else{
 		return YES;
 	}
+}
+
+
+- (void)shareTitle:(NSString *)title text:(NSString *)text image:(id)image url:(NSString *)url type:(SSDKContentType)type{
+    
+    NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
+    [shareParams SSDKSetupShareParamsByText:text
+                                     images:image
+                                        url:[NSURL URLWithString:url]
+                                      title:title
+                                       type:type];
+    
+    LGShareView *shareView = [[NSBundle mainBundle]loadNibNamed:@"LGShareView" owner:nil options:nil].firstObject;
+    shareView.selectedPlatform = ^(SSDKPlatformType type) {
+        [ShareSDK share:type parameters:shareParams onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
+            
+        }];
+    };
+    shareView.frame =  self.view.window.bounds;
+    [self.view.window addSubview:shareView];
 }
 
 @end

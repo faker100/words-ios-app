@@ -159,4 +159,12 @@
 	return flag;
 }
 
++ (UIImage *)screenshotFromView:(UIView *)view{
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, false, 0.0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 @end

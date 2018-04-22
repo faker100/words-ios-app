@@ -10,6 +10,7 @@
 #import "LGEstimateRankCell.h"
 #import "UITableView+LGRefresh.h"
 #import "LGUserManager.h"
+#import "LGTool.h"
 
 @interface LGEstimateRankController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -40,6 +41,12 @@
     [self.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(user.image)] placeholderImage:PLACEHOLDERIMAGE];
     self.usernameLabel.text = user.nickname;
 }
+
+- (IBAction)shareAction:(id)sender {
+    UIImage *image = [LGTool screenshotFromView:self.view.window];
+    [self shareTitle:@"" text:@"" image:image url:nil type:SSDKContentTypeImage];
+}
+
 
 - (void)requestData:(BOOL)showLoading{
 	if (showLoading) {
@@ -105,6 +112,8 @@
 {
 	return 1;
 }
+
+
 
 /*
 #pragma mark - Navigation

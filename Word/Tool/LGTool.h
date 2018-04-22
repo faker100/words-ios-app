@@ -69,5 +69,13 @@ typedef NS_ENUM(NSUInteger, LGDevicePermissionsType) {
 + (BOOL)checkDevicePermissions:(LGDevicePermissionsType) type;
 
 
+/**
+ 从view 截屏
+
+ @param view 截图的view
+ 
+ */
++ (UIImage *)screenshotFromView:(UIView *)view;
+
 
 @end

@@ -13,6 +13,7 @@
 #import "LGUserManager.h"
 #import "LGCoreTextArcView.h"
 #import "LGUserManager.h"
+#import "LGTool.h"
 
 @interface LGEstimateResultController () <UITableViewDelegate, UITableViewDataSource,LGEstimateResultHeaderDelegate>
 
@@ -162,6 +163,13 @@
 	
 	[self.tableView reloadRowsAtIndexPaths:indexPathArray withRowAnimation:UITableViewRowAnimationNone];
 }
+
+
+- (IBAction)shareAction:(id)sender {
+    UIImage *image = [LGTool screenshotFromView:self.view.window];
+    [self shareTitle:@"" text:@"" image:image url:nil type:SSDKContentTypeImage];
+}
+
 /*
 #pragma mark - Navigation
 

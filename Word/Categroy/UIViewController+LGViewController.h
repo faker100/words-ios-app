@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "NSObject+LGRequest.h"
+#import <ShareSDK/ShareSDK.h>
 
-@interface UIViewController (LGViewController)
+@interface UIViewController (LGViewController) 
 
 
 /**
@@ -30,5 +31,12 @@
  @return 没有错误信息返回 YES, 如果有错误信息返回 NO
  */
 - (BOOL)isNormal:(LGError *)error showInView:(UIView *)view;
+
+
+/**
+ 分享
+ 参数参照 .m文件里的 SSDKSetupShareParamsByText 方法
+ */
+- (void)shareTitle:(NSString *)title text:(NSString *)text image:(id)image url:(NSString *)url type:(SSDKContentType)type;
 
 @end

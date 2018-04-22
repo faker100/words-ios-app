@@ -28,11 +28,44 @@
 				<string>prefs</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wx43edda5db10ec254</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MOBAppKey</key>
+	<string>254099446b637</string>
+	<key>MOBAppSecret</key>
+	<string>2bf0c783792fbb27773fdeeaf117f9ed</string>
+    
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>wechat</string>
+        <string>weixin</string>
+        <string>mqzoneopensdk</string>
+        <string>mqzoneopensdkapi</string>
+        <string>mqzoneopensdkapi19</string>
+        <string>mqzoneopensdkapiV2</string>
+        <string>mqqOpensdkSSoLogin</string>
+        <string>mqqopensdkapiV2</string>
+        <string>mqqopensdkapiV3</string>
+        <string>wtloginmqq2</string>
+        <string>mqqapi</string>
+        <string>mqqwpa</string>
+        <string>mqzone</string>
+        <string>mqq</string>
+        <string>mqqopensdkapiV4</string>
+        
+    </array>
+    
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -42,10 +75,10 @@
 	<string>需要访问相机拍照上传图片</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>需要访问麦克风录音</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>需要访问相册获取图片</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>需要访问相册存图片</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>需要访问相册获取图片</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
