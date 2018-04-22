@@ -46,6 +46,10 @@
 	[LGProgressHUD showMessageWithIcon:nil message:message toView:view completionBlock:nil];
 }
 
++ (void)showMessage:(NSString *)message toView:(UIView *)view completionBlock:(MBProgressHUDCompletionBlock) completionBlock{
+    [LGProgressHUD showMessageWithIcon:nil message:message toView:view completionBlock:completionBlock];
+}
+
 + (LGProgressHUD *)configTypeToView:(UIView *)view {
     
 	LGProgressHUD *hud = [super showHUDAddedTo:view animated:YES];

@@ -46,8 +46,9 @@
 	NSString *endTimeStr   = self.endTimeLabel.text;
 	
 	if (StringNotEmpty(startTimeStr) && StringNotEmpty(endTimeStr)) {
-	
-		if ([startTimeStr compare:endTimeStr] != NSOrderedDescending) {
+        NSDate *startDate = [[NSDate defaultDateFormatter]dateFromString:startTimeStr];
+        NSDate *endDate = [[NSDate defaultDateFormatter]dateFromString:endTimeStr];
+		if ([startDate compare:endDate] != NSOrderedDescending) {
 			[LGProgressHUD showHUDAddedTo:self.view];
 			[self.request requestRevieWordWithStartTime:startTimeStr endTime:endTimeStr Completion:^(id response, LGError *error) {
 				if ([self isNormal:error]) {

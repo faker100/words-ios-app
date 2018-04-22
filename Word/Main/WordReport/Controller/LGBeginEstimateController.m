@@ -22,7 +22,8 @@
     LGUserModel *user = [LGUserManager shareManager].user;
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(user.image)] placeholderImage:PLACEHOLDERIMAGE];
     self.usernameLabel.text = user.nickname;
-	self.vocabularyLabel.text = self.vocabulary == 0 ? @"未评估" : @(self.vocabulary).stringValue;
+    NSInteger estimateNum = user.estimateWords.integerValue;
+	self.vocabularyLabel.text = estimateNum == 0 ? @"未评估" : @(estimateNum).stringValue;
 }
 
 - (void)didReceiveMemoryWarning {

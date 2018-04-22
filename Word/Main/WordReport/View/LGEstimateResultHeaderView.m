@@ -37,9 +37,11 @@
 	NSString *str = @"";
 	if (type == LGEstimateResultKnow) {
 		str = [NSString stringWithFormat:@"认识 (%@)",num];
+        self.leftView.backgroundColor = [UIColor lg_colorWithType:LGColor_theme_Color];
 		self.moreImageView.hidden = NO;
 	}else{
 		str = [NSString stringWithFormat:@"不认识 (%@)",num];
+        self.leftView.backgroundColor = [UIColor lg_colorWithType:LGColor_Dark_Yellow];
 		self.moreImageView.hidden = YES;
 	}
 	

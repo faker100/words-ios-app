@@ -10,8 +10,6 @@
 
 @interface LGBeginEstimateController : UIViewController
 
-@property (nonatomic, assign) NSInteger vocabulary;
-
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;

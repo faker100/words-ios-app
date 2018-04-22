@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 //搜索模式下的单词id
 @property (nonatomic, copy) NSString *searchWordID;
 
-//正常复习模式下的复习方式
+//LGWordDetailReview 复习模式下的复习方式
 @property (nonatomic, assign) LGSelectReviewType reviewTyep;
 //正常复习模式下的复习 id 数组
 @property (nonatomic, strong) NSMutableArray<NSString *> *reviewWordIdArray;
@@ -42,6 +42,9 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 
 // 艾宾浩斯复习模式(LGWordDetailEbbinghausReview)下需要复习单词的 id 列表
 @property (nonatomic, strong) NSMutableArray<NSString *> *ebbinghausReviewWordIdArray;
+
+//艾宾浩斯复习中数量，用于计算controller.title;
+@property (nonatomic, assign) NSInteger ebbinghausCount;
 
 //当前单词顺序号 (title)
 @property (nonatomic, copy) NSString *currentNum;

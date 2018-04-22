@@ -11,6 +11,9 @@
 
 @interface LGPublicDetailController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
+
+
 @property (nonatomic, strong) LGRecentClassModel *classModel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;

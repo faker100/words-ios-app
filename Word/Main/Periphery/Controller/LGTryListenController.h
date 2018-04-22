@@ -31,6 +31,9 @@
 //内容
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
+
+
 //进度条
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 

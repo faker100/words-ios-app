@@ -23,8 +23,10 @@
 
 
 - (void)setLivePreview:(NSArray<LGLivePreviewModel *> *)livePreview{
-    _livePreview = livePreview;
-    [self.tableView reloadData];
+    if (_livePreview != livePreview) {
+        _livePreview = livePreview;
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark -UITableViewDataSource
@@ -43,6 +45,7 @@
 {
 	LGLivePreviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGLivePreviewCell"];
     cell.classModel = self.livePreview[indexPath.section].data[indexPath.row];
+    cell.delegate = self.delegate;
 	return cell;
 }
 

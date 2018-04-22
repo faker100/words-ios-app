@@ -19,6 +19,12 @@
 	return oldValue;
 }
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{
+             @"estimateWords" : @"words"
+             };
+}
+
 - (void)setFontSize:(NSString *)fontSize{
 	[[NSUserDefaults standardUserDefaults]setObject:fontSize forKey:FONT_SIZE_KEY];
 }

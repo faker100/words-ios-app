@@ -18,6 +18,7 @@
 }
 */
 
+//复习完成任务
 - (IBAction)finishTaskAction:(id)sender {
 	
 	[self removeFromSuperview];
@@ -25,21 +26,38 @@
 		self.sureActionBlock();
 	}
 }
+//休息
+- (IBAction)restAction:(id)sender {
+    [self removeFromSuperview];
+    if (self.cancelBlock) {
+        self.cancelBlock();
+    }
+    
+    
+}
 
+//继续
+- (IBAction)continueAction:(id)sender {
+    [self removeFromSuperview];
+    if (self.continueBlock) {
+        self.continueBlock();
+    }
+    
+}
 
-+ (void)showFinishToView:(UIView *)view type:(LGFinishWordTaskType)type sureBlock:(void(^)(void))sureBlock {
++ (void)showReviewFinishToView:(UIView *)view sureBlock:(void(^)(void))sureBlock {
 	LGFinishWordTaskView *alertView = [[NSBundle mainBundle]loadNibNamed:@"LGFinishWordTaskView" owner:nil options:nil].firstObject;
 	alertView.frame = view.bounds;
-    
-    if (type == LGFinishReview) {
-        alertView.titleLabel.text = @"今天你的复习任务";
-        alertView.reviewImageView.hidden = NO;
-    }else{
-        alertView.titleLabel.text = @"今天单词任务";
-        alertView.reciteWordsImageView.hidden = NO;
-    }
 	[view addSubview:alertView];
 	alertView.sureActionBlock = sureBlock;
+}
+
++ (void)showFinishReciteWordToView:(UIView *)view continueBlock:(void(^)(void))continueBlock cancelBlock:(void(^)(void))cancelBlock{
+    LGFinishWordTaskView *alertView = [[NSBundle mainBundle]loadNibNamed:@"LGFinishWordTaskView" owner:nil options:nil].lastObject;
+    alertView.frame = view.bounds;
+    [view addSubview:alertView];
+    alertView.continueBlock = continueBlock;
+    alertView.cancelBlock = cancelBlock;
 }
 
 @end

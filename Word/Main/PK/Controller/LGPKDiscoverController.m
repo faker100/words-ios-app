@@ -29,7 +29,7 @@
 
 - (void)configTable{
 	//按屏幕比例获取 cell 高度, 20为 table 左右 inset
-	self.tableView.rowHeight =   112.0 / 375.0 * (SCREEN_WIDTH - 20);
+	self.tableView.rowHeight =   183.0 / 375.0 * (SCREEN_WIDTH - 20);
 	[self.tableView setRefreshBlock:^(LGCurrentRefreshType type) {
 		[self requestData];
 	}];
@@ -75,7 +75,13 @@
 
 #pragma mark -UITableViewDelegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 5.0f;
+}
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 5.0f;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

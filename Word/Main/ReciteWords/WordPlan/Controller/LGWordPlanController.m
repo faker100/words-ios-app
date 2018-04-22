@@ -24,10 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //[self performSegueWithIdentifier:@"myPlanTowordLibrary" sender:nil];
-    //  [self configUserInterface];
-    
-    
 }
 
 //进入界面刷新,self.planArray 为nil, 表示第一次进入界面,需要显示 loading
@@ -175,12 +171,22 @@
  @param flag 是否根据当前选择计划(天数/个数),修改另一个计划(个数/天数)
  */
 - (void)setPlanWithType:(LGChoosePlanType)type value:(NSInteger)value isFixOther:(BOOL)flag{
-	value = MAX(value, 1);
+    
+    //所选词包没有剩余单词时，返回
+    if (self.selectedPlan.surplusWord == 0) {
+        self.dayLabel.text = @"0天";
+        self.numberLabel.text = @"0个";
+        return;
+    }
+	 value = MAX(value, 1);
 	if (type == LGChooseDayPlan) {
 		self.dayLabel.text = [NSString stringWithFormat:@"%ld天",value];
 		self.selectedPlan.planDay = @(value).stringValue;
 		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:value - 1 inSection:0];
-		[self.dayTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        
+        [self.dayTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        
+		
 		if (flag) {
 			NSInteger otherValue = ceil(self.selectedPlan.surplusWord * 1.0 / value);
 			[self setPlanWithType:LGChooseNumPlan value:otherValue isFixOther:NO];
@@ -189,7 +195,10 @@
 		self.numberLabel.text = [NSString stringWithFormat:@"%ld个",value];
 		self.selectedPlan.planWords = @(value).stringValue;
 		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.selectedPlan.surplusWord - value inSection:0];
-		[self.numberTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        
+        [self.numberTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+        
+		
 		if (flag) {
 			NSInteger otherValue = ceil(self.selectedPlan.surplusWord * 1.0 / value);
 			[self setPlanWithType:LGChooseDayPlan value:otherValue isFixOther:NO];

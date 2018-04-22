@@ -58,7 +58,13 @@ typedef NS_ENUM(NSUInteger, LGWordDetailTableDataSourceType) {
 
 @interface LGQuestionSelectItemModel : NSObject
 
+//A. B. C. 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *select;
+//自定义字段，是否显示当前选项的对错
+@property (nonatomic, assign) BOOL isShowRightOrWrong;
+
+//自定义字段，是否是正确答案
+@property (nonatomic, assign) BOOL isRightAnswer;
 
 @end

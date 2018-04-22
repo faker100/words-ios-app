@@ -10,7 +10,7 @@
 
 typedef NS_ENUM(NSUInteger, LGPKAnswerCellType) {
 	LGPKAnswerCellNormal,
-	LGPKAnswerCellRigh,
+	LGPKAnswerCellRight,
 	LGPKAnswerCellWrong,
 };
 

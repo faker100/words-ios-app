@@ -7,7 +7,7 @@
 //
 
 #import "LGCaseDetailController.h"
-
+#import "LGNavigationController.h"
 @interface LGCaseDetailController ()
 
 @end
@@ -20,12 +20,6 @@
 	[self.headImageView sd_setImageWithURL:[NSURL URLWithString:self.caseModel.image] placeholderImage:PLACEHOLDERIMAGE];
 	self.nameLabel.text = self.caseModel.name;
 	self.contentTextView.text = self.caseModel.content;
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-	[super viewWillAppear:animated];
-	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-	[self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
 - (void)didReceiveMemoryWarning {

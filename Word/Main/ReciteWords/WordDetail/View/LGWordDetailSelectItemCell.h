@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LGWordDetailModel.h"
 
 @interface LGWordDetailSelectItemCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (nonatomic, strong) LGQuestionSelectItemModel *selectedItem;
 
+@property (weak, nonatomic) IBOutlet UIView *bgView;
 
 //小圆点
 @property (weak, nonatomic) IBOutlet UIView *circleView;

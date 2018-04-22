@@ -14,7 +14,9 @@
 @property (nonatomic, strong) LGPKDiscoverModel *discoverModel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *discoverImageView;
-@property (weak, nonatomic) IBOutlet UILabel *discoverTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *discoverNameLabel;
+
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
+
 
 @end

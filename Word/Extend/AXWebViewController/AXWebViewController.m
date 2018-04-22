@@ -815,9 +815,13 @@ static NSString *const kAXNetworkErrorURLKey = @"ax_network_error";
 
 + (void)clearWebCacheCompletion:(dispatch_block_t)completion {
 #if AX_WEB_VIEW_CONTROLLER_USING_WEBKIT
-    NSSet *websiteDataTypes = [WKWebsiteDataStore allWebsiteDataTypes];
-    NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
-    [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:completion];
+    if (@available(iOS 9.0, *)) {
+        NSSet *websiteDataTypes = [WKWebsiteDataStore allWebsiteDataTypes];
+        NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
+        [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:completion];
+    } else {
+        // Fallback on earlier versions
+    }
 #else
     NSString *libraryDir = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES)[0];
     NSString *bundleId  =  [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
@@ -1021,17 +1025,20 @@ static NSString *const kAXNetworkErrorURLKey = @"ax_network_error";
     // For appstore.
     if ([[NSPredicate predicateWithFormat:@"SELF BEGINSWITH[cd] 'https://itunes.apple.com/cn/app/' OR SELF BEGINSWITH[cd] 'mailto:' OR SELF BEGINSWITH[cd] 'tel:' OR SELF BEGINSWITH[cd] 'telprompt:'"] evaluateWithObject:webView.URL.absoluteString]) {
         if ([[UIApplication sharedApplication] canOpenURL:webView.URL]) {
-            if (UIDevice.currentDevice.systemVersion.floatValue >= 10.0) {
+            
+            if (@available(iOS 10.0, *)) {
                 [UIApplication.sharedApplication openURL:webView.URL options:@{} completionHandler:NULL];
             } else {
-                [[UIApplication sharedApplication] openURL:webView.URL];
+                    [[UIApplication sharedApplication] openURL:webView.URL];
             }
+            
         }
         decisionHandler(WKNavigationActionPolicyCancel);
         return;
     } else if (![[NSPredicate predicateWithFormat:@"SELF MATCHES[cd] 'https' OR SELF MATCHES[cd] 'http' OR SELF MATCHES[cd] 'file' OR SELF MATCHES[cd] 'about'"] evaluateWithObject:components.scheme]) {// For any other schema.
         if ([[UIApplication sharedApplication] canOpenURL:webView.URL]) {
-            if (UIDevice.currentDevice.systemVersion.floatValue >= 10.0) {
+            
+            if (@available(iOS 10.0, *)) {
                 [UIApplication.sharedApplication openURL:webView.URL options:@{} completionHandler:NULL];
             } else {
                 [[UIApplication sharedApplication] openURL:webView.URL];

@@ -13,7 +13,7 @@
 #import "UIScrollView+LGRefresh.h"
 #import "LGTrackFinishHeaderView.h"
 #import "LGTrackModel.h"
-#import "LGBeginEstimateController.h"
+#import "LGUserManager.h"
 
 @interface LGTrackController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -66,7 +66,7 @@
 	self.knowLabel.text = trackModel.know;
 	self.incognizanceLabel.text = trackModel.notKnow;
     [self.pieView setPieDayStudy:trackModel.everydayNew.integerValue dayReview:trackModel.review.integerValue];
-    
+    [LGUserManager shareManager].user.estimateWords = @(trackModel.data.num).stringValue;
 	NSString *totalDayStr =  [NSString stringWithFormat:@"总天数:%@天",trackModel.insistDay];
 	NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc]initWithString:totalDayStr];
 	[attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:10] range:NSMakeRange(0, totalDayStr.length)];
@@ -134,16 +134,13 @@
 
 #pragma mark - Navigation
 
+/*
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	
-	if ([segue.identifier isEqualToString:@"reportIndexToEstimate"]) {
-		LGBeginEstimateController *controller = segue.destinationViewController;
-		controller.vocabulary = self.trackModel.data.num;
-	}
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-
+*/
 @end
 

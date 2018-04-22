@@ -23,16 +23,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	[self requestData];
+    [self requestData:YES];
 	__weak typeof(self) weakSelf = self;
 	[self.tableView setHeaderRefresh:^{
-		[weakSelf requestData];
+        [weakSelf requestData:NO];
 	}];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-	[super viewWillAppear:animated];
-//	[self.navigationController setNavigationBarHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,8 +35,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)requestData{
-	[LGProgressHUD showHUDAddedTo:self.view];
+- (void)requestData:(BOOL) showLoading{
+    if (showLoading) {
+        [LGProgressHUD showHUDAddedTo:self.view];
+    }
 	[self.request requestCaseListCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			self.caseList = [LGCaseModel mj_objectArrayWithKeyValuesArray:response];

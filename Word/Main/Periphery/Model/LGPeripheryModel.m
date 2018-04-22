@@ -24,6 +24,40 @@
     return @{@"aCase" : @"case"};
 }
 
+- (void)mj_keyValuesDidFinishConvertingToObject{
+    
+    //筛选未直播的预告
+   __block NSMutableArray <LGLivePreviewModel *> *tempLiveArr = [NSMutableArray array];
+    
+    NSDateFormatter *dateFormatter = [LGLivePreviewModel getDateFormatter];
+    [self.livePreview enumerateObjectsUsingBlock:^(LGLivePreviewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSInteger month = [dateFormatter dateFromString:obj.date].month;
+        NSDate *today = [NSDate currentDate];
+        if (month == today.month) {
+            __block NSMutableArray<LGRecentClassModel *> *tempRecentClassArr = [NSMutableArray array];
+            [obj.data enumerateObjectsUsingBlock:^(LGRecentClassModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                static NSDateFormatter *courseTimeForMatter;
+                if (!courseTimeForMatter) {
+                    courseTimeForMatter = [NSDateFormatter new];
+                    [courseTimeForMatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+                    [courseTimeForMatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+                }
+                if ([[courseTimeForMatter dateFromString:obj.courseTime] isInFuture]) {
+                    [tempRecentClassArr addObject:obj];
+                }
+            }];
+            if (tempRecentClassArr.count > 1) {
+                obj.data = tempRecentClassArr;
+                [tempLiveArr addObject:obj];
+            }
+            
+        }else if (month > today.month){
+            [tempLiveArr addObject:obj];
+        }
+    }];
+    self.livePreview = tempLiveArr;
+}
+
 @end
 
 
@@ -37,13 +71,23 @@
 
 - (void)mj_keyValuesDidFinishConvertingToObject{
 	
-	 NSDateFormatter *courseDateFormatter = [NSDateFormatter new];
-	[courseDateFormatter setDateFormat:@"yyyy-MM"];
+	 NSDateFormatter *courseDateFormatter = [LGLivePreviewModel getDateFormatter];
+	
 	if (self.data.count > 0) {
 		LGRecentClassModel *firstClass = self.data.firstObject;
-		NSInteger month = [courseDateFormatter dateFromString:self.date].month;
+		NSInteger month = [[courseDateFormatter dateFromString:self.date] convertToSystemTimeZoneDate].month;
 		firstClass.month = [NSString stringWithFormat:@"%ld月\n课程",month];
 	}
+}
+
++ (NSDateFormatter *)getDateFormatter{
+    static NSDateFormatter *courseDateFormatter;
+    if(!courseDateFormatter){
+        courseDateFormatter = [NSDateFormatter new];
+        [courseDateFormatter setDateFormat:@"yyyy-MM"];
+        [courseDateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    };
+    return courseDateFormatter;
 }
 
 @end

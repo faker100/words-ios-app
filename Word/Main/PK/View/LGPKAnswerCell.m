@@ -41,7 +41,7 @@
 	_type = type;
 	if (type == LGPKAnswerCellWrong) {
 		self.contentView.backgroundColor = [UIColor lg_colorWithType:LGColor_pk_red];
-	}else if (type == LGPKAnswerCellRigh){
+	}else if (type == LGPKAnswerCellRight){
 		self.contentView.backgroundColor = [UIColor lg_colorWithType:LGColor_theme_Color];
 	}else{
 		self.contentView.backgroundColor = [UIColor lg_colorWithHexString:@"f1efe4"];

@@ -66,7 +66,7 @@
 	self.uesrNameLabel.text = user.nickname;
 	[self.headImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(user.image)] placeholderImage:PLACEHOLDERIMAGE];
 	self.winProgressView.progress = user.win.floatValue / (user.win.floatValue + user.lose.floatValue);
-	self.vocabularyLabel.text = user.words;
+	self.vocabularyLabel.text = user.estimateWords;
 	self.winLabel.text = [NSString stringWithFormat:@"win : %ld",user.win.integerValue];
 	self.loseLabel.text = [NSString stringWithFormat:@"lose : %ld",user.lose.integerValue];
 }

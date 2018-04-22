@@ -36,6 +36,7 @@
     
     LGUserModel *user = [LGUserManager shareManager].user;
     
+    self.vocabularyLabel.text = user.estimateWords;
     [self.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(user.image)] placeholderImage:PLACEHOLDERIMAGE];
     self.usernameLabel.text = user.nickname;
 }

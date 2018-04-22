@@ -9,8 +9,8 @@
 #import "LGCourseDetailController.h"
 #import "LGWebController.h"
 #import "NSString+LGString.h"
-
-
+#import "LGNavigationController.h"
+#import "LGTryListenController.h"
 
 @interface LGCourseDetailController ()
 
@@ -32,14 +32,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
-	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-	self.navigationController.navigationBar.shadowImage = [UIImage new];
+    [((LGNavigationController *)self.navigationController) transparenceBar:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
 	[super viewWillDisappear:animated];
-	[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-	self.navigationController.navigationBar.shadowImage = nil;
+    [((LGNavigationController *)self.navigationController) transparenceBar:NO];
 }
 
 - (void)configData{
@@ -47,11 +45,12 @@
 	self.nameLabel.text = self.courseModel.name;
 	self.joinNumLabel.text = [NSString stringWithFormat:@"%@人已加入",self.courseModel.view];
 	
+    __weak typeof(self) weakSelf = self;
 	[self.courseModel.content htmlToAttributeStringContent:@"" width:SCREEN_WIDTH completion:^(NSMutableAttributedString *attrStr) {
-		self.contentTextView.attributedText = attrStr;
+        weakSelf.contentTextView.attributedText = attrStr;
+        
+        [weakSelf.activityView stopAnimating];
 	}];
-	
-	 //self.contentTextView.attributedText = [self.courseModel.content htmlToAttributeStringContent:@"" width:SCREEN_WIDTH];
 }
 
 //咨询
@@ -60,14 +59,18 @@
 	[self.navigationController pushViewController:web animated:YES];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"courseDetailToPlayer"]) {
+        LGTryListenController *controller = segue.destinationViewController;
+        controller.courseModel = self.courseModel;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

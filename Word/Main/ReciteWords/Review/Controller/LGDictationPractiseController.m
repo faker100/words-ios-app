@@ -17,8 +17,10 @@
 #import "LGDictationPromptController.h"
 #import "LGFinishWordTaskView.h"
 
-@interface LGDictationPractiseController () <UICollectionViewDelegate, UICollectionViewDataSource>
-
+@interface LGDictationPractiseController () <CAAnimationDelegate,UICollectionViewDelegate, UICollectionViewDataSource>
+{
+    dispatch_source_t timer;
+}
 @property (nonatomic, strong) LGWordDetailModel *wordDetailModel;
 
 //答案拆分个数
@@ -51,6 +53,15 @@
 	[self.scrollView setHeaderRefresh:^{
 		[weakSelf requestData:NO];
 	}];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+    //判断返回
+    if (!self.navigationController) {
+        [LGTool cancelTimer:timer];
+    }
 }
 
 - (void)requestData:(BOOL)animation {
@@ -256,8 +267,10 @@
 - (void)beginCountDown {
 	
     __weak typeof(self) weakSelf = self;
-	[LGTool beginCountDownWithSecond:16 completion:^(NSInteger currtentSecond) {
-		[weakSelf.countDownButton setTitle:@(currtentSecond).stringValue forState:UIControlStateNormal];
+	timer = [LGTool beginCountDownWithSecond:16 completion:^(NSInteger currtentSecond) {
+        if (currtentSecond >= 0) {
+            [weakSelf.countDownButton setTitle:@(currtentSecond).stringValue forState:UIControlStateNormal];
+        }
 	}];
 }
 
@@ -335,9 +348,9 @@
 	if ([userAnswer isEqualToString:self.wordDetailModel.words.word]) {
 		
 		if (self.currentNum.integerValue == self.total.integerValue) {
-			[LGFinishWordTaskView showFinishToView:self.view type:LGFinishReview sureBlock:^{
-				[self.navigationController popViewControllerAnimated:YES];
-			}];
+            [LGFinishWordTaskView showReviewFinishToView:self.view sureBlock:^{
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
 		}else{
 			LGDictationPractiseController *nextController = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGDictationPractiseController");
 			[self.wordIDArray removeObjectAtIndex:0];
@@ -349,11 +362,24 @@
 			[self.navigationController setViewControllers:viewControllers animated:YES];
 		}
 	}else{
-		NSLog(@"no");
+        CABasicAnimation* shake = [CABasicAnimation animationWithKeyPath:@"transform.translation.x"];
+        shake.fromValue = [NSNumber numberWithFloat:-5];
+        shake.toValue = [NSNumber numberWithFloat:5];
+        shake.duration = 0.05;//执行时间
+        shake.autoreverses = YES; //是否重复
+        shake.repeatCount = 4;//次数
+        shake.delegate = self;
+        [self.userAnswerCollection.layer addAnimation:shake forKey:@"shakeAnimation"];
 	}
 	
 }
 
+#pragma mark - CAAnimationDelegate
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
+    
+    self.userAnswerArray = nil;
+    [self.userAnswerCollection reloadData];
+}
 
 
 #pragma mark - Navigation

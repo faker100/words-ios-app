@@ -6,7 +6,7 @@
   Copyright © 2016年 AiXing. All rights reserved.
 */
 "back" = "返回";
-"close" = "关闭";
+"close" = "";
 "loading" = "加载中...";
 "load failed" = "加载失败";
 "load failed:" = "网页加载失败：";

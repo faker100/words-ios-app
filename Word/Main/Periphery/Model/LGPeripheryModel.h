@@ -23,6 +23,8 @@
 @property (nonatomic, copy) NSString *date;
 @property (nonatomic, copy) NSArray<LGRecentClassModel *> *data;
 
++ (NSDateFormatter *)getDateFormatter;
+
 @end
 
 //最近课程
@@ -64,7 +66,8 @@
 
 //根据categoryId转换
 @property (nonatomic, assign) LGCourseType courseType;
-
+@property (nonatomic, copy) NSString *image;
+@property (nonatomic, copy) NSString *content;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *url;
 

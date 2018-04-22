@@ -11,6 +11,8 @@
 #import "LGEstimateResultHeaderView.h"
 #import "LGEstimateResultModel.h"
 #import "LGUserManager.h"
+#import "LGCoreTextArcView.h"
+#import "LGUserManager.h"
 
 @interface LGEstimateResultController () <UITableViewDelegate, UITableViewDataSource,LGEstimateResultHeaderDelegate>
 
@@ -59,6 +61,18 @@
 - (void)setResultModel:(LGEstimateResultModel *)resultModel{
 	
 	_resultModel = resultModel;
+
+    /**
+     * 词汇量
+     */
+    [LGUserManager shareManager].user.estimateWords = resultModel.num;
+    NSString *vocabularyStr = [NSString stringWithFormat:@"词汇量:%@",resultModel.num];
+    UIFont *font  = [UIFont boldSystemFontOfSize:18];
+    
+    LGCoreTextArcView *vocabulary = [[LGCoreTextArcView alloc]initWithFrame:self.textArcView.frame font:font text:vocabularyStr radius:145 arcSize:60 color:[UIColor whiteColor]];
+    vocabulary.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:vocabulary];
+    
 	/**
 	 * 水平 AttributedString
 	 */

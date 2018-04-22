@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -27,6 +27,13 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="estimate_result_more" translatesAutoresizingMaskIntoConstraints="NO" id="Aym-tg-38O">
                             <rect key="frame" x="297" y="18.5" width="13" height="7"/>
                         </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gz-s9-nf5">
+                            <rect key="frame" x="0.0" y="0.0" width="5" height="44"/>
+                            <color key="backgroundColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="5" id="RAW-nx-VIn"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.94380217790603638" green="0.92648404836654663" blue="0.87330824136734009" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <gestureRecognizers/>
@@ -34,6 +41,9 @@
                         <constraint firstItem="upo-6A-wfn" firstAttribute="leading" secondItem="eUN-iE-JC8" secondAttribute="leading" constant="25" id="6V9-WW-MEl"/>
                         <constraint firstItem="Aym-tg-38O" firstAttribute="centerY" secondItem="eUN-iE-JC8" secondAttribute="centerY" id="9zb-ag-sT3"/>
                         <constraint firstItem="upo-6A-wfn" firstAttribute="centerY" secondItem="eUN-iE-JC8" secondAttribute="centerY" id="JwD-gj-fef"/>
+                        <constraint firstItem="7gz-s9-nf5" firstAttribute="top" secondItem="eUN-iE-JC8" secondAttribute="top" id="OpB-HG-VjW"/>
+                        <constraint firstAttribute="bottom" secondItem="7gz-s9-nf5" secondAttribute="bottom" id="SuX-BU-PiU"/>
+                        <constraint firstItem="7gz-s9-nf5" firstAttribute="leading" secondItem="eUN-iE-JC8" secondAttribute="leading" id="UQy-VM-M55"/>
                         <constraint firstAttribute="trailing" secondItem="Aym-tg-38O" secondAttribute="trailing" constant="15" id="UXS-pH-ubk"/>
                     </constraints>
                 </view>
@@ -46,6 +56,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="leftView" destination="7gz-s9-nf5" id="p8e-hA-63U"/>
                 <outlet property="moreImageView" destination="Aym-tg-38O" id="8v4-eb-K1K"/>
                 <outlet property="sectionTitleLabel" destination="upo-6A-wfn" id="xTS-Ai-OfA"/>
             </connections>

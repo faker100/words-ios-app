@@ -8,30 +8,43 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, LGFinishWordTaskType) {
-    LGFinishReciteWords, //完成"背单词"任务后提示框
-    LGFinishReview       //完成"复习"任务提示框
-};
-
 @interface LGFinishWordTaskView : UIView
 
 @property (nonatomic, copy) void(^sureActionBlock)(void);
-
+@property (nonatomic, copy) void(^continueBlock)(void);
+@property (nonatomic, copy) void(^cancelBlock)(void);
 //标题
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 //记单词image
 @property (weak, nonatomic) IBOutlet UIImageView *reciteWordsImageView;
+//副标题
+@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 
-//复习
+//复习image
 @property (weak, nonatomic) IBOutlet UIImageView *reviewImageView;
 
+//休息 、 继续
+@property (weak, nonatomic) IBOutlet UIView *continueView;
+//复习完成确定
+@property (weak, nonatomic) IBOutlet UIButton *reviewSureButton;
+
+
 /**
- 显示单词任务完成
+ 显示复习单词任务完成
 
  @param view 加载到view
- @param type 提示框类型
  */
-+ (void)showFinishToView:(UIView *)view type:(LGFinishWordTaskType)type sureBlock:(void(^)(void))sureBlock;
++ (void)showReviewFinishToView:(UIView *)view sureBlock:(void(^)(void))sureBlock;
+
+
+/**
+ 背单词完成
+
+ @param view 加载到view
+ @param continueBlock 继续
+ @param cancelBlock 休息
+ */
++ (void)showFinishReciteWordToView:(UIView *)view continueBlock:(void(^)(void))continueBlock cancelBlock:(void(^)(void))cancelBlock;
 
 @end

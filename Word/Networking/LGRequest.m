@@ -529,5 +529,10 @@
 	[self postRequestCompletion:completion];
 }
 
+- (void)requestIsReciteWordsCompletion:(comletionBlock)completion{
+    self.url = CONTINUE_RECITE_WORD_URL;
+    [self postRequestCompletion:completion];
+}
+
 
 @end

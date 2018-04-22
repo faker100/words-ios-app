@@ -35,7 +35,7 @@
 
 //预约
 - (IBAction)bespeakAction:(id)sender {
-	
+    [self.delegate bespeakRecentClass:self.classModel];
 }
 
 

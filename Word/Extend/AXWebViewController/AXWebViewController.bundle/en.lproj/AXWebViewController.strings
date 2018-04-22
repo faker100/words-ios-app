@@ -6,7 +6,7 @@
   Copyright © 2016年 AiXing. All rights reserved.
 */
 "back" = "Back";
-"close" = "Close";
+"close" = "";
 "loading" = "Loading...";
 "load failed" = "Load failed";
 "load failed:" = "Load failed: ";

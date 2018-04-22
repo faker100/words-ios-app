@@ -22,12 +22,13 @@
     // Configure the view for the selected state
 }
 
-- (void)setQuestion:(NSString *)question{
-	if (![_question isEqualToString:question]) {
-		_question = question;
+- (void)setQuestion:(NSString *)question completion:(void(^)(void))completion{
+	if (![self.question isEqualToString:question]) {
+		self.question = question;
 		__weak typeof(self) weakSelf = self;
 		[question htmlToAttributeStringContent:GMAT_DOMAIN(@"") width:CGRectGetWidth(self.bgView.bounds) - 20 completion:^(NSMutableAttributedString *attrStr) {
 			weakSelf.questionLabel.attributedText = attrStr;
+            completion();
 		}];
 	}
 }

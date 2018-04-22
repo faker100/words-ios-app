@@ -12,6 +12,7 @@
 		022FACB020761CE7006F8D1C /* LGReportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 022FACAF20761CE7006F8D1C /* LGReportModel.m */; };
 		0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */; };
 		0239C1AC20485C460031C3FA /* LGTodayReviewWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0239C1AB20485C460031C3FA /* LGTodayReviewWordModel.m */; };
+		023C1DFA208CB5D700E05663 /* LGCoreTextArcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 023C1DF9208CB5D700E05663 /* LGCoreTextArcView.m */; };
 		0243675F2073CB1C006FDB95 /* LGPKDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */; };
 		024711B3207AA4D40016B03C /* LGPeripheryCaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 024711B2207AA4D40016B03C /* LGPeripheryCaseCell.m */; };
 		0260D51320877CAB009E446E /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0260D51220877CAB009E446E /* iflyMSC.framework */; };
@@ -245,6 +246,8 @@
 		0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGFreeLibraryWordListController.m; sourceTree = "<group>"; };
 		0239C1AA20485C460031C3FA /* LGTodayReviewWordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTodayReviewWordModel.h; sourceTree = "<group>"; };
 		0239C1AB20485C460031C3FA /* LGTodayReviewWordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTodayReviewWordModel.m; sourceTree = "<group>"; };
+		023C1DF8208CB5D700E05663 /* LGCoreTextArcView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGCoreTextArcView.h; sourceTree = "<group>"; };
+		023C1DF9208CB5D700E05663 /* LGCoreTextArcView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGCoreTextArcView.m; sourceTree = "<group>"; };
 		0243675D2073CB1C006FDB95 /* LGPKDiscoverController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKDiscoverController.h; sourceTree = "<group>"; };
 		0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKDiscoverController.m; sourceTree = "<group>"; };
 		024711B1207AA4D40016B03C /* LGPeripheryCaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPeripheryCaseCell.h; sourceTree = "<group>"; };
@@ -643,6 +646,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		023C1DF4208CB57D00E05663 /* APLCoreTextArcView */ = {
+			isa = PBXGroup;
+			children = (
+				023C1DF8208CB5D700E05663 /* LGCoreTextArcView.h */,
+				023C1DF9208CB5D700E05663 /* LGCoreTextArcView.m */,
+			);
+			path = APLCoreTextArcView;
+			sourceTree = "<group>";
+		};
 		02D6E3C420834A1900EE7F98 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -847,6 +859,7 @@
 		56506D012016D773000FD8FA /* Extend */ = {
 			isa = PBXGroup;
 			children = (
+				023C1DF4208CB57D00E05663 /* APLCoreTextArcView */,
 				56BAB95F20873BB60010CED8 /* iflyMSC */,
 				56BAB94B2086E0AB0010CED8 /* BaiduCutImageView */,
 				5657ECB5207DE7CD00E89FC2 /* VodSDK */,
@@ -1921,6 +1934,7 @@
 				563F7DA5202306B500944730 /* LGPlayer.m in Sources */,
 				566B9860202003E800D368AC /* LGNoStudyTypeController.m in Sources */,
 				56C078D52069DFF700C0F513 /* LGPKResultModel.m in Sources */,
+				023C1DFA208CB5D700E05663 /* LGCoreTextArcView.m in Sources */,
 				564B3253207B37BC005E7658 /* LGPublicListCell.m in Sources */,
 				560F0FD12022AFBA00324510 /* LGFreeWordModel.m in Sources */,
 			);

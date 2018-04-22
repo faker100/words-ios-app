@@ -361,7 +361,7 @@ NSInteger countDown = 10;
 	}else{
 		NSIndexPath *trueIndexPath = [NSIndexPath indexPathForRow:0 inSection:self.currentWordModel.trueAnswerIndex];
 		LGPKAnswerCell *trueCell = [tableView cellForRowAtIndexPath:trueIndexPath];
-		trueCell.type = LGPKAnswerCellRigh;
+		trueCell.type = LGPKAnswerCellRight;
 		
 		LGPKAnswerCell *userCell = [tableView cellForRowAtIndexPath:indexPath];
 		userCell.type = LGPKAnswerCellWrong;

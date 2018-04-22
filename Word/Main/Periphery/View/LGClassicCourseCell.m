@@ -13,6 +13,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    [self.courseViewCollection enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+        [obj addGestureRecognizer:tap];
+    }];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -22,14 +26,20 @@
 }
 
 - (void)setChoiceness:(NSArray<LGChoicenessModel *> *)choiceness{
-    _choiceness = choiceness;
-    [self.courseViewCollection enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        LGClassCourseView *courseView = obj;
-        if (idx < choiceness.count) {
-            courseView.choicenessModel = choiceness[idx];
-        }
-        
-    }];
+    if (_choiceness != choiceness) {
+        _choiceness = choiceness;
+        [self.courseViewCollection enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            LGClassCourseView *courseView = obj;
+            if (idx < choiceness.count) {
+                courseView.choicenessModel = choiceness[idx];
+            }
+        }];
+    }
+    
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)tap{
+    [self.delegate selectedChoiceness:((LGClassCourseView *)tap.view).choicenessModel];
 }
 
 @end

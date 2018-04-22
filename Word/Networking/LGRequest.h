@@ -204,6 +204,12 @@
 
 
 /**
+ 是否继续背单词
+
+ */
+- (void)requestIsReciteWordsCompletion:(comletionBlock)completion;
+
+/**
  请求艾宾浩斯复习单词列表
  */
 - (void)requestEbbinghausReviewList:(comletionBlock)completion;

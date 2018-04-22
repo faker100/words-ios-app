@@ -29,6 +29,9 @@ typedef NS_ENUM(NSUInteger, LGEstimateResultHeaderType) {
 
 @property (weak, nonatomic) IBOutlet UILabel *sectionTitleLabel;
 
+//左边颜色竖条
+@property (weak, nonatomic) IBOutlet UIView *leftView;
+
 
 /**
  设置 header

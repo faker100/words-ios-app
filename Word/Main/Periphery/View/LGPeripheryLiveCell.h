@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LGLivePreviewCell.h"
 
-@protocol LGPeripheryLiveCellDelegate
+@protocol LGPeripheryLiveCellDelegate<NSObject>
 
 - (void)selectedModel:(LGRecentClassModel *)livePreviewModel;
 
@@ -17,7 +17,7 @@
 
 @interface LGPeripheryLiveCell : UITableViewCell <UITableViewDataSource, UITableViewDataSource>
 
-@property (nonatomic, weak) id<LGPeripheryLiveCellDelegate> delegate;
+@property (nonatomic, weak) id<LGPeripheryLiveCellDelegate, LGLivePreviewCellDelegate> delegate;
 
 @property (nonatomic, strong) NSArray<LGLivePreviewModel *> *livePreview;
 

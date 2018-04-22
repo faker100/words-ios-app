@@ -9,7 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "LGPeripheryModel.h"
 
+@protocol LGLivePreviewCellDelegate <NSObject>
+
+//预约课程
+- (void)bespeakRecentClass:(LGRecentClassModel *)classModel;
+
+@end
+
 @interface LGLivePreviewCell : UITableViewCell
+
+@property (nonatomic, weak) id<LGLivePreviewCellDelegate> delegate;
 
 @property (nonatomic, strong) LGRecentClassModel *classModel;
 

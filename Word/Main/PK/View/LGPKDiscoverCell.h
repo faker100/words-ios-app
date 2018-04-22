@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "LGPKDiscoverModel.h"
 
-@class  LGPKDiscoverDateLabel;
+
 @interface LGPKDiscoverCell : UITableViewCell
 
 @property (nonatomic, strong) LGPKDiscoverModel *discoverModel;
+
 
 //背景图
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
@@ -21,10 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *discoverTitleLabel;
 
 //名字
-@property (weak, nonatomic) IBOutlet LGPKDiscoverDateLabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
-@interface LGPKDiscoverDateLabel : UILabel
-
-@end

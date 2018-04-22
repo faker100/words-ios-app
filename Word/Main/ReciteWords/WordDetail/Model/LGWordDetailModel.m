@@ -60,6 +60,7 @@
 		dataSource.sectionTitle = @"例题入口";
 		dataSource.type = LGDataSourceQuestion;
 		[dataSource.cellContent addObject:self.question.question];
+        
 		[dataSource.cellContent addObjectsFromArray:self.question.selectItemArr];
 		[self.dataSource addObject:dataSource];
 	}

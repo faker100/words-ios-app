@@ -27,9 +27,15 @@
 }
 
 - (void)configData{
-	self.discoverNameLabel.text = self.discoverModel.name;
-	self.discoverTitleLabel.text = self.discoverModel.title;
+    self.title = self.discoverModel.title;
 	[self.discoverImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(self.discoverModel.image)]];
+    
+    __weak typeof(self) weakSelf = self;
+    [self.discoverModel.content htmlToAttributeStringContent:OPPEN_DOMAIN(@"") width:SCREEN_WIDTH completion:^(NSMutableAttributedString *attrStr) {
+        weakSelf.contentTextView.attributedText = attrStr;
+
+        [weakSelf.activityView stopAnimating];
+    }];
 }
 
 //报名

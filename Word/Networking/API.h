@@ -178,6 +178,9 @@ typedef NS_ENUM(NSUInteger, LGCourseType) {
 //获取单词详情
 #define GET_WORD_DETAILS_URL	    	@"http://words.viplgw.cn/cn/app-api/get-words-details"
 
+//继续背单词
+#define CONTINUE_RECITE_WORD_URL        @"http://words.viplgw.cn/cn/app-api/is-recite-words"
+
 //单词纠错
 #define WORD_ERROR_URL					@"http://words.viplgw.cn/cn/app-api/error-recovery"
 

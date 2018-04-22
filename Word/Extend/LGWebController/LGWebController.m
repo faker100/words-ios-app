@@ -132,28 +132,6 @@
 	
 }
 
-- (void)updateNavigationItems {
-	UIBarButtonItem *backBarButtonItem = [self valueForKey:@"navigationBackBarButtonItem"];
-	[backBarButtonItem setTitleTextAttributes:self.navigationController.navigationBar.titleTextAttributes forState:UIControlStateNormal];
-	backBarButtonItem.customView.tintColor = [UIColor whiteColor];
-	
-	UIBarButtonItem *closeBarButtonItem = [self valueForKey:@"navigationCloseBarButtonItem"];
-	[self.navigationItem setLeftBarButtonItems:nil animated:NO];
-	UIBarButtonItem *spaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-	spaceButtonItem.width = - 6.5;
-	if (self.webView.canGoBack/* || self.webView.backForwardList.backItem*/) {// Web view can go back means a lot requests exist.
-		self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-		if (self.navigationController.viewControllers.count == 1) {
-			[self.navigationItem setLeftBarButtonItems:@[spaceButtonItem, backBarButtonItem, closeBarButtonItem] animated:NO];
-		} else {
-			[self.navigationItem setLeftBarButtonItems:@[spaceButtonItem, backBarButtonItem] animated:NO];
-		}
-	} else {
-		self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-		[self.navigationItem setLeftBarButtonItems:@[spaceButtonItem, backBarButtonItem] animated:false];
-	}
-}
-
 + (instancetype)contactAdvisorWebController {
 	NSString *urlString = @"http://p.qiao.baidu.com/im/index?siteid=7905926&ucid=18329536&cp=&cr=&cw=";
 	NSMutableURLRequest *urlRequest = [[NSURLRequest requestWithURL:[NSURL URLWithString:urlString]] mutableCopy];

@@ -25,6 +25,7 @@
 			self.sectionTitleLabel.text = @"学员案例";
 			self.moreButton.hidden = NO;
 			break;
+        
 		default:
 			break;
 	}

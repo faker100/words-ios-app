@@ -12,9 +12,10 @@
 
 @property (nonatomic, copy) NSString *question;
 
-
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
+
+- (void)setQuestion:(NSString *)question completion:(void(^)(void))completion;
 
 @end

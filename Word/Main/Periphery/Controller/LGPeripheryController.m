@@ -17,8 +17,11 @@
 #import "LGCaseDetailController.h"
 #import "LGCourseListController.h"
 #import "LGPublicDetailController.h"
+#import "LGNavigationController.h"
+#import "LGWebController.h"
+#import "LGCourseDetailController.h"
 
-@interface LGPeripheryController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource ,LGPeripherySectionHeaderDelegate, LGPeripheryLiveCellDelegate>
+@interface LGPeripheryController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource ,LGPeripherySectionHeaderDelegate, LGPeripheryLiveCellDelegate, LGLivePreviewCellDelegate,LGClassicCourseCellDelegate>
 
 @property (nonatomic, strong) LGPeripheryModel *peripheryModel;
 
@@ -36,11 +39,6 @@
 
 - (void)configUI{
 	[self.tableView registerNib:[UINib nibWithNibName:@"LGPeripherySectionHeader" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGPeripherySectionHeader"];
-	__weak typeof(self) weakSelf = self;
-	[self.tableView setHeaderRefresh:^{
-		[weakSelf requestData];
-	}];
-	
 	UICollectionViewFlowLayout  *flowLayout = (UICollectionViewFlowLayout *)self.publicCollectionView.collectionViewLayout;
 	flowLayout.minimumLineSpacing = 0;
 	flowLayout.minimumInteritemSpacing = 0;
@@ -64,23 +62,16 @@
 	[super viewWillAppear:animated];
 	//隐藏会造成 navigationBar.delegate 失效
 	//[self.navigationController setNavigationBarHidden:YES];
-	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-	[self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-	[super viewWillDisappear:animated];
-
-	//[self.navigationController setNavigationBarHidden:NO];
-	[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-	[self.navigationController.navigationBar setShadowImage:nil];
+    [super viewWillDisappear:animated];
+	[self.navigationController.view bringSubviewToFront:self.navigationController.navigationBar];
 }
 
 
-
-- (void)viewDidLayoutSubviews{
-	self.tableView.contentOffset = CGPointZero;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -99,7 +90,6 @@
 /**
  顶部课程
 
- @param sender <#sender description#>
  */
 - (IBAction)tapCourse:(UITapGestureRecognizer *)sender {
 	[self performSegueWithIdentifier:@"peripheyToCourseList" sender:@(sender.view.tag - 1000)];
@@ -109,11 +99,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return 3;
+    return self.peripheryModel ? 3 : 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section == 0) {
+        return self.peripheryModel.livePreview.count == 0 ? 0 : 1;
+    }
 	if (section == 2) {
 		return self.peripheryModel.aCase.count;
 	}else{
@@ -131,6 +124,7 @@
 	}else if (indexPath.section == 1){
         LGClassicCourseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGClassicCourseCell"];
         cell.choiceness = self.peripheryModel.choiceness;
+        cell.delegate = self;
         return cell;
 	}else{
         LGPeripheryCaseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGPeripheryCaseCell"];
@@ -144,7 +138,21 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (indexPath.section == 0) {
-		return 348;
+        
+        //如果没有直播预告，隐藏
+        if (self.peripheryModel.livePreview.count == 0) {
+            return 0;
+        }else if (self.peripheryModel.livePreview.count >= 2) {
+            return 2 *140;
+        }else{
+            __block NSInteger subCount = 0;
+            [self.peripheryModel.livePreview enumerateObjectsUsingBlock:^(LGLivePreviewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                subCount += obj.data.count;
+                if (subCount >= 2) *stop = YES;
+            }];
+            return  MIN(2, subCount) * 140;
+        }
+        
     }else if (indexPath.section == 1){
         //在375屏幕下，cell高度为 320，等比例换算其他屏幕下的尺寸
         return  320.0 / 375.0 * SCREEN_WIDTH;
@@ -169,10 +177,20 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    //如果没有直播预告，隐藏
+    if (section == 0 && self.peripheryModel.livePreview.count == 0) {
+        return 0.1;
+    }
 	return 45;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    
+    //如果没有直播预告，隐藏
+    if (section == 0 && self.peripheryModel.livePreview.count == 0) {
+        return 0.1;
+    }
+    
     return 12;
 }
 
@@ -200,6 +218,7 @@
 }
 
 #pragma mark - LGPeripherySectionHeaderDelegate
+//更多
 - (void)moreWithType:(LGPeripherySectionHeaderType)type{
 	if (type == LGPeripherySectionLive) {
 		[self performSegueWithIdentifier:@"peripheryToPublicList" sender:nil];
@@ -211,8 +230,31 @@
 }
 
 #pragma mark - LGPeripheryLiveCellDelegate
+//预约直播
 - (void)selectedModel:(LGLivePreviewModel *)livePreviewModel{
 	[self performSegueWithIdentifier:@"peripheryToPublicDetail" sender:livePreviewModel];
+}
+
+#pragma mark - LGLivePreviewCellDelegate
+//预约
+- (void)bespeakRecentClass:(LGRecentClassModel *)classModel{
+    LGWebController *web = [LGWebController contactAdvisorWebController];
+    web.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:web animated:YES];
+}
+
+#pragma mark - LGClassicCourseCellDelegate
+//选择经典课程
+- (void)selectedChoiceness:(LGChoicenessModel *)choiceness{
+    
+    LGCourseModel *courseModel = [LGCourseModel new];
+    courseModel.image   = choiceness.image;
+    courseModel.url     = choiceness.url;
+    courseModel.name    = choiceness.name;
+    courseModel.view    = @"0";
+    courseModel.content = choiceness.content;
+    
+    [self performSegueWithIdentifier:@"choicenessToListen" sender:courseModel];
 }
 
 #pragma mark - Navigation
@@ -228,7 +270,10 @@
 	}else if ([segue.identifier isEqualToString:@"peripheryToPublicDetail"]){
 		LGPublicDetailController *controller = segue.destinationViewController;
 		controller.classModel = sender;
-	}
+    }else if ([segue.identifier isEqualToString:@"choicenessToListen"]){
+        LGCourseDetailController *controller = segue.destinationViewController;
+        controller.courseModel = sender;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }

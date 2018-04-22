@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
+//弧形文字父view
+@property (weak, nonatomic) IBOutlet UIView *textArcView;
+
 //水平
 @property (weak, nonatomic) IBOutlet UILabel *gradeLabel;
 

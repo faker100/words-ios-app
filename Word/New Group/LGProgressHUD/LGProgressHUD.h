@@ -16,7 +16,7 @@
 + (void)hideHUDForView:(UIView *)view;
 
 + (void)showMessage:(NSString *)message toView:(UIView *)view;
-
++ (void)showMessage:(NSString *)message toView:(UIView *)view completionBlock:(MBProgressHUDCompletionBlock) completionBlock;;
 + (void)showSuccess:(NSString *)text toView:(UIView *)view;
 + (void)showSuccess:(NSString *)text toView:(UIView *)view completionBlock:(MBProgressHUDCompletionBlock) completionBlock;
 

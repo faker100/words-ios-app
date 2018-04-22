@@ -89,6 +89,12 @@
 	[self.slider setThumbImage:[UIImage imageNamed:@"play_slider"] forState:UIControlStateNormal];
 	[self configDownloader:self.courseModel.url];
 	self.courseTitleLabel.text = self.courseModel.name;
+    __weak typeof(self) weakSelf = self;
+    [self.courseModel.content htmlToAttributeStringContent:@"" width:SCREEN_WIDTH completion:^(NSMutableAttributedString *attrStr) {
+        weakSelf.contentTextView.attributedText = attrStr;
+        
+        [weakSelf.activityView stopAnimating];
+    }];
 }
 
 - (void)configDownloader:(NSString *)vodID{

@@ -12,7 +12,7 @@
 #import "LGIndexReviewAlertView.h"
 #import "LGIndexReviewModel.h"
 #import "LGWordDetailController.h"
-
+#import "LGFinishWordTaskView.h"
 
 @interface LGRecitePlanController () <LGIndexReviewAlertViewDelegate>
 
@@ -61,14 +61,15 @@
 
 /**
  点击开始背单词,先检查本地是否已经提醒每日复习;
- 在 "只记新单词模式" 和 isReview 为 yes 时,不请求服务器
+ 暂时不需要判断( 在 "只记新单词模式" 和 isReview 为 yes 时,不请求服务器 )
  */
 - (IBAction)beginReciteWordsAction:(id)sender {
 	
-	if ([LGUserManager shareManager].user.isTodayReview || [LGUserManager shareManager].user.studyModel == LGStudyOnlyNew){
-		[self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:nil];
-		return;
-	};
+    
+//    if ([LGUserManager shareManager].user.isTodayReview || [LGUserManager shareManager].user.studyModel == LGStudyOnlyNew){
+//        [self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:nil];
+//        return;
+//    };
 	
 	__weak typeof(self) weakSelf = self;
 	[LGProgressHUD showHUDAddedTo:self.view];
@@ -85,13 +86,21 @@
 					}
 				}];
 			}else if(code == 96){
-				
+                [LGFinishWordTaskView showFinishReciteWordToView:self.view.window continueBlock:^{
+                    [LGProgressHUD showHUDAddedTo:self.view];
+                    [weakSelf.request requestIsReciteWordsCompletion:^(id response, LGError *error) {
+                        if ([weakSelf isNormal:error]) {
+                            [weakSelf performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:nil];
+                        }
+                    }];
+                } cancelBlock:nil];
 			}else{
 				[weakSelf performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:nil];
 			}
 		}
 	}];
 }
+
 
 - (void)showReviewAlertWithModel:(LGIndexReviewModel *)reviewModel{
 	if (!self.reviewAlertView) {

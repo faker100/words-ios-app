@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) LGCourseModel *courseModel;
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
