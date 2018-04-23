@@ -30,6 +30,9 @@
 		023C1E25208CD80400E05663 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 023C1E24208CD80400E05663 /* JavaScriptCore.framework */; };
 		023C1E2A208CEF2A00E05663 /* LGShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 023C1E29208CEF2A00E05663 /* LGShareView.m */; };
 		023C1E2C208CEF3400E05663 /* LGShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 023C1E2B208CEF3400E05663 /* LGShareView.xib */; };
+		023C1E2F208E292E00E05663 /* LGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 023C1E2E208E292E00E05663 /* LGView.m */; };
+		023C1E32208E344800E05663 /* UILabel+LGNightLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 023C1E31208E344800E05663 /* UILabel+LGNightLabel.m */; };
+		023C1E35208E366400E05663 /* LGTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 023C1E34208E366400E05663 /* LGTextLabel.m */; };
 		0243675F2073CB1C006FDB95 /* LGPKDiscoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */; };
 		024711B3207AA4D40016B03C /* LGPeripheryCaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 024711B2207AA4D40016B03C /* LGPeripheryCaseCell.m */; };
 		0260D51320877CAB009E446E /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0260D51220877CAB009E446E /* iflyMSC.framework */; };
@@ -288,6 +291,12 @@
 		023C1E28208CEF2A00E05663 /* LGShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGShareView.h; sourceTree = "<group>"; };
 		023C1E29208CEF2A00E05663 /* LGShareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGShareView.m; sourceTree = "<group>"; };
 		023C1E2B208CEF3400E05663 /* LGShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGShareView.xib; sourceTree = "<group>"; };
+		023C1E2D208E292E00E05663 /* LGView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGView.h; sourceTree = "<group>"; };
+		023C1E2E208E292E00E05663 /* LGView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGView.m; sourceTree = "<group>"; };
+		023C1E30208E344800E05663 /* UILabel+LGNightLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+LGNightLabel.h"; sourceTree = "<group>"; };
+		023C1E31208E344800E05663 /* UILabel+LGNightLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LGNightLabel.m"; sourceTree = "<group>"; };
+		023C1E33208E366400E05663 /* LGTextLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTextLabel.h; sourceTree = "<group>"; };
+		023C1E34208E366400E05663 /* LGTextLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTextLabel.m; sourceTree = "<group>"; };
 		0243675D2073CB1C006FDB95 /* LGPKDiscoverController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKDiscoverController.h; sourceTree = "<group>"; };
 		0243675E2073CB1C006FDB95 /* LGPKDiscoverController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKDiscoverController.m; sourceTree = "<group>"; };
 		024711B1207AA4D40016B03C /* LGPeripheryCaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPeripheryCaseCell.h; sourceTree = "<group>"; };
@@ -1180,6 +1189,8 @@
 				568C5FFE208839DF006E4F17 /* UIView+LGNightView.m */,
 				568C60002088481A006E4F17 /* LGThemeManager.h */,
 				568C60012088481A006E4F17 /* LGThemeManager.m */,
+				023C1E30208E344800E05663 /* UILabel+LGNightLabel.h */,
+				023C1E31208E344800E05663 /* UILabel+LGNightLabel.m */,
 			);
 			path = NightTheme;
 			sourceTree = "<group>";
@@ -1699,6 +1710,10 @@
 				56C9899620207C0C0095A4BD /* LGNavigationItem.m */,
 				560344F6208DB302001D76FD /* LGGuideController.h */,
 				560344F7208DB302001D76FD /* LGGuideController.m */,
+				023C1E2D208E292E00E05663 /* LGView.h */,
+				023C1E2E208E292E00E05663 /* LGView.m */,
+				023C1E33208E366400E05663 /* LGTextLabel.h */,
+				023C1E34208E366400E05663 /* LGTextLabel.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1933,6 +1948,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				023C1E35208E366400E05663 /* LGTextLabel.m in Sources */,
 				565A30F7201331E000448B1C /* UIColor+LGColor.m in Sources */,
 				56ABC9182074A9F500F328A8 /* LGDiscoverDetailController.m in Sources */,
 				56C9899720207C0C0095A4BD /* LGNavigationItem.m in Sources */,
@@ -2013,6 +2029,7 @@
 				564B3273207B4398005E7658 /* AXWebViewControllerActivitySafari.m in Sources */,
 				022FACAA20760290006F8D1C /* LGTrackPieView.m in Sources */,
 				56C9898E2020461D0095A4BD /* LGWordLibraryController.m in Sources */,
+				023C1E2F208E292E00E05663 /* LGView.m in Sources */,
 				56D3283A2079AE620041502B /* LGPeripheryController.m in Sources */,
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
 				564A6B932063521400242FC0 /* LGJPushReceiveMessageModel.m in Sources */,
@@ -2089,6 +2106,7 @@
 				568C5FFF208839DF006E4F17 /* UIView+LGNightView.m in Sources */,
 				567FDF15206C7DFF007FFFB2 /* LGClockModel.m in Sources */,
 				022FACAD20761C8E006F8D1C /* LGReportPieView.m in Sources */,
+				023C1E32208E344800E05663 /* UILabel+LGNightLabel.m in Sources */,
 				567FDF12206C7B15007FFFB2 /* LGAddClockController.m in Sources */,
 				56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */,
 				5627C9F2204D2EA90013F1CC /* LGTimeReviewController.m in Sources */,

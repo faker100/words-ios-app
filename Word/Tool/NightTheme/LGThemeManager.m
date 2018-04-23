@@ -40,7 +40,6 @@
 - (LGThemeType)currentTheme{
 	if (_currentTheme == 0) {
 		LGThemeType theme= [[NSUserDefaults standardUserDefaults] integerForKey:THEME_USERDEFAULT_KEY];
-		
 		_currentTheme = theme == LGThemeNight ? LGThemeNight : LGThemeNone;
 	}
 	return _currentTheme;

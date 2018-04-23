@@ -51,9 +51,11 @@
 	if (type == LGThemeNight)
 	{
 		[LGThemeManager shareManager].currentTheme = LGThemeDay;
+        NSLog(@"设置为白天");
 	}else
 	{
 		[LGThemeManager shareManager].currentTheme = LGThemeNight;
+        NSLog(@"设置为晚上");
 	}
 }
 
