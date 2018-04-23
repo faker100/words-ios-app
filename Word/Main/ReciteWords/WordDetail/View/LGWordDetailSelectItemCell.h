@@ -23,4 +23,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *answerLabel;
 
+- (void)setSelectedItem:(LGQuestionSelectItemModel *)selectedItem completion:(void(^)(void))completion;
+
 @end

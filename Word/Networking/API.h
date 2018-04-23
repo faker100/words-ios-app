@@ -289,7 +289,8 @@ typedef NS_ENUM(NSUInteger, LGCourseType) {
 //搜索单词
 #define SEARCH_WORD_RUL					@"http://words.viplgw.cn/cn/app-api/search-words"
 
-
+//意见反馈
+#define SUBMIT_IDEA_URL					@"http://words.viplgw.cn/cn/app-api/add-feedback"
 
 
 

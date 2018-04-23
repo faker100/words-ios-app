@@ -515,5 +515,11 @@
 - (void)requestSearchWordWithStr:(NSString *)str completion:(comletionBlock)completion;
 
 
+/**
+ 意见反馈
+
+ */
+- (void)submitIdea:(NSString *)str completion:(comletionBlock)completion;
+
 
 @end

@@ -48,7 +48,13 @@
 }
 - (IBAction)nightThemeAction:(UIButton *)sender {
 	LGThemeType type = [LGThemeManager shareManager].currentTheme;
-	[LGThemeManager shareManager].currentTheme = type == LGThemeDay ? LGThemeNight : LGThemeDay;
+	if (type == LGThemeNight)
+	{
+		[LGThemeManager shareManager].currentTheme = LGThemeDay;
+	}else
+	{
+		[LGThemeManager shareManager].currentTheme = LGThemeNight;
+	}
 }
 
 /*

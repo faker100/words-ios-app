@@ -12,8 +12,9 @@
  主题
  */
 typedef NS_ENUM(NSUInteger, LGThemeType) {
-	LGThemeDay,    //白天模式,默认
-	LGThemeNight   //夜间模式
+	LGThemeNone = 1,   //没换过主题,显示LGThemeDay
+	LGThemeDay = 2,    //白天模式,默认
+	LGThemeNight = 3   //夜间模式
 	
 };
 
@@ -32,13 +33,5 @@ typedef NS_ENUM(NSUInteger, LGThemeType) {
 
 
 + (instancetype)shareManager;
-
-/**
- 获取当前主题对应颜色,如果没有对应颜色,返回本身颜色
-
- @param color 要变化的颜色
- @return 当前主题颜色
- */
-+ (UIColor *) colorForCurrentTheme:(UIColor *)color;
 
 @end

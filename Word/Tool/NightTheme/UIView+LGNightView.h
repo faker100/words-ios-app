@@ -11,17 +11,16 @@
 @interface UIView (LGNightView)
 
 
-
-/**
- 是否自定义主题颜色
- 不受统一修改.
- */
-@property (nonatomic, assign) IBInspectable BOOL isCustomTheme;
-
-
 /**
  夜间背景颜色
  */
-@property (nonatomic, assign) IBInspectable UIColor *nightBackgroundColor;
+@property (nonatomic, assign) IBInspectable UIColor *nightBgColor;
+
+
+/**
+ 白天背景颜色
+ */
+@property (nonatomic, assign) IBInspectable UIColor *lightBgColor;
+
 
 @end

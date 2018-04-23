@@ -534,5 +534,12 @@
     [self postRequestCompletion:completion];
 }
 
+- (void)submitIdea:(NSString *)str completion:(comletionBlock)completion{
+	self.url = SUBMIT_IDEA_URL;
+	self.parameter = @{
+					   @"content" : str
+					   };
+	[self postRequestCompletion:completion];
+}
 
 @end

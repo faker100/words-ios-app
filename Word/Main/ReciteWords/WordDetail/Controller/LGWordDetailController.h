@@ -52,6 +52,9 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 //单词总共个数 (title)
 @property (nonatomic, copy) NSString *total;
 
+//今天需背多少
+@property (nonatomic, copy) NSString *todayNeedReciteNum;
+
 //遮罩层
 @property (weak, nonatomic) IBOutlet UIView *masksView;
 

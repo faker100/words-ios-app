@@ -10,7 +10,11 @@
 
 #import "LGThemeManager.h"
 
+
+
 @implementation LGThemeManager
+
+@synthesize currentTheme = _currentTheme;
 
 + (instancetype)shareManager{
 	static LGThemeManager *mannager;
@@ -22,69 +26,27 @@
 }
 
 - (void) setCurrentTheme:(LGThemeType) type{
-	
+	_currentTheme = type;
 	[[NSUserDefaults standardUserDefaults] setInteger:type forKey:THEME_USERDEFAULT_KEY];
 	[[NSNotificationCenter defaultCenter] postNotificationName:THEME_CHANGE_NOTIFICATION object:nil];
 }
 
+
+/**
+ 获取主题,如果当前值为0,表示启动后第一次获取,从本地获取一次,如果本地不为夜间模式,返回LGThemeNone
+
+ @return 主题
+ */
 - (LGThemeType)currentTheme{
-	return [[NSUserDefaults standardUserDefaults] integerForKey:THEME_USERDEFAULT_KEY];
-}
-
-+ (UIColor *) colorForCurrentTheme:(UIColor *)color{
-	
-	NSString *hexStr = [UIColor hexStringFromColor:color];
-	LGThemeManager *manager = [LGThemeManager shareManager];
-	
-	NSString *newHexStr;
-	
-	if (manager.currentTheme == LGThemeDay) {
-		newHexStr = manager.dayColorDic[hexStr];
-	}else{
-		newHexStr = manager.nightColorDic[hexStr];
+	if (_currentTheme == 0) {
+		LGThemeType theme= [[NSUserDefaults standardUserDefaults] integerForKey:THEME_USERDEFAULT_KEY];
+		
+		_currentTheme = theme == LGThemeNight ? LGThemeNight : LGThemeNone;
 	}
-	
-	if (newHexStr) {
-		return [UIColor lg_colorWithHexString:newHexStr];
-	}else{
-		return color;
-	}
+	return _currentTheme;
 }
 
 
-/**
- 白天要换的颜色
-
- @return 颜色 dic
- */
-- (NSDictionary *)dayColorDic{
-	if (!_dayColorDic) {
-		_dayColorDic = @{
-					  @"ffffff"    : @"222223",
-					  theme_Color   : theme_Color_night,
-					  title_1_Color : title_1_Color_night,
-					  title_2_Color : title_2_Color_night,
-					  };
-	}
-	return _dayColorDic;
-}
-
-
-/**
- 夜间要换的颜色, 与 dayColorDic 的 key value 相反
-
- */
-- (NSDictionary *)nightColorDic{
-	if (_nightColorDic) {
-		_nightColorDic = @{
-						   @"222223" : @"ffffff",
-						   theme_Color_night   : theme_Color,
-						   title_1_Color_night : title_1_Color,
-						   title_2_Color_night : title_2_Color
-						   };
-	}
-	return _nightColorDic;
-}
 
 
 @end

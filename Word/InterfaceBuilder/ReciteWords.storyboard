@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -148,6 +148,9 @@
                                                 <state key="normal" title="   意见反馈" image="user_center_ suggestion">
                                                     <color key="titleColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <segue destination="3G1-lM-yhg" kind="show" id="76t-7o-UdC"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ctV-KH-AyA">
                                                 <rect key="frame" x="178" y="189" width="177" height="93.5"/>
@@ -243,6 +246,77 @@
             </objects>
             <point key="canvasLocation" x="748" y="-1334.4827586206898"/>
         </scene>
+        <!--意见反馈-->
+        <scene sceneID="wIu-Sj-OYF">
+            <objects>
+                <viewController title="意见反馈" id="3G1-lM-yhg" customClass="LGIdeaController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Smr-IL-gIl"/>
+                        <viewControllerLayoutGuide type="bottom" id="EVa-V3-1od"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tci-sH-krc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CGe-lc-UlT">
+                                <rect key="frame" x="10" y="74" width="355" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="SIG-sR-Wki"/>
+                                </constraints>
+                                <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                        <color key="value" red="0.88329571485519409" green="0.87456446886062622" blue="0.87432801723480225" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="3G1-lM-yhg" id="fbE-bZ-HA8"/>
+                                </connections>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2K9-2M-6hQ">
+                                <rect key="frame" x="20" y="374" width="335" height="44"/>
+                                <color key="backgroundColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="6TR-lE-UNT"/>
+                                </constraints>
+                                <state key="normal" title="确定">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submitAction:" destination="3G1-lM-yhg" eventType="touchUpInside" id="pb9-xz-bF5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CGe-lc-UlT" firstAttribute="top" secondItem="Smr-IL-gIl" secondAttribute="bottom" constant="10" id="8l7-oK-ggV"/>
+                            <constraint firstAttribute="trailing" secondItem="2K9-2M-6hQ" secondAttribute="trailing" constant="20" id="OqL-lD-eWv"/>
+                            <constraint firstItem="2K9-2M-6hQ" firstAttribute="top" secondItem="CGe-lc-UlT" secondAttribute="bottom" constant="100" id="TfD-M1-8d7"/>
+                            <constraint firstAttribute="trailing" secondItem="CGe-lc-UlT" secondAttribute="trailing" constant="10" id="jsb-t7-S2q"/>
+                            <constraint firstItem="2K9-2M-6hQ" firstAttribute="leading" secondItem="Tci-sH-krc" secondAttribute="leading" constant="20" id="rjH-Mr-XL1"/>
+                            <constraint firstItem="CGe-lc-UlT" firstAttribute="leading" secondItem="Tci-sH-krc" secondAttribute="leading" constant="10" id="zb3-pC-raj"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="textView" destination="CGe-lc-UlT" id="OLa-Oi-R46"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2pP-60-VPT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1588" y="-3985"/>
+        </scene>
         <!--打卡签到-->
         <scene sceneID="o9r-Yp-HsF">
             <objects>
@@ -252,14 +326,14 @@
                         <viewControllerLayoutGuide type="bottom" id="pLv-vt-nsg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kPZ-kR-WvA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign_bg" translatesAutoresizingMaskIntoConstraints="NO" id="0s9-S0-4R7">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="534"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvo-Zs-0ID">
-                                <rect key="frame" x="10" y="74" width="355" height="360"/>
+                                <rect key="frame" x="10" y="30" width="355" height="360"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018年4月1日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqm-8S-ZFa">
                                         <rect key="frame" x="123.5" y="13" width="108.5" height="21"/>
@@ -367,7 +441,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pJ6-Pu-Zrh">
-                                <rect key="frame" x="10" y="454" width="355" height="60"/>
+                                <rect key="frame" x="10" y="410" width="355" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="雷豆总数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2C-v9-hrG">
                                         <rect key="frame" x="20" y="19.5" width="69.5" height="21"/>
@@ -945,7 +1019,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BE1-Qp-Gq8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2297" y="-3184"/>
+            <point key="canvasLocation" x="2329" y="-2640"/>
         </scene>
         <!--字体大小-->
         <scene sceneID="o8A-eX-oev">
@@ -1243,7 +1317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a83-U2-W4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2297" y="-4012"/>
+            <point key="canvasLocation" x="2329" y="-3566"/>
         </scene>
         <!--学习模式-->
         <scene sceneID="bWg-7H-u11">
@@ -1254,14 +1328,14 @@
                         <viewControllerLayoutGuide type="bottom" id="imB-jm-ED5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FYR-Dk-rHW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="study_model_bg" translatesAutoresizingMaskIntoConstraints="NO" id="ngd-6R-RCe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajn-79-YBx">
-                                <rect key="frame" x="49" y="255" width="277" height="44"/>
+                                <rect key="frame" x="49" y="311.5" width="277" height="44"/>
                                 <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="277" id="AWM-fO-zke"/>
@@ -1282,7 +1356,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIM-jJ-JOI">
-                                <rect key="frame" x="49" y="314" width="277" height="44"/>
+                                <rect key="frame" x="49" y="370.5" width="277" height="44"/>
                                 <color key="backgroundColor" red="0.91756963729999996" green="0.91769838329999998" blue="0.91752910610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="只背新单词 ( 快速记忆 )">
@@ -1299,7 +1373,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请 选 择 合 适 你 的 背 单 词 模 式" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqu-26-sFh">
-                                <rect key="frame" x="97.5" y="83" width="180" height="48"/>
+                                <rect key="frame" x="97.5" y="127" width="180" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="Uft-4b-bjj"/>
                                     <constraint firstAttribute="height" constant="48" id="akR-l0-N9n"/>
@@ -1309,13 +1383,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在个人中心-学习模式可更换设置模式哦~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCK-Sv-ao1">
-                                <rect key="frame" x="76.5" y="521.5" width="222" height="14.5"/>
+                                <rect key="frame" x="76.5" y="634.5" width="222" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.27058823529411763" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pws-N4-6tu">
-                                <rect key="frame" x="49" y="196" width="277" height="44"/>
+                                <rect key="frame" x="49" y="252.5" width="277" height="44"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="艾宾浩斯记忆法 ( 科学记忆 )">
@@ -2154,7 +2228,7 @@
                     <connections>
                         <outlet property="libraryTableView" destination="ddN-Hq-M3k" id="rIp-VM-wFy"/>
                         <outlet property="wordTypeTableView" destination="ytU-Hm-Tgg" id="LQi-PD-uHE"/>
-                        <segue destination="mMp-ue-roW" kind="show" identifier="WordLibraryToWordList" id="sad-Yw-hL4"/>
+                        <segue destination="mMp-ue-roW" kind="custom" identifier="WordLibraryToWordList" customClass="LGSegue" id="sad-Yw-hL4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ehj-dy-ZR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2859,7 +2933,7 @@
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                                                <real key="value" value="0.5"/>
+                                                                <real key="value" value="0.0"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="trackTintColor">
                                                                 <color key="value" red="0.93477475643157959" green="0.75796490907669067" blue="0.37356474995613098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2982,8 +3056,8 @@
                                                             <userDefinedRuntimeAttribute type="string" keyPath="lengths" value="2,1"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="222" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="dCm-r4-x8X">
-                                                        <rect key="frame" x="84" y="117" width="42" height="24"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="dCm-r4-x8X">
+                                                        <rect key="frame" x="97.5" y="117" width="15" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="9Jo-eO-FJ1"/>
                                                         </constraints>
@@ -3003,8 +3077,8 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="222" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ttM-TS-XPb">
-                                                        <rect key="frame" x="236" y="117.5" width="42" height="24"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ttM-TS-XPb">
+                                                        <rect key="frame" x="249.5" y="117" width="15" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="xW4-6k-kcv"/>
                                                         </constraints>
@@ -3027,7 +3101,7 @@
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
-                                                            <fragment content="63">
+                                                            <fragment content="0">
                                                                 <attributes>
                                                                     <color key="NSColor" red="1" green="0.77647058823529413" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <font key="NSFont" size="20" name=".SFNSText"/>
@@ -3113,8 +3187,8 @@
                                                             <segue destination="Zsk-9y-Izk" kind="show" id="VhA-bS-eLu"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天需背单词:45/456,今日需要复习40/420" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMS-PE-dgB">
-                                                        <rect key="frame" x="88" y="48" width="199.5" height="12"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今天需背单词:0/0,今日需要复习0/0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMS-PE-dgB">
+                                                        <rect key="frame" x="107.5" y="48" width="161" height="12"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="12" id="KTk-iq-tvw"/>
                                                         </constraints>
@@ -5012,11 +5086,11 @@
         <image name="youdao" width="52" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1XL-m5-7tM"/>
+        <segue reference="ejV-cN-EVt"/>
         <segue reference="KlX-L8-DQM"/>
-        <segue reference="d6X-YM-4Fn"/>
-        <segue reference="r6J-bg-Bb8"/>
-        <segue reference="nSa-WJ-PGB"/>
+        <segue reference="LvP-Fa-FPQ"/>
+        <segue reference="zSQ-aM-XvC"/>
+        <segue reference="hYn-yE-S8V"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

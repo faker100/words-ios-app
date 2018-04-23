@@ -7,6 +7,7 @@
 //
 
 #import "LGPeripheryCaseCell.h"
+#import "NSDate+Utilities.h"
 
 @implementation LGPeripheryCaseCell
 
@@ -26,6 +27,7 @@
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:caseModel.image] placeholderImage:PLACEHOLDERIMAGE];
     self.nameLabel.text = caseModel.name;
     self.contentLabel.text = caseModel.content;
+	self.timeLabel.text = [[NSDate defaultDateFormatter] stringFromDate:[NSDate dateWithTimeIntervalSince1970:caseModel.createTime]];
 }
 
 @end

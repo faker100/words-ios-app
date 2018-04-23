@@ -7,6 +7,7 @@
 //
 
 #import "LGWordDetailSelectItemCell.h"
+#import "NSString+LGString.h"
 
 @implementation LGWordDetailSelectItemCell
 
@@ -21,10 +22,25 @@
     // Configure the view for the selected state
 }
 
-- (void)setSelectedItem:(LGQuestionSelectItemModel *)selectedItem{
-    _selectedItem = selectedItem;
+- (void)setSelectedItem:(LGQuestionSelectItemModel *)selectedItem completion:(void(^)(void))completion{
+	
+	if (selectedItem == self.selectedItem) {
+		return;
+	}
+	
+    self.selectedItem = selectedItem;
     self.itemLable.text = selectedItem.name;
-    self.answerLabel.text = selectedItem.select;
+	
+	//带图片的 html
+	if ([selectedItem.select containsString:@"<img"]) {
+		[selectedItem.select htmlToAttributeStringContent:GMAT_DOMAIN(@"") width:CGRectGetWidth(self.answerLabel.bounds)  completion:^(NSMutableAttributedString *attrStr) {
+			self.answerLabel.attributedText = attrStr;
+			completion();
+		}];
+	}else{
+		self.answerLabel.text = selectedItem.select;
+	}
+
     if (selectedItem.isShowRightOrWrong) {
         self.circleView.backgroundColor = selectedItem.isRightAnswer ? [UIColor lg_colorWithType:LGColor_theme_Color] : [UIColor lg_colorWithType:LGColor_pk_red];
     }else{

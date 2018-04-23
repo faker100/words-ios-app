@@ -62,6 +62,11 @@
 
 //替换完整图片地址
 - (NSString *)replaceImageUrl:(NSString *)imageUrlStr  htmlStr:(NSString *)htmlStr{
+	
+	if (imageUrlStr.length == 0) {
+		return htmlStr;
+	}
+	
 	NSString *returnStr = htmlStr;
 	NSString *regexString = @"<img.*?\\ssrc=\".*?\"";
 	NSRegularExpression *reqular = [NSRegularExpression regularExpressionWithPattern:regexString options:NSRegularExpressionDotMatchesLineSeparators error:nil];
@@ -86,6 +91,7 @@
 - (void)htmlToAttributeStringContent:(NSString *)imageUrl width:(CGFloat)contentWidth completion:(void (^)(NSMutableAttributedString *))completion{
 	
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		
 		NSString *str  = [self replaceImageUrl:imageUrl htmlStr:self ];
 		str = [str replaceParagraphSpace];
 		

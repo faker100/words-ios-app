@@ -230,6 +230,7 @@
 		}else{
 			controller.controllerType  = LGWordDetailReciteWords;
 			controller.total = self.reciteWordModel.userPackage.planWords;
+			controller.todayNeedReciteNum = self.reciteWordModel.userPackage.planWords;
 		}
 	}
 	// Get the new view controller using [segue destinationViewController].

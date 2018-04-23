@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -339,9 +339,13 @@
                                                 <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pL-nl-3Wv">
-                                                <rect key="frame" x="304" y="5" width="46" height="30"/>
-                                                <state key="normal" title="Button"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pL-nl-3Wv">
+                                                <rect key="frame" x="321" y="-2" width="44" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="C1K-zH-fxD"/>
+                                                    <constraint firstAttribute="width" constant="44" id="yj8-yY-bPv"/>
+                                                </constraints>
+                                                <state key="normal" image="select_month"/>
                                                 <connections>
                                                     <segue destination="UBf-ZN-sJD" kind="show" identifier="reportToSelectTime" id="cAx-SY-cEY"/>
                                                 </connections>
@@ -425,7 +429,7 @@
                                             <constraint firstAttribute="height" constant="390" id="Ia4-DQ-ZNg"/>
                                             <constraint firstItem="CAC-d8-bIJ" firstAttribute="leading" secondItem="9Oy-Gc-9Es" secondAttribute="leading" id="Ip0-QL-aNj"/>
                                             <constraint firstAttribute="trailing" secondItem="sD5-ob-K9o" secondAttribute="trailing" constant="20" id="Jii-gi-Z9N"/>
-                                            <constraint firstAttribute="trailing" secondItem="2pL-nl-3Wv" secondAttribute="trailing" constant="25" id="KgP-ic-c6W"/>
+                                            <constraint firstAttribute="trailing" secondItem="2pL-nl-3Wv" secondAttribute="trailing" constant="10" id="KgP-ic-c6W"/>
                                             <constraint firstItem="lO7-e5-AxB" firstAttribute="centerX" secondItem="yiz-6U-ElP" secondAttribute="centerX" id="Mm8-6x-4FQ"/>
                                             <constraint firstItem="zC2-NR-i1e" firstAttribute="centerY" secondItem="QfS-PT-ojO" secondAttribute="centerY" id="Qhh-RW-mLu"/>
                                             <constraint firstItem="CAC-d8-bIJ" firstAttribute="top" secondItem="sD5-ob-K9o" secondAttribute="bottom" constant="20" id="SDz-Mn-7cC"/>
@@ -841,7 +845,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1N-M1-IUk" customClass="LGDottedLineView">
-                                                    <rect key="frame" x="0.0" y="61" width="375" height="1"/>
+                                                    <rect key="frame" x="0.0" y="62" width="375" height="1"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="tX0-Rb-6DR"/>
@@ -1704,6 +1708,7 @@
         <image name="report_player" width="28" height="22"/>
         <image name="report_rank" width="46" height="38"/>
         <image name="report_total_day" width="120" height="44"/>
+        <image name="select_month" width="19" height="19"/>
         <image name="share" width="20" height="23"/>
         <image name="tabbar_wordreport" width="14" height="16"/>
         <image name="tabbar_wordreport_selected" width="14" height="16"/>

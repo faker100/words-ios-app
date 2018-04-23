@@ -56,6 +56,7 @@
 		[self.tableView lg_endRefreshing];
 		if ([self isNormal:error]) {
 			NSMutableArray *temp = [LGEstimateRankModel mj_objectArrayWithKeyValuesArray:response[@"rank"]];
+			self.rankLabel.text = [NSString stringWithFormat:@"%@",response[@"data"][@"rank"]];
 			if (self.tableView.currentPage == 1) {
 				[self.rankArray setArray:temp];
 				[self.tableView reloadData];

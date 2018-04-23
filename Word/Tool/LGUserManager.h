@@ -11,13 +11,12 @@
 #import "LGClockModel.h"
 
 #define UserDefaultKey  @"userKey"
-
+#define IS_FISRT		@"IS_FISRT"
 
 @interface LGUserManager : NSObject
 
 @property (nonatomic, strong) LGUserModel *user;
-
-
+@property (nonatomic, assign) BOOL isFirstLaunch; //第一次是否启动,显示引导页
 
 + (instancetype)shareManager;
 

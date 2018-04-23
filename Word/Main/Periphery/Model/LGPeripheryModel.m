@@ -121,8 +121,15 @@
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName{
 	return @{
-			 @"courseType" : @"categoryId"
+			 @"courseType" : @"categoryId",
+			 @"ID" : @"id"
 			 };
+}
+
+- (NSString *)viewNum{
+	NSDate *date = [[NSDate defaultDateFormatter] dateFromString:@"2018-4-23"];
+	NSInteger distance = [date distanceInDaysToDate:[NSDate currentDate]];
+	return @(distance * (50 - self.ID.integerValue) +  234).stringValue;
 }
 
 @end

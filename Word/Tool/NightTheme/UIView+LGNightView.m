@@ -11,43 +11,51 @@
 
 @implementation UIView (LGNightView)
 
-//+ (void)load{
-//	method_exchangeImplementations(class_getInstanceMethod(self, @selector(setBackgroundColor:)),class_getInstanceMethod(self, @selector(lg_setBackgroundColor:)));
-//}
++ (void)load{
+	method_exchangeImplementations(class_getInstanceMethod(self, @selector(setBackgroundColor:)),class_getInstanceMethod(self, @selector(lg_setBackgroundColor:)));
+}
 
 - (void)lg_setBackgroundColor:(UIColor *)color{
 	
-
-	if (CGColorEqualToColor(color.CGColor, [UIColor lg_colorWithType:LGColor_theme_Color].CGColor)) {
-		NSLog(@"%@",[LGThemeManager colorForCurrentTheme:color]);
-	}
+	LGThemeType themType = [LGThemeManager shareManager].currentTheme;
 	
-	//[self lg_setBackgroundColor:[UIColor blueColor]];
-	return;
+	NSLog(@"夜间颜色%@",self.nightBgColor);
 	
-	if (self.isCustomTheme) {
-		[self lg_setBackgroundColor:self.nightBackgroundColor];
-	}else{
-		[self lg_setBackgroundColor:[LGThemeManager colorForCurrentTheme:color]];
+	if (themType == LGThemeDay && self.lightBgColor)
+	{
+		[self lg_setBackgroundColor:self.lightBgColor];
+	
+	}else if (themType == LGThemeNight && self.nightBgColor)
+	{
+		[self lg_setBackgroundColor:self.nightBgColor];
+	
+	}else
+	{
+		[self lg_setBackgroundColor:color];
 	}
 }
 
-- (BOOL)isCustomTheme{
-	NSNumber *page = objc_getAssociatedObject(self, _cmd);
-	return page.integerValue == 1;
-}
-
-- (void)setIsCustomTheme:(BOOL)isCustomTheme {
-	objc_setAssociatedObject(self, @selector(isCustomTheme), @(isCustomTheme), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-
-- (UIColor *)nightBackgroundColor{
+- (UIColor *)nightBgColor{
+	NSLog(@"获取夜间模式颜色:%@,%@",self.class,objc_getAssociatedObject(self, _cmd));
 	return  objc_getAssociatedObject(self, _cmd);
 }
 
-- (void)setNightBackgroundColor:(UIColor *)nightBackgroundColor{
-	objc_setAssociatedObject(self, @selector(nightBackgroundColor), nightBackgroundColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setNightBgColor:(UIColor *)nightBackgroundColor{
+	
+	objc_setAssociatedObject(self, @selector(nightBgColor), nightBackgroundColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+	NSLog(@"设置夜间模式颜色:%@,%@",self.class,[self nightBgColor]);
+}
+
+- (UIColor *)lightBgColor{
+	NSLog(@"获取白天模式颜色:%@,%@",self.class,objc_getAssociatedObject(self, _cmd));
+	return  objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setLightBgColor:(UIColor *)lightBgColor{
+	
+	objc_setAssociatedObject(self, @selector(lightBgColor), lightBgColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+	
+	NSLog(@"设置夜间模式颜色:%@,%@",self.class,[self lightBgColor]);
 }
 
 @end

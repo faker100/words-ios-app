@@ -71,6 +71,9 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *url;
 
+//自定义字段,多少人已加入(当前日期 - 2018-4-23号 ) * 50-id + 234
+@property (nonatomic, copy) NSString *viewNum;
+
 @end
 
 @interface LGCaseModel : NSObject
@@ -78,6 +81,9 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *image;
 @property (nonatomic, copy) NSString *content;
+@property (nonatomic, assign) NSInteger createTime;
+@property (nonatomic, copy) NSString *details;
+
 @end
 
 

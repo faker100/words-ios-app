@@ -8,6 +8,8 @@
 
 #import "LGTabBarViewController.h"
 #import "LGTool.h"
+#import "LGGuideController.h"
+#import "LGUserManager.h"
 
 @interface LGTabBarViewController ()
 {
@@ -35,6 +37,8 @@
 	
 	//跳转登录,( 服务器返回未登录的时候 )
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLogin:) name:SHOW_LOGIN_NOTIFICATION object:nil];
+	
+	[self showGuideController];
 }
 
 //配置 tabbaritem
@@ -74,6 +78,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+//显示引导页
+- (void)showGuideController{
+	if ([LGUserManager shareManager].isFirstLaunch) {
+		LGGuideController *guideController = STORYBOARD_VIEWCONTROLLER(@"Main", @"LGGuideController");
+		[self addChildViewController:guideController];
+		[self.view addSubview:guideController.view];
+	}
+}
 
 /*
 #pragma mark - Navigation

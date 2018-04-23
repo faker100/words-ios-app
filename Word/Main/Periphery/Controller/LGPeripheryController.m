@@ -34,7 +34,6 @@
     // Do any additional setup after loading the view.
 	
 	[self configUI];
-	[self requestData];
 }
 
 - (void)configUI{
@@ -47,6 +46,11 @@
 	
 	//tableHeaderView 高度相应变化, 375宽度的屏幕下,tableheader高度是400,公开课 colletion 高度为90
 	self.tableView.tableHeaderView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 400 + (flowLayout.itemSize.height - 90));
+	
+	__weak typeof(self) weakSelf = self;
+	[self.tableView setHeaderRefresh:^{
+		[weakSelf requestData];
+	}];
 }
 
 - (void)requestData{
@@ -60,6 +64,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
+	[self requestData];
 	//隐藏会造成 navigationBar.delegate 失效
 	//[self.navigationController setNavigationBarHidden:YES];
     [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
@@ -81,6 +86,8 @@
 #pragma mark -
 - (void)setPeripheryModel:(LGPeripheryModel *)peripheryModel{
 	_peripheryModel = peripheryModel;
+	
+	
 	[self.publicCollectionView reloadData];
 	[self.tableView reloadData];
 }
@@ -251,7 +258,7 @@
     courseModel.image   = choiceness.image;
     courseModel.url     = choiceness.url;
     courseModel.name    = choiceness.name;
-    courseModel.view    = @"0";
+    courseModel.view    = choiceness.viewNum;
     courseModel.content = choiceness.content;
     
     [self performSegueWithIdentifier:@"choicenessToListen" sender:courseModel];

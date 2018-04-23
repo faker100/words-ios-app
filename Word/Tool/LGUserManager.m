@@ -86,4 +86,12 @@
 	return [[NSUserDefaults standardUserDefaults] objectForKey:PASSWORD_KEY];
 }
 
+- (BOOL)isFirstLaunch{
+	return  ![[NSUserDefaults standardUserDefaults] boolForKey:IS_FISRT];
+}
+
+- (void)setIsFirstLaunch:(BOOL)isFirstLaunch{
+	[[NSUserDefaults standardUserDefaults] setBool:isFirstLaunch forKey:IS_FISRT];
+}
+
 @end

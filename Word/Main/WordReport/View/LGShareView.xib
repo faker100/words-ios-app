@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -74,7 +74,7 @@
                                         <constraint firstAttribute="width" constant="38" id="6IY-Nc-WMH"/>
                                         <constraint firstAttribute="height" constant="38" id="7dN-zc-Fxw"/>
                                     </constraints>
-                                    <state key="normal" image="share_wx"/>
+                                    <state key="normal" image="share_wx_friend"/>
                                     <connections>
                                         <action selector="platformAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="lXD-sO-ay8"/>
                                     </connections>
@@ -203,6 +203,7 @@
     <resources>
         <image name="share_QQ" width="38" height="38"/>
         <image name="share_wx" width="38" height="38"/>
+        <image name="share_wx_friend" width="38" height="38"/>
         <image name="share_zone" width="38" height="38"/>
     </resources>
 </document>

@@ -39,8 +39,13 @@
 		dataSource.sectionTitle = @"短句";
 		dataSource.type = LGDataSourceText;
 		[self.lowSentence enumerateObjectsUsingBlock:^(LGSentenceModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+			
 			NSString *str = [NSString stringWithFormat:@"%@\n%@",obj.english,obj.chinese];
 			[dataSource.cellContent addObject:str];
+			//最多三个
+			if (idx == 2) {
+				*stop = YES;
+			}
 		}];
 		[self.dataSource addObject:dataSource];
 	}
@@ -49,8 +54,16 @@
 		dataSource.sectionTitle = @"例句";
 		dataSource.type = LGDataSourceText;
 		[self.sentence enumerateObjectsUsingBlock:^(LGSentenceModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+			
 			NSString *str = [NSString stringWithFormat:@"%@\n%@",obj.english,obj.chinese];
+			//替换掉 <vocab>标签
+			str = [str stringByReplacingOccurrencesOfString:@"<vocab>" withString:@""];
+			str = [str stringByReplacingOccurrencesOfString:@"</vocab>" withString:@""];
 			[dataSource.cellContent addObject:str];
+			//最多三个
+			if (idx == 2) {
+				*stop = YES;
+			}
 		}];
 		[self.dataSource addObject:dataSource];
 	}

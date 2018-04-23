@@ -8,6 +8,7 @@
 
 #import "LGPKResultController.h"
 #import "LGPKResultModel.h"
+#import "LGTool.h"
 
 @interface LGPKResultController ()
 
@@ -86,7 +87,8 @@
 
 //分享
 - (IBAction)shareAction:(id)sender {
-	
+	UIImage *image = [LGTool screenshotFromView:self.view.window];
+	[self shareTitle:@"" text:@"" image:image url:nil type:SSDKContentTypeImage];
 }
 
 

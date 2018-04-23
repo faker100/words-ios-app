@@ -8,6 +8,8 @@
 
 #import "LGCaseDetailController.h"
 #import "LGNavigationController.h"
+#import "NSDate+Utilities.h"
+
 @interface LGCaseDetailController ()
 
 @end
@@ -20,6 +22,12 @@
 	[self.headImageView sd_setImageWithURL:[NSURL URLWithString:self.caseModel.image] placeholderImage:PLACEHOLDERIMAGE];
 	self.nameLabel.text = self.caseModel.name;
 	self.contentTextView.text = self.caseModel.content;
+	self.timeLabel.text = [[NSDate defaultDateFormatter] stringFromDate:[NSDate dateWithTimeIntervalSince1970:self.caseModel.createTime]];
+	__weak typeof(self) weakSelf = self;
+	[self.caseModel.details htmlToAttributeStringContent:@"" width:SCREEN_WIDTH - 40 completion:^(NSMutableAttributedString *attrStr) {
+		weakSelf.contentTextView.text = @"";
+		weakSelf.contentTextView.attributedText = attrStr;
+	}];
 }
 
 - (void)didReceiveMemoryWarning {

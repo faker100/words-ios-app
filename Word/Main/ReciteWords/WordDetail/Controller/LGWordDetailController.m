@@ -184,6 +184,9 @@
     [LGProgressHUD showHUDAddedTo:self.view];
     [self.request requestIsReciteWordsCompletion:^(id response, LGError *error) {
         if ([self isNormal:error]) {
+			//把当前序号+1,避免重复判断背完
+			NSInteger nextIndx = self.currentNum.integerValue + 1 ;
+			self.currentNum = @(nextIndx).stringValue;
             [self pushNextWordDetailController:LGWordDetailReciteWords animated:YES];
         }
     }];
@@ -297,6 +300,10 @@
 				[self.ebbinghausReviewWordIdArray addObject:wordID];
 			}
 			LGWordDetailControllerType tempType = ArrayNotEmpty(self.ebbinghausReviewWordIdArray) ? LGWordDetailEbbinghausReview : LGWordDetailReciteWords;
+			//艾宾浩斯完成后, title 总数显示为今日需背单词数
+			if (tempType == LGWordDetailReciteWords) {
+				self.total = self.todayNeedReciteNum;
+			}
 			[self pushNextWordDetailController:tempType  animated:YES];
 		}
 	}];
@@ -335,6 +342,7 @@
 /**
  跳转到下一个 WordDetailController
  当当前进度(currentNum) 等于 总进度(total)时,显示完成任务提醒框
+ 如果当前进度 (currentNum) 大于 总进度(total)时,表示继续背单词
  @param type  下一个 controller 的模式
  @param animated 是否跳转动画
  */
@@ -353,7 +361,7 @@
 	}else{
 		LGWordDetailController *wordDetailController = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGWordDetailController");
 		wordDetailController.controllerType = type;
-        
+		wordDetailController.todayNeedReciteNum = self.todayNeedReciteNum;
 		wordDetailController.total = self.total;
 		wordDetailController.reviewWordIdArray = self.reviewWordIdArray;
 		wordDetailController.ebbinghausReviewWordIdArray = self.ebbinghausReviewWordIdArray;
@@ -405,7 +413,10 @@
 			return cell;
 		}else{
 			LGWordDetailSelectItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailSelectItemCell"];
-            cell.selectedItem = dataSource.cellContent[indexPath.row];
+           
+			[cell setSelectedItem:dataSource.cellContent[indexPath.row] completion:^{
+				 [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+			}];
 			return cell;
 		}
 	}else{
