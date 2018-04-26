@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-//切换学习方法成功,发送通知
-//#define ChangeTypeNotification  @"ChangeTypeNotification"
-//#define StudyTypeKey			@"StudyTypeKey"
 
 @interface LGStudyTypeController : UIViewController
+
+
+/**
+ 是否从引导页过来的
+ */
+@property(nonatomic, assign) BOOL isPresentFromGuide;
 
 //艾宾浩斯记忆法
 @property (weak, nonatomic) IBOutlet UIButton *ebbinghausButton;

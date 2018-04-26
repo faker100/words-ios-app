@@ -40,9 +40,15 @@
 	}
 }
 
+- (void)setNotLoggedStudyType:(LGStudyType)notLoggedStudyType{
+	[[NSUserDefaults standardUserDefaults]setInteger:notLoggedStudyType forKey:notLogged];
+}
+
+- (LGStudyType)notLoggedStudyType{
+	return [[NSUserDefaults standardUserDefaults] integerForKey:notLogged];
+}
 
 - (BOOL)isLogin{
-	
 	return self.user && StringNotEmpty(self.user.uid);
 }
 

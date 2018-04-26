@@ -9,6 +9,9 @@
 #import "UIViewController+LGViewController.h"
 #import <objc/runtime.h>
 #import "LGShareView.h"
+#import "LGAlertMessageView.h"
+
+#define MESSAGE_ALERT_TAG  9999
 
 @implementation UIViewController (LGViewController)
 
@@ -57,6 +60,24 @@
     };
     shareView.frame =  self.view.window.bounds;
     [self.view.window addSubview:shareView];
+}
+
+-(void)showAlertMessage:(NSString *)message{
+	
+	[self removeAlertMessage];
+	
+	LGAlertMessageView *alertMessageView = [[NSBundle mainBundle]loadNibNamed:@"LGAlertMessageView" owner:nil options:nil].firstObject;
+	alertMessageView.messageLabel.text = message;
+	alertMessageView.frame = self.view.bounds;
+	alertMessageView.tag = MESSAGE_ALERT_TAG;
+	[self.view addSubview:alertMessageView];
+}
+
+-(void)removeAlertMessage{
+	UIView *view = [self.view viewWithTag:MESSAGE_ALERT_TAG];
+	if (view) {
+		[view removeFromSuperview];
+	}
 }
 
 @end

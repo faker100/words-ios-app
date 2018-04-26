@@ -222,6 +222,8 @@
 		56D3284E207A15430041502B /* LGLivePreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D3284D207A15430041502B /* LGLivePreviewCell.m */; };
 		56E2538F204D00B7006D9B56 /* LGFinishWordTaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E2538E204D00B7006D9B56 /* LGFinishWordTaskView.m */; };
 		56E25391204D00C6006D9B56 /* LGFinishWordTaskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E25390204D00C6006D9B56 /* LGFinishWordTaskView.xib */; };
+		56E9F8172091806900FEECAE /* LGAlertMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E9F8162091806900FEECAE /* LGAlertMessageView.m */; };
+		56E9F8192091807100FEECAE /* LGAlertMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E9F8182091807100FEECAE /* LGAlertMessageView.xib */; };
 		56EAD86220197F2D0059604E /* LGFindPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56EAD86120197F2D0059604E /* LGFindPasswordController.m */; };
 		56EAD8642019C09A0059604E /* ReciteWords.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EAD8632019C09A0059604E /* ReciteWords.storyboard */; };
 		56EAD8662019C0EB0059604E /* WordReport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EAD8652019C0EB0059604E /* WordReport.storyboard */; };
@@ -651,6 +653,9 @@
 		56E2538D204D00B7006D9B56 /* LGFinishWordTaskView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGFinishWordTaskView.h; sourceTree = "<group>"; };
 		56E2538E204D00B7006D9B56 /* LGFinishWordTaskView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGFinishWordTaskView.m; sourceTree = "<group>"; };
 		56E25390204D00C6006D9B56 /* LGFinishWordTaskView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGFinishWordTaskView.xib; sourceTree = "<group>"; };
+		56E9F8152091806900FEECAE /* LGAlertMessageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGAlertMessageView.h; sourceTree = "<group>"; };
+		56E9F8162091806900FEECAE /* LGAlertMessageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGAlertMessageView.m; sourceTree = "<group>"; };
+		56E9F8182091807100FEECAE /* LGAlertMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGAlertMessageView.xib; sourceTree = "<group>"; };
 		56EAD86020197F2D0059604E /* LGFindPasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGFindPasswordController.h; sourceTree = "<group>"; };
 		56EAD86120197F2D0059604E /* LGFindPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGFindPasswordController.m; sourceTree = "<group>"; };
 		56EAD8632019C09A0059604E /* ReciteWords.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReciteWords.storyboard; sourceTree = "<group>"; };
@@ -1714,6 +1719,9 @@
 				023C1E2E208E292E00E05663 /* LGView.m */,
 				023C1E33208E366400E05663 /* LGTextLabel.h */,
 				023C1E34208E366400E05663 /* LGTextLabel.m */,
+				56E9F8152091806900FEECAE /* LGAlertMessageView.h */,
+				56E9F8162091806900FEECAE /* LGAlertMessageView.m */,
+				56E9F8182091807100FEECAE /* LGAlertMessageView.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1866,6 +1874,7 @@
 				56A88841200CA53400847BE6 /* Main.storyboard in Resources */,
 				56994EA520493A1F005648F6 /* LGReviewWrongCollectionReusableView.xib in Resources */,
 				023C1E14208CD6EB00E05663 /* README.txt in Resources */,
+				56E9F8192091807100FEECAE /* LGAlertMessageView.xib in Resources */,
 				56C6469B204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2022,6 +2031,7 @@
 				56ABC9152074A0B200F328A8 /* LGPKDiscoverModel.m in Sources */,
 				5612BFAE202161E50038D653 /* UIScrollView+LGRefresh.m in Sources */,
 				5688DE5F207395FC001608CB /* LGEstimateRankModel.m in Sources */,
+				56E9F8172091806900FEECAE /* LGAlertMessageView.m in Sources */,
 				56B7AADF202BFAEB00BDECED /* LGWordDetailCell.m in Sources */,
 				567D2786206B75C700EEB79E /* LGFontSizeController.m in Sources */,
 				56C9899120204F7C0095A4BD /* LGWordLibraryTypeCell.m in Sources */,

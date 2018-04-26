@@ -94,7 +94,10 @@
 
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
-	[self configData];
+	if ([LGUserManager shareManager].isLogin) {
+		[self configData];
+	}
+	
 }
 
 - (void)configLeftItem {

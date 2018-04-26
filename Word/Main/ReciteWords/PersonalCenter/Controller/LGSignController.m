@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	[self requestData];
+	[self requestData:nil];
 	//默认先不能打卡
 	self.currentLabel.text = [[NSDate currentDate] stringWithFormat:@"yyyy年MM月dd日"];
 	[self setSignButtonEnable:NO];
@@ -45,10 +45,13 @@
 	flowLayout.itemSize = CGSizeMake(width, height);
 }
 
-- (void)requestData{
+- (void)requestData:(void (^)(void))finish{
 	[self.request requestUserSignCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			self.signModel = [LGSignModel mj_objectWithKeyValues:response];
+			if (finish) {
+				finish();
+			}
 		}
 	}];
 }
@@ -122,12 +125,16 @@
 
 //打卡
 - (IBAction)signAction:(id)sender {
-	[self setSignButtonEnable:NO];
+//	[self setSignButtonEnable:NO];
 	[LGProgressHUD showHUDAddedTo:self.view];
+	__weak typeof(self) weakSelf = self;
 	[self.request reqeustSignCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			[self requestData];
-			[LGProgressHUD showSuccess:@"打卡成功" toView:self.view];
+			NSString *num = [NSString stringWithFormat:@"%@",response[@"num"]];
+			NSString *alerString = [NSString stringWithFormat:@"签到成功,+%@雷豆",num];
+			[weakSelf requestData:^{
+				[LGProgressHUD showSuccess:alerString toView:weakSelf.view];
+			}];
 		}else{
 			[self setSignButtonEnable:YES];
 		}

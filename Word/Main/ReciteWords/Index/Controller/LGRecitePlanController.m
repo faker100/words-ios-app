@@ -51,17 +51,10 @@
 }
 
 /**
- 打卡
- */
-- (IBAction)clockAction:(UIButton *)sender {
-	
-}
-
-
-
-/**
  点击开始背单词,先检查本地是否已经提醒每日复习;
- 暂时不需要判断( 在 "只记新单词模式" 和 isReview 为 yes 时,不请求服务器 )
+ 
+   暂时不需要判断( 在 "只记新单词模式" 和 isReview 为 yes 时,不请求服务器 ) 
+
  */
 - (IBAction)beginReciteWordsAction:(id)sender {
 	

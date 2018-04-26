@@ -12,11 +12,17 @@
 
 #define UserDefaultKey  @"userKey"
 #define IS_FISRT		@"IS_FISRT"
+#define notLogged		@"notLogged"
 
 @interface LGUserManager : NSObject
 
 @property (nonatomic, strong) LGUserModel *user;
 @property (nonatomic, assign) BOOL isFirstLaunch; //第一次是否启动,显示引导页
+
+/**
+ 引导页过后选的的学习模式...登录后检测并上传,上传完后,设置为LGStudyNone
+ */
+@property (nonatomic, assign) LGStudyType notLoggedStudyType;
 
 + (instancetype)shareManager;
 

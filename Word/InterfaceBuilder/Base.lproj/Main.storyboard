@@ -27,7 +27,7 @@
         <!--Guide Controller-->
         <scene sceneID="6qo-yC-Ix7">
             <objects>
-                <viewController storyboardIdentifier="LGGuideController" id="S50-0F-oGq" customClass="LGGuideController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LGGuideController" automaticallyAdjustsScrollViewInsets="NO" id="S50-0F-oGq" customClass="LGGuideController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eh4-xS-Kcf"/>
                         <viewControllerLayoutGuide type="bottom" id="ym0-NY-Cun"/>
@@ -36,20 +36,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ra-qh-tYB">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="2ra-qh-tYB">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_1" translatesAutoresizingMaskIntoConstraints="NO" id="1fG-AK-loq">
+                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_1" translatesAutoresizingMaskIntoConstraints="NO" id="1fG-AK-loq">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Fyr-NQ-gNs" appends="YES" id="gLD-w3-Col"/>
+                                        </connections>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_2" translatesAutoresizingMaskIntoConstraints="NO" id="WC4-hY-bk2">
+                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_2" translatesAutoresizingMaskIntoConstraints="NO" id="WC4-hY-bk2">
                                         <rect key="frame" x="375" y="0.0" width="375" height="667"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="ts9-Es-Egp" appends="YES" id="nu9-d6-fUg"/>
+                                        </connections>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_3" translatesAutoresizingMaskIntoConstraints="NO" id="y2r-q2-nZD">
+                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_3" translatesAutoresizingMaskIntoConstraints="NO" id="NYc-bf-atG">
                                         <rect key="frame" x="750" y="0.0" width="375" height="667"/>
-                                    </imageView>
-                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_4" translatesAutoresizingMaskIntoConstraints="NO" id="NYc-bf-atG">
-                                        <rect key="frame" x="1125" y="0.0" width="375" height="667"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="Kmd-jD-dlu" appends="YES" id="j7i-98-bKM"/>
@@ -57,20 +62,16 @@
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="y2r-q2-nZD" firstAttribute="centerY" secondItem="1fG-AK-loq" secondAttribute="centerY" id="2eL-KI-hxW"/>
                                     <constraint firstItem="1fG-AK-loq" firstAttribute="leading" secondItem="2ra-qh-tYB" secondAttribute="leading" id="3qo-r6-YYm"/>
                                     <constraint firstItem="WC4-hY-bk2" firstAttribute="centerY" secondItem="1fG-AK-loq" secondAttribute="centerY" id="4Hu-sI-1Pa"/>
-                                    <constraint firstItem="y2r-q2-nZD" firstAttribute="height" secondItem="1fG-AK-loq" secondAttribute="height" id="6wv-ef-z1s"/>
                                     <constraint firstItem="WC4-hY-bk2" firstAttribute="leading" secondItem="1fG-AK-loq" secondAttribute="trailing" id="B9w-KL-G2w"/>
-                                    <constraint firstItem="NYc-bf-atG" firstAttribute="leading" secondItem="y2r-q2-nZD" secondAttribute="trailing" id="BR4-BL-ne8"/>
                                     <constraint firstItem="WC4-hY-bk2" firstAttribute="width" secondItem="1fG-AK-loq" secondAttribute="width" id="GYs-LH-JdS"/>
                                     <constraint firstAttribute="trailing" secondItem="NYc-bf-atG" secondAttribute="trailing" id="MaN-CI-AOl"/>
-                                    <constraint firstItem="y2r-q2-nZD" firstAttribute="leading" secondItem="WC4-hY-bk2" secondAttribute="trailing" id="Ubp-9f-cCQ"/>
-                                    <constraint firstItem="y2r-q2-nZD" firstAttribute="width" secondItem="1fG-AK-loq" secondAttribute="width" id="XyW-dj-UwB"/>
                                     <constraint firstItem="NYc-bf-atG" firstAttribute="width" secondItem="1fG-AK-loq" secondAttribute="width" id="dnx-uW-dX6"/>
                                     <constraint firstItem="NYc-bf-atG" firstAttribute="centerY" secondItem="1fG-AK-loq" secondAttribute="centerY" id="f1h-BR-B0m"/>
                                     <constraint firstItem="NYc-bf-atG" firstAttribute="height" secondItem="1fG-AK-loq" secondAttribute="height" id="ifT-m0-huy"/>
                                     <constraint firstItem="WC4-hY-bk2" firstAttribute="height" secondItem="1fG-AK-loq" secondAttribute="height" id="sk8-2m-2pz"/>
+                                    <constraint firstItem="NYc-bf-atG" firstAttribute="leading" secondItem="WC4-hY-bk2" secondAttribute="trailing" id="smX-XQ-kSi"/>
                                     <constraint firstItem="1fG-AK-loq" firstAttribute="top" secondItem="2ra-qh-tYB" secondAttribute="top" id="uUx-UC-qGT"/>
                                     <constraint firstAttribute="bottom" secondItem="1fG-AK-loq" secondAttribute="bottom" id="zoZ-qm-Bng"/>
                                 </constraints>
@@ -86,11 +87,24 @@
                             <constraint firstItem="2ra-qh-tYB" firstAttribute="leading" secondItem="zYw-dU-Oe9" secondAttribute="leading" id="ql3-8W-fFj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="2ra-qh-tYB" id="8AX-Qe-14U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W3j-oE-iRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Kmd-jD-dlu">
                     <connections>
                         <action selector="tapAction:" destination="S50-0F-oGq" id="Gth-yz-PPs"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Fyr-NQ-gNs">
+                    <connections>
+                        <action selector="nextAction:" destination="S50-0F-oGq" id="WlH-Or-81g"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="ts9-Es-Egp">
+                    <connections>
+                        <action selector="nextAction:" destination="S50-0F-oGq" id="kcy-EA-Krs"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -101,6 +115,5 @@
         <image name="guide_1" width="750" height="1334"/>
         <image name="guide_2" width="750" height="1334"/>
         <image name="guide_3" width="750" height="1334"/>
-        <image name="guide_4" width="750" height="1334"/>
     </resources>
 </document>

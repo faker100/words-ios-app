@@ -1322,7 +1322,7 @@
         <!--学习模式-->
         <scene sceneID="bWg-7H-u11">
             <objects>
-                <viewController title="学习模式" hidesBottomBarWhenPushed="YES" id="OlH-Q6-WeJ" customClass="LGStudyTypeController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LGStudyTypeController" title="学习模式" hidesBottomBarWhenPushed="YES" id="OlH-Q6-WeJ" customClass="LGStudyTypeController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="h1T-N0-FUs"/>
                         <viewControllerLayoutGuide type="bottom" id="imB-jm-ED5"/>
@@ -3130,7 +3130,7 @@
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EM8-vg-PG6" customClass="LGView">
+                                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EM8-vg-PG6" customClass="LGView">
                                                         <rect key="frame" x="58" y="75" width="240" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <subviews>

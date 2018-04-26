@@ -41,6 +41,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+	if (self.clockArray.count == 0) {
+		[self showAlertMessage:@"还未添加闹钟，请点击右上角+号添加"];
+	}else{
+		[self removeAlertMessage];
+	}
 	return self.clockArray.count;
 }
 

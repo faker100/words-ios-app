@@ -101,6 +101,8 @@
 		/***************************  section 1  ***************************/
 		
 		NSMutableArray *section_2 = [NSMutableArray array];
+		
+		/* 暂时不要
 		for (int i = 0; i < 3; i++) {
 			
 			LGSettingModel *model = [LGSettingModel new];
@@ -124,7 +126,7 @@
 			}
 			[section_2 addObject:model];
 		}
-		
+		*/
 		/***************************  section 2  ***************************/
 		
 		NSMutableArray *section_3 = [NSMutableArray array];
@@ -162,7 +164,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-	return self.section_Array.count;
+	return self.section_Array.count; //4个 section ,第二个 section 信息已隐藏
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -181,9 +183,9 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
 	
-	if (section == 0 || section == 1) {
+	if (section == 0) {
 		LGSettingHeaderView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"LGSettingHeaderView"];
-		headerView.titleLabel.text = section == 0 ? @"个人信息" : @"关于我们";
+		headerView.titleLabel.text = @"个人信息";
 		return headerView;
 	}else{
 		return nil;
@@ -191,9 +193,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-	if (section == 0 || section == 1) {
+	if (section == 0) {
 		return 44;
+	}else if(section == 1){
+		return 0.1; // 隐藏 section 2
 	}else{
+		
 		return 14;
 	}
 }

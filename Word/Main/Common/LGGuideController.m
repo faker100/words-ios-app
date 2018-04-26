@@ -25,11 +25,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+//消失引导页
 - (IBAction)tapAction:(id)sender {
 	[LGUserManager shareManager].isFirstLaunch = YES;
+	[self.delegate finishGuide];
 	[self.view removeFromSuperview];
 	[self removeFromParentViewController];
 }
+
+//下一页
+- (IBAction)nextAction:(UITapGestureRecognizer *)sender {
+	UIView *view = sender.view;
+	[self.scrollView setContentOffset:CGPointMake(CGRectGetMaxX(view.frame), 0) animated:YES];
+}
+
 
 
 /*

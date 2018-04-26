@@ -78,12 +78,32 @@
             LGUserModel *model = [LGUserModel mj_objectWithKeyValues:response];
             [LGUserManager shareManager].user = model;
 			[JPUSHService setAlias:[NSString stringWithFormat:@"lgw%@",model.uid] completion:nil seq:0];
-            [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_NOTIFICATION object:nil];
-            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+			[self updateStudyType:^{
+				[[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_NOTIFICATION object:nil];
+				[self.navigationController dismissViewControllerAnimated:YES completion:nil];
+			}];
         }
 	}];
 }
 
+
+/**
+ 更新本地存储的学习模式,更新成功后把本地的改为 LGStudyNone
+ */
+- (void)updateStudyType:(void (^)(void))finishBlock{
+	 LGStudyType type = [LGUserManager shareManager].notLoggedStudyType;
+	[LGProgressHUD showHUDAddedTo:self.view];
+	if (type != LGStudyNone) {
+		[self.request updateStudyType:type completion:^(id response, LGError *error) {
+			if ([self isNormal:error]) {
+				[LGUserManager shareManager].notLoggedStudyType = LGStudyNone;
+			}
+			finishBlock();
+		}];
+	}else{
+		finishBlock();
+	}
+}
 
 /*
 #pragma mark - Navigation

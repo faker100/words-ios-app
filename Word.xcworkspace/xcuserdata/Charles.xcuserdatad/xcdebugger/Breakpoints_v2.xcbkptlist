@@ -67,45 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Word/Tool/NightTheme/UIView+LGNightView.m"
-            timestampString = "546170211.30474"
+            filePath = "Word/Main/Login/Controller/LGLoginController.m"
+            timestampString = "546430390.984936"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-setNightBgColor:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Word/Tool/NightTheme/UIView+LGNightView.m"
-            timestampString = "546170211.305107"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "-setLightBgColor:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Word/Tool/NightTheme/UIView+LGNightView.m"
-            timestampString = "546170211.30537"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-nightBgColor"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-loginAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

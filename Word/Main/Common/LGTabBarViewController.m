@@ -10,8 +10,9 @@
 #import "LGTool.h"
 #import "LGGuideController.h"
 #import "LGUserManager.h"
+#import "LGStudyTypeController.h"
 
-@interface LGTabBarViewController ()
+@interface LGTabBarViewController ()<LGGuideControllerDelegate>
 {
 	/*
 	 * 登录界面,为了避免多次跳转,当loginNavigationController为 nil 时候才跳转
@@ -80,11 +81,20 @@
 
 //显示引导页
 - (void)showGuideController{
-	if ([LGUserManager shareManager].isFirstLaunch) {
+	if (![LGUserManager shareManager].isFirstLaunch) {
 		LGGuideController *guideController = STORYBOARD_VIEWCONTROLLER(@"Main", @"LGGuideController");
+		guideController.delegate = self;
 		[self addChildViewController:guideController];
 		[self.view addSubview:guideController.view];
 	}
+}
+
+#pragma mark - LGGuideControllerDelegate
+//引导页消失后弹出学习模式
+- (void)finishGuide{
+	LGStudyTypeController *controller = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGStudyTypeController");
+	controller.isPresentFromGuide = YES;
+	[self presentViewController:controller animated:YES completion:nil];
 }
 
 /*

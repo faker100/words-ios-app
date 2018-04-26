@@ -39,4 +39,18 @@
  */
 - (void)shareTitle:(NSString *)title text:(NSString *)text image:(id)image url:(NSString *)url type:(SSDKContentType)type;
 
+
+/**
+ controller 没有数据时,展示提示信息
+
+ @param message 提示信息
+ */
+-(void)showAlertMessage:(NSString *)message;
+
+
+/**
+ 移除提示信息 view
+ */
+-(void)removeAlertMessage;
+
 @end

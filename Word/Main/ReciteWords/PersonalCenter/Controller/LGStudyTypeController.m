@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	self.selectedType =  MAX(1, [LGUserManager shareManager].user.studyModel) ;
+//	self.selectedType =  MAX(1, [LGUserManager shareManager].user.studyModel) ;
 }
 
 - (void)setSelectedType:(LGStudyType)selectedType{
@@ -59,10 +59,21 @@
 		if (sender == self.reviewButton) 	 self.selectedType = LGStudyReview;
 		if (sender == self.onlyNewButton) 	 self.selectedType = LGStudyOnlyNew;
 	}
+	
+	if (self.isPresentFromGuide) {
+		[LGUserManager shareManager].notLoggedStudyType = self.selectedType;
+		[self dismissViewControllerAnimated:YES completion:nil];
+	}
 }
 
 //提交学习模式
 - (IBAction)updateStudyAction:(id)sender {
+	
+	if (self.selectedType == LGStudyNone) {
+		[LGProgressHUD showMessage:@"请选择学习模式" toView: self.view];
+		return;
+	}
+	
 	if ([LGUserManager shareManager].user.studyModel == self.selectedType) {
 		[LGProgressHUD showMessage:@"学习模式不能和以前一样" toView:self.view];
 		return;
