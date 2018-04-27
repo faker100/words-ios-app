@@ -1,0 +1,136 @@
+//
+//  LGAddPlanController.m
+//  Word
+//
+//  Created by Charles Cao on 2018/4/27.
+//  Copyright © 2018年 Charles. All rights reserved.
+//
+
+#import "LGAddPlanController.h"
+#import "LGPlanTableViewCell.h"
+
+@interface LGAddPlanController ()<UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, assign) NSInteger planDay;    //计划天数
+@property (nonatomic, assign) NSInteger planWords;  //计划个数
+
+@end
+
+@implementation LGAddPlanController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+	[self configUserInterface];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)configUserInterface{
+	self.packageLabel.text = self.libModel.name;
+	
+}
+
+
+#pragma mark -UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return self.libModel.total.integerValue;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	LGPlanTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGPlanTableViewCell"];
+	cell.num = tableView == self.dayTable ? indexPath.row + 1 : [tableView numberOfRowsInSection:0] - indexPath.row;
+	return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	LGPlanTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+	[self setPlanWithType:((LGPlanTableView *)tableView).planType value:cell.num isFixOther:YES];
+}
+
+#pragma mark -
+/**
+ 设置选择的计划
+ 
+ @param type 计划类型
+ @param value 选择计划的值
+ @param flag 是否根据当前选择计划(天数/个数),修改另一个计划(个数/天数)
+ */
+- (void)setPlanWithType:(LGChoosePlanType)type value:(NSInteger)value isFixOther:(BOOL)flag{
+	
+	value = MAX(value, 1);
+	if (type == LGChooseDayPlan) {
+		self.dayLabel.text = [NSString stringWithFormat:@"%ld天",value];
+		self.selectedPlan.planDay = @(value).stringValue;
+		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:value - 1 inSection:0];
+		
+		[self.dayTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+		
+		
+		if (flag) {
+			NSInteger otherValue = ceil(self.selectedPlan.surplusWord * 1.0 / value);
+			[self setPlanWithType:LGChooseNumPlan value:otherValue isFixOther:NO];
+		}
+	}else{
+		self.numberLabel.text = [NSString stringWithFormat:@"%ld个",value];
+		self.selectedPlan.planWords = @(value).stringValue;
+		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.selectedPlan.surplusWord - value inSection:0];
+		
+		[self.numberTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+		
+		
+		if (flag) {
+			NSInteger otherValue = ceil(self.selectedPlan.surplusWord * 1.0 / value);
+			[self setPlanWithType:LGChooseDayPlan value:otherValue isFixOther:NO];
+		}
+	}
+}
+
+/**
+ 滑动最近或者选中cell到中间高亮区域
+ 判断高亮区域的中心点在哪个cell中
+ */
+- (void)scrollSelectCellToMiddleOfTable:(LGPlanTableView *)tableView{
+	CGPoint selectedViewCenter = CGPointMake(0, CGRectGetMidY(tableView.selectedCellBackgroundView.bounds));
+	CGPoint convertPoint = [tableView.selectedCellBackgroundView convertPoint:selectedViewCenter toView:tableView];
+	NSIndexPath *indexPath = [tableView indexPathForRowAtPoint:convertPoint];
+	if (indexPath) {
+		NSInteger value = ((LGPlanTableViewCell *)[tableView cellForRowAtIndexPath:indexPath]).num;
+		[self setPlanWithType:tableView.planType value:value isFixOther:YES];
+	}
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	if ([scrollView isKindOfClass:[LGPlanTableView class]] && !decelerate) {
+		[self scrollSelectCellToMiddleOfTable:(LGPlanTableView *)scrollView];
+	}
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+	if ([scrollView isKindOfClass:[LGPlanTableView class]]) {
+		[self scrollSelectCellToMiddleOfTable:(LGPlanTableView *)scrollView];
+	}
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

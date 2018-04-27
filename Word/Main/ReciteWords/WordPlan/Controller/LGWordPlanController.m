@@ -7,7 +7,6 @@
 //
 
 #import "LGWordPlanController.h"
-#import "UIScrollView+LGRefresh.h"
 #import "LGPlanTableViewCell.h"
 #import "LGWordPlanCollectionCell.h"
 #import "LGDeletePlanAlertView.h"
@@ -35,7 +34,6 @@
     if (isShowLoading) [LGProgressHUD showHUDAddedTo:self.view];
     __weak typeof(self) weakSelf = self;
     [self.request requestUserPlan:^(id response, LGError *error) {
-        [weakSelf.scrollView lg_endRefreshing];
         if ([weakSelf isNormal:error]) {
             weakSelf.planArray = [LGPlanModel mj_objectArrayWithKeyValuesArray:response[@"package"]];
             [weakSelf.collectionView reloadData];
@@ -44,7 +42,6 @@
         }
     }];
 }
-
 
 /**
  编辑词包
@@ -270,27 +267,6 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 	
 	self.selectedPlan = self.planArray[indexPath.row];
-}
-
-@end
-
-@implementation LGPlanTableView
-
-//布局完，设置中间高亮区域
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    if (self.backgroundView && self.selectedCellBackgroundView) {
-        return;
-    }
-    self.tableFooterView = [UIView new];
-    CGFloat edge = (self.frame.size.height - self.rowHeight) / 2.0f;
-    self.contentInset = UIEdgeInsetsMake(edge, 0, edge, 0);
-    self.backgroundView = [[UIView alloc]init];
-    self.selectedCellBackgroundView = [[UIView alloc]init];
-    //设置居中
-    self.selectedCellBackgroundView.frame = CGRectMake(0, self.frame.size.height/2.0 - self.rowHeight / 2.0 , self.frame.size.width, self.rowHeight);
-    self.selectedCellBackgroundView.backgroundColor = [UIColor lg_colorWithHexString:@"e7e5e5"];
-    [self.backgroundView addSubview:self.selectedCellBackgroundView];
 }
 
 @end

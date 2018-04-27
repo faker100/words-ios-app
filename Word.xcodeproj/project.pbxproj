@@ -82,6 +82,8 @@
 		562FC13F202992DE005CEA83 /* LGRecitePlanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 562FC13E202992DE005CEA83 /* LGRecitePlanController.m */; };
 		56317B72201C1D6800AEC20B /* LGUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56317B71201C1D6800AEC20B /* LGUserManager.m */; };
 		563259EE201AC609007FF4D6 /* LGTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 563259ED201AC609007FF4D6 /* LGTool.m */; };
+		563445F12092C31B005C11A4 /* LGAddPlanController.m in Sources */ = {isa = PBXBuildFile; fileRef = 563445F02092C31B005C11A4 /* LGAddPlanController.m */; };
+		563445F42092C548005C11A4 /* LGPlanTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 563445F32092C548005C11A4 /* LGPlanTableView.m */; };
 		56388634207C48AC00C05E01 /* LGSignController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56388633207C48AC00C05E01 /* LGSignController.m */; };
 		56388637207C4AA200C05E01 /* LGSignCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56388636207C4AA200C05E01 /* LGSignCollectionCell.m */; };
 		5638863A207C557300C05E01 /* LGSignModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56388639207C557300C05E01 /* LGSignModel.m */; };
@@ -389,6 +391,10 @@
 		56317B71201C1D6800AEC20B /* LGUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGUserManager.m; sourceTree = "<group>"; };
 		563259EC201AC609007FF4D6 /* LGTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGTool.h; sourceTree = "<group>"; };
 		563259ED201AC609007FF4D6 /* LGTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGTool.m; sourceTree = "<group>"; };
+		563445EF2092C31B005C11A4 /* LGAddPlanController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGAddPlanController.h; sourceTree = "<group>"; };
+		563445F02092C31B005C11A4 /* LGAddPlanController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGAddPlanController.m; sourceTree = "<group>"; };
+		563445F22092C548005C11A4 /* LGPlanTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPlanTableView.h; sourceTree = "<group>"; };
+		563445F32092C548005C11A4 /* LGPlanTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPlanTableView.m; sourceTree = "<group>"; };
 		56388632207C48AC00C05E01 /* LGSignController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSignController.h; sourceTree = "<group>"; };
 		56388633207C48AC00C05E01 /* LGSignController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGSignController.m; sourceTree = "<group>"; };
 		56388635207C4AA200C05E01 /* LGSignCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSignCollectionCell.h; sourceTree = "<group>"; };
@@ -1517,6 +1523,8 @@
 				56C9898D2020461D0095A4BD /* LGWordLibraryController.m */,
 				0235DB982022147200E52A3F /* LGFreeLibraryWordListController.h */,
 				0235DB992022147200E52A3F /* LGFreeLibraryWordListController.m */,
+				563445EF2092C31B005C11A4 /* LGAddPlanController.h */,
+				563445F02092C31B005C11A4 /* LGAddPlanController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1537,6 +1545,8 @@
 				56FD20D42028256F003A6154 /* LGDeletePlanAlertView.h */,
 				56FD20D52028256F003A6154 /* LGDeletePlanAlertView.m */,
 				56FD20D72028257D003A6154 /* LGDeletePlanAlertView.xib */,
+				563445F22092C548005C11A4 /* LGPlanTableView.h */,
+				563445F32092C548005C11A4 /* LGPlanTableView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2044,6 +2054,7 @@
 				56AF60D22011E5FE0067BD7B /* LGLoginController.m in Sources */,
 				564A6B932063521400242FC0 /* LGJPushReceiveMessageModel.m in Sources */,
 				56C64699204E43AB00E895B3 /* LGTimeReivewCountAlertView.m in Sources */,
+				563445F42092C548005C11A4 /* LGPlanTableView.m in Sources */,
 				56ABC90C2074633100F328A8 /* LGReportController.m in Sources */,
 				56994EA420493A1F005648F6 /* LGReviewWrongCollectionReusableView.m in Sources */,
 				567A3AD4203FB72F00A41692 /* LGWordErrorViewController.m in Sources */,
@@ -2052,6 +2063,7 @@
 				56D328432079FCAF0041502B /* LGPublicCourseCollectionCell.m in Sources */,
 				56994E9A20492BC3005648F6 /* LGReviewController.m in Sources */,
 				5673C92B206B42F4000C21DE /* LGUpdateNicknameController.m in Sources */,
+				563445F12092C31B005C11A4 /* LGAddPlanController.m in Sources */,
 				02D6E3CD208366E600EE7F98 /* LGSearchModel.m in Sources */,
 				56973644204FF54800169C8A /* LGDictationAnswerItemCollectionCell.m in Sources */,
 				56224FCC20454F020093BC7A /* LGIndexReviewModel.m in Sources */,

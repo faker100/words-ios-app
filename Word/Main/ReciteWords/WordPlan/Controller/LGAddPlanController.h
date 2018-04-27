@@ -1,24 +1,27 @@
 //
-//  LGWordPlanController.h
+//  LGAddPlanController.h
 //  Word
 //
-//  Created by Charles Cao on 2018/1/30.
+//  Created by Charles Cao on 2018/4/27.
 //  Copyright © 2018年 Charles. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "LGPlanTableView.h"
+#import "LGPlanModel.h"
+#import "LGWordLibraryModel.h"
 
-@interface LGWordPlanController : UIViewController
+@interface LGAddPlanController : UIViewController
 
-//之前为了下拉刷新
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) LGPlanModel *selectedPlan;
 
-//编辑按钮
-@property (weak, nonatomic) IBOutlet UIButton *editButton;
+@property (nonatomic, strong) LGChildWordLibraryModel *libModel;
 
-//词包列表
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+//包名
+@property (weak, nonatomic) IBOutlet UILabel *packageLabel;
+
+//计划 label
+@property (weak, nonatomic) IBOutlet UILabel *planLabel;
 
 //选择天数
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
@@ -33,5 +36,3 @@
 @property (weak, nonatomic) IBOutlet LGPlanTableView *numberTable;
 
 @end
-
-

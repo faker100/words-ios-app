@@ -81,7 +81,7 @@
 
 //显示引导页
 - (void)showGuideController{
-	if (![LGUserManager shareManager].isFirstLaunch) {
+	if ([LGUserManager shareManager].isFirstLaunch) {
 		LGGuideController *guideController = STORYBOARD_VIEWCONTROLLER(@"Main", @"LGGuideController");
 		guideController.delegate = self;
 		[self addChildViewController:guideController];

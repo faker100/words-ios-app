@@ -10,6 +10,7 @@
 #import "UITableView+LGRefresh.h"
 #import "LGFreeWordListCell.h"
 #import "LGPlayer.h"
+#import "LGAddPlanController.h"
 
 @interface LGFreeLibraryWordListController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -24,12 +25,14 @@
     // Do any additional setup after loading the view.
     [self configUserInterface];
     [self requestData:YES];
+	
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (void)configUserInterface{
 	
 	self.modelArray = [NSMutableArray array];
@@ -118,14 +121,17 @@
 	}];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"wordslistToPlan"]) {
+		LGAddPlanController *controller = [segue destinationViewController];
+		controller.libModel = self.wordLibraryModel;
+	}
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
 
 @end
