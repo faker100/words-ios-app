@@ -30,10 +30,38 @@
 }
 
 - (void)configUserInterface{
-	self.packageLabel.text = self.libModel.name;
+	self.packageLabel.text = [NSString stringWithFormat:@"%@ (%@个词)",self.libModel.name, self.libModel.total] ;
+	
+	//初始化计划选择
+	[self setPlanWithType:LGChooseDayPlan value:1 isFixOther:YES];
 	
 }
 
+- (void)setPlanDay:(NSInteger)planDay{
+	_planDay = planDay;
+	[self updatePlanAttributeText];
+}
+
+- (void)setPlanWords:(NSInteger)planWords{
+	_planWords = planWords;
+	[self updatePlanAttributeText];
+}
+
+//更新计划文字
+- (void)updatePlanAttributeText{
+	NSString *str = [NSString stringWithFormat:@"我计划  %ld  天,每天背  %ld  个单词",self.planDay,self.planWords];
+	NSRange planDayRnage = [str rangeOfString:[NSString stringWithFormat:@"  %ld  ",self.planDay]];
+	NSRange planWordsRnage = [str rangeOfString:[NSString stringWithFormat:@"  %ld  ",self.planWords]];
+	
+	NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:str];
+	[attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange(0, attStr.length)];
+	[attStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_Title_2_Color] range:NSMakeRange(0, attStr.length)];
+	[attStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_Title_1_Color] range:planDayRnage];
+	[attStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:planDayRnage];
+	[attStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_Title_1_Color] range:planWordsRnage];
+	[attStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:planWordsRnage];
+	self.planLabel.attributedText = attStr;
+}
 
 #pragma mark -UITableViewDataSource
 
@@ -69,26 +97,26 @@
 	value = MAX(value, 1);
 	if (type == LGChooseDayPlan) {
 		self.dayLabel.text = [NSString stringWithFormat:@"%ld天",value];
-		self.selectedPlan.planDay = @(value).stringValue;
+		self.planDay = value;
 		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:value - 1 inSection:0];
 		
 		[self.dayTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
 		
 		
 		if (flag) {
-			NSInteger otherValue = ceil(self.selectedPlan.surplusWord * 1.0 / value);
+			NSInteger otherValue = ceil(self.libModel.total.floatValue / value);
 			[self setPlanWithType:LGChooseNumPlan value:otherValue isFixOther:NO];
 		}
 	}else{
 		self.numberLabel.text = [NSString stringWithFormat:@"%ld个",value];
-		self.selectedPlan.planWords = @(value).stringValue;
-		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.selectedPlan.surplusWord - value inSection:0];
+		self.planWords = value;
+		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.libModel.total.floatValue - value inSection:0];
 		
 		[self.numberTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
 		
 		
 		if (flag) {
-			NSInteger otherValue = ceil(self.selectedPlan.surplusWord * 1.0 / value);
+			NSInteger otherValue = ceil(self.libModel.total.floatValue * 1.0 / value);
 			[self setPlanWithType:LGChooseDayPlan value:otherValue isFixOther:NO];
 		}
 	}

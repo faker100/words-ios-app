@@ -13,8 +13,6 @@
 
 @interface LGAddPlanController : UIViewController
 
-@property (nonatomic, strong) LGPlanModel *selectedPlan;
-
 @property (nonatomic, strong) LGChildWordLibraryModel *libModel;
 
 //包名

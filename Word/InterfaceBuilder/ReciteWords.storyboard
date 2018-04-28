@@ -5229,10 +5229,10 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XoA-sV-JpF">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tm5-tY-Uf0">
-                                                        <rect key="frame" x="183" y="24" width="48" height="24"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Tm5-tY-Uf0">
+                                                        <rect key="frame" x="0.0" y="24" width="414" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EmK-w4-B5c" customClass="我计划___天背____个单词">
@@ -5252,6 +5252,8 @@
                                                     <constraint firstItem="Tm5-tY-Uf0" firstAttribute="centerX" secondItem="XoA-sV-JpF" secondAttribute="centerX" id="2No-7I-xdq"/>
                                                     <constraint firstAttribute="bottom" secondItem="sXu-52-YDx" secondAttribute="bottom" constant="20" id="39H-Wo-7rw"/>
                                                     <constraint firstAttribute="height" constant="110" id="8mn-91-dPO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Tm5-tY-Uf0" secondAttribute="trailing" id="DQ2-Av-Z2n"/>
+                                                    <constraint firstItem="Tm5-tY-Uf0" firstAttribute="leading" secondItem="XoA-sV-JpF" secondAttribute="leading" id="JyZ-km-kHE"/>
                                                     <constraint firstAttribute="bottom" secondItem="EmK-w4-B5c" secondAttribute="bottom" constant="18" id="OfV-SG-W18"/>
                                                     <constraint firstItem="EmK-w4-B5c" firstAttribute="centerX" secondItem="XoA-sV-JpF" secondAttribute="centerX" id="bSK-vK-HmF"/>
                                                     <constraint firstItem="Tm5-tY-Uf0" firstAttribute="top" secondItem="XoA-sV-JpF" secondAttribute="top" constant="24" id="s2U-2d-xkv"/>
