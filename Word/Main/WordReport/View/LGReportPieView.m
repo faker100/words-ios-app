@@ -11,20 +11,6 @@
 @implementation LGReportPieView
 
 - (void)setWeekReportModel:(LGWeekReportModel *)weekReportModel{
-    _weekReportModel = weekReportModel;
-    UILabel *totalLabel = [self viewWithTag:100];
-    
-    NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"总量\n%@",weekReportModel.all]];
-    [attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:17] range:NSMakeRange(0, attStr.length)];
-    [attStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_Title_1_Color] range:NSMakeRange(0, attStr.length)];
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
-    [paragraphStyle setLineSpacing:4];
-    [attStr addAttribute:NSParagraphStyleAttributeName
-                          value:paragraphStyle
-                          range:NSMakeRange(0, attStr.length)];
-    paragraphStyle.alignment = NSTextAlignmentCenter;
-    totalLabel.attributedText = attStr;
-    
     [self setNeedsDisplay];
 }
 

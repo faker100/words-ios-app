@@ -144,12 +144,25 @@
 	}
 }
 
-- (void)addWordLibrary:(NSString *)libraryId completion:(comletionBlock)completion {
-	self.url = ADD_WORD_LIBRARY_URL;
-	self.parameter = @{
-					   @"packageId" : libraryId
-					   };
-	[self postRequestCompletion:completion];
+- (void)addWordLibrary:(NSString *)libraryId planDay:(NSInteger)planDay planWord:(NSInteger)planWord completion:(comletionBlock)completion{
+    self.url = ADD_WORD_LIBRARY_URL;
+    self.parameter = @{
+                       @"packageId" : libraryId,
+                       @"planDay" : @(planDay),
+                       @"planWord" : @(planWord)
+                       };
+    [self postRequestCompletion:completion];
+}
+
+- (void)updateNowPackage:(NSString *)catID completion:(comletionBlock)completion{
+    if (self.task) {
+        [self.task cancel];
+    }
+    self.url = UPDATE_NOW_PACKAGE;
+    self.parameter = @{
+                       @"catId" : catID
+                       };
+    [self postRequestCompletion:completion];
 }
 
 - (void)deleteWordLibrary:(NSString *)libraryId completion:(comletionBlock)completion{

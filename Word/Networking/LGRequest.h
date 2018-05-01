@@ -157,10 +157,19 @@
 /**
  添加词包
 
- @param libraryId 词包 id
+ @param libraryId 词包id
+ @param planDay 计划天数
+ @param planWord 计划个数
  */
-- (void)addWordLibrary:(NSString *)libraryId completion:(comletionBlock)completion;
+- (void)addWordLibrary:(NSString *)libraryId planDay:(NSInteger)planDay planWord:(NSInteger)planWord completion:(comletionBlock)completion;
 
+
+
+/**
+ 修改当前进行中词包
+ @param catID 词包id
+ */
+- (void)updateNowPackage:(NSString *)catID completion:(comletionBlock)completion;
 
 
 /**

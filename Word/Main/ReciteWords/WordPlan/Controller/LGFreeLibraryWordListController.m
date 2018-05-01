@@ -60,16 +60,6 @@
 //开始背单词
 - (IBAction)reciteWordsAction:(id)sender {
 	
-	[LGProgressHUD showHUDAddedTo:self.view];
-	__weak typeof(self) weakSelf = self;
-	[self.request addWordLibrary:self.wordLibraryModel.ID completion:^(id response, LGError *error) {
-        
-		if ([weakSelf isNormal:error]) {
-			[LGProgressHUD showSuccess:@"添加成功" toView:weakSelf.view completionBlock:^{
-				[weakSelf.navigationController popViewControllerAnimated:YES];
-			}];
-		}
-	}];
 }
 
 //请求单词列表

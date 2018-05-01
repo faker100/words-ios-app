@@ -96,6 +96,7 @@
     [self.dayTable reloadData];
     [self.numberTable reloadData];
 	if (selectedPlan) {
+        [self updateNowPackage:selectedPlan.ID];
 		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.planArray indexOfObject:selectedPlan] inSection:0];
 		[self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
 		[self setPlanWithType:LGChooseDayPlan value:_selectedPlan.planDay.integerValue isFixOther:YES];
@@ -103,6 +104,14 @@
 		self.dayLabel.text = @"0天";
 		self.numberLabel.text = @"0天";
 	}
+}
+
+- (void)updateNowPackage:(NSString *)catID{
+    [self.request updateNowPackage:catID completion:^(id response, LGError *error) {
+        if ([self isNormal:error]) {
+            
+        }
+    }];
 }
 
 #pragma mark -UITableViewDataSource
@@ -229,6 +238,14 @@
     }
 }
 
+#pragma mark - UICollectionViewDelegate
+
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    self.selectedPlan = self.planArray[indexPath.row];
+}
+
 #pragma mark - LGWordPlanCollectionCellDelegate
 
 
@@ -263,11 +280,7 @@
 	[window addSubview:deletePlanAlertView];
 }
 
-#pragma mark - UICollectionViewDelegate
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-	
-	self.selectedPlan = self.planArray[indexPath.row];
-}
+
 
 @end
 

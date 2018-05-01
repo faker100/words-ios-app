@@ -21,7 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	[self configUserInterface];
+	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,12 +29,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [self configUserInterface];
+}
+
 - (void)configUserInterface{
 	self.packageLabel.text = [NSString stringWithFormat:@"%@ (%@个词)",self.libModel.name, self.libModel.total] ;
 	
 	//初始化计划选择
-	[self setPlanWithType:LGChooseDayPlan value:1 isFixOther:YES];
-	
+	[self setPlanWithType:LGChooseDayPlan value:5 isFixOther:YES];
 }
 
 - (void)setPlanDay:(NSInteger)planDay{
@@ -62,6 +65,19 @@
 	[attStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:planWordsRnage];
 	self.planLabel.attributedText = attStr;
 }
+
+- (IBAction)addPlanAction:(UIButton *)sender {
+    [LGProgressHUD showHUDAddedTo:self.view];
+    __weak typeof(self) weakSelf = self;
+    [self.request addWordLibrary:self.libModel.ID planDay:self.planDay planWord:self.planWords  completion:^(id response, LGError *error) {
+        if ([weakSelf isNormal:error]) {
+            [LGProgressHUD showSuccess:@"添加成功" toView:weakSelf.view completionBlock:^{
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            }];
+        }
+    }];
+}
+
 
 #pragma mark -UITableViewDataSource
 
