@@ -133,6 +133,7 @@
                 }];
 			}else if (code == 96){
 				//今日已完成
+                [self performSegueWithIdentifier:@"wordDetailToShare" sender:nil];
 				[self showIsContinue];
 			}
 		}

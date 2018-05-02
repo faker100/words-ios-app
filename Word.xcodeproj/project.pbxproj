@@ -46,6 +46,7 @@
 		02D6E3CD208366E600EE7F98 /* LGSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D6E3CC208366E600EE7F98 /* LGSearchModel.m */; };
 		02D6E3D020839BFE00EE7F98 /* LGCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D6E3CF20839BFE00EE7F98 /* LGCameraManager.m */; };
 		02D6E3D32083A00600EE7F98 /* LGImageSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02D6E3D22083A00600EE7F98 /* LGImageSearchController.m */; };
+		02EA576B209A124A001B4733 /* LGWordDetailShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02EA576A209A124A001B4733 /* LGWordDetailShareController.m */; };
 		02F123592070D575001A851B /* LGBeginEstimateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F123582070D575001A851B /* LGBeginEstimateController.m */; };
 		02F1236220712906001A851B /* LGEstimateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F1236120712906001A851B /* LGEstimateController.m */; };
 		02F78A092029E54A0011096F /* LGReciteWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F78A082029E54A0011096F /* LGReciteWordModel.m */; };
@@ -325,6 +326,8 @@
 		02D6E3CF20839BFE00EE7F98 /* LGCameraManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGCameraManager.m; sourceTree = "<group>"; };
 		02D6E3D12083A00600EE7F98 /* LGImageSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGImageSearchController.h; sourceTree = "<group>"; };
 		02D6E3D22083A00600EE7F98 /* LGImageSearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGImageSearchController.m; sourceTree = "<group>"; };
+		02EA5769209A124A001B4733 /* LGWordDetailShareController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGWordDetailShareController.h; sourceTree = "<group>"; };
+		02EA576A209A124A001B4733 /* LGWordDetailShareController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGWordDetailShareController.m; sourceTree = "<group>"; };
 		02F123572070D575001A851B /* LGBeginEstimateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGBeginEstimateController.h; sourceTree = "<group>"; };
 		02F123582070D575001A851B /* LGBeginEstimateController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGBeginEstimateController.m; sourceTree = "<group>"; };
 		02F1236020712906001A851B /* LGEstimateController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGEstimateController.h; sourceTree = "<group>"; };
@@ -1189,6 +1192,8 @@
 				56801492202AE1FB0082D72F /* LGWordDetailController.m */,
 				567A3AD2203FB72F00A41692 /* LGWordErrorViewController.h */,
 				567A3AD3203FB72F00A41692 /* LGWordErrorViewController.m */,
+				02EA5769209A124A001B4733 /* LGWordDetailShareController.h */,
+				02EA576A209A124A001B4733 /* LGWordDetailShareController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2113,6 +2118,7 @@
 				56BBBFBF205622060057BDF2 /* LGPersonalCell.m in Sources */,
 				56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */,
 				564B324A207B0E6A005E7658 /* LGCourseModel.m in Sources */,
+				02EA576B209A124A001B4733 /* LGWordDetailShareController.m in Sources */,
 				022FACB020761CE7006F8D1C /* LGReportModel.m in Sources */,
 				02C817F4207A9B5800003D4D /* LGClassicCourseCell.m in Sources */,
 				56267F5620844E1300A53D66 /* LGBaiduOcrManager.m in Sources */,

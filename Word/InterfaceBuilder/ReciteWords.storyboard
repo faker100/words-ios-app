@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -4724,7 +4724,7 @@
                         <outlet property="wordLabel" destination="dvu-A0-X7B" id="a5M-5A-eLs"/>
                         <outlet property="wordTabelView" destination="ywj-mj-Ihj" id="rLH-39-9zR"/>
                         <outlet property="wordView" destination="NtV-db-o4S" id="y3A-7M-TCJ"/>
-                        <segue destination="VBU-ic-PA2" kind="presentation" id="6ii-em-CbY"/>
+                        <segue destination="VBU-ic-PA2" kind="presentation" identifier="wordDetailToShare" id="6ii-em-CbY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ygm-Xy-Ocz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4902,10 +4902,10 @@
             </objects>
             <point key="canvasLocation" x="2724" y="513"/>
         </scene>
-        <!--View Controller-->
+        <!--Word Detail Share Controller-->
         <scene sceneID="ApT-aG-LUL">
             <objects>
-                <viewController id="VBU-ic-PA2" sceneMemberID="viewController">
+                <viewController id="VBU-ic-PA2" customClass="LGWordDetailShareController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DiZ-eH-KBj"/>
                         <viewControllerLayoutGuide type="bottom" id="MRo-dM-Fvu"/>
@@ -4915,10 +4915,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="siy-Ji-C2g">
-                                <rect key="frame" x="0.0" y="393" width="375" height="161"/>
+                                <rect key="frame" x="0.0" y="378" width="375" height="176"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vjg-Bs-59Z">
-                                        <rect key="frame" x="0.0" y="42" width="94" height="109"/>
+                                        <rect key="frame" x="0.0" y="57" width="94" height="109"/>
                                         <subviews>
                                             <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NuN-3a-gCj">
                                                 <rect key="frame" x="28" y="15" width="38" height="38"/>
@@ -4945,7 +4945,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Uf-QB-N3H">
-                                        <rect key="frame" x="94" y="42" width="93.5" height="109"/>
+                                        <rect key="frame" x="94" y="57" width="93.5" height="109"/>
                                         <subviews>
                                             <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pw0-jR-rP7">
                                                 <rect key="frame" x="27.5" y="15" width="38" height="38"/>
@@ -4971,7 +4971,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BML-rx-w8H">
-                                        <rect key="frame" x="187.5" y="42" width="94" height="109"/>
+                                        <rect key="frame" x="187.5" y="57" width="94" height="109"/>
                                         <subviews>
                                             <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxm-0P-wCn">
                                                 <rect key="frame" x="28" y="15" width="38" height="38"/>
@@ -4997,7 +4997,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDi-Z5-Wdz">
-                                        <rect key="frame" x="281.5" y="42" width="93.5" height="109"/>
+                                        <rect key="frame" x="281.5" y="57" width="93.5" height="109"/>
                                         <subviews>
                                             <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AA9-0x-fGr">
                                                 <rect key="frame" x="27.5" y="15" width="38" height="38"/>
@@ -5057,7 +5057,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share_recite_word_bg" translatesAutoresizingMaskIntoConstraints="NO" id="WbJ-VT-u0q">
-                                <rect key="frame" x="0.0" y="20" width="375" height="373"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="358"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7t5-qS-Xb6">
                                 <rect key="frame" x="5" y="25" width="44" height="44"/>
@@ -5068,7 +5068,7 @@
                                 <state key="normal" image="cancel_share"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xGv-kB-Mb6">
-                                <rect key="frame" x="33" y="79" width="309" height="304"/>
+                                <rect key="frame" x="33" y="79" width="309" height="289"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018年5月2日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cnz-Xp-OaP">
                                         <rect key="frame" x="105.5" y="13" width="98" height="18"/>
@@ -5076,6 +5076,11 @@
                                         <color key="textColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eLo-Vn-mNF">
+                                        <rect key="frame" x="37" y="183" width="234" height="69"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -5084,11 +5089,6 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="309" id="WVI-Ut-dfd"/>
                                     <constraint firstItem="Cnz-Xp-OaP" firstAttribute="centerX" secondItem="xGv-kB-Mb6" secondAttribute="centerX" id="hUX-wM-IP7"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eLo-Vn-mNF">
-                                <rect key="frame" x="73" y="307" width="234" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
