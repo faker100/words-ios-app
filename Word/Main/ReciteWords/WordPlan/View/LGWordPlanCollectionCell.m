@@ -14,7 +14,7 @@
 	self.titleNameButton.selected = selected;
 	self.progressLabel.highlighted = selected;
 	self.progressView.trackTintColor = selected ? [UIColor lg_colorWithHexString:@"368579"] : [UIColor lg_colorWithHexString:@"c5c5c5"];
-	self.bgColorView.backgroundColor = selected ? [UIColor lg_colorWithType:LGColor_theme_Color] : [UIColor lg_colorWithHexString:@"e1dfdf"];
+	self.bgColorView.backgroundColor = selected ? [UIColor lg_colorWithType:LGColor_theme_Color] : [UIColor whiteColor];
 }
 
 - (void)setPlanModel:(LGPlanModel *)planModel{

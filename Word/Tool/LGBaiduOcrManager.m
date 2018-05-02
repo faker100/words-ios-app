@@ -59,7 +59,15 @@ static NSString *kHTBaiduOcrSecretKey = @"amZ3IMbbAjH2qStVvYGYstrrUfKfqrgu";
                 }else{
 					NSArray *array = [dic objectForKey:@"words_result"];
 					if (array.count > 0) {
-						complete(array.firstObject[@"words"]);
+						
+						//置信度排序
+						NSArray *tempArray = [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+							CGFloat average1 = [((NSDictionary *)obj1)[@"probability"][@"average"] floatValue];
+							CGFloat average2 = [((NSDictionary *)obj2)[@"probability"][@"average"] floatValue];
+							return average1 < average2 ? NSOrderedDescending : NSOrderedAscending;
+						}];
+						
+						complete(tempArray.firstObject[@"words"]);
 					}else{
 						complete(@"");
 					}

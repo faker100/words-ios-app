@@ -33,6 +33,6 @@ typedef NS_ENUM(NSUInteger, LGWordLibraryPrice) {
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *total;
 @property (nonatomic, copy) NSString *userWords;
-@property (nonatomic, assign) NSInteger is; //是否已添加
+@property (nonatomic, assign) BOOL is; //是否已添加
 
 @end

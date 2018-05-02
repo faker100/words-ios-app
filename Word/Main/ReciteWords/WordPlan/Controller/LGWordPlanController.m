@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSMutableArray<LGPlanModel *> *planArray;
 @property (nonatomic, strong) LGPlanModel *selectedPlan;
+@property (nonatomic, strong) NSString *nowPackageId; //当前学习中的 id
 
 @end
 
@@ -36,6 +37,7 @@
     [self.request requestUserPlan:^(id response, LGError *error) {
         if ([weakSelf isNormal:error]) {
             weakSelf.planArray = [LGPlanModel mj_objectArrayWithKeyValuesArray:response[@"package"]];
+			weakSelf.nowPackageId = [NSString stringWithFormat:@"%@",response[@"nowPackage"]];
             [weakSelf.collectionView reloadData];
             [weakSelf.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
             weakSelf.selectedPlan = weakSelf.planArray.firstObject;
@@ -56,33 +58,20 @@
 
 
 /**
- 修改计划,判断是否所有词包都已选择计划
-
+ 修改计划
+ 
  */
 - (IBAction)uploadPlanAction:(id)sender {
 	
 	__weak typeof(self) weakSelf = self;
-	__block LGPlanModel *invalidModel = nil;
-	[self.planArray enumerateObjectsUsingBlock:^(LGPlanModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-		if ( !(StringNotEmpty(obj.planDay) && StringNotEmpty(obj.planWords))){
-			invalidModel = obj;
-			*stop = YES;
+	[LGProgressHUD showHUDAddedTo:self.view];
+	[self.request uploadWordLibraryArray:self.planArray completion:^(id response, LGError *error) {
+		if ([weakSelf isNormal:error]) {
+			[LGProgressHUD showSuccess:@"修改成功" toView:weakSelf.view  completionBlock:^{
+				[weakSelf.navigationController popViewControllerAnimated:YES];
+			}];
 		}
 	}];
-	if (invalidModel) {
-		NSString *error = [NSString stringWithFormat:@"请完善%@ 的学习计划",invalidModel.name];
-		[LGProgressHUD showMessage:error toView:self.view];
-		self.selectedPlan = invalidModel;
-	}else{
-		[LGProgressHUD showHUDAddedTo:self.view];
-		[self.request uploadWordLibraryArray:self.planArray completion:^(id response, LGError *error) {
-			if ([weakSelf isNormal:error]) {
-				[LGProgressHUD showSuccess:@"修改成功" toView:weakSelf.view  completionBlock:^{
-					[weakSelf.navigationController popViewControllerAnimated:YES];
-				}];
-			}
-		}];
-	}
 }
 
 
@@ -96,7 +85,6 @@
     [self.dayTable reloadData];
     [self.numberTable reloadData];
 	if (selectedPlan) {
-        [self updateNowPackage:selectedPlan.ID];
 		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.planArray indexOfObject:selectedPlan] inSection:0];
 		[self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionCenteredHorizontally];
 		[self setPlanWithType:LGChooseDayPlan value:_selectedPlan.planDay.integerValue isFixOther:YES];
@@ -106,12 +94,18 @@
 	}
 }
 
-- (void)updateNowPackage:(NSString *)catID{
-    [self.request updateNowPackage:catID completion:^(id response, LGError *error) {
+//设置为学习中的词包
+- (void)updateNowPackage:(NSString *)catId{
+	if ([catId isEqualToString:self.nowPackageId]) {
+		return;
+	}
+	self.nowPackageId = catId;
+    [self.request updateNowPackage:self.nowPackageId completion:^(id response, LGError *error) {
         if ([self isNormal:error]) {
             
         }
     }];
+	[self.collectionView reloadData];
 }
 
 #pragma mark -UITableViewDataSource
@@ -223,6 +217,7 @@
 	cell.delegate = self;
     cell.planModel = self.planArray[indexPath.row];
 	cell.isEdit = self.editButton.isSelected;
+	cell.learningImageView.hidden = ![self.planArray[indexPath.row].catId isEqualToString:self.nowPackageId];
     return cell;
 }
 
@@ -242,15 +237,16 @@
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+	[self updateNowPackage:self.planArray[indexPath.row].catId];
     self.selectedPlan = self.planArray[indexPath.row];
+	
 }
 
 #pragma mark - LGWordPlanCollectionCellDelegate
 
 
 /**
- 删除计划
+ 删除计划, 如果删除的是学习中的词包,则设置删除后第一个词包为学习中
  */
 - (void)deletePlan:(LGPlanModel *)planModel{
 	
@@ -261,16 +257,24 @@
 	__weak typeof(planModel) weakPlanModel = planModel;
 	deletePlanAlertView.deleteBlock = ^{
 		[LGProgressHUD showHUDAddedTo:weakView];
-        
 		[weakSelf.request deleteWordLibrary:weakPlanModel.ID completion:^(id response, LGError *error) {
 			if ([weakSelf isNormal:error]) {
 				NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[weakSelf.planArray indexOfObject:weakPlanModel] inSection:0];
+				
 				[weakSelf.planArray removeObject:weakPlanModel];
 				[weakSelf.collectionView deleteItemsAtIndexPaths:@[indexPath]];
 				if (weakPlanModel == weakSelf.selectedPlan) {
 					weakSelf.selectedPlan = nil;
 				}
+				
+				//如果删除的是学习中的词包,则设置删除后数组的第一个词包为学习中
+				if ([weakPlanModel.catId isEqualToString:weakSelf.nowPackageId] && weakSelf.planArray.count > 0) {
+					weakSelf.nowPackageId = weakSelf.planArray.firstObject.catId;
+					//刷新第一个 cell
+					[weakSelf.collectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]]];
+				}
 				[LGProgressHUD showSuccess:@"删除成功" toView:weakSelf.view];
+				
 				[weakView removeFromSuperview];
 			}
 		}];

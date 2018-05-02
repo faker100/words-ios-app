@@ -51,7 +51,7 @@
 	[self.request requestReportCompletion:^(id response, LGError *error) {
 		[self.scrollView lg_endRefreshing];
 		if ([self isNormal:error]) {
-            self.reportModel = [LGReportModel mj_objectWithKeyValues:response];
+         //   self.reportModel = [LGReportModel mj_objectWithKeyValues:response];
 		}
 	}];
 }

@@ -16,6 +16,7 @@
 @property (nonatomic, copy) NSString *total;
 @property (nonatomic, copy) NSString *userWords;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *catId;
 
 //自定义字段,剩余单词
 @property (nonatomic, assign, readonly) NSInteger surplusWord;

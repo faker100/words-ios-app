@@ -131,7 +131,10 @@
                 [LGProgressHUD showMessage:response[@"message"] toView:self.view completionBlock:^{
                     [weakSelf.navigationController popViewControllerAnimated:YES];
                 }];
-            }
+			}else if (code == 96){
+				//今日已完成
+				[self showIsContinue];
+			}
 		}
 	}];
 }
@@ -341,23 +344,21 @@
 
 /**
  跳转到下一个 WordDetailController
- 当当前进度(currentNum) 等于 总进度(total)时,显示完成任务提醒框
- 如果当前进度 (currentNum) 大于 总进度(total)时,表示继续背单词
  @param type  下一个 controller 的模式
  @param animated 是否跳转动画
  */
 - (void)pushNextWordDetailController:(LGWordDetailControllerType) type animated:(BOOL)animated{
 	
-    
-	if ((self.controllerType != LGWordDetailEbbinghausReview)  && self.currentNum.integerValue == self.total.integerValue) {
-        
-        if (type == LGWordDetailReciteWords) {
-            [self showIsContinue];
-        }else{
-            [LGFinishWordTaskView showReviewFinishToView:self.view.window sureBlock:^{
-                    [self.navigationController popViewControllerAnimated:YES];
-            }];
-        }
+	
+	//在"今日复习"或者 "错题本复习/时间复习" 模式下,当当前进度等于总进度时.弹出复习完成框
+	if ((self.controllerType == LGWordDetailTodayReview ||
+		self.controllerType == LGWordDetailReview)  &&
+		self.currentNum.integerValue == self.total.integerValue) {
+		
+		//显示完成提示框
+		[LGFinishWordTaskView showReviewFinishToView:self.view.window sureBlock:^{
+			[self.navigationController popViewControllerAnimated:YES];
+		}];
 	}else{
 		LGWordDetailController *wordDetailController = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGWordDetailController");
 		wordDetailController.controllerType = type;

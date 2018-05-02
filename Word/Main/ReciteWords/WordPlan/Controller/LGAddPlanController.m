@@ -37,7 +37,7 @@
 	self.packageLabel.text = [NSString stringWithFormat:@"%@ (%@个词)",self.libModel.name, self.libModel.total] ;
 	
 	//初始化计划选择
-	[self setPlanWithType:LGChooseDayPlan value:5 isFixOther:YES];
+	[self setPlanWithType:LGChooseDayPlan value:1 isFixOther:YES];
 }
 
 - (void)setPlanDay:(NSInteger)planDay{

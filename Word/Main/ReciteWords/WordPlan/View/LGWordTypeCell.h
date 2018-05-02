@@ -22,5 +22,7 @@
 
 //进度条
 @property (weak, nonatomic) IBOutlet LGProgressView *progressView;
+//已经添加
+@property (weak, nonatomic) IBOutlet UIImageView *didAddImageView;
 
 @end

@@ -83,7 +83,10 @@
 	if (tableView == self.libraryTableView) {
 		self.selectedModel = self.modelArray[indexPath.row];
 	}else{
-		[self performSegueWithIdentifier:@"WordLibraryToWordList" sender:self.selectedModel.child[indexPath.row]];
+		if (!self.selectedModel.child[indexPath.row].is) {
+			[self performSegueWithIdentifier:@"WordLibraryToWordList" sender:self.selectedModel.child[indexPath.row]];
+		}
+		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	}
 }
 

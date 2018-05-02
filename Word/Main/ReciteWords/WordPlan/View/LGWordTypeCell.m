@@ -27,6 +27,8 @@
 	self.typeNameLabel.text = wordTypeModel.name;
 	self.progressLabel.text = [NSString stringWithFormat:@"(%@/%@)",wordTypeModel.userWords,wordTypeModel.total];
 	
+	self.didAddImageView.hidden = !wordTypeModel.is;
+	
 	CGFloat completionRate = wordTypeModel.userWords.floatValue / wordTypeModel.total.floatValue;
 	
 	self.progressView.progress = completionRate;

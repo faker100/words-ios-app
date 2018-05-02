@@ -149,7 +149,7 @@
     self.parameter = @{
                        @"packageId" : libraryId,
                        @"planDay" : @(planDay),
-                       @"planWord" : @(planWord)
+                       @"planWords" : @(planWord)
                        };
     [self postRequestCompletion:completion];
 }

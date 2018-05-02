@@ -29,6 +29,10 @@
 //设置是否编辑状态
 @property (nonatomic, assign) BOOL  isEdit;
 
+//学习中
+@property (weak, nonatomic) IBOutlet UIImageView *learningImageView;
+
+
 @property (nonatomic, strong) LGPlanModel *planModel;
 
 @end
