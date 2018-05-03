@@ -12,6 +12,7 @@
 #import "LGSelectReviewTypeView.h"
 #import "LGTimeReivewCountAlertView.h"
 #import "LGWordDetailController.h"
+#import "LGUserManager.h"
 
 @interface LGTimeReviewController () <UITableViewDelegate, UITableViewDataSource, LGSelectReviewTypeViewDelegate,LGTimeReivewCountAlertViewDelegate>
 
@@ -19,9 +20,7 @@
 @property (nonatomic, strong) NSArray<NSDate *> *endDateArray;     //截止日期数组
 @property (nonatomic, strong) LGSelectReviewTypeView *selectTypeView;  //选择复习方式view
 @property (nonatomic, assign) LGSelectReviewType selectedReviewType;    //选择的复习方式，默认中英
-
 @property (nonatomic, strong) LGTimeReivewCountAlertView *countAlertView;//单词总数提示框
-
 @property (nonatomic, strong) NSMutableArray *wordIDArray;
 
 @end
@@ -31,7 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	self.startDateArray = [NSDate dateArrayFrom:[[[NSCalendar currentCalendar] dateWithEra:1 year:2018 month:3 day:1 hour:0 minute:0 second:0 nanosecond:0]convertToSystemTimeZoneDate] toDate:[NSDate currentDate]];
+	NSDate *startTime = [LGUserManager shareManager].user.startTime ? [[NSDate defaultDateFormatter] dateFromString:[LGUserManager shareManager].user.startTime] : [NSDate currentDate];
+	
+	self.startDateArray = [NSDate dateArrayFrom:startTime toDate:[NSDate currentDate]];
     self.endDateArray = self.startDateArray;
 }
 

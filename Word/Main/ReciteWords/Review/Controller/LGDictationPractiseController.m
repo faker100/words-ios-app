@@ -347,6 +347,8 @@
 	}];
 	if ([userAnswer isEqualToString:self.wordDetailModel.words.word]) {
 		
+		[self.request updateReviewWordStatus:LGWordStatusUnchanged wordId:self.wordDetailModel.words.ID completion:nil];
+		
 		if (self.currentNum.integerValue == self.total.integerValue) {
             [LGFinishWordTaskView showReviewFinishToView:self.view sureBlock:^{
                 [self.navigationController popViewControllerAnimated:YES];
@@ -356,10 +358,7 @@
 			[self.wordIDArray removeObjectAtIndex:0];
 			nextController.wordIDArray = self.wordIDArray;
 			nextController.total = self.total;
-			NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-			[viewControllers removeObject:self];
-			[viewControllers addObject:nextController];
-			[self.navigationController setViewControllers:viewControllers animated:YES];
+			[((LGNavigationController *)self.navigationController)lg_pushViewController:nextController animated:YES];
 		}
 	}else{
         CABasicAnimation* shake = [CABasicAnimation animationWithKeyPath:@"transform.translation.x"];
@@ -371,7 +370,6 @@
         shake.delegate = self;
         [self.userAnswerCollection.layer addAnimation:shake forKey:@"shakeAnimation"];
 	}
-	
 }
 
 #pragma mark - CAAnimationDelegate

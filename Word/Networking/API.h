@@ -35,7 +35,8 @@ typedef NS_ENUM(NSUInteger, LGWordStatus) {
 	LGWordStatusKnow = 2,     	    //认识
 	LGWordStatusIncognizance = 3,   //不认识
 	LGWordStatusVague = 4,			//模糊
-	LGWordStatusForget = 5          //忘记
+	LGWordStatusForget = 5,          //忘记
+	LGWordStatusUnchanged = 100      //不改变状态,用于听写练习记录复习进度状态
 };
 
 //学习模式

@@ -51,7 +51,7 @@
 	[self.request requestReportCompletion:^(id response, LGError *error) {
 		[self.scrollView lg_endRefreshing];
 		if ([self isNormal:error]) {
-         //   self.reportModel = [LGReportModel mj_objectWithKeyValues:response];
+            self.reportModel = [LGReportModel mj_objectWithKeyValues:response];
 		}
 	}];
 }
@@ -62,7 +62,7 @@
 		if ([self isNormal:error]){
             //利用 LGReportModel 解析month
             LGReportModel *report = [LGReportModel mj_objectWithKeyValues:response];
-            self.lineChartView.month = report.month;
+           // self.lineChartView.month = report.month;
 		}
 	}];
 }
@@ -103,7 +103,7 @@
     }];
     
     self.reportPieView.weekReportModel = reportModel.week;
-    self.lineChartView.month = reportModel.month;
+    //self.lineChartView.month = reportModel.month;
 }
 
 #pragma mark - LGReportSelectTimeController

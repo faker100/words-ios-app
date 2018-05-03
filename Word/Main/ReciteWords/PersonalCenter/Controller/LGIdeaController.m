@@ -33,7 +33,6 @@
 				[LGProgressHUD showSuccess:@"提交成功" toView: self.view completionBlock:^{
 					[self.navigationController popViewControllerAnimated:YES];
 				}];
-				
 			}
 		}];
 	}else{

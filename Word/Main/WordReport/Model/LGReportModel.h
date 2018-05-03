@@ -14,8 +14,11 @@
 @property (nonatomic, strong) LGWeekReportModel *week;
 @property (nonatomic, copy) NSDictionary *data;
 
-//自定义属性，解析data后的数组
-@property (nonatomic, copy)NSArray <LGWeekReportModel *> *month;
+//自定义属性，解析data后的数组,前 15天
+@property (nonatomic, strong)NSMutableArray <LGWeekReportModel *> *before;
+
+//自定义属性，解析data后的数组,后15天
+@property (nonatomic, strong)NSMutableArray <NSString *>  *after;
 
 @end
 

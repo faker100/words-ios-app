@@ -10,4 +10,12 @@
 
 @implementation LGReviewWrongWordModel
 
+- (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property{
+	if ([property.name isEqualToString:@"type"]) {
+		NSInteger type = [NSString stringWithFormat:@"%@",oldValue].integerValue;
+		return @(type);
+	}
+	return oldValue;
+}
+
 @end

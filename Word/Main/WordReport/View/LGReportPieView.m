@@ -11,6 +11,7 @@
 @implementation LGReportPieView
 
 - (void)setWeekReportModel:(LGWeekReportModel *)weekReportModel{
+	_weekReportModel = weekReportModel;
     [self setNeedsDisplay];
 }
 
@@ -31,18 +32,16 @@
     CGFloat notKnowRate = self.weekReportModel.notKnow.floatValue / all;
     CGFloat knowRate = self.weekReportModel.know.floatValue / all;
     
-   
-    
     //模糊
-   CGFloat dimEndAngle = [self createArcWithRate:dimRate startAngle:0 color:[UIColor lg_colorWithType:LGColor_Dark_Yellow] rect:rect];
+   CGFloat dimEndAngle = [self createArcWithRate:dimRate startAngle:0 color:[UIColor lg_colorWithHexString:@"4E8EDA"] rect:rect];
     //忘记
-   CGFloat forgetEndAngle = [self createArcWithRate:forgetRate startAngle:dimEndAngle color:[UIColor lg_colorWithHexString:@"FF6F4B"] rect:rect];
+   CGFloat forgetEndAngle = [self createArcWithRate:forgetRate startAngle:dimEndAngle color:[UIColor lg_colorWithHexString:@"F0975B"] rect:rect];
     //熟识
     CGFloat knowWellEndAngle = [self createArcWithRate:knowWellRate startAngle:forgetEndAngle color:[UIColor lg_colorWithType:LGColor_theme_Color] rect:rect];
     //不认识
-    CGFloat notKnowEndAngle = [self createArcWithRate:notKnowRate startAngle:knowWellEndAngle color:[UIColor lg_colorWithHexString:@"4D6FCC"] rect:rect];
+    CGFloat notKnowEndAngle = [self createArcWithRate:notKnowRate startAngle:knowWellEndAngle color:[UIColor lg_colorWithHexString:@"E2585A"] rect:rect];
     //认识
-     [self createArcWithRate:knowRate startAngle:notKnowEndAngle color:[UIColor lg_colorWithHexString:@"34AFB9"] rect:rect];
+     [self createArcWithRate:knowRate startAngle:notKnowEndAngle color:[UIColor lg_colorWithHexString:@"51DFE7"] rect:rect];
 }
 
 
@@ -58,16 +57,17 @@
 -  (CGFloat)createArcWithRate:(CGFloat)rate startAngle:(CGFloat)startAngle color:(UIColor *)color rect:(CGRect)rect{
     //中心
     CGPoint center = CGPointMake(CGRectGetMidX(rect), CGRectGetMidY(rect));
-    //弧形宽度
-    CGFloat lineWidth = 20;
     //半径
-    CGFloat radius = CGRectGetWidth(rect) / 2.0  -  lineWidth / 2;
+    CGFloat radius = CGRectGetWidth(rect) / 2.0;
+	
     //结束角度
     CGFloat endAngle = startAngle + 2 * M_PI * rate  ;
     UIBezierPath *arc = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
-    arc.lineWidth = lineWidth;
-    [color setStroke];
-    [arc stroke];
+	
+	[arc addLineToPoint:center];
+	[arc closePath];
+    [color setFill];
+    [arc fill];
     return endAngle;
 }
 

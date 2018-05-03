@@ -8,10 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+//复习进度
+typedef NS_ENUM(NSUInteger, LGReviewProgress) {
+	LGReviewProgressNotBegin = 1, //未开始
+	LGReviewProgressFinish,  //完成
+	LGReviewProgressSuspend,  //中断
+};
+
 @interface LGReviewWrongWordModel : NSObject
 
 @property (nonatomic, copy) NSString *end;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *start;
+@property (nonatomic, assign) LGReviewProgress type; //复习进度
 
 @end

@@ -9,6 +9,7 @@
 #import "LGUserModel.h"
 #import "NSDate+Utilities.h"
 
+
 @implementation LGUserModel
 
 - (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property{
@@ -75,7 +76,6 @@
 - (NSString *)password{
 	return [[NSUserDefaults standardUserDefaults] objectForKey:PASSWORD_KEY];
 }
-
 
 
 @end

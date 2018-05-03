@@ -27,9 +27,12 @@
     // Do any additional setup after loading the view.
 	
 	[self configCollectionView];
-	[self requestData];
 	
+}
 
+- (void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	[self requestData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +58,7 @@
 	flowLayout.minimumLineSpacing = self.cellSpace;
 	flowLayout.minimumInteritemSpacing = self.cellSpace;
 	flowLayout.itemSize = self.cellSize;
-	flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 40);
+	flowLayout.headerReferenceSize = CGSizeMake(SCREEN_WIDTH, 56);
 	self.collectionView.contentInset = UIEdgeInsetsMake(0, self.cellSpace, 0, self.cellSpace);
 }
 
@@ -63,19 +66,19 @@
 
 /**
  iphone 5 屏幕上一行3个,下缩小 cell size;
- ipad 中 size 为 (110, 60) 间距为 10;
+ ipad 中 size 为 (106, 64) 间距为 10;
  */
 - (CGFloat)cellSpace{
 	
 	if ([[UIDevice currentDevice].model isEqualToString:@"iPhone"]){
-		return SCREEN_WIDTH == 320 ? 5 : (SCREEN_WIDTH - (3 * 110)) / 4.0f;
+		return SCREEN_WIDTH == 320 ? 5 : (SCREEN_WIDTH - (3 * 106)) / 4.0f;
 	}else{
 		return 10;
 	}
 }
 
 - (CGSize)cellSize{
-	return SCREEN_WIDTH == 320 ? CGSizeMake(100, 60) : CGSizeMake(110, 60);
+	return SCREEN_WIDTH == 320 ? CGSizeMake(100, 64) : CGSizeMake(106, 64);
 }
 
 #pragma mark - UICollectionViewDataSource

@@ -25,7 +25,7 @@
 @property (nonatomic, copy) NSString *uid;
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *createTime;
-@property (nonatomic, copy) NSString *startTime;
+@property (nonatomic, copy) NSString *startTime; //第一次背单词时间;
 @property (nonatomic, copy) NSString *image;
 @property (nonatomic, copy) NSString *lose;  //pk 失败次数
 @property (nonatomic, copy) NSString *win;	 //pk 胜利次数
@@ -34,8 +34,6 @@
 @property (nonatomic, assign) LGStudyType  studyModel; //用户学习模式;
 @property (nonatomic, copy) NSString *planWords; //判断用户当前词包是否有计划; nil 没有计划
 @property (nonatomic, assign) BOOL isTodayReview; //是否已经看过首页今日复习弹框
-
-
 
 
 @end

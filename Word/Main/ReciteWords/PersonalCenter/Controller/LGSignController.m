@@ -13,7 +13,7 @@
 
 @interface LGSignController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (nonatomic, strong)LGSignModel *signModel;
+@property (nonatomic, strong) LGSignModel *signModel;
 
 //collection 的 data
 @property (nonatomic, strong) NSMutableArray<LGSignCellModel *> *calendar;
@@ -61,7 +61,7 @@
 	if (!_calendar) {
 		
 		_calendar = [NSMutableArray array];
-		NSArray *week = @[@"S",@"M",@"T",@"W",@"T",@"F",@"s"];
+		NSArray *week = @[@"S",@"M",@"T",@"W",@"T",@"F",@"S"];
 		
 		[week enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 			LGSignCellModel *signCellModel = [LGSignCellModel new];

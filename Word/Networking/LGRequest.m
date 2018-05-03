@@ -251,7 +251,7 @@
 	self.url = UPDATE_REVIEW_WORD_STATUS_URL;
 	self.parameter = @{
 					   @"wordsId" : wordId,
-					   @"status" : @(status)
+					   @"status" :  status == LGWordStatusUnchanged ? @"" : @(status)
 					   };
 	[self postRequestCompletion:completion];
 	

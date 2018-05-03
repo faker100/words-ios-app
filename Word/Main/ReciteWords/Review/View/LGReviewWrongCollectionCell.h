@@ -13,6 +13,13 @@
 
 @property (nonatomic, strong) LGReviewWrongWordModel *wrongWordModel;
 
+//进度
+@property (weak, nonatomic) IBOutlet UILabel *progressLabel;
+
+//进度背景
+@property (weak, nonatomic) IBOutlet UIImageView *progressBgImageView;
+
+//范围
 @property (weak, nonatomic) IBOutlet UILabel *rangeLabel;
 
 @end

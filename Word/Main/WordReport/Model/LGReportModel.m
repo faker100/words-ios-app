@@ -12,13 +12,20 @@
 
 - (void)mj_keyValuesDidFinishConvertingToObject{
     
-    NSMutableArray *tempMonthArray = [NSMutableArray array];
-    
-    for (int i = 1; i <= self.data.count; i++) {
-        NSDictionary *tempDic = self.data[@(i).stringValue][@"data"];
-        [tempMonthArray addObject:tempDic];
+    self.before = [NSMutableArray array];
+	self.after  = [NSMutableArray array];
+	
+	NSArray *beforeArray = self.data[@"re"];
+	NSArray *afterArray  = self.data[@"re1"];
+	
+    for (int i = 0; i < beforeArray.count; i++) {
+		LGWeekReportModel *weak = [LGWeekReportModel mj_objectWithKeyValues:beforeArray[i][@"data"]];
+		[self.before addObject:weak];
     }
-    self.month = [LGWeekReportModel mj_objectArrayWithKeyValuesArray:tempMonthArray];
+	
+	for (int i = 0; i < afterArray.count; i++) {
+		[self.after addObject:[NSString stringWithFormat:@"%@",afterArray[i][@"data"]]];
+	}
 }
 
 @end
