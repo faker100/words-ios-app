@@ -9,14 +9,11 @@
 #import "LGReportController.h"
 #import "UIScrollView+LGRefresh.h"
 #import "LGReportModel.h"
-#import "LGReportSelectTimeController.h"
 #import "NSDate+Utilities.h"
 
-@interface LGReportController () <LGReportSelectTimeControllerDelegate>
+@interface LGReportController ()
 
 @property (nonatomic, strong) LGReportModel *reportModel;
-
-@property (nonatomic, copy) NSString *currentDateStr;
 
 @end
 
@@ -26,11 +23,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
-	self.currentDateStr = [[NSDate currentDate] stringWithFormat:@"yyyy-MM-01"];
-
 	__weak typeof(self) weakSelf = self;
 	[self.scrollView setHeaderRefresh:^{
-		self.currentDateStr = [[NSDate currentDate] stringWithFormat:@"yyyy-MM-01"];
+	
 		[weakSelf reqeustData];
 	}];
 		[self reqeustData];
@@ -41,28 +36,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setCurrentDateStr:(NSString *)currentDateStr{
-	_currentDateStr = currentDateStr;
-	self.monthLabel.text = currentDateStr;
-}
-
 //请求报表
 - (void)reqeustData{
 	[self.request requestReportCompletion:^(id response, LGError *error) {
 		[self.scrollView lg_endRefreshing];
 		if ([self isNormal:error]) {
             self.reportModel = [LGReportModel mj_objectWithKeyValues:response];
-		}
-	}];
-}
-
-//切换月份请求 月份格式:(xxxx-xx-1)
-- (void)changeMonthData:(NSString *)month{
-	[self.request requestChangeMonthReport:month completion:^(id response, LGError *error) {
-		if ([self isNormal:error]){
-            //利用 LGReportModel 解析month
-            LGReportModel *report = [LGReportModel mj_objectWithKeyValues:response];
-           // self.lineChartView.month = report.month;
 		}
 	}];
 }
@@ -103,24 +82,15 @@
     }];
     
     self.reportPieView.weekReportModel = reportModel.week;
-    //self.lineChartView.month = reportModel.month;
+    [self.lineChartView setData:reportModel.before after:reportModel.after];
 }
 
-#pragma mark - LGReportSelectTimeController
-
-- (void)selectedTime:(NSString *)timeStr{
-	[self changeMonthData:timeStr];
-	self.currentDateStr = timeStr;
-}
 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([segue.identifier isEqualToString:@"reportToSelectTime"]) {
-		LGReportSelectTimeController *controller = [segue destinationViewController];
-		controller.delegate = self;
-	}
+
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }

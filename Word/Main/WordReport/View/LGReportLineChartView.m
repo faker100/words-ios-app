@@ -8,7 +8,6 @@
 
 #import "LGReportLineChartView.h"
 
-
 //水平线条数为 7 ，y轴方向的数据个数为8 (horizontalNum + 1);
 #define  horizontalNum 7
 
@@ -29,10 +28,9 @@
 
 @implementation LGReportLineChartView
 
-- (void)setMonth:(NSArray<LGWeekReportModel *> *)month{
-    _month = month;
-    [self configLineData];
-    
+- (void)setData:(NSMutableArray<LGWeekReportModel *> *)before after:(NSMutableArray <NSString *> *)after{
+    self.before = before;
+    self.after = after;
     [self setNeedsDisplay];
 }
 
@@ -56,17 +54,25 @@
     //x轴区域
     CGRect xRect = CGRectMake(width_Y, CGRectGetMaxY(rect) - height_X, CGRectGetMaxX(rect) - width_Y,height_X);
     
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:backgroundRect];
+    [scrollView setContentSize:CGSizeMake(45 * (self.before.count + self.after.count), CGRectGetHeight(backgroundRect))];
+   UIView *view = [[LGBeforeChartView alloc]initWithFrame:CGRectMake(0, 0, 45 *self.before.count, CGRectGetHeight(backgroundRect)) before:self.before maxValue:[self maxDataOfDay]];
+    [scrollView addSubview:view];
+    
+    
     [self createBackground:backgroundRect];
     [self createY:yRect];
     [self createX:xRect];
     
+    [self addSubview:scrollView];
+    
     //绘制总量折线
-    [self createLineChart:self.allTotal    color:[UIColor lg_colorWithType:LGColor_theme_Color] rect:backgroundRect];
-    [self createLineChart:self.allKnowWell color:[UIColor lg_colorWithType:LGColor_Dark_Yellow] rect:backgroundRect];
-    [self createLineChart:self.allKnow     color:[UIColor lg_colorWithHexString:@"8957A1"] rect:backgroundRect];
-    [self createLineChart:self.allDim      color:[UIColor lg_colorWithHexString:@"FF6F4B"] rect:backgroundRect];
-    [self createLineChart:self.allForget   color:[UIColor lg_colorWithHexString:@"00FFFF"] rect:backgroundRect];
-    [self createLineChart:self.allNotKnow  color:[UIColor lg_colorWithHexString:@"4D6FCC"] rect:backgroundRect];
+//    [self createLineChart:self.allTotal    color:[UIColor lg_colorWithType:LGColor_theme_Color] rect:backgroundRect];
+//    [self createLineChart:self.allKnowWell color:[UIColor lg_colorWithType:LGColor_Dark_Yellow] rect:backgroundRect];
+//    [self createLineChart:self.allKnow     color:[UIColor lg_colorWithHexString:@"8957A1"] rect:backgroundRect];
+//    [self createLineChart:self.allDim      color:[UIColor lg_colorWithHexString:@"FF6F4B"] rect:backgroundRect];
+//    [self createLineChart:self.allForget   color:[UIColor lg_colorWithHexString:@"00FFFF"] rect:backgroundRect];
+//    [self createLineChart:self.allNotKnow  color:[UIColor lg_colorWithHexString:@"4D6FCC"] rect:backgroundRect];
 }
 
 #pragma mark - 绘制
@@ -150,30 +156,11 @@
 }
 
 /**
- 背景灰色条纹
+ 背景区域
 
  @param bgRect 条纹区域
  */
 - (void)createBackground:(CGRect)bgRect{
-    
-    //条纹数最少4个
-    NSInteger num = self.numOfX;
-    
-    //背景条纹
-    for (int i = 1 ; i <= num; i++) {
-        //每个条纹宽度
-        CGFloat width = CGRectGetWidth(bgRect) / num;
-        
-        CGRect childRect = CGRectMake((i - 1) * width + CGRectGetMinX(bgRect), CGRectGetMinY(bgRect), width, CGRectGetHeight(bgRect));
-        
-        UIBezierPath *rectPath = [UIBezierPath bezierPathWithRect:childRect];
-        if (i % 2 == 0) {
-            [[UIColor lg_colorWithHexString:@"f7f7f7"] setFill];
-        }else{
-            [[UIColor lg_colorWithHexString:@"efefed"] setFill];
-        }
-        [rectPath fill];
-    }
     
     //垂直线
     UIBezierPath *verticalLinePath = [UIBezierPath bezierPath];
@@ -238,7 +225,8 @@
 
 #pragma mark - getter setter
 - (NSInteger)numOfX{
-    return MAX(4, self.month.count);
+ //   return MAX(4, self.month.count);
+    return 0;
 }
 
 
@@ -253,7 +241,7 @@
 - (NSInteger)riseOfY{
     
     //一个月中最高数据,最小为7
-    NSInteger maxYData = MAX(horizontalNum, [self maxDataOfMonth]);
+    NSInteger maxYData = MAX(horizontalNum, [self maxDataOfDay]);
     NSInteger rise = 1;
     if (maxYData <= 35) {
         rise =  ceil(maxYData * 1.0 / horizontalNum);
@@ -279,14 +267,14 @@
     self.allNotKnow  = [NSMutableArray array];
     
     
-    [self.month enumerateObjectsUsingBlock:^(LGWeekReportModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [self.allTotal    addObject:obj.all];
-        [self.allKnowWell addObject:obj.knowWell];
-        [self.allKnow     addObject:obj.know];
-        [self.allDim      addObject:obj.dim];
-        [self.allForget   addObject:obj.forget];
-        [self.allNotKnow  addObject:obj.notKnow];
-    }];
+//    [self.month enumerateObjectsUsingBlock:^(LGWeekReportModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        [self.allTotal    addObject:obj.all];
+//        [self.allKnowWell addObject:obj.knowWell];
+//        [self.allKnow     addObject:obj.know];
+//        [self.allDim      addObject:obj.dim];
+//        [self.allForget   addObject:obj.forget];
+//        [self.allNotKnow  addObject:obj.notKnow];
+//    }];
 }
 
 /**
@@ -294,12 +282,74 @@
 
  @return 最大数
  */
-- (NSInteger)maxDataOfMonth{
+- (NSInteger)maxDataOfDay{
     __block NSInteger max = 0;
-    [self.month enumerateObjectsUsingBlock:^(LGWeekReportModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.before enumerateObjectsUsingBlock:^(LGWeekReportModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.all.integerValue > max) max = obj.all.integerValue;
     }];
     return max;
 }
 
 @end
+
+
+@implementation LGBeforeChartView
+
+- (instancetype)initWithFrame:(CGRect)frame before:(NSMutableArray<LGWeekReportModel *> *)before maxValue:(CGFloat)maxValue{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.before = before;
+        self.maxValue = maxValue;
+    }
+    return self;
+}
+
+- (void)drawRect:(CGRect)rect{
+    
+    CGFloat space = 16;
+    [self.before enumerateObjectsUsingBlock:^(LGWeekReportModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.all.integerValue != 0) {
+            CGFloat height = obj.all.integerValue / self.maxValue;
+            [self createDayDate:obj rect: CGRectMake(space * (idx + 1) + 30 *idx, CGRectGetMaxY(rect) - height, 30, height)];
+        }
+       
+    }];
+}
+
+- (void)createDayDate:(LGWeekReportModel *)model rect:(CGRect)rect{
+    //不认识
+    CGFloat notKnowHeight = model.notKnow.floatValue / model.all.floatValue * CGRectGetHeight(rect);
+    CGRect notKnowRect = CGRectMake(0, CGRectGetMaxY(rect) - notKnowHeight, 30, notKnowHeight);
+    [self createItemDate:notKnowRect color:[UIColor lg_colorWithType: LGColor_pk_red]];
+    
+    //忘记
+    CGFloat forgetHeight = model.forget.floatValue / model.all.floatValue * CGRectGetHeight(rect);
+    CGRect  forgetRect = CGRectMake(0, CGRectGetMinY(notKnowRect) -  forgetHeight, 30, forgetHeight);
+    [self createItemDate:forgetRect color:[UIColor lg_colorWithHexString:@"0975b"]];
+    
+    //熟知
+    CGFloat knowWellHeigth = model.knowWell.floatValue / model.all.floatValue * CGRectGetHeight(rect);
+    CGRect knowWellRect = CGRectMake(0, CGRectGetMinY(forgetRect) -  knowWellHeigth, 30, knowWellHeigth);
+    [self createItemDate:knowWellRect color:[UIColor lg_colorWithType: LGColor_theme_Color]];
+    
+    //认识
+    CGFloat knowHeight = model.know.floatValue / model.all.floatValue * CGRectGetHeight(rect);
+    CGRect knowRect = CGRectMake(0, CGRectGetMinY(knowWellRect) -  knowHeight, 30, knowHeight);
+    [self createItemDate:knowRect color:[UIColor lg_colorWithHexString:@"51dje7"]];
+    
+    //模糊
+    CGFloat dimHeight = model.dim.floatValue / model.all.floatValue * CGRectGetHeight(rect);
+    CGRect dimRect = CGRectMake(0, CGRectGetMinY(knowRect) -  dimHeight, 30, dimHeight);
+    [self createItemDate:dimRect color:[UIColor lg_colorWithHexString:@"4e8eda"]];
+    
+}
+
+
+- (void)createItemDate:(CGRect)rect color:(UIColor *)color{
+    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:0];
+    [color setFill];
+    [bezierPath fill];
+}
+
+@end
+

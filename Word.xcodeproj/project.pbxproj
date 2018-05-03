@@ -216,7 +216,6 @@
 		56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5E7201B16050097DCAC /* LGNavigationController.m */; };
 		56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5EC201B29A60097DCAC /* LGStudyTypeController.m */; };
 		56D3283A2079AE620041502B /* LGPeripheryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D328392079AE620041502B /* LGPeripheryController.m */; };
-		56D3283D2079B8A40041502B /* LGReportSelectTimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D3283C2079B8A40041502B /* LGReportSelectTimeController.m */; };
 		56D328402079E6BE0041502B /* LGPeripheryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D3283F2079E6BE0041502B /* LGPeripheryModel.m */; };
 		56D328432079FCAF0041502B /* LGPublicCourseCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D328422079FCAF0041502B /* LGPublicCourseCollectionCell.m */; };
 		56D328462079FD7C0041502B /* LGPeripherySectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D328452079FD7C0041502B /* LGPeripherySectionHeader.m */; };
@@ -646,8 +645,6 @@
 		56CCA5EC201B29A60097DCAC /* LGStudyTypeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGStudyTypeController.m; sourceTree = "<group>"; };
 		56D328382079AE620041502B /* LGPeripheryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPeripheryController.h; sourceTree = "<group>"; };
 		56D328392079AE620041502B /* LGPeripheryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPeripheryController.m; sourceTree = "<group>"; };
-		56D3283B2079B8A40041502B /* LGReportSelectTimeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGReportSelectTimeController.h; sourceTree = "<group>"; };
-		56D3283C2079B8A40041502B /* LGReportSelectTimeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGReportSelectTimeController.m; sourceTree = "<group>"; };
 		56D3283E2079E6BE0041502B /* LGPeripheryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPeripheryModel.h; sourceTree = "<group>"; };
 		56D3283F2079E6BE0041502B /* LGPeripheryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPeripheryModel.m; sourceTree = "<group>"; };
 		56D328412079FCAF0041502B /* LGPublicCourseCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPublicCourseCollectionCell.h; sourceTree = "<group>"; };
@@ -919,8 +916,6 @@
 				568C8C9920732DC7009668AD /* LGEstimateResultController.m */,
 				56ABC90A2074633100F328A8 /* LGReportController.h */,
 				56ABC90B2074633100F328A8 /* LGReportController.m */,
-				56D3283B2079B8A40041502B /* LGReportSelectTimeController.h */,
-				56D3283C2079B8A40041502B /* LGReportSelectTimeController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2109,7 +2104,6 @@
 				568C8C9D20732EE4009668AD /* LGEstimateResultCell.m in Sources */,
 				5612BFB22021AC3E0038D653 /* LGProgressView.m in Sources */,
 				56A8883B200CA53400847BE6 /* AppDelegate.mm in Sources */,
-				56D3283D2079B8A40041502B /* LGReportSelectTimeController.m in Sources */,
 				560699DF2057BC6D00574437 /* LGPKRankHeadView.m in Sources */,
 				5638863A207C557300C05E01 /* LGSignModel.m in Sources */,
 				567FDF0C206C7748007FFFB2 /* LGClockListController.m in Sources */,

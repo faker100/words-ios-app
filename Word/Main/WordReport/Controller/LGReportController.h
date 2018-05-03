@@ -36,7 +36,5 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *weekData;
 
 
-//月份
-@property (weak, nonatomic) IBOutlet UILabel *monthLabel;
 
 @end
