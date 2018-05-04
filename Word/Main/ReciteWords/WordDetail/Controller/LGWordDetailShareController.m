@@ -158,10 +158,10 @@
 	NSString *url = [NSString stringWithFormat:@"wap/share/index?uid=%@&type=1",[LGUserManager shareManager].user.uid];
 	
 	NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-	[shareParams SSDKSetupShareParamsByText:@" "
+	[shareParams SSDKSetupShareParamsByText:@""
 									 images:PLACEHOLDERIMAGE
 										url:[NSURL URLWithString:WORD_DOMAIN(url)]
-									  title:@" "
+									  title:@"雷哥单词"
 									   type:SSDKContentTypeWebPage];
 	
 	[ShareSDK share:platformType parameters:shareParams onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {

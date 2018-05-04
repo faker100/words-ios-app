@@ -20,6 +20,9 @@
 //自定义属性，解析data后的数组,后15天
 @property (nonatomic, strong)NSMutableArray <NSString *>  *after;
 
+//自定义属性,转换所有时间
+@property (nonatomic, strong)NSMutableArray <NSString *> *date;
+
 @end
 
 @interface LGWeekReportModel : NSObject

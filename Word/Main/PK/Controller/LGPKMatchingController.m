@@ -12,6 +12,7 @@
 #import "LGUserManager.h"
 #import "LGTool.h"
 #import "LGAtPKController.h"
+#import "LGPlayer.h"
 
 @interface LGPKMatchingController ()
 {
@@ -32,11 +33,14 @@
 
 	//倒计时图片不变形
 	self.countDownButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+	
 	//用户默认头像
 	[self.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN([LGUserManager shareManager].user.image)] placeholderImage:[UIImage imageNamed:@"pk_default_opponent"]];
 	
 	//设置匹配中
 	[self setMatchType:LGMatching animated:NO];
+	
+	[[LGPlayer sharedPlayer]playPkMusic];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -73,11 +77,16 @@
  更新圆形头像,适配不同屏幕
  */
 - (void)uploadHeadRadius{
-	CGFloat radius = CGRectGetWidth(self.opponentHeadImageView.frame) / 2.0f;
-	self.opponentWordNumLabel.layer.cornerRadius = radius;
-	self.opponentHeadImageView.layer.cornerRadius = radius;
-	self.userWordNumLabel.layer.cornerRadius = radius;
-	self.userHeadImageView.layer.cornerRadius = radius;
+	
+	CGFloat opponentHeadRadius = CGRectGetWidth(self.opponentHeadImageView.frame) / 2.0f;
+	
+	self.opponentWordNumLabel.layer.cornerRadius = opponentHeadRadius;
+	self.opponentHeadImageView.layer.cornerRadius = opponentHeadRadius;
+	
+	CGFloat userHeadRadius = CGRectGetWidth(self.userHeadImageView.frame) / 2.0f;
+	self.userWordNumLabel.layer.cornerRadius = userHeadRadius;
+	self.userHeadImageView.layer.cornerRadius = userHeadRadius;
+	
 }
 
 //"匹配中..." 动画

@@ -37,8 +37,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-	[self configIndexData];
-
+	[super viewWillAppear:animated];
+	if ([[LGUserManager shareManager] isLogin] && [LGUserManager]) {
+		[self configIndexData];
+	}
 }
 
 - (void)configIndexData{
@@ -120,6 +122,12 @@
 - (void)setReciteWordModel:(LGReciteWordModel *)reciteWordModel{
 	if (reciteWordModel == nil) return;
 	_reciteWordModel = reciteWordModel;
+	
+	if (reciteWordModel.todayWords.integerValue >= reciteWordModel.userPackage.planWords.integerValue) {
+		[self.reciteWordsButton setTitle:@"今日任务已完成,继续背单词" forState:UIControlStateNormal];
+	}else{
+		[self.reciteWordsButton setTitle:@"开始背单词" forState:UIControlStateNormal];
+	}
 	
 	//坚持天数
 	self.insistLabel.text = [NSString stringWithFormat:@"  已坚持%@天",reciteWordModel.insistDay];

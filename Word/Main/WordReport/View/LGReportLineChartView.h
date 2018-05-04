@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "LGReportModel.h"
 
-@class LGBeforeChartView;
 @interface LGReportLineChartView : UIView
 
 //前 15天
@@ -18,16 +17,31 @@
 //后 14 天
 @property (nonatomic, strong)NSMutableArray <NSString *>  *after;
 
+//x 轴数据
+@property (nonatomic, strong) NSArray<NSString *> *date;
+
 //设置数据
-- (void)setData:(NSMutableArray<LGWeekReportModel *> *)before after:(NSMutableArray <NSString *> *)after;
+- (void)setReportData:(LGReportModel *)reportModel;
 
 @end
 
-@interface LGBeforeChartView : UIView
+@interface LGBarChartView : UIView
 
 @property (nonatomic, strong)NSMutableArray <LGWeekReportModel *> *before;
+@property (nonatomic, strong)NSMutableArray <NSString *>  *after;
+
 @property (nonatomic, assign) CGFloat maxValue;
 
-- (instancetype)initWithFrame:(CGRect)frame before:(NSMutableArray<LGWeekReportModel *> *)before maxValue:(CGFloat)maxValue;
+- (instancetype)initWithFrame:(CGRect)frame before:(NSMutableArray<LGWeekReportModel *> *)before after:(NSMutableArray <NSString *> *)after  maxValue:(CGFloat)maxValue;
 
 @end
+
+@interface LGXDataView : UIView
+
+@property (nonatomic, strong) NSArray<NSString *> *date;
+
+- (instancetype)initWithFrame:(CGRect)frame date:(NSArray<NSString *> *)date;
+
+@end
+
+

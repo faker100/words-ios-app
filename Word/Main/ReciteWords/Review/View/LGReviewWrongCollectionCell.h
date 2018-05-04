@@ -22,4 +22,6 @@
 //范围
 @property (weak, nonatomic) IBOutlet UILabel *rangeLabel;
 
+
+
 @end

@@ -117,6 +117,7 @@
  * 请求背单词接口,code = 98进入复习模式
  */
 - (void)requestReciteWordsData {
+	
 	[LGProgressHUD showHUDAddedTo:self.view];
     __weak typeof(self) weakSelf = self;
 	[self.request requestReciteWordsCompletion:^(id response, LGError *error) {
@@ -336,7 +337,7 @@
  背单词模式下显示是否继续背单词
  */
 - (void)showIsContinue{
-    [LGFinishWordTaskView showFinishReciteWordToView:self.view.window continueBlock:^{
+    [LGFinishWordTaskView showFinishReciteWordToView:self.navigationController.view continueBlock:^{
         [self continueReciteWords];
     } cancelBlock:^{
         [self.navigationController popViewControllerAnimated:YES];

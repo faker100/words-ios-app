@@ -35,22 +35,30 @@
 - (void)resetSessionRequest:(id) userInfo completion:(void (^)(void))completion{
 	
 	NSArray *urlArray = SESSION_URLS;
+	__block BOOL loginSuccess = YES;
 	dispatch_group_t requestGroup = dispatch_group_create();
 	[urlArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 		dispatch_group_enter(requestGroup);
 		self.url = obj;
 		self.parameter = userInfo;
 		[self getRequestCompletion:^(id response, LGError *error) {
+			if (error) {
+				loginSuccess = NO;
+			}
 			dispatch_group_leave(requestGroup);
 			NSLog(@"=====session:%@",response);
 		}];
 	}];
 	dispatch_group_notify(requestGroup, dispatch_get_main_queue(), ^{
 		
-		[LGUserManager configCookie];
-		if (completion) {
-			completion();
+		if (loginSuccess) {
+			[LGUserManager configCookie];
+			if (completion) {
+				completion();
+			}
 		}
+		
+		
 	});
 }
 

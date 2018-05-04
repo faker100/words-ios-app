@@ -49,7 +49,7 @@
 - (void)setReportModel:(LGReportModel *)reportModel{
     _reportModel = reportModel;
     
-    self.weekTotalLabel.text = [NSString stringWithFormat:@"总量:%@",reportModel.week.all];
+    self.weekTotalLabel.text = [NSString stringWithFormat:@"总量:(%@)",reportModel.week.all];
     [self.weekData enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIButton *btn = (UIButton *)obj;
         NSString *description;
@@ -78,11 +78,11 @@
             default:
                 break;
         }
-        [btn setTitle:[NSString stringWithFormat:@"%@   %@",description,num] forState:UIControlStateNormal];
+        [btn setTitle:[NSString stringWithFormat:@"%@   (%@)",description,num] forState:UIControlStateNormal];
     }];
     
     self.reportPieView.weekReportModel = reportModel.week;
-    [self.lineChartView setData:reportModel.before after:reportModel.after];
+	[self.lineChartView setReportData:reportModel];
 }
 
 

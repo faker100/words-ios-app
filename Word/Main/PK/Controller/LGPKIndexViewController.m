@@ -11,6 +11,7 @@
 #import "UITableView+LGRefresh.h"
 #import "LGPKRankModel.h"
 #import "LGPKRankHeadView.h"
+#import "LGPlayer.h"
 
 @interface LGPKIndexViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -30,6 +31,11 @@
 	[super viewWillAppear:animated];
 	[self requestData];
 	[self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+	[super viewDidAppear:animated];
+	[[LGPlayer sharedPlayer] stopPkMusic];
 }
 
 - (void)configTable{

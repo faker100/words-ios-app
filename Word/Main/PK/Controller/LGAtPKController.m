@@ -37,11 +37,13 @@ NSInteger countDown = 10;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	[self configDefaultData];
+	
 }
 
 //默认数据
 - (void)configDefaultData{
 	[self.navigationController setNavigationBarHidden:YES];
+	self.title = @"";
 	[self.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(self.currentUserModel.image)] placeholderImage:[UIImage imageNamed:@"pk_default_opponent"]];
 	[self.opponentImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(self.opponentModel.image)] placeholderImage:[UIImage imageNamed:@"pk_default_opponent"]];
 	self.currentWordModel = self.pkModel.words.firstObject;

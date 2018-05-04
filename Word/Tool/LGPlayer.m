@@ -14,6 +14,7 @@
 @interface LGPlayer ()
 
 @property (nonatomic, strong) AVAudioPlayer *player;
+@property (nonatomic, strong) AVAudioPlayer *pkPlayer;
 
 @end
 
@@ -44,6 +45,21 @@
 				}
 			}
 		}];
+	}
+}
+
+- (void)playPkMusic{
+	NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:@"music" withExtension:@"mp3"];
+	self.pkPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:fileUrl error:nil];
+	[self.pkPlayer play];
+	self.pkPlayer.numberOfLoops = -1;
+	[self.pkPlayer play];
+}
+
+- (void)stopPkMusic{
+	if (self.pkPlayer) {
+		[self.pkPlayer stop];
+		self.pkPlayer = nil;
 	}
 }
 

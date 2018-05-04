@@ -14,4 +14,8 @@
 
 - (void)playWithUrl:(NSString *)url completion:(void(^)(LGError *error))finish;
 
+- (void)playPkMusic;
+
+- (void)stopPkMusic;
+
 @end

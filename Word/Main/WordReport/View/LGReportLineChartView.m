@@ -7,15 +7,24 @@
 //
 
 #import "LGReportLineChartView.h"
+#import "NSDate+Utilities.h"
 
 //水平线条数为 7 ，y轴方向的数据个数为8 (horizontalNum + 1);
 #define  horizontalNum 7
+
+//柱状图间距
+#define barSpace  15
+
+//柱状图宽度
+#define barWidth 30
 
 @interface LGReportLineChartView()
 
 @property (nonatomic, assign) NSInteger numOfX;  // x轴数量，最少4周;
 
 @property (nonatomic, assign) NSInteger riseOfY; // Y等差增量， getter方法;
+
+@property (nonatomic, strong) UIScrollView *scrollView;
 
 @property (nonatomic, strong) NSMutableArray<NSString *> *allTotal;     //所有总量
 @property (nonatomic, strong) NSMutableArray<NSString *> *allKnowWell;  //所有熟知量
@@ -28,9 +37,10 @@
 
 @implementation LGReportLineChartView
 
-- (void)setData:(NSMutableArray<LGWeekReportModel *> *)before after:(NSMutableArray <NSString *> *)after{
-    self.before = before;
-    self.after = after;
+- (void)setReportData:(LGReportModel *)reportModel{
+    self.before = reportModel.before;
+    self.after = reportModel.after;
+	self.date = reportModel.date;
     [self setNeedsDisplay];
 }
 
@@ -45,26 +55,41 @@
     //X轴周数区域高度
     CGFloat height_X = 50;
     
-    //背景区域
+    //背景数据区域
     CGRect backgroundRect = CGRectMake(width_Y, 0, CGRectGetMaxX(rect) - width_Y, CGRectGetMaxY(rect) - height_X);
     
     //Y轴区域
     CGRect yRect = CGRectMake(0, 0, width_Y, CGRectGetMaxY(rect) - height_X);
-    
+	
+	
+	
     //x轴区域
-    CGRect xRect = CGRectMake(width_Y, CGRectGetMaxY(rect) - height_X, CGRectGetMaxX(rect) - width_Y,height_X);
-    
-    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:backgroundRect];
-    [scrollView setContentSize:CGSizeMake(45 * (self.before.count + self.after.count), CGRectGetHeight(backgroundRect))];
-   UIView *view = [[LGBeforeChartView alloc]initWithFrame:CGRectMake(0, 0, 45 *self.before.count, CGRectGetHeight(backgroundRect)) before:self.before maxValue:[self maxDataOfDay]];
-    [scrollView addSubview:view];
-    
+//    CGRect xRect = CGRectMake(width_Y, CGRectGetMaxY(rect) - height_X, CGRectGetMaxX(rect) - width_Y,height_X);
+	
+   //滚动区域
+	CGRect scrollRect = CGRectMake(width_Y, 0, CGRectGetMaxX(rect) - width_Y, CGRectGetHeight(backgroundRect)+height_X);
+	
+	[self.scrollView removeFromSuperview];
+	
+	self.scrollView = [[UIScrollView alloc]initWithFrame:scrollRect];
+	[self.scrollView setContentSize:CGSizeMake((barWidth + barSpace) * (self.before.count + self.after.count), CGRectGetHeight(scrollRect))];
+	self.scrollView.backgroundColor = [UIColor clearColor];
+	self.scrollView.showsHorizontalScrollIndicator = NO;
+	[self addSubview:self.scrollView];
+	
+	//柱状 图
+   LGBarChartView *barView = [[LGBarChartView alloc]initWithFrame:CGRectMake(0, 0, self.scrollView.contentSize.width, CGRectGetHeight(backgroundRect)) before:self.before after:self.after  maxValue:self.riseOfY * (horizontalNum + 1)];
+    [self.scrollView addSubview:barView];
+	
+	//x轴
+	LGXDataView *xDataView = [[LGXDataView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(backgroundRect), self.scrollView.contentSize.width, height_X) date:self.date];
+	[self.scrollView addSubview:xDataView];
     
     [self createBackground:backgroundRect];
     [self createY:yRect];
-    [self createX:xRect];
+   // [self createX:xRect];
     
-    [self addSubview:scrollView];
+	
     
     //绘制总量折线
 //    [self createLineChart:self.allTotal    color:[UIColor lg_colorWithType:LGColor_theme_Color] rect:backgroundRect];
@@ -181,6 +206,14 @@
         [[[UIColor lg_colorWithType:LGColor_Title_2_Color] colorWithAlphaComponent:0.15] setStroke];
         [horizontalLinePath stroke];
     }
+	
+	
+	UIBezierPath *xline = [UIBezierPath new];
+	[xline moveToPoint:CGPointMake(CGRectGetMinX(bgRect), CGRectGetHeight(bgRect))];
+	[xline addLineToPoint:CGPointMake(CGRectGetWidth(bgRect) + CGRectGetMinX(bgRect), CGRectGetHeight(bgRect))];
+	xline.lineWidth = 0.5;
+	[[UIColor lg_colorWithType:LGColor_Title_2_Color] set];
+	[xline stroke];
 }
 
 /**
@@ -293,62 +326,153 @@
 @end
 
 
-@implementation LGBeforeChartView
+@implementation LGBarChartView
 
-- (instancetype)initWithFrame:(CGRect)frame before:(NSMutableArray<LGWeekReportModel *> *)before maxValue:(CGFloat)maxValue{
+- (instancetype)initWithFrame:(CGRect)frame before:(NSMutableArray<LGWeekReportModel *> *)before after:(NSMutableArray <NSString *> *)after maxValue:(CGFloat)maxValue{
     self = [super initWithFrame:frame];
     if (self) {
         self.before = before;
         self.maxValue = maxValue;
+		self.after = after;
+		self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
 
 - (void)drawRect:(CGRect)rect{
-    
-    CGFloat space = 16;
+	
+	//字体样式
+	UIFont *strFont = [UIFont systemFontOfSize:9];
+	NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+	paragraphStyle.alignment = NSTextAlignmentCenter;
+	NSDictionary *att = @{
+						  NSFontAttributeName : strFont,
+						  NSForegroundColorAttributeName : [UIColor lg_colorWithType:LGColor_Title_2_Color],
+						  NSParagraphStyleAttributeName : paragraphStyle,
+						  };
+	
+	//之前天数数据的宽度
+	__block CGFloat beforeWidth = 0;
     [self.before enumerateObjectsUsingBlock:^(LGWeekReportModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.all.integerValue != 0) {
-            CGFloat height = obj.all.integerValue / self.maxValue;
-            [self createDayDate:obj rect: CGRectMake(space * (idx + 1) + 30 *idx, CGRectGetMaxY(rect) - height, 30, height)];
+            CGFloat height = obj.all.integerValue / self.maxValue * CGRectGetHeight(rect);
+			CGRect barRect = CGRectMake(barSpace * (idx + 1) + barWidth *idx, CGRectGetHeight(rect) - height, barWidth, height);
+            [self createBeforeDate:obj rect:barRect];
+			CGRect strRect = CGRectMake(CGRectGetMinX(barRect), CGRectGetMinY(barRect) - 15, barWidth, 20);
+			[obj.all drawInRect:strRect withAttributes:att];
+			beforeWidth = CGRectGetMaxX(barRect);
         }
-       
     }];
+	
+	[self.after enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		if (obj.integerValue != 0) {
+			CGFloat height = obj.integerValue / self.maxValue * CGRectGetHeight(rect);
+			CGRect barRect = CGRectMake(beforeWidth + (idx + 1) * barSpace + barWidth *idx , CGRectGetHeight(rect) - height, barWidth, height);
+			[self createItemDate:barRect color:[UIColor lg_colorWithType:LGColor_Title_2_Color]];
+			
+			CGRect strRect = CGRectMake(CGRectGetMinX(barRect), CGRectGetMinY(barRect) - 15, barWidth, 20);
+			[obj drawInRect:strRect withAttributes:att];
+		}
+	}];
 }
 
-- (void)createDayDate:(LGWeekReportModel *)model rect:(CGRect)rect{
+- (void)createBeforeDate:(LGWeekReportModel *)model rect:(CGRect)rect{
+	
     //不认识
     CGFloat notKnowHeight = model.notKnow.floatValue / model.all.floatValue * CGRectGetHeight(rect);
-    CGRect notKnowRect = CGRectMake(0, CGRectGetMaxY(rect) - notKnowHeight, 30, notKnowHeight);
-    [self createItemDate:notKnowRect color:[UIColor lg_colorWithType: LGColor_pk_red]];
+    CGRect notKnowRect = CGRectMake(CGRectGetMinX(rect), CGRectGetMaxY(rect) - notKnowHeight, barWidth, notKnowHeight);
+    [self createItemDate:notKnowRect color:[UIColor lg_colorWithHexString:@"00FFFF"]];
     
     //忘记
     CGFloat forgetHeight = model.forget.floatValue / model.all.floatValue * CGRectGetHeight(rect);
-    CGRect  forgetRect = CGRectMake(0, CGRectGetMinY(notKnowRect) -  forgetHeight, 30, forgetHeight);
-    [self createItemDate:forgetRect color:[UIColor lg_colorWithHexString:@"0975b"]];
-    
+    CGRect  forgetRect = CGRectMake(CGRectGetMinX(rect), CGRectGetMinY(notKnowRect) -  forgetHeight, barWidth, forgetHeight);
+    [self createItemDate:forgetRect color:[UIColor lg_colorWithHexString:@"F0975B"]];
+
     //熟知
     CGFloat knowWellHeigth = model.knowWell.floatValue / model.all.floatValue * CGRectGetHeight(rect);
-    CGRect knowWellRect = CGRectMake(0, CGRectGetMinY(forgetRect) -  knowWellHeigth, 30, knowWellHeigth);
+    CGRect knowWellRect = CGRectMake(CGRectGetMinX(rect), CGRectGetMinY(forgetRect) -  knowWellHeigth, barWidth, knowWellHeigth);
     [self createItemDate:knowWellRect color:[UIColor lg_colorWithType: LGColor_theme_Color]];
-    
+
     //认识
     CGFloat knowHeight = model.know.floatValue / model.all.floatValue * CGRectGetHeight(rect);
-    CGRect knowRect = CGRectMake(0, CGRectGetMinY(knowWellRect) -  knowHeight, 30, knowHeight);
-    [self createItemDate:knowRect color:[UIColor lg_colorWithHexString:@"51dje7"]];
-    
+    CGRect knowRect = CGRectMake(CGRectGetMinX(rect), CGRectGetMinY(knowWellRect) -  knowHeight, barWidth, knowHeight);
+    [self createItemDate:knowRect color:[UIColor lg_colorWithHexString:@"51DFE7"]];
+
     //模糊
     CGFloat dimHeight = model.dim.floatValue / model.all.floatValue * CGRectGetHeight(rect);
-    CGRect dimRect = CGRectMake(0, CGRectGetMinY(knowRect) -  dimHeight, 30, dimHeight);
-    [self createItemDate:dimRect color:[UIColor lg_colorWithHexString:@"4e8eda"]];
-    
+    CGRect dimRect = CGRectMake(CGRectGetMinX(rect), CGRectGetMinY(knowRect) -  dimHeight, barWidth, dimHeight);
+    [self createItemDate:dimRect color:[UIColor lg_colorWithHexString:@"4E8EDA"]];
+	
 }
 
 
 - (void)createItemDate:(CGRect)rect color:(UIColor *)color{
-    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:0];
+    UIBezierPath *bezierPath = [UIBezierPath bezierPathWithRect:rect];
     [color setFill];
     [bezierPath fill];
+}
+
+@end
+
+@implementation LGXDataView
+
+- (instancetype)initWithFrame:(CGRect)frame date:(NSArray<NSString *> *)date{
+	self = [super initWithFrame:frame];
+	if (self) {
+		self.date = [self convertDate:date];
+		self.backgroundColor = [UIColor clearColor];
+	}
+	return self;
+}
+
+//日期转换成 1天前/2天前 ...今天 .../1天后/2天后
+- (NSMutableArray <NSString *> *)convertDate:(NSArray<NSString *> *)date{
+	
+	__block NSMutableArray<NSString *> *tempDate = [NSMutableArray array];
+	
+	
+	NSString *todayStr = [[NSDate defaultDateFormatter]stringFromDate:[NSDate currentDate]];
+	NSDate *today = [[NSDate defaultDateFormatter]dateFromString:todayStr];
+	[date enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		NSDate *date = [[NSDate defaultDateFormatter]dateFromString:obj];
+		NSInteger day = [date distanceInDaysToDate:today];
+		
+		if (day > 0) {
+			[tempDate addObject:[NSString stringWithFormat:@"%ld\n天\n前",day]];
+		}else if (day == 0){
+			[tempDate addObject:@"今\n天"];
+		}else{
+			[tempDate addObject:[NSString stringWithFormat:@"%ld\n天\n后",-day]];
+		}
+	}];
+	return tempDate;
+}
+
+- (void)drawRect:(CGRect)rect{
+
+	//字体样式
+	UIFont *strFont = [UIFont systemFontOfSize:9];
+	NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+	paragraphStyle.alignment = NSTextAlignmentCenter;
+	NSDictionary *att = @{
+						  NSFontAttributeName : strFont,
+						  NSForegroundColorAttributeName : [UIColor lg_colorWithType:LGColor_Title_2_Color],
+						  NSParagraphStyleAttributeName : paragraphStyle,
+						  };
+	[self.date enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		CGRect strRect = CGRectMake(barSpace * (idx + 1) + barWidth * idx, 5, barWidth, CGRectGetHeight(rect));
+		if ([obj isEqualToString:@"今\n天"]) {
+			NSDictionary *today = @{
+								  NSFontAttributeName : strFont,
+								  NSForegroundColorAttributeName : [UIColor lg_colorWithType:LGColor_theme_Color],
+								  NSParagraphStyleAttributeName : paragraphStyle,
+								  };
+			[obj drawInRect:strRect withAttributes:today];
+		}else{
+			[obj drawInRect:strRect withAttributes:att];
+		}
+		
+	}];
 }
 
 @end

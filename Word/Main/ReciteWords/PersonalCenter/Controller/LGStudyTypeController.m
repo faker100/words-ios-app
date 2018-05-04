@@ -21,10 +21,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	
+
 	if (!self.isPresentFromGuide) {
-		self.selectedType =  MAX(1, [LGUserManager shareManager].user.studyModel) ;
+		self.selectedType = [LGUserManager shareManager].user.studyModel;
 	}
 	
+	if (![[LGUserManager shareManager] isLogin]) {
+		self.selectedType = [LGUserManager shareManager].notLoggedStudyType;
+	}
 }
 
 - (void)setSelectedType:(LGStudyType)selectedType{
