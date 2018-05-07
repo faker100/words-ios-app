@@ -8,6 +8,7 @@
 
 #import "LGAddPlanController.h"
 #import "LGPlanTableViewCell.h"
+#import "LGWordPlanController.h"
 
 @interface LGAddPlanController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -68,16 +69,36 @@
 
 - (IBAction)addPlanAction:(UIButton *)sender {
     [LGProgressHUD showHUDAddedTo:self.view];
-    __weak typeof(self) weakSelf = self;
+	
+	 __weak typeof(self) weakSelf = self;
     [self.request addWordLibrary:self.libModel.ID planDay:self.planDay planWord:self.planWords  completion:^(id response, LGError *error) {
         if ([weakSelf isNormal:error]) {
-            [LGProgressHUD showSuccess:@"添加成功" toView:weakSelf.view completionBlock:^{
-                [weakSelf.navigationController popViewControllerAnimated:YES];
-            }];
+			[weakSelf updateNowPackage:weakSelf.libModel.ID];
         }
     }];
 }
 
+//设置为学习中的词包
+- (void)updateNowPackage:(NSString *)catId{
+	
+	[LGProgressHUD showHUDAddedTo:self.view];
+	 __weak typeof(self) weakSelf = self;
+	[self.request updateNowPackage:catId completion:^(id response, LGError *error) {
+		if ([self isNormal:error]) {
+			[LGProgressHUD showSuccess:@"添加成功" toView:weakSelf.view completionBlock:^{
+				
+				__block UIViewController *popToController ;
+				[weakSelf.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+					if ([obj isKindOfClass:[LGWordPlanController class]]) {
+						popToController = obj;
+						*stop = YES;
+					}
+				}];
+				[weakSelf.navigationController popToViewController:popToController animated:YES];
+			}];
+		}
+	}];
+}
 
 #pragma mark -UITableViewDataSource
 

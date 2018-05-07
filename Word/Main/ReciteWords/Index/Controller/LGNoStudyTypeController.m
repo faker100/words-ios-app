@@ -30,6 +30,9 @@
  */
 - (void)setStudyType{
 	LGStudyType type = [LGUserManager shareManager].user.studyModel;
+	if (![[LGUserManager shareManager] isLogin]) {
+		type = [LGUserManager shareManager].notLoggedStudyType;
+	}
 	NSString *str = @"";
 	switch (type) {
 		case LGStudyNone:

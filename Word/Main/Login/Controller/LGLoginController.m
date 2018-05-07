@@ -9,6 +9,7 @@
 #import "LGLoginController.h"
 #import "LGUserManager.h"
 #import "JPUSHService.h"
+#import "LGNavigationController.h"
 
 @interface LGLoginController ()
 
@@ -29,8 +30,7 @@
 
 - (void)configInterface{
 	
-	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-	[self.navigationController.navigationBar setShadowImage:[UIImage new]];
+	[((LGNavigationController *)self.navigationController) transparenceBar:YES];
 	self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 	NSDictionary *attributeDic = @{
 						  NSForegroundColorAttributeName:[UIColor lg_colorWithHexString:@"b8d3e0"],

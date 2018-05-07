@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol LGChooseWeekControllerDelegate
+@protocol LGChooseWeekControllerDelegate <NSObject>
 
 - (void)selectedWeek:(NSArray *)weakArr;
 

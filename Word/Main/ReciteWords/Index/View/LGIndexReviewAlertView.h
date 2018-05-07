@@ -10,7 +10,7 @@
 #import "LGIndexReviewModel.h"
 
 
-@protocol LGIndexReviewAlertViewDelegate
+@protocol LGIndexReviewAlertViewDelegate <NSObject>
 
 
 /**

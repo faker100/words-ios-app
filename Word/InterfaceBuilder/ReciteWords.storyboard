@@ -357,6 +357,7 @@
                                         <state key="normal" title="签  到">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="disabled" title="已签到"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="3"/>
@@ -2241,7 +2242,7 @@
                     <connections>
                         <outlet property="libraryTableView" destination="ddN-Hq-M3k" id="rIp-VM-wFy"/>
                         <outlet property="wordTypeTableView" destination="ytU-Hm-Tgg" id="LQi-PD-uHE"/>
-                        <segue destination="mMp-ue-roW" kind="custom" identifier="WordLibraryToWordList" customClass="LGSegue" id="sad-Yw-hL4"/>
+                        <segue destination="mMp-ue-roW" kind="show" identifier="WordLibraryToWordList" id="sad-Yw-hL4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ehj-dy-ZR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2353,8 +2354,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="beginReciteWords:" destination="mMp-ue-roW" eventType="touchUpInside" id="8xe-sX-RfQ"/>
                                     <action selector="reciteWordsAction:" destination="mMp-ue-roW" eventType="touchUpInside" id="Va2-xM-DH3"/>
-                                    <segue destination="kJg-hB-p5B" kind="custom" identifier="wordslistToPlan" customClass="LGSegue" id="ovM-KR-Kuh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2373,6 +2374,7 @@
                     <connections>
                         <outlet property="tableView" destination="2ti-iU-c7s" id="aVc-Hh-oDe"/>
                         <outlet property="wordNumberLabel" destination="zPi-Ks-sxc" id="oZX-fG-886"/>
+                        <segue destination="kJg-hB-p5B" kind="show" identifier="wordslistToPlan" id="4oc-nG-zmp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oS6-b5-GgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3030,6 +3032,7 @@
                                                         <state key="normal" title=" 打卡" image="index_clock">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <state key="selected" title=" 已打卡" image="index_clock"/>
                                                         <connections>
                                                             <segue destination="fid-tG-EnI" kind="show" id="hYn-yE-S8V"/>
                                                         </connections>
@@ -3298,9 +3301,11 @@
                         <outlet property="progressLabel" destination="7tL-DG-3bq" id="Qwh-Y1-3ce"/>
                         <outlet property="progressView" destination="aAo-2x-fku" id="TIa-ao-g30"/>
                         <outlet property="reciteWordsButton" destination="bS2-E1-xy5" id="dtI-bC-IG0"/>
+                        <outlet property="signButton" destination="FoN-uh-Zr6" id="jOo-ct-UQs"/>
                         <outlet property="surplusLabel" destination="HbN-6i-3pD" id="kbU-GR-vq4"/>
                         <outlet property="todayPlanLabel" destination="YMS-PE-dgB" id="SuT-wt-7He"/>
                         <outlet property="todayWordLabel" destination="dCm-r4-x8X" id="pvF-DW-mXq"/>
+                        <outlet property="todayWordTextLabel" destination="vnm-1z-Ncv" id="jxy-PV-9Hh"/>
                         <outlet property="totalWordLabel" destination="ttM-TS-XPb" id="YPw-Zf-IqW"/>
                         <segue destination="QJ7-j4-1ND" kind="show" identifier="indexPlanToBeginReciteWords" id="ejV-cN-EVt"/>
                     </connections>
@@ -4499,7 +4504,7 @@
                                                             <rect key="frame" x="73" y="14.5" width="34.5" height="53"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新华" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZ9-ln-tXz">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="牛津" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QZ9-ln-tXz">
                                                             <rect key="frame" x="296" y="78" width="25" height="12"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="12" id="g9H-Wf-c99"/>
@@ -5732,7 +5737,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1iK-3l-3g6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4278" y="-104"/>
+            <point key="canvasLocation" x="4536" y="-105"/>
         </scene>
     </scenes>
     <resources>

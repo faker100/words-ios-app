@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol LGTimeReivewCountAlertViewDelegate
+@protocol LGTimeReivewCountAlertViewDelegate <NSObject>
 
 - (void)beginReview;
 

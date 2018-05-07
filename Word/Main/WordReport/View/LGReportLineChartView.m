@@ -381,7 +381,7 @@
     //不认识
     CGFloat notKnowHeight = model.notKnow.floatValue / model.all.floatValue * CGRectGetHeight(rect);
     CGRect notKnowRect = CGRectMake(CGRectGetMinX(rect), CGRectGetMaxY(rect) - notKnowHeight, barWidth, notKnowHeight);
-    [self createItemDate:notKnowRect color:[UIColor lg_colorWithHexString:@"00FFFF"]];
+    [self createItemDate:notKnowRect color:[UIColor lg_colorWithHexString:@"FF213B"]];
     
     //忘记
     CGFloat forgetHeight = model.forget.floatValue / model.all.floatValue * CGRectGetHeight(rect);

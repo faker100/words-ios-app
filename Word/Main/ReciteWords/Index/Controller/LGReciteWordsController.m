@@ -121,6 +121,7 @@
 		if ([self isNormal:error]){
 			[LGUserManager shareManager].user = [LGUserModel mj_objectWithKeyValues:response[@"data"]];
 			[self configLeftItem];
+			[self.recitePlanController updateIsSign];
 			[weakSelf showController:YES];
 		}
 	}];
@@ -143,7 +144,9 @@
 	if (StringNotEmpty(user.planWords) && user.studyModel != LGStudyNone) {
 		if (self.currentShowController == self.recitePlanController) return;
 		self.currentShowController = self.recitePlanController;
-		[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
+		[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:^(BOOL finished) {
+			[self.recitePlanController configIndexData];
+		}];
 	}else{
 		if (self.currentShowController == self.noStudyTypeController) return;
 		self.currentShowController = self.noStudyTypeController;

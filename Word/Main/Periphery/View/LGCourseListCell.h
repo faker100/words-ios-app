@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LGCourseModel.h"
 
-@protocol LGCourseListCellDelegate
+@protocol LGCourseListCellDelegate <NSObject>
 
 - (void)tryListen:(LGCourseModel *)model;
 

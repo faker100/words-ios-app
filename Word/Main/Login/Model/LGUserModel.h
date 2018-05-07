@@ -25,6 +25,7 @@
 @property (nonatomic, copy) NSString *uid;
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *createTime;
+@property (nonatomic, copy) NSString *lastSign; //最后打卡时间
 @property (nonatomic, copy) NSString *startTime; //第一次背单词时间;
 @property (nonatomic, copy) NSString *image;
 @property (nonatomic, copy) NSString *lose;  //pk 失败次数

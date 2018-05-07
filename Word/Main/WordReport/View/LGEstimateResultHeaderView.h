@@ -13,7 +13,7 @@ typedef NS_ENUM(NSUInteger, LGEstimateResultHeaderType) {
 	LGEstimateResultNotKnow,
 };
 
-@protocol LGEstimateResultHeaderDelegate
+@protocol LGEstimateResultHeaderDelegate <NSObject>
 
 - (void)tapAction;
 

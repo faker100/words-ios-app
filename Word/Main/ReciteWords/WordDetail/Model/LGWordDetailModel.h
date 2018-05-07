@@ -19,6 +19,7 @@ typedef NS_ENUM(NSUInteger, LGWordDetailTableDataSourceType) {
 @class LGSentenceModel , LGWordDetailTableDataSource, LGQuestionSelectItemModel, LGQuestionModel;
 @interface LGWordDetailModel : NSObject
 
+@property (nonatomic, strong) NSString *percent;//认知率
 @property (nonatomic, strong) LGFreeWordModel *words;
 @property (nonatomic, strong) NSArray<LGSentenceModel *> *sentence;
 @property (nonatomic, strong) NSArray<LGSentenceModel *> *lowSentence;

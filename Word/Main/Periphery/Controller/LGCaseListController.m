@@ -41,6 +41,7 @@
     }
 	[self.request requestCaseListCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
+			[self.tableView lg_endRefreshing];
 			self.caseList = [LGCaseModel mj_objectArrayWithKeyValuesArray:response];
 		}
 	}];

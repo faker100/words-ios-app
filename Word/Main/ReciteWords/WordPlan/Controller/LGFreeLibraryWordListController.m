@@ -25,13 +25,22 @@
     // Do any additional setup after loading the view.
     [self configUserInterface];
     [self requestData:YES];
-	
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//开始背单词,已添加的单词,不能继续
+- (IBAction)beginReciteWords:(id)sender {
+	if (!self.wordLibraryModel.is) {
+		[self performSegueWithIdentifier:@"wordslistToPlan" sender:nil];
+	}else{
+		[LGProgressHUD showMessage:@"该词包已添加" toView:self.view];
+	}
+}
+
 
 - (void)configUserInterface{
 	

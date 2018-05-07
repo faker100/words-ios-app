@@ -112,7 +112,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.selectedPlan.surplusWord;
+    return self.selectedPlan.total.integerValue;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -173,7 +173,7 @@
 - (void)setPlanWithType:(LGChoosePlanType)type value:(NSInteger)value isFixOther:(BOOL)flag{
     
     //所选词包没有剩余单词时，返回
-    if (self.selectedPlan.surplusWord == 0) {
+    if (self.selectedPlan.total.integerValue == 0) {
         self.dayLabel.text = @"0天";
         self.numberLabel.text = @"0个";
         return;
@@ -188,19 +188,19 @@
         
 		
 		if (flag) {
-			NSInteger otherValue = ceil(self.selectedPlan.surplusWord * 1.0 / value);
+			NSInteger otherValue = ceil(self.selectedPlan.total.integerValue * 1.0 / value);
 			[self setPlanWithType:LGChooseNumPlan value:otherValue isFixOther:NO];
 		}
 	}else{
 		self.numberLabel.text = [NSString stringWithFormat:@"%ld个",value];
 		self.selectedPlan.planWords = @(value).stringValue;
-		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.selectedPlan.surplusWord - value inSection:0];
+		NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.selectedPlan.total.integerValue - value inSection:0];
         
         [self.numberTable selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
         
 		
 		if (flag) {
-			NSInteger otherValue = ceil(self.selectedPlan.surplusWord * 1.0 / value);
+			NSInteger otherValue = ceil(self.selectedPlan.total.integerValue * 1.0 / value);
 			[self setPlanWithType:LGChooseDayPlan value:otherValue isFixOther:NO];
 		}
 	}

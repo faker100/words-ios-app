@@ -17,8 +17,12 @@
 
 @property (nonatomic, strong) LGSignModel *signModel;
 
+@property (nonatomic, strong) LGReciteWordModel *reciteWordModel;
+
 //collection 的 data
 @property (nonatomic, strong) NSMutableArray<LGSignCellModel *> *calendar;
+
+
 
 @end
 
@@ -56,9 +60,9 @@
 	//已坚持天数/今日背单词
 	[self.request requestIndexRecitePlan:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			LGReciteWordModel *reciteWordModel = [LGReciteWordModel mj_objectWithKeyValues:response];
-			self.insistLabel.text = reciteWordModel.insistDay;
-			self.wordLabel.text = reciteWordModel.todayWords;
+			self.reciteWordModel = [LGReciteWordModel mj_objectWithKeyValues:response];
+			self.insistLabel.text = self.reciteWordModel.insistDay;
+			self.wordLabel.text = self.reciteWordModel.todayWords;
 		}
 	}];
 }
@@ -158,10 +162,11 @@
 	NSString *url = [NSString stringWithFormat:@"wap/share/index?uid=%@&type=1",[LGUserManager shareManager].user.uid];
 	
 	NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-	[shareParams SSDKSetupShareParamsByText:@""
+	NSString *text = [NSString stringWithFormat:@"我已在雷哥单词坚持%@天,今日已背单词%@词,累计已背%@词",self.reciteWordModel.insistDay, self.reciteWordModel.todayWords,self.reciteWordModel.userAllWords];
+	[shareParams SSDKSetupShareParamsByText:text
 									 images:PLACEHOLDERIMAGE
 										url:[NSURL URLWithString:WORD_DOMAIN(url)]
-									  title:@"雷哥单词"
+									  title: platformType == SSDKPlatformSubTypeWechatTimeline?text : @"雷哥单词"
 									   type:SSDKContentTypeWebPage];
 	
 	[ShareSDK share:platformType parameters:shareParams onStateChanged:^(SSDKResponseState state, NSDictionary *userData, SSDKContentEntity *contentEntity, NSError *error) {
@@ -171,6 +176,7 @@
 
 - (IBAction)cancelAction:(id)sender {
 	[self dismissViewControllerAnimated:YES completion:nil];
+	[self.delegate dismissShareController];
 }
 
 /*

@@ -13,6 +13,7 @@
 #import "LGIndexReviewModel.h"
 #import "LGWordDetailController.h"
 #import "LGFinishWordTaskView.h"
+#import "NSDate+Utilities.h"
 
 @interface LGRecitePlanController () <LGIndexReviewAlertViewDelegate>
 
@@ -38,11 +39,18 @@
 
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
-	if ([[LGUserManager shareManager] isLogin] && [LGUserManager]) {
+	if ([[LGUserManager shareManager] isLogin] && [LGUserManager shareManager].user.planWords.length > 0) {
 		[self configIndexData];
 	}
 }
 
+//更新是否已打卡
+- (void)updateIsSign{
+	NSString *lastSign = [LGUserManager shareManager].user.lastSign;
+	self.signButton.selected = [[[NSDate defaultDateFormatter]dateFromString:lastSign] isToday];
+}
+
+//请求首页数据
 - (void)configIndexData{
 	__weak typeof(self) weakSelf = self;
 	[self.request requestIndexRecitePlan:^(id response, LGError *error) {
@@ -123,11 +131,24 @@
 	if (reciteWordModel == nil) return;
 	_reciteWordModel = reciteWordModel;
 	
-	if (reciteWordModel.todayWords.integerValue >= reciteWordModel.userPackage.planWords.integerValue) {
+	//今日需背 x 个。在完成计划后继续深入背更多单词时候，这里展示：今日已完成x个。
+	NSString *tempTodayWords = @"0";
+	if (reciteWordModel.todayWords.integerValue > reciteWordModel.userPackage.planWords.integerValue) {
+		self.todayWordTextLabel.text =@"今日已完成";
+		tempTodayWords = reciteWordModel.todayWords;
+	}else{
+		self.todayWordTextLabel.text =@"今天需背单词";
+		tempTodayWords = reciteWordModel.userPackage.planWords;
+	}
+	
+	//今日单词完成后,显示"今日任务已经完成",没完成或者继续背单词 显示@"开始背单词"
+	if (reciteWordModel.todayWords.integerValue == reciteWordModel.userPackage.planWords.integerValue) {
 		[self.reciteWordsButton setTitle:@"今日任务已完成,继续背单词" forState:UIControlStateNormal];
 	}else{
 		[self.reciteWordsButton setTitle:@"开始背单词" forState:UIControlStateNormal];
 	}
+	
+	
 	
 	//坚持天数
 	self.insistLabel.text = [NSString stringWithFormat:@"  已坚持%@天",reciteWordModel.insistDay];
@@ -142,7 +163,7 @@
 	self.surplusLabel.attributedText = surplusDayAttributeStr;
 	
 	//今天需背单词
-	NSString *todayWordStr = [NSString stringWithFormat:@"%@个",reciteWordModel.userPackage.planWords];
+	NSString *todayWordStr = [NSString stringWithFormat:@"%@个", tempTodayWords];
 	NSMutableAttributedString *todayWordAttributeStr = [[NSMutableAttributedString alloc]initWithString:todayWordStr];
 	[todayWordAttributeStr addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, reciteWordModel.userPackage.planWords.length)];
 	[todayWordAttributeStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:24] range:NSMakeRange(0, reciteWordModel.userPackage.planWords.length)];
@@ -178,7 +199,7 @@
 	[progressAttributeStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_theme_Color] range:NSMakeRange(5, reciteWordModel.userPackageWords.length)];
 	self.progressLabel.attributedText = progressAttributeStr;
 	
-	//今天需要背单词
+	//今天需要背单词,今日复习
 	LGStudyType type = [LGUserManager shareManager].user.studyModel;
 	NSString *todayStr = [NSString stringWithFormat:@"今天需要背单词 : %@/%@",reciteWordModel.todayWords, reciteWordModel.userPackage.planWords];
 	if (type != LGStudyOnlyNew) {

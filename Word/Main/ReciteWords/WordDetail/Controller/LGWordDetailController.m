@@ -17,8 +17,9 @@
 #import "LGWordDetailSelectItemCell.h"
 #import "LGThirdPartyCell.h"
 #import "LGWebController.h"
+#import "LGWordDetailShareController.h"
 
-@interface LGWordDetailController () <UITableViewDelegate, UITableViewDataSource,LGThirdPartyCellDelegate>
+@interface LGWordDetailController () <UITableViewDelegate, UITableViewDataSource,LGThirdPartyCellDelegate, LGWordDetailShareControllerDelegate>
 
 @property (nonatomic, strong) LGWordDetailModel *detailModel; //当前单词,重写 setter 刷新界面
 
@@ -108,6 +109,9 @@
     if (detailModel.words.phonetic_us) {
         [self.playerButton setTitle:[NSString stringWithFormat:@"  %@",detailModel.words.phonetic_us] forState:UIControlStateNormal];
     }
+	
+	self.title = [NSString stringWithFormat:@"%@ (认知率: %@%%)",self.title, detailModel.percent];
+	
 	[self.wordTabelView reloadData];
 }
 
@@ -135,7 +139,6 @@
 			}else if (code == 96){
 				//今日已完成
                 [self performSegueWithIdentifier:@"wordDetailToShare" sender:nil];
-				[self showIsContinue];
 			}
 		}
 	}];
@@ -332,18 +335,6 @@
 	}];
 }
 
-
-/**
- 背单词模式下显示是否继续背单词
- */
-- (void)showIsContinue{
-    [LGFinishWordTaskView showFinishReciteWordToView:self.navigationController.view continueBlock:^{
-        [self continueReciteWords];
-    } cancelBlock:^{
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
-}
-
 /**
  跳转到下一个 WordDetailController
  @param type  下一个 controller 的模式
@@ -485,12 +476,17 @@
     }else if (type == LGThirdPartyBiYing){
         url = [NSString stringWithFormat:@"https://cn.bing.com/dict/search?q=%@",word];
     }else{
-        
+		url = [NSString stringWithFormat:@"https://www.oxfordlearnersdictionaries.com/definition/english/%@",word];
     }
     if (url) {
         AXWebViewController *web = [[AXWebViewController alloc]initWithAddress:url];
         [self.navigationController pushViewController:web animated:YES];
     }
+}
+
+#pragma mark - LGWordDetailShareControllerDelegate
+- (void)dismissShareController{
+	[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - Navigation
@@ -500,6 +496,9 @@
 	if ([segue.identifier isEqualToString:@"WordDetailToError"]) {
 		LGWordErrorViewController *controller = segue.destinationViewController;
 		controller.wordID = self.detailModel.words.ID;
+	}else if ([segue.identifier isEqualToString:@"wordDetailToShare"]){
+		LGWordDetailShareController *controller = segue.destinationViewController;
+		controller.delegate = self;
 	}
 	// Get the new view controller using [segue destinationViewController].
 	// Pass the selected object to the new view controller.

@@ -19,6 +19,9 @@
 
 //今天需要背单词
 @property (weak, nonatomic) IBOutlet UILabel *todayWordLabel;
+//今天需背单词文案
+@property (weak, nonatomic) IBOutlet UILabel *todayWordTextLabel;
+
 
 //累计背单词
 @property (weak, nonatomic) IBOutlet UILabel *totalWordLabel;
@@ -38,6 +41,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *todayPlanLabel;
 //开始被单词 button
 @property (weak, nonatomic) IBOutlet UIButton *reciteWordsButton;
+//打卡
+@property (weak, nonatomic) IBOutlet UIButton *signButton;
 
+
+//请求首页数据
+- (void)configIndexData;
+
+//更新是否已打卡
+- (void)updateIsSign;
 
 @end

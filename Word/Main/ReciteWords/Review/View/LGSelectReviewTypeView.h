@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@protocol LGSelectReviewTypeViewDelegate
+@protocol LGSelectReviewTypeViewDelegate <NSObject>
 
 - (void)selectedReviewType:(LGSelectReviewType)type;
 

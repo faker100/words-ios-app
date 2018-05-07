@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol LGGuideControllerDelegate
+@protocol LGGuideControllerDelegate <NSObject>
 
 - (void)finishGuide;
 

@@ -15,7 +15,7 @@ typedef NS_ENUM(NSUInteger, LGThirdPartyType) {
 	LGThirdPartyXinHua
 };
 
-@protocol LGThirdPartyCellDelegate
+@protocol LGThirdPartyCellDelegate <NSObject>
 
 - (void)selectedThirdParty:(LGThirdPartyType) type;
 

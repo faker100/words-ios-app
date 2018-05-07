@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LGClockModel.h"
 
-@protocol LGClockListCellDelegate
+@protocol LGClockListCellDelegate <NSObject>
 
 
 /**

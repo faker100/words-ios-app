@@ -53,6 +53,8 @@
 	[self.wordTypeTableView reloadData];
 }
 
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -83,9 +85,7 @@
 	if (tableView == self.libraryTableView) {
 		self.selectedModel = self.modelArray[indexPath.row];
 	}else{
-		if (!self.selectedModel.child[indexPath.row].is) {
-			[self performSegueWithIdentifier:@"WordLibraryToWordList" sender:self.selectedModel.child[indexPath.row]];
-		}
+		[self performSegueWithIdentifier:@"WordLibraryToWordList" sender:self.selectedModel.child[indexPath.row]];
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	}
 }

@@ -17,7 +17,8 @@
 }
 
 - (NSInteger)surplusWord{
-	return self.total.integerValue - self.userWords.integerValue;
+//	return self.total.integerValue - self.userWords.integerValue;
+	return self.total.integerValue;
 }
 
 @end

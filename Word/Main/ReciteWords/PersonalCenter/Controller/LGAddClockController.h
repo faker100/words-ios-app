@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LGClockModel.h"
 
-@protocol LGAddClockControllerDelegate
+@protocol LGAddClockControllerDelegate <NSObject>
 
 - (void)saveClock:(LGClockModel *)clockModel;
 

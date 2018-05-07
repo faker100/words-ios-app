@@ -15,7 +15,7 @@ typedef NS_ENUM(NSUInteger, LGPeripherySectionHeaderType) {
 	LGPeripherySectionCase,   //案例
 };
 
-@protocol LGPeripherySectionHeaderDelegate
+@protocol LGPeripherySectionHeaderDelegate <NSObject>
 
 - (void)moreWithType:(LGPeripherySectionHeaderType) type;
 

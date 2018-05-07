@@ -19,6 +19,6 @@
 @property (nonatomic, copy) NSString *catId;
 
 //自定义字段,剩余单词
-@property (nonatomic, assign, readonly) NSInteger surplusWord;
+//@property (nonatomic, assign, readonly) NSInteger surplusWord;
 
 @end
