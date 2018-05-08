@@ -213,7 +213,7 @@
  *  @param serType       webcast或者training
  *  @param oldVersion    是否用新版本的接口
  *  @param token         第三方验证K值，只有在oldVersion为NO下才会起作用
- * @param customUser     自定义用户id，无特殊需求直接写0，若需要自定义，则需要大于十亿，否则无效
+ * @param customUserID     自定义用户id，无特殊需求直接写0，若需要自定义，则需要大于十亿，否则无效
  */
 - (void)addItem:(NSString *)domain
          number:(NSString*)number

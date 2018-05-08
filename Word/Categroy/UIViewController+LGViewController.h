@@ -22,6 +22,13 @@
 - (BOOL)isNormal:(LGError *)error;
 
 
+/**
+ 不显示code = 0时的信息
+ @param error LGError对象
+ @return	没有错误信息返回 YES, 如果有错误信息返回 NO
+ */
+- (BOOL)isNormalNotMessage:(LGError *)error;
+
 
 /**
  根据 error,显示错误信息在指定的 view 上,并隐藏之前的 LGProgressHUD

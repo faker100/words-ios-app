@@ -9,6 +9,7 @@
 #import "LGUpdateNicknameController.h"
 #import "NSString+LGString.h"
 #import "LGUserManager.h"
+#import "LGNavigationController.h"
 
 @interface LGUpdateNicknameController ()
 
@@ -27,8 +28,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	[((LGNavigationController *)self.navigationController) transparenceBar:NO];
+}
 
 - (IBAction)sureAction:(id)sender {
+	[self.textField resignFirstResponder];
 	NSString *nickname = self.textField.text;
 	if ([nickname isNickname]) {
 		__weak typeof(self) weakSelf = self;
@@ -36,14 +42,18 @@
 		[self.request updateNickname:nickname completion:^(id response, LGError *error) {
 			if ([self isNormal:error]) {
 				[LGUserManager shareManager].user.nickname = nickname;
-				[weakSelf.request resetSessionRequest:[[LGUserManager shareManager].user mj_keyValues]  completion:nil];
-				[LGProgressHUD showSuccess:@"修改成功" toView:self.view completionBlock:^{
-					[self.navigationController popViewControllerAnimated:YES];
+				[weakSelf.request resetSessionRequest:[[LGUserManager shareManager].user mj_keyValues]  completion:^{
+					[LGProgressHUD showSuccess:@"修改成功" toView:self.view completionBlock:^{
+						if (self.updateNicknameCompletion) {
+							self.updateNicknameCompletion();
+						}
+						[self.navigationController popViewControllerAnimated:YES];
+					}];
 				}];
 			}
 		}];
 	}else{
-		[LGProgressHUD showMessage:@"请输入正确的昵称" toView:self.view];
+		[LGProgressHUD showMessage:@"请输入2-8位的昵称" toView:self.view];
 	}
 }
 

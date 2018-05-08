@@ -10,6 +10,7 @@
 #import "LGUserManager.h"
 #import "JPUSHService.h"
 #import "LGNavigationController.h"
+#import "LGUpdateNicknameController.h"
 
 @interface LGLoginController ()
 
@@ -28,9 +29,13 @@
 	[self configInterface];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+		[((LGNavigationController *)self.navigationController) transparenceBar:YES];
+}
+
 - (void)configInterface{
 	
-	[((LGNavigationController *)self.navigationController) transparenceBar:YES];
 	self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 	NSDictionary *attributeDic = @{
 						  NSForegroundColorAttributeName:[UIColor lg_colorWithHexString:@"b8d3e0"],
@@ -49,6 +54,7 @@
 	}
 	
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -77,15 +83,32 @@
         if ([self isNormal:error]) {
             LGUserModel *model = [LGUserModel mj_objectWithKeyValues:response];
             [LGUserManager shareManager].user = model;
-			[JPUSHService setAlias:[NSString stringWithFormat:@"lgw%@",model.uid] completion:nil seq:0];
-			[self updateStudyType:^{
-				[[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_NOTIFICATION object:nil];
-				[self.navigationController dismissViewControllerAnimated:YES completion:nil];
-			}];
+			
+			//如果没有昵称,去设置昵称
+			if (model.nickname.length == 0) {
+				LGUpdateNicknameController *nicknameController = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGUpdateNicknameController");
+				[self.navigationController pushViewController:nicknameController animated:YES];
+				nicknameController.updateNicknameCompletion = ^{
+					[self loginSuccess];
+				};
+			}else{
+				//更新 session
+				[self.request resetSessionRequest:response completion:^{
+					[self loginSuccess];
+				}];
+			}
         }
 	}];
 }
 
+- (void)loginSuccess{
+	  LGUserModel *model = [LGUserManager shareManager].user;
+	[JPUSHService setAlias:[NSString stringWithFormat:@"lgw%@",model.uid] completion:nil seq:0];
+	[self updateStudyType:^{
+		[[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_NOTIFICATION object:nil];
+		[self.navigationController dismissViewControllerAnimated:YES completion:nil];
+	}];
+}
 
 /**
  更新本地存储的学习模式,更新成功后把本地的改为 LGStudyNone

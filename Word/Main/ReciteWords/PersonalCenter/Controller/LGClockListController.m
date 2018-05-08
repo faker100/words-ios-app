@@ -10,6 +10,8 @@
 #import "LGClockListCell.h"
 #import "LGAddClockController.h"
 #import "LGClockManager.h"
+#import "LGTool.h"
+
 
 @interface LGClockListController () <UITableViewDelegate, UITableViewDataSource, LGAddClockControllerDelegate,LGClockListCellDelegate>
 
@@ -36,6 +38,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+	[super viewDidAppear:animated];
+	//[LGTool checkDevicePermissions:LGDeviceNotification];
+}
 
 #pragma mark -UITableViewDataSource
 

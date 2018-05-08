@@ -33,7 +33,6 @@
     __weak typeof(self) weakSelf = self;
     [self.discoverModel.content htmlToAttributeStringContent:OPPEN_DOMAIN(@"") width:SCREEN_WIDTH completion:^(NSMutableAttributedString *attrStr) {
         weakSelf.contentTextView.attributedText = attrStr;
-
         [weakSelf.activityView stopAnimating];
     }];
 }

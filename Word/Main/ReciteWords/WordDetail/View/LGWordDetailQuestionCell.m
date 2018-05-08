@@ -22,11 +22,22 @@
     // Configure the view for the selected state
 }
 
-- (void)setQuestion:(NSString *)question completion:(void(^)(void))completion{
+- (void)setQuestion:(NSString *)question word:(NSString *)word completion:(void(^)(void))completion{
 	if (![self.question isEqualToString:question]) {
 		self.question = question;
 		__weak typeof(self) weakSelf = self;
 		[question htmlToAttributeStringContent:GMAT_DOMAIN(@"") width:CGRectGetWidth(self.bgView.bounds) - 20 completion:^(NSMutableAttributedString *attrStr) {
+			
+			//高亮 word
+			NSString *str = attrStr.mutableString;
+			NSString *regexString = word;
+			NSRegularExpression *reqular = [NSRegularExpression regularExpressionWithPattern:regexString options:NSRegularExpressionDotMatchesLineSeparators error:nil];
+			NSArray *resultArray  = [reqular matchesInString:str options:NSMatchingReportCompletion range:NSMakeRange(0, str.length)];
+			
+				for (NSTextCheckingResult *result in resultArray) {
+					[attrStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_theme_Color] range:result.range];
+				}
+			
 			weakSelf.questionLabel.attributedText = attrStr;
             completion();
 		}];

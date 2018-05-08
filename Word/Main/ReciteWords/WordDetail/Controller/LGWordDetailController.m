@@ -30,7 +30,6 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view.
-	
 	if (self.controllerType == LGWordDetailReciteWords)
 	{
 		[self requestReciteWordsData];
@@ -160,10 +159,14 @@
 
 /**
  请求艾宾浩斯复习列表
+ code = 0 没有复习内容,不提示,直接跳到下一个单词
  */
 - (void)requestEbbinghausReviewWordArray{
 	[self.request requestEbbinghausReviewList:^(id response, LGError *error) {
-		if ([self isNormal:error]) {
+		NSString *code = [NSString stringWithFormat:@"%@",response[@"code"]];
+		if ([code isEqualToString:@"0"]) {
+			[self pushNextWordDetailController:LGWordDetailReciteWords animated:YES];
+		}else if ([self isNormal:error]) {
 			self.ebbinghausReviewWordIdArray  = [NSMutableArray arrayWithArray:response[@"words"]];
             self.ebbinghausCount = self.ebbinghausReviewWordIdArray.count;
 			[self pushNextWordDetailController:LGWordDetailEbbinghausReview animated:NO];
@@ -401,7 +404,7 @@
 		if (indexPath.row == 0) {
 			LGWordDetailQuestionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailQuestionCell"];
 			
-            [cell setQuestion:dataSource.cellContent[0] completion:^{
+            [cell setQuestion:dataSource.cellContent[0] word:self.detailModel.words.word completion:^{
                 [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             }];
 			return cell;

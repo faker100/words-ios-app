@@ -20,8 +20,13 @@
 #import "LGNavigationController.h"
 #import "LGWebController.h"
 #import "LGCourseDetailController.h"
+#import "LGTool.h"
 
 @interface LGPeripheryController ()<UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource ,LGPeripherySectionHeaderDelegate, LGPeripheryLiveCellDelegate, LGLivePreviewCellDelegate,LGClassicCourseCellDelegate>
+
+{
+	dispatch_source_t timer;
+}
 
 @property (nonatomic, strong) LGPeripheryModel *peripheryModel;
 
@@ -76,8 +81,6 @@
 	[self.navigationController.view bringSubviewToFront:self.navigationController.navigationBar];
 }
 
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -86,10 +89,39 @@
 #pragma mark -
 - (void)setPeripheryModel:(LGPeripheryModel *)peripheryModel{
 	_peripheryModel = peripheryModel;
-	
-	
 	[self.publicCollectionView reloadData];
+	self.pageController.numberOfPages = self.peripheryModel.recentClass.count;
+	if (self.pageController.numberOfPages > 1) {
+		[self beginLoop];
+	}
 	[self.tableView reloadData];
+}
+
+
+/**
+ 开始轮播
+ */
+- (void)beginLoop{
+	UICollectionViewFlowLayout  *flowLayout = (UICollectionViewFlowLayout *)self.publicCollectionView.collectionViewLayout;
+	[LGTool cancelTimer:timer];
+	timer = [LGTool beginCountDownWithSecond:3 completion:^(NSInteger currtentSecond) {
+		if (currtentSecond == 0) {
+			CGFloat width = flowLayout.itemSize.width;
+			CGFloat offset_x = self.publicCollectionView.contentOffset.x;
+			//0 开始
+			NSInteger currentIndex = offset_x / width;
+			//最后一页
+			CGPoint nextOffset = CGPointZero;
+			NSInteger page = 0;
+			if (currentIndex + 1 < self.pageController.numberOfPages) {
+				nextOffset = CGPointMake((currentIndex + 1) * width, 0);
+				page = currentIndex + 1;
+			}
+			[self.publicCollectionView setContentOffset:nextOffset animated:YES];
+			[self.pageController setCurrentPage:page];
+			[self beginLoop];
+		}
+	}];
 }
 
 #pragma mark - Tap Gesture

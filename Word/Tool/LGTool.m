@@ -9,6 +9,10 @@
 #import "LGTool.h"
 #import <AVFoundation/AVCaptureDevice.h>
 #import <Photos/PHPhotoLibrary.h>
+// iOS10注册APNs所需头文件
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
 
 @implementation LGTool
 
@@ -103,7 +107,7 @@
 	
 	__block BOOL flag = YES;
 	
-	NSString *message = @"";
+	__block NSString *message = @"";
 	
 	if (type == LGDeviceCamera) {
 		AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
@@ -133,7 +137,12 @@
 	
     if (type == LGDeviceNotification) {
         if (@available(iOS 10.0, *)){
-            
+			//进行用户权限的申请
+			[[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionBadge|UNAuthorizationOptionSound|UNAuthorizationOptionAlert|UNAuthorizationOptionCarPlay completionHandler:^(BOOL granted, NSError * _Nullable error) {
+				//在block中会传入布尔值granted，表示用户是否同意
+				flag = granted;
+				message = @"请在iPhone的\"设置-通知\"选项中,允许通知";
+			}];
         }else{
             if ([[UIApplication sharedApplication] currentUserNotificationSettings].types  == UIRemoteNotificationTypeNone) {
                 flag = NO;

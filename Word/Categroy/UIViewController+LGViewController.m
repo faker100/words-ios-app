@@ -25,8 +25,16 @@
     [self lg_dealloc];
 }
 
+
 - (BOOL)isNormal:(LGError *)error{
  	return  [self isNormal:error showInView:nil];
+}
+
+- (BOOL)isNormalNotMessage:(LGError *)error{
+//	if (error.errorType == LGServiceError) {
+//		<#statements#>
+//	}
+	return NO;
 }
 
 - (BOOL)isNormal:(LGError *)error showInView:(UIView *)view{

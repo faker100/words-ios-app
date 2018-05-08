@@ -16,6 +16,14 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel;
 
-- (void)setQuestion:(NSString *)question completion:(void(^)(void))completion;
+
+/**
+ 设置例题
+
+ @param question 问题
+ @param word 高亮的单词
+ @param completion 异步解析 html 回调
+ */
+- (void)setQuestion:(NSString *)question word:(NSString *)word completion:(void(^)(void))completion;
 
 @end

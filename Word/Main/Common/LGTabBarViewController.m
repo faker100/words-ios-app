@@ -19,6 +19,9 @@
 	 * 在 viewDidAppear 置为 nil
 	 */
 	UIViewController *loginNavigationController;
+	
+	//引导页
+	LGGuideController *guideController;
 }
 @end
 
@@ -32,7 +35,7 @@
 	UINavigationController *wordReport  = STORYBOARD_VIEWCONTROLLER(@"WordReport", @"NavigationController");
 	UINavigationController *pk		    = STORYBOARD_VIEWCONTROLLER(@"PK", @"NavigationController");
 	UINavigationController *periphery   = STORYBOARD_VIEWCONTROLLER(@"Periphery", @"NavigationController");
-	self.viewControllers = @[reciteWords,wordReport,pk,periphery ];
+	self.viewControllers = @[reciteWords,wordReport,pk,periphery];
 	
 	[self configTabbarItem];
 	
@@ -82,9 +85,9 @@
 //显示引导页
 - (void)showGuideController{
 	if ([LGUserManager shareManager].isFirstLaunch) {
-		LGGuideController *guideController = STORYBOARD_VIEWCONTROLLER(@"Main", @"LGGuideController");
+		guideController = STORYBOARD_VIEWCONTROLLER(@"Main", @"LGGuideController");
 		guideController.delegate = self;
-		[self addChildViewController:guideController];
+	//	[self addChildViewController:guideController];
 		[self.view addSubview:guideController.view];
 	}
 }
@@ -92,6 +95,7 @@
 #pragma mark - LGGuideControllerDelegate
 //引导页消失后弹出学习模式
 - (void)finishGuide{
+	guideController = nil;
 	LGStudyTypeController *controller = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGStudyTypeController");
 	controller.isPresentFromGuide = YES;
 	[self presentViewController:controller animated:YES completion:nil];

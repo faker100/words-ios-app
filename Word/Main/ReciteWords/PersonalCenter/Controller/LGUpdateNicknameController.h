@@ -10,6 +10,8 @@
 
 @interface LGUpdateNicknameController : UIViewController
 
+//主要用于登录时,上传昵称的回调
+@property (copy, nonatomic) void (^updateNicknameCompletion)(void);
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 

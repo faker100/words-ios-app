@@ -21,15 +21,7 @@
 					   @"userName" : username,
 					   @"userPass" : password
 					   };
-	[self postRequestCompletion:^(id response, LGError *error) {
-		if (error) {
-            completion(response,error);
-        }else{
-            [self resetSessionRequest:response completion:^{
-                completion(response,error);
-            }];
-        }
-	}];
+	[self postRequestCompletion:completion];
 }
 
 - (void)resetSessionRequest:(id) userInfo completion:(void (^)(void))completion{
