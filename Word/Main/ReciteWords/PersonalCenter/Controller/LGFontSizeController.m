@@ -33,7 +33,7 @@
 	NSString *localFontSizeRate = [LGUserManager shareManager].user.fontSizeRate;
 	
 	//slider 中间值
-	CGFloat midValue  = (self.slider.maximumValue + self.slider.minimumValue) / 2;
+    CGFloat midValue  = [self sliderMidValue];
 	
 	CGFloat defaultSize = StringNotEmpty(localFontSizeRate) ? localFontSizeRate.floatValue * midValue : midValue;
 	
@@ -55,7 +55,7 @@
 	CGFloat ratio = (sender.maximumValue - sender.minimumValue) / sender.frame.size.width;
 	
 	//获取中间值的 fontsize
-	CGFloat centerFontSize = (sender.maximumValue + sender.minimumValue)/2;
+	CGFloat centerFontSize = [self sliderMidValue];
 	
 	//7.5 (为UISlider比自定义滑块多出的30 / 4),使滑块中心停留在自定义滑条的分割线上.
 	if (fontSize > centerFontSize) fixSliderValue -= 7.5 * ratio;
@@ -64,11 +64,16 @@
 	[sender setValue:fixSliderValue animated:YES];
 	
 	//本地字体比率 ,以 slider 中间值求比
-	CGFloat fontSizeRate = fontSize / ((self.slider.maximumValue + self.slider.minimumValue) / 2);
+	CGFloat fontSizeRate = fontSize / [self sliderMidValue];
 	[LGUserManager shareManager].user.fontSizeRate = @(fontSizeRate).stringValue;
+    self.fontSizeLabel.font = [UIFont systemFontOfSize:fontSizeRate * [self sliderMidValue]];
 	
 }
 
+//slider中间值，作为比例参考
+- (CGFloat) sliderMidValue{
+    return (self.slider.maximumValue + self.slider.minimumValue) / 2;
+}
 
 /*
 #pragma mark - Navigation

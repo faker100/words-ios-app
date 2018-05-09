@@ -18,6 +18,7 @@
 #import "LGThirdPartyCell.h"
 #import "LGWebController.h"
 #import "LGWordDetailShareController.h"
+#import "LGUserManager.h"
 
 @interface LGWordDetailController () <UITableViewDelegate, UITableViewDataSource,LGThirdPartyCellDelegate, LGWordDetailShareControllerDelegate>
 
@@ -82,6 +83,8 @@
     }
 	
 	[self.wordTabelView registerNib:[UINib nibWithNibName:@"LGWordDetailHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGWordDetailHeaderFooterView"];
+    CGFloat fontRate = [LGUserManager shareManager].user.fontSizeRate.floatValue;
+    self.wordLabel.font = [UIFont systemFontOfSize:self.wordLabel.font.pointSize * fontRate];
 }
 
 #pragma mark - Setter  Getter
@@ -100,6 +103,7 @@
 	_detailModel = detailModel;
 	self.wordLabel.text = detailModel.words.word;
 	self.translateLabel.text = detailModel.words.translate;
+    
 	if (detailModel.did) {
 		self.currentNum = @(detailModel.did.integerValue + 1).stringValue;
 	}
