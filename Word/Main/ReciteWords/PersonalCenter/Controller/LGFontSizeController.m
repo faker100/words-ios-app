@@ -26,9 +26,16 @@
 }
 
 - (void)viewDidLayoutSubviews{
-
+    //12 13 14 15 16
 	//初始值为中间,或者本地记录值
-	CGFloat defaultSize = StringNotEmpty([LGUserManager shareManager].user.fontSize) ? [LGUserManager shareManager].user.fontSize.floatValue : (self.slider.maximumValue + self.slider.minimumValue)/2;
+	
+	//本地字体比率 ,以 slider 中间值求比
+	NSString *localFontSizeRate = [LGUserManager shareManager].user.fontSizeRate;
+	
+	//slider 中间值
+	CGFloat midValue  = (self.slider.maximumValue + self.slider.minimumValue) / 2;
+	
+	CGFloat defaultSize = StringNotEmpty(localFontSizeRate) ? localFontSizeRate.floatValue * midValue : midValue;
 	
 	[self.slider setValue:defaultSize animated:YES];
 }
@@ -56,7 +63,9 @@
 	
 	[sender setValue:fixSliderValue animated:YES];
 	
-	[LGUserManager shareManager].user.fontSize = @(fontSize).stringValue;
+	//本地字体比率 ,以 slider 中间值求比
+	CGFloat fontSizeRate = fontSize / ((self.slider.maximumValue + self.slider.minimumValue) / 2);
+	[LGUserManager shareManager].user.fontSizeRate = @(fontSizeRate).stringValue;
 	
 }
 

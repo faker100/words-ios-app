@@ -39,8 +39,13 @@
             weakSelf.planArray = [LGPlanModel mj_objectArrayWithKeyValuesArray:response[@"package"]];
 			weakSelf.nowPackageId = [NSString stringWithFormat:@"%@",response[@"nowPackage"]];
             [weakSelf.collectionView reloadData];
-            [weakSelf.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-            weakSelf.selectedPlan = weakSelf.planArray.firstObject;
+			
+			[weakSelf.planArray enumerateObjectsUsingBlock:^(LGPlanModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+				if ([weakSelf.nowPackageId isEqualToString:obj.catId]) {
+					[weakSelf.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForRow:idx inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+					weakSelf.selectedPlan = obj;
+				}
+			}];
         }
     }];
 }
@@ -63,15 +68,19 @@
  */
 - (IBAction)uploadPlanAction:(id)sender {
 	
-	__weak typeof(self) weakSelf = self;
-	[LGProgressHUD showHUDAddedTo:self.view];
-	[self.request uploadWordLibraryArray:self.planArray completion:^(id response, LGError *error) {
-		if ([weakSelf isNormal:error]) {
-			[LGProgressHUD showSuccess:@"修改成功" toView:weakSelf.view  completionBlock:^{
-				[weakSelf.navigationController popViewControllerAnimated:YES];
-			}];
-		}
-	}];
+	if (self.planArray.count == 0) {
+		[self.navigationController popViewControllerAnimated:YES];
+	}else{
+		__weak typeof(self) weakSelf = self;
+		[LGProgressHUD showHUDAddedTo:self.view];
+		[self.request uploadWordLibraryArray:self.planArray completion:^(id response, LGError *error) {
+			if ([weakSelf isNormal:error]) {
+				[LGProgressHUD showSuccess:@"修改成功" toView:weakSelf.view  completionBlock:^{
+					[weakSelf.navigationController popViewControllerAnimated:YES];
+				}];
+			}
+		}];
+	}
 }
 
 

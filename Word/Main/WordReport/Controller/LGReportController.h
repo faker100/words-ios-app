@@ -17,7 +17,7 @@
 
 //饼状图
 @property (weak, nonatomic) IBOutlet LGReportPieView *reportPieView;
-//折线图
+//柱状图
 @property (weak, nonatomic) IBOutlet LGReportLineChartView *lineChartView;
 
 //周报总共

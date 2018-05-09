@@ -79,10 +79,10 @@
 - (void)uploadHeadRadius{
 	
 	CGFloat opponentHeadRadius = CGRectGetWidth(self.opponentHeadImageView.frame) / 2.0f;
-	
+
 	self.opponentWordNumLabel.layer.cornerRadius = opponentHeadRadius;
 	self.opponentHeadImageView.layer.cornerRadius = opponentHeadRadius;
-	
+
 	CGFloat userHeadRadius = CGRectGetWidth(self.userHeadImageView.frame) / 2.0f;
 	self.userWordNumLabel.layer.cornerRadius = userHeadRadius;
 	self.userHeadImageView.layer.cornerRadius = userHeadRadius;
@@ -300,6 +300,7 @@
 	//显示 "匹配中..."
 	if (isMatching) {
 		[self beginMatchingAnimation];
+		self.opponentHeadImageView.image = [UIImage imageNamed:@"pk_default_opponent"];
 	}else{
 		[self.matchingImageView stopAnimating];
 		self.matchingImageView.image = [UIImage imageNamed:@"pk_match_success"];

@@ -42,6 +42,7 @@
     self.after = reportModel.after;
 	self.date = reportModel.date;
     [self setNeedsDisplay];
+	
 }
 
 
@@ -84,7 +85,11 @@
 	//x轴
 	LGXDataView *xDataView = [[LGXDataView alloc]initWithFrame:CGRectMake(0, CGRectGetHeight(backgroundRect), self.scrollView.contentSize.width, height_X) date:self.date];
 	[self.scrollView addSubview:xDataView];
-    
+	
+	//定位到今天
+	CGFloat offset_x = (self.scrollView.contentSize.width - self.scrollView.bounds.size.width)/2;
+	[self.scrollView setContentOffset:CGPointMake(offset_x, 0) animated:YES];
+	
     [self createBackground:backgroundRect];
     [self createY:yRect];
    // [self createX:xRect];

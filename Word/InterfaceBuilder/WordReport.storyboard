@@ -895,11 +895,23 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="estimate_icon" translatesAutoresizingMaskIntoConstraints="NO" id="scB-rD-GnM">
                                 <rect key="frame" x="113" y="168" width="149" height="149"/>
                             </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PP3-2X-3yK">
-                                <rect key="frame" x="110.5" y="286.5" width="153" height="30"/>
-                                <state key="normal" title="测。。。。。。。。试"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybC-Rr-Bbo">
+                                <rect key="frame" x="50" y="513" width="275" height="42"/>
+                                <color key="backgroundColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="275" id="05V-j0-6iY"/>
+                                    <constraint firstAttribute="height" constant="42" id="7gs-vW-n04"/>
+                                </constraints>
+                                <state key="normal" title="查看评估排行榜">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="EeO-QF-dAX" kind="show" id="TsO-Hx-F5V"/>
+                                    <segue destination="uvU-H0-3WF" kind="show" id="3T8-Oo-wXe"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -907,9 +919,9 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="kAj-71-K7c" secondAttribute="trailing" priority="750" constant="50" id="2f0-4B-eGy"/>
                             <constraint firstAttribute="trailing" secondItem="aQG-65-JZ5" secondAttribute="trailing" id="4F9-hN-0bB"/>
+                            <constraint firstItem="ybC-Rr-Bbo" firstAttribute="centerX" secondItem="kAj-71-K7c" secondAttribute="centerX" id="67A-50-iWT"/>
                             <constraint firstItem="kOR-PS-kCC" firstAttribute="centerX" secondItem="DXX-JL-cUv" secondAttribute="centerX" id="FnS-g3-WxM"/>
                             <constraint firstItem="kAj-71-K7c" firstAttribute="top" secondItem="kOR-PS-kCC" secondAttribute="bottom" priority="750" constant="75" id="Oye-f0-Y4l"/>
-                            <constraint firstItem="PP3-2X-3yK" firstAttribute="centerX" secondItem="DXX-JL-cUv" secondAttribute="centerX" id="P1z-fX-k2h"/>
                             <constraint firstItem="aQG-65-JZ5" firstAttribute="leading" secondItem="DXX-JL-cUv" secondAttribute="leading" id="Sxw-QG-fGd"/>
                             <constraint firstItem="kOR-PS-kCC" firstAttribute="top" secondItem="scB-rD-GnM" secondAttribute="bottom" constant="30" id="Tse-oQ-WmP"/>
                             <constraint firstItem="kAj-71-K7c" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kOR-PS-kCC" secondAttribute="bottom" constant="30" id="W0P-gh-H37"/>
@@ -917,11 +929,11 @@
                             <constraint firstItem="scB-rD-GnM" firstAttribute="centerX" secondItem="DXX-JL-cUv" secondAttribute="centerX" id="XXU-Bb-hJb"/>
                             <constraint firstItem="aQG-65-JZ5" firstAttribute="top" secondItem="cym-iF-Ri7" secondAttribute="bottom" id="ihx-HW-dfb"/>
                             <constraint firstItem="scB-rD-GnM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="aQG-65-JZ5" secondAttribute="bottom" constant="22" id="jMT-4N-2aI"/>
-                            <constraint firstItem="PP3-2X-3yK" firstAttribute="centerY" secondItem="DXX-JL-cUv" secondAttribute="centerY" id="oHU-fl-Tum"/>
+                            <constraint firstItem="ybC-Rr-Bbo" firstAttribute="top" secondItem="kAj-71-K7c" secondAttribute="bottom" constant="20" id="qyH-s7-FZt"/>
                             <constraint firstItem="kAj-71-K7c" firstAttribute="centerX" secondItem="DXX-JL-cUv" secondAttribute="centerX" id="vfL-bN-rOU"/>
                             <constraint firstItem="kAj-71-K7c" firstAttribute="leading" secondItem="DXX-JL-cUv" secondAttribute="leading" priority="750" constant="50" id="x1p-jf-unm"/>
                             <constraint firstItem="kOR-PS-kCC" firstAttribute="centerY" secondItem="DXX-JL-cUv" secondAttribute="centerY" priority="250" constant="60" id="xCd-Lp-bVa"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kAj-71-K7c" secondAttribute="bottom" constant="20" id="yoQ-eL-Nd5"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kAj-71-K7c" secondAttribute="bottom" constant="82" id="yoQ-eL-Nd5"/>
                         </constraints>
                     </view>
                     <connections>
@@ -933,7 +945,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gOo-on-3hH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="489" y="175"/>
+            <point key="canvasLocation" x="508" y="176"/>
         </scene>
         <!--Estimate Controller-->
         <scene sceneID="1u0-jk-f3f">
@@ -1510,8 +1522,8 @@
                                         <color key="textColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeW-a8-icp">
-                                        <rect key="frame" x="127.5" y="35.5" width="31" height="14.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeW-a8-icp">
+                                        <rect key="frame" x="127.5" y="35.5" width="8" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1596,7 +1608,7 @@
         <image name="tabbar_wordreport_selected" width="14" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TsO-Hx-F5V"/>
+        <segue reference="3T8-Oo-wXe"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>

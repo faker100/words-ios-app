@@ -14,6 +14,7 @@
 #import "LGTrackFinishHeaderView.h"
 #import "LGTrackModel.h"
 #import "LGUserManager.h"
+#import "LGBeginEstimateController.h"
 
 @interface LGTrackController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -66,7 +67,7 @@
 	self.knowLabel.text = trackModel.know;
 	self.incognizanceLabel.text = trackModel.notKnow;
     [self.pieView setPieDayStudy:trackModel.everydayNew.integerValue dayReview:trackModel.review.integerValue];
-    [LGUserManager shareManager].user.estimateWords = @(trackModel.data.num).stringValue;
+    [LGUserManager shareManager].user.estimateWords = @(trackModel.ev.num).stringValue;
 	NSString *totalDayStr =  [NSString stringWithFormat:@"总天数:%@天",trackModel.insistDay];
 	NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc]initWithString:totalDayStr];
 	[attrString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:10] range:NSMakeRange(0, totalDayStr.length)];

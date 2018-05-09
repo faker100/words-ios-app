@@ -54,7 +54,6 @@
 
 - (LGSearchController *)searchController{
     if (!_searchController) {
-		
 		_searchController = [[LGSearchController alloc]initWithText:@"" delegate:self];
     }
     return _searchController;
@@ -97,7 +96,6 @@
 	if ([LGUserManager shareManager].isLogin) {
 		[self configData];
 	}
-	
 }
 
 - (void)configLeftItem {
@@ -122,6 +120,9 @@
 			[LGUserManager shareManager].user = [LGUserModel mj_objectWithKeyValues:response[@"data"]];
 			[self configLeftItem];
 			[self.recitePlanController updateIsSign];
+			if ([LGUserManager shareManager].user.planWords.length > 0){
+				[self.recitePlanController configIndexData];
+			}
 			[weakSelf showController:YES];
 		}
 	}];
@@ -144,9 +145,7 @@
 	if (StringNotEmpty(user.planWords) && user.studyModel != LGStudyNone) {
 		if (self.currentShowController == self.recitePlanController) return;
 		self.currentShowController = self.recitePlanController;
-		[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:^(BOOL finished) {
-			[self.recitePlanController configIndexData];
-		}];
+		[self transitionFromViewController:self.noStudyTypeController toViewController:self.recitePlanController duration:duration options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil completion:nil];
 	}else{
 		if (self.currentShowController == self.noStudyTypeController) return;
 		self.currentShowController = self.noStudyTypeController;

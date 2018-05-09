@@ -164,7 +164,7 @@
 	NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
 	NSString *text = [NSString stringWithFormat:@"我已在雷哥单词坚持%@天,今日已背单词%@词,累计已背%@词",self.reciteWordModel.insistDay, self.reciteWordModel.todayWords,self.reciteWordModel.userAllWords];
 	[shareParams SSDKSetupShareParamsByText:text
-									 images:PLACEHOLDERIMAGE
+									 images:[UIImage imageNamed:@"logo"]
 										url:[NSURL URLWithString:WORD_DOMAIN(url)]
 									  title: platformType == SSDKPlatformSubTypeWechatTimeline?text : @"雷哥单词"
 									   type:SSDKContentTypeWebPage];

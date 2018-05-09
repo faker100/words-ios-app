@@ -334,7 +334,7 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="20"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.mamskToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OsN-ET-D2W">
@@ -560,14 +560,8 @@
                                             <constraint firstAttribute="bottom" secondItem="NuV-VE-OGT" secondAttribute="bottom" id="lVd-h5-eNu"/>
                                             <constraint firstItem="NuV-VE-OGT" firstAttribute="centerX" secondItem="PNp-cJ-On3" secondAttribute="centerX" id="mni-8Z-p5l"/>
                                             <constraint firstItem="svG-wn-EXf" firstAttribute="centerY" secondItem="PNp-cJ-On3" secondAttribute="centerY" id="obg-hH-ZlJ"/>
-                                            <constraint firstAttribute="height" priority="750" constant="138" id="vAH-C4-XrW"/>
                                             <constraint firstItem="svG-wn-EXf" firstAttribute="width" secondItem="NuV-VE-OGT" secondAttribute="width" id="x6E-DM-cSR"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="68"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_win" translatesAutoresizingMaskIntoConstraints="NO" id="Exi-69-pph">
                                         <rect key="frame" x="119.5" y="7" width="10" height="13"/>
@@ -625,10 +619,10 @@
                                 <rect key="frame" x="0.0" y="342" width="375" height="186"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJj-wE-oVo">
-                                        <rect key="frame" x="129.5" y="34" width="117.5" height="118"/>
+                                        <rect key="frame" x="130" y="34.5" width="116.5" height="117"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="pk_default_opponent" translatesAutoresizingMaskIntoConstraints="NO" id="dWP-Ap-RZd">
-                                                <rect key="frame" x="0.0" y="0.0" width="117.5" height="118"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="116.5" height="117"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2188035103" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -641,7 +635,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="词汇量:0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pxx-Bc-fJ9">
-                                                <rect key="frame" x="0.0" y="-0.5" width="117.5" height="118"/>
+                                                <rect key="frame" x="0.0" y="-0.5" width="116.5" height="117"/>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2188035103" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -656,7 +650,7 @@
                                             <constraint firstItem="pxx-Bc-fJ9" firstAttribute="height" secondItem="dWP-Ap-RZd" secondAttribute="height" id="3t9-U9-7Vh"/>
                                             <constraint firstAttribute="width" secondItem="FJj-wE-oVo" secondAttribute="height" multiplier="1:1" id="6S2-pl-maX"/>
                                             <constraint firstItem="dWP-Ap-RZd" firstAttribute="centerX" secondItem="FJj-wE-oVo" secondAttribute="centerX" id="74h-je-HOJ"/>
-                                            <constraint firstAttribute="height" priority="750" constant="138" id="7U7-IS-J6C"/>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="138" id="7U7-IS-J6C"/>
                                             <constraint firstItem="dWP-Ap-RZd" firstAttribute="leading" secondItem="FJj-wE-oVo" secondAttribute="leading" id="Dd8-6D-qxn"/>
                                             <constraint firstItem="pxx-Bc-fJ9" firstAttribute="centerY" secondItem="FJj-wE-oVo" secondAttribute="centerY" id="Ek6-3f-3Fd"/>
                                             <constraint firstAttribute="bottom" secondItem="dWP-Ap-RZd" secondAttribute="bottom" id="SEe-if-uk4"/>
@@ -665,40 +659,35 @@
                                             <constraint firstItem="dWP-Ap-RZd" firstAttribute="top" secondItem="FJj-wE-oVo" secondAttribute="top" id="YL1-2o-I9C"/>
                                             <constraint firstItem="pxx-Bc-fJ9" firstAttribute="width" secondItem="dWP-Ap-RZd" secondAttribute="width" id="eu8-gJ-C4y"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="68"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_win" translatesAutoresizingMaskIntoConstraints="NO" id="FqP-lF-RGq">
-                                        <rect key="frame" x="119.5" y="5.5" width="10" height="13"/>
+                                        <rect key="frame" x="119.5" y="6" width="10" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="10" id="ddK-CE-pun"/>
                                             <constraint firstAttribute="height" constant="13" id="feW-ni-25W"/>
                                         </constraints>
                                     </imageView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="win:0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vD-4M-C7Q">
-                                        <rect key="frame" x="132.5" y="4.5" width="30.5" height="14.5"/>
+                                        <rect key="frame" x="132.5" y="5" width="30.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="1" green="0.77647058820000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pk_lose" translatesAutoresizingMaskIntoConstraints="NO" id="eRO-jk-mu4">
-                                        <rect key="frame" x="216.5" y="6.5" width="11" height="11"/>
+                                        <rect key="frame" x="216.5" y="7" width="11" height="11"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="11" id="DkD-1y-WjQ"/>
                                             <constraint firstAttribute="height" constant="11" id="shu-cD-G0x"/>
                                         </constraints>
                                     </imageView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lose:0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYB-4Q-3r9">
-                                        <rect key="frame" x="230.5" y="5" width="34.5" height="14.5"/>
+                                        <rect key="frame" x="230.5" y="5.5" width="34.5" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLJ-Mx-Fvc">
-                                        <rect key="frame" x="170" y="162" width="35.5" height="14"/>
+                                        <rect key="frame" x="170" y="161.5" width="35.5" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="R0C-ET-kKr"/>
                                         </constraints>
@@ -783,6 +772,7 @@
                             <constraint firstItem="hKX-aA-UoA" firstAttribute="leading" secondItem="bRj-Ca-NoM" secondAttribute="leading" id="cwk-vV-EZc"/>
                             <constraint firstItem="sxq-ZV-eNw" firstAttribute="height" secondItem="YMP-iC-YiB" secondAttribute="height" id="gzq-Z7-2sY"/>
                             <constraint firstItem="tEp-ye-lQC" firstAttribute="height" secondItem="E1J-G7-Vf9" secondAttribute="height" id="ofO-Tk-bHu"/>
+                            <constraint firstItem="FJj-wE-oVo" firstAttribute="height" secondItem="PNp-cJ-On3" secondAttribute="height" id="pV3-hM-ULQ"/>
                             <constraint firstItem="sxq-ZV-eNw" firstAttribute="trailing" secondItem="FJj-wE-oVo" secondAttribute="centerX" constant="-8" id="qIo-vb-wic"/>
                             <constraint firstItem="sxq-ZV-eNw" firstAttribute="centerY" secondItem="YMP-iC-YiB" secondAttribute="centerY" id="qOP-03-x9j"/>
                             <constraint firstItem="bKA-Wa-83c" firstAttribute="leading" secondItem="bRj-Ca-NoM" secondAttribute="leading" id="qvx-TQ-Geu"/>

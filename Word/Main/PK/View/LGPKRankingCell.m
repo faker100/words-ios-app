@@ -35,7 +35,7 @@
 	}
 	[self.rankButton setTitle:rankStr forState:UIControlStateNormal];
 	[self.rankButton setImage:rankImage forState:UIControlStateNormal];
-	
+	[self.headImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(rankModel.image)] placeholderImage:PLACEHOLDERIMAGE];
 	self.usernameLabel.text = rankModel.nickname;
 	self.winLabel.text = [NSString stringWithFormat:@"win : %@",rankModel.win];
 	self.loseLabel.text = [NSString stringWithFormat:@"lose : %@",rankModel.lose];

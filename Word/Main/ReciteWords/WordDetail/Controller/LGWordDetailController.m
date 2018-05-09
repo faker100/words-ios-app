@@ -109,8 +109,8 @@
         [self.playerButton setTitle:[NSString stringWithFormat:@"  %@",detailModel.words.phonetic_us] forState:UIControlStateNormal];
     }
 	
-	self.title = [NSString stringWithFormat:@"%@ (认知率: %@%%)",self.title, detailModel.percent];
-	
+	self.knowRateLabel.text = [NSString stringWithFormat:@"认知率: %@%%",detailModel.percent];
+	self.knowRateLabel.hidden = NO;
 	[self.wordTabelView reloadData];
 }
 
@@ -165,7 +165,7 @@
 	[self.request requestEbbinghausReviewList:^(id response, LGError *error) {
 		NSString *code = [NSString stringWithFormat:@"%@",response[@"code"]];
 		if ([code isEqualToString:@"0"]) {
-			[self pushNextWordDetailController:LGWordDetailReciteWords animated:YES];
+			[self pushNextWordDetailController:LGWordDetailReciteWords animated:NO];
 		}else if ([self isNormal:error]) {
 			self.ebbinghausReviewWordIdArray  = [NSMutableArray arrayWithArray:response[@"words"]];
             self.ebbinghausCount = self.ebbinghausReviewWordIdArray.count;
@@ -364,6 +364,7 @@
 		wordDetailController.ebbinghausReviewWordIdArray = self.ebbinghausReviewWordIdArray;
         wordDetailController.ebbinghausCount = self.ebbinghausCount;
 		wordDetailController.todayReviewStatus = self.todayReviewStatus;
+		wordDetailController.reviewTyep = self.reviewTyep;
 		NSMutableArray *controllerArray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
 		[controllerArray removeObject:self];
 		[controllerArray addObject:wordDetailController];

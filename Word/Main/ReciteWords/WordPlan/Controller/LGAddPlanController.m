@@ -94,7 +94,12 @@
 						*stop = YES;
 					}
 				}];
-				[weakSelf.navigationController popToViewController:popToController animated:YES];
+				if (popToController) {
+					[weakSelf.navigationController popToViewController:popToController animated:YES];
+				}else{
+					[weakSelf.navigationController popToRootViewControllerAnimated:YES];
+				}
+				
 			}];
 		}
 	}];

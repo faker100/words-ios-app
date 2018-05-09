@@ -83,11 +83,7 @@
 	
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestCheckCode:self.usernameTextField.text usernameType:type useType:LGCheckCodeUseTypeRegister completion:^(id response, LGError *error) {
-		[LGProgressHUD  hideHUDForView:self.view];
-		if (error) {
-			[LGProgressHUD showError:error.errorMessage toView:self.view];
-			
-		}else{
+		if ([self isNormal:error]) {
 			[self beginCountdown];
 		}
 	}];
@@ -121,10 +117,11 @@
 	}
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request registerRequest:username password:password code:code usernameType:type completion:^(id response, LGError *error) {
-		[LGProgressHUD hideHUDForView:self.view];
-		if (error) {
-			[LGProgressHUD showError:error.errorMessage toView:self.view];
-		}else{
+	
+		if ([self isNormal:error]){
+			if (self.delegate) {
+				[self.delegate registSuccess:username password:password];
+			}
 			[self.navigationController popViewControllerAnimated:YES];
 		}
 	}];

@@ -16,6 +16,7 @@
 @property (nonatomic, copy) NSString *win;
 @property (nonatomic, copy) NSString *lose;
 @property (nonatomic, copy) NSString *userWords;
+@property (nonatomic, copy) NSString *image;
 
 @end
 

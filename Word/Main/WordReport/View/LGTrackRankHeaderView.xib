@@ -41,30 +41,30 @@
                             <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="词汇量 : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSR-pd-rI9">
-                            <rect key="frame" x="70" y="40" width="40" height="12"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已背单词数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSR-pd-rI9">
+                            <rect key="frame" x="70" y="40" width="52" height="12"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SoB-2K-Bgq">
-                            <rect key="frame" x="110" y="37" width="9" height="17"/>
+                            <rect key="frame" x="127" y="37" width="9" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你的排名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmS-rx-0VJ">
-                            <rect key="frame" x="308.5" y="40" width="41" height="12"/>
+                            <rect key="frame" x="311.5" y="40" width="41" height="12"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="report_rank" translatesAutoresizingMaskIntoConstraints="NO" id="UxC-Hb-Gnz">
-                            <rect key="frame" x="303" y="0.0" width="52" height="38"/>
+                            <rect key="frame" x="309" y="0.0" width="46" height="38"/>
                             <color key="tintColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="10000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tM4-0m-rFf">
-                            <rect key="frame" x="311" y="11.5" width="36" height="14.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="tM4-0m-rFf">
+                            <rect key="frame" x="317" y="11.5" width="30" height="15"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -76,7 +76,7 @@
                         <constraint firstItem="gSR-pd-rI9" firstAttribute="bottom" secondItem="DW2-bt-y55" secondAttribute="bottom" id="CAq-Is-DAY"/>
                         <constraint firstItem="tM4-0m-rFf" firstAttribute="trailing" secondItem="UxC-Hb-Gnz" secondAttribute="trailing" constant="-8" id="J92-mN-e71"/>
                         <constraint firstItem="SoB-2K-Bgq" firstAttribute="centerY" secondItem="gSR-pd-rI9" secondAttribute="centerY" id="JAa-Hc-gf7"/>
-                        <constraint firstItem="SoB-2K-Bgq" firstAttribute="leading" secondItem="gSR-pd-rI9" secondAttribute="trailing" id="NF7-49-dYJ"/>
+                        <constraint firstItem="SoB-2K-Bgq" firstAttribute="leading" secondItem="gSR-pd-rI9" secondAttribute="trailing" constant="5" id="NF7-49-dYJ"/>
                         <constraint firstItem="XmS-rx-0VJ" firstAttribute="centerY" secondItem="SoB-2K-Bgq" secondAttribute="centerY" id="P4H-fW-rlD"/>
                         <constraint firstItem="gSR-pd-rI9" firstAttribute="leading" secondItem="EpO-Jy-Tow" secondAttribute="leading" id="Zy3-km-leK"/>
                         <constraint firstItem="EpO-Jy-Tow" firstAttribute="leading" secondItem="DW2-bt-y55" secondAttribute="trailing" constant="10" id="agf-pg-GVl"/>

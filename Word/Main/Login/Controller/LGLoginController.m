@@ -11,8 +11,9 @@
 #import "JPUSHService.h"
 #import "LGNavigationController.h"
 #import "LGUpdateNicknameController.h"
+#import "LGRegisterController.h"
 
-@interface LGLoginController ()
+@interface LGLoginController ()<LGRegisterControllerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
@@ -110,6 +111,8 @@
 	}];
 }
 
+
+
 /**
  更新本地存储的学习模式,更新成功后把本地的改为 LGStudyNone
  */
@@ -128,14 +131,24 @@
 	}
 }
 
-/*
+#pragma mark - LGRegisterControllerDelegate
+- (void)registSuccess:(NSString *)username password:(NSString *)password{
+	self.userNameTextField.text = username;
+	self.passwordTextField.text = password;
+	[self loginAction:nil];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"loginToRegist"]) {
+		LGRegisterController *controller = [segue destinationViewController];
+		controller.delegate = self;
+	}
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

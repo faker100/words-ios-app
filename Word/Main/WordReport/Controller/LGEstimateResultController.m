@@ -66,7 +66,6 @@
     /**
      * 词汇量
      */
-    [LGUserManager shareManager].user.estimateWords = resultModel.num;
     NSString *vocabularyStr = [NSString stringWithFormat:@"词汇量:%@",resultModel.num];
     UIFont *font  = [UIFont boldSystemFontOfSize:18];
     

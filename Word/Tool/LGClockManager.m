@@ -261,9 +261,9 @@ typedef NS_ENUM(NSUInteger, LGNotificationRepeatType) {
                                    iOS_8_userInfoKey : identifier
                                    };
     if (@available(iOS 8.2, *)) {
-        localNotification.alertTitle = @"标题";
+        localNotification.alertTitle = @"";
     }
-    localNotification.alertBody = @"内容";
+    localNotification.alertBody = @"不是约好现在背单词么，打开雷哥单词来背单词吧，么么哒~";
     localNotification.soundName = UILocalNotificationDefaultSoundName;
     
     //设置本地通知类型
@@ -288,9 +288,9 @@ typedef NS_ENUM(NSUInteger, LGNotificationRepeatType) {
     if (@available(iOS 10.0, *)) {
         
         UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
-        content.title = @"app标题";
-        content.subtitle = @"副标题";
-        content.body = @"这都是内容";
+        content.title = @"";
+        content.subtitle = @"";
+        content.body = @"不是约好现在背单词么，打开雷哥单词来背单词吧，么么哒~";
         content.sound = [UNNotificationSound defaultSound];
         UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:dateComponents repeats:repeate != LGNotificationRepeatNone];
         // 3、创建通知请求

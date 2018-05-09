@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LGRegisterControllerDelegate <NSObject>
+
+//注册成功
+- (void)registSuccess:(NSString *)username password:(NSString *)password;
+
+@end
+
 @interface LGRegisterController : UIViewController
+
+@property (nonatomic, weak) id<LGRegisterControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *checkCodeTextField;

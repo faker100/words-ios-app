@@ -38,4 +38,8 @@
 
 @end
 
+@implementation LGTranckEvModel
+
+@end
+
 

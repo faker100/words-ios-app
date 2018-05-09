@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class  LGTracPackageModel, LGTrackRankModel ,LGTrackUserDataModel;
+@class  LGTracPackageModel, LGTrackRankModel ,LGTrackUserDataModel, LGTranckEvModel;
 @interface LGTrackModel : NSObject
 
 //认识的单词
@@ -32,6 +32,8 @@
 @property (nonatomic, copy) NSArray<LGTracPackageModel *> *package;
 
 @property (nonatomic, strong) LGTrackUserDataModel *data;
+
+@property (nonatomic, strong) LGTranckEvModel *ev;
 
 @property (nonatomic, copy) NSArray<LGTrackRankModel *> *rank;
 
@@ -59,6 +61,14 @@
 
 //用户排名
 @property (nonatomic, assign) NSInteger rank;
+
+@end
+
+//评估的数据
+@interface LGTranckEvModel : NSObject
+
+//用户评估量
+@property (nonatomic, assign) NSInteger num;
 
 @end
 

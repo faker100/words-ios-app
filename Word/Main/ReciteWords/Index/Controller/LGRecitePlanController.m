@@ -37,12 +37,12 @@
 	// Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-	[super viewWillAppear:animated];
-	if ([[LGUserManager shareManager] isLogin] && [LGUserManager shareManager].user.planWords.length > 0) {
-		[self configIndexData];
-	}
-}
+//- (void)viewWillAppear:(BOOL)animated{
+//	[super viewWillAppear:animated];
+//	if ([[LGUserManager shareManager] isLogin] && [LGUserManager shareManager].user.planWords.length > 0) {
+//		[self configIndexData];
+//	}
+//}
 
 //更新是否已打卡
 - (void)updateIsSign{
@@ -50,7 +50,11 @@
 	self.signButton.selected = [[[NSDate defaultDateFormatter]dateFromString:lastSign] isToday];
 }
 
-//请求首页数据
+
+/**
+ 首页请求数据
+ 在 LGReciteWordsController 中 请求userinfo 接口之后 planwords字段不为空时调用
+ */
 - (void)configIndexData{
 	__weak typeof(self) weakSelf = self;
 	[self.request requestIndexRecitePlan:^(id response, LGError *error) {

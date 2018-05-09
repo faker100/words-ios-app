@@ -26,11 +26,11 @@
              };
 }
 
-- (void)setFontSize:(NSString *)fontSize{
-	[[NSUserDefaults standardUserDefaults]setObject:fontSize forKey:FONT_SIZE_KEY];
+- (void)setFontSizeRate:(NSString *)fontSizeRate{
+	[[NSUserDefaults standardUserDefaults]setObject:fontSizeRate forKey:FONT_SIZE_KEY];
 }
 
-- (NSString *)fontSize{
+- (NSString *)fontSizeRate{
 	return [[NSUserDefaults standardUserDefaults]objectForKey:FONT_SIZE_KEY];
 }
 

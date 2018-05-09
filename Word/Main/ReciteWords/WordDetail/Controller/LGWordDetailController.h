@@ -55,6 +55,10 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 //今天需背多少
 @property (nonatomic, copy) NSString *todayNeedReciteNum;
 
+//认知率
+@property (weak, nonatomic) IBOutlet UILabel *knowRateLabel;
+
+
 //遮罩层
 @property (weak, nonatomic) IBOutlet UIView *masksView;
 

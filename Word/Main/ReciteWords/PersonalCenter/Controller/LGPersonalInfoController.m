@@ -151,7 +151,8 @@
 		LGSettingModel *model = [LGSettingModel new];
 		model.type = LGSettingMore;
 		model.infoTitle = @"字体大小";
-		model.info = [LGUserManager shareManager].user.fontSize;
+		//model.info = [LGUserManager shareManager].user.fontSizeRate;
+		model.info = @"";
 		[section_4 addObject:model];
 		
 		_section_Array = [NSMutableArray arrayWithObjects:section_1,section_2,section_3,section_4, nil];
