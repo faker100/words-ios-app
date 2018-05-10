@@ -13,6 +13,7 @@
 #import "LGTimeReivewCountAlertView.h"
 #import "LGWordDetailController.h"
 #import "LGUserManager.h"
+#import "LGDictationPractiseController.h"
 
 @interface LGTimeReviewController () <UITableViewDelegate, UITableViewDataSource, LGSelectReviewTypeViewDelegate,LGTimeReivewCountAlertViewDelegate>
 
@@ -99,7 +100,11 @@
 
 #pragma mark - LGTimeReivewCountAlertViewDelegate
 - (void)beginReview{
-	[self performSegueWithIdentifier:@"timeReviewToWordDetail" sender:nil];
+	if (self.selectedReviewType != LGSelectReviewDictation) {
+		[self performSegueWithIdentifier:@"timeReviewToWordDetail" sender:nil];
+	}else{
+		[self performSegueWithIdentifier:@"timeReviewToDictation" sender:nil];
+	}
 }
 
 #pragma mark - LGSelectReviewTypeViewDelegate
@@ -155,11 +160,19 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	
-	LGWordDetailController *controller  = segue.destinationViewController;
-	controller.total = @(self.wordIDArray.count).stringValue;
-	controller.controllerType = LGWordDetailReview;
-	controller.reviewTyep = self.selectedReviewType;
-	controller.reviewWordIdArray = self.wordIDArray;
+	if ([segue.identifier isEqualToString:@"timeReviewToWordDetail"]) {
+		LGWordDetailController *controller  = segue.destinationViewController;
+		controller.total = @(self.wordIDArray.count).stringValue;
+		controller.controllerType = LGWordDetailReview;
+		controller.reviewTyep = self.selectedReviewType;
+		controller.reviewWordIdArray = self.wordIDArray;
+	}else if ([segue.identifier isEqualToString:@"timeReviewToDictation"]){
+		LGDictationPractiseController *controller = segue.destinationViewController;
+		controller.wordIDArray = self.wordIDArray;
+		controller.total = @(self.wordIDArray.count).stringValue;
+	}
+	
+	
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }

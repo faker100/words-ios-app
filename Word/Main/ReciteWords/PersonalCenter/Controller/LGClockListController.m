@@ -40,7 +40,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
-	//[LGTool checkDevicePermissions:LGDeviceNotification];
+	[LGTool checkDevicePermissions:LGDeviceNotification];
 }
 
 #pragma mark -UITableViewDataSource

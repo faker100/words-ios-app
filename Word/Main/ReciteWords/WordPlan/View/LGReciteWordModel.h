@@ -11,6 +11,7 @@
 @class LGUserPackage;
 @interface LGReciteWordModel : NSObject
 
+@property (nonatomic, assign) NSInteger task; 
 @property (nonatomic, copy) NSString *packageName;		 //词包名字
 @property (nonatomic, copy) NSString *insistDay;    		 //坚持天数
 @property (nonatomic, copy) NSString *userPackageWords;    //当前词包已背单词

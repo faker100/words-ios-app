@@ -15,7 +15,7 @@
 #import "LGFinishWordTaskView.h"
 #import "NSDate+Utilities.h"
 
-@interface LGRecitePlanController () <LGIndexReviewAlertViewDelegate>
+@interface LGRecitePlanController ()
 
 /**
  每日复习框
@@ -68,17 +68,34 @@
  点击开始背单词,先检查本地是否已经提醒每日复习;
  
   // 暂时不需要判断( 在 "只记新单词模式" 和 isReview 为 yes 时,不请求服务器 )
-
+ task = 1  背完且复习完,显示是否继续
+ task = 2  正常背单词
+ task = 3  进入艾宾浩斯复习,完了弹分享
  */
 - (IBAction)beginReciteWordsAction:(id)sender {
-	
-    
-//    if ([LGUserManager shareManager].user.isTodayReview || [LGUserManager shareManager].user.studyModel == LGStudyOnlyNew){
-//        [self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:nil];
-//        return;
-//    };
-	
+
 	__weak typeof(self) weakSelf = self;
+	
+	NSInteger task = self.reciteWordModel.task;
+	//task = 1;
+	if (task == 1) {
+		[LGFinishWordTaskView showFinishReciteWordToView:self.view.window continueBlock:^{
+			[LGProgressHUD showHUDAddedTo:self.view];
+			[weakSelf.request requestIsReciteWordsCompletion:^(id response, LGError *error) {
+				if ([weakSelf isNormal:error]) {
+					[weakSelf performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:@(LGWordDetailReciteWords)];
+				}
+			}];
+		} cancelBlock:nil];
+	}else if (task == 2){
+		[self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:@(LGWordDetailReciteWords)];
+	}else if (task == 3){
+		[self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:@(LGWordDetailTodayReview)];
+	}else if (task == 4){
+		[LGProgressHUD showMessage:@"该词包已背完" toView:self.view];
+	}
+	
+	/*
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request requestReciteWordsCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
@@ -108,9 +125,10 @@
 			}
 		}
 	}];
+	 */
 }
 
-
+/* 今日复习弹框
 - (void)showReviewAlertWithModel:(LGIndexReviewModel *)reviewModel{
 	if (!self.reviewAlertView) {
 		self.reviewAlertView = [[NSBundle mainBundle]loadNibNamed:@"LGIndexReviewAlertView" owner:nil options:nil].firstObject;
@@ -120,7 +138,7 @@
 	self.reviewAlertView.reviewModel = reviewModel;
 	[self.view.window addSubview:self.reviewAlertView];
 }
-
+*/
 /**
  复习
  */
@@ -146,11 +164,12 @@
 	}
 	
 	//今日单词完成后,显示"今日任务已经完成",没完成或者继续背单词 显示@"开始背单词"
-	if (reciteWordModel.todayWords.integerValue == reciteWordModel.userPackage.planWords.integerValue) {
+	if (reciteWordModel.task == 1) {
 		[self.reciteWordsButton setTitle:@"今日任务已完成,继续背单词" forState:UIControlStateNormal];
 	}else{
 		[self.reciteWordsButton setTitle:@"开始背单词" forState:UIControlStateNormal];
 	}
+	
 	
 	
 	
@@ -205,7 +224,7 @@
 	
 	//今天需要背单词,今日复习
 	LGStudyType type = [LGUserManager shareManager].user.studyModel;
-	NSString *todayStr = [NSString stringWithFormat:@"今天需要背单词 : %@/%@",reciteWordModel.todayWords, reciteWordModel.userPackage.planWords];
+	NSString *todayStr = [NSString stringWithFormat:@"今天新学 : %@",reciteWordModel.todayWords];
 	if (type != LGStudyOnlyNew) {
 		todayStr = [todayStr stringByAppendingString:[NSString stringWithFormat:@",今日需复习%@/%@",reciteWordModel.userReviewWords, reciteWordModel.userNeedReviewWords]];
 	}
@@ -214,7 +233,8 @@
 
 
 #pragma mark - LGIndexReviewAlertViewDelegate
-
+/*  每日复习框(取消了)
+//跳过复习
 - (void)skipReview{
 	[self updateEveryDayReview];
 	[self.reviewAlertView removeFromSuperview];
@@ -227,7 +247,7 @@
 	self.reviewAlertView = nil;
 	[self performSegueWithIdentifier:@"indexPlanToBeginReciteWords" sender:subModel];
 }
-
+*/
 
 /**
  通知服务器已经点击过复习弹框,为避免重复点击,本地先设置为 YES
@@ -249,12 +269,10 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	
 	if ([segue.identifier isEqualToString:@"indexPlanToBeginReciteWords"]) {
-		
-			LGWordDetailController *controller = segue.destinationViewController;
-		if ([sender isKindOfClass:[LGReviewSubModel class]]) {
+		LGWordDetailControllerType type = ((NSNumber *)sender).integerValue;
+		LGWordDetailController *controller = segue.destinationViewController;
+		if (type == LGWordDetailTodayReview) {
 			controller.controllerType  = LGWordDetailTodayReview;
-			controller.total = ((LGReviewSubModel *)sender).count;
-			controller.todayReviewStatus = ((LGReviewSubModel *)sender).status;
 		}else{
 			controller.controllerType  = LGWordDetailReciteWords;
 			controller.total = self.reciteWordModel.userPackage.planWords;

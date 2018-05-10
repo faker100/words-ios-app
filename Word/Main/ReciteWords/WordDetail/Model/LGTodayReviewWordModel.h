@@ -10,8 +10,6 @@
 
 @interface LGTodayReviewWordModel : NSObject
 
-@property (nonatomic, copy) NSString *all;     //单词总数
-@property (nonatomic, copy) NSString *did;     //已复习
-@property (nonatomic, copy) NSString *wordsId; //单词 id
+@property (nonatomic, strong) NSMutableArray<NSString *> *wordsId; //单词 id
 
 @end

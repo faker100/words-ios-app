@@ -53,7 +53,10 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Btk-6Y-zur">
-                                <rect key="frame" x="97" y="357.66666666666669" width="277" height="21"/>
+                                <rect key="frame" x="97" y="346.66666666666669" width="277" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3k3-YJ-2Qi"/>
+                                </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -73,10 +76,13 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号/邮箱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X8p-nL-uaK">
-                                <rect key="frame" x="99" y="291.66666666666669" width="275" height="21"/>
+                                <rect key="frame" x="99" y="280.66666666666669" width="275" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="tMt-qT-KdH"/>
+                                </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qlH-uj-Bzi">
                                 <rect key="frame" x="40" y="334.66666666666669" width="334" height="1"/>
@@ -140,7 +146,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="X8p-nL-uaK" firstAttribute="centerY" secondItem="O47-n4-QAd" secondAttribute="centerY" id="0uA-5j-Qm9"/>
+                            <constraint firstItem="qlH-uj-Bzi" firstAttribute="top" secondItem="X8p-nL-uaK" secondAttribute="bottom" constant="10" id="5Am-JF-uWg"/>
                             <constraint firstItem="Btk-6Y-zur" firstAttribute="leading" secondItem="tHP-hK-6ht" secondAttribute="trailing" constant="36" id="5cI-Lg-oGm"/>
                             <constraint firstItem="tHP-hK-6ht" firstAttribute="centerX" secondItem="O47-n4-QAd" secondAttribute="centerX" id="799-7p-8NA"/>
                             <constraint firstItem="htb-Py-cAp" firstAttribute="leading" secondItem="Atk-60-aVe" secondAttribute="leading" id="8LR-R8-aiS"/>
@@ -149,8 +155,8 @@
                             <constraint firstItem="pZW-oM-e3o" firstAttribute="width" secondItem="qlH-uj-Bzi" secondAttribute="width" id="Fbo-Kg-S10"/>
                             <constraint firstItem="fIy-QI-Vno" firstAttribute="centerY" secondItem="PfZ-qT-7jz" secondAttribute="centerY" id="I8N-zc-XS6"/>
                             <constraint firstItem="fIy-QI-Vno" firstAttribute="centerX" secondItem="l4a-Rm-nM6" secondAttribute="centerX" id="N2E-Ue-fLV"/>
-                            <constraint firstItem="qlH-uj-Bzi" firstAttribute="top" secondItem="O47-n4-QAd" secondAttribute="bottom" constant="20" id="O33-a7-mBI"/>
                             <constraint firstItem="fIy-QI-Vno" firstAttribute="top" secondItem="l4a-Rm-nM6" secondAttribute="bottom" constant="30" id="OS0-zW-nGX"/>
+                            <constraint firstItem="Btk-6Y-zur" firstAttribute="centerY" secondItem="tHP-hK-6ht" secondAttribute="centerY" id="QGf-vK-Iv7"/>
                             <constraint firstItem="l4a-Rm-nM6" firstAttribute="centerX" secondItem="Atk-60-aVe" secondAttribute="centerX" id="SWb-KL-fTL"/>
                             <constraint firstItem="qlH-uj-Bzi" firstAttribute="trailing" secondItem="X8p-nL-uaK" secondAttribute="trailing" id="So9-PI-zmy"/>
                             <constraint firstItem="1F3-d3-Sef" firstAttribute="centerX" secondItem="Atk-60-aVe" secondAttribute="centerX" id="U88-EQ-60e"/>
@@ -161,16 +167,16 @@
                             <constraint firstItem="tHP-hK-6ht" firstAttribute="centerY" secondItem="Atk-60-aVe" secondAttribute="centerY" id="bDw-yH-SWN"/>
                             <constraint firstItem="tHP-hK-6ht" firstAttribute="leading" secondItem="Atk-60-aVe" secondAttribute="leading" constant="43" id="cx9-QU-y4D"/>
                             <constraint firstItem="pZW-oM-e3o" firstAttribute="centerX" secondItem="qlH-uj-Bzi" secondAttribute="centerX" id="etb-8E-DyE"/>
-                            <constraint firstItem="Btk-6Y-zur" firstAttribute="centerY" secondItem="tHP-hK-6ht" secondAttribute="centerY" id="faY-e7-U76"/>
                             <constraint firstItem="SJ7-9A-6Uf" firstAttribute="top" secondItem="htb-Py-cAp" secondAttribute="bottom" id="fhl-AP-grl"/>
                             <constraint firstItem="X8p-nL-uaK" firstAttribute="leading" secondItem="O47-n4-QAd" secondAttribute="trailing" constant="36" id="fpH-rG-axH"/>
                             <constraint firstItem="pZW-oM-e3o" firstAttribute="leading" secondItem="Atk-60-aVe" secondAttribute="leading" constant="40" id="mlO-PE-9Q9"/>
+                            <constraint firstItem="pZW-oM-e3o" firstAttribute="top" secondItem="Btk-6Y-zur" secondAttribute="bottom" constant="10" id="mp3-Hz-PVB"/>
                             <constraint firstItem="pZW-oM-e3o" firstAttribute="trailing" secondItem="Btk-6Y-zur" secondAttribute="trailing" id="oQk-zA-LPn"/>
                             <constraint firstItem="tHP-hK-6ht" firstAttribute="top" secondItem="qlH-uj-Bzi" secondAttribute="bottom" constant="20" id="peT-Oe-QRO"/>
                             <constraint firstItem="dsR-Q3-qlA" firstAttribute="trailing" secondItem="l4a-Rm-nM6" secondAttribute="trailing" id="rrZ-vb-zYw"/>
-                            <constraint firstItem="pZW-oM-e3o" firstAttribute="top" secondItem="tHP-hK-6ht" secondAttribute="bottom" constant="20" id="vJu-Xx-6Dy"/>
                             <constraint firstItem="O47-n4-QAd" firstAttribute="top" secondItem="1F3-d3-Sef" secondAttribute="bottom" constant="78" id="vq9-sF-May"/>
                             <constraint firstItem="l4a-Rm-nM6" firstAttribute="top" secondItem="pZW-oM-e3o" secondAttribute="bottom" constant="30" id="wFW-SW-SUI"/>
+                            <constraint firstItem="X8p-nL-uaK" firstAttribute="centerY" secondItem="O47-n4-QAd" secondAttribute="centerY" id="zgP-pA-1yv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4cy-aC-6dW">

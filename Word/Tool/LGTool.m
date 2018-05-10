@@ -136,20 +136,11 @@
 	}
 	
     if (type == LGDeviceNotification) {
-        if (@available(iOS 10.0, *)){
-			//进行用户权限的申请
-			[[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:UNAuthorizationOptionBadge|UNAuthorizationOptionSound|UNAuthorizationOptionAlert|UNAuthorizationOptionCarPlay completionHandler:^(BOOL granted, NSError * _Nullable error) {
-				//在block中会传入布尔值granted，表示用户是否同意
-				flag = granted;
-				message = @"请在iPhone的\"设置-通知\"选项中,允许通知";
-			}];
-        }else{
-            if ([[UIApplication sharedApplication] currentUserNotificationSettings].types  == UIRemoteNotificationTypeNone) {
-                flag = NO;
-                message = @"请在iPhone的\"设置-通知\"选项中,允许通知";
-            }
-        }
-        
+		UIUserNotificationSettings *setting = [[UIApplication sharedApplication] currentUserNotificationSettings];
+		if (UIUserNotificationTypeNone == setting.types) {
+			flag = NO;
+		    message = @"请在iPhone的\"设置-通知\"选项中,允许通知";
+		}
     }
     
 	if (!flag) {

@@ -11,6 +11,7 @@
 #import "LGReviewWrongCollectionReusableView.h"
 #import "LGSelectReviewTypeView.h"
 #import "LGWordDetailController.h"
+#import "LGDictationPractiseController.h"
 
 @interface LGReviewWrongListController ()<UICollectionViewDataSource, UICollectionViewDelegate, LGSelectReviewTypeViewDelegate>
 
@@ -143,7 +144,12 @@
     [self.request requestReviewWrongWordsWithStart:self.modelArray[indexPath.row].start Completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			NSMutableArray<NSString *> *wordIdArray = [NSMutableArray arrayWithArray:response];
-			[self performSegueWithIdentifier:@"reviewWrongListToWordDetail" sender:wordIdArray];
+			if (self.selectedReviewType == LGSelectReviewDictation) {
+				[self performSegueWithIdentifier:@"reviewWrongToDictation" sender:wordIdArray];
+			}else{
+				[self performSegueWithIdentifier:@"reviewWrongListToWordDetail" sender:wordIdArray];
+			}
+			
 		}
     }];
 }
@@ -160,7 +166,11 @@
         controller.reviewTyep = self.selectedReviewType;
 		controller.reviewWordIdArray = (NSMutableArray *)sender;
 		controller.total = @(((NSMutableArray *)sender).count).stringValue;
-    }
+	}else if ([segue.identifier isEqualToString:@"reviewWrongToDictation"]){
+		LGDictationPractiseController *controller = segue.destinationViewController;
+		controller.wordIDArray = sender;
+		controller.total = @(((NSMutableArray *)sender).count).stringValue;
+	}
 }
 
 @end

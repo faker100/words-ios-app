@@ -239,11 +239,8 @@
 	[self postRequestCompletion:completion];
 }
 
-- (void)requestTodayReviewWordsWithStatus:(LGWordStatus)status completion:(comletionBlock)completion{
+- (void)requestTodayReviewWordsCompletion:(comletionBlock)completion{
 	self.url = REVIEW_TODAY_URL;
-	self.parameter = @{
-					   @"status" :@(status)
-					   };
 	[self postRequestCompletion:completion];
 }
 

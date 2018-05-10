@@ -256,9 +256,8 @@
 
 /**
  获取今日复习单词
- @param status 选择复习单词类型
  */
-- (void)requestTodayReviewWordsWithStatus:(LGWordStatus)status completion:(comletionBlock)completion;
+- (void)requestTodayReviewWordsCompletion:(comletionBlock)completion;
 
 /**
  复习模式下修改单词状态

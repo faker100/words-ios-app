@@ -19,12 +19,13 @@ typedef NS_ENUM(NSUInteger, LGWordDetailTableDataSourceType) {
 @class LGSentenceModel , LGWordDetailTableDataSource, LGQuestionSelectItemModel, LGQuestionModel;
 @interface LGWordDetailModel : NSObject
 
-@property (nonatomic, strong) NSString *percent;//认知率
+@property (nonatomic, assign) NSInteger userNeedReviewWords;//需复习
+@property (nonatomic, copy) NSString *percent;//认知率
 @property (nonatomic, strong) LGFreeWordModel *words;
 @property (nonatomic, strong) NSArray<LGSentenceModel *> *sentence;
 @property (nonatomic, strong) NSArray<LGSentenceModel *> *lowSentence;
 @property (nonatomic, strong) LGQuestionModel *question;
-@property (nonatomic, copy) NSString *did; //已背单词
+@property (nonatomic, assign) NSInteger did; //已背单词
 
 /**
  自定义字段,用于背单词详情页tableview 的数据源
@@ -54,7 +55,7 @@ typedef NS_ENUM(NSUInteger, LGWordDetailTableDataSourceType) {
 @property (nonatomic, copy) NSString *question;
 @property (nonatomic, copy) NSString *questionanswer;
 @property (nonatomic, copy) NSArray<LGQuestionSelectItemModel *> *selectItemArr;
-
+@property (nonatomic, copy) NSString *article;//文章
 @end
 
 @interface LGQuestionSelectItemModel : NSObject

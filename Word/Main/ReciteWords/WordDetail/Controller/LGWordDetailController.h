@@ -13,6 +13,7 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 	LGWordDetailReciteWords = 0, 	   //背单词模式,默认
 	LGWordDetailEbbinghausReview,      //艾宾浩斯复习模式
 	LGWordDetailTodayReview,		   //今日复习
+	LGwordDetailTodayEbbinghausReview, //今日复习的艾宾浩斯模式
     LGWordDetailReview,                //错题本复习/时间复习
 	LGWordDetailDictationPrompt,       //听写练习提示
     LGWordDetailSearch,                //搜索单词
@@ -37,9 +38,6 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 //听写练习提示模式下的提示单词
 @property (nonatomic, strong) LGWordDetailModel *dictationPromptWord;
 
-//今日复习模式下(LGWordDetailTodayReview),要复习的状态,0为全部
-@property (nonatomic, assign) LGWordStatus todayReviewStatus;
-
 // 艾宾浩斯复习模式(LGWordDetailEbbinghausReview)下需要复习单词的 id 列表
 @property (nonatomic, strong) NSMutableArray<NSString *> *ebbinghausReviewWordIdArray;
 
@@ -57,6 +55,9 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 
 //认知率
 @property (weak, nonatomic) IBOutlet UILabel *knowRateLabel;
+
+//左边 title (新学 0 | 需复习 0)
+@property (weak, nonatomic) IBOutlet UIButton *leftTitleButton;
 
 
 //遮罩层

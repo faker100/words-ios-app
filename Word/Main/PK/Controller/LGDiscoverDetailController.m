@@ -31,7 +31,7 @@
 	[self.discoverImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(self.discoverModel.image)]];
     
     __weak typeof(self) weakSelf = self;
-    [self.discoverModel.content htmlToAttributeStringContent:OPPEN_DOMAIN(@"") width:SCREEN_WIDTH completion:^(NSMutableAttributedString *attrStr) {
+    [self.discoverModel.content htmlToAttributeStringContent:WORD_DOMAIN(@"") width:SCREEN_WIDTH completion:^(NSMutableAttributedString *attrStr) {
         weakSelf.contentTextView.attributedText = attrStr;
         [weakSelf.activityView stopAnimating];
     }];

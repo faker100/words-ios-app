@@ -350,7 +350,7 @@
 		[self.request updateReviewWordStatus:LGWordStatusUnchanged wordId:self.wordDetailModel.words.ID completion:nil];
 		
 		if (self.currentNum.integerValue == self.total.integerValue) {
-            [LGFinishWordTaskView showReviewFinishToView:self.view sureBlock:^{
+            [LGFinishWordTaskView showReviewFinishToView:self.view.window sureBlock:^{
                 [self.navigationController popViewControllerAnimated:YES];
             }];
 		}else{

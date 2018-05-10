@@ -42,11 +42,11 @@
                     [courseTimeForMatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
                     [courseTimeForMatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
                 }
-                if ([[courseTimeForMatter dateFromString:obj.courseTime] isInFuture]) {
+                if ([[courseTimeForMatter dateFromString:obj.courseTime] isToday]) {
                     [tempRecentClassArr addObject:obj];
                 }
             }];
-            if (tempRecentClassArr.count > 1) {
+            if (tempRecentClassArr.count > 0) {
                 obj.data = tempRecentClassArr;
                 [tempLiveArr addObject:obj];
             }

@@ -10,10 +10,10 @@
 
 @implementation LGTodayReviewWordModel
 
-+ (NSDictionary *) mj_replacedKeyFromPropertyName{
-    return @{
-             @"did" : @"do"
-             };
++ (NSDictionary *)mj_objectClassInArray{
+	return @{
+			 @"wordsId" : @"NSString"
+			 };
 }
 
 @end
