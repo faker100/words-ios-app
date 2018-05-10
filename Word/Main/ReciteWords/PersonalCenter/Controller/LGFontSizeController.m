@@ -9,8 +9,13 @@
 #import "LGFontSizeController.h"
 #import "LGUserManager.h"
 
-@interface LGFontSizeController ()
+//sliderView 每格的差是1，乘以倍数改变每格的差
+#define multiple 1.5
 
+@interface LGFontSizeController ()
+{
+    CGFloat originalFontSize;
+}
 @end
 
 @implementation LGFontSizeController
@@ -18,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    originalFontSize = self.fontSizeLabel.font.pointSize;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,19 +31,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+//-2 -1 0 1 2
+//初始值为中间,或者本地记录值
+
 - (void)viewDidLayoutSubviews{
-    //12 13 14 15 16
-	//初始值为中间,或者本地记录值
-	
-	//本地字体比率 ,以 slider 中间值求比
+
+	//本地字体加减
 	NSString *localFontSizeRate = [LGUserManager shareManager].user.fontSizeRate;
 	
-	//slider 中间值
-    CGFloat midValue  = [self sliderMidValue];
-	
-	CGFloat defaultSize = StringNotEmpty(localFontSizeRate) ? localFontSizeRate.floatValue * midValue : midValue;
-	
-	[self.slider setValue:defaultSize animated:YES];
+	[self.slider setValue:localFontSizeRate.floatValue/multiple  animated:YES];
 }
 
 - (IBAction)valueChangedAction:(UISlider *)sender {
@@ -63,11 +65,9 @@
 	
 	[sender setValue:fixSliderValue animated:YES];
 	
-	//本地字体比率 ,以 slider 中间值求比
-	CGFloat fontSizeRate = fontSize / [self sliderMidValue];
-	[LGUserManager shareManager].user.fontSizeRate = @(fontSizeRate).stringValue;
-    self.fontSizeLabel.font = [UIFont systemFontOfSize:fontSizeRate * [self sliderMidValue]];
-	
+    //最终值为两倍slider的值
+	[LGUserManager shareManager].user.fontSizeRate = @(fixSliderValue * multiple).stringValue;
+    self.fontSizeLabel.font = [UIFont systemFontOfSize:originalFontSize +  fixSliderValue * multiple];
 }
 
 //slider中间值，作为比例参考

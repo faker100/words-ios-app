@@ -8,12 +8,20 @@
 
 #import "LGWordDetailQuestionCell.h"
 #import "NSString+LGString.h"
+#import "LGUserManager.h"
+
+@interface LGWordDetailQuestionCell()
+{
+    CGFloat originalFontSize;//原来的fontsize;
+}
+@end
 
 @implementation LGWordDetailQuestionCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    originalFontSize = self.questionLabel.font.pointSize;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -31,6 +39,9 @@
 		
 		[text htmlToAttributeStringContent:GMAT_DOMAIN(@"") width:CGRectGetWidth(self.bgView.bounds) - 20 completion:^(NSMutableAttributedString *attrStr) {
 			
+            CGFloat newSize = originalFontSize + [LGUserManager shareManager].user.fontSizeRate.floatValue;
+            [attrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:newSize] range:NSMakeRange(0, attrStr.length)];
+            
 			//高亮 word
 			NSString *str = attrStr.mutableString;
 			NSString *regexString = word;

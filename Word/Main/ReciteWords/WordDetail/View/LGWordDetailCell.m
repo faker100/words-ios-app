@@ -7,12 +7,20 @@
 //
 
 #import "LGWordDetailCell.h"
+#import "LGUserManager.h"
 
+@interface LGWordDetailCell()
+{
+    CGFloat originalFontSize;//原来的fontsize;
+}
+
+@end
 @implementation LGWordDetailCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    originalFontSize = self.contentLabel.font.pointSize;
 }
 
 - (void)setContentStr:(NSString *)contentStr isFirst:(BOOL)isFirst isLast:(BOOL)isLast{
@@ -21,6 +29,11 @@
 	NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
 	[paragraphStyle setLineSpacing:5];//调整行间距
 	[attributeString addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:NSMakeRange(0, attributeString.length)];
+    
+    
+    CGFloat newSize = originalFontSize + [LGUserManager shareManager].user.fontSizeRate.floatValue;
+    [attributeString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:newSize] range:NSMakeRange(0, attributeString.length)];
+    
 	self.contentLabel.attributedText = attributeString;
 //    [self.contentLabel sizeToFit];
 //    

@@ -81,10 +81,18 @@
 	}else if (self.controllerType == LGwordDetailTodayEbbinghausReview){
 		[self requestWordDetailWidthID:self.ebbinghausReviewWordIdArray.firstObject];
 	}
+
+    [self configTabelView];
 	
-	[self.wordTabelView registerNib:[UINib nibWithNibName:@"LGWordDetailHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGWordDetailHeaderFooterView"];
-  //  CGFloat fontRate = [LGUserManager shareManager].user.fontSizeRate.floatValue;
-   // self.wordLabel.font = [UIFont systemFontOfSize:self.wordLabel.font.pointSize * fontRate];
+}
+
+//初始化table headerview
+- (void)configTabelView{
+    [self.wordTabelView registerNib:[UINib nibWithNibName:@"LGWordDetailHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGWordDetailHeaderFooterView"];
+    CGFloat fontRate = [LGUserManager shareManager].user.fontSizeRate.floatValue;
+    self.wordLabel.font = [UIFont systemFontOfSize:self.wordLabel.font.pointSize  + fontRate];
+    self.translateLabel.font = [UIFont systemFontOfSize:self.translateLabel.font.pointSize + fontRate];
+    self.knowRateLabel.font = [UIFont systemFontOfSize:self.knowRateLabel.font.pointSize + fontRate];
 }
 
 #pragma mark - Setter  Getter
@@ -103,6 +111,7 @@
 
 //更新左边 title
 - (void)updateLeftTitle{
+    
 	NSString *leftTitle = [NSString stringWithFormat:@" 新学%ld | 需复习%ld ",self.detailModel.did,self.detailModel.userNeedReviewWords];
 	[self.leftTitleButton setTitle:leftTitle forState:UIControlStateNormal];
 	[self.leftTitleButton sizeToFit];
@@ -114,12 +123,16 @@
 	self.wordLabel.text = detailModel.words.word;
 	self.translateLabel.text = detailModel.words.translate;
 	
+    [self.wordLabel sizeToFit];
+    [self.translateLabel sizeToFit];
+    
 	//在不是搜索(LGWordDetailSearch)和提示(LGWordDetailDictationPrompt)模式下,更新左边标题
 	if (self.controllerType != LGWordDetailSearch && self.controllerType != LGWordDetailDictationPrompt) {
 		self.currentNum = @(detailModel.did).stringValue;
 		[self updateLeftTitle];
 	}
-	
+    
+    //播放音频
     [self playeAction:nil];
     self.playerButton.hidden = NO;
     if (detailModel.words.phonetic_us) {
@@ -130,6 +143,8 @@
 	self.knowRateLabel.hidden = NO;
 	
 	[self.wordTabelView.tableHeaderView sizeToFit];
+    CGSize size = [self.wordTabelView.tableHeaderView sizeThatFits:CGSizeZero];
+    NSLog(@"%f,%f",size.width, size.height);
 	
 	[self.wordTabelView reloadData];
 }
