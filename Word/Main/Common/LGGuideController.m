@@ -9,7 +9,7 @@
 #import "LGGuideController.h"
 #import "LGUserManager.h"
 
-@interface LGGuideController ()
+@interface LGGuideController ()<UIScrollViewDelegate>
 
 @end
 
@@ -25,21 +25,40 @@
     // Dispose of any resources that can be recreated.
 }
 
-//消失引导页
-- (IBAction)tapAction:(id)sender {
+//结束引导页
+- (void)finishGuide{
 	[LGUserManager shareManager].isFirstLaunch = YES;
 	[self.delegate finishGuide];
 	[self.view removeFromSuperview];
 	[self removeFromParentViewController];
 }
 
+//消失引导页
+- (IBAction)tapAction:(id)sender {
+	[self finishGuide];
+}
+
 //下一页
 - (IBAction)nextAction:(UITapGestureRecognizer *)sender {
 	UIView *view = sender.view;
 	[self.scrollView setContentOffset:CGPointMake(CGRectGetMaxX(view.frame), 0) animated:YES];
+	CGFloat offset_x = self.scrollView.contentOffset.x;
+	NSInteger index = offset_x / SCREEN_WIDTH;
+	[self.pageControl setCurrentPage:index];
 }
 
-
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+	CGFloat offset_x = scrollView.contentOffset.x;
+	NSInteger index = offset_x / SCREEN_WIDTH;
+	//最后一次
+	if (index == 4) {
+		[self finishGuide];
+	}else{
+		[self.pageControl setCurrentPage:index];
+	}
+	
+}
 
 /*
 #pragma mark - Navigation

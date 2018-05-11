@@ -370,7 +370,7 @@ NSInteger countDown = 10;
 	}
 	//用户正确率 百分比
 	self.userAccuracy = self.userRighCount / (self.currentWordIndex + 1) * 100;
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 		NSString *userAnswer = self.currentWordModel.selectArray[indexPath.section];
 		[self nextQuestionWithCurrentAnswer:userAnswer duration:duration];
 	});

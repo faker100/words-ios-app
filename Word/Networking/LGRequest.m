@@ -244,14 +244,20 @@
 	[self postRequestCompletion:completion];
 }
 
-- (void)updateReviewWordStatus:(LGWordStatus)status wordId:(NSString *)wordId completion:(comletionBlock)completion{
+- (void)updateReviewWordStatus:(LGWordStatus)status wordId:(NSString *)wordId type:(NSInteger)type completion:(comletionBlock)completion{
 	self.url = UPDATE_REVIEW_WORD_STATUS_URL;
 	self.parameter = @{
 					   @"wordsId" : wordId,
-					   @"status" :  status == LGWordStatusUnchanged ? @"" : @(status)
+					   @"status" :  status == LGWordStatusUnchanged ? @"" : @(status),
+					   @"type" : @(type)
 					   };
 	[self postRequestCompletion:completion];
 	
+}
+
+- (void)finishEbbinghausCompletion:(comletionBlock)completion{
+	self.url = FINISH_EBBINGHAUS_REVIEW;
+	[self postRequestCompletion:completion];
 }
 
 - (void)requestReviewIndexCompletion:(comletionBlock)completion{

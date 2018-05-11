@@ -124,7 +124,6 @@
 			flag = NO;
 			message = @"请在iPhone的\"设置-隐私-照片\"选项中,允许访问你的照片";
 		}
-
 	}
 	
 	if (type == LGDeviceMicrophone) {

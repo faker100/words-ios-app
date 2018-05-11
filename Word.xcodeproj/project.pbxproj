@@ -175,7 +175,6 @@
 		56ABC90F20749F3200F328A8 /* LGPKDiscoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56ABC90E20749F3200F328A8 /* LGPKDiscoverCell.m */; };
 		56ABC9152074A0B200F328A8 /* LGPKDiscoverModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56ABC9142074A0B200F328A8 /* LGPKDiscoverModel.m */; };
 		56ABC9182074A9F500F328A8 /* LGDiscoverDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56ABC9172074A9F500F328A8 /* LGDiscoverDetailController.m */; };
-		56AF3CF6209C4E4F001BD71F /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56AF3CF5209C4E4F001BD71F /* music.mp3 */; };
 		56AF60C52011CD2B0067BD7B /* LGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AF60C42011CD2B0067BD7B /* LGRequest.m */; };
 		56AF60C72011CDB90067BD7B /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56AF60C62011CDB90067BD7B /* Login.storyboard */; };
 		56AF60CA2011DBBE0067BD7B /* CALayer+LGLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AF60C92011DBBE0067BD7B /* CALayer+LGLayer.m */; };
@@ -217,6 +216,15 @@
 		56CCA5E5201B083B0097DCAC /* LGReciteWordsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5E4201B083B0097DCAC /* LGReciteWordsController.m */; };
 		56CCA5E8201B16050097DCAC /* LGNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5E7201B16050097DCAC /* LGNavigationController.m */; };
 		56CCA5ED201B29A60097DCAC /* LGStudyTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CCA5EC201B29A60097DCAC /* LGStudyTypeController.m */; };
+		56D15D9720A5983D00BB00BC /* estimate_notKnow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D15D8F20A5983B00BB00BC /* estimate_notKnow.mp3 */; };
+		56D15D9920A5983D00BB00BC /* pk_win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D15D9120A5983C00BB00BC /* pk_win.mp3 */; };
+		56D15D9A20A5983D00BB00BC /* now_pk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D15D9220A5983C00BB00BC /* now_pk.mp3 */; };
+		56D15D9B20A5983D00BB00BC /* pk_lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D15D9320A5983C00BB00BC /* pk_lose.mp3 */; };
+		56D15D9C20A5983D00BB00BC /* forget.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D15D9420A5983C00BB00BC /* forget.mp3 */; };
+		56D15D9E20A5983D00BB00BC /* familiar.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D15D9620A5983D00BB00BC /* familiar.mp3 */; };
+		56D15DA020A59F4C00BB00BC /* know.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D15D9F20A59F4B00BB00BC /* know.mp3 */; };
+		56D15DA420A5A21400BB00BC /* dim.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D15DA320A5A21400BB00BC /* dim.mp3 */; };
+		56D15DA620A5A41200BB00BC /* beginReciteWords.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56D15DA520A5A41200BB00BC /* beginReciteWords.mp3 */; };
 		56D3283A2079AE620041502B /* LGPeripheryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D328392079AE620041502B /* LGPeripheryController.m */; };
 		56D328402079E6BE0041502B /* LGPeripheryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D3283F2079E6BE0041502B /* LGPeripheryModel.m */; };
 		56D328432079FCAF0041502B /* LGPublicCourseCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D328422079FCAF0041502B /* LGPublicCourseCollectionCell.m */; };
@@ -569,7 +577,6 @@
 		56ABC9142074A0B200F328A8 /* LGPKDiscoverModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKDiscoverModel.m; sourceTree = "<group>"; };
 		56ABC9162074A9F500F328A8 /* LGDiscoverDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGDiscoverDetailController.h; sourceTree = "<group>"; };
 		56ABC9172074A9F500F328A8 /* LGDiscoverDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGDiscoverDetailController.m; sourceTree = "<group>"; };
-		56AF3CF5209C4E4F001BD71F /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		56AF60C32011CD2B0067BD7B /* LGRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGRequest.h; sourceTree = "<group>"; };
 		56AF60C42011CD2B0067BD7B /* LGRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGRequest.m; sourceTree = "<group>"; };
 		56AF60C62011CDB90067BD7B /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -648,6 +655,15 @@
 		56CCA5E7201B16050097DCAC /* LGNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGNavigationController.m; sourceTree = "<group>"; };
 		56CCA5EB201B29A60097DCAC /* LGStudyTypeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGStudyTypeController.h; sourceTree = "<group>"; };
 		56CCA5EC201B29A60097DCAC /* LGStudyTypeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGStudyTypeController.m; sourceTree = "<group>"; };
+		56D15D8F20A5983B00BB00BC /* estimate_notKnow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = estimate_notKnow.mp3; sourceTree = "<group>"; };
+		56D15D9120A5983C00BB00BC /* pk_win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pk_win.mp3; sourceTree = "<group>"; };
+		56D15D9220A5983C00BB00BC /* now_pk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = now_pk.mp3; sourceTree = "<group>"; };
+		56D15D9320A5983C00BB00BC /* pk_lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pk_lose.mp3; sourceTree = "<group>"; };
+		56D15D9420A5983C00BB00BC /* forget.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = forget.mp3; sourceTree = "<group>"; };
+		56D15D9620A5983D00BB00BC /* familiar.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = familiar.mp3; sourceTree = "<group>"; };
+		56D15D9F20A59F4B00BB00BC /* know.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = know.mp3; sourceTree = "<group>"; };
+		56D15DA320A5A21400BB00BC /* dim.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dim.mp3; sourceTree = "<group>"; };
+		56D15DA520A5A41200BB00BC /* beginReciteWords.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beginReciteWords.mp3; sourceTree = "<group>"; };
 		56D328382079AE620041502B /* LGPeripheryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPeripheryController.h; sourceTree = "<group>"; };
 		56D328392079AE620041502B /* LGPeripheryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPeripheryController.m; sourceTree = "<group>"; };
 		56D3283E2079E6BE0041502B /* LGPeripheryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPeripheryModel.h; sourceTree = "<group>"; };
@@ -1370,7 +1386,15 @@
 		56AF3CF2209C3DF4001BD71F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				56AF3CF5209C4E4F001BD71F /* music.mp3 */,
+				56D15DA520A5A41200BB00BC /* beginReciteWords.mp3 */,
+				56D15DA320A5A21400BB00BC /* dim.mp3 */,
+				56D15D9F20A59F4B00BB00BC /* know.mp3 */,
+				56D15D8F20A5983B00BB00BC /* estimate_notKnow.mp3 */,
+				56D15D9620A5983D00BB00BC /* familiar.mp3 */,
+				56D15D9420A5983C00BB00BC /* forget.mp3 */,
+				56D15D9220A5983C00BB00BC /* now_pk.mp3 */,
+				56D15D9120A5983C00BB00BC /* pk_win.mp3 */,
+				56D15D9320A5983C00BB00BC /* pk_lose.mp3 */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -1877,32 +1901,40 @@
 				56FD20D82028257D003A6154 /* LGDeletePlanAlertView.xib in Resources */,
 				5621AB1D206E275E00AB0CD0 /* LGTrackFinishHeaderView.xib in Resources */,
 				564B326F207B4398005E7658 /* AXWebViewController.bundle in Resources */,
+				56D15DA420A5A21400BB00BC /* dim.mp3 in Resources */,
 				56AF60C72011CDB90067BD7B /* Login.storyboard in Resources */,
 				568C8C97207326BB009668AD /* LGEstimateResultHeaderView.xib in Resources */,
 				56B7AAEC202C5A2400BDECED /* LGWordDetailHeaderFooterView.xib in Resources */,
+				56D15D9920A5983D00BB00BC /* pk_win.mp3 in Resources */,
 				029F3C8A204AEB8C0022FB4B /* LGSelectReviewTypeView.xib in Resources */,
 				5658D5A82040FF8600390FC4 /* LGIndexReviewAlertView.xib in Resources */,
 				56A88846200CA53400847BE6 /* LaunchScreen.storyboard in Resources */,
+				56D15D9A20A5983D00BB00BC /* now_pk.mp3 in Resources */,
+				56D15D9B20A5983D00BB00BC /* pk_lose.mp3 in Resources */,
 				560699E12057BC7B00574437 /* LGPKRankHeadView.xib in Resources */,
 				56A88843200CA53400847BE6 /* Assets.xcassets in Resources */,
+				56D15D9720A5983D00BB00BC /* estimate_notKnow.mp3 in Resources */,
 				56D328482079FDAF0041502B /* LGPeripherySectionHeader.xib in Resources */,
 				56BBBFC9205664C10057BDF2 /* LGSettingHeaderView.xib in Resources */,
 				56E25391204D00C6006D9B56 /* LGFinishWordTaskView.xib in Resources */,
+				56D15DA020A59F4C00BB00BC /* know.mp3 in Resources */,
 				56EAD86A2019C1300059604E /* Periphery.storyboard in Resources */,
 				5621AB18206E204F00AB0CD0 /* LGTrackRankHeaderView.xib in Resources */,
 				023C1E1B208CD6EB00E05663 /* ShareSDKConfigFile.bundle in Resources */,
 				023C1E18208CD6EB00E05663 /* ShareSDK.bundle in Resources */,
 				56EAD8642019C09A0059604E /* ReciteWords.storyboard in Resources */,
+				56D15D9E20A5983D00BB00BC /* familiar.mp3 in Resources */,
 				56224FC9204548360093BC7A /* LGIndexReviewAlertCell.xib in Resources */,
 				56EAD8682019C0FC0059604E /* PK.storyboard in Resources */,
 				56EAD8662019C0EB0059604E /* WordReport.storyboard in Resources */,
-				56AF3CF6209C4E4F001BD71F /* music.mp3 in Resources */,
+				56D15D9C20A5983D00BB00BC /* forget.mp3 in Resources */,
 				023C1E2C208CEF3400E05663 /* LGShareView.xib in Resources */,
 				56A88841200CA53400847BE6 /* Main.storyboard in Resources */,
 				56994EA520493A1F005648F6 /* LGReviewWrongCollectionReusableView.xib in Resources */,
 				023C1E14208CD6EB00E05663 /* README.txt in Resources */,
 				56E9F8192091807100FEECAE /* LGAlertMessageView.xib in Resources */,
 				56C6469B204E43BC00E895B3 /* LGTimeReivewCountAlertView.xib in Resources */,
+				56D15DA620A5A41200BB00BC /* beginReciteWords.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

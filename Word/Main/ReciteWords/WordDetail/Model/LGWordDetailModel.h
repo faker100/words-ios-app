@@ -19,7 +19,8 @@ typedef NS_ENUM(NSUInteger, LGWordDetailTableDataSourceType) {
 @class LGSentenceModel , LGWordDetailTableDataSource, LGQuestionSelectItemModel, LGQuestionModel;
 @interface LGWordDetailModel : NSObject
 
-@property (nonatomic, assign) NSInteger userNeedReviewWords;//需复习
+@property (nonatomic, assign) NSInteger needReviewWords; //新艾宾浩斯复习
+@property (nonatomic, assign) NSInteger userNeedReviewWords;//老艾宾浩斯需复习
 @property (nonatomic, copy) NSString *percent;//认知率
 @property (nonatomic, strong) LGFreeWordModel *words;
 @property (nonatomic, strong) NSArray<LGSentenceModel *> *sentence;

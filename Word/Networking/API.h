@@ -203,6 +203,9 @@ typedef NS_ENUM(NSUInteger, LGCourseType) {
 //修改复习模式单词状态
 #define UPDATE_REVIEW_WORD_STATUS_URL	@"http://words.viplgw.cn/cn/app-api/review-update"
 
+//新艾宾浩斯完成
+#define FINISH_EBBINGHAUS_REVIEW        @"http://words.viplgw.cn/cn/app-api/now-finish"
+
 //复习首页
 #define REVIEW_INDEX_URL			    @"http://words.viplgw.cn/cn/app-api/review-index"
 

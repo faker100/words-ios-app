@@ -14,10 +14,11 @@
 #define PHONE_KEY			 @"PHONE_KEY"
 #define NICKNAME_KEY		 @"NICKNAME_KEY"
 #define PASSWORD_KEY		 @"PASSWORD_KEY"
+#define PK_AUDIO			 @"PK_AUDIO"
 
 @interface LGUserModel : NSObject
 
-
+@property (nonatomic, copy) NSString *audio;
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSString *nickname;
 @property (nonatomic, copy) NSString *password;

@@ -116,7 +116,7 @@
 	LGFreeWordModel *wordModel = self.modelArray[indexPath.section];
 	
 	[[LGPlayer sharedPlayer] playWithUrl:wordModel.us_audio completion:^(LGError *error) {
-			[self isNormal:error];
+//			[self isNormal:error];
 	}];
 }
 

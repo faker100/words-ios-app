@@ -32,7 +32,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
-	[self requestData];
+	[self requestData:self.modelArray == nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,8 +40,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)requestData{
-	[LGProgressHUD showHUDAddedTo:self.view];
+- (void)requestData:(BOOL) loading{
+	if (loading) {
+		[LGProgressHUD showHUDAddedTo:self.view];
+	}
+	
 	[self.request requestDicationGroupWithStatus:self.status completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			self.modelArray = [LGReviewWrongWordModel mj_objectArrayWithKeyValuesArray:response];

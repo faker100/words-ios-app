@@ -77,5 +77,13 @@
 	return [[NSUserDefaults standardUserDefaults] objectForKey:PASSWORD_KEY];
 }
 
+- (void)setAudio:(NSString *)audio{
+	[[NSUserDefaults standardUserDefaults]setObject:audio forKey:PK_AUDIO];
+}
+
+- (NSString *)audio{
+	return [[NSUserDefaults standardUserDefaults] stringForKey:PK_AUDIO];
+}
+
 
 @end

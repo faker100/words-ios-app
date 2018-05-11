@@ -57,46 +57,71 @@
                                         <rect key="frame" x="750" y="0.0" width="375" height="667"/>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="Kmd-jD-dlu" appends="YES" id="j7i-98-bKM"/>
+                                            <outletCollection property="gestureRecognizers" destination="3Dq-yz-KRe" appends="YES" id="3RL-GC-6g3"/>
                                         </connections>
                                     </imageView>
+                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_4" translatesAutoresizingMaskIntoConstraints="NO" id="ALq-oQ-r9t">
+                                        <rect key="frame" x="1125" y="0.0" width="375" height="667"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="C4d-j8-V7C" appends="YES" id="Jo4-HS-xwv"/>
+                                        </connections>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8E1-Mf-tE0">
+                                        <rect key="frame" x="1500" y="-0.5" width="375" height="667"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="1fG-AK-loq" firstAttribute="leading" secondItem="2ra-qh-tYB" secondAttribute="leading" id="3qo-r6-YYm"/>
                                     <constraint firstItem="WC4-hY-bk2" firstAttribute="centerY" secondItem="1fG-AK-loq" secondAttribute="centerY" id="4Hu-sI-1Pa"/>
+                                    <constraint firstItem="ALq-oQ-r9t" firstAttribute="width" secondItem="1fG-AK-loq" secondAttribute="width" id="4eD-HW-Reb"/>
                                     <constraint firstItem="WC4-hY-bk2" firstAttribute="leading" secondItem="1fG-AK-loq" secondAttribute="trailing" id="B9w-KL-G2w"/>
                                     <constraint firstItem="WC4-hY-bk2" firstAttribute="width" secondItem="1fG-AK-loq" secondAttribute="width" id="GYs-LH-JdS"/>
-                                    <constraint firstAttribute="trailing" secondItem="NYc-bf-atG" secondAttribute="trailing" id="MaN-CI-AOl"/>
+                                    <constraint firstItem="ALq-oQ-r9t" firstAttribute="height" secondItem="1fG-AK-loq" secondAttribute="height" id="KUg-yS-ONL"/>
+                                    <constraint firstItem="8E1-Mf-tE0" firstAttribute="width" secondItem="1fG-AK-loq" secondAttribute="width" id="LfF-dT-H91"/>
+                                    <constraint firstItem="8E1-Mf-tE0" firstAttribute="height" secondItem="1fG-AK-loq" secondAttribute="height" id="RcG-fe-7pQ"/>
+                                    <constraint firstItem="8E1-Mf-tE0" firstAttribute="leading" secondItem="ALq-oQ-r9t" secondAttribute="trailing" id="UBK-Va-eqU"/>
+                                    <constraint firstItem="ALq-oQ-r9t" firstAttribute="centerY" secondItem="2ra-qh-tYB" secondAttribute="centerY" id="W25-Q2-AKl"/>
                                     <constraint firstItem="NYc-bf-atG" firstAttribute="width" secondItem="1fG-AK-loq" secondAttribute="width" id="dnx-uW-dX6"/>
                                     <constraint firstItem="NYc-bf-atG" firstAttribute="centerY" secondItem="1fG-AK-loq" secondAttribute="centerY" id="f1h-BR-B0m"/>
+                                    <constraint firstItem="8E1-Mf-tE0" firstAttribute="centerY" secondItem="2ra-qh-tYB" secondAttribute="centerY" id="hTd-YK-JgG"/>
                                     <constraint firstItem="NYc-bf-atG" firstAttribute="height" secondItem="1fG-AK-loq" secondAttribute="height" id="ifT-m0-huy"/>
                                     <constraint firstItem="WC4-hY-bk2" firstAttribute="height" secondItem="1fG-AK-loq" secondAttribute="height" id="sk8-2m-2pz"/>
                                     <constraint firstItem="NYc-bf-atG" firstAttribute="leading" secondItem="WC4-hY-bk2" secondAttribute="trailing" id="smX-XQ-kSi"/>
                                     <constraint firstItem="1fG-AK-loq" firstAttribute="top" secondItem="2ra-qh-tYB" secondAttribute="top" id="uUx-UC-qGT"/>
+                                    <constraint firstItem="NYc-bf-atG" firstAttribute="trailing" secondItem="ALq-oQ-r9t" secondAttribute="leading" id="udw-Sa-pe1"/>
+                                    <constraint firstAttribute="trailing" secondItem="8E1-Mf-tE0" secondAttribute="trailing" id="xEx-tC-nIA"/>
                                     <constraint firstAttribute="bottom" secondItem="1fG-AK-loq" secondAttribute="bottom" id="zoZ-qm-Bng"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="S50-0F-oGq" id="o4X-4Z-w2a"/>
+                                </connections>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="A2V-SQ-XcI">
+                                <rect key="frame" x="160" y="620" width="55" height="37"/>
+                            </pageControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1fG-AK-loq" firstAttribute="width" secondItem="zYw-dU-Oe9" secondAttribute="width" id="0Bl-qy-7Xe"/>
+                            <constraint firstItem="A2V-SQ-XcI" firstAttribute="centerX" secondItem="zYw-dU-Oe9" secondAttribute="centerX" id="0rf-yZ-I9z"/>
                             <constraint firstAttribute="trailing" secondItem="2ra-qh-tYB" secondAttribute="trailing" id="4gw-UZ-X1Z"/>
                             <constraint firstAttribute="bottom" secondItem="2ra-qh-tYB" secondAttribute="bottom" id="6Jl-pH-fMa"/>
                             <constraint firstItem="1fG-AK-loq" firstAttribute="height" secondItem="zYw-dU-Oe9" secondAttribute="height" id="CC6-NQ-MWU"/>
                             <constraint firstItem="2ra-qh-tYB" firstAttribute="top" secondItem="zYw-dU-Oe9" secondAttribute="top" id="Skx-ql-wxQ"/>
+                            <constraint firstItem="ym0-NY-Cun" firstAttribute="top" secondItem="A2V-SQ-XcI" secondAttribute="bottom" constant="10" id="cuG-Fd-yCd"/>
                             <constraint firstItem="2ra-qh-tYB" firstAttribute="leading" secondItem="zYw-dU-Oe9" secondAttribute="leading" id="ql3-8W-fFj"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="pageControl" destination="A2V-SQ-XcI" id="Q7F-KL-CLX"/>
                         <outlet property="scrollView" destination="2ra-qh-tYB" id="8AX-Qe-14U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W3j-oE-iRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Kmd-jD-dlu">
-                    <connections>
-                        <action selector="tapAction:" destination="S50-0F-oGq" id="Gth-yz-PPs"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer id="Fyr-NQ-gNs">
                     <connections>
                         <action selector="nextAction:" destination="S50-0F-oGq" id="WlH-Or-81g"/>
@@ -107,13 +132,24 @@
                         <action selector="nextAction:" destination="S50-0F-oGq" id="kcy-EA-Krs"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="3Dq-yz-KRe">
+                    <connections>
+                        <action selector="nextAction:" destination="S50-0F-oGq" id="81W-Ql-r3a"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="C4d-j8-V7C">
+                    <connections>
+                        <action selector="tapAction:" destination="S50-0F-oGq" id="jKp-pw-Qzd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-452" y="-105.69715142428787"/>
         </scene>
     </scenes>
     <resources>
-        <image name="guide_1" width="750" height="1334"/>
-        <image name="guide_2" width="750" height="1334"/>
-        <image name="guide_3" width="750" height="1334"/>
+        <image name="guide_1" width="480" height="800"/>
+        <image name="guide_2" width="480" height="800"/>
+        <image name="guide_3" width="480" height="800"/>
+        <image name="guide_4" width="480" height="800"/>
     </resources>
 </document>

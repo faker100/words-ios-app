@@ -14,6 +14,7 @@
 #import "LGWordDetailController.h"
 #import "LGFinishWordTaskView.h"
 #import "NSDate+Utilities.h"
+#import "LGPlayer.h"
 
 @interface LGRecitePlanController ()
 
@@ -74,6 +75,7 @@
  */
 - (IBAction)beginReciteWordsAction:(id)sender {
 
+	
 	__weak typeof(self) weakSelf = self;
 	
 	NSInteger task = self.reciteWordModel.task;
@@ -224,9 +226,9 @@
 	
 	//今天需要背单词,今日复习
 	LGStudyType type = [LGUserManager shareManager].user.studyModel;
-	NSString *todayStr = [NSString stringWithFormat:@"今天新学 : %@",reciteWordModel.todayWords];
+	NSString *todayStr = [NSString stringWithFormat:@"今天新学 %@",reciteWordModel.todayWords];
 	if (type != LGStudyOnlyNew) {
-		todayStr = [todayStr stringByAppendingString:[NSString stringWithFormat:@",今日需复习%@/%@",reciteWordModel.userReviewWords, reciteWordModel.userNeedReviewWords]];
+		todayStr = [todayStr stringByAppendingString:[NSString stringWithFormat:@"，今日需复习%@/%@",reciteWordModel.userReviewWords, reciteWordModel.userNeedReviewWords]];
 	}
 	self.todayPlanLabel.text = todayStr;
 }
@@ -269,6 +271,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	
 	if ([segue.identifier isEqualToString:@"indexPlanToBeginReciteWords"]) {
+		
+		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_beginReciteWords];
+		
 		LGWordDetailControllerType type = ((NSNumber *)sender).integerValue;
 		LGWordDetailController *controller = segue.destinationViewController;
 		if (type == LGWordDetailTodayReview) {

@@ -185,7 +185,6 @@
 }
 
 - (void)dealloc{
-
 	[LGTool cancelTimer:timer];
 }
 

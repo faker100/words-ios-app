@@ -110,9 +110,21 @@
 */
 
 //更新左边 title
+//新艾宾浩斯复习量为 needReviewWords + 剩余复习单词亮
 - (void)updateLeftTitle{
-    
-	NSString *leftTitle = [NSString stringWithFormat:@" 新学%ld | 需复习%ld ",self.detailModel.did,self.detailModel.userNeedReviewWords];
+	
+	NSInteger needReviewWords = self.detailModel.userNeedReviewWords;
+	//新艾宾浩斯复习量为 needReviewWords + 剩余复习单词亮
+	if (self.controllerType == LGWordDetailEbbinghausReview) {
+		needReviewWords = self.detailModel.needReviewWords + self.ebbinghausReviewWordIdArray.count;
+	}
+	
+	NSString *leftTitle = [NSString stringWithFormat:@" 新学%ld | 需复习%ld ",self.detailModel.did,needReviewWords];
+	
+	if (self.controllerType == LGWordDetailReview) {
+		leftTitle = [NSString stringWithFormat:@" 需复习%ld ",needReviewWords];
+	}
+	
 	[self.leftTitleButton setTitle:leftTitle forState:UIControlStateNormal];
 	[self.leftTitleButton sizeToFit];
 	self.leftTitleButton.hidden = NO;
@@ -223,9 +235,15 @@
 	
 	[self.request requestTodayReviewWordsCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			LGTodayReviewWordModel *reviewWordModel = [LGTodayReviewWordModel mj_objectWithKeyValues:response];
-			self.ebbinghausReviewWordIdArray = reviewWordModel.wordsId;
-			[self pushNextWordDetailController:LGwordDetailTodayEbbinghausReview animated:NO];
+			NSInteger code = [NSString stringWithFormat:@"%@",response[@"code"]].integerValue;
+			if (code == 2){
+				//老艾宾浩斯完成了,进分享
+				[self performSegueWithIdentifier:@"wordDetailToShare" sender:nil];
+			}else{
+				LGTodayReviewWordModel *reviewWordModel = [LGTodayReviewWordModel mj_objectWithKeyValues:response];
+				self.ebbinghausReviewWordIdArray = reviewWordModel.wordsId;
+				[self pushNextWordDetailController:LGwordDetailTodayEbbinghausReview animated:NO];
+			}
 		}
 	}];
 }
@@ -255,7 +273,7 @@
 //播放语音
 - (IBAction)playeAction:(id)sender {
 	[[LGPlayer sharedPlayer] playWithUrl:self.detailModel.words.us_audio completion:^(LGError *error) {
-		[self isNormal:error];
+//		[self isNormal:error];
 	}];
 }
 
@@ -268,21 +286,30 @@
 
 //熟识
 - (IBAction)familiarAction:(id)sender {
+	[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_familiar];
 	[self updateWordStatus:LGWordStatusFamiliar];
 }
 
 //认识
 - (IBAction)knowAction:(id)sender {
+	[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_know];
 	[self updateWordStatus:LGWordStatusKnow];
 }
 
 //不认识
 - (IBAction)notKnowAction:(id)sender {
+	[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_estimate_notKnow];
 	[self updateWordStatus:LGWordStatusIncognizance];
 }
 
 // 在背单词模式下标记为模糊,其他复习模式下标记为忘记
 - (IBAction)vagueOrForgotAction:(id)sender {
+	
+	if (self.controllerType == LGWordDetailReciteWords) {
+		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_dim];
+	}else{
+		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_forget];
+	}
 	
 	[self updateWordStatus:self.controllerType == LGWordDetailReciteWords ? LGWordStatusVague : LGWordStatusForget];
 }
@@ -344,8 +371,10 @@
  */
 - (void)updateEbbinghausReviewWordStatus:(LGWordStatus) status {
 	[LGProgressHUD showHUDAddedTo:self.view];
-
-	[self.request updateReviewWordStatus:status wordId:self.detailModel.words.ID completion:^(id response, LGError *error) {
+	
+	NSInteger type = self.controllerType == LGWordDetailEbbinghausReview ? 1 : 0;
+	
+	[self.request updateReviewWordStatus:status wordId:self.detailModel.words.ID type:type completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			NSString *wordID = self.ebbinghausReviewWordIdArray.firstObject;
 			[self.ebbinghausReviewWordIdArray removeObjectAtIndex:0];
@@ -364,17 +393,21 @@
 				
 				//正常背单词艾宾浩斯
 			}else if(self.controllerType == LGWordDetailEbbinghausReview){
-				LGWordDetailControllerType tempType = ArrayNotEmpty(self.ebbinghausReviewWordIdArray) ? LGWordDetailEbbinghausReview : LGWordDetailReciteWords;
-					//艾宾浩斯完成后, title 总数显示为今日需背单词数
-				if (tempType == LGWordDetailReciteWords) {
-					self.total = self.todayNeedReciteNum;
+				
+				// 新艾宾浩斯结束
+				if (self.ebbinghausReviewWordIdArray.count == 0) {
+					[self.request finishEbbinghausCompletion:^(id response, LGError *error) {
+						if ([self isNormal:error]) {
+							[self pushNextWordDetailController:LGWordDetailReciteWords  animated:YES];
+						}
+					}];
+				}else{
+					[self pushNextWordDetailController:LGWordDetailEbbinghausReview  animated:YES];
 				}
-				[self pushNextWordDetailController:tempType  animated:YES];
-				}
+			}
 		}
 	}];
 }
-
 
 /**
  复习模式下修改单词状态,并跳转到下一个单词
@@ -383,7 +416,8 @@
  */
 - (void)updateReviewWordStatus:(LGWordStatus) status {
 	[LGProgressHUD showHUDAddedTo:self.view];
-	[self.request updateReviewWordStatus:status wordId:self.detailModel.words.ID completion:^(id response, LGError *error) {
+	NSInteger type = self.controllerType == LGWordDetailEbbinghausReview ? 1 : 0;
+	[self.request updateReviewWordStatus:status wordId:self.detailModel.words.ID type:type completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			if (self.controllerType == LGWordDetailReview) {
 				[self.reviewWordIdArray removeObjectAtIndex:0];

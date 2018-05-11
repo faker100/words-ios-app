@@ -347,7 +347,7 @@
 	}];
 	if ([userAnswer isEqualToString:self.wordDetailModel.words.word]) {
 		
-		[self.request updateReviewWordStatus:LGWordStatusUnchanged wordId:self.wordDetailModel.words.ID completion:nil];
+		[self.request updateReviewWordStatus:LGWordStatusUnchanged wordId:self.wordDetailModel.words.ID type:0 completion:nil];
 		
 		if (self.currentNum.integerValue == self.total.integerValue) {
             [LGFinishWordTaskView showReviewFinishToView:self.view.window sureBlock:^{

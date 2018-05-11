@@ -60,6 +60,13 @@
 - (void)submiteAnswer:(NSString *)answer{
 	
 	LGAnswerType type = [answer isEqualToString:self.wordModel.answer];
+	
+	if (type == LGAnswerFalse) {
+		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_estimate_notKnow];
+	}else{
+		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_know];
+	}
+	
 	BOOL isKnow = StringNotEmpty(answer);
 	[LGProgressHUD showHUDAddedTo:self.view];
 	

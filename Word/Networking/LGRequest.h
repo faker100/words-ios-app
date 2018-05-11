@@ -264,9 +264,12 @@
 
  @param status 单词状态
  @param wordId 单词 id
+ @param type 1新艾宾浩斯模式 , 0其他模式
  */
-- (void)updateReviewWordStatus:(LGWordStatus)status wordId:(NSString *)wordId completion:(comletionBlock)completion;
+- (void)updateReviewWordStatus:(LGWordStatus)status wordId:(NSString *)wordId type:(NSInteger)type completion:(comletionBlock)completion;
 
+//新艾宾浩斯完成
+- (void)finishEbbinghausCompletion:(comletionBlock)completion;
 
 /**
  请求复习页面

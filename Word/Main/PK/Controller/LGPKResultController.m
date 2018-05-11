@@ -9,6 +9,7 @@
 #import "LGPKResultController.h"
 #import "LGPKResultModel.h"
 #import "LGTool.h"
+#import "LGPlayer.h"
 
 @interface LGPKResultController ()
 
@@ -33,6 +34,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
+	[[LGPlayer sharedPlayer] stopPkMusic];
 	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 	[self.navigationController.navigationBar setShadowImage:[UIImage new]];
 	self.edgesForExtendedLayout = UIRectEdgeTop;
@@ -70,11 +72,13 @@
 - (void)setResultModel:(LGPKResultModel *)resultModel{
 	_resultModel = resultModel;
 	if (resultModel.type.integerValue == 1) {
+		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_pk_win];
 		self.resultImageView.image = [UIImage imageNamed:@"pk_result_win"];
 		self.userWinImageView.hidden = NO;
 		self.currentUserHeadImageView.transform = CGAffineTransformMakeScale(1.3,1.3);
 	
 	}else{
+		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_pk_lose];
 		self.resultImageView.image = [UIImage imageNamed:@"pk_result_lose"];
 		self.opponentWinImageView.hidden = NO;
 		self.opponentHeadImageView.transform = CGAffineTransformMakeScale(1.3,1.3);
