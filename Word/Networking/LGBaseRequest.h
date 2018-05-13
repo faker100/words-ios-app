@@ -61,6 +61,12 @@ typedef void(^downloadComletionBlock)(NSURL *filePath, LGError *error);
  */
 - (void)uploadRequest:(NSString *)url data:(NSData *)data Completion:(comletionBlock) completion;
 
+
+/**
+ 启动更新session
+ */
+- (void)updateSessionForFinishLaunching:(id)userInfo;
+
 @end
 
 

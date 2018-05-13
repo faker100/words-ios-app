@@ -12,8 +12,9 @@
 #import "LGNavigationController.h"
 #import "LGUpdateNicknameController.h"
 #import "LGRegisterController.h"
+#import "LGFindPasswordController.h"
 
-@interface LGLoginController ()<LGRegisterControllerDelegate>
+@interface LGLoginController ()<LGRegisterControllerDelegate, LGFindPasswordControllerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
@@ -138,6 +139,13 @@
 	[self loginAction:nil];
 }
 
+#pragma mark - LGFindPasswordControllerDelegate
+- (void)findPasswordSuccess:(NSString *)username password:(NSString *)password{
+    self.userNameTextField.text = username;
+    self.passwordTextField.text = password;
+    [self loginAction:nil];
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -145,7 +153,10 @@
 	if ([segue.identifier isEqualToString:@"loginToRegist"]) {
 		LGRegisterController *controller = [segue destinationViewController];
 		controller.delegate = self;
-	}
+    }else if ([segue.identifier isEqualToString:@"loginToFindPassword"]){
+        LGFindPasswordController *controller = [segue destinationViewController];
+        controller.delegate = self;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }

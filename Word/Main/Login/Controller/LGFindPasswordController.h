@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LGFindPasswordControllerDelegate
+
+//找回密码成功
+- (void)findPasswordSuccess:(NSString *)username password:(NSString *)password;
+
+@end
+
 @interface LGFindPasswordController : UIViewController
+
+@property (nonatomic, weak) id<LGFindPasswordControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *checkCodeTextField;

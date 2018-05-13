@@ -36,12 +36,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	// Override point for customization after application launch.
-	
+    
 	self.window.backgroundColor = [UIColor whiteColor];
+    [self updateSessionForDidFinishLaunching];
 	[self configJPush:launchOptions];
 	[self configIQkeyboard];
 	[self configIFly];
     [self configShareSDK];
+    [self configUI];
 	return YES;
 }
 
@@ -229,6 +231,18 @@
      }];
 }
 
+//启动时更新session
+- (void)updateSessionForDidFinishLaunching{
+    LGUserModel *userModel = [LGUserManager shareManager].user;
+    if (userModel) {
+        [self.request updateSessionForFinishLaunching:[userModel mj_keyValues]];
+    }
+}
 
+//配置一些UI统一样式
+- (void)configUI{
+    //tabbaritem 选中时标题为白色颜色
+    [[UITabBarItem appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} forState:UIControlStateSelected];
+}
 
 @end

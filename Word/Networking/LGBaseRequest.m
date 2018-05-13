@@ -10,14 +10,24 @@
 #import "LGUserManager.h"
 #import "NSDate+Utilities.h"
 
+@interface LGBaseRequest (){
+     dispatch_queue_t request_queue;
+}
+@end
+
+
 @implementation LGBaseRequest
 
 - (instancetype)init{
 	self = [super init];
 	if (self) {
+        
+       request_queue = dispatch_queue_create("request_queue", DISPATCH_QUEUE_CONCURRENT);
+
+        
 		static dispatch_once_t onceToken;
 		dispatch_once(&onceToken, ^{
-			
+            
 			manager = [AFHTTPSessionManager manager];
 			manager.requestSerializer.timeoutInterval = 30;
 			manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:
@@ -51,6 +61,10 @@
 - (void)postRequestCompletion:(comletionBlock) completion {
 	
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    // 异步执行任务创建方法
+    dispatch_async(request_queue, ^{
+       
+    
 	self.task = [manager POST:self.url parameters:self.parameter progress:^(NSProgress * _Nonnull downloadProgress) {
 		
 	} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject){
@@ -62,7 +76,24 @@
 		[self dealRequestFailure:error completion:completion];
 		
 	}];
-	
+	});
+}
+
+- (void)updateSessionForFinishLaunching:(id)userInfo{
+    NSArray *urlArray = SESSION_URLS;
+    
+    dispatch_group_t requestGroup = dispatch_group_create();
+    [urlArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        dispatch_group_enter(requestGroup);
+        self.url = obj;
+        self.parameter = userInfo;
+        [self getRequestCompletion:^(id response, LGError *error) {
+            
+            dispatch_group_leave(requestGroup);
+            NSLog(@"启动=====session:%@",response);
+        }];
+    }];
+    dispatch_group_notify(requestGroup, request_queue, ^{});
 }
 
 - (void)downloadRequest:(NSString *)url targetPath:(NSString *)path fileName:(NSString *)fileName completion:(downloadComletionBlock) completion{

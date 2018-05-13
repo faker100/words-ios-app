@@ -37,7 +37,7 @@
 	UINavigationController *periphery   = STORYBOARD_VIEWCONTROLLER(@"Periphery", @"NavigationController");
 	self.viewControllers = @[reciteWords,wordReport,pk,periphery];
 	
-	[self configTabbarItem];
+	
 	
 	//跳转登录,( 服务器返回未登录的时候 )
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLogin:) name:SHOW_LOGIN_NOTIFICATION object:nil];
@@ -45,14 +45,17 @@
 	[self showGuideController];
 }
 
+- (void)viewDidLayoutSubviews{
+    [self configTabbarItem];
+}
 //配置 tabbaritem
 - (void)configTabbarItem{
 	//tabbaritem 选中时背景高亮绿色
+    if (self.tabBar.selectionIndicatorImage) {
+        return;
+    }
 	CGSize size = CGSizeMake(self.tabBar.frame.size.width / self.viewControllers.count, self.tabBar.frame.size.height);
 	self.tabBar.selectionIndicatorImage = [LGTool createImageWithColor:[UIColor lg_colorWithType:LGColor_theme_Color] size:size];
-	
-	//tabbaritem 选中时标题为白色颜色
-	[[UITabBarItem appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]} forState:UIControlStateSelected];
 }
 
 - (void)showLogin:(NSNotification *)notification {

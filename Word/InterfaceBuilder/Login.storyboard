@@ -140,7 +140,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="tAz-jn-tVa" kind="show" id="RFr-RO-P3M"/>
+                                    <segue destination="tAz-jn-tVa" kind="show" identifier="loginToFindPassword" id="RFr-RO-P3M"/>
                                 </connections>
                             </button>
                         </subviews>

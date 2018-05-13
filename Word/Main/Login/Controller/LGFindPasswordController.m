@@ -118,13 +118,13 @@
 	
 	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request findPasswordRequest:username password:password code:code usernameType:type completion:^(id response, LGError *error) {
-		[LGProgressHUD hideHUDForView:self.view];
-		if (error) {
-			[LGProgressHUD showError:error.errorMessage toView:self.view];
-		}else{
-			[LGProgressHUD showMessage:@"修改成功" toView:self.view];
-		}
-	}];
+        if ([self isNormal:error]) {
+            if (self.delegate) {
+                [self.delegate findPasswordSuccess:username password:password];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }];
 	
 }
 
