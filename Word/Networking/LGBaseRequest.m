@@ -91,9 +91,13 @@
             
             dispatch_group_leave(requestGroup);
             NSLog(@"启动=====session:%@",response);
+			[LGUserManager configCookie];
+			
         }];
     }];
-    dispatch_group_notify(requestGroup, request_queue, ^{});
+    dispatch_group_notify(requestGroup, request_queue, ^{
+		
+	});
 }
 
 - (void)downloadRequest:(NSString *)url targetPath:(NSString *)path fileName:(NSString *)fileName completion:(downloadComletionBlock) completion{

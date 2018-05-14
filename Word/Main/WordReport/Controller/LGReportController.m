@@ -25,15 +25,19 @@
 	
 	__weak typeof(self) weakSelf = self;
 	[self.scrollView setHeaderRefresh:^{
-	
 		[weakSelf reqeustData];
 	}];
-		[self reqeustData];
+	
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	[self reqeustData];
 }
 
 //请求报表

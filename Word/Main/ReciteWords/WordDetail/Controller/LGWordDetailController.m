@@ -121,8 +121,10 @@
 	
 	NSString *leftTitle = [NSString stringWithFormat:@" 新学%ld | 需复习%ld ",self.detailModel.did,needReviewWords];
 	
+	
 	if (self.controllerType == LGWordDetailReview) {
-		leftTitle = [NSString stringWithFormat:@" 需复习%ld ",needReviewWords];
+//		NSInteger surplus = self.total.integerValue - self.currentNum.integerValue;
+		leftTitle = [NSString stringWithFormat:@" 需复习%ld ",self.reviewWordIdArray.count];
 	}
 	
 	[self.leftTitleButton setTitle:leftTitle forState:UIControlStateNormal];
@@ -215,10 +217,18 @@
  code = 0 没有复习内容,不提示,直接跳到下一个单词
  */
 - (void)requestEbbinghausReviewWordArray{
+	__weak typeof(self) weakSelf = self;
 	[self.request requestEbbinghausReviewList:^(id response, LGError *error) {
 		NSString *code = [NSString stringWithFormat:@"%@",response[@"code"]];
+		
+		//新艾宾浩斯没有复习内容
 		if ([code isEqualToString:@"0"]) {
-			[self pushNextWordDetailController:LGWordDetailReciteWords animated:NO];
+			[weakSelf.request finishEbbinghausCompletion:^(id response, LGError *error) {
+				if ([self isNormal:error]) {
+					[weakSelf pushNextWordDetailController:LGWordDetailReciteWords animated:NO];
+				}
+			}];
+			
 		}else if ([self isNormal:error]) {
 			self.ebbinghausReviewWordIdArray  = [NSMutableArray arrayWithArray:response[@"words"]];
             self.ebbinghausCount = self.ebbinghausReviewWordIdArray.count;

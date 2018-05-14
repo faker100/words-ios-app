@@ -196,6 +196,7 @@
 		56BBBFC320564B930057BDF2 /* LGSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BBBFC220564B930057BDF2 /* LGSettingModel.m */; };
 		56BBBFC7205664B60057BDF2 /* LGSettingHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56BBBFC6205664B60057BDF2 /* LGSettingHeaderView.m */; };
 		56BBBFC9205664C10057BDF2 /* LGSettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56BBBFC8205664C10057BDF2 /* LGSettingHeaderView.xib */; };
+		56C02DC120A9689D00043FF9 /* HSUpdateApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C02DC020A9689D00043FF9 /* HSUpdateApp.m */; };
 		56C078D52069DFF700C0F513 /* LGPKResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C078D42069DFF700C0F513 /* LGPKResultModel.m */; };
 		56C078D92069E7E300C0F513 /* LGSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C078D82069E7E300C0F513 /* LGSegue.m */; };
 		56C64699204E43AB00E895B3 /* LGTimeReivewCountAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56C64698204E43AB00E895B3 /* LGTimeReivewCountAlertView.m */; };
@@ -615,6 +616,8 @@
 		56BBBFC5205664B60057BDF2 /* LGSettingHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSettingHeaderView.h; sourceTree = "<group>"; };
 		56BBBFC6205664B60057BDF2 /* LGSettingHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGSettingHeaderView.m; sourceTree = "<group>"; };
 		56BBBFC8205664C10057BDF2 /* LGSettingHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGSettingHeaderView.xib; sourceTree = "<group>"; };
+		56C02DBF20A9689D00043FF9 /* HSUpdateApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSUpdateApp.h; sourceTree = "<group>"; };
+		56C02DC020A9689D00043FF9 /* HSUpdateApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSUpdateApp.m; sourceTree = "<group>"; };
 		56C078D32069DFF700C0F513 /* LGPKResultModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGPKResultModel.h; sourceTree = "<group>"; };
 		56C078D42069DFF700C0F513 /* LGPKResultModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPKResultModel.m; sourceTree = "<group>"; };
 		56C078D72069E7E300C0F513 /* LGSegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSegue.h; sourceTree = "<group>"; };
@@ -1051,6 +1054,7 @@
 		56506D012016D773000FD8FA /* Extend */ = {
 			isa = PBXGroup;
 			children = (
+				56C02DBE20A9689D00043FF9 /* HSUpdateApp */,
 				023C1DFB208CD6CF00E05663 /* ShareSDK */,
 				023C1DF4208CB57D00E05663 /* APLCoreTextArcView */,
 				56BAB95F20873BB60010CED8 /* iflyMSC */,
@@ -1524,6 +1528,15 @@
 				56388639207C557300C05E01 /* LGSignModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		56C02DBE20A9689D00043FF9 /* HSUpdateApp */ = {
+			isa = PBXGroup;
+			children = (
+				56C02DBF20A9689D00043FF9 /* HSUpdateApp.h */,
+				56C02DC020A9689D00043FF9 /* HSUpdateApp.m */,
+			);
+			path = HSUpdateApp;
 			sourceTree = "<group>";
 		};
 		56C078D62069E7A200C0F513 /* LGSegue */ = {
@@ -2159,6 +2172,7 @@
 				56C98994202050F60095A4BD /* LGWordTypeCell.m in Sources */,
 				564A6B992063BD5E00242FC0 /* LGPKAnswerCell.m in Sources */,
 				56BBBFBF205622060057BDF2 /* LGPersonalCell.m in Sources */,
+				56C02DC120A9689D00043FF9 /* HSUpdateApp.m in Sources */,
 				56801493202AE1FB0082D72F /* LGWordDetailController.m in Sources */,
 				564B324A207B0E6A005E7658 /* LGCourseModel.m in Sources */,
 				02EA576B209A124A001B4733 /* LGWordDetailShareController.m in Sources */,

@@ -13,6 +13,7 @@
 #import "LGSettingHeaderView.h"
 #import "LGTool.h"
 #import "LGUpdateUserInfoController.h"
+#import "HSUpdateApp.h"
 
 @interface LGPersonalInfoController ()<UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -197,7 +198,7 @@
 	if (section == 0) {
 		return 44;
 	}else if(section == 1){
-		return 0.1; // 隐藏 section 2
+		return 0.1; // 隐藏 section 1
 	}else{
 		
 		return 14;
@@ -223,13 +224,53 @@
         }else if (indexPath.row == 5){
             [self performSegueWithIdentifier:@"settingToUpdateInfo" sender:@(LGUpdatePassword)];
         }
-	}else if (indexPath.section == 3){
+	}else if (indexPath.section == 2){
+		[HSUpdateApp hs_updateWithAPPID:nil withBundleId:nil block:^(NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {
+			if (isUpdate) {
+				[self showAlertViewTitle:@"" subTitle:[NSString stringWithFormat:@"检测到新版本%@,是否更新？",storeVersion] openUrl:openUrl];
+			}else{
+				[LGProgressHUD showMessage:@"当前已是最新版本" toView:self.view];
+			}
+		}];
+	}else if (indexPath.section == 3){ //隐藏了 section = 1
 		if (indexPath.row == 0) {
 			[self performSegueWithIdentifier:@"settingToFont" sender:nil];
 		}
 	}
     
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark- 版本检测
+-(void)showAlertViewTitle:(NSString *)title subTitle:(NSString *)subTitle openUrl:(NSString *)openUrl{
+	UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:title message:subTitle preferredStyle:UIAlertControllerStyleAlert];
+	UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+		
+	}];
+	UIAlertAction *sure = [UIAlertAction actionWithTitle:@"更新" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+		
+		if([[UIDevice currentDevice].systemVersion floatValue] >= 10.0){
+			if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+				if (@available(iOS 10.0, *)) {
+					[[UIApplication sharedApplication] openURL:[NSURL URLWithString:openUrl] options:@{} completionHandler:^(BOOL success) {
+						
+					}];
+				}
+			} else {
+				BOOL success = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:openUrl]];
+				NSLog(@"Open  %d",success);
+			}
+			
+		} else{
+			bool can = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:openUrl]];
+			if(can){
+				[[UIApplication sharedApplication] openURL:[NSURL URLWithString:openUrl]];
+			}
+		}
+	}];
+	[alertVC addAction:cancel];
+	[alertVC addAction:sure];
+	[self presentViewController:alertVC animated:YES completion:nil];
 }
 
 #pragma mark - 弹出框

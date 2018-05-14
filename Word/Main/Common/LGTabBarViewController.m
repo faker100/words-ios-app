@@ -11,6 +11,7 @@
 #import "LGGuideController.h"
 #import "LGUserManager.h"
 #import "LGStudyTypeController.h"
+#import "LGNavigationController.h"
 
 @interface LGTabBarViewController ()<LGGuideControllerDelegate>
 {
@@ -37,10 +38,11 @@
 	UINavigationController *periphery   = STORYBOARD_VIEWCONTROLLER(@"Periphery", @"NavigationController");
 	self.viewControllers = @[reciteWords,wordReport,pk,periphery];
 	
-	
-	
 	//跳转登录,( 服务器返回未登录的时候 )
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showLogin:) name:SHOW_LOGIN_NOTIFICATION object:nil];
+	
+	//登录成功
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:LOGIN_NOTIFICATION object:nil];
 	
 	[self showGuideController];
 }
@@ -58,6 +60,7 @@
 	self.tabBar.selectionIndicatorImage = [LGTool createImageWithColor:[UIColor lg_colorWithType:LGColor_theme_Color] size:size];
 }
 
+//显示登录页面
 - (void)showLogin:(NSNotification *)notification {
 	
 	NSString *str = notification.userInfo[NO_LOGIN_ALERT_MESSAGE];
@@ -67,6 +70,14 @@
 	if (!loginNavigationController) {
 		loginNavigationController = STORYBOARD_VIEWCONTROLLER(@"Login", @"LGLoginNavigationController");
 		[self presentViewController:loginNavigationController animated:YES completion:nil];
+	}
+}
+
+//登录成功
+- (void)loginSuccess:(NSNotification *)notification{
+	UIViewController *selectVc = self.selectedViewController;
+	if ([selectVc isKindOfClass:[LGNavigationController class]]) {
+		[((LGNavigationController *)selectVc) popToRootViewControllerAnimated:YES];
 	}
 }
 
