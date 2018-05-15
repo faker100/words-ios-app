@@ -30,10 +30,6 @@
     // Do any additional setup after loading the view.
 	self.libraryTableView.tableFooterView = [UIView new];
 	self.wordTypeTableView.tableFooterView = [UIView new];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-	[super viewWillAppear:animated];
 	[self requestData];
 }
 

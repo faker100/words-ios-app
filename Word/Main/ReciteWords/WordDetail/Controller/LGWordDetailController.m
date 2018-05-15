@@ -110,7 +110,7 @@
 */
 
 //更新左边 title
-//新艾宾浩斯复习量为 needReviewWords + 剩余复习单词亮
+//新艾宾浩斯复习量为 needReviewWords + 剩余复习单词量
 - (void)updateLeftTitle{
 	
 	NSInteger needReviewWords = self.detailModel.userNeedReviewWords;
@@ -392,7 +392,7 @@
 				[self.ebbinghausReviewWordIdArray addObject:wordID];
 			}
 			
-			//今日复习艾宾浩斯
+			//今日复习老艾宾浩斯
 			if (self.controllerType == LGwordDetailTodayEbbinghausReview)
 				{
 				if (self.ebbinghausReviewWordIdArray.count == 0) {

@@ -71,7 +71,7 @@
   // 暂时不需要判断( 在 "只记新单词模式" 和 isReview 为 yes 时,不请求服务器 )
  task = 1  背完且复习完,显示是否继续
  task = 2  正常背单词
- task = 3  进入艾宾浩斯复习,完了弹分享
+ task = 3  进入老艾宾浩斯复习,完了弹分享
  */
 - (IBAction)beginReciteWordsAction:(id)sender {
 
