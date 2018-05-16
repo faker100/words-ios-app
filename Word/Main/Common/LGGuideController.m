@@ -18,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	if (iSiPhoneX){
+		self.guideImageView_1.image = [UIImage imageNamed:@"guide_1_x"];
+		self.guideImageView_2.image = [UIImage imageNamed:@"guide_2_x"];
+		self.guideImageView_3.image = [UIImage imageNamed:@"guide_3_x"];
+		self.guideImageView_4.image = [UIImage imageNamed:@"guide_4_x"];
+	}
 }
 
 - (void)didReceiveMemoryWarning {

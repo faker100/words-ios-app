@@ -13,4 +13,9 @@
 //单词记忆模式
 @property (weak, nonatomic) IBOutlet UILabel *studyTypeLabel;
 
+/**
+ 设置学习模式文字
+ */
+- (void)setStudyType;
+
 @end

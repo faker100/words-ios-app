@@ -95,8 +95,11 @@
 				};
 			}else{
 				//更新 session
+				[LGProgressHUD showHUDAddedTo:self.view];
 				[self.request resetSessionRequest:response completion:^{
-					[self loginSuccess];
+					if ([self isNormal:error]) {
+						[self loginSuccess];
+					}
 				}];
 			}
         }

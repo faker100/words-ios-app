@@ -25,6 +25,9 @@
 
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 
+#define iSiPhoneX (CGSizeEqualToSize(CGSizeMake(375.f, 812.f), [UIScreen mainScreen].bounds.size) || CGSizeEqualToSize(CGSizeMake(812.f, 375.f), [UIScreen mainScreen].bounds.size))
+
+
 #define StringNotEmpty(str)             (str && (str.length > 0))
 #define ArrayNotEmpty(arr)              (arr && (arr.count > 0))
 

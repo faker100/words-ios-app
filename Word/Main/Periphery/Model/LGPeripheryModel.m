@@ -28,11 +28,11 @@
     
     //筛选未直播的预告
    __block NSMutableArray <LGLivePreviewModel *> *tempLiveArr = [NSMutableArray array];
-    
+     NSDate *today = [NSDate currentDate];
     NSDateFormatter *dateFormatter = [LGLivePreviewModel getDateFormatter];
     [self.livePreview enumerateObjectsUsingBlock:^(LGLivePreviewModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         NSInteger month = [dateFormatter dateFromString:obj.date].month;
-        NSDate *today = [NSDate currentDate];
+		
         if (month == today.month) {
             __block NSMutableArray<LGRecentClassModel *> *tempRecentClassArr = [NSMutableArray array];
             [obj.data enumerateObjectsUsingBlock:^(LGRecentClassModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -42,7 +42,10 @@
                     [courseTimeForMatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
                     [courseTimeForMatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
                 }
-                if ([[courseTimeForMatter dateFromString:obj.courseTime] isToday]) {
+				//只展示今天 ( 用isToday 迷之 bug)
+				NSDate *courseTime = [courseTimeForMatter dateFromString:obj.courseTime];
+				BOOL flag = [courseTime  isEqualToDateIgnoringTime:today];
+                if (flag) {
                     [tempRecentClassArr addObject:obj];
                 }
             }];
@@ -52,7 +55,7 @@
             }
             
         }else if (month > today.month){
-            [tempLiveArr addObject:obj];
+           // [tempLiveArr addObject:obj];
         }
     }];
     self.livePreview = tempLiveArr;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="09m-77-Bo7">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -33,35 +33,38 @@
                         <viewControllerLayoutGuide type="bottom" id="ym0-NY-Cun"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zYw-dU-Oe9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="2ra-qh-tYB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="2ra-qh-tYB">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
-                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_1" translatesAutoresizingMaskIntoConstraints="NO" id="1fG-AK-loq">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_1" translatesAutoresizingMaskIntoConstraints="NO" id="1fG-AK-loq">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                        <color key="backgroundColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="Fyr-NQ-gNs" appends="YES" id="gLD-w3-Col"/>
                                         </connections>
                                     </imageView>
-                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_2" translatesAutoresizingMaskIntoConstraints="NO" id="WC4-hY-bk2">
-                                        <rect key="frame" x="375" y="0.0" width="375" height="667"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_2" translatesAutoresizingMaskIntoConstraints="NO" id="WC4-hY-bk2">
+                                        <rect key="frame" x="375" y="0.0" width="375" height="812"/>
+                                        <color key="backgroundColor" red="0.17192402479999999" green="0.7130017877" blue="0.48886150119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="ts9-Es-Egp" appends="YES" id="nu9-d6-fUg"/>
                                         </connections>
                                     </imageView>
-                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_3" translatesAutoresizingMaskIntoConstraints="NO" id="NYc-bf-atG">
-                                        <rect key="frame" x="750" y="0.0" width="375" height="667"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_3" translatesAutoresizingMaskIntoConstraints="NO" id="NYc-bf-atG">
+                                        <rect key="frame" x="750" y="0.0" width="375" height="812"/>
+                                        <color key="backgroundColor" red="0.99478060010000002" green="0.77276116610000001" blue="0.77038949729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="3Dq-yz-KRe" appends="YES" id="3RL-GC-6g3"/>
                                         </connections>
                                     </imageView>
-                                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_4" translatesAutoresizingMaskIntoConstraints="NO" id="ALq-oQ-r9t">
-                                        <rect key="frame" x="1125" y="0.0" width="375" height="667"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="guide_4" translatesAutoresizingMaskIntoConstraints="NO" id="ALq-oQ-r9t">
+                                        <rect key="frame" x="1125" y="0.0" width="375" height="812"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <connections>
@@ -69,7 +72,7 @@
                                         </connections>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8E1-Mf-tE0">
-                                        <rect key="frame" x="1500" y="-0.5" width="375" height="667"/>
+                                        <rect key="frame" x="1500" y="-0.66666666666668561" width="375" height="812.33333333333348"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
@@ -81,7 +84,7 @@
                                     <constraint firstItem="WC4-hY-bk2" firstAttribute="leading" secondItem="1fG-AK-loq" secondAttribute="trailing" id="B9w-KL-G2w"/>
                                     <constraint firstItem="WC4-hY-bk2" firstAttribute="width" secondItem="1fG-AK-loq" secondAttribute="width" id="GYs-LH-JdS"/>
                                     <constraint firstItem="ALq-oQ-r9t" firstAttribute="height" secondItem="1fG-AK-loq" secondAttribute="height" id="KUg-yS-ONL"/>
-                                    <constraint firstItem="8E1-Mf-tE0" firstAttribute="width" secondItem="1fG-AK-loq" secondAttribute="width" id="LfF-dT-H91"/>
+                                    <constraint firstItem="8E1-Mf-tE0" firstAttribute="width" secondItem="1fG-AK-loq" secondAttribute="width" id="Nzw-fA-H6g"/>
                                     <constraint firstItem="8E1-Mf-tE0" firstAttribute="height" secondItem="1fG-AK-loq" secondAttribute="height" id="RcG-fe-7pQ"/>
                                     <constraint firstItem="8E1-Mf-tE0" firstAttribute="leading" secondItem="ALq-oQ-r9t" secondAttribute="trailing" id="UBK-Va-eqU"/>
                                     <constraint firstItem="ALq-oQ-r9t" firstAttribute="centerY" secondItem="2ra-qh-tYB" secondAttribute="centerY" id="W25-Q2-AKl"/>
@@ -101,22 +104,26 @@
                                 </connections>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="A2V-SQ-XcI">
-                                <rect key="frame" x="160" y="620" width="55" height="37"/>
+                                <rect key="frame" x="160" y="731" width="55" height="37"/>
                             </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1fG-AK-loq" firstAttribute="width" secondItem="zYw-dU-Oe9" secondAttribute="width" id="0Bl-qy-7Xe"/>
                             <constraint firstItem="A2V-SQ-XcI" firstAttribute="centerX" secondItem="zYw-dU-Oe9" secondAttribute="centerX" id="0rf-yZ-I9z"/>
                             <constraint firstAttribute="trailing" secondItem="2ra-qh-tYB" secondAttribute="trailing" id="4gw-UZ-X1Z"/>
                             <constraint firstAttribute="bottom" secondItem="2ra-qh-tYB" secondAttribute="bottom" id="6Jl-pH-fMa"/>
                             <constraint firstItem="1fG-AK-loq" firstAttribute="height" secondItem="zYw-dU-Oe9" secondAttribute="height" id="CC6-NQ-MWU"/>
+                            <constraint firstItem="1fG-AK-loq" firstAttribute="width" secondItem="zYw-dU-Oe9" secondAttribute="width" id="Hzt-cW-SwB"/>
                             <constraint firstItem="2ra-qh-tYB" firstAttribute="top" secondItem="zYw-dU-Oe9" secondAttribute="top" id="Skx-ql-wxQ"/>
                             <constraint firstItem="ym0-NY-Cun" firstAttribute="top" secondItem="A2V-SQ-XcI" secondAttribute="bottom" constant="10" id="cuG-Fd-yCd"/>
                             <constraint firstItem="2ra-qh-tYB" firstAttribute="leading" secondItem="zYw-dU-Oe9" secondAttribute="leading" id="ql3-8W-fFj"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="guideImageView_1" destination="1fG-AK-loq" id="DUL-Tx-exi"/>
+                        <outlet property="guideImageView_2" destination="WC4-hY-bk2" id="Bcz-qi-Bag"/>
+                        <outlet property="guideImageView_3" destination="NYc-bf-atG" id="TK1-1m-lVo"/>
+                        <outlet property="guideImageView_4" destination="ALq-oQ-r9t" id="3WI-Nv-jSd"/>
                         <outlet property="pageControl" destination="A2V-SQ-XcI" id="Q7F-KL-CLX"/>
                         <outlet property="scrollView" destination="2ra-qh-tYB" id="8AX-Qe-14U"/>
                     </connections>
@@ -147,9 +154,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="guide_1" width="480" height="800"/>
-        <image name="guide_2" width="480" height="800"/>
-        <image name="guide_3" width="480" height="800"/>
-        <image name="guide_4" width="480" height="800"/>
+        <image name="guide_1" width="1080" height="1920"/>
+        <image name="guide_2" width="1080" height="1920"/>
+        <image name="guide_3" width="1080" height="1920"/>
+        <image name="guide_4" width="1080" height="1920"/>
     </resources>
 </document>

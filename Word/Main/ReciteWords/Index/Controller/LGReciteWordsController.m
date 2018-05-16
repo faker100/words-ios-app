@@ -95,6 +95,8 @@
 	[super viewWillAppear:animated];
 	if ([LGUserManager shareManager].isLogin) {
 		[self configData];
+	}else{
+		[self configLeftItem];
 	}
 }
 
@@ -120,6 +122,7 @@
 			[LGUserManager shareManager].user = [LGUserModel mj_objectWithKeyValues:response[@"data"]];
 			[self configLeftItem];
 			[self.recitePlanController updateIsSign];
+			[self.noStudyTypeController setStudyType];
 			if ([LGUserManager shareManager].user.planWords.length > 0){
 				[self.recitePlanController configIndexData];
 			}

@@ -21,5 +21,9 @@
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
+@property (weak, nonatomic) IBOutlet UIImageView *guideImageView_1;
+@property (weak, nonatomic) IBOutlet UIImageView *guideImageView_2;
+@property (weak, nonatomic) IBOutlet UIImageView *guideImageView_3;
+@property (weak, nonatomic) IBOutlet UIImageView *guideImageView_4;
 
 @end
