@@ -24,7 +24,16 @@
 	return oldValue;
 }
 
+- (NSString *)phonetic{
+	if (self.phonetic_us.length > 0) return self.phonetic_us;
+	if (self.phonetic_uk.length > 0) return self.phonetic_uk;
+	return @"";
+}
 
-
+- (NSString *)audio{
+	if (self.us_audio.length > 0) return self.us_audio;
+	if (self.uk_audio.length > 0) return self.uk_audio;
+	return @"";
+}
 
 @end

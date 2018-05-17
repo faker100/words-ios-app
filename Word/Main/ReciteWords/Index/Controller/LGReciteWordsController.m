@@ -119,14 +119,17 @@
 	__weak typeof(self) weakSelf = self;
 	[self.request requestUserInfo:^(id response, LGError *error) {
 		if ([self isNormal:error]){
-			[LGUserManager shareManager].user = [LGUserModel mj_objectWithKeyValues:response[@"data"]];
+			LGUserModel *user = [LGUserModel mj_objectWithKeyValues:response[@"data"]];
+			if (user){
+			[LGUserManager shareManager].user = user;
 			[self configLeftItem];
 			[self.recitePlanController updateIsSign];
 			[self.noStudyTypeController setStudyType];
 			if ([LGUserManager shareManager].user.planWords.length > 0){
 				[self.recitePlanController configIndexData];
 			}
-			[weakSelf showController:YES];
+				[weakSelf showController:YES];
+			}
 		}
 	}];
 }

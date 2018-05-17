@@ -23,7 +23,7 @@
 
 - (void)setWordModel:(LGFreeWordModel *)wordModel{
 	self.wordNameLabel.text = wordModel.word;
-	self.wordPhonogramLabel.text = wordModel.phonetic_us;
+	self.wordPhonogramLabel.text = wordModel.phonetic;
 	self.wordMeaningLabel.text = wordModel.translate;
 	
 	switch (wordModel.firstStatus) {

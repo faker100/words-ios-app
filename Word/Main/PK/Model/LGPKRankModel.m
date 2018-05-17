@@ -16,10 +16,6 @@
 			};
 }
 
-- (void)mj_keyValuesDidFinishConvertingToObject{
-	[LGUserManager shareManager].user = self.user;
-}
-
 - (LGUserModel *)user{
 	if (!_user) {
 		_user = [LGUserManager shareManager].user;

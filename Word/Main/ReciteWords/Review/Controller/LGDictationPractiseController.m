@@ -185,7 +185,7 @@
 	self.answerItemArray = nil;
 	
 	self.translateLabel.text = wordDetailModel.words.translate;
-	[self.playerButton setTitle:wordDetailModel.words.phonetic_us forState:UIControlStateNormal];
+	[self.playerButton setTitle:wordDetailModel.words.phonetic forState:UIControlStateNormal];
 	
 	[self configUserAnswerCollection];
 	[self configAnswerItemCollection];
@@ -281,7 +281,7 @@
 
 //语音播放
 - (IBAction)playerAction:(id)sender {
-	[[LGPlayer sharedPlayer]playWithUrl:self.wordDetailModel.words.us_audio completion:nil];
+	[[LGPlayer sharedPlayer]playWithUrl:self.wordDetailModel.words.audio completion:nil];
 }
 
 #pragma mark - UICollectionViewDataSource

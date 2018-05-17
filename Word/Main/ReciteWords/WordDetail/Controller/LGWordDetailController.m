@@ -68,7 +68,8 @@
 		self.statusViewHeightConstraint.constant = 0;
 		self.detailModel = self.dictationPromptWord;
 		self.familiarItemButton.hidden = YES;
-        self.masksView.hidden = YES;
+		[self hiddenMasksAction:nil];
+	
 		self.title = @"听写练习";
 	
 	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"backArrow"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissController)];
@@ -149,17 +150,30 @@
     //播放音频
     [self playeAction:nil];
     self.playerButton.hidden = NO;
-    if (detailModel.words.phonetic_us) {
-        [self.playerButton setTitle:[NSString stringWithFormat:@"  %@",detailModel.words.phonetic_us] forState:UIControlStateNormal];
+    if (detailModel.words.phonetic) {
+        [self.playerButton setTitle:[NSString stringWithFormat:@"  %@",detailModel.words.phonetic] forState:UIControlStateNormal];
     }
 	
-	self.knowRateLabel.text = [NSString stringWithFormat:@"认知率: %@%%",detailModel.percent];
+	//认知率 / 难度率
+	NSString *tempKnowRate = [NSString stringWithFormat:@"   认知率: %@%%",detailModel.percent];
+	
+	if (detailModel.words.level.length > 0) {
+		self.knowRateLabelConstraint.constant = 95;
+		NSMutableString *star = [NSMutableString string];
+		NSInteger level = detailModel.words.level.integerValue;
+		for (int i = 1; i <= 5; i++) {
+			[star appendString:i <= level ? @"★" : @"☆" ];
+		}
+		tempKnowRate = [tempKnowRate stringByAppendingFormat:@"\n   难度率:%@",star];
+	}
+
+	
+	self.knowRateLabel.text = tempKnowRate;
 	self.knowRateLabel.hidden = NO;
+	[self.knowRateLabel sizeToFit];
 	
+	//
 	[self.wordTabelView.tableHeaderView sizeToFit];
-    CGSize size = [self.wordTabelView.tableHeaderView sizeThatFits:CGSizeZero];
-    NSLog(@"%f,%f",size.width, size.height);
-	
 	[self.wordTabelView reloadData];
 }
 
@@ -282,7 +296,7 @@
 
 //播放语音
 - (IBAction)playeAction:(id)sender {
-	[[LGPlayer sharedPlayer] playWithUrl:self.detailModel.words.us_audio completion:^(LGError *error) {
+	[[LGPlayer sharedPlayer] playWithUrl:self.detailModel.words.audio completion:^(LGError *error) {
 //		[self isNormal:error];
 	}];
 }
@@ -292,6 +306,7 @@
 	self.masksView.hidden = YES;
     self.translateLabel.hidden = NO;
     self.wordLabel.hidden = NO;
+	self.wordTabelView.scrollEnabled = YES;
 }
 
 //熟识

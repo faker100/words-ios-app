@@ -55,6 +55,9 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 
 //认知率
 @property (weak, nonatomic) IBOutlet UILabel *knowRateLabel;
+//认知率label 宽度约束,默认66,有难度率时候为 95;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *knowRateLabelConstraint;
+
 
 //左边 title (新学 0 | 需复习 0)
 @property (weak, nonatomic) IBOutlet UIButton *leftTitleButton;
@@ -81,6 +84,7 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 // '模糊' / '忘记'按钮 , 复习模式下为'忘记',背单词模式下为 '模糊'
 @property (weak, nonatomic) IBOutlet UIButton *vagueOrForgotButton;
 
+//单词 table.默认不能滚动,隐藏遮罩层后可以滚动
 @property (weak, nonatomic) IBOutlet UITableView *wordTabelView;
 
 //底部单词状态 view 的高度约束,在听写练习提示模式下,高度为0,隐藏

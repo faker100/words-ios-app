@@ -124,6 +124,17 @@
 	}];
 }
 
+#pragma mark - UIScrollViewDelegate
+//手动滑动时控制 pagecontroller;
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+	if (scrollView == self.publicCollectionView) {
+		CGFloat offset_x = scrollView.contentOffset.x;
+		NSInteger index = offset_x / self.publicCollectionView.bounds.size.width;
+		//最后一次
+		[self.pageController setCurrentPage:index];
+	}
+}
+
 #pragma mark - Tap Gesture
 
 /**

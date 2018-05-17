@@ -26,12 +26,6 @@
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
-@property (nonatomic, strong) NSMutableArray<NSString *> *allTotal;     //所有总量
-@property (nonatomic, strong) NSMutableArray<NSString *> *allKnowWell;  //所有熟知量
-@property (nonatomic, strong) NSMutableArray<NSString *> *allKnow;      //所有认识量
-@property (nonatomic, strong) NSMutableArray<NSString *> *allDim;       //所有模糊量
-@property (nonatomic, strong) NSMutableArray<NSString *> *allForget;    //所有忘记量
-@property (nonatomic, strong) NSMutableArray<NSString *> *allNotKnow;   //所有不认识
 
 @end
 
@@ -70,13 +64,18 @@
    //滚动区域
 	CGRect scrollRect = CGRectMake(width_Y, 0, CGRectGetMaxX(rect) - width_Y, CGRectGetHeight(backgroundRect)+height_X);
 	
-	[self.scrollView removeFromSuperview];
-	
-	self.scrollView = [[UIScrollView alloc]initWithFrame:scrollRect];
+	if (self.scrollView) {
+		NSArray<UIView *> *subviews = self.scrollView.subviews;
+		[subviews enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+			[obj removeFromSuperview];
+		}];
+	}else{
+		self.scrollView = [[UIScrollView alloc]initWithFrame:scrollRect];
+		self.scrollView.backgroundColor = [UIColor clearColor];
+		self.scrollView.showsHorizontalScrollIndicator = NO;
+		[self addSubview:self.scrollView];
+	}
 	[self.scrollView setContentSize:CGSizeMake((barWidth + barSpace) * (self.before.count + self.after.count), CGRectGetHeight(scrollRect))];
-	self.scrollView.backgroundColor = [UIColor clearColor];
-	self.scrollView.showsHorizontalScrollIndicator = NO;
-	[self addSubview:self.scrollView];
 	
 	//柱状 图
    LGBarChartView *barView = [[LGBarChartView alloc]initWithFrame:CGRectMake(0, 0, self.scrollView.contentSize.width, CGRectGetHeight(backgroundRect)) before:self.before after:self.after  maxValue:self.riseOfY * (horizontalNum + 1)];
@@ -87,8 +86,19 @@
 	[self.scrollView addSubview:xDataView];
 	
 	//定位到今天
-	CGFloat offset_x = (self.scrollView.contentSize.width - self.scrollView.bounds.size.width)/2;
-	[self.scrollView setContentOffset:CGPointMake(offset_x, 0) animated:YES];
+	//没有后14天复习数据时,移动到最后
+	//有后14天数据,移动到中间
+	if (self.after.count == 0) {
+		
+		CGFloat offset_x = self.scrollView.contentSize.width - self.scrollView.bounds.size.width;
+		NSLog(@"%f",self.scrollView.contentSize.width);
+		NSLog(@"%f",self.scrollView.bounds.size.width);
+		[self.scrollView setContentOffset:CGPointMake(offset_x, 0) animated:YES];
+	}else{
+		CGFloat offset_x = (self.scrollView.contentSize.width - self.scrollView.bounds.size.width)/2;
+		[self.scrollView setContentOffset:CGPointMake(offset_x, 0) animated:YES];
+	}
+	
 	
     [self createBackground:backgroundRect];
     [self createY:yRect];
@@ -290,30 +300,6 @@
 }
 
 #pragma mark -
-
-
-/**
- 配置所有折线数据
- */
-- (void)configLineData{
-    
-    self.allTotal    = [NSMutableArray array];
-    self.allKnowWell = [NSMutableArray array];
-    self.allKnow     = [NSMutableArray array];
-    self.allDim      = [NSMutableArray array];
-    self.allForget   = [NSMutableArray array];
-    self.allNotKnow  = [NSMutableArray array];
-    
-    
-//    [self.month enumerateObjectsUsingBlock:^(LGWeekReportModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        [self.allTotal    addObject:obj.all];
-//        [self.allKnowWell addObject:obj.knowWell];
-//        [self.allKnow     addObject:obj.know];
-//        [self.allDim      addObject:obj.dim];
-//        [self.allForget   addObject:obj.forget];
-//        [self.allNotKnow  addObject:obj.notKnow];
-//    }];
-}
 
 /**
  一个月中最大数据
