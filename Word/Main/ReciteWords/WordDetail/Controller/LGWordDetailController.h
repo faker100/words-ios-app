@@ -55,7 +55,7 @@ typedef NS_ENUM(NSUInteger, LGWordDetailControllerType) {
 
 //认知率
 @property (weak, nonatomic) IBOutlet UILabel *knowRateLabel;
-//认知率label 宽度约束,默认66,有难度率时候为 95;
+//认知率label 宽度约束,默认80,有难度率时候为 100;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *knowRateLabelConstraint;
 
 

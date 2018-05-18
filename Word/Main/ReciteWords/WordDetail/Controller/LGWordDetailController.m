@@ -33,10 +33,12 @@
 	// Do any additional setup after loading the view.
 	if (self.controllerType == LGWordDetailReciteWords)
 	{
+		self.translateLabel.hidden = YES;
 		[self requestReciteWordsData];
 		
 	}else if (self.controllerType == LGWordDetailEbbinghausReview)
 	{
+		self.translateLabel.hidden = YES;
         self.total = @(self.ebbinghausCount).stringValue;
         self.currentNum = @(self.ebbinghausCount - self.ebbinghausReviewWordIdArray.count+1).stringValue;
      //   self.title = [NSString stringWithFormat:@"复习(%@/%@)",self.currentNum,self.total];
@@ -44,6 +46,7 @@
 			
 	}else if (self.controllerType == LGWordDetailTodayReview)
 	{
+	
 		[self requestTodayReviewWord];
 		[self.vagueOrForgotButton setTitle:@"忘记" forState:UIControlStateNormal];
 
@@ -80,6 +83,7 @@
         [self requestWordDetailWidthID:self.searchWordID];
 		self.navigationItem.leftBarButtonItem = nil; //去除左边("新学"/复习) title
 	}else if (self.controllerType == LGwordDetailTodayEbbinghausReview){
+		self.translateLabel.hidden = YES;
 		[self requestWordDetailWidthID:self.ebbinghausReviewWordIdArray.firstObject];
 	}
 
@@ -155,24 +159,38 @@
     }
 	
 	//认知率 / 难度率
-	NSString *tempKnowRate = [NSString stringWithFormat:@"   认知率: %@%%",detailModel.percent];
-	
+	NSString *tempKnowRate = [NSString stringWithFormat:@"认知率: %@%%",detailModel.percent];
 	if (detailModel.words.level.length > 0) {
-		self.knowRateLabelConstraint.constant = 95;
+		
+		NSMutableParagraphStyle *paragraphStyle  =[[NSMutableParagraphStyle alloc] init];
+		paragraphStyle.firstLineHeadIndent = 10;//首行缩进
+	
+		self.knowRateLabelConstraint.constant = 100;
+		
 		NSMutableString *star = [NSMutableString string];
 		NSInteger level = detailModel.words.level.integerValue;
 		for (int i = 1; i <= 5; i++) {
 			[star appendString:i <= level ? @"★" : @"☆" ];
 		}
-		tempKnowRate = [tempKnowRate stringByAppendingFormat:@"\n   难度率:%@",star];
+		tempKnowRate = [tempKnowRate stringByAppendingFormat:@"\n难度率:%@",star];
+		
+		NSRange range = NSMakeRange(0, tempKnowRate.length);
+		
+		NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc]initWithString:tempKnowRate];
+		[attribute addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:10] range:range];
+		[attribute addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:8] range:NSMakeRange(tempKnowRate.length-(5-level), 5-level)];
+		[attribute addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_Title_2_Color] range:range];
+		[attribute addAttribute:NSParagraphStyleAttributeName value:paragraphStyle range:range];
+		
+		self.knowRateLabel.attributedText = attribute;
+	}else{
+		self.knowRateLabelConstraint.constant = 80;
+		self.knowRateLabel.textAlignment = NSTextAlignmentCenter;
+		self.knowRateLabel.text = tempKnowRate;
 	}
 
-	
-	self.knowRateLabel.text = tempKnowRate;
 	self.knowRateLabel.hidden = NO;
-	[self.knowRateLabel sizeToFit];
-	
-	//
+
 	[self.wordTabelView.tableHeaderView sizeToFit];
 	[self.wordTabelView reloadData];
 }

@@ -32,6 +32,7 @@
 @implementation LGReportLineChartView
 
 - (void)setReportData:(LGReportModel *)reportModel{
+	
     self.before = reportModel.before;
     self.after = reportModel.after;
 	self.date = reportModel.date;
@@ -91,8 +92,6 @@
 	if (self.after.count == 0) {
 		
 		CGFloat offset_x = self.scrollView.contentSize.width - self.scrollView.bounds.size.width;
-		NSLog(@"%f",self.scrollView.contentSize.width);
-		NSLog(@"%f",self.scrollView.bounds.size.width);
 		[self.scrollView setContentOffset:CGPointMake(offset_x, 0) animated:YES];
 	}else{
 		CGFloat offset_x = (self.scrollView.contentSize.width - self.scrollView.bounds.size.width)/2;
@@ -311,6 +310,11 @@
     [self.before enumerateObjectsUsingBlock:^(LGWeekReportModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.all.integerValue > max) max = obj.all.integerValue;
     }];
+	
+	[self.after enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+		if (obj.integerValue > max) max = obj.integerValue;
+	}];
+	
     return max;
 }
 
@@ -342,8 +346,7 @@
 						  NSParagraphStyleAttributeName : paragraphStyle,
 						  };
 	
-	//之前天数数据的宽度
-	__block CGFloat beforeWidth = 0;
+	
     [self.before enumerateObjectsUsingBlock:^(LGWeekReportModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if (obj.all.integerValue != 0) {
             CGFloat height = obj.all.integerValue / self.maxValue * CGRectGetHeight(rect);
@@ -351,10 +354,11 @@
             [self createBeforeDate:obj rect:barRect];
 			CGRect strRect = CGRectMake(CGRectGetMinX(barRect), CGRectGetMinY(barRect) - 15, barWidth, 20);
 			[obj.all drawInRect:strRect withAttributes:att];
-			beforeWidth = CGRectGetMaxX(barRect);
+			
         }
     }];
-	
+	//之前天数数据的宽度
+	CGFloat beforeWidth = self.before.count * (barSpace + barWidth);
 	[self.after enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 		if (obj.integerValue != 0) {
 			CGFloat height = obj.integerValue / self.maxValue * CGRectGetHeight(rect);
