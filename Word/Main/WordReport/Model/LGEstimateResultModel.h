@@ -28,7 +28,7 @@
 @property (nonatomic, copy) NSString *notKnow;
 
 //打败多少人
-@property (nonatomic, assign) NSInteger bit;
+@property (nonatomic, assign) CGFloat bit;
 
 //自定义字段,筛选各种水平的正确率
 @property (nonatomic, strong) NSMutableArray<LGRateModel *> *rateArray;

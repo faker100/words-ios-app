@@ -31,88 +31,88 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view.
-	if (self.controllerType == LGWordDetailReciteWords)
-	{
+	[self requestData];
+	[self configTabelView];
+	
+}
+
+//请求数据
+- (void)requestData{
+	if (self.controllerType == LGWordDetailReciteWords){
 		self.translateLabel.hidden = YES;
 		[self requestReciteWordsData];
 		
-	}else if (self.controllerType == LGWordDetailEbbinghausReview)
-	{
+	}else if (self.controllerType == LGWordDetailEbbinghausReview){
 		self.translateLabel.hidden = YES;
-        self.total = @(self.ebbinghausCount).stringValue;
-        self.currentNum = @(self.ebbinghausCount - self.ebbinghausReviewWordIdArray.count+1).stringValue;
-     //   self.title = [NSString stringWithFormat:@"复习(%@/%@)",self.currentNum,self.total];
+		self.total = @(self.ebbinghausCount).stringValue;
+		self.currentNum = @(self.ebbinghausCount - self.ebbinghausReviewWordIdArray.count+1).stringValue;
+		//   self.title = [NSString stringWithFormat:@"复习(%@/%@)",self.currentNum,self.total];
 		[self requestWordDetailWidthID:self.ebbinghausReviewWordIdArray.firstObject];
-			
-	}else if (self.controllerType == LGWordDetailTodayReview)
-	{
-	
+		
+	}else if (self.controllerType == LGWordDetailTodayReview){
+		
 		[self requestTodayReviewWord];
 		[self.vagueOrForgotButton setTitle:@"忘记" forState:UIControlStateNormal];
-
-	}else if (self.controllerType == LGWordDetailReview)
-	{
-        switch (self.reviewTyep) {
-            case LGSelectReviewEnglish_Chinese:
-                self.translateLabel.hidden = YES;
-                break;
-            case LGSelectReviewChinese_English:
-                self.wordLabel.hidden = YES;
-                break;
-            default:
-                break;
-        }
+		
+	}else if (self.controllerType == LGWordDetailReview){
+		switch (self.reviewTyep) {
+			case LGSelectReviewEnglish_Chinese:
+				self.translateLabel.hidden = YES;
+				break;
+			case LGSelectReviewChinese_English:
+				self.wordLabel.hidden = YES;
+				break;
+			default:
+				break;
+		}
 		[self.vagueOrForgotButton setTitle:@"忘记" forState:UIControlStateNormal];
 		self.currentNum = @(self.total.integerValue - self.reviewWordIdArray.count + 1).stringValue;
 		[self requestWordDetailWidthID:self.reviewWordIdArray.firstObject];
-	
-	}else if (self.controllerType == LGWordDetailDictationPrompt)
-	{
+		
+	}else if (self.controllerType == LGWordDetailDictationPrompt){
 		self.statusViewHeightConstraint.constant = 0;
 		self.detailModel = self.dictationPromptWord;
 		self.familiarItemButton.hidden = YES;
 		[self hiddenMasksAction:nil];
-	
+		
 		self.title = @"听写练习";
-	
-	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"backArrow"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissController)];
-    }else if (self.controllerType == LGWordDetailSearch){
-        self.title = self.searchWordStr;
-        self.statusViewHeightConstraint.constant = 0;
-        self.familiarItemButton.hidden = YES;
-        [self requestWordDetailWidthID:self.searchWordID];
+		
+		self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"backArrow"] style:UIBarButtonItemStylePlain target:self action:@selector(dismissController)];
+	}else if (self.controllerType == LGWordDetailSearch){
+		self.title = self.searchWordStr;
+		self.statusViewHeightConstraint.constant = 0;
+		self.familiarItemButton.hidden = YES;
+		[self requestWordDetailWidthID:self.searchWordID];
 		self.navigationItem.leftBarButtonItem = nil; //去除左边("新学"/复习) title
 	}else if (self.controllerType == LGwordDetailTodayEbbinghausReview){
 		self.translateLabel.hidden = YES;
 		[self requestWordDetailWidthID:self.ebbinghausReviewWordIdArray.firstObject];
 	}
-
-    [self configTabelView];
-	
 }
+
 
 //初始化table headerview
 - (void)configTabelView{
-    [self.wordTabelView registerNib:[UINib nibWithNibName:@"LGWordDetailHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGWordDetailHeaderFooterView"];
-    CGFloat fontRate = [LGUserManager shareManager].user.fontSizeRate.floatValue;
-    self.wordLabel.font = [UIFont systemFontOfSize:self.wordLabel.font.pointSize  + fontRate];
-    self.translateLabel.font = [UIFont systemFontOfSize:self.translateLabel.font.pointSize + fontRate];
-    self.knowRateLabel.font = [UIFont systemFontOfSize:self.knowRateLabel.font.pointSize + fontRate];
+	[self.wordTabelView registerNib:[UINib nibWithNibName:@"LGWordDetailHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGWordDetailHeaderFooterView"];
+	CGFloat fontRate = [LGUserManager shareManager].user.fontSizeRate.floatValue;
+	self.wordLabel.font = [UIFont systemFontOfSize:self.wordLabel.font.pointSize  + fontRate];
+	self.translateLabel.font = [UIFont systemFontOfSize:self.translateLabel.font.pointSize + fontRate];
+	self.knowRateLabel.font = [UIFont systemFontOfSize:self.knowRateLabel.font.pointSize + fontRate];
 }
 
 #pragma mark - Setter  Getter
 
 /*  暂时不需要标题更新
-- (void)setCurrentNum:(NSString *)currentNum{
-	_currentNum = currentNum;
-	self.title = [NSString stringWithFormat:@"%ld/%ld",currentNum.integerValue,self.total.integerValue];
-}
-
-- (void)setTotal:(NSString *)total{
-	_total = total;
-	self.title = [NSString stringWithFormat:@"%ld/%ld",self.currentNum.integerValue,total.integerValue];
-}
-*/
+ - (void)setCurrentNum:(NSString *)currentNum{
+ _currentNum = currentNum;
+ self.title = [NSString stringWithFormat:@"%ld/%ld",currentNum.integerValue,self.total.integerValue];
+ }
+ 
+ - (void)setTotal:(NSString *)total{
+ _total = total;
+ self.title = [NSString stringWithFormat:@"%ld/%ld",self.currentNum.integerValue,total.integerValue];
+ }
+ */
 
 //更新左边 title
 //新艾宾浩斯复习量为 needReviewWords + 剩余复习单词量
@@ -128,7 +128,7 @@
 	
 	
 	if (self.controllerType == LGWordDetailReview) {
-//		NSInteger surplus = self.total.integerValue - self.currentNum.integerValue;
+		//		NSInteger surplus = self.total.integerValue - self.currentNum.integerValue;
 		leftTitle = [NSString stringWithFormat:@" 需复习%ld ",self.reviewWordIdArray.count];
 	}
 	
@@ -142,29 +142,29 @@
 	self.wordLabel.text = detailModel.words.word;
 	self.translateLabel.text = detailModel.words.translate;
 	
-    [self.wordLabel sizeToFit];
-    [self.translateLabel sizeToFit];
-    
+	[self.wordLabel sizeToFit];
+	[self.translateLabel sizeToFit];
+	
 	//在不是搜索(LGWordDetailSearch)和提示(LGWordDetailDictationPrompt)模式下,更新左边标题
 	if (self.controllerType != LGWordDetailSearch && self.controllerType != LGWordDetailDictationPrompt) {
 		self.currentNum = @(detailModel.did).stringValue;
 		[self updateLeftTitle];
 	}
-    
-    //播放音频
-    [self playeAction:nil];
-    self.playerButton.hidden = NO;
-    if (detailModel.words.phonetic) {
-        [self.playerButton setTitle:[NSString stringWithFormat:@"  %@",detailModel.words.phonetic] forState:UIControlStateNormal];
-    }
+	
+	//播放音频
+	[self playeAction:nil];
+	self.playerButton.hidden = NO;
+	if (detailModel.words.phonetic) {
+		[self.playerButton setTitle:[NSString stringWithFormat:@"  %@",detailModel.words.phonetic] forState:UIControlStateNormal];
+	}
 	
 	//认知率 / 难度率
 	NSString *tempKnowRate = [NSString stringWithFormat:@"认知率: %@%%",detailModel.percent];
-	if (detailModel.words.level.length > 0) {
+	if (detailModel.words.level.integerValue > 0) {
 		
 		NSMutableParagraphStyle *paragraphStyle  =[[NSMutableParagraphStyle alloc] init];
 		paragraphStyle.firstLineHeadIndent = 10;//首行缩进
-	
+		
 		self.knowRateLabelConstraint.constant = 100;
 		
 		NSMutableString *star = [NSMutableString string];
@@ -188,9 +188,9 @@
 		self.knowRateLabel.textAlignment = NSTextAlignmentCenter;
 		self.knowRateLabel.text = tempKnowRate;
 	}
-
+	
 	self.knowRateLabel.hidden = NO;
-
+	
 	[self.wordTabelView.tableHeaderView sizeToFit];
 	[self.wordTabelView reloadData];
 }
@@ -199,14 +199,14 @@
 
 /**
  * 请求背单词接口,code = 98进入复习模式
-   code == 96,今日任务完成弹出分享
-   code == 95,今日复习前N天的艾宾浩斯
-   code == 2,完成词包
+ code == 96,今日任务完成弹出分享
+ code == 95,今日复习前N天的艾宾浩斯
+ code == 2,完成词包
  */
 - (void)requestReciteWordsData {
 	
 	[LGProgressHUD showHUDAddedTo:self.view];
-    __weak typeof(self) weakSelf = self;
+	__weak typeof(self) weakSelf = self;
 	[self.request requestReciteWordsCompletion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			NSInteger code = [NSString stringWithFormat:@"%@",response[@"code"]].integerValue;
@@ -214,14 +214,14 @@
 				self.detailModel = [LGWordDetailModel mj_objectWithKeyValues:response];
 			}else if (code == 98){
 				[self requestEbbinghausReviewWordArray];
-            }else if (code == 2){
-                //没有单词了
-                [LGProgressHUD showMessage:response[@"message"] toView:self.view completionBlock:^{
-                    [weakSelf.navigationController popViewControllerAnimated:YES];
-                }];
+			}else if (code == 2){
+				//没有单词了
+				[LGProgressHUD showMessage:response[@"message"] toView:self.view completionBlock:^{
+					[weakSelf.navigationController popViewControllerAnimated:YES];
+				}];
 			}else if (code == 96){
 				//今日已完成,弹出分享
-                [self performSegueWithIdentifier:@"wordDetailToShare" sender:nil];
+				[self performSegueWithIdentifier:@"wordDetailToShare" sender:nil];
 			}else if(code == 95){
 				//今日复习前N天的艾宾浩斯
 				[self pushNextWordDetailController:LGWordDetailTodayReview animated:NO];
@@ -263,7 +263,7 @@
 			
 		}else if ([self isNormal:error]) {
 			self.ebbinghausReviewWordIdArray  = [NSMutableArray arrayWithArray:response[@"words"]];
-            self.ebbinghausCount = self.ebbinghausReviewWordIdArray.count;
+			self.ebbinghausCount = self.ebbinghausReviewWordIdArray.count;
 			[self pushNextWordDetailController:LGWordDetailEbbinghausReview animated:NO];
 		}
 	}];
@@ -292,15 +292,15 @@
 
 //继续背单词
 - (void)continueReciteWords{
-    [LGProgressHUD showHUDAddedTo:self.view];
-    [self.request requestIsReciteWordsCompletion:^(id response, LGError *error) {
-        if ([self isNormal:error]) {
+	[LGProgressHUD showHUDAddedTo:self.view];
+	[self.request requestIsReciteWordsCompletion:^(id response, LGError *error) {
+		if ([self isNormal:error]) {
 			//把当前序号+1,避免重复判断背完
 			NSInteger nextIndx = self.currentNum.integerValue + 1 ;
 			self.currentNum = @(nextIndx).stringValue;
-            [self pushNextWordDetailController:LGWordDetailReciteWords animated:YES];
-        }
-    }];
+			[self pushNextWordDetailController:LGWordDetailReciteWords animated:YES];
+		}
+	}];
 }
 
 #pragma mark -
@@ -315,15 +315,15 @@
 //播放语音
 - (IBAction)playeAction:(id)sender {
 	[[LGPlayer sharedPlayer] playWithUrl:self.detailModel.words.audio completion:^(LGError *error) {
-//		[self isNormal:error];
+		//		[self isNormal:error];
 	}];
 }
 
 //隐藏遮罩层
 - (IBAction)hiddenMasksAction:(id)sender {
 	self.masksView.hidden = YES;
-    self.translateLabel.hidden = NO;
-    self.wordLabel.hidden = NO;
+	self.translateLabel.hidden = NO;
+	self.wordLabel.hidden = NO;
 	self.wordTabelView.scrollEnabled = YES;
 }
 
@@ -435,19 +435,19 @@
 				}
 				
 				//正常背单词艾宾浩斯
-			}else if(self.controllerType == LGWordDetailEbbinghausReview){
-				
-				// 新艾宾浩斯结束
-				if (self.ebbinghausReviewWordIdArray.count == 0) {
-					[self.request finishEbbinghausCompletion:^(id response, LGError *error) {
-						if ([self isNormal:error]) {
-							[self pushNextWordDetailController:LGWordDetailReciteWords  animated:YES];
-						}
-					}];
-				}else{
-					[self pushNextWordDetailController:LGWordDetailEbbinghausReview  animated:YES];
+				}else if(self.controllerType == LGWordDetailEbbinghausReview){
+					
+					// 新艾宾浩斯结束
+					if (self.ebbinghausReviewWordIdArray.count == 0) {
+						[self.request finishEbbinghausCompletion:^(id response, LGError *error) {
+							if ([self isNormal:error]) {
+								[self pushNextWordDetailController:LGWordDetailReciteWords  animated:YES];
+							}
+						}];
+					}else{
+						[self pushNextWordDetailController:LGWordDetailEbbinghausReview  animated:YES];
+					}
 				}
-			}
 		}
 	}];
 }
@@ -491,7 +491,7 @@
 		wordDetailController.total = self.total;
 		wordDetailController.reviewWordIdArray = self.reviewWordIdArray;
 		wordDetailController.ebbinghausReviewWordIdArray = self.ebbinghausReviewWordIdArray;
-        wordDetailController.ebbinghausCount = self.ebbinghausCount;
+		wordDetailController.ebbinghausCount = self.ebbinghausCount;
 		wordDetailController.reviewTyep = self.reviewTyep;
 		NSMutableArray *controllerArray = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
 		[controllerArray removeObject:self];
@@ -533,15 +533,15 @@
 		if (indexPath.row == 0) {
 			LGWordDetailQuestionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailQuestionCell"];
 			
-            [cell setQuestion:dataSource.cellContent[0] word:self.detailModel.words.word article:self.detailModel.question.article  completion:^{
-                [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-            }];
+			[cell setQuestion:dataSource.cellContent[0] word:self.detailModel.words.word article:self.detailModel.question.article  completion:^{
+				[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+			}];
 			return cell;
 		}else{
 			LGWordDetailSelectItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailSelectItemCell"];
-           
+			
 			[cell setSelectedItem:dataSource.cellContent[indexPath.row] completion:^{
-				 [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+				[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 			}];
 			return cell;
 		}
@@ -561,60 +561,60 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
+	return 30;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 0.1;
+	return 0.1;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ([cell isKindOfClass:[LGWordDetailSelectItemCell class]]) {
-        
-        tableView.allowsSelection = NO;
-        
-      __block  NSMutableArray <NSIndexPath *> *reloadIndexPath = [NSMutableArray array];
-        [reloadIndexPath addObject:indexPath];
-        LGQuestionSelectItemModel *itemModel = ((LGWordDetailSelectItemCell *)cell).selectedItem;
-        itemModel.isShowRightOrWrong = YES;
-        
-        LGWordDetailTableDataSource *dataSource = self.detailModel.dataSource[indexPath.section];
-        [dataSource.cellContent enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            if ([obj isKindOfClass:LGQuestionSelectItemModel.class]) {
-                LGQuestionSelectItemModel *itemModel = obj;
-                if ([itemModel.name isEqualToString:self.detailModel.question.questionanswer]) {
-                    itemModel.isRightAnswer = YES;
-                    itemModel.isShowRightOrWrong = YES;
-                    *stop = YES;
-                    NSIndexPath *path = [NSIndexPath indexPathForRow:idx inSection:indexPath.section];
-                    [reloadIndexPath addObject:path];
-                }
-            }
-        }];
-        [tableView reloadRowsAtIndexPaths:reloadIndexPath withRowAnimation:UITableViewRowAnimationNone];
-    }
-    
+	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+	if ([cell isKindOfClass:[LGWordDetailSelectItemCell class]]) {
+		
+		tableView.allowsSelection = NO;
+		
+		__block  NSMutableArray <NSIndexPath *> *reloadIndexPath = [NSMutableArray array];
+		[reloadIndexPath addObject:indexPath];
+		LGQuestionSelectItemModel *itemModel = ((LGWordDetailSelectItemCell *)cell).selectedItem;
+		itemModel.isShowRightOrWrong = YES;
+		
+		LGWordDetailTableDataSource *dataSource = self.detailModel.dataSource[indexPath.section];
+		[dataSource.cellContent enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+			if ([obj isKindOfClass:LGQuestionSelectItemModel.class]) {
+				LGQuestionSelectItemModel *itemModel = obj;
+				if ([itemModel.name isEqualToString:self.detailModel.question.questionanswer]) {
+					itemModel.isRightAnswer = YES;
+					itemModel.isShowRightOrWrong = YES;
+					*stop = YES;
+					NSIndexPath *path = [NSIndexPath indexPathForRow:idx inSection:indexPath.section];
+					[reloadIndexPath addObject:path];
+				}
+			}
+		}];
+		[tableView reloadRowsAtIndexPaths:reloadIndexPath withRowAnimation:UITableViewRowAnimationNone];
+	}
+	
 }
 
 #pragma mark - LGThirdPartyCellDelegate
 - (void)selectedThirdParty:(LGThirdPartyType)type{
-    NSString *url;
+	NSString *url;
 	NSString *word = self.detailModel.words.word;
 	word = [word stringByReplacingOccurrencesOfString:@" " withString:@"+"];
-    if (type == LGThirdPartyYouDao) {
-        url = [NSString stringWithFormat:@"http://m.youdao.com/dict?le=eng&q=%@",word];
-    }else if (type == LGThirdPartyJinShan){
-        url = [NSString stringWithFormat:@"http://www.iciba.com/%@",word];
-    }else if (type == LGThirdPartyBiYing){
-        url = [NSString stringWithFormat:@"https://cn.bing.com/dict/search?q=%@",word];
-    }else{
+	if (type == LGThirdPartyYouDao) {
+		url = [NSString stringWithFormat:@"http://m.youdao.com/dict?le=eng&q=%@",word];
+	}else if (type == LGThirdPartyJinShan){
+		url = [NSString stringWithFormat:@"http://www.iciba.com/%@",word];
+	}else if (type == LGThirdPartyBiYing){
+		url = [NSString stringWithFormat:@"https://cn.bing.com/dict/search?q=%@",word];
+	}else{
 		url = [NSString stringWithFormat:@"https://www.oxfordlearnersdictionaries.com/definition/english/%@",word];
-    }
-    if (url) {
-        AXWebViewController *web = [[AXWebViewController alloc]initWithAddress:url];
-        [self.navigationController pushViewController:web animated:YES];
-    }
+	}
+	if (url) {
+		AXWebViewController *web = [[AXWebViewController alloc]initWithAddress:url];
+		[self.navigationController pushViewController:web animated:YES];
+	}
 }
 
 #pragma mark - LGWordDetailShareControllerDelegate

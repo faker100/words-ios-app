@@ -136,7 +136,8 @@
 	NSString *fileName = [url stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
 	NSString *path = [[LGTool getAudioFilePath] stringByAppendingPathComponent:fileName];
 	if ([[NSFileManager defaultManager] fileExistsAtPath:path]){
-		completion([NSURL URLWithString:path],nil);
+//		path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+		completion([NSURL fileURLWithPath:path],nil);
 	}else{
 		[self downloadRequest:url targetPath:[LGTool getAudioFilePath] fileName:fileName completion:completion];
 	}

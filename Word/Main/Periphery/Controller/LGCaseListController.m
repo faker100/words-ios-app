@@ -40,8 +40,8 @@
         [LGProgressHUD showHUDAddedTo:self.view];
     }
 	[self.request requestCaseListCompletion:^(id response, LGError *error) {
+		[self.tableView lg_endRefreshing];
 		if ([self isNormal:error]) {
-			[self.tableView lg_endRefreshing];
 			self.caseList = [LGCaseModel mj_objectArrayWithKeyValuesArray:response];
 		}
 	}];

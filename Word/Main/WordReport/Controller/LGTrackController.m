@@ -53,8 +53,8 @@
 
 - (void)requestData{
 	[self.request reqeustTrackCompletion:^(id response, LGError *error) {
+		[self.tableView lg_endRefreshing];
 		if ([self isNormal:error]) {
-            [self.tableView lg_endRefreshing];
 			self.trackModel = [LGTrackModel mj_objectWithKeyValues:response];
 		}
 	}];

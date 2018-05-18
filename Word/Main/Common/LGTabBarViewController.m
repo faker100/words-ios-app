@@ -63,6 +63,11 @@
 //显示登录页面
 - (void)showLogin:(NSNotification *)notification {
 	
+	//persented 登录页面时,把其他 present 的页面 dismiss 掉
+	if(![self.presentedViewController isKindOfClass:[LGNavigationController class]]){
+		[self.presentedViewController dismissViewControllerAnimated:NO completion:nil];
+	}
+	
 	NSString *str = notification.userInfo[NO_LOGIN_ALERT_MESSAGE];
 	if (str) {
 		[LGProgressHUD showError:str toView:[UIApplication sharedApplication].keyWindow];
@@ -79,6 +84,7 @@
 	if ([selectVc isKindOfClass:[LGNavigationController class]]) {
 		[((LGNavigationController *)selectVc) popToRootViewControllerAnimated:YES];
 	}
+	
 }
 
 - (void)viewDidAppear:(BOOL)animated{

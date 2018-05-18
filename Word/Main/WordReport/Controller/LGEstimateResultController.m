@@ -69,9 +69,9 @@
     NSString *vocabularyStr = [NSString stringWithFormat:@"词汇量:%@",resultModel.num];
     UIFont *font  = [UIFont boldSystemFontOfSize:18];
     
-    LGCoreTextArcView *vocabulary = [[LGCoreTextArcView alloc]initWithFrame:self.textArcView.frame font:font text:vocabularyStr radius:145 arcSize:60 color:[UIColor whiteColor]];
+    LGCoreTextArcView *vocabulary = [[LGCoreTextArcView alloc]initWithFrame:self.textArcView.bounds font:font text:vocabularyStr radius:145 arcSize:60 color:[UIColor whiteColor]];
     vocabulary.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:vocabulary];
+    [self.textArcView addSubview:vocabulary];
     
 	/**
 	 * 水平 AttributedString
@@ -88,8 +88,8 @@
 	/**
 	 * 打败全国 AttributedString
 	 */
-	NSString *bitStr = [NSString stringWithFormat:@"打败全国大约%ld%%的用户",resultModel.bit];
-	NSRange bitRange = [bitStr rangeOfString: [NSString stringWithFormat:@"%ld%%",resultModel.bit]];
+	NSString *bitStr = [NSString stringWithFormat:@"打败全国大约%.2f%%的用户",resultModel.bit * 100];
+	NSRange bitRange = [bitStr rangeOfString: [NSString stringWithFormat:@"%.2f%%",resultModel.bit *  100]];
 	NSMutableAttributedString *bitAttribute = [[NSMutableAttributedString alloc]initWithString:bitStr];
 	[bitAttribute addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, bitStr.length)];
 	[bitAttribute addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_Title_1_Color] range:NSMakeRange(0, bitStr.length)];

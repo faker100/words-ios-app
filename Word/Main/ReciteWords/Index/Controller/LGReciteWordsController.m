@@ -178,7 +178,6 @@
 		UINavigationController *voiceSearchNav = STORYBOARD_VIEWCONTROLLER(@"ReciteWords", @"LGVoiceSearchNavigation");
 		self.navigationController.tabBarController.modalPresentationStyle = UIModalPresentationCurrentContext;
 		[self.navigationController.tabBarController presentViewController:voiceSearchNav animated:YES completion:nil];
-		
 	}
 }
 
@@ -204,6 +203,7 @@
 #pragma mark - LGTextSearchControllerDelegate
 - (void)selctedSearchModel:(LGSearchModel *)searchModel{
     self.searchController.active = NO;
+	self.searchController = nil;
     [self performSegueWithIdentifier:@"searchToWordDetail" sender:searchModel];
 }
      

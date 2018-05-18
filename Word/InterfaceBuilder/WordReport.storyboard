@@ -1119,7 +1119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJz-ae-4oQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1306" y="176"/>
+            <point key="canvasLocation" x="1297" y="176"/>
         </scene>
         <!--评测结果-->
         <scene sceneID="5sv-c8-Gct">
@@ -1185,8 +1185,8 @@
                                             <color key="textColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4b-Pf-T1j">
-                                            <rect key="frame" x="140" y="151" width="31" height="12"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4b-Pf-T1j">
+                                            <rect key="frame" x="140" y="151" width="10.5" height="12"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="12" id="F5s-dT-OXm"/>
                                             </constraints>
@@ -1371,7 +1371,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uzv-1E-AHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2112.8000000000002" y="174.96251874062969"/>
+            <point key="canvasLocation" x="2106" y="195"/>
         </scene>
         <!--评估排名-->
         <scene sceneID="afW-CS-eAe">
@@ -1620,7 +1620,7 @@
         <image name="tabbar_wordreport_selected" width="14" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3T8-Oo-wXe"/>
+        <segue reference="G0n-qk-UqT"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>
