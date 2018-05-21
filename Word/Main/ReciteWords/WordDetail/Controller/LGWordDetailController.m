@@ -601,7 +601,7 @@
 - (void)selectedThirdParty:(LGThirdPartyType)type{
 	NSString *url;
 	NSString *word = self.detailModel.words.word;
-	word = [word stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+	word = [word stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 	if (type == LGThirdPartyYouDao) {
 		url = [NSString stringWithFormat:@"http://m.youdao.com/dict?le=eng&q=%@",word];
 	}else if (type == LGThirdPartyJinShan){
