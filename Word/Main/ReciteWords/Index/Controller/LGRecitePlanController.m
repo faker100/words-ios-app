@@ -74,7 +74,6 @@
  task = 3  进入老艾宾浩斯复习,完了弹分享
  */
 - (IBAction)beginReciteWordsAction:(id)sender {
-
 	
 	__weak typeof(self) weakSelf = self;
 	
