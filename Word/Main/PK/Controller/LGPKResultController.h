@@ -15,6 +15,9 @@
 @property (nonatomic, strong) LGMatchUserModel *currentUserModel; //当前用户信息
 @property (nonatomic, strong) LGMatchUserModel *opponentUserModel;//对手信息
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
 //结果 image
 @property (weak, nonatomic) IBOutlet UIImageView *resultImageView;
 
@@ -39,5 +42,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *opponentWinLabel;
 //对手失败次数
 @property (weak, nonatomic) IBOutlet UILabel *opponentLoseLabel;
+//再次 pk
+@property (weak, nonatomic) IBOutlet UIButton *againPkButton;
+//分享成绩
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 
 @end

@@ -24,10 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-	[self requestData];
+	[self requestData:YES];
 	__weak typeof(self) weakSelf = self;
 	[self.tableView setHeaderRefresh:^{
-		[weakSelf requestData];
+		[weakSelf requestData:NO];
 	}];
 }
 
@@ -37,8 +37,10 @@
 }
 
 
-- (void)requestData{
-	[LGProgressHUD showHUDAddedTo:self.view];
+- (void)requestData:(BOOL) isLoading{
+	if (isLoading) {
+		[LGProgressHUD showHUDAddedTo:self.view];
+	}
 	[self.request requestCourseListWithType:self.type completion:^(id response, LGError *error) {
 		[self.tableView lg_endRefreshing];
 		if ([self isNormal:error]) {

@@ -42,11 +42,11 @@
 	return self;
 }
 
-- (void)getRequestCompletion:(comletionBlock) completion{
+- (void)getRequesttUrl:(NSString *)url parameter:(NSDictionary *)parameter completion:(comletionBlock) completion{
 	
-	
+	url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-	self.task = [manager GET:self.url parameters:self.parameter progress:^(NSProgress * _Nonnull downloadProgress) {
+	self.task = [manager GET:url parameters:parameter progress:^(NSProgress * _Nonnull downloadProgress) {
 		
 	} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 		
@@ -58,14 +58,15 @@
 	
 }
 
-- (void)postRequestCompletion:(comletionBlock) completion {
+- (void)postRequestUrl:(NSString *)url parameter:(NSDictionary *)parameter completion:(comletionBlock) completion{
 	
+	url = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     // 异步执行任务创建方法
     dispatch_async(request_queue, ^{
        
     
-	self.task = [manager POST:self.url parameters:self.parameter progress:^(NSProgress * _Nonnull downloadProgress) {
+	self.task = [manager POST:url parameters:parameter progress:^(NSProgress * _Nonnull downloadProgress) {
 		
 	} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject){
 		
@@ -85,9 +86,9 @@
     dispatch_group_t requestGroup = dispatch_group_create();
     [urlArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         dispatch_group_enter(requestGroup);
-        self.url = obj;
-        self.parameter = userInfo;
-        [self getRequestCompletion:^(id response, LGError *error) {
+//        self.url = obj;
+//        self.parameter = userInfo;
+        [self getRequesttUrl:obj parameter:userInfo completion:^(id response, LGError *error) {
             
             dispatch_group_leave(requestGroup);
             NSLog(@"启动=====session:%@",response);
@@ -130,7 +131,7 @@
 	
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	
-    [manager POST:url parameters:self.parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         // 使用formData来拼接数据
         NSString *fileName = [NSString stringWithFormat:@"%f%@.jpg",[NSDate currentDate].timeIntervalSince1970,[LGUserManager shareManager].user.phone];
@@ -216,13 +217,13 @@
 }
 
 
-- (NSString *)url{
-	if (_url) {
-		_url = [_url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-	}
-	return _url;
-	
-}
+//- (NSString *)url{
+//	if (_url) {
+//		_url = [_url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+//	}
+//	return _url;
+//	
+//}
 
 @end
 

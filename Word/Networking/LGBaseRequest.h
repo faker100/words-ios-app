@@ -34,12 +34,10 @@ typedef void(^downloadComletionBlock)(NSURL *filePath, LGError *error);
 @interface LGBaseRequest : NSObject
 
 @property (nonatomic, strong) NSURLSessionTask *task;    
-@property (nonatomic, strong) NSDictionary *parameter;   //请求参数,指向 NSMutableDictionary 对象
-@property (nonatomic, strong) NSString *url;			//请求URL
 
-- (void)getRequestCompletion:(comletionBlock) completion;
+- (void)getRequesttUrl:(NSString *)url parameter:(NSDictionary *)parameter completion:(comletionBlock) completion;
 
-- (void)postRequestCompletion:(comletionBlock) completion;
+- (void)postRequestUrl:(NSString *)url parameter:(NSDictionary *)parameter completion:(comletionBlock) completion;
 
 
 

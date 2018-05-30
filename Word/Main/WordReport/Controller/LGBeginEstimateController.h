@@ -17,4 +17,8 @@
 //词汇量
 @property (weak, nonatomic) IBOutlet UILabel *vocabularyLabel;
 
+//评估结果
+@property (weak, nonatomic) IBOutlet UIButton *estimateResultButton;
+
+
 @end

@@ -12,7 +12,8 @@
 
 + (NSDictionary *)mj_objectClassInArray{
 	return @{
-			 @"data" : @"LGPKRighOrWrongModel"
+			 @"data" : @"LGPKRighOrWrongModel",
+			 @"questionInfo" : @"LGQuestionInfoModel"
 			 };
 }
 
@@ -28,3 +29,14 @@
 }
 
 @end
+
+@implementation LGQuestionInfoModel
+
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+	return @{
+			 @"min" : @"self"
+			 };
+}
+
+@end
+

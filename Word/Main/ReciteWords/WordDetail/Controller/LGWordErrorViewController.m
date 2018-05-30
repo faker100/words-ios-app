@@ -39,7 +39,9 @@ NSString *const placeholder = @"请输入题目纠错信息";
 	NSInteger selectedType = [self.tableView indexPathForSelectedRow].row + 1;
 	[self.request submitWordErrorWithType:selectedType content:self.textView.text wordId:self.wordID completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
-			[LGProgressHUD showSuccess:@"提交成功" toView:self.view];
+			[LGProgressHUD showSuccess:@"提交成功" toView: self.view completionBlock:^{
+				[self.navigationController popViewControllerAnimated:YES];
+			}];
 		}
 	}];
 }

@@ -24,6 +24,7 @@
     self.usernameLabel.text = user.nickname;
     NSInteger estimateNum = user.estimateWords.integerValue;
 	self.vocabularyLabel.text = estimateNum == 0 ? @"未评估" : @(estimateNum).stringValue;
+	self.estimateResultButton.hidden = estimateNum == 0;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -69,12 +69,18 @@
  @param user  userModel
  */
 - (void)configTableHeadView:(LGUserModel *)user{
-	self.uesrNameLabel.text = user.nickname;
-	[self.headImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(user.image)] placeholderImage:PLACEHOLDERIMAGE];
-	self.winProgressView.progress = user.win.floatValue / (user.win.floatValue + user.lose.floatValue);
-	self.vocabularyLabel.text = user.words;
-	self.winLabel.text = [NSString stringWithFormat:@"win : %ld",user.win.integerValue];
-	self.loseLabel.text = [NSString stringWithFormat:@"lose : %ld",user.lose.integerValue];
+	
+	if (user) {
+		self.tableView.tableHeaderView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 84);
+		self.uesrNameLabel.text = user.nickname;
+		[self.headImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(user.image)] placeholderImage:PLACEHOLDERIMAGE];
+		self.winProgressView.progress = user.win.floatValue / (user.win.floatValue + user.lose.floatValue);
+		self.vocabularyLabel.text = user.words;
+		self.winLabel.text = [NSString stringWithFormat:@"win : %ld",user.win.integerValue];
+		self.loseLabel.text = [NSString stringWithFormat:@"lose : %ld",user.lose.integerValue];
+	}else{
+		self.tableView.tableHeaderView.frame = CGRectZero;
+	}
 }
 
 

@@ -10,8 +10,10 @@
 #import "LGPKResultModel.h"
 #import "LGTool.h"
 #import "LGPlayer.h"
+#import "LGPKResultCell.h"
+#import "LGNavigationController.h"
 
-@interface LGPKResultController ()
+@interface LGPKResultController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) LGPKResultModel *resultModel;
 
@@ -23,6 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	self.navigationController.navigationBarHidden = NO;
+	self.title = @"";
 	[self configUserInterface];
 	[self requestPKResult];
 }
@@ -37,6 +40,9 @@
 	[[LGPlayer sharedPlayer] stopPkMusic];
 	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 	[self.navigationController.navigationBar setShadowImage:[UIImage new]];
+	
+	[((LGNavigationController *)self.navigationController) transparenceBar:YES];
+	
 	self.edgesForExtendedLayout = UIRectEdgeTop;
 }
 
@@ -87,13 +93,41 @@
 	self.currentUserLoseLabel.text = [NSString stringWithFormat:@"错误 : %@",resultModel.data.firstObject.aFalse];
 	self.opponentWinLabel.text  = [NSString stringWithFormat:@"正确 : %@",resultModel.data.lastObject.aTrue];
 	self.opponentLoseLabel.text = [NSString stringWithFormat:@"错误 : %@",resultModel.data.lastObject.aFalse];
+	
+	[self.tableView reloadData];
 }
 
 //分享
 - (IBAction)shareAction:(id)sender {
-	UIImage *image = [LGTool screenshotFromView:self.view.window];
+	//截图前先隐藏按钮
+	self.againPkButton.hidden = YES;
+	self.shareButton.hidden = YES;
+	
+	UIImage *image = [LGTool screenshotFromView:self.tableView];
+	
+	self.againPkButton.hidden = NO;
+	self.shareButton.hidden = NO;
+	
 	[self shareTitle:@"" text:@"" image:image url:nil type:SSDKContentTypeImage];
 }
+
+#pragma mark -UITableViewDataSource
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return self.resultModel.questionInfo.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	LGPKResultCell *cell =  [tableView dequeueReusableCellWithIdentifier:@"LGPKResultCell"];
+	cell.questionInfo = self.resultModel.questionInfo[indexPath.row];
+	return cell;
+}
+
+#pragma mark -UITableViewDelegate
+
 
 
 /*

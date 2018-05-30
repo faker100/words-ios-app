@@ -80,11 +80,15 @@
 
 //登录成功
 - (void)loginSuccess:(NSNotification *)notification{
+	[self backSelectItemIndex];
+}
+
+//返回当前选择 tab 的首页
+- (void)backSelectItemIndex{
 	UIViewController *selectVc = self.selectedViewController;
 	if ([selectVc isKindOfClass:[LGNavigationController class]]) {
 		[((LGNavigationController *)selectVc) popToRootViewControllerAnimated:YES];
 	}
-	
 }
 
 - (void)viewDidAppear:(BOOL)animated{

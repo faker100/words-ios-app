@@ -72,7 +72,7 @@ typedef NS_ENUM(NSUInteger, LGDevicePermissionsType) {
 /**
  从view 截屏
 
- @param view 截图的view
+ @param view 截图的view 支持 UIScrollView
  
  */
 + (UIImage *)screenshotFromView:(UIView *)view;

@@ -911,7 +911,6 @@
                                 <rect key="frame" x="50" y="513" width="275" height="42"/>
                                 <color key="backgroundColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="275" id="05V-j0-6iY"/>
                                     <constraint firstAttribute="height" constant="42" id="7gs-vW-n04"/>
                                 </constraints>
                                 <state key="normal" title="查看评估排行榜">
@@ -933,6 +932,7 @@
                             <constraint firstAttribute="trailing" secondItem="aQG-65-JZ5" secondAttribute="trailing" id="4F9-hN-0bB"/>
                             <constraint firstItem="ybC-Rr-Bbo" firstAttribute="centerX" secondItem="kAj-71-K7c" secondAttribute="centerX" id="67A-50-iWT"/>
                             <constraint firstItem="kOR-PS-kCC" firstAttribute="centerX" secondItem="DXX-JL-cUv" secondAttribute="centerX" id="FnS-g3-WxM"/>
+                            <constraint firstItem="ybC-Rr-Bbo" firstAttribute="width" secondItem="kAj-71-K7c" secondAttribute="width" id="L0O-oz-0Ck"/>
                             <constraint firstItem="kAj-71-K7c" firstAttribute="top" secondItem="kOR-PS-kCC" secondAttribute="bottom" priority="750" constant="75" id="Oye-f0-Y4l"/>
                             <constraint firstItem="aQG-65-JZ5" firstAttribute="leading" secondItem="DXX-JL-cUv" secondAttribute="leading" id="Sxw-QG-fGd"/>
                             <constraint firstItem="kOR-PS-kCC" firstAttribute="top" secondItem="scB-rD-GnM" secondAttribute="bottom" constant="30" id="Tse-oQ-WmP"/>
@@ -948,7 +948,22 @@
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kAj-71-K7c" secondAttribute="bottom" constant="82" id="yoQ-eL-Nd5"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="评估" id="L6r-TX-zde">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="8Aj-mf-zbc">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MAG-io-O6L">
+                                <rect key="frame" x="0.0" y="0.0" width="70" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="评估结果">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="EeO-QF-dAX" kind="show" id="pfS-dr-Ffe"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="estimateResultButton" destination="MAG-io-O6L" id="MSC-eX-9W5"/>
                         <outlet property="headImageView" destination="i4q-N1-XRA" id="3Lv-vc-hqt"/>
                         <outlet property="usernameLabel" destination="Cmz-Qz-1qk" id="VFi-Oi-TaO"/>
                         <outlet property="vocabularyLabel" destination="kPK-mV-EiF" id="ygc-RZ-7Ta"/>
@@ -1620,7 +1635,8 @@
         <image name="tabbar_wordreport_selected" width="14" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="G0n-qk-UqT"/>
+        <segue reference="3T8-Oo-wXe"/>
+        <segue reference="pfS-dr-Ffe"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
 </document>
