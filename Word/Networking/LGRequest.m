@@ -154,12 +154,13 @@
 	}
 }
 
-- (void)addWordLibrary:(NSString *)libraryId planDay:(NSInteger)planDay planWord:(NSInteger)planWord completion:(comletionBlock)completion{
+- (void)addWordLibrary:(NSString *)libraryId planDay:(NSInteger)planDay planWord:(NSInteger)planWord sortType:(LGAddPlanSortType)sortType completion:(comletionBlock)completion{
 //    self.url = ADD_WORD_LIBRARY_URL;
     NSDictionary *parameter = @{
                        @"packageId" : libraryId,
                        @"planDay" : @(planDay),
-                       @"planWords" : @(planWord)
+                       @"planWords" : @(planWord),
+					   @"rank" :  @(sortType)
                        };
     //[self postRequestCompletion:completion];
 	[self postRequestUrl:ADD_WORD_LIBRARY_URL parameter:parameter completion:completion];

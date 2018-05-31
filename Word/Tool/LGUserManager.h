@@ -13,11 +13,18 @@
 #define UserDefaultKey  @"userKey"
 #define IS_FISRT		@"IS_FISRT"
 #define notLogged		@"notLogged"
+#define MUTE_WORD_DETAL @"MUTE_WORD_DETAL"
 
 @interface LGUserManager : NSObject
 
 @property (nonatomic, strong) LGUserModel *user;
 @property (nonatomic, assign) BOOL isFirstLaunch; //第一次是否启动,显示引导页
+
+
+/**
+ 单词详情是否静音
+ */
+@property (nonatomic, assign) BOOL muteWithWordDetail;
 
 /**
  引导页过后选的的学习模式...登录后检测并上传,上传完后,设置为LGStudyNone

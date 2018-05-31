@@ -13,6 +13,7 @@
 #import "LGTool.h"
 #import "LGAtPKController.h"
 #import "LGPlayer.h"
+#import "LGNavigationController.h"
 
 @interface LGPKMatchingController ()
 {
@@ -45,8 +46,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
-	[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-	[self.navigationController.navigationBar setShadowImage:[UIImage new]];
+	[self.navigationController setNavigationBarHidden:NO];
+	[((LGNavigationController *)self.navigationController) transparenceBar:YES];
 	self.edgesForExtendedLayout=UIRectEdgeTop;
 	
 	[self addNotification];

@@ -160,8 +160,9 @@
  @param libraryId 词包id
  @param planDay 计划天数
  @param planWord 计划个数
+ @param sortType 顺序/乱序
  */
-- (void)addWordLibrary:(NSString *)libraryId planDay:(NSInteger)planDay planWord:(NSInteger)planWord completion:(comletionBlock)completion;
+- (void)addWordLibrary:(NSString *)libraryId planDay:(NSInteger)planDay planWord:(NSInteger)planWord sortType:(LGAddPlanSortType)sortType completion:(comletionBlock)completion;
 
 
 

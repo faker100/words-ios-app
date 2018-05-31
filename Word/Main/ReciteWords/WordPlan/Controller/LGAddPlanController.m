@@ -10,10 +10,12 @@
 #import "LGPlanTableViewCell.h"
 #import "LGWordPlanController.h"
 
+
 @interface LGAddPlanController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, assign) NSInteger planDay;    //计划天数
 @property (nonatomic, assign) NSInteger planWords;  //计划个数
+@property (nonatomic, assign) LGAddPlanSortType selctedSoreType;
 
 @end
 
@@ -22,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+	self.selctedSoreType = LGAddPlanSortRandom;
 	
 }
 
@@ -30,8 +33,30 @@
     // Dispose of any resources that can be recreated.
 }
 
+
 - (void)viewDidAppear:(BOOL)animated{
     [self configUserInterface];
+}
+
+- (void)setSelctedSoreType:(LGAddPlanSortType)selctedSoreType{
+	
+	_selctedSoreType = selctedSoreType;
+	
+	if (selctedSoreType == LGAddPlanSortRandom) {
+		self.randomButton.selected = YES;
+		self.orderButton.selected = NO;
+	}else{
+		self.randomButton.selected = NO;
+		self.orderButton.selected = YES;
+	}
+}
+
+- (IBAction)orderAction:(id)sender {
+	self.selctedSoreType = LGAddPlanSortOrder;
+}
+
+- (IBAction)randomAction:(id)sender {
+	self.selctedSoreType = LGAddPlanSortRandom;
 }
 
 - (void)configUserInterface{
@@ -60,9 +85,9 @@
 	NSMutableAttributedString *attStr = [[NSMutableAttributedString alloc]initWithString:str];
 	[attStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange(0, attStr.length)];
 	[attStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_Title_2_Color] range:NSMakeRange(0, attStr.length)];
-	[attStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_Title_1_Color] range:planDayRnage];
+	[attStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_theme_Color] range:planDayRnage];
 	[attStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:planDayRnage];
-	[attStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_Title_1_Color] range:planWordsRnage];
+	[attStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_theme_Color] range:planWordsRnage];
 	[attStr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:planWordsRnage];
 	self.planLabel.attributedText = attStr;
 }
@@ -71,7 +96,7 @@
     [LGProgressHUD showHUDAddedTo:self.view];
 	
 	 __weak typeof(self) weakSelf = self;
-    [self.request addWordLibrary:self.libModel.ID planDay:self.planDay planWord:self.planWords  completion:^(id response, LGError *error) {
+    [self.request addWordLibrary:self.libModel.ID planDay:self.planDay planWord:self.planWords sortType:self.selctedSoreType completion:^(id response, LGError *error) {
         if ([weakSelf isNormal:error]) {
 			[weakSelf updateNowPackage:weakSelf.libModel.ID];
         }

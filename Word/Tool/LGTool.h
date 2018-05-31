@@ -78,4 +78,11 @@ typedef NS_ENUM(NSUInteger, LGDevicePermissionsType) {
 + (UIImage *)screenshotFromView:(UIView *)view;
 
 
+/**
+ 更新字体
+
+ @param view 需要更新字体的控件  UILabel / UIButton
+ */
++ (void)updateFontSizeForView:(UIView *)view;
+
 @end

@@ -11,20 +11,22 @@
 
 //cell 类型
 typedef NS_ENUM(NSUInteger, LGWordDetailTableDataSourceType) {
-	LGDataSourceText,	    //普通文字类型
-	LGDataSourceQuestion,   //列题
-	LGDataSourceThirdParty  //第三方
+	LGDataSourceText,	     //普通文字类型
+	LGDataSourceQuestion,    //列题
+	LGDataSourceThirdParty,  //第三方
+	LGDataSourceSimilarWords //形近词
 };
 
-@class LGSentenceModel , LGWordDetailTableDataSource, LGQuestionSelectItemModel, LGQuestionModel;
+@class LGSentenceModel , LGWordDetailTableDataSource, LGQuestionSelectItemModel, LGQuestionModel, LGSimilarWordsModel;
 @interface LGWordDetailModel : NSObject
 
 @property (nonatomic, assign) NSInteger needReviewWords; //新艾宾浩斯复习
 @property (nonatomic, assign) NSInteger userNeedReviewWords;//老艾宾浩斯需复习 / 正常背单词
 @property (nonatomic, copy) NSString *percent;//认知率
 @property (nonatomic, strong) LGFreeWordModel *words;
-@property (nonatomic, strong) NSArray<LGSentenceModel *> *sentence;
-@property (nonatomic, strong) NSArray<LGSentenceModel *> *lowSentence;
+@property (nonatomic, copy) NSArray<LGSentenceModel *> *sentence;      //例句;
+@property (nonatomic, copy) NSArray<LGSentenceModel *> *lowSentence;
+@property (nonatomic, copy) NSArray<LGSimilarWordsModel *> *similarWords;
 @property (nonatomic, strong) LGQuestionModel *question;
 @property (nonatomic, assign) NSInteger did; //已背单词
 
@@ -39,6 +41,12 @@ typedef NS_ENUM(NSUInteger, LGWordDetailTableDataSourceType) {
 
 @property (nonatomic, copy) NSString *english;
 @property (nonatomic, copy) NSString *chinese;
+
+
+/**
+ 自定义字段,拼接中文英文,替换掉 <vocab>标签
+ */
+@property (nonatomic, copy) NSString *englishAndChinese;
 
 @end
 
@@ -69,5 +77,12 @@ typedef NS_ENUM(NSUInteger, LGWordDetailTableDataSourceType) {
 
 //自定义字段，是否是正确答案
 @property (nonatomic, assign) BOOL isRightAnswer;
+
+@end
+
+@interface LGSimilarWordsModel : NSObject
+
+@property (nonatomic, copy) NSString *word;
+@property (nonatomic, copy) NSString *ID;
 
 @end

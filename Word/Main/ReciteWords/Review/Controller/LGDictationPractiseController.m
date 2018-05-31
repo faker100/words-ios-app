@@ -17,6 +17,8 @@
 #import "LGDictationPromptController.h"
 #import "LGFinishWordTaskView.h"
 
+#define Angle2Radian(angle) ((angle) / 180.0 * M_PI)
+
 @interface LGDictationPractiseController () <CAAnimationDelegate,UICollectionViewDelegate, UICollectionViewDataSource>
 {
     dispatch_source_t timer;
@@ -266,11 +268,23 @@
 //倒计时
 - (void)beginCountDown {
 	
-    __weak typeof(self) weakSelf = self;
+	__weak typeof(self) weakSelf = self;
 	timer = [LGTool beginCountDownWithSecond:16 completion:^(NSInteger currtentSecond) {
-        if (currtentSecond >= 0) {
-            [weakSelf.countDownButton setTitle:@(currtentSecond).stringValue forState:UIControlStateNormal];
-        }
+		if (currtentSecond > 0) {
+			[weakSelf.countDownButton setTitle:@(currtentSecond).stringValue forState:UIControlStateNormal];
+		}else{
+			[weakSelf.countDownButton setTitle:@"" forState:UIControlStateNormal];
+			weakSelf.countDownButton.tintColor = [UIColor lg_colorWithHexString:@"ee6c6e"];
+			
+			CAKeyframeAnimation *anim = [CAKeyframeAnimation animation];
+			anim.keyPath = @"transform.rotation";
+			anim.values = @[@(Angle2Radian(-15)),  @(Angle2Radian(15)), @(Angle2Radian(-15))];
+			anim.duration = 0.25;
+			anim.repeatCount = MAXFLOAT;
+			anim.removedOnCompletion = NO;
+			anim.fillMode = kCAFillModeForwards;
+			[weakSelf.countDownButton.layer addAnimation:anim forKey:@"shake"];
+		}
 	}];
 }
 
@@ -346,6 +360,8 @@
 		[userAnswer appendString:obj];
 	}];
 	if ([userAnswer isEqualToString:self.wordDetailModel.words.word]) {
+		
+		[self.countDownButton.layer removeAllAnimations];
 		
 		[self.request updateReviewWordStatus:LGWordStatusUnchanged wordId:self.wordDetailModel.words.ID type:0 completion:nil];
 		

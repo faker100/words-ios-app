@@ -12,7 +12,7 @@
 
 - (void)setBorderColorFromUIColor:(UIColor *) color{
 	
-	if (self.borderWidth == 0) self.borderWidth = 1;
+	if (self.borderWidth == 0) self.borderWidth = 0.5;
 	self.borderColor = color.CGColor;
 }
 

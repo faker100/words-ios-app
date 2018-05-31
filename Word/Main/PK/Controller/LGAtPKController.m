@@ -113,7 +113,7 @@ NSInteger countDown = 10;
  code = 1 重连成功
  */
 - (void)applicationBecomeActive{
-	[LGProgressHUD showHUDAddedTo:self.view];
+	[LGProgressHUD showHUDAddedTo:self.view.window];
 	[LGTool cancelTimer:timer];
 	[self.request requestPKConnect:self.currentUserModel.uid totalId:self.pkModel.totalId completion:^(id response, LGError *error) {
 		if ([self isNormal:error showInView:self.view.window]) {

@@ -19,10 +19,16 @@
 #import "LGWebController.h"
 #import "LGWordDetailShareController.h"
 #import "LGUserManager.h"
+#import "LGWordDetailMoreMenuView.h"
+#import "LGSimilarWordsView.h"
+#import "LGSimilarWordsCell.h"
 
-@interface LGWordDetailController () <UITableViewDelegate, UITableViewDataSource,LGThirdPartyCellDelegate, LGWordDetailShareControllerDelegate>
+@interface LGWordDetailController () <UITableViewDelegate, UITableViewDataSource,LGThirdPartyCellDelegate, LGWordDetailShareControllerDelegate , LGWordDetailMoreMenuViewDelegate, LGSimilarWordsCellDelegate>
 
 @property (nonatomic, strong) LGWordDetailModel *detailModel; //当前单词,重写 setter 刷新界面
+@property (nonatomic, strong) LGWordDetailMoreMenuView *moreMenuView; //更多
+@property (nonatomic, strong) LGSimilarWordsView *similarWordView; //形近字 弹框;
+@property (nonatomic, strong) LGSimilarWordsModel *selectedSimilarWord; //当前选择的形近词,为了不重复请求
 
 @end
 
@@ -113,6 +119,26 @@
  self.title = [NSString stringWithFormat:@"%ld/%ld",self.currentNum.integerValue,total.integerValue];
  }
  */
+
+- (LGWordDetailMoreMenuView *)moreMenuView{
+	if (!_moreMenuView) {
+		_moreMenuView = [[NSBundle mainBundle]loadNibNamed:@"LGWordDetailMoreMenuView" owner:nil options:nil].firstObject;
+		CGRect rect = CGRectMake(0, self.wordTabelView.frame.origin.y, SCREEN_WIDTH, self.view.frame.size.height);
+		_moreMenuView.frame = rect;
+		_moreMenuView.delegate = self;
+	}
+	return _moreMenuView;
+}
+
+- (LGSimilarWordsView *)similarWordView{
+	if (!_similarWordView) {
+		_similarWordView = [[NSBundle mainBundle]loadNibNamed:@"LGSimilarWordsView" owner:nil options:nil].firstObject;
+		_similarWordView.frame = self.view.window.bounds;
+	}
+	return _similarWordView;
+}
+
+#pragma mark -
 
 //更新左边 title
 //新艾宾浩斯复习量为 needReviewWords + 剩余复习单词量
@@ -312,6 +338,10 @@
 
 #pragma mark - Action
 
+//更多菜单
+- (IBAction)moreMenuAction:(id)sender {
+	[self.view addSubview:self.moreMenuView];
+}
 //播放语音
 - (IBAction)playeAction:(id)sender {
 	[[LGPlayer sharedPlayer] playWithUrl:self.detailModel.words.audio completion:^(LGError *error) {
@@ -329,31 +359,40 @@
 
 //熟识
 - (IBAction)familiarAction:(id)sender {
-	[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_familiar];
+	if (![LGUserManager shareManager].muteWithWordDetail) {
+		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_familiar];
+	}
+	
 	[self updateWordStatus:LGWordStatusFamiliar];
 }
 
 //认识
 - (IBAction)knowAction:(id)sender {
-	[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_know];
+	if (![LGUserManager shareManager].muteWithWordDetail) {
+		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_know];
+	}
+	
 	[self updateWordStatus:LGWordStatusKnow];
 }
 
 //不认识
 - (IBAction)notKnowAction:(id)sender {
-	[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_estimate_notKnow];
+	if (![LGUserManager shareManager].muteWithWordDetail) {
+		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_estimate_notKnow];
+	}
+	
 	[self updateWordStatus:LGWordStatusIncognizance];
 }
 
 // 在背单词模式下标记为模糊,其他复习模式下标记为忘记
 - (IBAction)vagueOrForgotAction:(id)sender {
-	
-	if (self.controllerType == LGWordDetailReciteWords) {
-		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_dim];
-	}else{
-		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_forget];
+	if (![LGUserManager shareManager].muteWithWordDetail) {
+		if (self.controllerType == LGWordDetailReciteWords) {
+			[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_dim];
+		}else{
+			[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_forget];
+		}
 	}
-	
 	[self updateWordStatus:self.controllerType == LGWordDetailReciteWords ? LGWordStatusVague : LGWordStatusForget];
 }
 
@@ -545,11 +584,17 @@
 			}];
 			return cell;
 		}
-	}else{
+	}else if (dataSource.type == LGDataSourceThirdParty){
 		LGThirdPartyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGThirdPartyCell"];
 		cell.delegate = self;
 		return cell;
+	}else if (dataSource.type == LGDataSourceSimilarWords){
+		LGSimilarWordsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGSimilarWordsCell"];
+		cell.similarWords = dataSource.cellContent.firstObject;
+		cell.delegate = self;
+		return cell;
 	}
+	return [UITableViewCell new];
 }
 
 #pragma mark - UITableViewDelegate
@@ -617,9 +662,31 @@
 	}
 }
 
+#pragma mark - LGSimilarWordsCellDelegate
+- (void)selectedSimilar:(LGSimilarWordsModel *)similarWords{
+	
+	if (self.selectedSimilarWord == similarWords) {
+		[self.view.window addSubview:self.similarWordView];
+	}else{
+		[LGProgressHUD showHUDAddedTo:self.view];
+		[self.request requestWordDetailWidthID:similarWords.ID completion:^(id response, LGError *error) {
+			if ([self isNormal:error]) {
+				self.similarWordView.wordDetailModel = [LGWordDetailModel mj_objectWithKeyValues:response];
+				[self.view.window addSubview:self.similarWordView];
+				self.selectedSimilarWord = similarWords;
+			}
+		}];
+	}
+}
+
 #pragma mark - LGWordDetailShareControllerDelegate
 - (void)dismissShareController{
 	[self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+#pragma mark - LGWordDetailMoreMenuViewDelegate
+- (void)submiteError{
+	[self performSegueWithIdentifier:@"WordDetailToError" sender:nil];
 }
 
 #pragma mark - Navigation

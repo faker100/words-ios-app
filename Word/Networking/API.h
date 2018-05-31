@@ -83,6 +83,12 @@ typedef NS_ENUM(NSUInteger, LGCourseType) {
 	LGCourseSchool = 6, //留学
 };
 
+//背单词顺序
+typedef NS_ENUM(NSUInteger, LGAddPlanSortType) {
+	LGAddPlanSortRandom = 1, //乱序
+	LGAddPlanSortOrder = 2,	 //正序
+};
+
 /*************************************** 各种 key **********************************/
 
 // code = 99 未登录通知

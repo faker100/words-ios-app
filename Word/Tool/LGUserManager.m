@@ -100,4 +100,12 @@
 	[[NSUserDefaults standardUserDefaults] setBool:isFirstLaunch forKey:IS_FISRT];
 }
 
+- (BOOL)muteWithWordDetail{
+	return  [[NSUserDefaults standardUserDefaults] boolForKey:MUTE_WORD_DETAL];
+}
+
+- (void)setMuteWithWordDetail:(BOOL)muteWithWordDetail{
+	[[NSUserDefaults standardUserDefaults] setBool:muteWithWordDetail forKey:MUTE_WORD_DETAL];
+}
+
 @end

@@ -14,6 +14,8 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
+#import "LGUserManager.h"
+
 @implementation LGTool
 
 
@@ -186,6 +188,22 @@
 		UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();
 		return newImage;
+	}
+}
+
++ (void)updateFontSizeForView:(UIView *)view{
+	if ([view isKindOfClass:[UILabel class]]) {
+		
+		UILabel *label = (UILabel *)view;
+		CGFloat originalFontSize = label.font.pointSize;
+		CGFloat newSize = originalFontSize + [LGUserManager shareManager].user.fontSizeRate.floatValue;
+		label.font = [UIFont systemFontOfSize:newSize];
+		
+	}else if ([UIView isKindOfClass:[UIButton class]]){
+		UIButton *btn = (UIButton *)view;
+		CGFloat originalFontSize = btn.titleLabel.font.pointSize;
+		CGFloat newSize = originalFontSize + [LGUserManager shareManager].user.fontSizeRate.floatValue;
+		btn.titleLabel.font = [UIFont systemFontOfSize:newSize];
 	}
 }
 

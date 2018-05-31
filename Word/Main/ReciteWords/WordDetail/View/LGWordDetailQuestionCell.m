@@ -51,7 +51,6 @@
 				for (NSTextCheckingResult *result in resultArray) {
 					[attrStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_theme_Color] range:result.range];
 				}
-			
 			weakSelf.questionLabel.attributedText = attrStr;
             completion();
 		}];
