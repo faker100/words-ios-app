@@ -9,13 +9,24 @@
 #import "LGSimilarWordsView.h"
 #import "LGPlayer.h"
 #import "LGUserManager.h"
-#import "LGTool.h"
+
+@interface LGSimilarWordsView()
+{
+	CGFloat originallyWordLabelFontSize;
+	CGFloat originallyTranslateLabelFontSize;
+	CGFloat originallyExampleLabelFontSize;
+	CGFloat addFontSize;
+}
+@end
 
 @implementation LGSimilarWordsView
 
 - (void)awakeFromNib{
 	[super awakeFromNib];
-	
+	originallyWordLabelFontSize = self.wordLabel.font.pointSize;
+	originallyTranslateLabelFontSize = self.translateLabel.font.pointSize;
+	originallyExampleLabelFontSize = self.exampleLabel.font.pointSize;
+	addFontSize = [LGUserManager shareManager].user.fontSizeRate.floatValue;
 }
 
 /*
@@ -27,14 +38,15 @@
  */
 
 - (void)setWordDetailModel:(LGWordDetailModel *)wordDetailModel{
+	
 	_wordDetailModel = wordDetailModel;
 	
-	[LGTool updateFontSizeForView:self.wordLabel];
-	[LGTool updateFontSizeForView:self.translateLabel];
-	[LGTool updateFontSizeForView:self.exampleLabel];
-	[LGTool updateFontSizeForView:self.audioButton];
-	self.wordLabel.text = wordDetailModel.words.word;
+	//调整字体
+	self.wordLabel.font = [UIFont systemFontOfSize:originallyWordLabelFontSize + addFontSize];
+	self.translateLabel.font = [UIFont systemFontOfSize:originallyTranslateLabelFontSize + addFontSize];
+	self.exampleLabel.font = [UIFont systemFontOfSize:originallyExampleLabelFontSize + addFontSize];
 	
+	self.wordLabel.text = wordDetailModel.words.word;
 	[self.audioButton setTitle:[NSString stringWithFormat:@" %@",wordDetailModel.words.phonetic]  forState:UIControlStateNormal];
 	self.translateLabel.text = wordDetailModel.words.translate;
 	
@@ -47,6 +59,11 @@
 		NSString *str = sentence.englishAndChinese;
 		NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:str];
 		
+		NSMutableParagraphStyle *paragraph = [NSMutableParagraphStyle new];
+		paragraph.paragraphSpacing = 7;
+		paragraph.lineSpacing = 4;
+		
+		[attrStr addAttribute:NSParagraphStyleAttributeName value:paragraph range:NSMakeRange(0, str.length)];
 		[attrStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_Title_1_Color] range:NSMakeRange(0, str.length)];
 		[attrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15 + addFontSize] range:NSMakeRange(0, str.length)];
 		

@@ -198,7 +198,7 @@
 		for (int i = 1; i <= 5; i++) {
 			[star appendString:i <= level ? @"★" : @"☆" ];
 		}
-		tempKnowRate = [tempKnowRate stringByAppendingFormat:@"\n难度率:%@",star];
+		tempKnowRate = [tempKnowRate stringByAppendingFormat:@"\n难	 度: %@",star];
 		
 		NSRange range = NSMakeRange(0, tempKnowRate.length);
 		
@@ -561,12 +561,20 @@
 {
 	LGWordDetailTableDataSource *dataSource = self.detailModel.dataSource[indexPath.section];
 	
+	
 	if (dataSource.type == LGDataSourceText) {
 		LGWordDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailCell"];
 		NSString *content = dataSource.cellContent[indexPath.row];
 		BOOL isFirst = indexPath.row == 0;
 		BOOL isLast  = indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1;
-		[cell setContentStr:content isFirst:isFirst isLast:isLast];
+		[cell setContentStr:content highlightWord:@"" isFirst:isFirst isLast:isLast isPlay:NO];
+		return cell;
+	}else if(dataSource.type == LGDataSourceExamplesSentence){
+		LGWordDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailCell"];
+		NSString *content = ((LGSentenceModel *)dataSource.cellContent[indexPath.row]).englishAndChinese;
+		BOOL isFirst = indexPath.row == 0;
+		BOOL isLast  = indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1;
+		[cell setContentStr:content highlightWord:self.detailModel.words.word isFirst:isFirst isLast:isLast isPlay:YES];
 		return cell;
 	}else if(dataSource.type == LGDataSourceQuestion){
 		if (indexPath.row == 0) {
@@ -592,6 +600,8 @@
 		LGSimilarWordsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGSimilarWordsCell"];
 		cell.similarWords = dataSource.cellContent.firstObject;
 		cell.delegate = self;
+		
+		NSLog(@"%f", cell.collectionView.collectionViewLayout.collectionViewContentSize.height);
 		return cell;
 	}
 	return [UITableViewCell new];
@@ -615,6 +625,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+	LGWordDetailTableDataSource *dataSource = self.detailModel.dataSource[indexPath.section];
+	
+	//例题选择项
 	if ([cell isKindOfClass:[LGWordDetailSelectItemCell class]]) {
 		
 		tableView.allowsSelection = NO;
@@ -640,6 +653,12 @@
 		[tableView reloadRowsAtIndexPaths:reloadIndexPath withRowAnimation:UITableViewRowAnimationNone];
 	}
 	
+	//播放例举
+	if (dataSource.type == LGDataSourceExamplesSentence) {
+		LGSentenceModel *sentenceModel = dataSource.cellContent[indexPath.row];
+		NSString *playUrl = [NSString stringWithFormat:@"http://dict.youdao.com/dictvoice?audio=%@",sentenceModel.english];
+		[[LGPlayer sharedPlayer]playWithUrl:playUrl completion:nil];
+	}
 }
 
 #pragma mark - LGThirdPartyCellDelegate

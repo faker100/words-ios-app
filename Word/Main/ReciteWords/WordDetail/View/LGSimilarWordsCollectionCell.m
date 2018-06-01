@@ -7,12 +7,20 @@
 //
 
 #import "LGSimilarWordsCollectionCell.h"
+#import "LGUserManager.h"
 
 @implementation LGSimilarWordsCollectionCell
 
+- (void)awakeFromNib{
+	[super awakeFromNib];
+	self.wordLabel.font = [UIFont systemFontOfSize: 14 + [LGUserManager shareManager].user.fontSizeRate.floatValue];
+}
+
 - (void)setSimilarWord:(LGSimilarWordsModel *)similarWord{
 	_similarWord = similarWord;
-	self.wordLabel.text = similarWord.word;
+	
+	NSAttributedString *attr = [[NSAttributedString alloc]initWithString:similarWord.word attributes:@{NSUnderlineStyleAttributeName : @(NSUnderlineStyleSingle)}];
+	self.wordLabel.attributedText = attr;
 }
 
 @end

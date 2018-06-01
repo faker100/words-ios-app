@@ -18,12 +18,12 @@
 @property(nonatomic, assign) BOOL isPresentFromGuide;
 
 //艾宾浩斯记忆法
-@property (weak, nonatomic) IBOutlet UIButton *ebbinghausButton;
+@property (weak, nonatomic) IBOutlet UIView *ebbinghausView;
 
 //复习记忆法
-@property (weak, nonatomic) IBOutlet UIButton *reviewButton;
+@property (weak, nonatomic) IBOutlet UIView *reviewView;
 
 //只背新单词
-@property (weak, nonatomic) IBOutlet UIButton *onlyNewButton;
+@property (weak, nonatomic) IBOutlet UIView *onlyNewView;
 
 @end

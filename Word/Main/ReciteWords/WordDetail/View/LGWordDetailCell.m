@@ -23,7 +23,7 @@
     originalFontSize = self.contentLabel.font.pointSize;
 }
 
-- (void)setContentStr:(NSString *)contentStr isFirst:(BOOL)isFirst isLast:(BOOL)isLast{
+- (void)setContentStr:(NSString *)contentStr highlightWord:(NSString *)highlightWord isFirst:(BOOL)isFirst isLast:(BOOL)isLast isPlay:(BOOL)isPlay{
 
 	NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc]initWithString:contentStr];
 	NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
@@ -33,21 +33,33 @@
     
     CGFloat newSize = originalFontSize + [LGUserManager shareManager].user.fontSizeRate.floatValue;
     [attributeString addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:newSize] range:NSMakeRange(0, attributeString.length)];
-    
+	
+	if (highlightWord.length > 0) {
+		//高亮 word
+		NSString *str = contentStr;
+		NSString *regexString = highlightWord;
+		NSRegularExpression *reqular = [NSRegularExpression regularExpressionWithPattern:regexString options:NSRegularExpressionDotMatchesLineSeparators error:nil];
+		NSArray *resultArray  = [reqular matchesInString:str options:NSMatchingReportCompletion range:NSMakeRange(0, str.length)];
+		
+		for (NSTextCheckingResult *result in resultArray) {
+			[attributeString addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_theme_Color] range:result.range];
+		}
+	}
+	//例句添加播放 icon... 检测回车位置,在回车位置处添加
+	if (isPlay) {
+		UIImage *img = [UIImage imageNamed:@"player_icon"];
+		NSTextAttachment *attachment = [[NSTextAttachment alloc]init];
+		img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+		attachment.image = img;
+		CGFloat imageRate = img.size.width / img.size.height;
+		attachment.bounds = CGRectMake(0, -2, imageRate * newSize , newSize);
+		NSAttributedString *attrAchmentArrt = [NSAttributedString attributedStringWithAttachment:attachment];
+		NSInteger playerIndex = [contentStr rangeOfString:@"\n"].location;
+		[attributeString insertAttributedString:attrAchmentArrt atIndex:playerIndex];
+	}
+	
 	self.contentLabel.attributedText = attributeString;
-//    [self.contentLabel sizeToFit];
-//    
-//    CALayer *radiusLayer;
-//    CGFloat bgViewHeight = self.contentLabel.bounds.size.height + 8;
-//    if (isLast && isFirst) {
-//        radiusLayer = [self getRadiusLayer:UIRectCornerAllCorners cornerRadius:5 height:bgViewHeight];
-//    }else if (isFirst) {
-//        self.contentBackgroundView.layer.mask = [self getRadiusLayer:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadius:5 height:bgViewHeight] ;
-//    }else if (isLast) {
-//        self.contentBackgroundView.layer.mask = [self getRadiusLayer:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadius:5 height:bgViewHeight];
-//    }else{
-//        self.contentBackgroundView.layer.mask = [self getRadiusLayer:UIRectCornerAllCorners cornerRadius:0 height:bgViewHeight];
-//    }
+
 }
 
 - (CALayer *)getRadiusLayer:(UIRectCorner)rectCorners cornerRadius:(CGFloat)radius height:(CGFloat)height{

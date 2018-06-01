@@ -12,6 +12,7 @@
 //cell 类型
 typedef NS_ENUM(NSUInteger, LGWordDetailTableDataSourceType) {
 	LGDataSourceText,	     //普通文字类型
+	LGDataSourceExamplesSentence, //例句
 	LGDataSourceQuestion,    //列题
 	LGDataSourceThirdParty,  //第三方
 	LGDataSourceSimilarWords //形近词
@@ -41,7 +42,6 @@ typedef NS_ENUM(NSUInteger, LGWordDetailTableDataSourceType) {
 
 @property (nonatomic, copy) NSString *english;
 @property (nonatomic, copy) NSString *chinese;
-
 
 /**
  自定义字段,拼接中文英文,替换掉 <vocab>标签

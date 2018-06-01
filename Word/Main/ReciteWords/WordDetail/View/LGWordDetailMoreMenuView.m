@@ -14,6 +14,7 @@
 - (void)awakeFromNib{
 	[super awakeFromNib];
 	[self setMute:[LGUserManager shareManager].muteWithWordDetail];
+	self.muteSwitch.transform = CGAffineTransformMakeScale( 0.8, 0.8);//缩放 
 	
 }
 

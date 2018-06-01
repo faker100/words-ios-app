@@ -23,8 +23,13 @@
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:WORD_DOMAIN(user.image)] placeholderImage:PLACEHOLDERIMAGE];
     self.usernameLabel.text = user.nickname;
     NSInteger estimateNum = user.estimateWords.integerValue;
-	self.vocabularyLabel.text = estimateNum == 0 ? @"未评估" : @(estimateNum).stringValue;
-	self.estimateResultButton.hidden = estimateNum == 0;
+	
+	if (estimateNum == 0) {
+		self.vocabularyLabel.text = @"未评估";
+		self.navigationItem.rightBarButtonItem = nil;
+	}else{
+		self.vocabularyLabel.text = @(estimateNum).stringValue;
+	}
 }
 
 - (void)didReceiveMemoryWarning {

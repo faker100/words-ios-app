@@ -951,7 +951,7 @@
                     <navigationItem key="navigationItem" title="评估" id="L6r-TX-zde">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="8Aj-mf-zbc">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MAG-io-O6L">
-                                <rect key="frame" x="0.0" y="0.0" width="70" height="0.0"/>
+                                <rect key="frame" x="0.0" y="0.0" width="60" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="评估结果">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

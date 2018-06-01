@@ -22,6 +22,7 @@
 @property (nonatomic, copy) NSArray<LGSimilarWordsModel *> *similarWords;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
+//collection 高度
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionHeightConstraint;
 
 @end
