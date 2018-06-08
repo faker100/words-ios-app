@@ -14,9 +14,9 @@
 
 @interface LGPlayer ()
 
-@property (nonatomic, strong) AVAudioPlayer *player;
-@property (nonatomic, strong) AVAudioPlayer *pkPlayer;
-@property (nonatomic, strong) AVAudioPlayer *buttonPlayer;
+@property (nonatomic, strong) AVAudioPlayer *player;  //普通音频
+@property (nonatomic, strong) AVAudioPlayer *pkPlayer;   //pk
+@property (nonatomic, strong) AVAudioPlayer *buttonPlayer; //按钮音效
 
 @end
 
@@ -36,6 +36,7 @@
 	if (StringNotEmpty(url)) {
 		__weak typeof(self) weakSelf = self;
 		[self.request downloadAudioFile:url completion:^(NSURL *filePath, LGError *error) {
+			
 			if (error) {
 				if (finish) finish(error);
 			}else{

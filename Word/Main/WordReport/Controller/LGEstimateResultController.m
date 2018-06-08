@@ -14,6 +14,7 @@
 #import "LGCoreTextArcView.h"
 #import "LGUserManager.h"
 #import "LGTool.h"
+#import "UIScrollView+LGRefresh.h"
 
 @interface LGEstimateResultController () <UITableViewDelegate, UITableViewDataSource,LGEstimateResultHeaderDelegate>
 
@@ -29,7 +30,12 @@
     // Do any additional setup after loading the view.
 	self.isOpen = YES;
 	[self configTable];
-	[self requestData];
+	[self requestData : YES];
+	
+	__weak typeof(self) weakSelf = self;
+	[self.tableView setHeaderRefresh:^{
+		[weakSelf requestData:NO];
+	}];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -42,9 +48,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)requestData{
-	[LGProgressHUD showHUDAddedTo:self.view];
+- (void)requestData:(BOOL)loading{
+	if (loading) {
+		[LGProgressHUD showHUDAddedTo:self.view];
+	}
+	
 	[self.request requestEstimateResultCompletion:^(id response, LGError *error) {
+		[self.tableView lg_endRefreshing];
 		if ([self isNormal:error]) {
 			self.resultModel = [LGEstimateResultModel mj_objectWithKeyValues:response[@"result"]];
 		}

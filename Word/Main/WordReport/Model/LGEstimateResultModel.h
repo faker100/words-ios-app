@@ -20,10 +20,15 @@
 //六级
 @property (nonatomic, copy) NSString *six;
 
+//雅思
 @property (nonatomic, copy) NSString *ielts;
+//托福
 @property (nonatomic, copy) NSString *toefl;
+//gmat
 @property (nonatomic, copy) NSString *gmat;
+//gre
 @property (nonatomic, copy) NSString *gre;
+
 @property (nonatomic, copy) NSString *know;
 @property (nonatomic, copy) NSString *notKnow;
 

@@ -23,6 +23,10 @@
 			 };
 }
 
+- (NSString *)insistDay{
+	return _insistDay.length == 0 ? @"0" : _insistDay;
+}
+
 @end
 
 

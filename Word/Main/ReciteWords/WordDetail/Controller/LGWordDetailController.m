@@ -39,7 +39,6 @@
 	// Do any additional setup after loading the view.
 	[self requestData];
 	[self configTabelView];
-	
 }
 
 //请求数据
@@ -600,8 +599,6 @@
 		LGSimilarWordsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGSimilarWordsCell"];
 		cell.similarWords = dataSource.cellContent.firstObject;
 		cell.delegate = self;
-		
-		NSLog(@"%f", cell.collectionView.collectionViewLayout.collectionViewContentSize.height);
 		return cell;
 	}
 	return [UITableViewCell new];

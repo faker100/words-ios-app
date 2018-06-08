@@ -45,6 +45,7 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:LOGIN_NOTIFICATION object:nil];
 	
 	[self showGuideController];
+	
 }
 
 - (void)viewDidLayoutSubviews{
