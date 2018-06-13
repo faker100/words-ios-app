@@ -2347,7 +2347,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="ddN-Hq-M3k">
-                                <rect key="frame" x="0.0" y="20" width="187" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="187" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -2398,7 +2398,7 @@
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="85" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="ytU-Hm-Tgg">
-                                <rect key="frame" x="188" y="20" width="187" height="647"/>
+                                <rect key="frame" x="188" y="64" width="187" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LGWordTypeCell" rowHeight="80" id="2NK-Ro-Ie2" customClass="LGWordTypeCell">
@@ -2499,7 +2499,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ehj-dy-ZR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2797.5999999999999" y="-105.69715142428787"/>
+            <point key="canvasLocation" x="2724" y="-150"/>
         </scene>
         <!--词包列表-->
         <scene sceneID="V9D-70-9XM">
@@ -2514,7 +2514,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="54" sectionHeaderHeight="1" sectionFooterHeight="5" translatesAutoresizingMaskIntoConstraints="NO" id="2ti-iU-c7s">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" red="0.92541211843490601" green="0.92554193735122681" blue="0.92537122964859009" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="Ac7-ww-QIh">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
@@ -4504,8 +4504,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dvu-A0-X7B">
-                                            <rect key="frame" x="178.5" y="42.5" width="18.5" height="33.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="   " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dvu-A0-X7B">
+                                            <rect key="frame" x="5" y="42.5" width="365" height="33.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="Vtn-Zr-xe0"/>
                                             </constraints>
@@ -4566,6 +4566,8 @@
                                         <constraint firstItem="wQN-bB-oiq" firstAttribute="top" secondItem="dvu-A0-X7B" secondAttribute="bottom" id="8uL-Pd-Y7t"/>
                                         <constraint firstItem="KhT-1m-tZ4" firstAttribute="top" secondItem="wQN-bB-oiq" secondAttribute="bottom" id="Al1-B9-UGi"/>
                                         <constraint firstItem="6pE-iE-ylT" firstAttribute="top" secondItem="NtV-db-o4S" secondAttribute="top" constant="4" id="CL3-D5-PfA"/>
+                                        <constraint firstAttribute="trailing" secondItem="dvu-A0-X7B" secondAttribute="trailing" constant="5" id="ILd-6z-egJ"/>
+                                        <constraint firstItem="dvu-A0-X7B" firstAttribute="leading" secondItem="NtV-db-o4S" secondAttribute="leading" constant="5" id="Rsc-vd-1Id"/>
                                         <constraint firstItem="dvu-A0-X7B" firstAttribute="centerX" secondItem="NtV-db-o4S" secondAttribute="centerX" id="Wb6-ry-fzL"/>
                                         <constraint firstAttribute="trailing" secondItem="KhT-1m-tZ4" secondAttribute="trailing" constant="25" id="ciV-Lo-2kP"/>
                                         <constraint firstAttribute="bottom" secondItem="KhT-1m-tZ4" secondAttribute="bottom" constant="40" id="csv-Ao-SpT"/>
@@ -6266,7 +6268,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="cEs-TV-B6O"/>
         <segue reference="aIY-yS-F2r"/>
-        <segue reference="AQi-hG-fbR"/>
+        <segue reference="h7P-UJ-txp"/>
         <segue reference="zSQ-aM-XvC"/>
         <segue reference="nSa-WJ-PGB"/>
     </inferredMetricsTieBreakers>
