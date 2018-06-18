@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -741,7 +741,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1N-M1-IUk" customClass="LGDottedLineView">
-                                                    <rect key="frame" x="0.0" y="61.5" width="375" height="1"/>
+                                                    <rect key="frame" x="0.0" y="61" width="375" height="1"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="tX0-Rb-6DR"/>
@@ -949,9 +949,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="评估" id="L6r-TX-zde">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="8Aj-mf-zbc">
+                        <barButtonItem key="rightBarButtonItem" id="8Aj-mf-zbc">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MAG-io-O6L">
-                                <rect key="frame" x="0.0" y="0.0" width="60" height="44"/>
+                                <rect key="frame" x="297" y="0.0" width="62" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="评估结果">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1009,7 +1009,7 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="1" sectionFooterHeight="10" estimatedSectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="eEv-Fv-Z0g">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="eEv-Fv-Z0g">
                                 <rect key="frame" x="50" y="244" width="275" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1017,7 +1017,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="275" id="fVr-ZH-xuF"/>
                                 </constraints>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Jvk-hu-Sqe">
-                                    <rect key="frame" x="0.0" y="115.5" width="275" height="52"/>
+                                    <rect key="frame" x="0.0" y="123.5" width="275" height="52"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luo-Dx-wfP">
@@ -1111,7 +1111,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="T8g-Ba-z5O">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="MZS-uf-L3I">
+                        <barButtonItem key="rightBarButtonItem" id="MZS-uf-L3I">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hOe-Id-Ols">
                                 <rect key="frame" x="309" y="11" width="50" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1148,7 +1148,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="s52-dY-QLU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="30" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="s52-dY-QLU">
                                 <rect key="frame" x="0.0" y="64" width="375" height="517"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="bUT-Bo-mie">
@@ -1362,7 +1362,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="评测结果" id="XXf-eG-clW" customClass="LGNavigationItem">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="oWN-JR-UgT">
+                        <barButtonItem key="rightBarButtonItem" id="oWN-JR-UgT">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rdw-3U-VGL">
                                 <rect key="frame" x="339" y="10.5" width="20" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1590,7 +1590,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="评估排名" id="Vtj-Li-XFP">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="YEN-2t-zmK">
+                        <barButtonItem key="rightBarButtonItem" id="YEN-2t-zmK">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="N6r-Nl-Luz">
                                 <rect key="frame" x="339" y="10.5" width="20" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

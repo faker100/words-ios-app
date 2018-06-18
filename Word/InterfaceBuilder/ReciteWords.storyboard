@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -665,7 +665,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="闹钟" id="xDj-2c-KlP">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="ENI-mz-mW8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ENI-mz-mW8">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="Fhv-F5-KVI" kind="show" identifier="clockListToEdit" id="RWN-88-7Vb"/>
@@ -5080,7 +5080,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="awS-MV-zaS" customClass="LGNavigationItem">
-                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="NMf-CR-Ofq">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="NMf-CR-Ofq">
                             <button key="customView" hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q7c-Yo-wGM">
                                 <rect key="frame" x="16" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -5092,7 +5092,7 @@
                             </button>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem style="plain" id="Hes-7d-JqX">
+                            <barButtonItem id="Hes-7d-JqX">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4OZ-SX-UqS">
                                     <rect key="frame" x="319" y="11" width="40" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -6266,8 +6266,8 @@
         <image name="youdao" width="52" height="52"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cEs-TV-B6O"/>
-        <segue reference="aIY-yS-F2r"/>
+        <segue reference="w8j-GT-4Av"/>
+        <segue reference="GjD-7Y-35c"/>
         <segue reference="h7P-UJ-txp"/>
         <segue reference="zSQ-aM-XvC"/>
         <segue reference="nSa-WJ-PGB"/>

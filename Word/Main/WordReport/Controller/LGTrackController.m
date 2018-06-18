@@ -62,6 +62,11 @@
 
 - (void)setTrackModel:(LGTrackModel *)trackModel{
     
+    //谜之为nil，谜之崩溃
+    if (trackModel == nil) {
+        return;
+    }
+    
 	_trackModel = trackModel;
 	self.totalWordsLabel.text = trackModel.userAllWords;
 	self.knowLabel.text = trackModel.know;
