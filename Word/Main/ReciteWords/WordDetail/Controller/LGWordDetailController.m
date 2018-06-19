@@ -565,19 +565,23 @@
 	
 	
 	if (dataSource.type == LGDataSourceText) {
+        
 		LGWordDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailCell"];
 		NSString *content = dataSource.cellContent[indexPath.row];
 		BOOL isFirst = indexPath.row == 0;
 		BOOL isLast  = indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1;
 		[cell setContentStr:content highlightWord:@"" isFirst:isFirst isLast:isLast isPlay:NO];
 		return cell;
+        
 	}else if(dataSource.type == LGDataSourceExamplesSentence){
+        
 		LGWordDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailCell"];
 		NSString *content = ((LGSentenceModel *)dataSource.cellContent[indexPath.row]).englishAndChinese;
 		BOOL isFirst = indexPath.row == 0;
 		BOOL isLast  = indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1;
 		[cell setContentStr:content highlightWord:self.detailModel.words.word isFirst:isFirst isLast:isLast isPlay:YES];
 		return cell;
+        
 	}else if(dataSource.type == LGDataSourceQuestion){
 		if (indexPath.row == 0) {
 			LGWordDetailQuestionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailQuestionCell"];
@@ -589,7 +593,9 @@
 		}else{
 			LGWordDetailSelectItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LGWordDetailSelectItemCell"];
 			
-			[cell setSelectedItem:dataSource.cellContent[indexPath.row] completion:^{
+            BOOL isLast  = indexPath.row == [tableView numberOfRowsInSection:indexPath.section] - 1;
+            
+            [cell setSelectedItem:dataSource.cellContent[indexPath.row] isLast:isLast completion:^{
 				[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 			}];
 			return cell;
@@ -616,7 +622,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-	return 56;
+	return 45;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{

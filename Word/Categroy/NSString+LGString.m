@@ -52,11 +52,38 @@
 
 //替换多余行高
 - (NSString *)replaceParagraphSpace{
-	NSString *returnStr = [self stringByReplacingOccurrencesOfString:@"<p><br/></p>" withString:@""];
+	__block NSString *returnStr = [self stringByReplacingOccurrencesOfString:@"<p><br/></p>" withString:@""];
 	NSString *space = @"<p><span style=\"font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 12px;\"><br/></span></p>";
 	returnStr = [self stringByReplacingOccurrencesOfString:space withString:@""];
 	returnStr = [self stringByReplacingOccurrencesOfString:@"<p> </p>" withString:@""];
 	returnStr = [self stringByReplacingOccurrencesOfString:@"<p><br/></p>" withString:@""];
+    
+    returnStr = [self stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+    
+    NSDictionary *specialChar =  @{@"&quot;":@"\"",
+                                   @"&apos;":@"'",
+                                   @"&lt;":@"<",
+                                   @"&gt;":@">",
+                                   @"&nbsp;":@" ",
+                                   @"&rsquo;":@"’",
+                                   @"&ndash;":@"–",
+                                   @"&mdash;":@"—",
+                                   @"&lsquo;":@"‘",
+                                   @"&sbquo;":@"‚",
+                                   @"&ldquo;":@"“",
+                                   @"&rdquo;":@"”",
+                                   @"&bdquo;":@"„",
+                                   @"&permil;":@"‰",
+                                   @"&lsaquo;":@"‹",
+                                   @"&rsaquo;":@"›",
+                                   @"&euro;":@"€",
+                                   @"&fnof;":@"ƒ"
+                                   };
+    
+    [specialChar enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        returnStr = [self stringByReplacingOccurrencesOfString:key withString:obj];
+    }];
+    
 	return returnStr;
 }
 

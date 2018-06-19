@@ -29,12 +29,18 @@
     // Configure the view for the selected state
 }
 
-- (void)setSelectedItem:(LGQuestionSelectItemModel *)selectedItem completion:(void(^)(void))completion{
+- (void)setSelectedItem:(LGQuestionSelectItemModel *)selectedItem isLast:(BOOL)isLast completion:(void(^)(void))completion{
 	
 	if (selectedItem == self.selectedItem) {
 		return;
 	}
 	
+    if (isLast) {
+        self.bgView.backgroundColor = [UIColor lg_colorWithHexString:@"F1F1F1"];
+    }else{
+        self.bgView.backgroundColor = [UIColor whiteColor];
+    }
+    
     CGFloat newSize = originalFontSize + [LGUserManager shareManager].user.fontSizeRate.floatValue;
     
     self.selectedItem = selectedItem;

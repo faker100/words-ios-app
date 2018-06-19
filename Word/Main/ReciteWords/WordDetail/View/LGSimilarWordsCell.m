@@ -19,6 +19,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 15, 0, 15);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -71,8 +72,10 @@
 
 -(NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
-	NSArray *attributes = [super layoutAttributesForElementsInRect:rect];
+	NSArray *original = [super layoutAttributesForElementsInRect:rect];
 	
+    NSArray *attributes = [[NSArray alloc] initWithArray:original copyItems:YES];
+    
 	UICollectionViewLayoutAttributes *firstLayoutAttributes = attributes[0];
 	firstLayoutAttributes.frame = CGRectMake(self.sectionInset.left, firstLayoutAttributes.frame.origin.y, firstLayoutAttributes.frame.size.width, firstLayoutAttributes.frame.size.height);
 	
