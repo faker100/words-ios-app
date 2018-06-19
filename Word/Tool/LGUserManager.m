@@ -44,7 +44,7 @@
 	[[NSUserDefaults standardUserDefaults]setInteger:notLoggedStudyType forKey:notLogged];
 }
 
-- (LGStudyType)notLoggedStudyType{
+- (LGStudyType)notLoggedStudyType{ 
 	return [[NSUserDefaults standardUserDefaults] integerForKey:notLogged];
 }
 
@@ -100,12 +100,53 @@
 	[[NSUserDefaults standardUserDefaults] setBool:isFirstLaunch forKey:IS_FISRT];
 }
 
-- (BOOL)muteWithWordDetail{
-	return  [[NSUserDefaults standardUserDefaults] boolForKey:MUTE_WORD_DETAL];
+
+- (BOOL)indexSoundFlag{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:LGIndexSoundFlag];
 }
 
-- (void)setMuteWithWordDetail:(BOOL)muteWithWordDetail{
-	[[NSUserDefaults standardUserDefaults] setBool:muteWithWordDetail forKey:MUTE_WORD_DETAL];
+- (void)setIndexSoundFlag:(BOOL)indexSoundFlag{
+	[[NSUserDefaults standardUserDefaults] setBool:indexSoundFlag forKey:LGIndexSoundFlag];
+}
+
+- (BOOL)wordDetailSoundFlag{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:LGWordDetailSoundFlag];
+}
+
+- (void)setWordDetailSoundFlag:(BOOL)wordDetailSoundFlag{
+	[[NSUserDefaults standardUserDefaults] setBool:wordDetailSoundFlag forKey:LGWordDetailSoundFlag];
+}
+
+- (BOOL)wordEstimateSoundFlag{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:LGWordEstimateSoundFlag];
+}
+
+- (void)setWordEstimateSoundFlag:(BOOL)wordEstimateSoundFlag{
+	[[NSUserDefaults standardUserDefaults]setBool:wordEstimateSoundFlag forKey:LGWordEstimateSoundFlag];
+}
+
+- (BOOL)pkResultSoundFlag{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:LGPkResultSoundFlag];
+}
+
+- (void)setPkResultSoundFlag:(BOOL)pkResultSoundFlag{
+	[[NSUserDefaults standardUserDefaults] setBool:pkResultSoundFlag forKey:LGPkResultSoundFlag];
+}
+
+- (void)setPkBackGroundSoundFlag:(BOOL)pkBackGroundSoundFlag{
+	[[NSUserDefaults standardUserDefaults] setBool:pkBackGroundSoundFlag forKey:LGPkBackGroundSoundFlag];
+}
+
+- (BOOL)pkBackGroundSoundFlag{
+	return [[NSUserDefaults standardUserDefaults] boolForKey:LGPkBackGroundSoundFlag];
+}
+
+- (void)setAutoplayWordFlag:(BOOL)autoplayWordFlag{
+	[[NSUserDefaults standardUserDefaults] setBool:autoplayWordFlag forKey:LGAutoplayWordFlag];
+}
+
+- (BOOL)autoplayWordFlag{
+	return [[NSUserDefaults standardUserDefaults]boolForKey:LGAutoplayWordFlag];
 }
 
 @end

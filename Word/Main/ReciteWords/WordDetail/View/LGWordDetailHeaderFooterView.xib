@@ -12,43 +12,44 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LGWordDetailHeaderFooterView">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="363" height="72"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ExE-YG-6RS">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="363" height="72"/>
                     <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangle" translatesAutoresizingMaskIntoConstraints="NO" id="eyO-CX-xOH">
-                    <rect key="frame" x="30" y="330" width="6" height="7"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="6" id="4wS-vT-sRc"/>
-                        <constraint firstAttribute="height" constant="7" id="oLO-KB-tyC"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_radius" translatesAutoresizingMaskIntoConstraints="NO" id="mMC-cN-irK">
+                    <rect key="frame" x="15" y="8" width="333" height="64"/>
+                    <rect key="contentStretch" x="0.5" y="0.5" width="0.0" height="0.0"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12Q-cb-exf">
-                    <rect key="frame" x="41" y="326.5" width="31" height="14.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" red="0.2156862745" green="0.73725490199999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="30" y="30.5" width="39.5" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="ExE-YG-6RS" secondAttribute="bottom" id="2Ln-ZE-9VS"/>
                 <constraint firstAttribute="trailing" secondItem="ExE-YG-6RS" secondAttribute="trailing" id="AgL-MO-Vnn"/>
-                <constraint firstItem="eyO-CX-xOH" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="DuJ-gw-c4Y"/>
-                <constraint firstItem="eyO-CX-xOH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="Ii6-In-MZM"/>
+                <constraint firstItem="12Q-cb-exf" firstAttribute="centerY" secondItem="mMC-cN-irK" secondAttribute="centerY" id="CRY-Tp-jdy"/>
                 <constraint firstItem="ExE-YG-6RS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Mup-2G-63p"/>
-                <constraint firstItem="12Q-cb-exf" firstAttribute="leading" secondItem="eyO-CX-xOH" secondAttribute="trailing" constant="5" id="PxJ-ah-Q05"/>
+                <constraint firstAttribute="bottom" secondItem="mMC-cN-irK" secondAttribute="bottom" id="OIv-nI-Sel"/>
+                <constraint firstItem="12Q-cb-exf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="Ora-aE-o45"/>
                 <constraint firstItem="ExE-YG-6RS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="VFC-wY-oYW"/>
-                <constraint firstItem="12Q-cb-exf" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="mdZ-Jj-geV"/>
+                <constraint firstAttribute="trailing" secondItem="mMC-cN-irK" secondAttribute="trailing" constant="15" id="bYg-5L-0bJ"/>
+                <constraint firstItem="mMC-cN-irK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="lEV-FI-Yiz"/>
+                <constraint firstItem="mMC-cN-irK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="pd0-CV-gta"/>
             </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="titleLabel" destination="12Q-cb-exf" id="gAQ-6m-7dj"/>
             </connections>
+            <point key="canvasLocation" x="27.5" y="-244"/>
         </view>
     </objects>
     <resources>
-        <image name="triangle" width="6" height="7"/>
+        <image name="top_radius" width="250" height="25"/>
     </resources>
 </document>

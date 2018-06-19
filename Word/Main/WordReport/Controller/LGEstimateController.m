@@ -13,6 +13,7 @@
 #import "LGWordErrorViewController.h"
 #import "LGNavigationController.h"
 #import "LGTool.h"
+#import "LGUserManager.h"
 
 @interface LGEstimateController () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -61,15 +62,17 @@
 	
 	LGAnswerType type = [answer isEqualToString:self.wordModel.answer];
 	
-	if (type == LGAnswerFalse) {
-		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_estimate_notKnow];
-	}else{
-		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_know];
+	if ([LGUserManager shareManager].wordEstimateSoundFlag) {
+		if (type == LGAnswerFalse) {
+			[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_estimate_notKnow];
+		}else{
+			[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_know];
+		}
 	}
 	
 	BOOL isKnow = StringNotEmpty(answer);
-	[LGProgressHUD showHUDAddedTo:self.view];
 	
+	[LGProgressHUD showHUDAddedTo:self.view];
 	[self.request submitEstimateAnswer:answer type:type wordId:self.wordModel.wordsId duration:duration isKnow:isKnow completion:^(id response, LGError *error) {
 		if ([self isNormal:error]) {
 			NSInteger code = [NSString stringWithFormat:@"%@",response[@"code"]].integerValue;
@@ -101,7 +104,12 @@
 	self.wordLabel.text = wordModel.word;
 	self.phoneticLabel.text = wordModel.phonetic_uk;
 	[self.tableView reloadData];
-	[self playAction:nil];
+	
+	//自动播放音频
+	if ([LGUserManager shareManager].autoplayWordFlag) {
+		[self playAction:nil];
+	}
+	
 }
 
 
@@ -151,6 +159,10 @@
 }
 
 #pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+	return 10;
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.1;

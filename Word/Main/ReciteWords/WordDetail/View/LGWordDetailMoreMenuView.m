@@ -13,9 +13,11 @@
 
 - (void)awakeFromNib{
 	[super awakeFromNib];
-	[self setMute:[LGUserManager shareManager].muteWithWordDetail];
-	self.muteSwitch.transform = CGAffineTransformMakeScale( 0.8, 0.8);//缩放 
+	[self setMute:[LGUserManager shareManager].wordDetailSoundFlag];
+	self.muteSwitch.transform = CGAffineTransformMakeScale( 0.8, 0.8);//缩放
 	
+	self.autoplaySwitch.on = [LGUserManager shareManager].autoplayWordFlag;
+	self.autoplaySwitch.transform = CGAffineTransformMakeScale( 0.8, 0.8);//缩放
 }
 
 /*
@@ -35,6 +37,10 @@
 //静音 action
 - (IBAction)muteAction:(UISwitch *)sender {
 	[self setMute:sender.on];
+}
+
+- (IBAction)autoplayAction:(UISwitch *)sender {
+	[LGUserManager shareManager].autoplayWordFlag = sender.on;
 }
 
 //设置静音
@@ -62,7 +68,7 @@
 		self.muteLabel.attributedText = mute;
 	}
 	
-	[LGUserManager shareManager].muteWithWordDetail = flag;
+	[LGUserManager shareManager].wordDetailSoundFlag = flag;
 }
 
 - (IBAction)tapAction:(id)sender {

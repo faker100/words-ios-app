@@ -51,13 +51,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Word/Main/PK/Controller/LGPKMatchingController.m"
-            timestampString = "549463464.503424"
+            filePath = "Word/Main/ReciteWords/PersonalCenter/Controller/LGSoundTableViewController.m"
+            timestampString = "551096768.871807"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "-networkDidReceiveMessage:"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-configDefault"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Word/Main/ReciteWords/PersonalCenter/Controller/LGSoundTableViewController.m"
+            timestampString = "551096768.871911"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-soundFlagAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

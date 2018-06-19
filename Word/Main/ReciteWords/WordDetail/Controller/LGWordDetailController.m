@@ -149,12 +149,12 @@
 		needReviewWords = self.detailModel.needReviewWords + self.ebbinghausReviewWordIdArray.count;
 	}
 	
-	NSString *leftTitle = [NSString stringWithFormat:@" 新学%ld | 需复习%ld ",self.detailModel.did,needReviewWords];
+	NSString *leftTitle = [NSString stringWithFormat:@" 新学%ld | 需复习%ld ",(long)self.detailModel.did,needReviewWords];
 	
 	
 	if (self.controllerType == LGWordDetailReview) {
 		//		NSInteger surplus = self.total.integerValue - self.currentNum.integerValue;
-		leftTitle = [NSString stringWithFormat:@" 需复习%ld ",self.reviewWordIdArray.count];
+		leftTitle = [NSString stringWithFormat:@" 需复习%ld ",(unsigned long)self.reviewWordIdArray.count];
 	}
 	
 	[self.leftTitleButton setTitle:leftTitle forState:UIControlStateNormal];
@@ -176,8 +176,11 @@
 		[self updateLeftTitle];
 	}
 	
-	//播放音频
-	[self playeAction:nil];
+	//自动播放音频
+	if ([LGUserManager shareManager].autoplayWordFlag) {
+		[self playeAction:nil];
+	}
+	
 	self.playerButton.hidden = NO;
 	if (detailModel.words.phonetic) {
 		[self.playerButton setTitle:[NSString stringWithFormat:@"  %@",detailModel.words.phonetic] forState:UIControlStateNormal];
@@ -358,7 +361,7 @@
 
 //熟识
 - (IBAction)familiarAction:(id)sender {
-	if (![LGUserManager shareManager].muteWithWordDetail) {
+	if (![LGUserManager shareManager].wordDetailSoundFlag) {
 		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_familiar];
 	}
 	
@@ -367,7 +370,7 @@
 
 //认识
 - (IBAction)knowAction:(id)sender {
-	if (![LGUserManager shareManager].muteWithWordDetail) {
+	if (![LGUserManager shareManager].wordDetailSoundFlag) {
 		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_know];
 	}
 	
@@ -376,7 +379,7 @@
 
 //不认识
 - (IBAction)notKnowAction:(id)sender {
-	if (![LGUserManager shareManager].muteWithWordDetail) {
+	if (![LGUserManager shareManager].wordDetailSoundFlag) {
 		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_estimate_notKnow];
 	}
 	
@@ -385,7 +388,7 @@
 
 // 在背单词模式下标记为模糊,其他复习模式下标记为忘记
 - (IBAction)vagueOrForgotAction:(id)sender {
-	if (![LGUserManager shareManager].muteWithWordDetail) {
+	if (![LGUserManager shareManager].wordDetailSoundFlag) {
 		if (self.controllerType == LGWordDetailReciteWords) {
 			[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_dim];
 		}else{
@@ -613,7 +616,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-	return 30;
+	return 56;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{

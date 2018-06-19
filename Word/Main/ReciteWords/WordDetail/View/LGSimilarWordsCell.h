@@ -26,3 +26,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionHeightConstraint;
 
 @end
+
+//等间距 layout
+@interface LGEquestSpaceLayout : UICollectionViewFlowLayout
+
+@property (nonatomic, assign) CGFloat maxInteritemSpacing;
+
+@end

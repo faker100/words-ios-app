@@ -20,6 +20,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *muteLabel;
 
+//静音
 @property (weak, nonatomic) IBOutlet UISwitch *muteSwitch;
+
+//自动发音
+@property (weak, nonatomic) IBOutlet UISwitch *autoplaySwitch;
 
 @end

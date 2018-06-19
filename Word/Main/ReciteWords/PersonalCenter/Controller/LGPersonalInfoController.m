@@ -131,18 +131,17 @@
 		/***************************  section 2  ***************************/
 		
 		NSMutableArray *section_3 = [NSMutableArray array];
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 2; i++) {
 			LGSettingModel *model = [LGSettingModel new];
 			model.type = LGSettingMore;
 			if (i == 0) {
 				model.infoTitle = @"版本检测";
 				model.info 		= [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
-			}
-		/*	}else{
-				model.infoTitle = @"缓存";
+			}else{
+				model.infoTitle = @"音效开关";
 				model.info = @"";
 			}
-		 */
+		 
 			[section_3 addObject:model];
 		}
 		
@@ -212,6 +211,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	//隐藏了 section == 1
+	
 	if (indexPath.section == 0) {
 		if (indexPath.row == 0) {
 			[self changeHead];
@@ -225,14 +226,19 @@
             [self performSegueWithIdentifier:@"settingToUpdateInfo" sender:@(LGUpdatePassword)];
         }
 	}else if (indexPath.section == 2){
-		[HSUpdateApp hs_updateWithAPPID:nil withBundleId:nil block:^(NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {
-			if (isUpdate) {
-				[self showAlertViewTitle:@"" subTitle:[NSString stringWithFormat:@"检测到新版本%@,是否更新？",storeVersion] openUrl:openUrl];
-			}else{
-				[LGProgressHUD showMessage:@"当前已是最新版本" toView:self.view];
-			}
-		}];
-	}else if (indexPath.section == 3){ //隐藏了 section = 1
+		if (indexPath.row == 0) {
+			[HSUpdateApp hs_updateWithAPPID:nil withBundleId:nil block:^(NSString *currentVersion, NSString *storeVersion, NSString *openUrl, BOOL isUpdate) {
+				if (isUpdate) {
+					[self showAlertViewTitle:@"" subTitle:[NSString stringWithFormat:@"检测到新版本%@,是否更新？",storeVersion] openUrl:openUrl];
+				}else{
+					[LGProgressHUD showMessage:@"当前已是最新版本" toView:self.view];
+				}
+			}];
+		}else{
+			[self performSegueWithIdentifier:@"settingToSound" sender:nil];
+		}
+		
+	}else if (indexPath.section == 3){
 		if (indexPath.row == 0) {
 			[self performSegueWithIdentifier:@"settingToFont" sender:nil];
 		}

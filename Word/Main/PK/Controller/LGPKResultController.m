@@ -12,6 +12,7 @@
 #import "LGPlayer.h"
 #import "LGPKResultCell.h"
 #import "LGNavigationController.h"
+#import "LGUserManager.h"
 
 @interface LGPKResultController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -78,13 +79,18 @@
 - (void)setResultModel:(LGPKResultModel *)resultModel{
 	_resultModel = resultModel;
 	if (resultModel.type.integerValue == 1) {
-		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_pk_win];
+		if ([LGUserManager shareManager].pkResultSoundFlag) {
+			[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_pk_win];
+		}
+		
 		self.resultImageView.image = [UIImage imageNamed:@"pk_result_win"];
 		self.userWinImageView.hidden = NO;
 		self.currentUserHeadImageView.transform = CGAffineTransformMakeScale(1.3,1.3);
 	
 	}else{
-		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_pk_lose];
+		if ([LGUserManager shareManager].pkResultSoundFlag) {
+			[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_pk_lose];
+		}
 		self.resultImageView.image = [UIImage imageNamed:@"pk_result_lose"];
 		self.opponentWinImageView.hidden = NO;
 		self.opponentHeadImageView.transform = CGAffineTransformMakeScale(1.3,1.3);
@@ -127,7 +133,6 @@
 }
 
 #pragma mark -UITableViewDelegate
-
 
 
 /*

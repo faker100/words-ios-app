@@ -234,6 +234,7 @@
 		56D328482079FDAF0041502B /* LGPeripherySectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56D328472079FDAF0041502B /* LGPeripherySectionHeader.xib */; };
 		56D3284B207A148E0041502B /* LGPeripheryLiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D3284A207A148E0041502B /* LGPeripheryLiveCell.m */; };
 		56D3284E207A15430041502B /* LGLivePreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 56D3284D207A15430041502B /* LGLivePreviewCell.m */; };
+		56DEE87920D8AD71007ECFE2 /* LGSoundTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56DEE87820D8AD71007ECFE2 /* LGSoundTableViewController.m */; };
 		56E2538F204D00B7006D9B56 /* LGFinishWordTaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E2538E204D00B7006D9B56 /* LGFinishWordTaskView.m */; };
 		56E25391204D00C6006D9B56 /* LGFinishWordTaskView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56E25390204D00C6006D9B56 /* LGFinishWordTaskView.xib */; };
 		56E9F8172091806900FEECAE /* LGAlertMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56E9F8162091806900FEECAE /* LGAlertMessageView.m */; };
@@ -689,6 +690,8 @@
 		56D3284A207A148E0041502B /* LGPeripheryLiveCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGPeripheryLiveCell.m; sourceTree = "<group>"; };
 		56D3284C207A15430041502B /* LGLivePreviewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGLivePreviewCell.h; sourceTree = "<group>"; };
 		56D3284D207A15430041502B /* LGLivePreviewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGLivePreviewCell.m; sourceTree = "<group>"; };
+		56DEE87720D8AD71007ECFE2 /* LGSoundTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGSoundTableViewController.h; sourceTree = "<group>"; };
+		56DEE87820D8AD71007ECFE2 /* LGSoundTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGSoundTableViewController.m; sourceTree = "<group>"; };
 		56E2538D204D00B7006D9B56 /* LGFinishWordTaskView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LGFinishWordTaskView.h; sourceTree = "<group>"; };
 		56E2538E204D00B7006D9B56 /* LGFinishWordTaskView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LGFinishWordTaskView.m; sourceTree = "<group>"; };
 		56E25390204D00C6006D9B56 /* LGFinishWordTaskView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LGFinishWordTaskView.xib; sourceTree = "<group>"; };
@@ -1693,6 +1696,8 @@
 				56388633207C48AC00C05E01 /* LGSignController.m */,
 				560344F3208D7D78001D76FD /* LGIdeaController.h */,
 				560344F4208D7D78001D76FD /* LGIdeaController.m */,
+				56DEE87720D8AD71007ECFE2 /* LGSoundTableViewController.h */,
+				56DEE87820D8AD71007ECFE2 /* LGSoundTableViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2092,6 +2097,7 @@
 				0235DB9A2022147200E52A3F /* LGFreeLibraryWordListController.m in Sources */,
 				0239C1AC20485C460031C3FA /* LGTodayReviewWordModel.m in Sources */,
 				56BBBFB820561C740057BDF2 /* LGPersonalCenterController.m in Sources */,
+				56DEE87920D8AD71007ECFE2 /* LGSoundTableViewController.m in Sources */,
 				567C00FB2010A0360083F3D5 /* LGBaseRequest.m in Sources */,
 				56B7AAEA202C59EC00BDECED /* LGWordDetailHeaderFooterView.m in Sources */,
 				5679932C2071D4C900F851F1 /* LGEstimateCell.m in Sources */,
@@ -2403,6 +2409,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G6D8UC5DTE;
 				ENABLE_BITCODE = NO;
+				ENABLE_TESTABILITY = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Word/Extend/VodSDK",

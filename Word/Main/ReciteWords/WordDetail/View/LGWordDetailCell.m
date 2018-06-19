@@ -25,6 +25,12 @@
 
 - (void)setContentStr:(NSString *)contentStr highlightWord:(NSString *)highlightWord isFirst:(BOOL)isFirst isLast:(BOOL)isLast isPlay:(BOOL)isPlay{
 
+	if (isLast) {
+		self.contentBackgroundView.backgroundColor = [UIColor lg_colorWithHexString:@"F1F1F1"];
+	}else{
+		self.contentBackgroundView.backgroundColor = [UIColor whiteColor];
+	}
+	
 	NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc]initWithString:contentStr];
 	NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
 	[paragraphStyle setLineSpacing:5];//调整行间距
@@ -57,7 +63,6 @@
 		NSInteger playerIndex = [contentStr rangeOfString:@"\n"].location;
 		[attributeString insertAttributedString:attrAchmentArrt atIndex:playerIndex];
 	}
-	
 	self.contentLabel.attributedText = attributeString;
 
 }

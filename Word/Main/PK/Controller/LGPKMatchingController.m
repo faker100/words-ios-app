@@ -41,7 +41,10 @@
 	//设置匹配中
 	[self setMatchType:LGMatching animated:NO];
 	
-	[[LGPlayer sharedPlayer]playPkMusic];
+	
+	if ([LGUserManager shareManager].pkBackGroundSoundFlag) {
+		[[LGPlayer sharedPlayer]playPkMusic];
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated{

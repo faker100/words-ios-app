@@ -28,6 +28,8 @@
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 		sharedPlayer = [[LGPlayer alloc] init];
+		AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+		[audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
 	});
 	return sharedPlayer;
 }

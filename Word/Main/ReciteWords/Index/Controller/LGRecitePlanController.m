@@ -16,6 +16,7 @@
 #import "NSDate+Utilities.h"
 #import "LGPlayer.h"
 
+
 @interface LGRecitePlanController ()
 
 /**
@@ -140,6 +141,7 @@
 	[self.view.window addSubview:self.reviewAlertView];
 }
 */
+
 /**
  复习
  */
@@ -271,7 +273,11 @@
 	
 	if ([segue.identifier isEqualToString:@"indexPlanToBeginReciteWords"]) {
 		
-		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_beginReciteWords];
+		if ([LGUserManager shareManager].indexSoundFlag) {
+			[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_beginReciteWords];
+		}
+		
+		
 		
 		LGWordDetailControllerType type = ((NSNumber *)sender).integerValue;
 		LGWordDetailController *controller = segue.destinationViewController;
