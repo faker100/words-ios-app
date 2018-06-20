@@ -39,6 +39,8 @@
 	// Do any additional setup after loading the view.
 	[self requestData];
 	[self configTabelView];
+	
+	
 }
 
 //请求数据
@@ -98,6 +100,8 @@
 
 //初始化table headerview
 - (void)configTabelView{
+	
+	
 	[self.wordTabelView registerNib:[UINib nibWithNibName:@"LGWordDetailHeaderFooterView" bundle:nil] forHeaderFooterViewReuseIdentifier:@"LGWordDetailHeaderFooterView"];
 	CGFloat fontRate = [LGUserManager shareManager].user.fontSizeRate.floatValue;
 	self.wordLabel.font = [UIFont systemFontOfSize:self.wordLabel.font.pointSize  + fontRate];
@@ -361,7 +365,7 @@
 
 //熟识
 - (IBAction)familiarAction:(id)sender {
-	if (![LGUserManager shareManager].wordDetailSoundFlag) {
+	if ([LGUserManager shareManager].wordDetailSoundFlag) {
 		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_familiar];
 	}
 	
@@ -370,7 +374,7 @@
 
 //认识
 - (IBAction)knowAction:(id)sender {
-	if (![LGUserManager shareManager].wordDetailSoundFlag) {
+	if ([LGUserManager shareManager].wordDetailSoundFlag) {
 		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_know];
 	}
 	
@@ -379,7 +383,7 @@
 
 //不认识
 - (IBAction)notKnowAction:(id)sender {
-	if (![LGUserManager shareManager].wordDetailSoundFlag) {
+	if ([LGUserManager shareManager].wordDetailSoundFlag) {
 		[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_estimate_notKnow];
 	}
 	
@@ -388,7 +392,7 @@
 
 // 在背单词模式下标记为模糊,其他复习模式下标记为忘记
 - (IBAction)vagueOrForgotAction:(id)sender {
-	if (![LGUserManager shareManager].wordDetailSoundFlag) {
+	if ([LGUserManager shareManager].wordDetailSoundFlag) {
 		if (self.controllerType == LGWordDetailReciteWords) {
 			[[LGPlayer sharedPlayer] playWithAudioType:LGAudio_dim];
 		}else{

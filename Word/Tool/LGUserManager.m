@@ -102,23 +102,36 @@
 
 
 - (BOOL)indexSoundFlag{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:LGIndexSoundFlag];
+	NSString *str = [[NSUserDefaults standardUserDefaults] stringForKey:LGIndexSoundFlag];
+	if (str) {
+		return str.integerValue;
+	}else{
+		return YES;
+	}
 }
 
 - (void)setIndexSoundFlag:(BOOL)indexSoundFlag{
-	[[NSUserDefaults standardUserDefaults] setBool:indexSoundFlag forKey:LGIndexSoundFlag];
+	[[NSUserDefaults standardUserDefaults] setObject:indexSoundFlag ? @"1" : @"0" forKey:LGIndexSoundFlag];
 }
 
 - (BOOL)wordDetailSoundFlag{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:LGWordDetailSoundFlag];
+	NSString *str =  [[NSUserDefaults standardUserDefaults] stringForKey:LGWordDetailSoundFlag];
+	if (str) {
+		return str.integerValue;
+	}else{
+		return YES;
+	}
 }
 
 - (void)setWordDetailSoundFlag:(BOOL)wordDetailSoundFlag{
-	[[NSUserDefaults standardUserDefaults] setBool:wordDetailSoundFlag forKey:LGWordDetailSoundFlag];
+	
+	[[NSUserDefaults standardUserDefaults] setObject:wordDetailSoundFlag ? @"1" : @"0" forKey:LGWordDetailSoundFlag];
 }
 
 - (BOOL)wordEstimateSoundFlag{
+	
 	return [[NSUserDefaults standardUserDefaults] boolForKey:LGWordEstimateSoundFlag];
+	
 }
 
 - (void)setWordEstimateSoundFlag:(BOOL)wordEstimateSoundFlag{
@@ -134,19 +147,34 @@
 }
 
 - (void)setPkBackGroundSoundFlag:(BOOL)pkBackGroundSoundFlag{
-	[[NSUserDefaults standardUserDefaults] setBool:pkBackGroundSoundFlag forKey:LGPkBackGroundSoundFlag];
+	
+	[[NSUserDefaults standardUserDefaults] setObject:pkBackGroundSoundFlag ? @"1" : @"0" forKey:LGPkBackGroundSoundFlag];
 }
 
 - (BOOL)pkBackGroundSoundFlag{
-	return [[NSUserDefaults standardUserDefaults] boolForKey:LGPkBackGroundSoundFlag];
+	
+	NSString *str =  [[NSUserDefaults standardUserDefaults] stringForKey:LGPkBackGroundSoundFlag];
+	if (str) {
+		return str.integerValue;
+	}else{
+		return YES;
+	}
 }
 
 - (void)setAutoplayWordFlag:(BOOL)autoplayWordFlag{
-	[[NSUserDefaults standardUserDefaults] setBool:autoplayWordFlag forKey:LGAutoplayWordFlag];
+	
+	
+	[[NSUserDefaults standardUserDefaults] setObject:autoplayWordFlag ? @"1" : @"0" forKey:LGAutoplayWordFlag];
 }
 
 - (BOOL)autoplayWordFlag{
-	return [[NSUserDefaults standardUserDefaults]boolForKey:LGAutoplayWordFlag];
+	
+	NSString *str =  [[NSUserDefaults standardUserDefaults] stringForKey:LGAutoplayWordFlag];
+	if (str) {
+		return str.integerValue;
+	}else{
+		return YES;
+	}
 }
 
 @end

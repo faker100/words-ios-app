@@ -110,35 +110,35 @@ typedef NS_ENUM(NSUInteger, LGAddPlanSortType) {
 /*************************************** 接口 **********************************/
 
 //登录
-#define LOGIN_URL						 @"http://login.gmatonline.cn/cn/app-api/check-login"
+#define LOGIN_URL						 @"http://login.viplgw.cn/cn/app-api/check-login"
 
 
 //获取 session
 #define SESSION_URLS      				 @[@"http://www.toeflonline.cn/cn/app-api/unify-login",@"http://www.smartapply.cn/cn/app-api/unify-login",@"http://www.gmatonline.cn/index.php?web/appapi/unifyLogin",@"http://bbs.viplgw.cn/cn/app-api/unify-login",@"http://words.viplgw.cn/cn/app-api/unify-login"]
 
 //获取验证码前先跟服务器确认
-#define CHECK_CODE_SURE					@"http://login.gmatonline.cn/cn/app-api/phone-request"
+#define CHECK_CODE_SURE					@"http://login.viplgw.cn/cn/app-api/phone-request"
 
 //通过手机获取验证码
-#define GET_CHECK_CODE_PHONE			@"http://login.gmatonline.cn/cn/app-api/phone-code"
+#define GET_CHECK_CODE_PHONE			@"http://login.viplgw.cn/cn/app-api/phone-code"
 
 //通过 email 获取验证码
-#define GET_CHECK_CODE_EMAIL			@"http://login.gmatonline.cn/cn/app-api/send-mail"
+#define GET_CHECK_CODE_EMAIL			@"http://login.viplgw.cn/cn/app-api/send-mail"
 
 //注册
-#define REGISTER_URL					@"http://login.gmatonline.cn/cn/app-api/register"
+#define REGISTER_URL					@"http://login.viplgw.cn/cn/app-api/register"
 
 //找回密码
-#define FIND_PASSWORD_URL				@"http://login.gmatonline.cn/cn/app-api/find-pass"
+#define FIND_PASSWORD_URL				@"http://login.viplgw.cn/cn/app-api/find-pass"
 
 //修改用户邮箱，密码，手机
-#define UPDATE_USER_URL                 @"http://login.gmatonline.cn/cn/app-api/update-user"
+#define UPDATE_USER_URL                 @"http://login.viplgw.cn/cn/app-api/update-user"
 
 //上传头像
 #define UPDATE_HEAD_IMG_URL             @"http://words.viplgw.cn/cn/app-api/app-image"
 
 //更改昵称
-#define UPDATE_NICKNAME_URL				@"http://login.gmatonline.cn/cn/app-api/change-nickname"
+#define UPDATE_NICKNAME_URL				@"http://login.viplgw.cn/cn/app-api/change-nickname"
 
 //更改学习模式
 #define UPDATE_STUDY_TYPE_URL			@"http://words.viplgw.cn/cn/app-api/update-model"

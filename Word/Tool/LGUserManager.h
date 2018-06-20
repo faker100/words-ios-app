@@ -15,12 +15,13 @@
 #define notLogged		@"notLogged"
 
 
-NSString *const LGIndexSoundFlag	    = @"LGIndexSoundFlag";
-NSString *const LGWordDetailSoundFlag   = @"LGWordDetailSoundFlag";
-NSString *const LGWordEstimateSoundFlag = @"LGWordEstimateSoundFlag";
-NSString *const LGPkResultSoundFlag     = @"LGPkResultSoundFlag";
-NSString *const LGPkBackGroundSoundFlag = @"LGPkBackGroundSoundFlag";
-NSString *const LGAutoplayWordFlag 		= @"LGAutoplayWordFlag";
+NSString *const LGIndexSoundFlag	      = @"LGIndexSoundFlag";
+NSString *const LGWordDetailSoundFlag     = @"LGWordDetailSoundFlag";
+NSString *const LGWordEstimateSoundFlag   = @"LGWordEstimateSoundFlag";
+NSString *const LGPkResultSoundFlag       = @"LGPkResultSoundFlag";
+NSString *const LGPkBackGroundSoundFlag   = @"LGPkBackGroundSoundFlag";
+NSString *const LGAutoplayWordFlag 		  = @"LGAutoplayWordFlag";
+
 
 @interface LGUserManager : NSObject
 
@@ -54,7 +55,7 @@ NSString *const LGAutoplayWordFlag 		= @"LGAutoplayWordFlag";
 
 
 /**
- 自动播放单词读音
+ 自动播放单词读音 
  */
 @property (nonatomic, assign) BOOL autoplayWordFlag;
 

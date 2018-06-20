@@ -43,4 +43,13 @@
 //HTML 转换 attributeString
 - (void)htmlToAttributeStringContent:(NSString *)imageUrl width:(CGFloat)contentWidth completion:(void(^)(NSMutableAttributedString *attrStr))completion;
 
+
+/**
+ 寻找高亮单词位置
+
+ @param word 高亮
+ @return 位置
+ */
+- (NSArray<NSTextCheckingResult *> *) findHighlightForWord:(NSString *)word;
+
 @end

@@ -37,7 +37,7 @@
 				switchView.on = [LGUserManager shareManager].indexSoundFlag;
 				break;
 			case 101:
-				switchView.on = ![LGUserManager shareManager].wordDetailSoundFlag ;
+				switchView.on = [LGUserManager shareManager].wordDetailSoundFlag ;
 				break;
 			case 102:
 				switchView.on = [LGUserManager shareManager].wordEstimateSoundFlag ;
@@ -75,7 +75,7 @@
 			[LGUserManager shareManager].indexSoundFlag = sender.isOn;
 			break;
 		case 101:
-			[LGUserManager shareManager].wordDetailSoundFlag = !sender.isOn;
+			[LGUserManager shareManager].wordDetailSoundFlag = sender.isOn;
 			break;
 		case 102:
 			[LGUserManager shareManager].wordEstimateSoundFlag = sender.isOn;

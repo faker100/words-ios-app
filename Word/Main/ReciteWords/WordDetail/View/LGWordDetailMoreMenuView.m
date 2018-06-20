@@ -56,12 +56,12 @@
 	if (flag) {
 		
 		self.muteSwitch.on = YES;
-		NSMutableAttributedString *mute = [[NSMutableAttributedString alloc]initWithString:@"静音(开启)"];
+		NSMutableAttributedString *mute = [[NSMutableAttributedString alloc]initWithString:@"音效(开启)"];
 		[mute addAttributes:muteAttribute range:NSMakeRange(0, 2)];
 		[mute addAttributes:muteFlag range:NSMakeRange(2, 4)];
 		self.muteLabel.attributedText = mute;
 	}else{
-		NSMutableAttributedString *mute = [[NSMutableAttributedString alloc]initWithString:@"静音(关闭)"];
+		NSMutableAttributedString *mute = [[NSMutableAttributedString alloc]initWithString:@"音效(关闭)"];
 		[mute addAttributes:muteAttribute range:NSMakeRange(0, 2)];
 		[mute addAttributes:muteFlag range:NSMakeRange(2, 4)];
 		self.muteSwitch.on = NO;

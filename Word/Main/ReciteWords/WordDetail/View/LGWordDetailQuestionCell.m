@@ -42,11 +42,8 @@
             CGFloat newSize = originalFontSize + [LGUserManager shareManager].user.fontSizeRate.floatValue;
             [attrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:newSize] range:NSMakeRange(0, attrStr.length)];
             
-			//高亮 word
-			NSString *str = attrStr.mutableString;
-			NSString *regexString = word;
-			NSRegularExpression *reqular = [NSRegularExpression regularExpressionWithPattern:regexString options:NSRegularExpressionDotMatchesLineSeparators error:nil];
-			NSArray *resultArray  = [reqular matchesInString:str options:NSMatchingReportCompletion range:NSMakeRange(0, str.length)];
+			//高亮
+			NSArray *resultArray  = [attrStr.mutableString findHighlightForWord:word];
 			
 				for (NSTextCheckingResult *result in resultArray) {
 					[attrStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_theme_Color] range:result.range];

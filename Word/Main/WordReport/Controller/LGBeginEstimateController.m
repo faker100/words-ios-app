@@ -28,6 +28,7 @@
 		self.vocabularyLabel.text = @"未评估";
 		self.navigationItem.rightBarButtonItem = nil;
 	}else{
+		self.estimateResultButton.frame = CGRectMake(0, 0, 40, 40);
 		self.vocabularyLabel.text = @(estimateNum).stringValue;
 	}
 }

@@ -54,11 +54,10 @@
 - (NSString *)replaceParagraphSpace{
 	__block NSString *returnStr = [self stringByReplacingOccurrencesOfString:@"<p><br/></p>" withString:@""];
 	NSString *space = @"<p><span style=\"font-family: 微软雅黑, &#39;Microsoft YaHei&#39;; font-size: 12px;\"><br/></span></p>";
-	returnStr = [self stringByReplacingOccurrencesOfString:space withString:@""];
-	returnStr = [self stringByReplacingOccurrencesOfString:@"<p> </p>" withString:@""];
-	returnStr = [self stringByReplacingOccurrencesOfString:@"<p><br/></p>" withString:@""];
+	returnStr = [returnStr stringByReplacingOccurrencesOfString:space withString:@""];
+	returnStr = [returnStr stringByReplacingOccurrencesOfString:@"<p> </p>" withString:@""];
     
-    returnStr = [self stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
+    returnStr = [returnStr stringByReplacingOccurrencesOfString:@"&amp;" withString:@"&"];
     
     NSDictionary *specialChar =  @{@"&quot;":@"\"",
                                    @"&apos;":@"'",
@@ -79,9 +78,9 @@
                                    @"&euro;":@"€",
                                    @"&fnof;":@"ƒ"
                                    };
-    
+	
     [specialChar enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-        returnStr = [self stringByReplacingOccurrencesOfString:key withString:obj];
+        returnStr = [returnStr stringByReplacingOccurrencesOfString:key withString:obj];
     }];
     
 	return returnStr;
@@ -144,5 +143,27 @@
 		});
 	});
 }
+
+- (NSArray<NSTextCheckingResult *> *) findHighlightForWord:(NSString *)word{
+	
+	NSString *str = self;
+	NSString *regexString = @"";
+	if (word.length <= 3) {
+		regexString = word;
+	}else{
+		// 小写
+		NSString *lower = [[word substringToIndex:1] lowercaseString] ;
+		
+		// 大写
+		NSString *upper = [[word substringToIndex:1] uppercaseString];
+		
+		regexString = [NSString stringWithFormat:@"\\W?\\w*[%@%@]%@\\w*\\W?",lower,upper,[word substringWithRange:NSMakeRange(1, word.length-2)]];
+	}
+	
+	NSRegularExpression *reqular = [NSRegularExpression regularExpressionWithPattern:regexString options:NSRegularExpressionDotMatchesLineSeparators error:nil];
+	NSArray *resultArray  = [reqular matchesInString:str options:NSMatchingReportCompletion range:NSMakeRange(0, str.length)];
+	return resultArray;
+}
+
 
 @end

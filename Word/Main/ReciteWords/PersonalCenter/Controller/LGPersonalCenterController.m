@@ -37,12 +37,6 @@
 	}
 }
 
-//5星好评
-- (IBAction)evaluateAction:(id)sender {
-	
-	NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/cn/app/%E9%9B%B7%E5%93%A5%E5%8D%95%E8%AF%8D/id1375429473?l=zh&ls=1&mt=8"];
-	[[UIApplication sharedApplication] openURL:url];
-}
 
 
 //跳转个人资料

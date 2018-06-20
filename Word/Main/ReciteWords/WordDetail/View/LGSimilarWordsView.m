@@ -67,11 +67,9 @@
 		[attrStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_Title_1_Color] range:NSMakeRange(0, str.length)];
 		[attrStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15 + addFontSize] range:NSMakeRange(0, str.length)];
 		
-		//高亮 word
-		NSString *regexString = wordDetailModel.words.word;
-		NSRegularExpression *reqular = [NSRegularExpression regularExpressionWithPattern:regexString options:NSRegularExpressionDotMatchesLineSeparators error:nil];
-		NSArray *resultArray  = [reqular matchesInString:str options:NSMatchingReportCompletion range:NSMakeRange(0, str.length)];
-		
+		//高亮
+		NSArray *resultArray  = [str findHighlightForWord:wordDetailModel.words.word];
+	
 		for (NSTextCheckingResult *result in resultArray) {
 			[attrStr addAttribute:NSForegroundColorAttributeName value:[UIColor lg_colorWithType:LGColor_theme_Color] range:result.range];
 		}
